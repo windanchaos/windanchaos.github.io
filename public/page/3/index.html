@@ -1,0 +1,1940 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="宇弦">
+<meta property="og:url" content="https:&#x2F;&#x2F;blog.windanchaos.tech&#x2F;page&#x2F;3&#x2F;index.html">
+<meta property="og:site_name" content="宇弦">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://blog.windanchaos.tech/page/3/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: true,
+    isPost: false,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>宇弦</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">宇弦</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-首页">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-分类">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-归档">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-标签">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-关于">
+
+    <a href="/about/me.html" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/windanchaos" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://blog.windanchaos.tech/2018/07/18/shell%20for%20%E5%BE%AA%E7%8E%AF%E4%B8%AD%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="windanchaos">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇弦">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/07/18/shell%20for%20%E5%BE%AA%E7%8E%AF%E4%B8%AD%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86/" class="post-title-link" itemprop="url">shell for 循环中实现异步处理</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-07-18 14:29:44" itemprop="dateCreated datePublished" datetime="2018-07-18T14:29:44+08:00">2018-07-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-11-23 23:11:57" itemprop="dateModified" datetime="2019-11-23T23:11:57+08:00">2019-11-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux%E7%AE%A1%E7%90%86%E7%BB%B4%E6%8A%A4/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux管理维护</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2018/07/18/shell%20for%20%E5%BE%AA%E7%8E%AF%E4%B8%AD%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86/" class="post-meta-item leancloud_visitors" data-flag-title="shell for 循环中实现异步处理" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2018/07/18/shell%20for%20%E5%BE%AA%E7%8E%AF%E4%B8%AD%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2018/07/18/shell%20for%20%E5%BE%AA%E7%8E%AF%E4%B8%AD%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>理解异步，需要理解shell壳的原理，父shell和子shell进程之间关系。<br>shell什么情况下会产生子进程<br>下英文摘自info bash<br>1、后台执行命令 &amp;。If a command is terminated by the control operator ‘&amp;’, the shell executes the command asynchronously in a subshell.<br>2、管道命令 |。Each command in a pipeline is executed in its own subshell。<br>3、括号命令()。<br>Placing a list of commands between parentheses causes a subshell<br>environment to be created<br>4、执行外部脚本、程序：<br>When Bash finds such a file while searching the `$PATH’ for a command, it spawns a subshell to execute it. In other words, executing filename ARGUMENTS is equivalent to executing bash filename ARGUMENTS</p>
+<p>核心命令：<br>等待命令</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wait</span><br></pre></td></tr></table></figure>
+
+<p>后台运行命令</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&amp;</span><br></pre></td></tr></table></figure>
+
+<p>代码块，fork子进程</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">（</span><br><span class="line">）</span><br></pre></td></tr></table></figure>
+
+<p>实例代码：<br>在for循环中，异步执行 单元 ()&amp;：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> &#123;<span class="number">1.</span><span class="number">.5</span>&#125;</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">   echo $&#123;i&#125;</span><br><span class="line">   (</span><br><span class="line">     echo block one sleep:$&#123;i&#125;</span><br><span class="line">     echo block one_start:<span class="string">`date`</span></span><br><span class="line">     sleep $&#123;i&#125;          </span><br><span class="line">     echo block one_end:<span class="string">`date`</span></span><br><span class="line">   )&amp;</span><br><span class="line">     echo Main_One:$!</span><br><span class="line">   ( </span><br><span class="line">     echo block tow sleep:<span class="number">1</span></span><br><span class="line">     echo block tow_start:<span class="string">`date`</span></span><br><span class="line">     sleep <span class="number">1</span></span><br><span class="line">     echo block tow:<span class="string">`date`</span></span><br><span class="line">  )&amp;</span><br><span class="line">     echo Main_Tow:$!</span><br><span class="line">done</span><br><span class="line">echo out:$!</span><br></pre></td></tr></table></figure>
+
+<p>以上测试结果显示，循环中(…)&amp;代码，后台运行后，就fork了一个子进行。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span></span><br><span class="line">Main_One:<span class="number">17976</span></span><br><span class="line">block one sleep:1  #这里块一开始</span><br><span class="line">Main_Tow:<span class="number">17977</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line">Main_One:<span class="number">17978</span></span><br><span class="line">Main_Tow:<span class="number">17980</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line">block one sleep:<span class="number">2</span></span><br><span class="line">Main_One:<span class="number">17981</span></span><br><span class="line">Main_Tow:<span class="number">17983</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line">Main_One:<span class="number">17984</span></span><br><span class="line">Main_Tow:<span class="number">17985</span></span><br><span class="line"><span class="number">5</span></span><br><span class="line">Main_One:<span class="number">17986</span></span><br><span class="line">Main_Tow:<span class="number">17987</span></span><br><span class="line">out:17987  #这里整个脚本跑完</span><br><span class="line">block one_start:Wed Jul <span class="number">18</span> <span class="number">14</span>:<span class="number">00</span>:<span class="number">29</span> CST <span class="number">2018</span></span><br><span class="line">block one sleep:<span class="number">3</span></span><br><span class="line">block tow sleep:1 #这里block二开始执行</span><br><span class="line">block tow sleep:<span class="number">1</span></span><br><span class="line">block tow sleep:<span class="number">1</span></span><br><span class="line">block tow sleep:<span class="number">1</span></span><br><span class="line">block tow sleep:<span class="number">1</span></span><br><span class="line">block one_start:Wed Jul <span class="number">18</span> <span class="number">14</span>:<span class="number">00</span>:<span class="number">29</span> CST <span class="number">2018</span></span><br><span class="line">block one sleep:<span class="number">4</span></span><br><span class="line">block one sleep:<span class="number">5</span></span><br><span class="line">block tow_start:Wed Jul <span class="number">18</span> <span class="number">14</span>:<span class="number">00</span>:<span class="number">29</span> CST <span class="number">2018</span></span><br><span class="line">block tow_start:Wed Jul <span class="number">18</span> <span class="number">14</span>:<span class="number">00</span>:<span class="number">29</span> CST <span class="number">2018</span></span><br><span class="line">block tow_start:Wed Jul <span class="number">18</span> <span class="number">14</span>:<span class="number">00</span>:<span class="number">29</span> CST <span class="number">2018</span></span><br><span class="line">block tow_start:Wed Jul <span class="number">18</span> <span class="number">14</span>:<span class="number">00</span>:<span class="number">29</span> CST <span class="number">2018</span></span><br><span class="line">block one_start:Wed Jul <span class="number">18</span> <span class="number">14</span>:<span class="number">00</span>:<span class="number">29</span> CST <span class="number">2018</span></span><br><span class="line">block tow_start:Wed Jul <span class="number">18</span> <span class="number">14</span>:<span class="number">00</span>:<span class="number">29</span> CST <span class="number">2018</span></span><br><span class="line">block one_start:Wed Jul <span class="number">18</span> <span class="number">14</span>:<span class="number">00</span>:<span class="number">29</span> CST <span class="number">2018</span></span><br><span class="line">block one_start:Wed Jul <span class="number">18</span> <span class="number">14</span>:<span class="number">00</span>:<span class="number">29</span> CST <span class="number">2018</span></span><br><span class="line">block one_end:Wed Jul <span class="number">18</span> <span class="number">14</span>:<span class="number">00</span>:<span class="number">30</span> CST <span class="number">2018</span></span><br><span class="line">block tow:Wed Jul <span class="number">18</span> <span class="number">14</span>:<span class="number">00</span>:<span class="number">30</span> CST <span class="number">2018</span></span><br><span class="line">block tow:Wed Jul <span class="number">18</span> <span class="number">14</span>:<span class="number">00</span>:<span class="number">30</span> CST <span class="number">2018</span></span><br><span class="line">block tow:Wed Jul <span class="number">18</span> <span class="number">14</span>:<span class="number">00</span>:<span class="number">30</span> CST <span class="number">2018</span></span><br><span class="line">block tow:Wed Jul <span class="number">18</span> <span class="number">14</span>:<span class="number">00</span>:<span class="number">30</span> CST <span class="number">2018</span></span><br><span class="line">block tow:Wed Jul 18 14:00:30 CST 2018 #block二 先结束</span><br><span class="line">block one_end:Wed Jul <span class="number">18</span> <span class="number">14</span>:<span class="number">00</span>:<span class="number">31</span> CST <span class="number">2018</span></span><br><span class="line">block one_end:Wed Jul <span class="number">18</span> <span class="number">14</span>:<span class="number">00</span>:<span class="number">32</span> CST <span class="number">2018</span></span><br><span class="line">block one_end:Wed Jul <span class="number">18</span> <span class="number">14</span>:<span class="number">00</span>:<span class="number">33</span> CST <span class="number">2018</span></span><br><span class="line">block one_end:Wed Jul 18 14:00:34 CST 2018 #block一结束</span><br></pre></td></tr></table></figure>
+
+<p>看到网上有人说for循环中，是使用的子进程进行操作，这个结论应该是不合实际的。<br>只有在显性的fork了子进程，才有这种现象。在没有fork子进程的时候，for循环是顺序执行，等待上一个循环结束才会继续执行。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://blog.windanchaos.tech/2018/07/10/linux%20shell%E5%88%A4%E6%96%AD%E6%96%87%E4%BB%B6%E6%98%AF%E5%90%A6%E6%9B%B4%E6%96%B0%E3%80%81%E4%BF%AE%E6%94%B9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="windanchaos">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇弦">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/07/10/linux%20shell%E5%88%A4%E6%96%AD%E6%96%87%E4%BB%B6%E6%98%AF%E5%90%A6%E6%9B%B4%E6%96%B0%E3%80%81%E4%BF%AE%E6%94%B9/" class="post-title-link" itemprop="url">linux shell判断文件是否更新、修改</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-07-10 19:49:06" itemprop="dateCreated datePublished" datetime="2018-07-10T19:49:06+08:00">2018-07-10</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-11-23 23:11:57" itemprop="dateModified" datetime="2019-11-23T23:11:57+08:00">2019-11-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux%E7%AE%A1%E7%90%86%E7%BB%B4%E6%8A%A4/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux管理维护</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2018/07/10/linux%20shell%E5%88%A4%E6%96%AD%E6%96%87%E4%BB%B6%E6%98%AF%E5%90%A6%E6%9B%B4%E6%96%B0%E3%80%81%E4%BF%AE%E6%94%B9/" class="post-meta-item leancloud_visitors" data-flag-title="linux shell判断文件是否更新、修改" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2018/07/10/linux%20shell%E5%88%A4%E6%96%AD%E6%96%87%E4%BB%B6%E6%98%AF%E5%90%A6%E6%9B%B4%E6%96%B0%E3%80%81%E4%BF%AE%E6%94%B9/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2018/07/10/linux%20shell%E5%88%A4%E6%96%AD%E6%96%87%E4%BB%B6%E6%98%AF%E5%90%A6%E6%9B%B4%E6%96%B0%E3%80%81%E4%BF%AE%E6%94%B9/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>核心命令：stat<br>如下函数，判断文件是否更新，传入文件路径，间隔时间（秒s），则输入文件在多少秒内是否被更新过。<br>函数会持续等待文件不再变化后停止。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">whether_changed</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    local file_path=$&#123;<span class="number">1</span>&#125;</span><br><span class="line">    local check_time=$&#123;<span class="number">2</span>&#125;</span><br><span class="line">    <span class="keyword">while</span> [[ <span class="literal">true</span> ]]; <span class="keyword">do</span></span><br><span class="line">        file_old_stat=<span class="string">"`stat $&#123;file_path&#125;|grep Size`"</span></span><br><span class="line">        sleep $&#123;check_time&#125;</span><br><span class="line">        file_new_stat=<span class="string">"`stat $&#123;file_path&#125;|grep Size`"</span></span><br><span class="line">        <span class="keyword">if</span> [[ <span class="string">`echo <span class="subst">$&#123;file_old_stat&#125;</span>`</span> == <span class="string">`echo <span class="subst">$&#123;file_new_stat&#125;</span>`</span> ]]; then</span><br><span class="line">            echo <span class="string">"### In $&#123;check_time&#125;s ,$&#123;file_path&#125; does not change ###"</span></span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            echo <span class="string">"#### Wait $&#123;check_time&#125;s ####"</span></span><br><span class="line">        fi</span><br><span class="line">    done</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果要判断某文件自从上次修改以来是否有变更过，则可以将文件状态记录在一个文本中。下次提取比较即可。这里不提供实现。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://blog.windanchaos.tech/2018/03/08/shell%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="windanchaos">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇弦">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/03/08/shell%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="post-title-link" itemprop="url">shell正则表达式</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-03-08 17:45:07" itemprop="dateCreated datePublished" datetime="2018-03-08T17:45:07+08:00">2018-03-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-11-23 23:11:57" itemprop="dateModified" datetime="2019-11-23T23:11:57+08:00">2019-11-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux%E7%AE%A1%E7%90%86%E7%BB%B4%E6%8A%A4/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux管理维护</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2018/03/08/shell%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" class="post-meta-item leancloud_visitors" data-flag-title="shell正则表达式" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2018/03/08/shell%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2018/03/08/shell%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="正则表达式的分类"><a href="#正则表达式的分类" class="headerlink" title="正则表达式的分类"></a>正则表达式的分类</h1><h1 id="基本组成部分"><a href="#基本组成部分" class="headerlink" title="基本组成部分"></a>基本组成部分</h1><p>正则表达式的基本组成部分。<br><img src="/images/dn.net-20180308174914289-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2luZGFuY2hhb3M=-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70.png" alt="这里写图片描述"></p>
+<h1 id="POSIX字符类"><a href="#POSIX字符类" class="headerlink" title="POSIX字符类"></a>POSIX字符类</h1><p>POSIX字符类是一个形如[:…:]的特殊元序列（meta sequence），他可以用于匹配特定的字符范围。<br><img src="/images/dn.net-20180308174928299-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2luZGFuY2hhb3M=-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70.png" alt="这里写图片描述"></p>
+<h1 id="元字符"><a href="#元字符" class="headerlink" title="元字符"></a>元字符</h1><p>元字符（meta character）是一种Perl风格的正则表达式，只有一部分文本处理工具支持它，并不是所有的文本处理工具都支持。<br><img src="/images/dn.net-20180308174945870-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2luZGFuY2hhb3M=-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70.png" alt="这里写图片描述"></p>
+<p>shell 除了有通配符之外，由shell 负责预先先解析后，将处理结果传给命令行之外，shell还有一系列自己的其他特殊字符<br><img src="/images/dn.net-20180308172720352-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2luZGFuY2hhb3M=-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70.png" alt="这里写图片描述"></p>
+<h1 id="转义符"><a href="#转义符" class="headerlink" title="转义符"></a>转义符</h1><p>有时候，我们想让 通配符，或者元字符 变成普通字符，不需要使用它。那么这里我们就需要用到转义符了。 shell提供转义符有三种<br><img src="/images/dn.net-20180308173011390-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2luZGFuY2hhb3M=-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70.png" alt="这里写图片描述"></p>
+<h1 id="shell解析脚本的过程"><a href="#shell解析脚本的过程" class="headerlink" title="shell解析脚本的过程"></a>shell解析脚本的过程</h1><p><img src="/images/gs.com-cnblogs_com-chengmo-WindowsLiveWriter-LinuxShell_142B8-1_2-.png" alt="这里写图片描述"><br>如果用双引号包括起来，shell检测跳过了1-4步和9-10步，单引号包括起来，shell检测就会跳过了1-10步。也就是说，双引号 只经过参数扩展、命令代换和算术代换就可以送入执行步骤，而单引号转义符直接会被送入执行步骤。而且，无论是双引号转义符还是单引号转义符在执行的时候能够告诉各个命令自身内部是一体的，但是其本身在执行时是并不是命令中文本的一部分。</p>
+<p>本文参考：</p>
+<p><a href="https://www.cnblogs.com/chengmo/archive/2010/10/17/1853344.html" target="_blank" rel="noopener">https://www.cnblogs.com/chengmo/archive/2010/10/17/1853344.html</a><br><a href="http://man.linuxde.net/docs/shell_regex.html" target="_blank" rel="noopener">http://man.linuxde.net/docs/shell_regex.html</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://blog.windanchaos.tech/2018/02/02/tomcat%20%E9%83%A8%E7%BD%B2https%20apr%E6%AD%A3%E7%A1%AE%E5%AE%89%E8%A3%85%EF%BC%8C%E5%90%AF%E5%8A%A8%E6%89%BE%E4%B8%8D%E5%88%B0apr%E7%9A%84%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="windanchaos">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇弦">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/02/02/tomcat%20%E9%83%A8%E7%BD%B2https%20apr%E6%AD%A3%E7%A1%AE%E5%AE%89%E8%A3%85%EF%BC%8C%E5%90%AF%E5%8A%A8%E6%89%BE%E4%B8%8D%E5%88%B0apr%E7%9A%84%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">tomcat 部署https apr正确安装，启动找不到apr的问题</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-02-02 11:30:13" itemprop="dateCreated datePublished" datetime="2018-02-02T11:30:13+08:00">2018-02-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-11-23 23:11:57" itemprop="dateModified" datetime="2019-11-23T23:11:57+08:00">2019-11-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux%E7%AE%A1%E7%90%86%E7%BB%B4%E6%8A%A4/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux管理维护</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2018/02/02/tomcat%20%E9%83%A8%E7%BD%B2https%20apr%E6%AD%A3%E7%A1%AE%E5%AE%89%E8%A3%85%EF%BC%8C%E5%90%AF%E5%8A%A8%E6%89%BE%E4%B8%8D%E5%88%B0apr%E7%9A%84%E9%97%AE%E9%A2%98/" class="post-meta-item leancloud_visitors" data-flag-title="tomcat 部署https apr正确安装，启动找不到apr的问题" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2018/02/02/tomcat%20%E9%83%A8%E7%BD%B2https%20apr%E6%AD%A3%E7%A1%AE%E5%AE%89%E8%A3%85%EF%BC%8C%E5%90%AF%E5%8A%A8%E6%89%BE%E4%B8%8D%E5%88%B0apr%E7%9A%84%E9%97%AE%E9%A2%98/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2018/02/02/tomcat%20%E9%83%A8%E7%BD%B2https%20apr%E6%AD%A3%E7%A1%AE%E5%AE%89%E8%A3%85%EF%BC%8C%E5%90%AF%E5%8A%A8%E6%89%BE%E4%B8%8D%E5%88%B0apr%E7%9A%84%E9%97%AE%E9%A2%98/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>问题解决可以参考：<a href="http://blog.csdn.net/felix_yujing/article/details/52385890" target="_blank" rel="noopener">http://blog.csdn.net/felix_yujing/article/details/52385890</a><br>也可以参考官网：<a href="http://tomcat.apache.org/native-doc/" target="_blank" rel="noopener">http://tomcat.apache.org/native-doc/</a></p>
+<p>但是，我这个启动始终不对。一开始以为是安装有问题，尝试了几次，安装明显没有什么差错。<br>仔细看日志会发现，tomcat在启动过程中会去/usr/lib64等目录下去找apr，但是找不到。虽然source /etc/profile，但是明显报错的tomcat并没有去你设置的目录下面去找它所需要的库文件，明显这个source并未生效。</p>
+<p>原理猜测：<br>以上操作，是root和普通用户在切换操作发生的。<br>/etc/profile在系统账户管理的原理上来说，需要用户登录才会生效。<br>su命令切换不是等于登录（这个是猜测，没有查看到权威说法，亲测猜测是对的）。所以tomcat启动的时候就不会去/usr/local/apr/lib目录下去找.so文件(<a href="https://www.cnblogs.com/wangnengwu/p/7760606.html" target="_blank" rel="noopener">动态链接库</a>)。</p>
+<p>解决办法：<br>1、装完apr，主动退出ssh连接，重新用普通账户连接。<br>或者在普通账户下执行：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
+
+<p>2、把需要的文件拷贝到需要的目录，执行</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp /usr/local/apr/lib/libtcnative<span class="number">-1.</span>* <span class="regexp">/usr/</span>lib64/</span><br></pre></td></tr></table></figure>
+
+<p>我这个，几乎是全网回答最直接的了。毕竟是我亲测！</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://blog.windanchaos.tech/2018/01/23/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%EF%BC%88SLB%EF%BC%89%E4%BD%BF%E7%94%A8%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%E2%80%94%E2%80%94%E4%B8%80%E7%AF%87%E9%9B%86%E5%90%88%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E4%B8%BB%E8%A6%81%E5%86%85%E5%AE%B9%E7%9A%84%E6%96%87%E7%AB%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="windanchaos">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇弦">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/01/23/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%EF%BC%88SLB%EF%BC%89%E4%BD%BF%E7%94%A8%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%E2%80%94%E2%80%94%E4%B8%80%E7%AF%87%E9%9B%86%E5%90%88%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E4%B8%BB%E8%A6%81%E5%86%85%E5%AE%B9%E7%9A%84%E6%96%87%E7%AB%A0/" class="post-title-link" itemprop="url">负载均衡（SLB）使用最佳实践——一篇集合负载均衡主要内容的文章</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-01-23 17:31:01" itemprop="dateCreated datePublished" datetime="2018-01-23T17:31:01+08:00">2018-01-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-11-23 23:11:57" itemprop="dateModified" datetime="2019-11-23T23:11:57+08:00">2019-11-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux%E7%AE%A1%E7%90%86%E7%BB%B4%E6%8A%A4/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux管理维护</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2018/01/23/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%EF%BC%88SLB%EF%BC%89%E4%BD%BF%E7%94%A8%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%E2%80%94%E2%80%94%E4%B8%80%E7%AF%87%E9%9B%86%E5%90%88%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E4%B8%BB%E8%A6%81%E5%86%85%E5%AE%B9%E7%9A%84%E6%96%87%E7%AB%A0/" class="post-meta-item leancloud_visitors" data-flag-title="负载均衡（SLB）使用最佳实践——一篇集合负载均衡主要内容的文章" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2018/01/23/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%EF%BC%88SLB%EF%BC%89%E4%BD%BF%E7%94%A8%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%E2%80%94%E2%80%94%E4%B8%80%E7%AF%87%E9%9B%86%E5%90%88%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E4%B8%BB%E8%A6%81%E5%86%85%E5%AE%B9%E7%9A%84%E6%96%87%E7%AB%A0/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2018/01/23/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%EF%BC%88SLB%EF%BC%89%E4%BD%BF%E7%94%A8%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%E2%80%94%E2%80%94%E4%B8%80%E7%AF%87%E9%9B%86%E5%90%88%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E4%B8%BB%E8%A6%81%E5%86%85%E5%AE%B9%E7%9A%84%E6%96%87%E7%AB%A0/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>本文转自：<a href="https://yq.aliyun.com/articles/80055" target="_blank" rel="noopener">https://yq.aliyun.com/articles/80055</a></p>
+<p>可以加深目前生产环境和测试环境中nginx使用的理解。</p>
+<h1 id="负载均衡（SLB）使用最佳实践"><a href="#负载均衡（SLB）使用最佳实践" class="headerlink" title="负载均衡（SLB）使用最佳实践"></a>负载均衡（SLB）使用最佳实践</h1><p><em>摘要：</em> 负载均衡（Server Load Balancer，下文简称 SLB）的引入，可以降低单台云服务器 ECS（下文简称 ECS）出现异常时对业务的冲击，提升业务的可用性。同时，结合弹性伸缩服务，通过动态调整后端服务器，可以快速对业务进行弹性调整（扩容或缩容），以快速应对业务的发展。<br>负载均衡（Server Load Balancer，下文简称 SLB）的引入，可以降低单台云服务器 ECS（下文简称 ECS）出现异常时对业务的冲击，提升业务的可用性。同时，结合弹性伸缩服务，通过动态调整后端服务器，可以快速对业务进行弹性调整（扩容或缩容），以快速应对业务的发展。</p>
+<p>本文，会先对 SLB 的使用限制和常见误区进行说明，然后介绍 SLB 的使用最佳实践。</p>
+<h1 id="SLB-基础原理"><a href="#SLB-基础原理" class="headerlink" title="SLB 基础原理"></a>SLB 基础原理</h1><p>在开始使用 SLB 之前，建议您务必阅读如下文章，了解 SLB 的相关基础原理：</p>
+<ul>
+<li><a href="https://help.aliyun.com/knowledge_detail/39444.html" target="_blank" rel="noopener">负载均衡技术原理浅析</a></li>
+<li><a href="https://help.aliyun.com/knowledge_detail/39455.html" target="_blank" rel="noopener">负载均衡健康检查原理浅析</a></li>
+<li><a href="https://help.aliyun.com/knowledge_detail/39440.html" target="_blank" rel="noopener">负载均衡网络流量路径说明</a></li>
+<li><a href="https://help.aliyun.com/knowledge_detail/39449.html" target="_blank" rel="noopener">负载均衡高可用概要说明</a></li>
+</ul>
+<h1 id="SLB-使用限制"><a href="#SLB-使用限制" class="headerlink" title="SLB 使用限制"></a>SLB 使用限制</h1><p>在使用 SLB 进行业务部署之前，请您务必了解 SLB 的相关使用限制，以免对后续使用造成困扰或对业务造成影响。</p>
+<h2 id="产品与业务规格限制"><a href="#产品与业务规格限制" class="headerlink" title="产品与业务规格限制"></a>产品与业务规格限制</h2><p>SLB 的相关资源或功能存在限制，部分可以通过提交工单申请调整。部分则没有例外，无法调整。详细说明，可以参阅 <a href="https://help.aliyun.com/document_detail/32459.html" target="_blank" rel="noopener"><em>SLB 使用限制</em>。</a></p>
+<p>另外，后续阿里云会推出性能保障型实例，对实例性能提供保障，用户可配置和查询其具体的性能指标，并可查看其实时运行数据。相关说明可以参阅 <a href="https://help.aliyun.com/document_detail/27657.html" target="_blank" rel="noopener"><em>产品文档</em>。</a></p>
+<h2 id="技术限制"><a href="#技术限制" class="headerlink" title="技术限制"></a>技术限制</h2><p>SLB 在技术层面还在逐步增强和完善，截止本文发稿，还存在如下技术限制：</p>
+<h1 id="SLB-常见误区"><a href="#SLB-常见误区" class="headerlink" title="SLB 常见误区"></a>SLB 常见误区</h1><p>从历史案例看，用户在 SLB 的规划和使用过程中有很多常见误区。接下来逐一说明。</p>
+<p>用户在 SLB 后端只添加一台服务器时，虽然链路能跑通，客户端也能正常访问。但却失去了 SLB 消除 ECS 单点的基本能力。如果这台仅有的 ECS 出现异常，那边整个业务访问也会出现异常。</p>
+<p><strong>建议</strong>：至少在 SLB 后端加入两台以上 ECS。以便单一服务器出现异常时，业务还能持续正常访问。</p>
+<p>用户通过 SLB 访问业务出现异常。但 hosts 绑定后端 ECS 的公网 IP 能正常访问。用户据此推断后端业务是正常的，是 SLB 服务端出现异常导致业务访问异常。</p>
+<p>其实，由于负载均衡的数据转发和健康检查都是通过内网进行的。所以，从后端 ECS 的公网 IP 进行对比访问测试，并没有可比性，并不能反应真实访问情况。</p>
+<p><strong>建议</strong>：出现异常时，在后端 ECS 之间，通过内网 IP 做对比访问测试。</p>
+<p>用户通过 ping SLB 的 VIP 地址来判断 SLB 服务的有效性。</p>
+<p>其实，这种测试非常不可靠。因为 ping 响应是由 SLB 服务端直接完成的，与后端 ECS 无关。所以，正常情况下：</p>
+<p><strong>建议</strong>：对于 4 层服务，通过 telnet 监听端口进行业务可用性测试；对于 7 层服务，通过实际的业务访问进行可用性测试。</p>
+<p>用户反馈已经调大了健康检查的最大间隔时间，但客户端访还是由于访问超时收到 504 错误。</p>
+<p>其实，虽然健康检查及业务转发都是由 SLB 服务端相同的服务器承载，但却是完全不同维度的处理逻辑。来自客户端的请求，经由 SLB 转发给后端 ECS 后，SLB 服务端会有接收数据的超时窗口。而另一方面，SLB 服务端持续的对后端 ECS 根据检查间隔配置进行健康检查。这两者之间没有直接关系，唯一的影响是在后端 ECS 健康检查失败后，SLB 不会再对其进行数据转发。</p>
+<p><strong>建议</strong>：客户端访问超时时，结合业务与 SLB 默认超时时间进行比对分析；健康检查超时时，结合健康检查与业务超时时间进行比对分析。</p>
+<p>用户反馈通过 SLB 后端 ECS 的业务日志进行统计分析，发现健康检查的间隔非常短，与之前在创建监听时配置的健康检查间隔时间不一致。</p>
+<p>这个问题在文档 <a href="https://help.aliyun.com/knowledge_detail/39455.html" target="_blank" rel="noopener"><em>负载均衡健康检查原理浅析</em></a> 有相关说明：LVS 集群内所有节点，都会独立、并行的遵循该属性去对后端 ECS 进行定期健康检查。由于各 LVS 节点的检查时间并不同步，所以，如果从后端某一 ECS 上进行单独统计，会发现来自负载均衡的健康检查请求在时间上并不会遵循上述时间间隔。</p>
+<p><strong>建议</strong>：如果健康检查频率过高对业务造成影响，可以参阅知识点 <a href="https://help.aliyun.com/knowledge_detail/39458.html" target="_blank" rel="noopener"><em>健康检查导致大量日志的处理</em></a>进行处理。</p>
+<p>用户认为 SLB 服务端使用上百台机器进行健康检查，大量健康检查请求会形成 DDoS 攻击，造成后端 ECS 性能降低。</p>
+<p>实际上，无论何种模式的健康检查，其规模均不足以达到类似于 DDoS 攻击的量级：SLB 集群会利用多台机器（假定为 M 个，个位数级别），对后端 ECS 的每个服务监听端口 （假定为 N 个） ，按照配置的健康检查间隔（假定为 O 秒，一般建议最少 2 秒）进行健康检查。以 TCP 协议健康检查为例，那么每秒由健康检查产生的 TCP 连接建立数为：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">M*N/O</span><br></pre></td></tr></table></figure>
+<p>。</p>
+<p>从该公式可以看出，M 和 N 都是固定的，而且值很小。所以，最终健康检查带来的每秒 TCP 并发请求数，主要取决于创建的监听端口数量。所以，除非有巨量的监听端口，否则由健康检查产生的连接请求，根本无法达到 SYN Flood 的攻击级别，实际对后端 ECS 的网络压力也极低。</p>
+<p><strong>建议</strong>： 如果健康检查频率过高对业务造成影响，可以参阅知识点 <a href="https://help.aliyun.com/knowledge_detail/39458.html" target="_blank" rel="noopener"><em>健康检查导致大量日志的处理</em></a>进行处理。</p>
+<p>用户为了降低健康检查对业务的影响，将检查间隔时间设置得很长。</p>
+<p>这样配置会导致当后端 ECS 出现异常时，负载均衡需要经过较长时间才能侦测到后端 ECS 出现不可用。尤其是当后端 ECS 间歇性不可用时，由于需要【连续多次】检测失败时才会移除异常 ECS。所以，检查间隔过长，会导致负载均衡集群可能根本无法发现后端 ECS 不可用。</p>
+<p><strong>建议</strong>： 如果健康检查频率过高对业务造成影响，可以参阅知识点 <a href="https://help.aliyun.com/knowledge_detail/39458.html" target="_blank" rel="noopener"><em>健康检查导致大量日志的处理</em></a>进行处理。</p>
+<p>用户在进行业务调整时，认为直接将服务器从 SLB 后端移除，或将其权重置零即可，两者效果是一样的。</p>
+<p>其实，两者有很大区别，相关操作对业务的影响也不一致：</p>
+<p><strong>建议</strong>：在业务调整或服务器维护时，提前将相应服务器的权重置零，直至连接持续衰减至零。操作完成后，再恢复权重配置，以降低对业务的影响。</p>
+<h4 id="误区：单个连接就能达到监听配置的带宽峰值"><a href="#误区：单个连接就能达到监听配置的带宽峰值" class="headerlink" title="误区：单个连接就能达到监听配置的带宽峰值"></a>误区：单个连接就能达到监听配置的带宽峰值</h4><p>SLB 在创建监听时可以指定带宽峰值。但用户通过单一客户端进行测试时，发现始终无法达到该峰值。</p>
+<p>由于 SLB 是基于集群方式部署和提供服务的。所以，所有前端请求会被均分到集群内不同的 SLB 服务器上进行转发。相应的，在监听上设定的带宽峰值也会被平分后设定到各服务器。因此，单个连接下载的流量上限公式为：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">单个连接下载峰值=设置的负载均衡总带宽/(N<span class="number">-1</span>) </span><br><span class="line">*注：N 为流量转发分组个数，当前值一般为 <span class="number">4</span></span><br></pre></td></tr></table></figure>
+
+<p>示例：<br>假设在控制台上设置的带宽峰值为 10Mb，那么单个客户端可下载的最大流量为：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">10</span>/(<span class="number">4</span><span class="number">-1</span>)≈<span class="number">3.33</span>Mb</span><br></pre></td></tr></table></figure>
+
+<p><strong>建议</strong>：建议在配置单个监听的带宽峰值时，根据实际的业务情况并结合上述实现方式设定一个较为合理的值，从而确保业务的正常对外服务不会受到影响和限制。</p>
+<h1 id="SLB-使用最佳实践"><a href="#SLB-使用最佳实践" class="headerlink" title="SLB 使用最佳实践"></a>SLB 使用最佳实践</h1><p>接下来，结合 SLB 的产品特性与历史案例，从多个维度阐述使用 SLB 的最佳实践。</p>
+<h2 id="设计业务架构"><a href="#设计业务架构" class="headerlink" title="设计业务架构"></a>设计业务架构</h2><p><img src="/images/dn.com-ea357ac3e08ef5f9bf4bca2f144e57df3f3a9d71-.png" alt="SLB 简单业务架构设计示意图" title="SLB 简单业务架构设计示意图"></p>
+<p>注：内网环境下，不支持多可用区，只看图例的单边即可。</p>
+<p>SLB 在公网环境下的典型业务架构如上图所示。基于多可用区特性，当主可用区出现异常时，SLB 会自动将流量切换到备可用区。但在实际的业务架构设计过程中，建议关注如下要点：</p>
+<h2 id="配置监听"><a href="#配置监听" class="headerlink" title="配置监听"></a>配置监听</h2><p><img src="/images/dn.com-5e8b9024d9f151448b849b19972bf342c4ebb656-.png" alt="SLB 架构示意图" title="SLB 架构示意图"></p>
+<p>如上图所示，SLB 支持创建多种协议监听，然后按转发策略，将前端业务请求转发到后端多种逻辑服务器集。在 SLB 服务配置的各主要步骤中，请关注如下要点。</p>
+<h2 id="选择监听协议"><a href="#选择监听协议" class="headerlink" title="选择监听协议"></a>选择监听协议</h2><p>SLB 支持创建 TCP/UCP/HTTP/HTTPS 这 4 种协议的监听。您可参考以下表格，根据业务情况选择适合的协议创建监听：<br>协议类型 建议的应用场景 特性 TCP ●注重可靠性，对数据准确性要求高，速度可以相对较慢的场景；<br>●示例：文件传输、发送或接收邮件、远程登录、无特殊要求的 Web 应用 ●面向连接的协议；<br>●在正式收发数据前，必须和对方建立可靠的连接；<br>●基于源地址会话保持，在网络层可直接看到来源地址；<br>●监听支持 TCP 和 HTTP 两种方式进行健康检查；<br>●转发路径短，所以性能比 7 层更好，数据传输速度更快 HTTP 需要对数据内容进行识别的应用，如 Web 应用、小的手机游戏等 ●应用层协议，主要解决如何包装数据；<br>●基于 Cookie 会话保持；使用 X-Forward-For 获取源地址；<br>●监听只支持 HTTP 方式健康检查 HTTPS 有更高的安全性需求，需要加密传输的应用 ●加密传输数据，可以阻止未经授权的访问；<br>●统一的证书管理服务，用户可以将证书上传到负载均衡，解密操作直接在负载均衡上完成 UDP ●关注实时性而相对不注重可靠性的场景；<br>●示例：视频聊天、金融实时行情推送 ●面向非连接的协议；<br>●在数据发送前不与对方进行三次握手，直接进行数据包发送，不提供差错恢复和数据重传；<br>●可靠性相对低；数据传输快</p>
+<p><strong>补充说明</strong></p>
+<p>SLB 后端服务器支持按 3 种逻辑创建服务器集。要点如下：<br>集合模式 配置权重 指定服务端口 服务器数量限制 其它特性 后端服务器 支持 不支持 无限制 创建监听时的默认映射服务器集 虚拟服务器组 支持 支持 无限制 有更大的灵活性 主备服务器组 支持 支持 2 台 只能在 TCP/UDP 监听上使用</p>
+<p><strong>建议</strong></p>
+<p>权重代表相应服务器所承载的业务的相对占比，而非绝对值。当前 SLB 支持 3 种转发策略，其使用场景及要点如下：<br>转发策略 算法说明 使用要点 加权轮询（WRR） 按比重轮流分配新增连接。 ●根据后端 ECS 规格的不同，配置相应的权重。<br>●如果是长连接业务，可能会导致老服务器的连接数持续增加， 而新加入服务器的连接数相对非常低，造成负载不均的假象。 加权最小连接数（WLC） ●在 SLB 服务端，实时统计与后端 ECS 已建立的 ESTABLISHED 状态连接数，来评估相应服务器的负载情况。<br>●按权重比例，将新增连接分配给活动连接数少的服务器，最终尽可能使服务器的已建立连接数与其权重成正例。 当前暂未实现新增服务器的过载保护或缓冲机制。所以，如果业务并发非常高，可能会导致新增服务器连接数陡增，对业务造成影响。建议新增服务器时，逐步调高权重。 轮询（RR） 按顺序逐一分发新增连接。 必须手工确保后端 ECS 的业务承载能力一致。</p>
+<p><strong>示例</strong>：假设有 100 个新增连接，则在不同的调度算法下，不同服务器的分配连接数示意如下：</p>
+<p>服务器 权重 占比 加权轮询 加权最小连接数 轮询 A 50 50/<br>(100+50+50)<br>=25% 将 100/<em>25%=25 个连接分发给服务器 A 实时统计连接数，逐一将新增连接分配给活动连接数最少的服务器。最终使其新增连接数占比大致为 25% 不考虑权重，按顺序分发新增连接到服务器 A/B/C B 100 100/<br>(100+50+50)<br>=50% 将 100/</em>50%=50 个连接分发给服务器 B ↑ 同上，最终使其新增连接数占比大致为 50% ↑ 同上 C 50 50/<br>(100+50+50)=<br>25% 将 100/*25%=25 个连接分发给服务器 C ↑ 同上，最终使其新增连接数占比大致为 25% ↑ 同上 D 0 0/<br>(100+50+50)<br>=0% 服务器下线，不分配任何连接 ← 同左 ← 同左</p>
+<p>健康检查用于实时探测后端 ECS 上的业务可用性，以避免新增连接被分发到异常服务器对业务造成影响。由于是 SLB 依赖的核心服务，所以 4 层协议（TCP/UCP）的健康检查无法关闭。</p>
+<p>在配置健康检查时，注意如下要点：</p>
+<ul>
+<li><strong>合理配置健康检查间隔</strong><br>根据实际业务需求配置健康检查间隔，避免因为健康检查间隔过长导致无法及时发现后端 ECS 出现问题。具体请参考：<a href="https://help.aliyun.com/knowledge_detail/39453.html" target="_blank" rel="noopener">健康检查的相关配置，是否有相对合理的推荐值？</a></li>
+</ul>
+<p>在后端 ECS 的选择与配置时，注意如下要点：</p>
+<h2 id="调整后端-ECS-的操作建议"><a href="#调整后端-ECS-的操作建议" class="headerlink" title="调整后端 ECS 的操作建议"></a>调整后端 ECS 的操作建议</h2><p>在往 SLB 内新增服务器时，注意如下要点：</p>
+<p>在后端 ECS 服务器的日常调整、维护过程中，注意如下要点：</p>
+<p>如果确认服务器不再使用，不建议直接移除服务器。而是参阅前述步骤，将相应服务器权重置零。待已建立连接全部正常断开后，再移除该服务器。</p>
+<h1 id="常见问题的排查思路"><a href="#常见问题的排查思路" class="headerlink" title="常见问题的排查思路"></a>常见问题的排查思路</h1><p>SLB 在使用过程中的常见问题与排查思路可以参阅下列文档，本文不再详述：</p>
+<ul>
+<li><a href="https://help.aliyun.com/document_detail/27702.html" target="_blank" rel="noopener">健康检查异常的排查思路</a></li>
+<li><a href="https://help.aliyun.com/knowledge_detail/39481.html" target="_blank" rel="noopener">负载均衡返回 HTTP 500/502/504 错误的处理</a></li>
+<li><a href="https://help.aliyun.com/knowledge_detail/39491.html" target="_blank" rel="noopener">后端 ECS 负载不均衡问题的处理</a></li>
+</ul>
+<h1 id="典型案例"><a href="#典型案例" class="headerlink" title="典型案例"></a>典型案例</h1><h2 id="后端-ECS-负载不均"><a href="#后端-ECS-负载不均" class="headerlink" title="后端 ECS 负载不均"></a>后端 ECS 负载不均</h2><p><strong>问题场景</strong>：<br>后端 ECS 规格均一致，但其中几台服务器的 PPS 一直非常高。而新加入的服务器，相对负载非常低。<br>业务高峰期，相关服务器健康检查异常，导致服务器下线，并进一步导致其它服务器负载升高，引发整个 SLB 后端出现雪崩式异常，业务受到严重影响。</p>
+<p><strong>排查思路</strong>：</p>
+<p><strong>应对措施</strong>：</p>
+<p>以上步骤用于将负载逐步转移到新加入的服务器，并避免对新增服务器及异常服务器的冲击。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://blog.windanchaos.tech/2018/01/23/%E6%90%BA%E7%A8%8B%E6%8C%81%E7%BB%AD%E4%BA%A4%E4%BB%98%E5%B9%B3%E5%8F%B0%E7%9A%84%E6%BC%94%E8%BF%9B%E3%80%81%E5%8F%98%E9%9D%A9%E4%B8%8E%E5%B1%95%E6%9C%9B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="windanchaos">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇弦">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/01/23/%E6%90%BA%E7%A8%8B%E6%8C%81%E7%BB%AD%E4%BA%A4%E4%BB%98%E5%B9%B3%E5%8F%B0%E7%9A%84%E6%BC%94%E8%BF%9B%E3%80%81%E5%8F%98%E9%9D%A9%E4%B8%8E%E5%B1%95%E6%9C%9B/" class="post-title-link" itemprop="url">携程持续交付平台的演进、变革与展望</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-01-23 14:51:59" itemprop="dateCreated datePublished" datetime="2018-01-23T14:51:59+08:00">2018-01-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-11-23 23:11:57" itemprop="dateModified" datetime="2019-11-23T23:11:57+08:00">2019-11-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/" itemprop="url" rel="index">
+                    <span itemprop="name">持续集成</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2018/01/23/%E6%90%BA%E7%A8%8B%E6%8C%81%E7%BB%AD%E4%BA%A4%E4%BB%98%E5%B9%B3%E5%8F%B0%E7%9A%84%E6%BC%94%E8%BF%9B%E3%80%81%E5%8F%98%E9%9D%A9%E4%B8%8E%E5%B1%95%E6%9C%9B/" class="post-meta-item leancloud_visitors" data-flag-title="携程持续交付平台的演进、变革与展望" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2018/01/23/%E6%90%BA%E7%A8%8B%E6%8C%81%E7%BB%AD%E4%BA%A4%E4%BB%98%E5%B9%B3%E5%8F%B0%E7%9A%84%E6%BC%94%E8%BF%9B%E3%80%81%E5%8F%98%E9%9D%A9%E4%B8%8E%E5%B1%95%E6%9C%9B/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2018/01/23/%E6%90%BA%E7%A8%8B%E6%8C%81%E7%BB%AD%E4%BA%A4%E4%BB%98%E5%B9%B3%E5%8F%B0%E7%9A%84%E6%BC%94%E8%BF%9B%E3%80%81%E5%8F%98%E9%9D%A9%E4%B8%8E%E5%B1%95%E6%9C%9B/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>本文转自：<a href="https://mp.weixin.qq.com/s/HqyJQMRHh2KrdFmNtPbX3w" target="_blank" rel="noopener">https://mp.weixin.qq.com/s/HqyJQMRHh2KrdFmNtPbX3w</a></p>
+<h2 id="越过山丘：携程持续交付平台的演进、变革与展望"><a href="#越过山丘：携程持续交付平台的演进、变革与展望" class="headerlink" title="越过山丘：携程持续交付平台的演进、变革与展望"></a>越过山丘：携程持续交付平台的演进、变革与展望</h2><p><em>2018-01-23</em> <em>王潇俊</em></p>
+<p>本文整理自国内首届 Jenkins 用户大会演讲：《越过山丘：携程持续交付平台的演进、变革与展望》</p>
+<p>讲师 | 王潇俊<br>编辑 | 黄晓轩</p>
+<h2 id="讲师简介"><a href="#讲师简介" class="headerlink" title="讲师简介"></a>讲师简介</h2><p><strong>王潇俊</strong><br>携程 系统研发部总监<br>多年致力于云平台及持续交付的实践，15年加入携程，参与携程部署架构的全面改造，主导设计和打造新一代的适用于微服务的发布系统。同时负责基于携程私有云的，兼容虚机与容器的持续交付平台。ROR狂热粉丝，敏捷文化的忠实拥趸。</p>
+<p><strong>阻碍是什么</strong></p>
+<p><img src="/images/n-mmbiz_png-d5TCS9b3zE2KK9Qg3xrGf1RBXFBACib9UBnIgjdxzqnGryyURaZCLsXkJgtu7lMiagxIVWQ1V3ueY8PE2EUjt3jg-640-wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1.png" alt=""></p>
+<p>持续交付其实是解决阻碍问题。解决阻碍首先要知道阻碍是什么，其实我们阻就碍是一堵堵的混乱之墙。如果你读过DevOps宣言的话，可能很容易理解，DevOps说的混乱之墙是指开发和OPS之间，从开发产物如何变成线上跑的产物之间的一堵墙。</p>
+<p>在整个研发过程中处处出现这样的墙，这些墙出现在不同研发的角色上，简单来说就是这样的一幅图。</p>
+<p><img src="/images/n-mmbiz_png-d5TCS9b3zE2KK9Qg3xrGf1RBXFBACib9UyBgicicI22zZkecCCdPmPZ6Pxf6Yh8xbjaadHPKuF3opRVialmOb6OdlQ-640-wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1.png" alt=""><br>这个图出自《持续交付》。这中间有三堵比较重要的墙，项目经理和开发工程师，测试工程师，Ops工程师。</p>
+<p>每个工程师之间都有一堵墙，都有一些方法论和学术上的东西，或者说最佳实践来解决这些墙所在的问题。分别是敏捷开发（通常说的Agile和Scrum），解决了产品经理到开发到测试之间存在对需求不理解的墙。</p>
+<p>有持续集成，继续集成是提出最早的概念，解决的就是开发工程师和测试之间的墙。有DevOps，最近比较火，十几年前就提出，最近开始火起来了，主要是因为Docker的原因。他解决的就是开发工程师、测试工程师和OPS工程师之间这堵墙问题。统统加在一起的概念叫做持续交付。</p>
+<p>有的同学在聊持续集成、持续交付，其中需求、发布、交付都没有提到。超出这个图之外，其实还有持续交付的过程。</p>
+<p>这个产品特别是像互联网的产品，交到用户手上以后，你会不会跟用户之间有墙，一定有。不止隔着墙，也隔着山和海。后面持续交付还要继续往下走，就要解决一些与用户之间的墙。这就留给大家或者我们将来慢慢解决的问题。</p>
+<p><strong>删除误区</strong></p>
+<p>刚刚知道了我们墙在哪里，接下来的问题就是怎么拆除这些墙。平时我在公司里面一般说的是，我们这样的团队，我们叫持续交付也好，工程效能也好，其实都是拆迁大队。通常就是把原来有的东西全部拆光，拆光以后重塑我们整个研发流程。</p>
+<p>携程做了两年多这样的事情，后面我会分享一下在携程实践的经验来跟大家做一下交流。</p>
+<p>对于方法论或者怎么拆这个墙要有一个统一认识，我们有一些错误的观点，这里可能要撇除一下。持续交付是什么，持续交付生命周期是从需求没有开始，到需求最终落到用户手里，并且不断迭代的过程，他叫持续交付。</p>
+<p>这个链是非常长的，所以我们很多在提的包括Jenkins也仅是解决了一部分的问题，解决了代码上线发布的问题，发布后的问题都没有解决。</p>
+<p>还有一个误区是，我们做持续交付团队，做工程效能团队都会被老板问一个问题，今年的KPI是什么，你想给自己立的KPI是什么。包括你做的自动化测试，你觉得这个问题头痛吗？肯定很头痛，累死了，我不知道怎么回答老板。</p>
+<p>老板问我这个问题我就会告诉老板“让我死吧”。因为我改进了所有的东西，最后老板都可以说一句“可能是我们技术进步了，是我们市场变化了，是我们人员本身的素质提高了”。好像都跟我们没什么关系。</p>
+<p>持续交付也好，工程效能也好，到底改的是什么？老板让你最好给个数字。百分比怎么算？让我死吧。</p>
+<p>这里我想说的是我们在这个事情上一定要有一个度量方法给到老板，这个度量方法也是在不断改进。几年之前我跟老板提的概念是这样的，有一个指标TTM（Time To Marketing，产品上线时间），从这个产品想法的出现到最终这个产品落到用户手里时间花了多久。</p>
+<p>腾讯说以前爆长，现在变短了，这个绝对可以拿给老板作为很好的指标，但也看到了腾讯用了巨大的成本，做了那么多的系统最后得出这个值。对于小公司或者这方面还不是很成熟的公司是拿不到的。光花在计算上的成本就非常大。</p>
+<p>最近几年我也不跟老板说这个问题了，换一个方式跟老板说，我们做的事情是给工程师提供武器和弹药。我们去看工程师做的每一个事情，比如说工程师提交代码需要多长时间。一个资深工程师到了公司，从写第一行代码到这个东西产出完，上测试环境需要多长时间。一个初级工程师什么都不知道，到了公司有第一份产出需要多长时间。</p>
+<p>这是非常重要的指标，老板发现如果我一个工程师是外部来的，哪怕是应届的也好，有经验的也好。我们说有经验的，到一家公司比如说腾讯，如果不熟悉刚才的流程，我估计我也不行。</p>
+<p>在携程我们不讲这个的，我们讲的是任何一个工程师到我们公司，给你一套系统入口，你多长时间能够产出。你的产出在半天之内，你的工程效能就做的很好了；你的产出在一个月，你要研究各个部门在干什么，要研究每个工具要干什么，这就不好了。</p>
+<p>我们现在得指标就变成了，看做一件事情端到端的时间是多长时间，而且是不同的人，任何人做这件事情是否都是这样的时间。如果都是这样的时间，说明你的工作就做到位了。</p>
+<p><img src="/images/n-mmbiz_png-d5TCS9b3zE2KK9Qg3xrGf1RBXFBACib9UiaTxIyicicrSm9x8IfbjD9IPVDdXdyAc5rjuhkmbviazYiacIlX8NhGSo0w-640-wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1.png" alt=""></p>
+<p>这是乔梁老师几年前给持续交付定义的七巧板，包含了七块主要内容。其中包括数据及环境管理、测试管理、配置管理、构建集成、发布及监控管理。</p>
+<p>这里划了很重要的一条线，原先Jenkins没有说，持续集成也没有说的东西，系统架构的适应性和组织协作的机制，如果这两块没有被拼上去的话，你会发现做上面的持续交付就非常困难。</p>
+<p>后面我会讲一下这两块对于持续交付有多大的重要性。</p>
+<p><img src="/images/n-mmbiz_png-d5TCS9b3zE2KK9Qg3xrGf1RBXFBACib9UhzBbicvibgsveqSibEYTYz2PdYz1xAkwEibLUKHeYKhTGwjRyyian5E26Ug-640-wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1.png" alt=""></p>
+<p>随着时间的变迁、技术的发展，这块七巧板也不太够用了。我偷偷的改了改，改了两块东西。第一个是把配置管理去掉了，改成资源管理。</p>
+<p>为什么加这个东西，Jenkins里面压根没有说资源管理怎么搞，你的机器哪来的，计算资源哪来的，存储在哪里，这些东西都没有怎么交付。我想跟KK说的是要把这块加起来。</p>
+<p>除了这块以外还有测试管理。测试管理不是我想去掉的，而是想弱化的，因为测试管理太难了。而且每家公司的测试管理方法都不太一样，“手Q”有“手Q”的，携程有携程的，阿里有阿里的。</p>
+<p>因为业务不同，关注测试质量点也不同，测试管理很难做标准化。但代码管理可以加上，因为大家都认识到代码管理是可以被抽象标准化的。所以我把这两块进行了一些改变。</p>
+<p><img src="/images/n-mmbiz_png-d5TCS9b3zE2KK9Qg3xrGf1RBXFBACib9Uh3mJq8jTSAq2ibvaUMJY8EoMsdez3Piat8x5JE7qoDwETusczSCmv4Nw-640-wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1.png" alt=""></p>
+<p>这个是携程的PaaS平台。七巧板这个图很有意思，把这两块东西改掉以后你会发现，整个东西有点像什么？配置为什么被剥离出去，因为现在大部分互联网公司，配置管理都变成了统一配置，有配置中心，不再采用配置文件或者让SCM帮你管理环境上的配置的方式。</p>
+<p>这样变迁以后就是一个PaaS平台。最终你会发现，你要做持续交付、要做工程效能，最后可能做着做着就是一套完整的对公司内部的私有云或者内部的PaaS平台。</p>
+<p>接下来我逐步讲一讲携程这几个方面大概是怎么做的。</p>
+<h2 id="一、代码管理"><a href="#一、代码管理" class="headerlink" title="一、代码管理"></a>一、代码管理</h2><p><img src="/images/n-mmbiz_png-d5TCS9b3zE2KK9Qg3xrGf1RBXFBACib9UmhtnjcLJTkIskbibBVgnW1t1VibAEK9BDUzGjpqr0zrkwcyGgIXWiciaDA-640-wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1.png" alt=""></p>
+<p>代码管理在携程做的还是比较简单的。我们是基于Gitlab做的。可以看到有一些二次开发的东西，Sonar，issues就直接加上了，这个在官方社区版里没有，企业版的Gitlab可能是有的，我们提前自己做了。</p>
+<p>Sonar的扫描我们提炼了一些标准，大概100多条，在代码每次 check in 的时候都会被扫描的。如果扫描没通过就没有办法Merge，这是我们做的方法。</p>
+<p>这边我要提一下的是我们没有强制的分支管理的方法，我们是随便管理分支的，单分支开发也可以、主干开发也可以，Feature开发也可以。我们用的是Gitlab，可以有多分支的开发。</p>
+<p>我们会做一件蛮有意思的事情，我们每次合并的时候，并不是把主干的分支或者测试的分支覆盖掉。而是我们会产生一条临时的在内存中假存在的分支。这条分支会做一次真正的合并，这个分支会发布到测试环境当中。</p>
+<p>这样的好处是什么？当我的用户测试完，或者开发发现他自己的Feature分支有问题时，只需要在我们配置系统里面把我要合进去的分支删掉就可以了，并不会污染我真正的主干分支。这个假的Merge是在每次发布之前做的。</p>
+<p>这样的好处是，冲突检测可以很早的进行。即使真的出现冲突也不会有污染，也减少了我们很多revert和cherry-pick的工作量。另外一个是对代码仓库的管理。</p>
+<p>携程是一个标准化的往微服务走的方式，所以我们的代码仓库都很小，每个应用的代码能解耦的一定要解耦，用代码包管理的方式和包依赖的方式来解决最后集成的问题。因此每个仓库都不会很大，编译的速度以java为例平均一个项目一次编译是40秒。</p>
+<h2 id="二、集成构建"><a href="#二、集成构建" class="headerlink" title="二、集成构建"></a>二、集成构建</h2><p>下面看一下集成构建这套系统，40秒怎么做出来的。我们集成构建系统，着重提的是两个字：第一个是“构”；第二个是“成”。分别代表的是我要编译我自己本身的这份代码，还要拉取我自己的依赖。</p>
+<p><img src="/images/n-mmbiz_png-d5TCS9b3zE2KK9Qg3xrGf1RBXFBACib9UjOpG0TJrlMuKTCXPFcjLYKI5C3cXXx6qZ9VqrZoQS2ANooa3YIqXBQ-640-wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1.png" alt=""></p>
+<p>核心的概念是每一个编译其实都会产生一个带有唯一版本号的发布包。这是在携程做的事情，所以你去看带版本号的发布包是我们的最终产物。</p>
+<p>这个平台上可以看到我们整个这一个应用，其所有历史版本的变迁，包括在每个环境上部署的情况，包括一些测试是否通过的数据。基本上编译就这么简单，没有特别复杂的。</p>
+<p><img src="/images/n-mmbiz_png-d5TCS9b3zE2KK9Qg3xrGf1RBXFBACib9UjkjIzsZWzS6AKucn1IuY32piaC9bDpALj1zPNQrgF5gdadjVMrq1PQw-640-wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1.png" alt=""></p>
+<p>复杂的是后端看不到的编译平台，我们在Jenkins之上又封装了一层。我们的Jenkins是跑在K8s上的，这是有坑的。</p>
+<p>Jenkins本身有Master/Slave的方式，但其又不共享workspace，所有的Docker容器要实时调度，都要做到无状态，但workerspace是有状态的，而且这相当于你的缓存，相当于你提速的机制，在无状态下怎么做到兼容Jenkins有状态，到现在没有特别好的解决方案。</p>
+<p>这个在存储方面可能要进行深度的加工，我们暂时现在是用快存储的方式进行共享。所以我们编译是根据你的编译需求，实时弹性产生编译资源的，所以我们会一直保持在40秒的平均水平线上。</p>
+<p>这是我们的监控也会一直在追求整个编译的速度是否够快。我们目标是编译的时候不让开发有喝咖啡的时间，连抽烟的时间都没有。</p>
+<h2 id="三、灰度发布"><a href="#三、灰度发布" class="headerlink" title="三、灰度发布"></a>三、灰度发布</h2><p><img src="/images/n-mmbiz_png-d5TCS9b3zE2KK9Qg3xrGf1RBXFBACib9Udq7LhicJSd5cOBw6FViaBTKHdgxwyQiaoFHAn3yJZFYCIlibuic0PvwjoiaQ-640-wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1.png" alt=""></p>
+<p>在携程，灰度发布有两个概念，第一个是分环境进行发布测试。</p>
+<p>携程有四套环境，第一套叫FAT，是用来跑Feature分支的，就是跑功能的，任何开发都可以往这套环境上部署你的代码，测试你自己的功能。</p>
+<p>第二套环境是性能测试环境，主要是测性能的，我们不希望性能测试压力对我们正常持续交付过程产生影响，所以是套独立的环境。</p>
+<p>有一套公共环境，我们叫FWS，我们把底层公共的service放在这套环境里面。这个可能涉及到本身服务治理的问题。</p>
+<p>服务调用的顺序，首先根据开发配置的地址调用，如果没有配置则优先调用同一个子环境中的服务，如果同一个子环境中也没有这个服务，就调用公共环境中的。如果还有没，首先零级别是调用你配置上的。</p>
+<p>最后一套是UAT环境，相当于一套集成的环境，所有携程的应用都会拷贝在UAT环境里面做集成。但这个在几年以前UAT环境被使用的特别多，现在越来越被弱化了。</p>
+<p>走到微服务以后，会发现服务和服务之前解耦性很强了，我在功能测试环境测试完成了，在UAT中只要跑一些很简单的公共用例就可以了，不需要再做大量的测试。</p>
+<p><img src="/images/n-mmbiz_png-d5TCS9b3zE2KK9Qg3xrGf1RBXFBACib9Uib5WXwuaUUUbnjZMZ5qlaqyI02QzWqDwyxgWd5Z80jdCiaNfEGx6bTkA-640-wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1.png" alt=""></p>
+<p>然后是生产环境，生产环境我们有一套独立的发布系统，是灰度发布的系统。</p>
+<p>这里有两张图，一张图是未发布时的，版本和历史的情况，包括机器的分组，我们把所有发布最小的单元称之为group。一个group可能包含多台机器，也可能一个应用在多IDC，同一个IDC里面可能会有多个分组的机器，可以根据开发自己定义的分组，进行不同阶段的发布。</p>
+<p>每个分组过程中本身也有一个灰度发布，可以控制实时拉出的机器比例，这些流程用户是不能打破的。</p>
+<p>我们这边有一些数据，携程每周的发布次数大概是8000次，我们一共有活跃的应用是3000多个。每周生产发布次数是8000次。测试的发布次数是20000多次。</p>
+<p>可以看到携程发布效率非常快。这样的好处是任何一个很小的变更就可以进行发布、测试、上线。这样解决了很大的问题：版本冲突没有了，写完就上，谁写的快谁上，没什么冲突。一旦发布解决了问题以后，对你代码也有一定管理推动的作用。</p>
+<h2 id="四、资源管理"><a href="#四、资源管理" class="headerlink" title="四、资源管理"></a>四、资源管理</h2><p><img src="/images/n-mmbiz_png-d5TCS9b3zE2KK9Qg3xrGf1RBXFBACib9UoHVzwVicolGvMPribiclHTfZrvk2XXUT0pzPiba8bKiccpH2b9BOwWktnoQ-640-wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1.png" alt=""></p>
+<p>资源管理简单来说就是怎么拿到我的计算资源——机器。这是我们携程拿机器的一个主页面。</p>
+<p>可以看到在这个页面上，我们划分了不同的IDC，每个IDC可以申请不同分组，申请不同机器的数量，可以是Docker也可以是虚拟机，甚至还做了云上的。</p>
+<p>携程通过这个页面可以直接申请到阿里云或Amazon的机器。然后通过刚才的发布系统将代码包发上去就可以了。Docker我们不是发的代码包，是Docker镜像。</p>
+<p>我们Build的过程中是两份产物，一个是可部署的代码包，第二个是可以直接部署的Docker镜像。这样针对终端用户是透明的，他不需要关注我发布的是什么，把代码部署好能跑起来就可以了。</p>
+<p>然后在这样的环境下我们甚至是可以在这样页面上处理一些入口的问题，比如说我的域名，我的访问路径都是可以在这里一页解决掉的。右边会有一些不一样，应用每个group的基本信息。</p>
+<p><img src="/images/n-mmbiz_png-d5TCS9b3zE2KK9Qg3xrGf1RBXFBACib9UfsYIXBeKh2juw79wltbUia0W1gszwfz7PGJpVCiaTxD8fJnW5EqRlfQQ-640-wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1.png" alt=""></p>
+<p>这个是机器的情况，包括现在的版本，机器的发布状态，还可以对机器做一些简单受控的操作。</p>
+<p>所以可以看到我们在解决一些什么问题，并不是让OPS去做这些事情，我们是让每个开发小组的开发人员或者测试人员，能够做这样事情角色做这样事情的，这才是刚才我说我们想做的事情是提供工具和提供给开发人员一些武器，让你在受控的时间自己去完成这些事情。</p>
+<p>我们统计过申请一台机器，包括完成部署平均是1分钟左右。1分钟就可以拿到想要的东西。</p>
+<h2 id="五、测试环境"><a href="#五、测试环境" class="headerlink" title="五、测试环境"></a>五、测试环境</h2><p>我们看一下测试环境的问题。对于所有的测试来说，测试环境才是最重要的。自动化测试都是有解决方案的，但测试环境目前没有统一的解决方案。</p>
+<p>测试环境最头痛的问题就是一个，一家公司或者说我们公司到底需要多少套测试环境，或者需要多少套独立的测试环境，跟别人隔离的。</p>
+<p>影响到我做预算，每年会做预算，明年我的业务怎么增长。要多少套配套。因为我同事并行开发的时候都会受到不隔离的影响，这些事情又是非常痛苦的。</p>
+<p>在没有弹性，没有DevOps支撑，没有刚才我所说的资源管理支撑之下，你只能说很固定的做这个事情，每年采购机器，装机器，等着QA来用。最后发现这个项目砍掉了，没有用。我们携程有两个打造测试环境的依据和我们想做的目标。</p>
+<p><img src="/images/n-mmbiz_png-d5TCS9b3zE2KK9Qg3xrGf1RBXFBACib9UAhU0XjvgWtFG6BN9SXM7kWNZ3VrT7IOaxlicgADBuJ5KUNwRlALmkDw-640-wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1.png" alt=""></p>
+<p>第一个是我们想打造强大环境的克隆能力，这个克隆能力包含三个部分，第一个是我要版本+资源+发布融为一体。也就是我前面说的几个，集成构建、资源管理，加上灰度发布。</p>
+<p>三大能力打造完之后，就会自然形成一种克隆的能力。这个克隆的能力恰恰又是我们现在碰到任何的Jenkins也好、Docker也好都没有办法企及的东西，Docker不解决环境问题。</p>
+<p>任何环境工程师碰到Docker都会骂娘，因为实际上Docker在说一个概念就是不变化的部署，希望说产生一个镜像，一个镜像走天下。</p>
+<p>但不可能的，你的测试环境跟生产环境一样吗？机器配置一样吗？不一样，网络环境一样吗？不一样。你要测的东西、辅助的工具一样吗？也不一样。</p>
+<p>一个镜像走就是让所有环境工程师下岗，他根本没有解决方案，Docker根本没有想过这个问题。</p>
+<p>只有当你有了很强大的克隆能力之后，你才可以解决这些问题，Docker一个镜像可以快速部署，但整个环境没有办法帮你部署的。他只能帮你部署起应用实例。</p>
+<p>还有一个更讨厌的东西就是DB。微服务的解耦，所有的解耦到最后都会碰到一个核心的问题，就是DB是解耦不了，数据是耦合的。测试的时候没有办法脱离。</p>
+<p>比如说最简单的问题，我是测试机票购买的，但我脱离不了用户数据，我必须得有用户数据才能测我的购买，否则怎么测。</p>
+<p>所以就会变成我需要多少套完整DB的问题，携程的解决方案是我们对每套DB要求建立一套基准库，就是可测的，包含最少可测的数据结构、数据记录的基准库。用于被不同的子环境、测试环境克隆。</p>
+<p><img src="/images/n-mmbiz_png-d5TCS9b3zE2KK9Qg3xrGf1RBXFBACib9UHrm2MK14FSuFpQgEXbjZ9zFHJrzoTWXGDwY1w5WoecvQcaAqoZtmUg-640-wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1.png" alt=""></p>
+<p>第二个就是刚才说到的，所有的服务要有非常清晰的路由控制能力。携程的RPC服务，是基于http协议的，做起来会比较简单，但是你只要有服务治理的系统，都是比较容易做到根据用户的需求来指定我要调用哪里的服务。</p>
+<p>有时候一套子环境是不能充分支持你的测试的，必须要跨出子环境，调用别人的服务。这个必须是受控的，这个不被控制的话，你会发现你的环境没有办法做到隔离。</p>
+<p>既使是你做到了隔离，你会发现被隔的太严重了，在一个孤岛上，没有办法跟别人进行互通。</p>
+<p>所以你就在隔离孤岛和完全互通的概念中，形成一定的平衡，也就是有完整的路由控制能力之后，才能够很好的解决你测试环境的专用独立环境的目标。</p>
+<h2 id="六、架构适配"><a href="#六、架构适配" class="headerlink" title="六、架构适配"></a>六、架构适配</h2><p>刚才说到的这些东西，多多少少都带出了一些架构适配的东西，包括路由也好，包括Docker整个环境架构。我下面会列一下到底有多少东西，如果架构给到我们支撑，我们持续交付能够很好的做到。</p>
+<h2 id="七、组织适配"><a href="#七、组织适配" class="headerlink" title="七、组织适配"></a>七、组织适配</h2><p>组织适配我最没有想明白的事。什么人适合做持续交付。很多公司持续交付的团队都是由原来的SCM团队、QA团队转型转过来的，这些人是不是真的适合？在我看来不太适合。</p>
+<p>因为他对我所说的架构，应用的运行，不能很好的感知，没有掌握到很多技术核心点。单单从这些组织转过来的，很难最终达到我们想要的持续交付的效果。</p>
+<p>这样的情况下必须要有架构团队，应用团队，ops团队合力协作，最终才能完成整个持续交付的过程。</p>
+<h2 id="八、容器交付标准"><a href="#八、容器交付标准" class="headerlink" title="八、容器交付标准"></a>八、容器交付标准</h2><p>容器技术现在比较火热。携程在做的事情，就是容器时代我们怎么做一些持续交付。</p>
+<p>第一个是容器带来的非常大的剧变。剧变原因是什么？他把交付的标准改变了，所有人的交付产物变化了，以前大家都说环境这些东西是SCM或者QA团队提供的，现在变成开发一个人独挑。</p>
+<p>开发给你一个可部署的镜像，包含环境，包含运行时的任何东西，把所有的标准都颠覆掉了。</p>
+<p>举个简单的例子，我们现在很多人在跑Pipeline，是不是有一个开发说我特别牛，我不要这个Pipeline，我本机产一个镜像给你，我告诉你跑在哪些物理机上，或者连物理机是什么和宿主机都不告诉你，直接去跑吧，能跑起来的。</p>
+<p>你敢不敢发布？巨大的问号。所以容器这个世界有很多东西是很模糊的，需要慢慢的摸索，也许我们传统的Pipeline方式，工程流的方式有他一定的作用来保证质量，能够提高效率，也许过几年回头看，也不一定。</p>
+<p>这里容器我能给大家的分享和建议，至少在携程来看就是所有的平台、工具、应用都要往Cloud Native方式靠拢。什么叫Cloud Native？很难解释。我们现在采用的标准很简单，我一个应用或一个平台，能不能在阿里云马上跑起来，能就是Cloud Native，不能就改造。</p>
+<p>最后我引用一句话做为我分享的结束“PaaS平台的能力，直接反应持续交付的能力”</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://blog.windanchaos.tech/2018/01/19/ngrok%E5%AE%9E%E6%88%98%E8%B8%A9%E5%9D%91/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="windanchaos">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇弦">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/01/19/ngrok%E5%AE%9E%E6%88%98%E8%B8%A9%E5%9D%91/" class="post-title-link" itemprop="url">ngrok实战踩坑</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-01-19 14:50:55" itemprop="dateCreated datePublished" datetime="2018-01-19T14:50:55+08:00">2018-01-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-11-23 23:11:57" itemprop="dateModified" datetime="2019-11-23T23:11:57+08:00">2019-11-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux%E7%AE%A1%E7%90%86%E7%BB%B4%E6%8A%A4/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux管理维护</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2018/01/19/ngrok%E5%AE%9E%E6%88%98%E8%B8%A9%E5%9D%91/" class="post-meta-item leancloud_visitors" data-flag-title="ngrok实战踩坑" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2018/01/19/ngrok%E5%AE%9E%E6%88%98%E8%B8%A9%E5%9D%91/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2018/01/19/ngrok%E5%AE%9E%E6%88%98%E8%B8%A9%E5%9D%91/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>使用ngrok的场景：内网服务发布到外网，服务的内网穿透。<br>具体如何操作的网上很多文章，这里就不赘述。<br>可以参考：<br><a href="http://blog.csdn.net/zhangguo5/article/details/77848658?utm_source=5ibc.net&utm_medium=referral%E2%80%8B" target="_blank" rel="noopener">一分钟实现内网穿透（ngrok服务器搭建）</a><br><a href="https://www.jianshu.com/p/91f01e30a9b0" target="_blank" rel="noopener">自搭Ngrok实现树莓派内网穿透
+</a></p>
+<h1 id="整个流程"><a href="#整个流程" class="headerlink" title="整个流程"></a>整个流程</h1><h1 id="有坑的地方"><a href="#有坑的地方" class="headerlink" title="有坑的地方"></a>有坑的地方</h1><h2 id="编译安装的文件是哪些"><a href="#编译安装的文件是哪些" class="headerlink" title="编译安装的文件是哪些"></a>编译安装的文件是哪些</h2><p>首先找到安装的目录，我的是/usr/local/src/ngrok/<br>那么编译完的可执行文件就在/usr/local/src/ngrok/bin</p>
+<p>证书在：<br>/usr/local/src/ngrok/assets/server/tls<br>/usr/local/src/ngrok/assets/client/tls<br>可执行文件+证书，拷贝到一起，就是一套完成的客户端和服务端了。</p>
+<h2 id="后台运行"><a href="#后台运行" class="headerlink" title="后台运行"></a>后台运行</h2><p>ngrok 用 &amp; 不能后台运行<br>这就要使用screen这个命令<br>首先安装screen<br>apt-get install screen<br>之后运行<br>screen -S 任意名字（例如：keepngork）<br>然后运行ngrok启动命令<br>最后按快捷键<br>ctrl+A+D<br>既可以保持ngrok后台运行<br><a href="http://wdxtub.com/2016/04/16/thin-csapp-1/" target="_blank" rel="noopener">http://wdxtub.com/2016/04/16/thin-csapp-1/</a></p>
+<h2 id="ngrok客户端无法注册到服务端"><a href="#ngrok客户端无法注册到服务端" class="headerlink" title="ngrok客户端无法注册到服务端"></a>ngrok客户端无法注册到服务端</h2><p>服务端可以查看到客户端的链接日志，但是auth提示有问题，是因为在编译的时候带了认证则客户端机器，客户端执行文件同级目录，把生成的几个认证文件拷贝过去即可。</p>
+<h2 id="域名关系处理"><a href="#域名关系处理" class="headerlink" title="域名关系处理"></a>域名关系处理</h2><p>ngrok的服务端，启动带的域名如果为</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SCREEN -S keepngrok</span><br><span class="line">./ngrokd -domain=domain.com.cn</span><br></pre></td></tr></table></figure>
+
+<p>域名映射到外网固定IP的配置就为：</p>
+<p>@.domain.com.cn</p>
+<p>就是说只要没有特别说明，所有可能的domain.com.cn都访问这台服务器。</p>
+<p>那么，客户端的访问地址就：abc.domain.com.c<br>某客户端的配置：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">server_addr: <span class="string">"domain.com.cn:4443"</span></span><br><span class="line">trust_host_root_certs: <span class="literal">false</span></span><br><span class="line">tunnels:</span><br><span class="line">  http:</span><br><span class="line">    subdomain: <span class="string">"abc"</span></span><br><span class="line">    proto:</span><br><span class="line">      http: <span class="string">"9003"</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://blog.windanchaos.tech/2018/01/03/YAML%E5%85%A5%E4%B8%AA%E9%97%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="windanchaos">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇弦">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2018/01/03/YAML%E5%85%A5%E4%B8%AA%E9%97%A8/" class="post-title-link" itemprop="url">YAML入个门</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-01-03 23:21:28" itemprop="dateCreated datePublished" datetime="2018-01-03T23:21:28+08:00">2018-01-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-11-23 23:11:57" itemprop="dateModified" datetime="2019-11-23T23:11:57+08:00">2019-11-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B5%8B%E8%AF%95%E7%9A%84%E6%A1%86%E6%9E%B6%E5%92%8C%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index">
+                    <span itemprop="name">测试的框架和技术</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2018/01/03/YAML%E5%85%A5%E4%B8%AA%E9%97%A8/" class="post-meta-item leancloud_visitors" data-flag-title="YAML入个门" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2018/01/03/YAML%E5%85%A5%E4%B8%AA%E9%97%A8/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2018/01/03/YAML%E5%85%A5%E4%B8%AA%E9%97%A8/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>拷贝自：<a href="http://www.ruanyifeng.com/blog/2016/07/yaml.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2016/07/yaml.html</a></p>
+<p>YAML 是专门用来写配置文件的语言，非常简洁和强大，远比 JSON 格式方便。</p>
+<p>本文介绍 YAML 的语法，以 <a href="https://github.com/nodeca/js-yaml" target="_blank" rel="noopener">JS-YAML</a> 的实现为例。你可以去<a href="http://nodeca.github.io/js-yaml/" target="_blank" rel="noopener">在线 Demo</a> 验证下面的例子。</p>
+<p><img src="/images/ng.com-blogimg-asset-2016-bg2016070403-.png" alt=""></p>
+<h2 id="一、简介"><a href="#一、简介" class="headerlink" title="一、简介"></a>一、简介</h2><p>YAML 语言（发音 /ˈjæməl/ ）的设计目标，就是方便人类读写。它实质上是一种通用的数据串行化格式。</p>
+<p>它的基本语法规则如下。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#</span><br></pre></td></tr></table></figure>
+<p>表示注释，从这个字符一直到行尾，都会被解析器忽略。</p>
+<p>YAML 支持的数据结构有三种。</p>
+<p>以下分别介绍这三种数据结构。</p>
+<h2 id="二、对象"><a href="#二、对象" class="headerlink" title="二、对象"></a>二、对象</h2><p>对象的一组键值对，使用冒号结构表示。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">animal: pets</span><br></pre></td></tr></table></figure>
+
+<p>转为 JavaScript 如下。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; <span class="attr">animal</span>: <span class="string">'pets'</span> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>Yaml 也允许另一种写法，将所有键值对写成一个行内对象。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hash: &#123; <span class="attr">name</span>: Steve, <span class="attr">foo</span>: bar &#125;</span><br></pre></td></tr></table></figure>
+
+<p>转为 JavaScript 如下。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; <span class="attr">hash</span>: &#123; <span class="attr">name</span>: <span class="string">'Steve'</span>, <span class="attr">foo</span>: <span class="string">'bar'</span> &#125; &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="三、数组"><a href="#三、数组" class="headerlink" title="三、数组"></a>三、数组</h2><p>一组连词线开头的行，构成一个数组。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">- Cat</span><br><span class="line">- Dog</span><br><span class="line">- Goldfish</span><br></pre></td></tr></table></figure>
+
+<p>转为 JavaScript 如下。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[ <span class="string">'Cat'</span>, <span class="string">'Dog'</span>, <span class="string">'Goldfish'</span> ]</span><br></pre></td></tr></table></figure>
+
+<p>数据结构的子成员是一个数组，则可以在该项下面缩进一个空格。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-</span><br><span class="line"> - Cat</span><br><span class="line"> - Dog</span><br><span class="line"> - Goldfish</span><br></pre></td></tr></table></figure>
+
+<p>转为 JavaScript 如下。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[ [ <span class="string">'Cat'</span>, <span class="string">'Dog'</span>, <span class="string">'Goldfish'</span> ] ]</span><br></pre></td></tr></table></figure>
+
+<p>数组也可以采用行内表示法。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">animal: [Cat, Dog]</span><br></pre></td></tr></table></figure>
+
+<p>转为 JavaScript 如下。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; <span class="attr">animal</span>: [ <span class="string">'Cat'</span>, <span class="string">'Dog'</span> ] &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="四、复合结构"><a href="#四、复合结构" class="headerlink" title="四、复合结构"></a>四、复合结构</h2><p>对象和数组可以结合使用，形成复合结构。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">languages:</span><br><span class="line"> - Ruby</span><br><span class="line"> - Perl</span><br><span class="line"> - Python </span><br><span class="line">websites:</span><br><span class="line"> YAML: yaml.org </span><br><span class="line"> Ruby: ruby-lang.org </span><br><span class="line"> Python: python.org </span><br><span class="line"> Perl: use.perl.org</span><br></pre></td></tr></table></figure>
+
+<p>转为 JavaScript 如下。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123; <span class="attr">languages</span>: [ <span class="string">'Ruby'</span>, <span class="string">'Perl'</span>, <span class="string">'Python'</span> ],</span><br><span class="line">  websites: </span><br><span class="line">   &#123; <span class="attr">YAML</span>: <span class="string">'yaml.org'</span>,</span><br><span class="line">     Ruby: <span class="string">'ruby-lang.org'</span>,</span><br><span class="line">     Python: <span class="string">'python.org'</span>,</span><br><span class="line">     Perl: <span class="string">'use.perl.org'</span> &#125; &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="五、纯量"><a href="#五、纯量" class="headerlink" title="五、纯量"></a>五、纯量</h2><p>纯量是最基本的、不可再分的值。以下数据类型都属于 JavaScript 的纯量。</p>
+<p>数值直接以字面量的形式表示。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">number: <span class="number">12.30</span></span><br></pre></td></tr></table></figure>
+
+<p>转为 JavaScript 如下。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; <span class="attr">number</span>: <span class="number">12.30</span> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>布尔值用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">true</span></span><br></pre></td></tr></table></figure>
+<p>和</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">false</span></span><br></pre></td></tr></table></figure>
+<p>表示。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">isSet: <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>转为 JavaScript 如下。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; <span class="attr">isSet</span>: <span class="literal">true</span> &#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="literal">null</span></span><br></pre></td></tr></table></figure>
+<p>用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~</span><br></pre></td></tr></table></figure>
+<p>表示。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">parent: ~</span><br></pre></td></tr></table></figure>
+
+<p>转为 JavaScript 如下。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; <span class="attr">parent</span>: <span class="literal">null</span> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>时间采用 ISO8601 格式。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">iso8601: <span class="number">2001</span><span class="number">-12</span><span class="number">-14</span>t21:<span class="number">59</span>:<span class="number">43.10</span><span class="number">-05</span>:<span class="number">00</span></span><br></pre></td></tr></table></figure>
+
+<p>转为 JavaScript 如下。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; <span class="attr">iso8601</span>: <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'2001-12-14t21:59:43.10-05:00'</span>) &#125;</span><br></pre></td></tr></table></figure>
+
+<p>日期采用复合 iso8601 格式的年、月、日表示。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">date: <span class="number">1976</span><span class="number">-07</span><span class="number">-31</span></span><br></pre></td></tr></table></figure>
+
+<p>转为 JavaScript 如下。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; <span class="attr">date</span>: <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'1976-07-31'</span>) &#125;</span><br></pre></td></tr></table></figure>
+
+<p>YAML 允许使用两个感叹号，强制转换数据类型。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">e: !!str <span class="number">123</span></span><br><span class="line">f: !!str <span class="literal">true</span></span><br></pre></td></tr></table></figure>
+
+<p>转为 JavaScript 如下。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; <span class="attr">e</span>: <span class="string">'123'</span>, <span class="attr">f</span>: <span class="string">'true'</span> &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="六、字符串"><a href="#六、字符串" class="headerlink" title="六、字符串"></a>六、字符串</h2><p>字符串是最常见，也是最复杂的一种数据类型。</p>
+<p>字符串默认不使用引号表示。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str: 这是一行字符串</span><br></pre></td></tr></table></figure>
+
+<p>转为 JavaScript 如下。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; <span class="attr">str</span>: <span class="string">'这是一行字符串'</span> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>如果字符串之中包含空格或特殊字符，需要放在引号之中。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str: <span class="string">'内容： 字符串'</span></span><br></pre></td></tr></table></figure>
+
+<p>转为 JavaScript 如下。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; <span class="attr">str</span>: <span class="string">'内容: 字符串'</span> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>单引号和双引号都可以使用，双引号不会对特殊字符转义。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">s1: <span class="string">'内容\n字符串'</span></span><br><span class="line">s2: <span class="string">"内容\n字符串"</span></span><br></pre></td></tr></table></figure>
+
+<p>转为 JavaScript 如下。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; <span class="attr">s1</span>: <span class="string">'内容\\n字符串'</span>, <span class="attr">s2</span>: <span class="string">'内容\n字符串'</span> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>单引号之中如果还有单引号，必须连续使用两个单引号转义。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">str: <span class="string">'labor'</span><span class="string">'s day'</span></span><br></pre></td></tr></table></figure>
+
+<p>转为 JavaScript 如下。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; <span class="attr">str</span>: <span class="string">'labor\'s day'</span> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>字符串可以写成多行，从第二行开始，必须有一个单空格缩进。换行符会被转为空格。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">str: 这是一段</span><br><span class="line">  多行</span><br><span class="line">  字符串</span><br></pre></td></tr></table></figure>
+
+<p>转为 JavaScript 如下。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; <span class="attr">str</span>: <span class="string">'这是一段 多行 字符串'</span> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>多行字符串可以使用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">|</span><br></pre></td></tr></table></figure>
+<p>保留换行符，也可以使用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&gt;</span><br></pre></td></tr></table></figure>
+<p>折叠换行。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>: |</span><br><span class="line">  Foo</span><br><span class="line">  Bar</span><br><span class="line">that: &gt;</span><br><span class="line">  Foo</span><br><span class="line">  Bar</span><br></pre></td></tr></table></figure>
+
+<p>转为 JavaScript 代码如下。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; <span class="attr">this</span>: <span class="string">'Foo\nBar\n'</span>, <span class="attr">that</span>: <span class="string">'Foo Bar\n'</span> &#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">+</span><br></pre></td></tr></table></figure>
+<p>表示保留文字块末尾的换行，</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-</span><br></pre></td></tr></table></figure>
+<p>表示删除字符串末尾的换行。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">s1: |</span><br><span class="line">  Foo</span><br><span class="line"></span><br><span class="line">s2: |+</span><br><span class="line">  Foo</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">s3: |-</span><br><span class="line">  Foo</span><br></pre></td></tr></table></figure>
+
+<p>转为 JavaScript 代码如下。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; <span class="attr">s1</span>: <span class="string">'Foo\n'</span>, <span class="attr">s2</span>: <span class="string">'Foo\n\n\n'</span>, <span class="attr">s3</span>: <span class="string">'Foo'</span> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>字符串之中可以插入 HTML 标记。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">message: |</span><br><span class="line"></span><br><span class="line">  &lt;p style=<span class="string">"color: red"</span>&gt;</span><br><span class="line">    段落</span><br><span class="line">  &lt;<span class="regexp">/p&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>转为 JavaScript 如下。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; <span class="attr">message</span>: <span class="string">'\n&lt;p style="color: red"&gt;\n  段落\n&lt;/p&gt;\n'</span> &#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="七、引用"><a href="#七、引用" class="headerlink" title="七、引用"></a>七、引用</h2><p>锚点</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&amp;</span><br></pre></td></tr></table></figure>
+<p>和别名</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*</span><br></pre></td></tr></table></figure>
+<p>，可以用来引用。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">defaults: &amp;defaults</span><br><span class="line">  adapter:  postgres</span><br><span class="line">  host:     localhost</span><br><span class="line"></span><br><span class="line">development:</span><br><span class="line">  database: myapp_development</span><br><span class="line">  &lt;&lt;: *defaults</span><br><span class="line"></span><br><span class="line">test:</span><br><span class="line">  database: myapp_test</span><br><span class="line">  &lt;&lt;: *defaults</span><br></pre></td></tr></table></figure>
+
+<p>等同于下面的代码。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">defaults:</span><br><span class="line">  adapter:  postgres</span><br><span class="line">  host:     localhost</span><br><span class="line"></span><br><span class="line">development:</span><br><span class="line">  database: myapp_development</span><br><span class="line">  adapter:  postgres</span><br><span class="line">  host:     localhost</span><br><span class="line"></span><br><span class="line">test:</span><br><span class="line">  database: myapp_test</span><br><span class="line">  adapter:  postgres</span><br><span class="line">  host:     localhost</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&amp;</span><br></pre></td></tr></table></figure>
+<p>用来建立锚点（</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">defaults</span><br></pre></td></tr></table></figure>
+<p>），</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;&lt;</span><br></pre></td></tr></table></figure>
+<p>表示合并到当前数据，</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*</span><br></pre></td></tr></table></figure>
+<p>用来引用锚点。</p>
+<p>下面是另一个例子。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">- &amp;showell Steve </span><br><span class="line">- Clark </span><br><span class="line">- Brian </span><br><span class="line">- Oren </span><br><span class="line">- *showell</span><br></pre></td></tr></table></figure>
+
+<p>转为 JavaScript 代码如下。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[ <span class="string">'Steve'</span>, <span class="string">'Clark'</span>, <span class="string">'Brian'</span>, <span class="string">'Oren'</span>, <span class="string">'Steve'</span> ]</span><br></pre></td></tr></table></figure>
+
+<h2 id="八、函数和正则表达式的转换"><a href="#八、函数和正则表达式的转换" class="headerlink" title="八、函数和正则表达式的转换"></a>八、函数和正则表达式的转换</h2><p>这是 <a href="https://github.com/nodeca/js-yaml" target="_blank" rel="noopener">JS-YAML</a> 库特有的功能，可以把函数和正则表达式转为字符串。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p> /# example .yml fn : function ( ) { return 1 } reg : /test/</p>
+<p>解析上面的 yml 文件的代码如下。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> yaml = <span class="built_in">require</span>(<span class="string">'js-yaml'</span>);</span><br><span class="line"><span class="keyword">var</span> fs   = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="keyword">var</span> doc = yaml.load(</span><br><span class="line">    fs.readFileSync(<span class="string">'./example.yml'</span>, <span class="string">'utf8'</span>)</span><br><span class="line">  );</span><br><span class="line">  <span class="built_in">console</span>.log(doc);</span><br><span class="line">&#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(e);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>从 JavaScript 对象还原到 yaml 文件的代码如下。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> yaml = <span class="built_in">require</span>(<span class="string">'js-yaml'</span>);</span><br><span class="line"><span class="keyword">var</span> fs   = <span class="built_in">require</span>(<span class="string">'fs'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">  fn: <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123; <span class="keyword">return</span> <span class="number">1</span> &#125;,</span><br><span class="line">  reg: <span class="regexp">/test/</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  fs.writeFileSync(</span><br><span class="line">    <span class="string">'./example.yml'</span>,</span><br><span class="line">    yaml.dump(obj),</span><br><span class="line">    <span class="string">'utf8'</span></span><br><span class="line">  );</span><br><span class="line">&#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(e);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="九、参考链接"><a href="#九、参考链接" class="headerlink" title="九、参考链接"></a>九、参考链接</h2><ul>
+<li><a href="http://www.yaml.org/spec/1.2/spec.html" target="_blank" rel="noopener">YAML 1.2 规格</a></li>
+<li><a href="https://en.wikipedia.org/wiki/YAML" target="_blank" rel="noopener">YAML from Wikipedia</a></li>
+<li><a href="http://yaml.org/YAML_for_ruby.html" target="_blank" rel="noopener">YAML for Ruby</a></li>
+</ul>
+<p>（完）</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://blog.windanchaos.tech/2017/12/14/%E6%B5%8B%E8%AF%95%E6%B5%8Bmysql%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%80%A7%E8%83%BD%E2%80%94%E2%80%94explain%20%EF%BC%8CMysql%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="windanchaos">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇弦">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/12/14/%E6%B5%8B%E8%AF%95%E6%B5%8Bmysql%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%80%A7%E8%83%BD%E2%80%94%E2%80%94explain%20%EF%BC%8CMysql%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/" class="post-title-link" itemprop="url">测试测mysql语句的性能——explain ，Mysql查询优化器的使用</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-12-14 20:07:49" itemprop="dateCreated datePublished" datetime="2017-12-14T20:07:49+08:00">2017-12-14</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-11-23 23:11:57" itemprop="dateModified" datetime="2019-11-23T23:11:57+08:00">2019-11-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index">
+                    <span itemprop="name">MySQL数据库</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2017/12/14/%E6%B5%8B%E8%AF%95%E6%B5%8Bmysql%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%80%A7%E8%83%BD%E2%80%94%E2%80%94explain%20%EF%BC%8CMysql%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/" class="post-meta-item leancloud_visitors" data-flag-title="测试测mysql语句的性能——explain ，Mysql查询优化器的使用" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2017/12/14/%E6%B5%8B%E8%AF%95%E6%B5%8Bmysql%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%80%A7%E8%83%BD%E2%80%94%E2%80%94explain%20%EF%BC%8CMysql%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2017/12/14/%E6%B5%8B%E8%AF%95%E6%B5%8Bmysql%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%80%A7%E8%83%BD%E2%80%94%E2%80%94explain%20%EF%BC%8CMysql%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>MySQL 查询优化器有几个目标，但是其中最主要的目标是尽可能地使用索引，并且使用最严格的索引来消除尽可能多的数据行。最终目标是提交 SELECT 语句查找数据行，而不是排除数据行。优化器试图排除数据行的原因在于它排除数据行的速度越快，那么找到与条件匹配的数据行也就越快。如果能够首先进行最严格的测试，查询就可以执行地更快。<br><strong>MySql 深化学习</strong></p>
+<h1 id="1-explain用法"><a href="#1-explain用法" class="headerlink" title="1 explain用法"></a>1 <strong>explain用法</strong></h1><p>explain可以帮助我们分析select语句，<strong>找出select语句的瓶颈</strong>，从而可以针对性地去做优化，让MySQL查询优化器更好地工作。</p>
+<p>MySQL查询优化器有几个目标，其中<strong>最主要的目标是尽可能地使用索引，并且使用最严格的索引来消除尽可能多的数据行</strong>。</p>
+<p>使用explain+select语句，会返回以下的一个表，截图使用的navicat的工具截图：</p>
+<p><img src="/images/dn.net-20171214200235222-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2luZGFuY2hhb3M=-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png" alt=""></p>
+<p>下面对上述表的每一列进行说明：</p>
+<h2 id="1-1-id列"><a href="#1-1-id列" class="headerlink" title="1.1 id列"></a>1.1 <strong>id列</strong></h2><p>说明：MySQL Query Optimizer 选定的执行计划中查 询的序列号。表示查询中执行 <strong>select 子句或 操作表的顺序，id 值越大优先级越高，越先 被执行。id 相同，执行顺序由上至下。</strong></p>
+<h2 id="1-2-select-type列"><a href="#1-2-select-type列" class="headerlink" title="1.2 select_type列"></a>1.2 <strong>select_type列</strong></h2><p>select_type查询类型</p>
+<p>说明 <strong>SIMPLE</strong></p>
+<p><strong>简单的select查询，不使用union及子查询</strong> <strong>PRIMARY</strong></p>
+<p><strong>最外层的select查询</strong> UNION</p>
+<p>UNION中的第二个或随后的select查询，不依赖外部查询的结果集 DEPENDENT UNION</p>
+<p>UNION 中的第二个或随后的 select 查询，依赖于外部查询的结果集 UNION RESULT</p>
+<p>UNION 查询的结果集 SUBQUERY</p>
+<p>子查询中的第一个 select 查询，不依赖于外部查询的结果集 DEPENDENT SUBQUERY</p>
+<p>子查询中的第一个 select 查询，依赖于外部 查询的结果集 <strong>DERIVED</strong></p>
+<p><strong>用于 from 子句里有子查询的情况。MySQL 会 递归执行这些子查询，把结果放在临时表里。</strong> UNCACHEABLE SUBQUERY</p>
+<p>结果集不能被缓存的子查询，必须重新为外 层查询的每一行进行评估 UNCACHEABLE UNION</p>
+<p>UNION 中的第二个或随后的 select 查询，属 于不可缓存的子查询</p>
+<h2 id="1-3-TABLE列"><a href="#1-3-TABLE列" class="headerlink" title="1.3 TABLE列"></a>1.3 <strong>TABLE列</strong></h2><p>说明：输出行所引用的表。</p>
+<h2 id="1-4TYPE"><a href="#1-4TYPE" class="headerlink" title="1.4TYPE"></a>1.4<strong>TYPE</strong></h2><p>说明：<strong>很重要的列之一，显示连接使用的类型，按最优到最差的类型排序。</strong><br>TYPE</p>
+<p><strong>说明</strong> <strong>system</strong></p>
+<p>表仅有一行(=系统表)。这是 const 连接类型 的一个特例。 <strong>const</strong></p>
+<p>const 用于用常数值比较 PRIMARY KEY 时。当 查询的表仅有一行时，使用 System。 <strong>eq_ref</strong></p>
+<p>除 const 类型外<strong>最好的可能实现的连接类型</strong>。它用在一个索引的所有部分被连接使用并且索引是 UNIQUE 或 PRIMARY KEY，对于每个索引键，表中只有一条记录与之匹配。 ref</p>
+<p>连接不能基于关键字选择单个行，可能查找到多个符合条件的行。叫做 ref 是因为索引要跟某个参考值相比较。这个参考值或者是一个常数，或者是来自一个表里的多表查询的</p>
+<p>结果值。 ref_or_null</p>
+<p>如同 ref，但是 MySQL 必须在初次查找的结果</p>
+<p>里找出 null 条目，然后进行二次查找。 index_merge</p>
+<p>说明索引合并优化被使用了。 unique_subquery</p>
+<p>在某些IN查询中使用此种类型，而不是常规的ref index_subquery</p>
+<p>在某些IN查询中使用此种类型，与unique_subquery类似，但是查询的是非唯一性索引。 range</p>
+<p>只检索给定范围的行，使用一个索引来选择行。key列显示使用了哪个索引。 <strong>index</strong></p>
+<p><strong>全表扫描，只是扫描表的时候按照索引次序进行而不是行。主要优点是避免了排序，但是开销仍然非常大。</strong> <strong>all</strong></p>
+<p><strong>最坏的情况，从头到尾全表扫描。</strong></p>
+<hr>
+<h2 id="1-5-possible-keys"><a href="#1-5-possible-keys" class="headerlink" title="1.5 possible_keys"></a>1.5 <strong>possible_keys</strong></h2><p>说明：指出Mysql能在该表中使用哪些索引有助于查询。如果为空，说明没有可用的索引。</p>
+<h2 id="1-6-key-len"><a href="#1-6-key-len" class="headerlink" title="1.6 key_len"></a>1.6 <strong>key_len</strong></h2><p>说明：使用的索引的长度，在不损失精确性的情况下，长度越短越好。</p>
+<h2 id="1-7-ref"><a href="#1-7-ref" class="headerlink" title="1.7 ref"></a>1.7 <strong>ref</strong></h2><p>说明：显示索引的那一列被使用了。</p>
+<h2 id="1-8-rows"><a href="#1-8-rows" class="headerlink" title="1.8 rows"></a>1.8 <strong>rows</strong></h2><p>说明：Mysql认为必须检查的用来返回请求数据的行数。</p>
+<h2 id="1-9-extra"><a href="#1-9-extra" class="headerlink" title="1.9 extra"></a>1.9 <strong>extra</strong></h2><p>Using filesort</p>
+<p>表示MySQL会对结果使用一个外部索引排序，而不是从表里按索引次序读到相关内容。 Using Temporary</p>
+<p>表示MySQL在对查询结果排序时使用临时表，常见于排序order by和分组查询group by.</p>
+<p>至于如何去获取到业务流程中的sql语句，这就需要结合自己公司的实际情况了。<br>我们公司的日志是使用log4j，开启debug模式，每一个操作都会把日志打印出来，包括mysql。对核心可能存在并发的地方。逐一去排查还是有点作用的。</p>
+<p>实操一个：<br>下图是我在某业务日志中捕获的（所谓捕获，就是不断的check）<br><img src="/images/dn.net-20171215113203697-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2luZGFuY2hhb3M=-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png" alt="这里写图片描述"></p>
+<p>在当前数据规模下查0.053s。但是如果数据规模一大，这个效率肯定是不行的。<br>我去看了下的索引，order_id没有索引。所以，让研发加了一个order_id 索引。解决问题。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://blog.windanchaos.tech/2017/11/26/%E5%BC%80%E5%A7%8B%E6%92%B8%E4%B9%A6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="windanchaos">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇弦">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/11/26/%E5%BC%80%E5%A7%8B%E6%92%B8%E4%B9%A6/" class="post-title-link" itemprop="url">开始撸书</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-11-26 23:28:50" itemprop="dateCreated datePublished" datetime="2017-11-26T23:28:50+08:00">2017-11-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-11-23 23:11:57" itemprop="dateModified" datetime="2019-11-23T23:11:57+08:00">2019-11-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9D%82%E6%96%87/" itemprop="url" rel="index">
+                    <span itemprop="name">杂文</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2017/11/26/%E5%BC%80%E5%A7%8B%E6%92%B8%E4%B9%A6/" class="post-meta-item leancloud_visitors" data-flag-title="开始撸书" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2017/11/26/%E5%BC%80%E5%A7%8B%E6%92%B8%E4%B9%A6/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2017/11/26/%E5%BC%80%E5%A7%8B%E6%92%B8%E4%B9%A6/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>我这个人有个毛病，实践比较少，学习偏理论。读书时代，不偏科，没有强的，没有弱的。就是所谓的动手能力不足一类。但是并不妨碍我进步啊。上次一周多电，嗑了一本《操作系统之哲学原理》，感觉很爽。</p>
+<p>雾中看花，打算停止在网络上搜集零散的知识了。系统性的回归一遍计算机领域的基础知识，本人是半个计算机应用门类的高材生，本科（尼玛我是一本进去的，东三省都是二本线，朝鲜族的三本都可以进）GIS专业，地理信息系统，大学课程计算机有关的教育只有VB和数据库概论，虽然靠个人勤奋在系里机房里混了２年的管理员，简单的Ｃ语言还是懂那么电皮毛，但是碍于所在城市发展，几乎找不到一家合适的公司去实习，系里我们是第一届，也没有项目给我们把玩，所以终究离编程还是有距离。当年撸过一本国二考试的计算机图书现在早已经不记得长啥样了，犹记绿色封皮。</p>
+<p>本科时代，业余时间主要干了两件事：图书馆学习和网吧上网。我是比较次的那种学霸。当年跑去学了两年韩国语，计算机心念是不能忘的，内心盘算着，英语要厉害得把六级过了，计算机也不用专门去读个二学历，自己去考一个国二就可以，韩国语是母校的优势，不能浪费。就这样子，哦，就一个六级过了，其他两个都粉身碎骨了。网吧，打了两年的warIII，基地战那种，虽然我每天打，但是水平真的不行，但是我就是喜欢打，也没有办法，系里的魔兽小王子那厉害的，但是呢，我读书好他读书不行啊，老天是公平的。后来就是跟宿舍的光棍们，集体dota，疯狂的dota。</p>
+<p>在GIS行业混吃混喝（我要陪客户领导喝酒的，还要跟技术打交道）了三四年，2013年互联网吞并了我所在的高德公司，就是马爸爸的阿里。牛的一匹。当年怎么也想不到的，被马爸爸的电商跨界布局给吞并了，马爸爸只是在布局位置信息。2014年，参加了阿里在北京的首个年会，那年阿里还没有上市，疯狂在北京买公司，有幸亲眼见到过那个长得不帅但是有钱又不care钱的男人，听他吹牛真的很提神啊，牛皮的见到真人感觉也是很虚荣的。然后，我做了一个还没有结论的决定，转战互联网。我在高德卖的是技术支持：售前的方案、产品演示宣讲、售后的各种问题，大部分还是售前。我所在的部门，其实是一个前沿部门，而我们之前在高德要自负盈亏，所以就顺带着做项目，恰好我是做项目的那个团队，另一个真的价值部门是做三维导航数据的。然后我们的团队基于已有的技术积累，做过一些阿里内部的探索性项目，比如手机VR+倾斜摄影测试三维的虚拟旅游，比如医院导诊的三维地图/室内地图/室内定位和导航，三维为其提供三维地图支持。已经不做政府型的项目了，在接受了职业测试给我们做的为期１天的培训和演示后，转战测试领域。因为我懂三维的一整套东西，并没有什么隔阂感。所以，测试是一个门槛极低的行当。没有几把刷子，是没有竞争力的。<br>因为要跟老婆在一起，就在2015年６月，主动提出了辞职，回到了成都。这个是一个权衡，北京的工资不能让我长久的呆在那里。成都，还有希望。虽有不舍，但当断需断。</p>
+<p>在老婆城市呆了２个月后，到成都找工作。到了目前的公司。当时有一个原来方向的工作给了offer，薪资比当时测试的要高30%多。我很傻的选了低的。两年过去了，技术上我沉淀了很多。开始回头看以前的一些经历，初到北京的不适应，以及在高德工作的努力，并没有说给我的实际收入带来多大的增益，倒是让我觉得，那些通宵加班，是低效的，无能的，对个人技术上的成长帮助不大。就好比你是一个优秀的演员，拼命努力的加班加点的出活，希望老板了解，知道自己辛苦，你还有点价值，或许年底能多给点奖金，现在看来，单位时间给单位创造的价值并不高，乐得个辛苦。虽然显示了解决问题的能力，但是那也是其他不足所导致的一种弥补，本身的价值说多少呢？顶多给你一个这个小伙子不错的评价。可，实际收入呢？难的一匹。当年公司综合能力强的那个我，某种意义上，对薪资的诉求没有太强，不懂讨价还价，虽然现在也是。而我愿意在这个创业公司干的唯一动力，就是成长。程序员30岁出头就开始寻求转岗管理，我还在奔袭的路上。</p>
+<p>所以我列了下列清单，准备磕书，为了节约成本，我买的都不是新书，双11在京东买了400块的新书，折后200多，新旧感觉感觉就那样了，嘿：<br>１、基础类：《深入理解计算机系统 第3版 第三版 布莱恩特》、《代码大全(第2版)》<br>２、编程语言类：《Python基础教程 第2版 第二版》、《Java核心技术 卷1：基础知识》<br>３、算法与数据结构：《算法 第四版》、《算法导论 第3版 》<br>４、应用类：《Linux命令行与shell脚本编程大全(第3版)》、《图解HTTP 图解TCP/IP 》、《java web编程实战宝典》、（参考阅读，双１１买的《python金融大数据分析》《python进行数据分析》《软件测试技术大全：测试基础 流行工具 项目实战》<br>５、考试类：《软件设计师教程》<br>６、扯淡类：《人工智能的未来》《技术的本质》《图解机器学习》</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+  </div>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="windanchaos"
+    src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">windanchaos</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">96</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/windanchaos" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/windanchaos" title="Gitee &amp;rarr; https:&#x2F;&#x2F;gitee.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="fa fa-fw fa-gitee"></i>Gitee</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/mailto:454722630@qq.com" title="E-Mail &amp;rarr; mailto:454722630@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/windanchaos" title="Weibo &amp;rarr; https:&#x2F;&#x2F;weibo.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/windanchaos" title="CSDN &amp;rarr; https:&#x2F;&#x2F;blog.csdn.net&#x2F;windanchaos" rel="noopener" target="_blank"><i class="fa fa-fw fa-CSDN"></i>CSDN</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank">备案/许可证编号 </a>
+      <img src="http://www.beian.gov.cn/portal/download" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=19036728" rel="noopener" target="_blank">蜀ICP备19036728号 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">windanchaos</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.5.0
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+  <script>
+  function leancloudSelector(url) {
+    return document.getElementById(url).querySelector('.leancloud-visitors-count');
+  }
+  if (CONFIG.page.isPost) {
+    function addCount(Counter) {
+      var visitors = document.querySelector('.leancloud_visitors');
+      var url = visitors.getAttribute('id').trim();
+      var title = visitors.getAttribute('data-flag-title').trim();
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            var counter = results[0];
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .then(response => response.json())
+              .then(() => {
+                leancloudSelector(url).innerText = counter.time + 1;
+              })
+              .catch(error => {
+                console.log('Failed to save visitor count', error);
+              })
+          } else {
+              Counter('post', '/classes/Counter', { title: title, url: url, time: 1 })
+                .then(response => response.json())
+                .then(() => {
+                  leancloudSelector(url).innerText = 1;
+                })
+                .catch(error => {
+                  console.log('Failed to create', error);
+                });
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  } else {
+    function showTime(Counter) {
+      var visitors = document.querySelectorAll('.leancloud_visitors');
+      var entries = [...visitors].map(element => {
+        return element.getAttribute('id').trim();
+      });
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url: { '$in': entries } })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length === 0) {
+            document.querySelectorAll('.leancloud_visitors .leancloud-visitors-count').forEach(element => {
+              element.innerText = 0;
+            });
+            return;
+          }
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.url;
+            var time = item.time;
+            leancloudSelector(url).innerText = time;
+          }
+          for (var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = leancloudSelector(url);
+            if (element.innerText == '') {
+              element.innerText = 0;
+            }
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  }
+
+  fetch('https://app-router.leancloud.cn/2/route?appId=0indNw0niJU8jN2a1E43bDW7-gzGzoHsz')
+    .then(response => response.json())
+    .then(({ api_server }) => {
+      var Counter = (method, url, data) => {
+        return fetch(`https://${api_server}/1.1${url}`, {
+          method: method,
+          headers: {
+            'X-LC-Id': '0indNw0niJU8jN2a1E43bDW7-gzGzoHsz',
+            'X-LC-Key': 'toErPcjDI3431WvXQVKoy0rC',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        const localhost = /http:\/\/(localhost|127.0.0.1|0.0.0.0)/;
+        if (localhost.test(document.URL)) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(item => {
+    return GUEST.includes(item);
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: '0indNw0niJU8jN2a1E43bDW7-gzGzoHsz',
+    appKey: 'toErPcjDI3431WvXQVKoy0rC',
+    placeholder: "Just go go",
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: 'zh-cn' || 'zh-cn',
+    path: location.pathname,
+    recordIP: false,
+    serverURLs: ''
+  });
+}, window.Valine);
+</script>
+
+</body>
+</html>

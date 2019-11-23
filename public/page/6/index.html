@@ -1,0 +1,1658 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="宇弦">
+<meta property="og:url" content="https:&#x2F;&#x2F;blog.windanchaos.tech&#x2F;page&#x2F;6&#x2F;index.html">
+<meta property="og:site_name" content="宇弦">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://blog.windanchaos.tech/page/6/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: true,
+    isPost: false,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>宇弦</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">宇弦</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-首页">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-分类">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-归档">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-标签">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-关于">
+
+    <a href="/about/me.html" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/windanchaos" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://blog.windanchaos.tech/2017/07/23/%E6%9C%89%E8%B5%9E%E5%88%86%E5%B1%82%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%AE%9E%E8%B7%B5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="windanchaos">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇弦">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/07/23/%E6%9C%89%E8%B5%9E%E5%88%86%E5%B1%82%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%AE%9E%E8%B7%B5/" class="post-title-link" itemprop="url">有赞分层自动化测试实践</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-07-23 22:01:31" itemprop="dateCreated datePublished" datetime="2017-07-23T22:01:31+08:00">2017-07-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-11-23 23:11:57" itemprop="dateModified" datetime="2019-11-23T23:11:57+08:00">2019-11-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index">
+                    <span itemprop="name">自动化测试</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2017/07/23/%E6%9C%89%E8%B5%9E%E5%88%86%E5%B1%82%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%AE%9E%E8%B7%B5/" class="post-meta-item leancloud_visitors" data-flag-title="有赞分层自动化测试实践" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2017/07/23/%E6%9C%89%E8%B5%9E%E5%88%86%E5%B1%82%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%AE%9E%E8%B7%B5/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2017/07/23/%E6%9C%89%E8%B5%9E%E5%88%86%E5%B1%82%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%AE%9E%E8%B7%B5/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="1-背景"><a href="#1-背景" class="headerlink" title="1. 背景"></a>1. 背景</h1><p>先理一下自动化测试的概念，从广义上来说，一切通过工具(程序)的方式来代替或者辅助手工测试的行为都可以成为自动化。从狭义上来说，通过编写脚本的方式，模拟手工测试的过程，从而替代人工对系统的功能进行验证。</p>
+<p>有赞是一家互联网行业的创业公司，测试起步较晚，发布非常频繁，就算每次只回归核心功能，对人数极少的几个测试人员来说工作量巨大，且基本是重复劳动，极其枯燥，持续时间长了也容易出错。</p>
+<p>所以初期我们测试自动化切入的思路非常简单：从实际用户的角度出发，模拟真实的操作，替代现有的手工测试用例的执行。这样一来，每次重复的工作就可以用自动化来替代，测试人员只需要关注每次发布的增量需求即可。</p>
+<p>随着脚本数量的增加，这种自动化覆盖的方式的弊端也逐渐暴露：</p>
+<p>虽然我们在测试框架和工具层面通过结合selenium-grid实现了脚本并发执行和失败用例重试机制以提高执行效率和降低误报率，但是这种方式只能缓解问题，并不能从根本解决覆盖不全的问题。</p>
+<p>正好赶上公司的SOA服务化进程，测试这边也开始配合的做自动化方面的转变，从原来的黑盒系统级自动化测试向分层自动化测试转变。</p>
+<h1 id="2-分层自动化测试"><a href="#2-分层自动化测试" class="headerlink" title="2. 分层自动化测试"></a>2. 分层自动化测试</h1><p>在谈分层测试之前，先回顾几个概念：</p>
+<p>接下来我们谈谈有赞是如何随着系统拆分SOA服务化推进分层自动化测试的。先来看看经典的测试金字塔： <img src="/images/com--content-images-2016-04-1461922037377-1-.png" alt="Alt text"> 其中Unit代表单元测试，Service代表服务集成测试，UI代表页面级的系统测试。分层的自动化测试倡导产品的不同层次都需要自动化测试，这个金字塔也正表示不同层次需要投入的精力和工作量。下面我会逐层介绍有赞的分层自动化实践。</p>
+<h2 id="2-1-Unit-单元测试"><a href="#2-1-Unit-单元测试" class="headerlink" title="2.1 Unit-单元测试"></a>2.1 Unit-单元测试</h2><p>在系统拆分之前，有赞只有一个庞大的巨无霸系统，单元测试极度缺失。在系统逐渐SOA服务化的过程中，我们逐渐提出了对单元测试覆盖率的要求。</p>
+<p>我们的单元测试会分别做DAO层和服务层的测试。DAO层的单元测试主要保障SQL脚本的正确性，在做服务层的单元测试时就可以以DAO层是正确的前提进行用例编写了。</p>
+<p>为了做细粒度的测试，需要解决单元测试的外部依赖。系统和模块之间的依赖可以通过Mock框架(Mockito/EasyMock)解耦，同时可以结合h2database解决对数据库的依赖，使得测试用例尽可能做到可以随时随地运行。</p>
+<p>这一层发现并解决问题付出的成本相对来说最低，自动化用例的维护成本也不高，总的来说自动化测试的投入产出比最高。</p>
+<p>单元测试的责任主体一般来说是开发人员，写单元测试也是开发人员对自己的代码进行检查的一个过程。</p>
+<h2 id="2-2-Service-服务集成测试"><a href="#2-2-Service-服务集成测试" class="headerlink" title="2.2 Service-服务集成测试"></a>2.2 Service-服务集成测试</h2><p>我们在服务层的测试首要考虑的是各系统(子系统)的集成测试。因为在经过单元测试这一层的保障之后，在服务层我们更关注的是某个系统的输入输出功能是否正确，以及若干个系统间的交互是否和业务场景的要求一致。</p>
+<p>先来看看我们系统拆分之后的SOA系统应用架构图： <img src="/images/com--content-images-2016-04-1461918918740-.png" alt="Alt text"></p>
+<p>这一层的被测对象是抽离了展现层的代码(前端以及部分后端展现层逻辑)。</p>
+<p>鉴于有赞的测试起步较晚(应该很多创业公司都有类似情况)，测试资源紧缺，代码覆盖率低得可怜。所以我们的初期自动化用例覆盖策略是这样的：</p>
+<p>这样做的好处是，可以快速增加业务场景的覆盖面，同时事先准备好的API接口用例，可以作为系统拆分后的冒烟测试用例，起到核心老功能的回归作用(只是做系统拆分，业务逻辑以及对展现层暴露的接口行为不变)。毕竟在自动化测试的过程中，最怕的就是变化，会带来更多的脚本维护工作，而以这种方式覆盖的用例，目前来看维护成本很低。</p>
+<p>再介绍一下这一层的初期我们用例的基本形态：</p>
+<p>结合我们的交易系统举个例子：比如交易系统会依赖于商品和营销活动，那我们的下单场景的用例会依次调用商品和营销这几个系统的API构造数据作为用例的前置条件，然后按照下单的业务场景调用交易系统的下单接口，校验返回值以及写入DB的数据，最后做好数据清理的工作。</p>
+<p>我们在这一层的测试框架选择是基于公司通用的服务框架(Nova)基础之上搭建的，架构图如下： <img src="/images/com--content-images-2016-04-1461919415256-.png" alt="Alt text"><br><strong>BIT ：</strong>服务接口集成测试(Business Interface&amp;Integration Test)</p>
+<p><strong>SUT：</strong>被测系统(System Under Test)</p>
+<p>这一层的测试覆盖主要是由测试人员进行，是测试人员大展身手的地方。</p>
+<p>我们不需要非常详细的了解代码的实现，但是我们的用例里充分体现了我们对系统的结构，模块之间关系等的充分的理解。</p>
+<p>后续我们对于Service层自动化测试的推进策略是：</p>
+<h2 id="2-3-UI-展现测试"><a href="#2-3-UI-展现测试" class="headerlink" title="2.3 UI-展现测试"></a>2.3 UI-展现测试</h2><p>先提一个问题，既然在文章开篇提到了UI自动化测试有这么多弊端，这么劳民伤财，那么是否还有必要进行UI层的自动化呢？答案是肯定的，因为UI层是我们的产品最终呈现给用户的东西。所以在做好上面两层的测试覆盖之后，测试人员可以投入更多的精力到UI层的测试上。正是因为测试人员会在UI层投入较大精力，我们还是有必要通过自动化来帮助我们解放部分重复劳动力。</p>
+<p>根据我们的UI层自动化实践，提一下我们的UI层自动化覆盖的原则：</p>
+<p>我们提高UI脚本可维护性的方法是遵循Page Object设计模式。</p>
+<p>Page Object模式是为了避免在测试代码中直接操作HTML元素，对Web页面的抽象。好处有：</p>
+<p>以有赞首页的登录操作为例(Ruby)：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">LoginPage</span>  </span></span><br><span class="line"><span class="class">  <span class="title">include</span> <span class="title">HeaderNav</span></span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class">  <span class="title">def</span> <span class="title">login</span>(<span class="title">account</span>, <span class="title">password</span>)</span></span><br><span class="line"><span class="class">    <span class="title">text_account</span>.<span class="title">wait_until_present</span>.<span class="title">set</span>(<span class="title">account</span>)</span></span><br><span class="line"><span class="class">    <span class="title">text_password</span>.<span class="title">set</span>(<span class="title">password</span>)</span></span><br><span class="line"><span class="class">    <span class="title">button_login</span>.<span class="title">wait_until_present</span>.<span class="title">click</span></span></span><br><span class="line"><span class="class">    <span class="title">return</span> <span class="title">MainPage</span>.<span class="title">new</span>(@<span class="title">browser</span>)</span></span><br><span class="line"><span class="class">  <span class="title">end</span></span></span><br><span class="line"><span class="class"></span></span><br><span class="line"><span class="class">  <span class="title">private</span></span></span><br><span class="line"><span class="class">  <span class="title">def</span> <span class="title">text_account</span></span></span><br><span class="line">    @browser.text_field(:name =&gt; 'account')</span><br><span class="line">  end</span><br><span class="line">  def text_password</span><br><span class="line">    @browser.text_field(:<span class="function"><span class="params">name</span> =&gt;</span> <span class="string">'password'</span>)</span><br><span class="line">  end</span><br><span class="line">  def button_login</span><br><span class="line">    @browser.button(:<span class="function"><span class="params">class</span> =&gt;</span> <span class="string">'login-btn'</span>)</span><br><span class="line">  end</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+
+<p>下面我们来看看测试用例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class TestLogin &lt; Test::Unit::TestCase  </span><br><span class="line">  def testLogin</span><br><span class="line">    @browser = Browser.new</span><br><span class="line">    @browser.goto <span class="string">'youzan.com'</span></span><br><span class="line">    main_page = @browser.login_page.login(<span class="string">'xx'</span>, <span class="string">'123'</span>) </span><br><span class="line">    #断言</span><br><span class="line">  end</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
+
+<p>这样最终的测试脚本呈现的就是单纯的页面操作逻辑，更贴近文本测试用例。</p>
+<p>下面来看一下我们的测试框架： <img src="/images/com--content-images-2016-04-1461919378850-.png" alt="Alt text"></p>
+<p>随着服务层自动化覆盖率越来越高，UI层的自动化覆盖会逐渐转变为页面展示逻辑及界面前端与服务的展现层交互的集成验证。我们后续对于UI层自动化的演进规划是这样的：</p>
+<p>UI层的自动化测试也是由测试人员负责，在覆盖了核心业务核心场景之后，不应该在这层的自动化覆盖上投入太多的精力和资源。就算我们在一定程度上提高了脚本的可维护性，可是毕竟自动化测试最怕的就是变化，而UI界面是变化频率最高的一层，所以还是得投入一定的精力维护，不是么？</p>
+<h1 id="3-持续集成"><a href="#3-持续集成" class="headerlink" title="3. 持续集成"></a>3. 持续集成</h1><p>有了上述各层的自动化测试脚本，下面我们需要建立起持续集成体系。 持续集成的目的：</p>
+<p>我们的持续集成是基于Jenkins搭建的，主要的动作如下：</p>
+<p>持续集成所需的支撑有：</p>
+<p>对于持续集成我们后续的演进规划是朝着持续交付和持续部署的方向努力，在持续集成的基础之上，自动将代码部署到测试环境上方便测试人员进行手工测试。</p>
+<h1 id="4-总结"><a href="#4-总结" class="headerlink" title="4. 总结"></a>4. 总结</h1><p>本文主要从整体上介绍了在有赞SOA化的进程中，测试推行的分层自动化实践，以及后续的发展方向，同时简单介绍了相关的测试框架结构。下面再从整体回顾一下我们的分层自动化的要点： <img src="/images/com--content-images-2016-04-1461922374507-1-.png" alt="Alt text"></p>
+<p>至于各层投入的具体比重，还是需要根据项目的需求来实际规划。在《google 测试之道》一书，对于google产品，70%的投入为单元测试，20%为集成、接口测试，10% 为UI层的自动化测试。</p>
+<p>最后再提一些观点吧：</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://blog.windanchaos.tech/2017/07/18/%E5%85%B3%E4%BA%8EDevOps%E7%9A%84%E6%91%98%E5%BD%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="windanchaos">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇弦">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/07/18/%E5%85%B3%E4%BA%8EDevOps%E7%9A%84%E6%91%98%E5%BD%95/" class="post-title-link" itemprop="url">关于DevOps的摘录</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-07-18 16:25:53" itemprop="dateCreated datePublished" datetime="2017-07-18T16:25:53+08:00">2017-07-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-11-23 23:11:57" itemprop="dateModified" datetime="2019-11-23T23:11:57+08:00">2019-11-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B5%8B%E8%AF%95%E7%9A%84%E6%A1%86%E6%9E%B6%E5%92%8C%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index">
+                    <span itemprop="name">测试的框架和技术</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2017/07/18/%E5%85%B3%E4%BA%8EDevOps%E7%9A%84%E6%91%98%E5%BD%95/" class="post-meta-item leancloud_visitors" data-flag-title="关于DevOps的摘录" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2017/07/18/%E5%85%B3%E4%BA%8EDevOps%E7%9A%84%E6%91%98%E5%BD%95/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2017/07/18/%E5%85%B3%E4%BA%8EDevOps%E7%9A%84%E6%91%98%E5%BD%95/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>DevOps（英文Development和Operations的组合）是一组过程、方法与系统的统称，用于促进开发（应用程序/软件工程）、技术运营和质量保障（QA）部门之间的沟通、协作与整合。简单地来说，就是更好的优化开发(DEV)、测试(QA)、运维(OPS)的流程，开发运维一体化，通过高度自动化工具与流程来使得软件构建、测试、发布更加快捷、频繁和可靠。</p>
+<p>以下内容转自：<a href="http://www.ituring.com.cn/article/265237" target="_blank" rel="noopener">http://www.ituring.com.cn/article/265237</a><br>当我们谈到 DevOps 时，可能讨论的是：流程和管理，运维和自动化，架构和服务，以及文化和组织等等概念。那么，到底什么是”DevOps”呢？</p>
+<h2 id="什么是DevOps"><a href="#什么是DevOps" class="headerlink" title="什么是DevOps"></a>什么是DevOps</h2><p>随着软件发布迭代的频率越来越高，传统的「瀑布型」（开发—测试—发布）模式已经不能满足快速交付的需求。2009 年左右 DevOps 应运而生，简单地来说，就是更好的优化开发(DEV)、测试(QA)、运维(OPS)的流程，开发运维一体化，通过高度自动化工具与流程来使得软件构建、测试、发布更加快捷、频繁和可靠。</p>
+<p><img src="/images/s.jianshu.io-upload_images-310906-735d15ceea69b44d.jpg-imageMogr2-auto-orient-strip%7CimageView2-2-w-1240.png" alt="flow.ci"></p>
+<p>关于 DevOps 是什么，DevOps 的合著者 John Willis 写了一个非常好的帖子，在<a href="http://itrevolution.com/the-convergence-of-devops/" target="_blank" rel="noopener">这里</a>.</p>
+<h2 id="Devops-的好处与价值"><a href="#Devops-的好处与价值" class="headerlink" title="Devops 的好处与价值"></a>Devops 的好处与价值</h2><p>在<a href="http://www.infoq.com/cn/articles/2016-devops-new-trend" target="_blank" rel="noopener">2016 DevOps 新趋势调查报告</a>显示，74% 的公司在尝试接受 DevOps，那么 Devops 有哪些好处与价值呢？</p>
+<p>以上可以看出，DevOps 的好处更多基于在于持续部署与交付，这是对于业务与产品而言。而 DevOps 始于接受 DevOps 文化与技术方法论，它是部门间沟通协作的一组流程和方法，有助于改善公司组织文化、提高员工的参与感。</p>
+<h2 id="Devops与持续集成"><a href="#Devops与持续集成" class="headerlink" title="Devops与持续集成"></a>Devops与持续集成</h2><p>DevOps 是一个完整的面向IT运维的工作流，以 IT 自动化以及持续集成（CI）、持续部署（CD）为基础，来优化程式开发、测试、系统运维等所有环节。</p>
+<p>纵观各个 DevOps 实践公司的技术资料，最全面最经典的是 flickr 的<a href="http://www.slideshare.net/jallspaw/10-deploys-per-day-dev-and-ops-cooperation-at-flickr" target="_blank" rel="noopener">10+ deploys per day</a>最佳实践提到的 DevOps Tools 的技术关键点:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span>Automated infrastructure（自动化，系统之间的集成） <span class="number">2.</span>shared version control（SVN共享源码） <span class="number">3.</span>one step build and deploy（持续构建和部署） <span class="number">4.</span>feature flags（主干开发） <span class="number">5.</span>Shared metrics <span class="number">6.</span>IRC and IM robots（信息整合）</span><br></pre></td></tr></table></figure>
+
+<p>以上的技术要点由持续集成/部署一线贯穿，主干开发是进行持续集成的前提，自动化以及代码周边集中管理是实施持续集成的必要条件。毫无疑问，DevOps 是持续集成思想的延伸，持续集成/部署是 DevOps 的技术核心，在没有自动化测试、持续集成/部署之下，DevOps就是空中楼阁。</p>
+<p>我们做了一款 Hosted 持续集成产品—— <a href="http://flow.ci/?utm_source=ituring&utm_medium=passage&utm_content=devops_guide" target="_blank" rel="noopener">flow.ci</a> ，它融入了 workflow 机制的持续集成（CI）服务，也可以理解为自动化流程平台，除了集成代码、编译、测试之外，还可以集成常用的工具、灵活自定义流程，帮助你们塑造一个更优秀智能的 DevOps 环境。</p>
+<p><img src="/images/s.jianshu.io-upload_images-310906-98ac44a2bdf136de--imageMogr2-auto-orient-strip%7CimageView2-2-w-1240.png" alt="flow.ci"></p>
+<h2 id="DevOps-的技术栈与工具链"><a href="#DevOps-的技术栈与工具链" class="headerlink" title="DevOps 的技术栈与工具链"></a>DevOps 的技术栈与工具链</h2><p>Everything is Code，DevOps 也同样要通过技术工具链完成持续集成、持续交付、用户反馈和系统优化的整合。<a href="https://elasticbox.com/" target="_blank" rel="noopener">Elasticbox</a> 整理了 <a href="https://elasticbox.com/blog/devops-open-source-tools/" target="_blank" rel="noopener">60+ 开源工具与分类</a>，其中包括版本控制&amp;协作开发工具、自动化构建和测试工具、持续集成&amp;交付工具、部署工具、维护工具、监控，警告&amp;分析工具等等， 补充了一些国内的服务，可以让你更好的执行实施 DevOps 工作流。</p>
+<p><img src="/images/s.jianshu.io-upload_images-310906-d7baf300841107a2.jpg-imageMogr2-auto-orient-strip%7CimageView2-2-w-1240.png" alt="flow.ci"></p>
+<p>顺便再分享一个 <a href="http://www.devopsbookmarks.com/" target="_blank" rel="noopener">DevOps BookMarks</a>，涉及了DevOps方方面面的工具和内容，有兴趣的同学可以去学习下。</p>
+<h2 id="DevOps-最佳实践"><a href="#DevOps-最佳实践" class="headerlink" title="DevOps 最佳实践"></a>DevOps 最佳实践</h2><p>自 2009 年提出 DevOps 的概念起，很多公司都开始实施 DevOps，国外比较著名的有Amazon 、Google、Facebook等，国内著名的有百度、华为、阿里等。Amazon 是 DevOps 最佳实践的最有说服力的代表之一。这是 Amazon 在 <a href="http://www.youtube.com/watch?v=877OCQA_xzE" target="_blank" rel="noopener">Why We Need DevOps</a> 一个月的 DevOps 快照：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">11.6</span> seconds: 平均部署时长 (工作日) <span class="number">1</span>,<span class="number">079</span>: 一小时的最大部署量 <span class="number">10</span>,<span class="number">000</span>: 主机平均并发接收部署量 <span class="number">30</span>,<span class="number">000</span>: 主机最高并发接收部署量</span><br></pre></td></tr></table></figure>
+
+<p>从早期的大型 SOA (Service Oriented Architecture)到 DevOps 文化的形成，Amazon 的每个工程师都可以完全独立地编写代码，测试代码，版本管理，部署上线，服务监测等任务。这套内部强大的 DevOps 文化最终形成核聚变， Amazon 一跃成为世界级别的云服务领导者 —— Amazon Web Services (AWS)。</p>
+<p>除了 Amazon 外还有一些国内外的 DevOps 实践公司，一起来看看。</p>
+<p>最全面最经典的是 flickr 的<a href="http://www.slideshare.net/jallspaw/10-deploys-per-day-dev-and-ops-cooperation-at-flickr" target="_blank" rel="noopener">10+ deploys per day</a>，简直是 DevOps 教科书般的存在。</p>
+<p>百度技术团队是如何利用DevOps，来看看<a href="http://dbaplus.cn/news-21-471-1.html" target="_blank" rel="noopener">解密百度持续交付方法与实践</a>。</p>
+<p>百度技术团队是如何利用DevOps，来看看<a href="http://dbaplus.cn/news-21-471-1.html" target="_blank" rel="noopener">解密百度持续交付方法与实践</a>。</p>
+<p>解密Netflix 技术团队在整个 DevOps 过程中使用的部署工具和服务.</p>
+<p><a href="http://techblog.netflix.com/2016/03/how-we-build-code-at-netflix.html" target="_blank" rel="noopener">How We Build Code at Netflix</a>.</p>
+<p>2009年，Etsy建立自己的工具来更好更快地部署发布，<a href="http://www.networkworld.com/article/2886672/software/how-etsy-makes-devops-work.html" target="_blank" rel="noopener">「Etsy 如何应用 DevOps」</a>值得一读。</p>
+<p>2009年，LinkedIn 团队就开始使用自动化部署工具，用于管理在1000+节点环境下发布上千个应用/服务的复杂性。这是 LinkedIn 自己造的轮子 &gt;&gt;<a href="http://devops.com/2014/04/02/deployment-and-monitoring-automation-glu/" target="_blank" rel="noopener">Deployment and Monitoring Automation with glu</a>.</p>
+<p>Airbnb 作为第三方平台公司，需要迅速发布多个小型部署。关于 Airbnb 的数据和基础设施，可以参考这个<a href="http://www.slideshare.net/InfoQ/data-infrastructure-at-airbnb" target="_blank" rel="noopener">slides</a>。</p>
+<p>星巴克的 DevOps 计划&gt;&gt; <a href="https://medium.com/@cloud_opinion/starbucks-announces-devopstogether-2933aad59d74" target="_blank" rel="noopener">Starbucks Announces /#DevOpsTogether</a>.</p>
+<p>Ancestry.com 是 DevOps 运动的早期采用者，是 Continuous Delivery 和 DevOps 运动的先锋。想了解更多关于他们的过程、迁移和 DevOps 文化，不妨查看一下他们的系列文章<a href="http://blogs.ancestry.com/techroots/category/devops/" target="_blank" rel="noopener">http://blogs.ancestry.com/techroots/category/devops/</a>。</p>
+<h2 id="DevOps-Culture-Tools"><a href="#DevOps-Culture-Tools" class="headerlink" title="DevOps = Culture + Tools"></a>DevOps = Culture + Tools</h2><p>如果想整个业务部署 DevOps，不但需要软性要求即从上而下的培养 DevOps 文化自上而下地进行探索，也有硬性工具链要求，才能获得更高质量的软件交付。</p>
+<p>最后，不论你是技术Leader，还是一名Dev、QA 或 Ops，实现全面的 DevOps 非常理想化也十分有挑战，希望这份 DevOps 初学者指南是一个好的开始:)</p>
+<p><a href="http://flow.ci/?utm_source=ituring&utm_medium=passage&utm_content=devops_guide" target="_blank" rel="noopener">flow.ci</a> 是融入了 workflow 机制的持续集成（CI）服务，也可以理解为自动化流程平台，除了集成代码、编译、测试之外，还可以集成常用的工具、灵活自定义流程。1 分钟即可完成开发测试环境搭建，开启第一个 Build。</p>
+<p>本文来自 <a href="http://blog.flow.ci/" target="_blank" rel="noopener">flow.ci 官方博客</a>，转载请联系:)</p>
+<p>=================================分割线=============================<br>1、监控工具比较老牌的就是Zabbix,Nagios，用Zabbix的感觉是最多的。国内的有小米开源的OpenFalcon。这类监控工具一般是对服务器、服务（中间件，数据库）做一些常用指标的监控。</p>
+<p>2、性能分析/APM工具APM很多时候被认为是监控的一个细分领域。但在现代复杂分布式系统架构下，APM工具往往更能准确、直接的帮助用户定位到性能瓶颈，比如哪一个URL访问慢、哪一个方法执行慢、哪一个SQL执行慢。在以往要想拿到这些数据，往往得需要比较资深的架构师、DBA一起合作才能拿到这些数据，而定位瓶颈的效率往往还不太高。现在通过APM工具能让普通技能的运维人员，也很高效的定位到这些深层的问题。现在商用的APM工具不少，国外的有Newrelic，国内知名的就有听云、Oneapm、透视宝这些。开源的也有Pinpoint（naver开源）、Zipkin（twitter开源）、CAT（大众点评开源）.</p>
+<p>3、批量+自动化运维工具这里就比较多了，知名的有Puppet、Ansible、Chef、Saltstack这些。这些在网上的资料也比较多，找比较新版本的官方文档看就行了。Puppet和chef是比较早期的工具，受众面也很大，不过这两个工具基于ruby实现，现在要找到熟悉ruby的人来做这块的二次开发可不容易。而ansible和saltstack则相对新生代一些，目前用户基数增长很快，基于python实现，要找做二次开发的人也相对容易的多。</p>
+<p>4、集中日志分析工具在一个服务器比较多的环境下，如何集中的管理和分析、查询日志，已经变成一个比较强的需求了。想象一下，如果发生了某个错误，你还得一台台机器去翻日志文件，是不是很蛋疼。在这个需求驱动下，就诞生了一些集中日志分析工具。在开源领域，比较知名的就是ELK这一套工具了，涵盖了日志采集、上报、搜索、展现这一类基本需求，现在比较多的上规模的企业都用这个，网上资料也大把。核心实现机制都是通过一些日志采集代理（类似Filebeat）去爬日志文件，将最新的部分提交到采集服务端，后端再对接搜索引擎，能支持很快速、准确的搜索即可。有一个国内不怎么知名的Sentry日志收集服务，比较轻量级，本身是Python做的，与各种语言的日志框架做了非常好的集成，可以很方便的集中收集异常日志，并分配给对应的开发人员。它在github上有10000多个star了，这在DevOps相关的软件里，都是排名非常靠前的了。git的地址：<a href="https://github.com/getsentry/sentry" target="_blank" rel="noopener">https://github.com/getsentry/sentry</a></p>
+<p>5、持续集成/发布工具我接触的人都是用Jenkins的，没有用其他的，可能跟我所在的技术圈子有关。集成打包的过程其实一般都比较简单，配好版本库和打包脚本就行。但发布的过程就比较复杂，有些是全量发布，但也有非常多的IT团队采用增量发布。这个方面如果想用工具，还是得先分析清楚现有的发布流程，手工情况下怎么做，哪些能通过自动化工具来完成。</p>
+<p>6、IaaS集成最近两年的公有云推广比较迅速，很多新的服务器采购都被导入到云上去了。现在主流的公有云都提供了比较完备的API，基于这些API也可以做一些针对基础资源的自动化操作，比如游戏行业的快速开服。</p>
+<p>关于DevOps对效率的提升，Puppet出过一份调研报告，算是比较成体系的。中文版的报告链接在此：<a href="http://www.idcos.com/download/devops-report" target="_blank" rel="noopener">http://www.idcos.com/download/devops-report</a></p>
+<p>DevOps 开源工具:<br><a href="https://www.oschina.net/question/2012764_246208" target="_blank" rel="noopener">https://www.oschina.net/question/2012764_246208</a><br><a href="https://blog.profitbricks.com/51-best-devops-tools-for-devops-engineers/" target="_blank" rel="noopener">https://blog.profitbricks.com/51-best-devops-tools-for-devops-engineers/</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://blog.windanchaos.tech/2017/07/11/ubuntu%20adb%20unautorized%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="windanchaos">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇弦">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/07/11/ubuntu%20adb%20unautorized%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" class="post-title-link" itemprop="url">ubuntu adb unautorized的解决办法</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-07-11 21:56:54" itemprop="dateCreated datePublished" datetime="2017-07-11T21:56:54+08:00">2017-07-11</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-11-23 23:11:57" itemprop="dateModified" datetime="2019-11-23T23:11:57+08:00">2019-11-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index">
+                    <span itemprop="name">自动化测试</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2017/07/11/ubuntu%20adb%20unautorized%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" class="post-meta-item leancloud_visitors" data-flag-title="ubuntu adb unautorized的解决办法" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2017/07/11/ubuntu%20adb%20unautorized%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2017/07/11/ubuntu%20adb%20unautorized%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>以上方法试过之后，仍然无法解决则可尝试：<br>rm -fr ~/.android//*</p>
+<p>然后，重启adb服务，手机撤销ＵＳＢ调试授权后重新插上手机。即可。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://blog.windanchaos.tech/2017/06/12/Shell%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E8%A7%84%E5%BE%8B%E6%80%BB%E7%BB%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="windanchaos">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇弦">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/06/12/Shell%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E8%A7%84%E5%BE%8B%E6%80%BB%E7%BB%93/" class="post-title-link" itemprop="url">Shell字符串处理规律总结</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-06-12 23:35:50" itemprop="dateCreated datePublished" datetime="2017-06-12T23:35:50+08:00">2017-06-12</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-11-23 23:11:57" itemprop="dateModified" datetime="2019-11-23T23:11:57+08:00">2019-11-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux%E7%AE%A1%E7%90%86%E7%BB%B4%E6%8A%A4/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux管理维护</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2017/06/12/Shell%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E8%A7%84%E5%BE%8B%E6%80%BB%E7%BB%93/" class="post-meta-item leancloud_visitors" data-flag-title="Shell字符串处理规律总结" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2017/06/12/Shell%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E8%A7%84%E5%BE%8B%E6%80%BB%E7%BB%93/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2017/06/12/Shell%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%A4%84%E7%90%86%E8%A7%84%E5%BE%8B%E6%80%BB%E7%BB%93/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="字符处理几个特殊约定"><a href="#字符处理几个特殊约定" class="headerlink" title="字符处理几个特殊约定"></a>字符处理几个特殊约定</h1><p>/#代表<strong>截掉</strong>开始</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">chaosbom@chaosbomPC:~$ file=<span class="string">"thisfile.txt"</span></span><br><span class="line">chaosbom@chaosbomPC:~$ echo $&#123;file#*.&#125;</span><br><span class="line">txt</span><br><span class="line">chaosbom@chaosbomPC:~$ echo $&#123;file#*i&#125;</span><br><span class="line">sfile.txt</span><br></pre></td></tr></table></figure>
+
+<p>%代表<strong>截掉</strong>结尾</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">chaosbom@chaosbomPC:~$ file=<span class="string">"thisfile.txt"</span></span><br><span class="line">chaosbom@chaosbomPC:~$ echo $&#123;file%e.*&#125;</span><br><span class="line">thisfil</span><br><span class="line">chaosbom@chaosbomPC:~$ echo $&#123;file%.*&#125;</span><br><span class="line">thisfile</span><br></pre></td></tr></table></figure>
+
+<p>//代表取所有（相对应未明确所有则是第一个）</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">chaosbom@chaosbomPC:~$ file=<span class="string">"thisfile.txt"</span></span><br><span class="line">chaosbom@chaosbomPC:~$ echo $&#123;file<span class="comment">//i/I&#125;</span></span><br><span class="line">thIsfIle.txt</span><br><span class="line">chaosbom@chaosbomPC:~$ echo $&#123;file<span class="comment">//i&#125;</span></span><br><span class="line">thsfle.txt</span><br></pre></td></tr></table></figure>
+
+<p>/a/b 表示符合模式a的字符串将被b字符串替换，不指定b字符串则是删除。<br>如果被替换串包含/字符，那么要转义，写成/</p>
+<p>灵感来源：<br><a href="http://blog.csdn.net/guojin08/article/details/38704823" target="_blank" rel="noopener">http://blog.csdn.net/guojin08/article/details/38704823</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://blog.windanchaos.tech/2017/05/19/Appium%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="windanchaos">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇弦">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/05/19/Appium%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" class="post-title-link" itemprop="url">Appium的基本概念</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-05-19 00:10:11" itemprop="dateCreated datePublished" datetime="2017-05-19T00:10:11+08:00">2017-05-19</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-11-23 23:11:57" itemprop="dateModified" datetime="2019-11-23T23:11:57+08:00">2019-11-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index">
+                    <span itemprop="name">自动化测试</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2017/05/19/Appium%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" class="post-meta-item leancloud_visitors" data-flag-title="Appium的基本概念" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2017/05/19/Appium%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2017/05/19/Appium%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="一、appium是什么？"><a href="#一、appium是什么？" class="headerlink" title="一、appium是什么？"></a>一、appium是什么？</h1><p>Appium 是一个自动化测试开源、跨平台工具。它允许测试人员在不同的平台（iOS，Android）使用同一套API来写自动化测试脚本，这样大大增加了 iOS 和 Android 测试套件间代码的复用性。支持 iOS 平台和 Android 平台上的原生应用，web 应用和混合应用。<br>所谓的“移动原生应用”是指那些用 iOS 或者 Android SDK 写的应用。<br>所谓的“移动 web 应用”是指使用移动浏览器访问的应用（Appium 支持 iOS 上的 Safari 和 Android 上的 Chrome）。<br>所谓的“混合应用”是指原生代码封装网页视图——原生代码和 web 内容交互。比如，像 Phonegap，可以帮助开发者使用网页技术开发应用，然后用原生代码封装，这些就是混合应用。</p>
+<h1 id="二、Appium的基本原理"><a href="#二、Appium的基本原理" class="headerlink" title="二、Appium的基本原理"></a>二、Appium的基本原理</h1><h2 id="基础依赖"><a href="#基础依赖" class="headerlink" title="基础依赖"></a>基础依赖</h2><p>Appium 真正的工作引擎是第三方自动化框架。使用以下的第三方框架：<br><strong>- iOS: 苹果的 UIAutomation</strong><br><strong>- Android 4.2+: Google’s UiAutomator</strong></p>
+<ul>
+<li>Android 2.3+: Google’s Instrumentation. (Instrumentation由单独的项目Selendroid提供支持 )</li>
+<li>Selenium WebDriver等第三方包，<a href="https://search.maven.org/remotecontent?filepath=io/appium/java-client/5.0.0-BETA8/java-client-5.0.0-BETA8.pom" target="_blank" rel="noopener">点此参考java依赖包</a></li>
+</ul>
+<h2 id="C-S-架构"><a href="#C-S-架构" class="headerlink" title="C/S 架构"></a>C/S 架构</h2><p>Appium使用客户端-服务端的架构，它 的核心是一个 web 服务器，它提供了一套 REST 的接口， 指定了客户端到服务端的协议。 (JSON Wire Protocol)。<br>我们可以使用任何语言来编写客户端，向服务端发送恰当的 HTTP 请求。它收到客户端的连接，监听到命令，接着在移动设备上执行这些命令，然后将执行结果放在 HTTP响应中返还给客户端。事实上，这种客户端/服务端的架构给予了许多的可能性：比如我们可以使用任何实现了该客户端的语言来写我们的测试代码。比如我们可以把服务端放在不同 的机器上。比如我们可以只写测试代码，然后使用像 Sauce Labs 这样的云服务来解释命令。</p>
+<h2 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h2><p>自动化始终围绕一个session进行，客户端初始化一个seesion（会话）来与服务端交互，不同的语言有不同的实现方式，但是他们最终都是发送为一个POST请求给服务端，请求中包含一个JSON对象，被称作“desired capabilities”。此时，服务端就会开启一个自动化的 session，然后返回一个 session ID，session ID将会被用户发送后续的命令。</p>
+<h2 id="Desired-Capabilities"><a href="#Desired-Capabilities" class="headerlink" title="Desired Capabilities"></a>Desired Capabilities</h2><p>Desired capabilities 是一些键值对的集合 (比如，一个 map 或者 hash），客户端将这些键值对发给服务端，告诉服务端我们想要怎么测试。比如，我们可以把platformName capability 设置为 iOS，告诉 Appium 服务端，我们想要一个iOS 的 session，而不是一个 Android 的。我们也可以设置 safariAllowPopups capability 为 true，确保在 Safari 自动化 session 中，我们可以使用 javascript 来打开新窗口。参见 capabilities 文档，查看完整的 capabilities 列表。</p>
+<h2 id="Appium-Server"><a href="#Appium-Server" class="headerlink" title="Appium Server"></a>Appium Server</h2><p>Appium server 是用 Node.js 写的。我们可以用源码编译或者从 NPM 直接安装。</p>
+<h2 id="Appium客户端"><a href="#Appium客户端" class="headerlink" title="Appium客户端"></a>Appium客户端</h2><p>Appium 客户端端有很多语言库 Java, Ruby, Python, PHP, JavaScript 和 C/#，这些库都实现了 Appium 对 WebDriver 协议的扩展。当使用 Appium 的时候，你只需使用这些库代替常规的 WebDriver 库就可以了。 你可以从<a href="http://appium.io/slate/cn/master/#appium-clients.cn.md" target="_blank" rel="noopener">这里</a>看到所有的库的列表。</p>
+<h1 id="Appium的组成和安装"><a href="#Appium的组成和安装" class="headerlink" title="Appium的组成和安装"></a>Appium的组成和安装</h1><p>如上所述构成Appium主要有三个部分：</p>
+<ul>
+<li>Appium Server</li>
+<li>Appium Clients</li>
+<li>Appium-Desktop</li>
+</ul>
+<h2 id="Appium-Server-1"><a href="#Appium-Server-1" class="headerlink" title="Appium Server"></a>Appium Server</h2><p>先解决若干环境依赖（安装nodejs和npm）后执行：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm --registry=https:<span class="comment">//registry.npm.taobao.org</span></span><br><span class="line">cnpm install -g appium</span><br></pre></td></tr></table></figure>
+
+<h2 id="Appium-Clients"><a href="#Appium-Clients" class="headerlink" title="Appium Clients"></a>Appium Clients</h2><p>我研究的是java如何使用，最直接的方法是：<br><a href="https://search.maven.org/remotecontent?filepath=io/appium/java-client/5.0.0-BETA8/java-client-5.0.0-BETA8.jar" target="_blank" rel="noopener">下载jar包</a>，当然它还依赖若干的包，所以要一并的下载。其他语言的原理也是类似。<br>所以，使用maven来引用包吧。pom.xml</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.testng&lt;<span class="regexp">/groupId&gt;</span></span><br><span class="line"><span class="regexp">            &lt;artifactId&gt;testng&lt;/</span>artifactId&gt;</span><br><span class="line">            &lt;version&gt;<span class="number">6.11</span>&lt;<span class="regexp">/version&gt;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>dependency&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.seleniumhq.selenium&lt;<span class="regexp">/groupId&gt;</span></span><br><span class="line"><span class="regexp">            &lt;artifactId&gt;selenium-java&lt;/</span>artifactId&gt;</span><br><span class="line">            &lt;version&gt;<span class="number">3.4</span><span class="number">.0</span>&lt;<span class="regexp">/version&gt;</span></span><br><span class="line"><span class="regexp">            &lt;scope&gt;compile&lt;/</span>scope&gt;</span><br><span class="line">        &lt;<span class="regexp">/dependency&gt;</span></span><br><span class="line"><span class="regexp">        &lt;dependency&gt;</span></span><br><span class="line"><span class="regexp">            &lt;groupId&gt;com.google.code.gson&lt;/g</span>roupId&gt;</span><br><span class="line">            &lt;artifactId&gt;gson&lt;<span class="regexp">/artifactId&gt;</span></span><br><span class="line"><span class="regexp">            &lt;version&gt;2.8.0&lt;/</span>version&gt;</span><br><span class="line">            &lt;scope&gt;compile&lt;<span class="regexp">/scope&gt;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>dependency&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.apache.httpcomponents&lt;<span class="regexp">/groupId&gt;</span></span><br><span class="line"><span class="regexp">            &lt;artifactId&gt;httpclient&lt;/</span>artifactId&gt;</span><br><span class="line">            &lt;version&gt;<span class="number">4.5</span><span class="number">.3</span>&lt;<span class="regexp">/version&gt;</span></span><br><span class="line"><span class="regexp">            &lt;scope&gt;compile&lt;/</span>scope&gt;</span><br><span class="line">        &lt;<span class="regexp">/dependency&gt;</span></span><br><span class="line"><span class="regexp">        &lt;dependency&gt;</span></span><br><span class="line"><span class="regexp">            &lt;groupId&gt;cglib&lt;/g</span>roupId&gt;</span><br><span class="line">            &lt;artifactId&gt;cglib&lt;<span class="regexp">/artifactId&gt;</span></span><br><span class="line"><span class="regexp">            &lt;version&gt;3.2.5&lt;/</span>version&gt;</span><br><span class="line">            &lt;scope&gt;compile&lt;<span class="regexp">/scope&gt;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>dependency&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;commons-validator&lt;<span class="regexp">/groupId&gt;</span></span><br><span class="line"><span class="regexp">            &lt;artifactId&gt;commons-validator&lt;/</span>artifactId&gt;</span><br><span class="line">            &lt;version&gt;<span class="number">1.6</span>&lt;<span class="regexp">/version&gt;</span></span><br><span class="line"><span class="regexp">            &lt;scope&gt;compile&lt;/</span>scope&gt;</span><br><span class="line">        &lt;<span class="regexp">/dependency&gt;</span></span><br><span class="line"><span class="regexp">        &lt;dependency&gt;</span></span><br><span class="line"><span class="regexp">            &lt;groupId&gt;org.apache.commons&lt;/g</span>roupId&gt;</span><br><span class="line">            &lt;artifactId&gt;commons-lang3&lt;<span class="regexp">/artifactId&gt;</span></span><br><span class="line"><span class="regexp">            &lt;version&gt;3.5&lt;/</span>version&gt;</span><br><span class="line">            &lt;scope&gt;compile&lt;<span class="regexp">/scope&gt;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>dependency&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;commons-io&lt;<span class="regexp">/groupId&gt;</span></span><br><span class="line"><span class="regexp">            &lt;artifactId&gt;commons-io&lt;/</span>artifactId&gt;</span><br><span class="line">            &lt;version&gt;<span class="number">2.5</span>&lt;<span class="regexp">/version&gt;</span></span><br><span class="line"><span class="regexp">            &lt;scope&gt;compile&lt;/</span>scope&gt;</span><br><span class="line">        &lt;<span class="regexp">/dependency&gt;</span></span><br><span class="line"><span class="regexp">        &lt;dependency&gt;</span></span><br><span class="line"><span class="regexp">            &lt;groupId&gt;org.springframework&lt;/g</span>roupId&gt;</span><br><span class="line">            &lt;artifactId&gt;spring-context&lt;<span class="regexp">/artifactId&gt;</span></span><br><span class="line"><span class="regexp">            &lt;version&gt;4.3.8.RELEASE&lt;/</span>version&gt;</span><br><span class="line">            &lt;scope&gt;compile&lt;<span class="regexp">/scope&gt;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>dependency&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;org.aspectj&lt;<span class="regexp">/groupId&gt;</span></span><br><span class="line"><span class="regexp">            &lt;artifactId&gt;aspectjweaver&lt;/</span>artifactId&gt;</span><br><span class="line">            &lt;version&gt;<span class="number">1.8</span><span class="number">.10</span>&lt;<span class="regexp">/version&gt;</span></span><br><span class="line"><span class="regexp">            &lt;scope&gt;compile&lt;/</span>scope&gt;</span><br><span class="line">        &lt;<span class="regexp">/dependency&gt;</span></span><br><span class="line"><span class="regexp">        &lt;dependency&gt;</span></span><br><span class="line"><span class="regexp">            &lt;groupId&gt;org.openpnp&lt;/g</span>roupId&gt;</span><br><span class="line">            &lt;artifactId&gt;opencv&lt;<span class="regexp">/artifactId&gt;</span></span><br><span class="line"><span class="regexp">            &lt;version&gt;3.2.0-1&lt;/</span>version&gt;</span><br><span class="line">            &lt;scope&gt;compile&lt;<span class="regexp">/scope&gt;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>dependency&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;junit&lt;<span class="regexp">/groupId&gt;</span></span><br><span class="line"><span class="regexp">            &lt;artifactId&gt;junit&lt;/</span>artifactId&gt;</span><br><span class="line">            &lt;version&gt;<span class="number">4.12</span>&lt;<span class="regexp">/version&gt;</span></span><br><span class="line"><span class="regexp">            &lt;scope&gt;test&lt;/</span>scope&gt;</span><br><span class="line">        &lt;<span class="regexp">/dependency&gt;</span></span><br><span class="line"><span class="regexp">        &lt;dependency&gt;</span></span><br><span class="line"><span class="regexp">            &lt;groupId&gt;org.hamcrest&lt;/g</span>roupId&gt;</span><br><span class="line">            &lt;artifactId&gt;hamcrest-all&lt;<span class="regexp">/artifactId&gt;</span></span><br><span class="line"><span class="regexp">            &lt;version&gt;1.3&lt;/</span>version&gt;</span><br><span class="line">            &lt;scope&gt;test&lt;<span class="regexp">/scope&gt;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>dependency&gt;</span><br><span class="line">        &lt;dependency&gt;</span><br><span class="line">            &lt;groupId&gt;io.appium&lt;<span class="regexp">/groupId&gt;</span></span><br><span class="line"><span class="regexp">            &lt;artifactId&gt;java-client&lt;/</span>artifactId&gt;</span><br><span class="line">            &lt;version&gt;<span class="number">5.0</span><span class="number">.0</span>-BETA8&lt;<span class="regexp">/version&gt;</span></span><br><span class="line"><span class="regexp">        &lt;/</span>dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Appium-Desktop"><a href="#Appium-Desktop" class="headerlink" title="Appium-Desktop"></a>Appium-Desktop</h2>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://blog.windanchaos.tech/2017/05/06/%E5%9F%BA%E4%BA%8Egit%20maven%20jenkins%E7%9A%84%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA%E5%8F%91%E5%B8%83%E7%B3%BB%E7%BB%9F%E4%B8%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="windanchaos">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇弦">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/05/06/%E5%9F%BA%E4%BA%8Egit%20maven%20jenkins%E7%9A%84%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA%E5%8F%91%E5%B8%83%E7%B3%BB%E7%BB%9F%E4%B8%89/" class="post-title-link" itemprop="url">基于git maven jenkins的自动构建发布系统三</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-05-06 18:22:56" itemprop="dateCreated datePublished" datetime="2017-05-06T18:22:56+08:00">2017-05-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-11-23 23:11:57" itemprop="dateModified" datetime="2019-11-23T23:11:57+08:00">2019-11-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/" itemprop="url" rel="index">
+                    <span itemprop="name">持续集成</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2017/05/06/%E5%9F%BA%E4%BA%8Egit%20maven%20jenkins%E7%9A%84%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA%E5%8F%91%E5%B8%83%E7%B3%BB%E7%BB%9F%E4%B8%89/" class="post-meta-item leancloud_visitors" data-flag-title="基于git maven jenkins的自动构建发布系统三" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2017/05/06/%E5%9F%BA%E4%BA%8Egit%20maven%20jenkins%E7%9A%84%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA%E5%8F%91%E5%B8%83%E7%B3%BB%E7%BB%9F%E4%B8%89/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2017/05/06/%E5%9F%BA%E4%BA%8Egit%20maven%20jenkins%E7%9A%84%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA%E5%8F%91%E5%B8%83%E7%B3%BB%E7%BB%9F%E4%B8%89/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>本人使用Linux的shell脚本对公司测试及生产代码的自动构建发布进行了开发工作，并实际运用到工作当中，显著提高了代码发布的效率，减少了人工发版出错的概率。但是，公司迭代速度非常快，开发进度十分聊得，敏捷的模式下，研发提交代码，再到发布到测试环境的频率很高，由于我负责维护和使用这套东西，在解决bug的过程中，个人的生产力大部分被发版占据。痛定思痛，本人打算将shell脚本升级到更加自动化的程度，解放我的生产力。这便引入了jenkins，强大的自动构建部署服务。<br>安装过程此处略过。<br>使用了jenkins的open blue ocean，学习了很久如何在pipline中使用groovy的脚本，并研读了官网教程，没有办法的是，所预想的脚本始终run不成功，基本都是语法错误,而且对于jenkinsFiles的语法，除了看到别人写的知道什么意思外，基本达成不了自己预期的。所以，退而其次，我把所有的功能都写到了shell脚本里，只借助jenkins去执行就好了。<br>参考jenkins的构建流程，shell脚本分为：</p>
+<p>使用jenkins新建了如下job:<br><img src="/images/dn.net-20170506175834112-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2luZGFuY2hhb3M=-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png" alt="这里写图片描述"></p>
+<p>其中，pull code的job每一个小时拉取代码一次，自动引发自动编译job（build auto），但不发布。也就是代码是自动拉取并编译的。</p>
+<p>pull code 的pipline script:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">node &#123;</span><br><span class="line">   def mvnHome</span><br><span class="line">   stage(<span class="string">'Preparation'</span>) &#123; <span class="comment">// for display purposes</span></span><br><span class="line">      <span class="comment">// Get some code from a Git repository</span></span><br><span class="line">      sh <span class="string">"~/ci/pull.sh"</span></span><br><span class="line"></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>pull.sh内容：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">githome=<span class="string">"/home/admin/gitCode/"</span></span><br><span class="line">#设置环境变量</span><br><span class="line">source /etc/profile</span><br><span class="line">cd $&#123;githome&#125;</span><br><span class="line">#git reset --hard HEAD^</span><br><span class="line">echo <span class="string">"git分支名称："</span>+<span class="string">`git status |awk '&#123;print $4&#125;' |head -1`</span></span><br><span class="line">echo <span class="string">"拉取当前分支代码"</span></span><br><span class="line">git pull origin <span class="string">`git status |awk '&#123;print $4&#125;'|head -1`</span></span><br></pre></td></tr></table></figure>
+
+<p>build auto 的pipline script:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">node &#123;</span><br><span class="line">   stage(<span class="string">'Build'</span>) &#123;</span><br><span class="line">      <span class="comment">// Run the maven build</span></span><br><span class="line">      <span class="keyword">if</span> (isUnix()) &#123;</span><br><span class="line">         sh <span class="string">"bash ~/ci/buildauto.sh"</span></span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">         println <span class="string">"OS is not linux"</span></span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>buildauto.sh内容：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">#auto build when the code update in 9 hour</span><br><span class="line">#created by bojiang@maike51.com</span><br><span class="line">source /etc/profile</span><br><span class="line">webents=(boy-aggregator boy-smart-webent boy-wm-msger boy-app-webent boy-job-webent boy-openApi boy-wm-webent boy-yum-webent boy-imgr-webent boy-uic-webent boy-qdragon-webent boy-sn-webent boy-intf-webent boy-kunlun-webent boy-imgr-rpc boy-yum-rpc boy-mdata-rpc boy-uic-rpc boy-sn-rpc)</span><br><span class="line"></span><br><span class="line">cd ~<span class="regexp">/gitCode</span></span><br><span class="line"><span class="regexp">history=`git log --since=9.hours -p . |grep diff |awk '&#123;print $4&#125;' |awk -F 'b/</span><span class="string">' '</span>&#123;print $<span class="number">2</span>&#125;<span class="string">'|sort -u|awk -F '</span>/<span class="string">' '</span>&#123;print $<span class="number">1</span>&#125;<span class="string">'|sort -u`</span></span><br><span class="line"><span class="string">arr=(`echo $history`)</span></span><br><span class="line"><span class="string">#get webent list first ,then build service before webents</span></span><br><span class="line"><span class="string">buildwebent=()</span></span><br><span class="line"><span class="string">for h in $&#123;arr[@]&#125;</span></span><br><span class="line"><span class="string">do</span></span><br><span class="line"><span class="string">    for webent in $&#123;webents[@]&#125;</span></span><br><span class="line"><span class="string">    do</span></span><br><span class="line"><span class="string">        if [ "$h" == "$webent"  ] ;then</span></span><br><span class="line"><span class="string">         buildwebent[$&#123;#buildwebent[@]&#125;]=$h</span></span><br><span class="line"><span class="string">        fi</span></span><br><span class="line"><span class="string">    done</span></span><br><span class="line"><span class="string">done</span></span><br><span class="line"><span class="string">#get service,by remove webent from history</span></span><br><span class="line"><span class="string">service=()</span></span><br><span class="line"><span class="string">i=0</span></span><br><span class="line"><span class="string">#Dynamic arr,longth needs get first</span></span><br><span class="line"><span class="string">longth=$&#123;#arr[@]&#125;</span></span><br><span class="line"><span class="string">while [ $i -lt $longth ]</span></span><br><span class="line"><span class="string">do</span></span><br><span class="line"><span class="string">    echo $i</span></span><br><span class="line"><span class="string">    echo $&#123;arr[$i]&#125;</span></span><br><span class="line"><span class="string">    for b in $&#123;buildwebent[@]&#125;</span></span><br><span class="line"><span class="string">    do</span></span><br><span class="line"><span class="string">        if [ "$&#123;arr[$i]&#125;" == "$b"  ] ;then</span></span><br><span class="line"><span class="string">           unset arr[$i]</span></span><br><span class="line"><span class="string">        fi</span></span><br><span class="line"><span class="string">    done</span></span><br><span class="line"><span class="string">    let i++</span></span><br><span class="line"><span class="string">done</span></span><br><span class="line"><span class="string">#service build first</span></span><br><span class="line"><span class="string">for s in $&#123;arr[@]&#125;</span></span><br><span class="line"><span class="string">do</span></span><br><span class="line"><span class="string">    if [ "$s" != "boy-dbscript-mysql" ] &amp;&amp; [ "$s" != "fontend-vue" ]  ;then</span></span><br><span class="line"><span class="string">        echo "build service $s"</span></span><br><span class="line"><span class="string">        cd $h &amp;&amp; mvn -q -ff clean install</span></span><br><span class="line"><span class="string">        cd ..</span></span><br><span class="line"><span class="string">    fi</span></span><br><span class="line"><span class="string">#vue if need </span></span><br><span class="line"><span class="string">for s in $&#123;arr[@]&#125;</span></span><br><span class="line"><span class="string">do</span></span><br><span class="line"><span class="string">    if [ "$s" == "fontend-vue" ]  ;then</span></span><br><span class="line"><span class="string">       bash "~/ci/vue.sh"</span></span><br><span class="line"><span class="string">    fi</span></span><br><span class="line"><span class="string">done</span></span><br></pre></td></tr></table></figure>
+
+<p>Buildauto脚本最大的难度是需要用脚本判断9小时内更新过的代码所属webent并对其进行编译，而且需要先编译依赖包，再编译webent。<br>下面介绍deployauto的job，周一到周五每天11：58和晚上１０：５８自动构建发布（只对更新过但未发不的进行更新）。集合了以上2个job的工作。但是会调用deployauto.sh的脚本执行发布到tomcat的工作。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">node &#123;</span><br><span class="line">    stage(<span class="string">'pull'</span>) &#123; <span class="comment">// for display purposes</span></span><br><span class="line">        sh <span class="string">"bash ~/ci/pull.sh"</span></span><br><span class="line">   &#125;</span><br><span class="line">   stage(<span class="string">'deploy'</span>) &#123; <span class="comment">// for display purposes</span></span><br><span class="line">        sh <span class="string">"bash ~/ci/deployauto.sh"</span></span><br><span class="line">   &#125;</span><br><span class="line">   stage(<span class="string">'restart'</span>)&#123;</span><br><span class="line">       sh <span class="string">"bash ~/ci/restarTom.sh"</span></span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>deployauto.sh的内容：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/bash</span></span><br><span class="line">githome=<span class="string">"/home/admin/gitCode/"</span></span><br><span class="line">sitesPath=<span class="string">"/arthas/sites/"</span></span><br><span class="line">DATE=$(date +%Y%m%d%H%M)</span><br><span class="line">softfile=<span class="string">"/home/admin/gitCode/"</span></span><br><span class="line">sitesbackup=<span class="string">"/home/admin/sitesbackup/"</span></span><br><span class="line">git_FE=<span class="string">"/home/admin/ArthasMK_FE"</span></span><br><span class="line">git_MK=<span class="string">"/home/admin/gitCode/boy-smart-webent/src/main/webapp/WEB-INF/views/"</span></span><br><span class="line"></span><br><span class="line">#设置环境变量</span><br><span class="line">source /etc/profile</span><br><span class="line">webents=(boy-aggregator boy-smart-webent boy-wm-msger boy-app-webent boy-job-webent boy-openApi boy-wm-webent boy-yum-webent boy-imgr-webent boy-uic-webent boy-qdragon-webent boy-sn-webent boy-intf-webent boy-kunlun-webent boy-imgr-rpc boy-yum-rpc boy-mdata-rpc boy-uic-rpc boy-sn-rpc)</span><br><span class="line">longth=$&#123;#webents[@]&#125;</span><br><span class="line">RPM=<span class="number">0</span></span><br><span class="line"></span><br><span class="line">#更新rpc</span><br><span class="line">longthpub=<span class="string">`expr $longth - 5`</span></span><br><span class="line">RPM=$longthpub</span><br><span class="line"><span class="keyword">while</span> [ $RPM -lt $longth ]  &amp;&amp; [ $? -eq <span class="number">0</span>  ]</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">        <span class="keyword">if</span> [ -f $softfile<span class="string">"$&#123;webents[$RPM]&#125;/target/$&#123;webents[$RPM]&#125;.jar"</span> ]; then</span><br><span class="line">                webentname=<span class="string">`echo <span class="subst">$&#123;webents[$RPM]&#125;</span>`</span></span><br><span class="line">                siteName=<span class="string">`echo <span class="subst">$&#123;webentname#*-&#125;</span>`</span></span><br><span class="line">        #判断是否存在webent，不存在则新建</span><br><span class="line">                <span class="keyword">if</span> [ ! -d  $sitesPath$&#123;siteName&#125;  ]; then</span><br><span class="line">                        echo <span class="string">"新建路径：$&#123;sitesPath&#125;$&#123;siteName&#125;"</span></span><br><span class="line">                        mkdir -p $sitesPath$&#123;siteName&#125;</span><br><span class="line">                        #echo $&#123;webents[$RPM]&#125;|awk -F '-' '&#123;print $2&#125;'</span><br><span class="line">                fi</span><br><span class="line">                #执行代码更新操作</span><br><span class="line">                echo <span class="string">"$siteName更新---------------------"</span></span><br><span class="line">                kill <span class="number">-9</span> $&#123;k&#125;<span class="string">`ps -fe |grep $siteName |awk '&#123;print $2&#125;'|head -2`</span></span><br><span class="line">                cd $sitesPath$&#123;siteName&#125; &amp;&amp; rm -fr <span class="string">`ls $sitesPath<span class="subst">$&#123;siteName&#125;</span>`</span> &amp;&amp; echo <span class="string">"删除完成！"</span></span><br><span class="line">                cp -r $softfile<span class="string">"$&#123;webents[$RPM]&#125;/target/lib"</span> $softfile<span class="string">"$&#123;webents[$RPM]&#125;/target/$&#123;webents[$RPM]&#125;.jar"</span>  $sitesPath$&#123;siteName&#125; &amp;&amp; echo <span class="string">"$siteName解压完成！"</span></span><br><span class="line">                nohup  java -Xms246m -Xmx500m -jar $&#123;webents[$RPM]&#125;.jar &gt; $&#123;webents[$RPM]&#125;<span class="string">".log"</span> &amp;</span><br><span class="line">                rm -fr $softfile<span class="string">"$&#123;webents[$RPM]&#125;/target"</span></span><br><span class="line">        fi</span><br><span class="line">        <span class="keyword">let</span> RPM++</span><br><span class="line">done</span><br><span class="line"></span><br><span class="line">#更新webent</span><br><span class="line">RPM=<span class="number">1</span></span><br><span class="line">longthpub=<span class="string">`expr $longth - 5`</span></span><br><span class="line"><span class="keyword">while</span> [ $RPM -lt $longthpub ]</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">        <span class="keyword">if</span> [ -f $softfile<span class="string">"$&#123;webents[$RPM]&#125;/target/$&#123;webents[$RPM]&#125;.war"</span> ]; then</span><br><span class="line">                siteName=<span class="string">`echo <span class="subst">$&#123;webents[$RPM]&#125;</span>|awk -F '-' '&#123;print $2&#125;'`</span></span><br><span class="line">                #判断是否存在webent，不存在则新建</span><br><span class="line">                <span class="keyword">if</span> [ ! -d  <span class="string">"$sitesPath$&#123;siteName&#125;/ROOT"</span>  ]; then</span><br><span class="line">                        echo <span class="string">"新建路径：$&#123;sitesPath&#125;$&#123;siteName&#125;/ROOT"</span></span><br><span class="line">                        mkdir -p <span class="string">"$&#123;sitesPath&#125;$&#123;siteName&#125;/ROOT"</span></span><br><span class="line">                        #echo $&#123;webents[$RPM]&#125;|awk -F '-' '&#123;print $2&#125;'</span><br><span class="line">                fi</span><br><span class="line">                #执行代码更新操作</span><br><span class="line">                echo <span class="string">"$siteName 更新---------------------"</span></span><br><span class="line">                cd $&#123;sitesPath&#125;$&#123;siteName&#125;<span class="string">"/ROOT"</span> &amp;&amp; rm -fr <span class="string">`ls -I shopInfo`</span> &amp;&amp; echo <span class="string">"删除完成！"</span></span><br><span class="line">                unzip -q $softfile<span class="string">"$&#123;webents[$RPM]&#125;/target/$&#123;webents[$RPM]&#125;.war"</span> -d $sitesPath$&#123;siteName&#125;<span class="string">"/ROOT"</span> &amp;&amp; echo <span class="string">"$siteName解压完成！"</span></span><br><span class="line">                rm -fr $softfile<span class="string">"$&#123;webents[$RPM]&#125;/target"</span></span><br><span class="line">        fi</span><br><span class="line">        <span class="keyword">let</span> RPM++</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<p>最后写了个手动发布的job，该job用来手动发版，工作和deployauto干的一样，但是可以提供给其他开发使用。<br>最后贴一张手动发布的效果图出来：<br><img src="/images/dn.net-20170506183004352-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2luZGFuY2hhb3M=-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png" alt="这里写图片描述"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://blog.windanchaos.tech/2017/04/25/%E6%88%91%E8%BF%99%E4%B8%80%E5%B9%B4%E7%9A%84%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E6%A6%82%E5%86%B5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="windanchaos">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇弦">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/04/25/%E6%88%91%E8%BF%99%E4%B8%80%E5%B9%B4%E7%9A%84%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E6%A6%82%E5%86%B5/" class="post-title-link" itemprop="url">我这一年的技术学习概况</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-04-25 23:37:16" itemprop="dateCreated datePublished" datetime="2017-04-25T23:37:16+08:00">2017-04-25</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-11-23 23:11:57" itemprop="dateModified" datetime="2019-11-23T23:11:57+08:00">2019-11-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B5%8B%E8%AF%95%E7%9A%84%E6%A1%86%E6%9E%B6%E5%92%8C%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index">
+                    <span itemprop="name">测试的框架和技术</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2017/04/25/%E6%88%91%E8%BF%99%E4%B8%80%E5%B9%B4%E7%9A%84%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E6%A6%82%E5%86%B5/" class="post-meta-item leancloud_visitors" data-flag-title="我这一年的技术学习概况" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2017/04/25/%E6%88%91%E8%BF%99%E4%B8%80%E5%B9%B4%E7%9A%84%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E6%A6%82%E5%86%B5/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2017/04/25/%E6%88%91%E8%BF%99%E4%B8%80%E5%B9%B4%E7%9A%84%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E6%A6%82%E5%86%B5/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>2016年上半年５月之前，准备中级软考，主考软件设计师，最后没有考过。考证的主要出发点是恶补下计算机基础，能过最好过不了也可以接受。<br>开始写技术日志是从２０１６年的７月，那段时间在学习java代码，曾尝试阅读公司商城的源代码，代码大而全，确实切入困难，尝试过了解spring的架构之类的，最后还是没有达到看源码的水平。用java写了个自动登录系统投票的小软件给未来丈母娘的一个活动定时自动投票，最后被人家发现了，加了IP限制，吼吼，最后排了个第二，排第一的那个增长其实我猜测也。<br>期间，公司发生变化，技术研发独立出来成立新公司。由于个人的努力，慢慢掌管了公司的发版工作，无论是生产环境还是测试环境。于是做了些设计，比如自动发版、使用jenkins自动发版、提供出一个网页让任何一个人可以简单培训后执行发版工作。为此专门业余（只能晚上自己弄，上班正常的测试工作多，忙得很），大概如下：<br>学习了shell基础，这个东东实践了，使公司日常测试代码和生产发版都可以自动脚本化。<br>学习了python的djongo框架（选python是因为，脚本语言来得快,java看不到成果灰心了），基于这个架构整了个简单的，读取ｇｉｔ日志到数据库的代码，用了pygit，这一套东西最初的目的是方便测试在网页上查看提交历史，甚至可以查询修改影响的文件有哪些，从而让测试从源头上遏制代码的影响。但设想归设想，我做的还是简单粗陋，仅达到了设想的第一步，第二步没有走，第三步就更不用说了，这个demo练了手，没有用起来，对djongo的三个层次（model\view\urls）有了个大概了解。<br>研究学习了jenkins的安装和使用，部署很简单，但是它插件太多，我竟不知所措，没有详细研究在项目中使用。另一个原因是测试服务器资源太紧，哎，私下研究，搞慢了怕被批。<br>研究学习了一段时间Docker容器技术。可以自己写dockerfile生成，了解了docker的一些基本原理，image和容器的关系之类的。目的是想通过docker来改造下测试环境上多个ｗebent部署到一个tomcat，修改一个要重启半天的问题。最后，无疾而终，现在想来，主要还是测试环境发版频率很高，生成docker镜像速度并不见得快，当然另一个原因还是我没有搞明白docker容器之间的通信，以及多个webent（支付、鉴权、api等）强依赖８0端口，怎么解决８０端口的问题。<br>由于负责发版，所以很顺利的我必须了解git如何使用及管理。所以顺带了把git恶补了下。什么分支、本地代码库、远程代码库、版本号、commit、add、push、fetch巴拉的，可以说有的研发同学也没有我懂git，因为我操作代码是在服务器上，完全使用命令。如果出现问题，代码库里谁干了坏事一目了然，感觉飞起来了一样，质量把控精准到代码行。当然插一句，每次发版有很多hotfix要我手动往生产提，提之前自己要简单测试下，这些比较低端繁琐的工作，还是影响了我的生产效率。出现这种情况，主要还是我们测试这边并没有很好的模拟生产环境，当然我的搭档纯功能测试，leader给她定义的是管理，我则是偏技术的测试，人少活急，敏捷开发嘛，容错改错是常情。<br>这期间，我还煞有介事的研究过facebook的一个开源工具infer，木有写日志。不过我是真真切切的感受到了大中华的围墙的威力，为了安装infer，我在家里的电脑上搞了差不多一周，每次装到一半就不动，哎ＴＭＤ，我是爱普老用户。。。最终安装好了，run了代码库，记得最后的结果里２０多处可能出现空指针的地方，我逐条给代码生产者提bug，当时心理那个高兴劲儿，现在都忘不了，新技术新工具，发现异常潜在风险，心里都了开花了，哎，可惜，仅一条被接受，其他的基本上是“代码确实会出空指针，但是业务逻辑走不到那去”。俺看不懂他们的代码，更谈不上在业务基础上去看java代码，所以我毫无辩解或者有起码的跟他们讨论代码的能力，这辛苦也就算东流了。但是，为了安装infer，我接触了dokcer，虽然最后木有用，但也木有坏处。倒是把我引到了新技术上。要在我的ubuntu上装infer，解决各种依赖，最后还是解决了。<br>然后，随着系统主干功能趋于稳定，我认为合适引入UI自动测试了，主要是每次发版，２个手去回归，总是有遗漏，另一个人之常情的是老功能，回归的时候思想上难免懈怠（测试了无数回，以前是好的，现在也假设是它是好的，难免会疏漏）。然后我就着手用python的splinter来搞UI自动测试了。还真别说，顺带把python的基础教程，语法之类的全部看完。这里要换行，强调下我是多么的能学。<br>splinter有github的源代码，api就那么多，用起来确实爽。python脚本语言出东西就是快，我很快就把公司发布商品的功能自动化了。还顺带写了写常用的工具和方法，什么特殊字符串、随机选图啊、随机数、随机字符串啊之类。写这个功能的时候没有使用脚本录制，完全纯手工，突破很多技术难题（主要是界面动态元素、元素不可见之类的），顺带看了点jquery的语法，又把html/css的基础看了一遍。<br>在演习python过程中，内心一直按耐不住用程序去识别股票的想法。于是，很顺利的，借着一边学习python一边学习“宽客”技术的理念，开始研究股票的一些开源api，还把api读取到的数据写入到了本地数据库，本来打算自己从数据库里读数据，但果断放弃了，因为过程中发现摆在我面前的是无数个python库。了解了python中的dataFrame这个东西的一些使用方法，看完了聚宽网上面的api，然后自己在上面了几个策略，然后就是测试自己的策略，第一个策略是多头回调，买二股，最终复测10年的上证，年化收益18%，还不错。写第二次策略，希望结合多头选股和rsi来操作股票，最终测试不是很合理。然后，顺带看了些机器学习的东西，浅尝。还看了一本python和数学计算有关的书，大致了解并未深入，只需要知道有那么个东西，需要的是再查。<br>最后，UI的测试case要管理起来，我发现python的unittest，不能在case和case之间传递公共变量，也就是我一个case要登陆一遍后台，要重新拉取一次页面，这效率我还是挺难接受的，在没有知道很好的解决办法之后，我相信肯定有，只不过我还没有发现。我在网上看有人自定义了firefox的webdriver，但是是java的，然后我就去看看……发现selenium对java支持的历史好早。。。然后我就转java去了，搞了一周，我设想的搞出来了。登陆-发布商品等操作不同case之间，一个driver搞定，目前感情出了点情况，没有推动下去，不过会推动的。<br>我还学了基本的mysql语法，日常测试为了制作测试数据还会用到。增删改查，都很简单，这里还需要深化点。发版对数据库操作也是我负责，研发提交的脚本，我基本可以帮他们修改到可以run。但是呢，让我写估计速度会慢点。<br>其他测试相关的，有很多小的技术累计。质量把关等，就不总结了，技术日志都记录有。<br>反观这一年，基本大部分的时候都在晚上学，LOL基本放弃。坚持在ubuntu环境下学习，还是有点收获，好歹是一种奋进的姿态。不过自我感觉进步并不明显，我现在希望更多的工作是编码，因为潜意识里我认为功能测试，是拿不多高薪水的。我们来看看，牛逼测试的技术要求：<br>工作职责：</p>
+<p>1.搭建、维护、改进测试系统环境；<br>2.使用类似Robot Framework工具搭建自动化测试系统环境；<br>3.编写系统集成系统测试计划、方案及执行；<br>4.编写、维护测试报告及评估测试工作进度和计划；<br>5.配合程序员对bug的复现和追踪，研究新的测试方法；<br>6.指导初级测试人员进行技术指导与培训；</p>
+<p>任职资格：<br>7.本科及以上学历，计算机、软件、电子信息等相关专业；<br>8.具有5年以上软件测试工作经历，熟悉软件测试理论，测试流程，能够根据需求文档编写测试用例，形成测试报告；<br>9.具有运用编程语言（比如Python）进行自动化测试系统开发经验；<br>10.熟悉Windows/Linux系统 ，具有数据库脚本使用经验（MSSQL, MYSQL）；<br>11.熟悉性能测试，能够使用loadrunner、Jmeter等性能工具；</p>
+<p>所以呢，这一年多的技术学习，真正那得到台面上的是我在Linux环境下搞的自动发版，因为它动了真格。其他相关的，都是散打。下一步重点培养：mysql方面、继续把UI自动化的设想变成现实，留意平台性能测试。我以前面过这个公司，那时候想找个研发测试类初级点的，跟人聊说起来我学过，但是一问呢都是学过，人家根本不care你学过，人家要听你真的做过，做的细节，咋解决的，你做过他们才觉得你配，学过算不上。哎，当然本身我能力还可以，不过呢，不太会口述，口述100分的出来可能人家就给你70了，当然我做过售前的，文字描述那还是很厉害的。。。</p>
+<p>最后作为一个测试，我并不认为应该局限于测试领域内，因为，人的价值并不是而且不应该被他职位所限定，自己可以发现自己对组织有价值的点，然后做出成绩，就像发版和代码库的管理在大多数组织里不一定是测试负责，但是在我们公司是测试在负责，因为开始是低端的手动发，研发不愿做，然后我想学东西，我愿意做，然后发现了可以提高效率的方法，然后就深入做，而且我也做得很好，毕竟只要是生产发版，我几乎可以掌控全局，吼吼，这个还有提升的空间，比如持续集成概念引入后又是一番景象了。<br>总结到此，终。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://blog.windanchaos.tech/2017/04/18/eclipse%20class%20file%20editor%20source%20not%20found/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="windanchaos">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇弦">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/04/18/eclipse%20class%20file%20editor%20source%20not%20found/" class="post-title-link" itemprop="url">eclipse class file editor source not found</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-04-18 16:11:28" itemprop="dateCreated datePublished" datetime="2017-04-18T16:11:28+08:00">2017-04-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-11-23 23:11:57" itemprop="dateModified" datetime="2019-11-23T23:11:57+08:00">2019-11-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index">
+                    <span itemprop="name">Java编程语言</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2017/04/18/eclipse%20class%20file%20editor%20source%20not%20found/" class="post-meta-item leancloud_visitors" data-flag-title="eclipse class file editor source not found" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2017/04/18/eclipse%20class%20file%20editor%20source%20not%20found/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2017/04/18/eclipse%20class%20file%20editor%20source%20not%20found/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>使用maven构建的依赖库，selenium 要查看源代码，提示source not found。主要是因为maven下依赖库的时候，没有下载源代码，class无法解析出来。<br>直接右击项目，选择run as —》 maven Build，在Goals中输入：dependency:sources<br><img src="/images/dn.net-20170418160512924-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2luZGFuY2hhb3M=-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png" alt="这里写图片描述"><br>然后就自动下载库对应的源代码~~完美解决！</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://blog.windanchaos.tech/2017/04/17/Selenium%20Webdriver%E9%87%8D%E6%96%B0%E4%BD%BF%E7%94%A8%E5%B7%B2%E6%89%93%E5%BC%80%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AE%9E%E4%BE%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="windanchaos">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇弦">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/04/17/Selenium%20Webdriver%E9%87%8D%E6%96%B0%E4%BD%BF%E7%94%A8%E5%B7%B2%E6%89%93%E5%BC%80%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AE%9E%E4%BE%8B/" class="post-title-link" itemprop="url">Selenium Webdriver重新使用已打开的浏览器实例</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-04-17 18:26:26" itemprop="dateCreated datePublished" datetime="2017-04-17T18:26:26+08:00">2017-04-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-11-23 23:11:57" itemprop="dateModified" datetime="2019-11-23T23:11:57+08:00">2019-11-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index">
+                    <span itemprop="name">自动化测试</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2017/04/17/Selenium%20Webdriver%E9%87%8D%E6%96%B0%E4%BD%BF%E7%94%A8%E5%B7%B2%E6%89%93%E5%BC%80%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AE%9E%E4%BE%8B/" class="post-meta-item leancloud_visitors" data-flag-title="Selenium Webdriver重新使用已打开的浏览器实例" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2017/04/17/Selenium%20Webdriver%E9%87%8D%E6%96%B0%E4%BD%BF%E7%94%A8%E5%B7%B2%E6%89%93%E5%BC%80%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AE%9E%E4%BE%8B/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2017/04/17/Selenium%20Webdriver%E9%87%8D%E6%96%B0%E4%BD%BF%E7%94%A8%E5%B7%B2%E6%89%93%E5%BC%80%E7%9A%84%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AE%9E%E4%BE%8B/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>本文转自：<a href="http://blog.csdn.net/wwwqjpcom/article/details/51232302" target="_blank" rel="noopener">http://blog.csdn.net/wwwqjpcom/article/details/51232302</a><br>本文中的样例均使用SoapUI ，关于SoapUI+Webdriver 的配置，请看上一篇：<br><a href="http://blog.csdn.net/wwwqjpcom/article/details/51174664" target="_blank" rel="noopener"></a><a href="http://blog.csdn.net/wwwqjpcom/article/details/51174664" target="_blank" rel="noopener">http://blog.csdn.net/wwwqjpcom/article/details/51174664</a></p>
+<p>我弄这个的本意是为了在SoapUI中更好地编写自动化用例，因为我的业务流程有的很长，有7-8个页面。<br>我想把代码不集中在一个Groovy 脚本里，想在第二个脚本中继续使用第一个脚本中打开的浏览器。这样便于<br>维护和定位问题。<br>也还有一种情况是我打开了浏览器，，操作了系统到某一个界面后，我写了这个页面的<a href="http://lib.csdn.net/base/softwaretest" target="_blank" rel="noopener" title="软件测试知识库">测试</a>脚本，使用已<br>打开的浏览器我立刻就可以单独对这个页面进行测试，测试我写的代码是否OK 。不通过就人工操作复位页面，<br>修改代码后再次测试，不用每次测试代码是否可行都从头打卡浏览器，登录系统，重新操作了。可以实现分步<br>单页面调试自动化脚本。</p>
+<p>首先，来简单看一下Selenium Webdriver如何工作的。<br>（1）Selenium代码调用API实际上根据 The WebDriver Wire Protocol 发送不同的Http Request 到 WebdriverServer。<br>IE 是 IEDriverServer.exe<br>Chrome是ChromerDriver，下载地址： <a href="https://sites.google.com/a/chromium.org/chromedriver/downloads" target="_blank" rel="noopener">https://sites.google.com/a/chromium.org/chromedriver/downloads</a><br>Firefox是以插件的形式，直接在selenium-server-standalone-XXX.jar里了：<br>webdriver.xpi （selenium-server-standalone-2.48.2.jar中/org/openqa/selenium/firefox/目录下）</p>
+<p>new FirefoxDriver()时，启动Firefox浏览器时，带此插件一起启动，然后插件会默认监听7055端口，7055被占用就使用下一个端口。如下图所示。<br><img src="/images/dn.net-20160424100800878.png" alt="这里写图片描述"><br>同一台机器上可以同时启动多个FirefoxDriver实例，每个实例占用不同的端口号。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">The WebDriver Wire Protocol 协议的具体内容请看：https:<span class="comment">//code.google.com/p/selenium/wiki/JsonWireProtocol#Introduction。  这个协议现在正在被W3C标准化，W3C Webdriver，两者基本一样。  </span></span><br><span class="line">W3C Webdriver标准协议内容：http:<span class="comment">//www.w3.org/TR/webdriver/</span></span><br></pre></td></tr></table></figure>
+
+<p>（2）WebdriverServer接收到Http Request之后，根据不同的命令在<a href="http://lib.csdn.net/base/operatingsystem" target="_blank" rel="noopener" title="操作系统知识库">操作系统</a>层面去触发浏览器的”native事件“，<br>模拟操作浏览器。WebdriverServer将操作结果Http Response返回给代码调用的客户端。</p>
+<p>为了更清晰直观地看到这个是如何运转的，我们来在使用OWASP ZAP做代理，截获Http Request和Response来看一下。<br>首先安装OWASP ZAP或其他有代理功能的工具，设置SoapUI Proxy，如ZAP默认使用8080端口，则SoapUI配置如下：<br><img src="/images/dn.net-20160424100954806.png" alt="这里写图片描述"><br>配置完SoapUI端口后，好像需要重启SoapUI，然后在SoapUI 的自动化测试代码中，代理才能正常工作。</p>
+<p>重新跑前一节FirefoxDriver的代码，查看截获的请求和响应。如下图所示：<br><img src="/images/dn.net-20160424101223635.png" alt="这里写图片描述"><br><img src="/images/dn.net-20160424101313041.png" alt="这里写图片描述"><br>可以清楚地看到代码与DriverServer之间是如何根据WebDriver协议连通的。<br>WebDriver协议是RESTful风格的。</p>
+<p><strong>回到我们的主题：Webdriver重新使用已打开的浏览器实例。</strong><br>Webdriver实例都将重新打开一个浏览器，新建一个Session。Selenium并没有接口或方法可以使用已有Session。<br>如果在一个测试用例中不将浏览器退出关闭，想要在另一个新的测试用例中使用已打开的浏览器的话，怎么办？<br>Selenium Webdriver本省并没有这种接口。本人自己实现了一个基于FirefoxDriver的，因为我基本只用Firefox，<br>IE 什么的，没需求，没动力啊，但是大概原理应该类似，差不多。</p>
+<p>FirefoxDriver是主要是由startClient()和startSession()完成初始化。startClient()中打开浏览器，设置执行器HttpCommandExecutor。<br>StartSession执行New Session指令，获取SessionID，并根据响应，设置capabilities。<br>具体有兴趣的可以自己下载源代码，自己看。</p>
+<p>根据上文，Webdriver 想要执行命令，需要<strong>1：WebdriverServer的地址 2：一个可用的SessionID</strong> 。<br>写一个自己的WebDriver类来new一个Webdriver。</p>
+<p>因此需要在一个用例中保存WebdriverServer的地址和SessionID ,最后不退出关闭浏览器。<br>另一个用例中使用保存的参数，完成Webdriver的实例化。<br>代码就不贴在文章里了：源代码及jar包下载地址：<br><a href="http://download.csdn.net/detail/wwwqjpcom/9500777" target="_blank" rel="noopener">http://download.csdn.net/detail/wwwqjpcom/9500777</a></p>
+<p>其中的初始化代码如下（需要两个参数 Webdriver 的地址和SessionID）：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public myFirefoxDriver(<span class="built_in">String</span> localserver,<span class="built_in">String</span> sessionID)&#123;</span><br><span class="line"></span><br><span class="line">        mystartClient(localserver);</span><br><span class="line">        mystartSession(sessionID);</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>代码例子：<br><strong>测试用例1中打开浏览器，但是不退出关闭浏览器：</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> org.openqa.selenium.By</span><br><span class="line"><span class="keyword">import</span> org.openqa.selenium.WebDriver</span><br><span class="line"><span class="keyword">import</span> org.openqa.selenium.WebElement</span><br><span class="line"><span class="keyword">import</span> org.openqa.selenium.firefox.FirefoxDriver</span><br><span class="line"><span class="keyword">import</span> org.openqa.selenium.support.ui.ExpectedCondition</span><br><span class="line"><span class="keyword">import</span> org.openqa.selenium.support.ui.WebDriverWait</span><br><span class="line"><span class="keyword">import</span> org.openqa.selenium.OutputType</span><br><span class="line"><span class="keyword">import</span> org.apache.commons.io.FileUtils</span><br><span class="line"><span class="keyword">import</span> org.openqa.selenium.Keys</span><br><span class="line"></span><br><span class="line">WebDriver driver = <span class="keyword">new</span> FirefoxDriver()   </span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span></span><br><span class="line">&#123;</span><br><span class="line">driver.get(<span class="string">"https://learnsoapui.wordpress.com"</span>) <span class="comment">// Url to be opened</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//下面两行将所需的地址和SessionID 保存起来。样例因为是在SoapUI中的两个Step，所以保存为了SoapUI中  </span></span><br><span class="line"><span class="comment">//用例级别的属性，具体请根据自己的使用环境保存为系统参数或其他地方</span></span><br><span class="line">testRunner.testCase.setPropertyValue( <span class="string">"DriverServer"</span>, driver.getCommandExecutor().getAddressOfRemoteServer().toString() )</span><br><span class="line">testRunner.testCase.setPropertyValue( <span class="string">"CaseSession"</span>, driver.getSessionId().toString() )</span><br><span class="line">log.info driver.getSessionId().toString()</span><br><span class="line"></span><br><span class="line"> WebElement element = driver.findElement(By.id(<span class="string">"s"</span>))</span><br><span class="line"> element.sendKeys(<span class="string">"Assertion"</span>)</span><br><span class="line"></span><br><span class="line"> File f1 = driver.getScreenshotAs(OutputType.FILE)</span><br><span class="line"> FileUtils.copyFile(f1, <span class="keyword">new</span> File(<span class="string">"c:\\screenshot1.png"</span>)); <span class="comment">// Location to save screenshot</span></span><br><span class="line"></span><br><span class="line"> element.submit()</span><br><span class="line"></span><br><span class="line"> driver.getKeyboard ().pressKey (Keys.DOWN)</span><br><span class="line"> driver.getKeyboard ().pressKey (Keys.DOWN)</span><br><span class="line"> driver.getKeyboard ().pressKey (Keys.DOWN)</span><br><span class="line"> driver.getKeyboard ().pressKey (Keys.UP)</span><br><span class="line"> driver.getKeyboard ().pressKey (Keys.UP)</span><br><span class="line"> driver.getKeyboard ().pressKey (Keys.UP)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">catch</span>(Exception e)</span><br><span class="line">&#123;</span><br><span class="line">log.info <span class="string">"Exception encountered : "</span> + e.message</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>测试用例2中继续使用1中已打开的浏览器：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> webtest.myFirefoxDriver;</span><br><span class="line"><span class="keyword">import</span> org.openqa.selenium.By</span><br><span class="line"><span class="keyword">import</span> org.openqa.selenium.WebDriver</span><br><span class="line"><span class="keyword">import</span> org.openqa.selenium.WebElement</span><br><span class="line"><span class="keyword">import</span> org.openqa.selenium.firefox.FirefoxDriver</span><br><span class="line"><span class="keyword">import</span> org.openqa.selenium.JavascriptExecutor</span><br><span class="line"></span><br><span class="line"><span class="comment">//下面三行，取出保存的可用的浏览器的Webdriver Server的地址和SessionID，new一个Webdriver。</span></span><br><span class="line">def driverserver = testRunner.testCase.getPropertyValue( <span class="string">"DriverServer"</span> )</span><br><span class="line">def caseSession = testRunner.testCase.getPropertyValue( <span class="string">"CaseSession"</span> )</span><br><span class="line">WebDriver driver = <span class="keyword">new</span> myFirefoxDriver(driverserver,caseSession)</span><br><span class="line"></span><br><span class="line">log.info (driver.getCommandExecutor().getAddressOfRemoteServer())</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span></span><br><span class="line">&#123;</span><br><span class="line">driver.findElement(By.linkText(<span class="string">"Home"</span>)).click()<span class="comment">// Url to be opened</span></span><br><span class="line">driver.findElement(By.linkText(<span class="string">"About Author"</span>)).click()<span class="comment">// Url to be opened</span></span><br><span class="line"> log.info driver.getSessionId().toString()</span><br><span class="line"> log.info driver.getCapabilities()</span><br><span class="line"></span><br><span class="line">((JavascriptExecutor)driver).executeScript(<span class="string">"alert(\"hello,this is a alert!\")"</span>);</span><br><span class="line"> <span class="comment">//driver.quit()</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">catch</span>(Exception e)</span><br><span class="line">&#123;</span><br><span class="line">log.info <span class="string">"Exception encountered : "</span> + e.message</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><img src="/images/dn.net-20160424110409828.png" alt="这里写图片描述"><br>注意代码中的文字注释下方部分，1中要将WebdriverServer的地址和SessionID 保存起来，<br>2中使用1中保存的参数，用实现的自己的myFirefoxDriver来初始化driver。<br>（此处感谢<a href="https://learnsoapui.wordpress.com/" target="_blank" rel="noopener">https://learnsoapui.wordpress.com/</a> ， 我最初研究在SoapUI中使用Selenium<br>Webdriver看了这个，虽然感觉他讲的也是不明不白的 ，但是给了我启发）。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">注：（<span class="number">1</span>）webtest01.jar是我在Selenium <span class="number">2.48</span><span class="number">.2</span>版本的代码下编译的，本人只配合用过Selenium <span class="number">2.48</span><span class="number">.2</span> </span><br><span class="line">       和Selenium <span class="number">2.53</span><span class="number">.0</span>这两个版本可用，其他的Selenium版本我是没试过的，说不定老版本不支持的。） </span><br><span class="line">   （<span class="number">2</span>）实际中myFirefoxDriver不仅可以在本地用，用来RemoteWebdriver远程调用也是可以用的，即打开 </span><br><span class="line">       RemoteWebdriver，然后用myFirefoxDriver来继续使用远程的那个已打开的浏览器实例，反正是只需要那两 </span><br><span class="line">       个参数就可以，反正我自己用的时候这种情况也是是可以用的。仅供参考，不提供技术支持，呃，后果自负哦。</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">            $(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                $(<span class="string">'pre.prettyprint code'</span>).each(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                    <span class="keyword">var</span> lines = $(<span class="keyword">this</span>).text().split(<span class="string">'\n'</span>).length;</span><br><span class="line">                    <span class="keyword">var</span> $numbering = $(<span class="string">'&lt;ul&gt;&lt;/ul&gt;'</span>).addClass(<span class="string">'pre-numbering'</span>).hide();</span><br><span class="line">                    $(<span class="keyword">this</span>).addClass(<span class="string">'has-numbering'</span>).parent().append($numbering);</span><br><span class="line">                    <span class="keyword">for</span> (i = <span class="number">1</span>; i &lt;= lines; i++) &#123;</span><br><span class="line">                        $numbering.append($(<span class="string">'&lt;li&gt;&lt;/li&gt;'</span>).text(i));</span><br><span class="line">                    &#125;;</span><br><span class="line">                    $numbering.fadeIn(<span class="number">1700</span>);</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;);</span><br><span class="line">        &lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://blog.windanchaos.tech/2017/04/17/Appium%20%E5%BE%AE%E4%BF%A1%20webview%20%E7%9A%84%E8%87%AA%E5%8A%A8%E5%8C%96%E6%8A%80%E6%9C%AF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="windanchaos">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇弦">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/04/17/Appium%20%E5%BE%AE%E4%BF%A1%20webview%20%E7%9A%84%E8%87%AA%E5%8A%A8%E5%8C%96%E6%8A%80%E6%9C%AF/" class="post-title-link" itemprop="url">Appium 微信 webview 的自动化技术</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-04-17 14:06:33" itemprop="dateCreated datePublished" datetime="2017-04-17T14:06:33+08:00">2017-04-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-11-23 23:11:57" itemprop="dateModified" datetime="2019-11-23T23:11:57+08:00">2019-11-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index">
+                    <span itemprop="name">自动化测试</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2017/04/17/Appium%20%E5%BE%AE%E4%BF%A1%20webview%20%E7%9A%84%E8%87%AA%E5%8A%A8%E5%8C%96%E6%8A%80%E6%9C%AF/" class="post-meta-item leancloud_visitors" data-flag-title="Appium 微信 webview 的自动化技术" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2017/04/17/Appium%20%E5%BE%AE%E4%BF%A1%20webview%20%E7%9A%84%E8%87%AA%E5%8A%A8%E5%8C%96%E6%8A%80%E6%9C%AF/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2017/04/17/Appium%20%E5%BE%AE%E4%BF%A1%20webview%20%E7%9A%84%E8%87%AA%E5%8A%A8%E5%8C%96%E6%8A%80%E6%9C%AF/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>目录 </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;blockquote&gt;</span><br></pre></td></tr></table></figure>
+
+<p>最近好多人问微信webview自动化的事情, 碰巧我也在追微信webview的自动化和性能分析方法.<br>先发出来一点我的进展给大家参考下. 此方法用于android平台, iOS请自行解决</p>
+<h2 id="微信的设置"><a href="#微信的设置" class="headerlink" title="微信的设置"></a>微信的设置</h2><p>用微信打开debugx5.qq.com, 这是个微信的x5内核调试页面. 你可以在任何聊天窗口内输入这个网址. 并打开它.<br>勾选”是否打开TBS内核Inspector调试功能”<br><a href="https://testerhome.com/uploads/photo/2016/63f8f2bbae83af9e4894c308ddc01a45.png" target="_blank" rel="noopener"></a><br><img src="/images/com-uploads-photo-2016-63f8f2bbae83af9e4894c308ddc01a45-.png" alt=""></p>
+<h2 id="使用ChromeDriver编写测试用例"><a href="#使用ChromeDriver编写测试用例" class="headerlink" title="使用ChromeDriver编写测试用例"></a>使用ChromeDriver编写测试用例</h2><p>首先安装ChromeDriver<br>从官方下载或者从你的appium的安装路径里面找chromedriver. 在appium的执行日志里面其实也会打印chromedriver的路径的<br>然后在电脑上启动它, 设置好端口</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chromedriver --url-base=wd/hub --port=<span class="number">8000</span></span><br></pre></td></tr></table></figure>
+
+<p>可以使用selenium或者appium的客户端去编写测试用例.<br>如下是我的scalatest的测试用例. 大家可以自己用其他的语言实现</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">test(<span class="string">"test chromedriver weixin"</span>) &#123;</span><br><span class="line">  val options = <span class="keyword">new</span> ChromeOptions()</span><br><span class="line">  options.setExperimentalOption(<span class="string">"androidPackage"</span>, <span class="string">"com.tencent.mm"</span>)</span><br><span class="line">  options.setExperimentalOption(<span class="string">"androidUseRunningApp"</span>, <span class="literal">true</span>)</span><br><span class="line">  options.setExperimentalOption(<span class="string">"androidActivity"</span>, <span class="string">".plugin.webview.ui.tools.WebViewUI"</span>)</span><br><span class="line">  options.setExperimentalOption(<span class="string">"androidProcess"</span>, <span class="string">"com.tencent.mm:tools"</span>)</span><br><span class="line">  val capability = DesiredCapabilities.chrome()</span><br><span class="line">  capability.setCapability(ChromeOptions.CAPABILITY, options)</span><br><span class="line">  val url = <span class="string">"http://127.0.0.1:8000/wd/hub"</span></span><br><span class="line">  val driver = <span class="keyword">new</span> AndroidDriver[WebElement](<span class="keyword">new</span> URL(url), capability)</span><br><span class="line">  driver.get(<span class="string">"https://testerhome.com/topics/6954"</span>)</span><br><span class="line">  println(driver.getPageSource)</span><br><span class="line">  driver.quit()</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用appium编写测试用例"><a href="#使用appium编写测试用例" class="headerlink" title="使用appium编写测试用例"></a>使用appium编写测试用例</h2><p>有人会经常问为什么android上appium不能自动化微信webview, 其实是可以的. 主要是目前的appium有个bug导致的.<br>在appium中context的切换时, 没有带上一个关键的androidProcess配置导致的.<br>他会导致appium识别webview的时候, 把com.tencent.mm:tools的webview识别成com.tencent.mm的webview. 从而导致context切换失败.</p>
+<p>正确的用appium测试微信h5的方法如下</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">test(<span class="string">"test weixin h5"</span>) &#123;</span><br><span class="line">  val capability = <span class="keyword">new</span> DesiredCapabilities()</span><br><span class="line">  capability.setCapability(<span class="string">"app"</span>, <span class="string">""</span>)</span><br><span class="line">  capability.setCapability(<span class="string">"appPackage"</span>, <span class="string">"com.tencent.mm"</span>)</span><br><span class="line">  capability.setCapability(<span class="string">"appActivity"</span>, <span class="string">".ui.LauncherUI"</span>)</span><br><span class="line">  capability.setCapability(<span class="string">"deviceName"</span>, <span class="string">"emulator-5554"</span>)</span><br><span class="line">  capability.setCapability(<span class="string">"fastReset"</span>, <span class="string">"false"</span>)</span><br><span class="line">  capability.setCapability(<span class="string">"fullReset"</span>, <span class="string">"false"</span>)</span><br><span class="line">  capability.setCapability(<span class="string">"noReset"</span>, <span class="string">"true"</span>)</span><br><span class="line">  <span class="comment">//capability.setCapability("unicodeKeyboard", "true")</span></span><br><span class="line">  <span class="comment">//capability.setCapability("resetKeyboard", "true")</span></span><br><span class="line"></span><br><span class="line">  <span class="comment">//关键是加上这段</span></span><br><span class="line">  val options = <span class="keyword">new</span> ChromeOptions()</span><br><span class="line">  options.setExperimentalOption(<span class="string">"androidProcess"</span>, <span class="string">"com.tencent.mm:tools"</span>)</span><br><span class="line">  capability.setCapability(ChromeOptions.CAPABILITY, options)</span><br><span class="line"></span><br><span class="line">  val url = <span class="string">"http://127.0.0.1:4723/wd/hub"</span></span><br><span class="line">  val driver = <span class="keyword">new</span> AndroidDriver[WebElement](<span class="keyword">new</span> URL(url), capability)</span><br><span class="line">  println(driver.getPageSource)</span><br><span class="line">  driver.findElementByXPath(<span class="string">"//*[@text='我']"</span>).click</span><br><span class="line">  driver.findElementByXPath(<span class="string">"//*[@text='收藏']"</span>).click</span><br><span class="line">  driver.findElementByXPath(<span class="string">"//*[contains(@text, '美团外卖')]"</span>).click</span><br><span class="line">  println(driver.getPageSource)</span><br><span class="line">  println(driver.getContextHandles)</span><br><span class="line">  driver.context(<span class="string">"WEBVIEW_com.tencent.mm:tools"</span>)</span><br><span class="line">  println(driver.getPageSource)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>最关键的就是这句</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">val options = <span class="keyword">new</span> ChromeOptions()</span><br><span class="line">options.setExperimentalOption(<span class="string">"androidProcess"</span>, <span class="string">"com.tencent.mm:tools"</span>)</span><br><span class="line">capability.setCapability(ChromeOptions.CAPABILITY, options)</span><br></pre></td></tr></table></figure>
+
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>之前测试加上ChromeOptions配置的时候没有成功, 我以为是appium不支持ChromeOptions, 就给appium-android-driver提交了一个PR<br>后来jlipps提醒了我一下<br><a href="https://testerhome.com/uploads/photo/2017/01a3284a711aa6e67bfafe26ab3934c0.png" target="_blank" rel="noopener"></a><br><img src="/images/com--uploads-photo-2017-01a3284a711aa6e67bfafe26ab3934c0-.png" alt=""></p>
+<p>我就又追查了几遍, 最后发现是我本地安装appium时候加上的http_proxy环境变量干扰了ChromeDriver的执行.<br>Appium其实是支持ChromeOptions的</p>
+<p><strong>结论也就是现在的Appium其实是可以完美的做微信自动化的</strong></p>
+<p>我在想我是不是国内第一个提供微信webview自动化方法的人<br>借鉴此思路的同学转发请注明原链. <a href="https://testerhome.com/topics/6954" target="_blank" rel="noopener">https://testerhome.com/topics/6954</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+  </div>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/5/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/7/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="windanchaos"
+    src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">windanchaos</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">96</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/windanchaos" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/windanchaos" title="Gitee &amp;rarr; https:&#x2F;&#x2F;gitee.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="fa fa-fw fa-gitee"></i>Gitee</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/mailto:454722630@qq.com" title="E-Mail &amp;rarr; mailto:454722630@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/windanchaos" title="Weibo &amp;rarr; https:&#x2F;&#x2F;weibo.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/windanchaos" title="CSDN &amp;rarr; https:&#x2F;&#x2F;blog.csdn.net&#x2F;windanchaos" rel="noopener" target="_blank"><i class="fa fa-fw fa-CSDN"></i>CSDN</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank">备案/许可证编号 </a>
+      <img src="http://www.beian.gov.cn/portal/download" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=19036728" rel="noopener" target="_blank">蜀ICP备19036728号 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">windanchaos</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.5.0
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+  <script>
+  function leancloudSelector(url) {
+    return document.getElementById(url).querySelector('.leancloud-visitors-count');
+  }
+  if (CONFIG.page.isPost) {
+    function addCount(Counter) {
+      var visitors = document.querySelector('.leancloud_visitors');
+      var url = visitors.getAttribute('id').trim();
+      var title = visitors.getAttribute('data-flag-title').trim();
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            var counter = results[0];
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .then(response => response.json())
+              .then(() => {
+                leancloudSelector(url).innerText = counter.time + 1;
+              })
+              .catch(error => {
+                console.log('Failed to save visitor count', error);
+              })
+          } else {
+              Counter('post', '/classes/Counter', { title: title, url: url, time: 1 })
+                .then(response => response.json())
+                .then(() => {
+                  leancloudSelector(url).innerText = 1;
+                })
+                .catch(error => {
+                  console.log('Failed to create', error);
+                });
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  } else {
+    function showTime(Counter) {
+      var visitors = document.querySelectorAll('.leancloud_visitors');
+      var entries = [...visitors].map(element => {
+        return element.getAttribute('id').trim();
+      });
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url: { '$in': entries } })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length === 0) {
+            document.querySelectorAll('.leancloud_visitors .leancloud-visitors-count').forEach(element => {
+              element.innerText = 0;
+            });
+            return;
+          }
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.url;
+            var time = item.time;
+            leancloudSelector(url).innerText = time;
+          }
+          for (var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = leancloudSelector(url);
+            if (element.innerText == '') {
+              element.innerText = 0;
+            }
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  }
+
+  fetch('https://app-router.leancloud.cn/2/route?appId=0indNw0niJU8jN2a1E43bDW7-gzGzoHsz')
+    .then(response => response.json())
+    .then(({ api_server }) => {
+      var Counter = (method, url, data) => {
+        return fetch(`https://${api_server}/1.1${url}`, {
+          method: method,
+          headers: {
+            'X-LC-Id': '0indNw0niJU8jN2a1E43bDW7-gzGzoHsz',
+            'X-LC-Key': 'toErPcjDI3431WvXQVKoy0rC',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        const localhost = /http:\/\/(localhost|127.0.0.1|0.0.0.0)/;
+        if (localhost.test(document.URL)) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(item => {
+    return GUEST.includes(item);
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: '0indNw0niJU8jN2a1E43bDW7-gzGzoHsz',
+    appKey: 'toErPcjDI3431WvXQVKoy0rC',
+    placeholder: "Just go go",
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: 'zh-cn' || 'zh-cn',
+    path: location.pathname,
+    recordIP: false,
+    serverURLs: ''
+  });
+}, window.Valine);
+</script>
+
+</body>
+</html>

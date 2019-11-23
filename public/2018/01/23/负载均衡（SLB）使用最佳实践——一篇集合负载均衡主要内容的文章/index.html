@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="本文转自：https:&#x2F;&#x2F;yq.aliyun.com&#x2F;articles&#x2F;80055 可以加深目前生产环境和测试环境中nginx使用的理解。 负载均衡（SLB）使用最佳实践摘要： 负载均衡（Server Load Balancer，下文简称 SLB）的引入，可以降低单台云服务器 ECS（下文简称 ECS）出现异常时对业务的冲击，提升业务的可用性。同时，结合弹性伸缩服务，通过动态调整后端服务器，可以快">
+<meta name="keywords" content="FromCSDN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="负载均衡（SLB）使用最佳实践——一篇集合负载均衡主要内容的文章">
+<meta property="og:url" content="https:&#x2F;&#x2F;blog.windanchaos.tech&#x2F;2018&#x2F;01&#x2F;23&#x2F;%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%EF%BC%88SLB%EF%BC%89%E4%BD%BF%E7%94%A8%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%E2%80%94%E2%80%94%E4%B8%80%E7%AF%87%E9%9B%86%E5%90%88%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E4%B8%BB%E8%A6%81%E5%86%85%E5%AE%B9%E7%9A%84%E6%96%87%E7%AB%A0&#x2F;index.html">
+<meta property="og:site_name" content="宇弦">
+<meta property="og:description" content="本文转自：https:&#x2F;&#x2F;yq.aliyun.com&#x2F;articles&#x2F;80055 可以加深目前生产环境和测试环境中nginx使用的理解。 负载均衡（SLB）使用最佳实践摘要： 负载均衡（Server Load Balancer，下文简称 SLB）的引入，可以降低单台云服务器 ECS（下文简称 ECS）出现异常时对业务的冲击，提升业务的可用性。同时，结合弹性伸缩服务，通过动态调整后端服务器，可以快">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https:&#x2F;&#x2F;blog.windanchaos.tech&#x2F;images&#x2F;dn.com-ea357ac3e08ef5f9bf4bca2f144e57df3f3a9d71-.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;blog.windanchaos.tech&#x2F;images&#x2F;dn.com-5e8b9024d9f151448b849b19972bf342c4ebb656-.png">
+<meta property="og:updated_time" content="2019-11-23T15:11:57.827Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;blog.windanchaos.tech&#x2F;images&#x2F;dn.com-ea357ac3e08ef5f9bf4bca2f144e57df3f3a9d71-.png">
+
+<link rel="canonical" href="https://blog.windanchaos.tech/2018/01/23/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%EF%BC%88SLB%EF%BC%89%E4%BD%BF%E7%94%A8%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%E2%80%94%E2%80%94%E4%B8%80%E7%AF%87%E9%9B%86%E5%90%88%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E4%B8%BB%E8%A6%81%E5%86%85%E5%AE%B9%E7%9A%84%E6%96%87%E7%AB%A0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>负载均衡（SLB）使用最佳实践——一篇集合负载均衡主要内容的文章 | 宇弦</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">宇弦</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-首页">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-分类">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-归档">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-标签">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-关于">
+
+    <a href="/about/me.html" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/windanchaos" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://blog.windanchaos.tech/2018/01/23/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%EF%BC%88SLB%EF%BC%89%E4%BD%BF%E7%94%A8%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%E2%80%94%E2%80%94%E4%B8%80%E7%AF%87%E9%9B%86%E5%90%88%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E4%B8%BB%E8%A6%81%E5%86%85%E5%AE%B9%E7%9A%84%E6%96%87%E7%AB%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="windanchaos">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇弦">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          负载均衡（SLB）使用最佳实践——一篇集合负载均衡主要内容的文章
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2018-01-23 17:31:01" itemprop="dateCreated datePublished" datetime="2018-01-23T17:31:01+08:00">2018-01-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-11-23 23:11:57" itemprop="dateModified" datetime="2019-11-23T23:11:57+08:00">2019-11-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux%E7%AE%A1%E7%90%86%E7%BB%B4%E6%8A%A4/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux管理维护</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2018/01/23/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%EF%BC%88SLB%EF%BC%89%E4%BD%BF%E7%94%A8%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%E2%80%94%E2%80%94%E4%B8%80%E7%AF%87%E9%9B%86%E5%90%88%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E4%B8%BB%E8%A6%81%E5%86%85%E5%AE%B9%E7%9A%84%E6%96%87%E7%AB%A0/" class="post-meta-item leancloud_visitors" data-flag-title="负载均衡（SLB）使用最佳实践——一篇集合负载均衡主要内容的文章" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2018/01/23/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%EF%BC%88SLB%EF%BC%89%E4%BD%BF%E7%94%A8%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%E2%80%94%E2%80%94%E4%B8%80%E7%AF%87%E9%9B%86%E5%90%88%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E4%B8%BB%E8%A6%81%E5%86%85%E5%AE%B9%E7%9A%84%E6%96%87%E7%AB%A0/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2018/01/23/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%EF%BC%88SLB%EF%BC%89%E4%BD%BF%E7%94%A8%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%E2%80%94%E2%80%94%E4%B8%80%E7%AF%87%E9%9B%86%E5%90%88%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E4%B8%BB%E8%A6%81%E5%86%85%E5%AE%B9%E7%9A%84%E6%96%87%E7%AB%A0/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>本文转自：<a href="https://yq.aliyun.com/articles/80055" target="_blank" rel="noopener">https://yq.aliyun.com/articles/80055</a></p>
+<p>可以加深目前生产环境和测试环境中nginx使用的理解。</p>
+<h1 id="负载均衡（SLB）使用最佳实践"><a href="#负载均衡（SLB）使用最佳实践" class="headerlink" title="负载均衡（SLB）使用最佳实践"></a>负载均衡（SLB）使用最佳实践</h1><p><em>摘要：</em> 负载均衡（Server Load Balancer，下文简称 SLB）的引入，可以降低单台云服务器 ECS（下文简称 ECS）出现异常时对业务的冲击，提升业务的可用性。同时，结合弹性伸缩服务，通过动态调整后端服务器，可以快速对业务进行弹性调整（扩容或缩容），以快速应对业务的发展。<br>负载均衡（Server Load Balancer，下文简称 SLB）的引入，可以降低单台云服务器 ECS（下文简称 ECS）出现异常时对业务的冲击，提升业务的可用性。同时，结合弹性伸缩服务，通过动态调整后端服务器，可以快速对业务进行弹性调整（扩容或缩容），以快速应对业务的发展。</p>
+<p>本文，会先对 SLB 的使用限制和常见误区进行说明，然后介绍 SLB 的使用最佳实践。</p>
+<h1 id="SLB-基础原理"><a href="#SLB-基础原理" class="headerlink" title="SLB 基础原理"></a>SLB 基础原理</h1><p>在开始使用 SLB 之前，建议您务必阅读如下文章，了解 SLB 的相关基础原理：</p>
+<ul>
+<li><a href="https://help.aliyun.com/knowledge_detail/39444.html" target="_blank" rel="noopener">负载均衡技术原理浅析</a></li>
+<li><a href="https://help.aliyun.com/knowledge_detail/39455.html" target="_blank" rel="noopener">负载均衡健康检查原理浅析</a></li>
+<li><a href="https://help.aliyun.com/knowledge_detail/39440.html" target="_blank" rel="noopener">负载均衡网络流量路径说明</a></li>
+<li><a href="https://help.aliyun.com/knowledge_detail/39449.html" target="_blank" rel="noopener">负载均衡高可用概要说明</a></li>
+</ul>
+<h1 id="SLB-使用限制"><a href="#SLB-使用限制" class="headerlink" title="SLB 使用限制"></a>SLB 使用限制</h1><p>在使用 SLB 进行业务部署之前，请您务必了解 SLB 的相关使用限制，以免对后续使用造成困扰或对业务造成影响。</p>
+<h2 id="产品与业务规格限制"><a href="#产品与业务规格限制" class="headerlink" title="产品与业务规格限制"></a>产品与业务规格限制</h2><p>SLB 的相关资源或功能存在限制，部分可以通过提交工单申请调整。部分则没有例外，无法调整。详细说明，可以参阅 <a href="https://help.aliyun.com/document_detail/32459.html" target="_blank" rel="noopener"><em>SLB 使用限制</em>。</a></p>
+<p>另外，后续阿里云会推出性能保障型实例，对实例性能提供保障，用户可配置和查询其具体的性能指标，并可查看其实时运行数据。相关说明可以参阅 <a href="https://help.aliyun.com/document_detail/27657.html" target="_blank" rel="noopener"><em>产品文档</em>。</a></p>
+<h2 id="技术限制"><a href="#技术限制" class="headerlink" title="技术限制"></a>技术限制</h2><p>SLB 在技术层面还在逐步增强和完善，截止本文发稿，还存在如下技术限制：</p>
+<h1 id="SLB-常见误区"><a href="#SLB-常见误区" class="headerlink" title="SLB 常见误区"></a>SLB 常见误区</h1><p>从历史案例看，用户在 SLB 的规划和使用过程中有很多常见误区。接下来逐一说明。</p>
+<p>用户在 SLB 后端只添加一台服务器时，虽然链路能跑通，客户端也能正常访问。但却失去了 SLB 消除 ECS 单点的基本能力。如果这台仅有的 ECS 出现异常，那边整个业务访问也会出现异常。</p>
+<p><strong>建议</strong>：至少在 SLB 后端加入两台以上 ECS。以便单一服务器出现异常时，业务还能持续正常访问。</p>
+<p>用户通过 SLB 访问业务出现异常。但 hosts 绑定后端 ECS 的公网 IP 能正常访问。用户据此推断后端业务是正常的，是 SLB 服务端出现异常导致业务访问异常。</p>
+<p>其实，由于负载均衡的数据转发和健康检查都是通过内网进行的。所以，从后端 ECS 的公网 IP 进行对比访问测试，并没有可比性，并不能反应真实访问情况。</p>
+<p><strong>建议</strong>：出现异常时，在后端 ECS 之间，通过内网 IP 做对比访问测试。</p>
+<p>用户通过 ping SLB 的 VIP 地址来判断 SLB 服务的有效性。</p>
+<p>其实，这种测试非常不可靠。因为 ping 响应是由 SLB 服务端直接完成的，与后端 ECS 无关。所以，正常情况下：</p>
+<p><strong>建议</strong>：对于 4 层服务，通过 telnet 监听端口进行业务可用性测试；对于 7 层服务，通过实际的业务访问进行可用性测试。</p>
+<p>用户反馈已经调大了健康检查的最大间隔时间，但客户端访还是由于访问超时收到 504 错误。</p>
+<p>其实，虽然健康检查及业务转发都是由 SLB 服务端相同的服务器承载，但却是完全不同维度的处理逻辑。来自客户端的请求，经由 SLB 转发给后端 ECS 后，SLB 服务端会有接收数据的超时窗口。而另一方面，SLB 服务端持续的对后端 ECS 根据检查间隔配置进行健康检查。这两者之间没有直接关系，唯一的影响是在后端 ECS 健康检查失败后，SLB 不会再对其进行数据转发。</p>
+<p><strong>建议</strong>：客户端访问超时时，结合业务与 SLB 默认超时时间进行比对分析；健康检查超时时，结合健康检查与业务超时时间进行比对分析。</p>
+<p>用户反馈通过 SLB 后端 ECS 的业务日志进行统计分析，发现健康检查的间隔非常短，与之前在创建监听时配置的健康检查间隔时间不一致。</p>
+<p>这个问题在文档 <a href="https://help.aliyun.com/knowledge_detail/39455.html" target="_blank" rel="noopener"><em>负载均衡健康检查原理浅析</em></a> 有相关说明：LVS 集群内所有节点，都会独立、并行的遵循该属性去对后端 ECS 进行定期健康检查。由于各 LVS 节点的检查时间并不同步，所以，如果从后端某一 ECS 上进行单独统计，会发现来自负载均衡的健康检查请求在时间上并不会遵循上述时间间隔。</p>
+<p><strong>建议</strong>：如果健康检查频率过高对业务造成影响，可以参阅知识点 <a href="https://help.aliyun.com/knowledge_detail/39458.html" target="_blank" rel="noopener"><em>健康检查导致大量日志的处理</em></a>进行处理。</p>
+<p>用户认为 SLB 服务端使用上百台机器进行健康检查，大量健康检查请求会形成 DDoS 攻击，造成后端 ECS 性能降低。</p>
+<p>实际上，无论何种模式的健康检查，其规模均不足以达到类似于 DDoS 攻击的量级：SLB 集群会利用多台机器（假定为 M 个，个位数级别），对后端 ECS 的每个服务监听端口 （假定为 N 个） ，按照配置的健康检查间隔（假定为 O 秒，一般建议最少 2 秒）进行健康检查。以 TCP 协议健康检查为例，那么每秒由健康检查产生的 TCP 连接建立数为：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">M*N/O</span><br></pre></td></tr></table></figure>
+<p>。</p>
+<p>从该公式可以看出，M 和 N 都是固定的，而且值很小。所以，最终健康检查带来的每秒 TCP 并发请求数，主要取决于创建的监听端口数量。所以，除非有巨量的监听端口，否则由健康检查产生的连接请求，根本无法达到 SYN Flood 的攻击级别，实际对后端 ECS 的网络压力也极低。</p>
+<p><strong>建议</strong>： 如果健康检查频率过高对业务造成影响，可以参阅知识点 <a href="https://help.aliyun.com/knowledge_detail/39458.html" target="_blank" rel="noopener"><em>健康检查导致大量日志的处理</em></a>进行处理。</p>
+<p>用户为了降低健康检查对业务的影响，将检查间隔时间设置得很长。</p>
+<p>这样配置会导致当后端 ECS 出现异常时，负载均衡需要经过较长时间才能侦测到后端 ECS 出现不可用。尤其是当后端 ECS 间歇性不可用时，由于需要【连续多次】检测失败时才会移除异常 ECS。所以，检查间隔过长，会导致负载均衡集群可能根本无法发现后端 ECS 不可用。</p>
+<p><strong>建议</strong>： 如果健康检查频率过高对业务造成影响，可以参阅知识点 <a href="https://help.aliyun.com/knowledge_detail/39458.html" target="_blank" rel="noopener"><em>健康检查导致大量日志的处理</em></a>进行处理。</p>
+<p>用户在进行业务调整时，认为直接将服务器从 SLB 后端移除，或将其权重置零即可，两者效果是一样的。</p>
+<p>其实，两者有很大区别，相关操作对业务的影响也不一致：</p>
+<p><strong>建议</strong>：在业务调整或服务器维护时，提前将相应服务器的权重置零，直至连接持续衰减至零。操作完成后，再恢复权重配置，以降低对业务的影响。</p>
+<h4 id="误区：单个连接就能达到监听配置的带宽峰值"><a href="#误区：单个连接就能达到监听配置的带宽峰值" class="headerlink" title="误区：单个连接就能达到监听配置的带宽峰值"></a>误区：单个连接就能达到监听配置的带宽峰值</h4><p>SLB 在创建监听时可以指定带宽峰值。但用户通过单一客户端进行测试时，发现始终无法达到该峰值。</p>
+<p>由于 SLB 是基于集群方式部署和提供服务的。所以，所有前端请求会被均分到集群内不同的 SLB 服务器上进行转发。相应的，在监听上设定的带宽峰值也会被平分后设定到各服务器。因此，单个连接下载的流量上限公式为：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">单个连接下载峰值=设置的负载均衡总带宽/(N<span class="number">-1</span>) </span><br><span class="line">*注：N 为流量转发分组个数，当前值一般为 <span class="number">4</span></span><br></pre></td></tr></table></figure>
+
+<p>示例：<br>假设在控制台上设置的带宽峰值为 10Mb，那么单个客户端可下载的最大流量为：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">10</span>/(<span class="number">4</span><span class="number">-1</span>)≈<span class="number">3.33</span>Mb</span><br></pre></td></tr></table></figure>
+
+<p><strong>建议</strong>：建议在配置单个监听的带宽峰值时，根据实际的业务情况并结合上述实现方式设定一个较为合理的值，从而确保业务的正常对外服务不会受到影响和限制。</p>
+<h1 id="SLB-使用最佳实践"><a href="#SLB-使用最佳实践" class="headerlink" title="SLB 使用最佳实践"></a>SLB 使用最佳实践</h1><p>接下来，结合 SLB 的产品特性与历史案例，从多个维度阐述使用 SLB 的最佳实践。</p>
+<h2 id="设计业务架构"><a href="#设计业务架构" class="headerlink" title="设计业务架构"></a>设计业务架构</h2><p><img src="/images/dn.com-ea357ac3e08ef5f9bf4bca2f144e57df3f3a9d71-.png" alt="SLB 简单业务架构设计示意图" title="SLB 简单业务架构设计示意图"></p>
+<p>注：内网环境下，不支持多可用区，只看图例的单边即可。</p>
+<p>SLB 在公网环境下的典型业务架构如上图所示。基于多可用区特性，当主可用区出现异常时，SLB 会自动将流量切换到备可用区。但在实际的业务架构设计过程中，建议关注如下要点：</p>
+<h2 id="配置监听"><a href="#配置监听" class="headerlink" title="配置监听"></a>配置监听</h2><p><img src="/images/dn.com-5e8b9024d9f151448b849b19972bf342c4ebb656-.png" alt="SLB 架构示意图" title="SLB 架构示意图"></p>
+<p>如上图所示，SLB 支持创建多种协议监听，然后按转发策略，将前端业务请求转发到后端多种逻辑服务器集。在 SLB 服务配置的各主要步骤中，请关注如下要点。</p>
+<h2 id="选择监听协议"><a href="#选择监听协议" class="headerlink" title="选择监听协议"></a>选择监听协议</h2><p>SLB 支持创建 TCP/UCP/HTTP/HTTPS 这 4 种协议的监听。您可参考以下表格，根据业务情况选择适合的协议创建监听：<br>协议类型 建议的应用场景 特性 TCP ●注重可靠性，对数据准确性要求高，速度可以相对较慢的场景；<br>●示例：文件传输、发送或接收邮件、远程登录、无特殊要求的 Web 应用 ●面向连接的协议；<br>●在正式收发数据前，必须和对方建立可靠的连接；<br>●基于源地址会话保持，在网络层可直接看到来源地址；<br>●监听支持 TCP 和 HTTP 两种方式进行健康检查；<br>●转发路径短，所以性能比 7 层更好，数据传输速度更快 HTTP 需要对数据内容进行识别的应用，如 Web 应用、小的手机游戏等 ●应用层协议，主要解决如何包装数据；<br>●基于 Cookie 会话保持；使用 X-Forward-For 获取源地址；<br>●监听只支持 HTTP 方式健康检查 HTTPS 有更高的安全性需求，需要加密传输的应用 ●加密传输数据，可以阻止未经授权的访问；<br>●统一的证书管理服务，用户可以将证书上传到负载均衡，解密操作直接在负载均衡上完成 UDP ●关注实时性而相对不注重可靠性的场景；<br>●示例：视频聊天、金融实时行情推送 ●面向非连接的协议；<br>●在数据发送前不与对方进行三次握手，直接进行数据包发送，不提供差错恢复和数据重传；<br>●可靠性相对低；数据传输快</p>
+<p><strong>补充说明</strong></p>
+<p>SLB 后端服务器支持按 3 种逻辑创建服务器集。要点如下：<br>集合模式 配置权重 指定服务端口 服务器数量限制 其它特性 后端服务器 支持 不支持 无限制 创建监听时的默认映射服务器集 虚拟服务器组 支持 支持 无限制 有更大的灵活性 主备服务器组 支持 支持 2 台 只能在 TCP/UDP 监听上使用</p>
+<p><strong>建议</strong></p>
+<p>权重代表相应服务器所承载的业务的相对占比，而非绝对值。当前 SLB 支持 3 种转发策略，其使用场景及要点如下：<br>转发策略 算法说明 使用要点 加权轮询（WRR） 按比重轮流分配新增连接。 ●根据后端 ECS 规格的不同，配置相应的权重。<br>●如果是长连接业务，可能会导致老服务器的连接数持续增加， 而新加入服务器的连接数相对非常低，造成负载不均的假象。 加权最小连接数（WLC） ●在 SLB 服务端，实时统计与后端 ECS 已建立的 ESTABLISHED 状态连接数，来评估相应服务器的负载情况。<br>●按权重比例，将新增连接分配给活动连接数少的服务器，最终尽可能使服务器的已建立连接数与其权重成正例。 当前暂未实现新增服务器的过载保护或缓冲机制。所以，如果业务并发非常高，可能会导致新增服务器连接数陡增，对业务造成影响。建议新增服务器时，逐步调高权重。 轮询（RR） 按顺序逐一分发新增连接。 必须手工确保后端 ECS 的业务承载能力一致。</p>
+<p><strong>示例</strong>：假设有 100 个新增连接，则在不同的调度算法下，不同服务器的分配连接数示意如下：</p>
+<p>服务器 权重 占比 加权轮询 加权最小连接数 轮询 A 50 50/<br>(100+50+50)<br>=25% 将 100/<em>25%=25 个连接分发给服务器 A 实时统计连接数，逐一将新增连接分配给活动连接数最少的服务器。最终使其新增连接数占比大致为 25% 不考虑权重，按顺序分发新增连接到服务器 A/B/C B 100 100/<br>(100+50+50)<br>=50% 将 100/</em>50%=50 个连接分发给服务器 B ↑ 同上，最终使其新增连接数占比大致为 50% ↑ 同上 C 50 50/<br>(100+50+50)=<br>25% 将 100/*25%=25 个连接分发给服务器 C ↑ 同上，最终使其新增连接数占比大致为 25% ↑ 同上 D 0 0/<br>(100+50+50)<br>=0% 服务器下线，不分配任何连接 ← 同左 ← 同左</p>
+<p>健康检查用于实时探测后端 ECS 上的业务可用性，以避免新增连接被分发到异常服务器对业务造成影响。由于是 SLB 依赖的核心服务，所以 4 层协议（TCP/UCP）的健康检查无法关闭。</p>
+<p>在配置健康检查时，注意如下要点：</p>
+<ul>
+<li><strong>合理配置健康检查间隔</strong><br>根据实际业务需求配置健康检查间隔，避免因为健康检查间隔过长导致无法及时发现后端 ECS 出现问题。具体请参考：<a href="https://help.aliyun.com/knowledge_detail/39453.html" target="_blank" rel="noopener">健康检查的相关配置，是否有相对合理的推荐值？</a></li>
+</ul>
+<p>在后端 ECS 的选择与配置时，注意如下要点：</p>
+<h2 id="调整后端-ECS-的操作建议"><a href="#调整后端-ECS-的操作建议" class="headerlink" title="调整后端 ECS 的操作建议"></a>调整后端 ECS 的操作建议</h2><p>在往 SLB 内新增服务器时，注意如下要点：</p>
+<p>在后端 ECS 服务器的日常调整、维护过程中，注意如下要点：</p>
+<p>如果确认服务器不再使用，不建议直接移除服务器。而是参阅前述步骤，将相应服务器权重置零。待已建立连接全部正常断开后，再移除该服务器。</p>
+<h1 id="常见问题的排查思路"><a href="#常见问题的排查思路" class="headerlink" title="常见问题的排查思路"></a>常见问题的排查思路</h1><p>SLB 在使用过程中的常见问题与排查思路可以参阅下列文档，本文不再详述：</p>
+<ul>
+<li><a href="https://help.aliyun.com/document_detail/27702.html" target="_blank" rel="noopener">健康检查异常的排查思路</a></li>
+<li><a href="https://help.aliyun.com/knowledge_detail/39481.html" target="_blank" rel="noopener">负载均衡返回 HTTP 500/502/504 错误的处理</a></li>
+<li><a href="https://help.aliyun.com/knowledge_detail/39491.html" target="_blank" rel="noopener">后端 ECS 负载不均衡问题的处理</a></li>
+</ul>
+<h1 id="典型案例"><a href="#典型案例" class="headerlink" title="典型案例"></a>典型案例</h1><h2 id="后端-ECS-负载不均"><a href="#后端-ECS-负载不均" class="headerlink" title="后端 ECS 负载不均"></a>后端 ECS 负载不均</h2><p><strong>问题场景</strong>：<br>后端 ECS 规格均一致，但其中几台服务器的 PPS 一直非常高。而新加入的服务器，相对负载非常低。<br>业务高峰期，相关服务器健康检查异常，导致服务器下线，并进一步导致其它服务器负载升高，引发整个 SLB 后端出现雪崩式异常，业务受到严重影响。</p>
+<p><strong>排查思路</strong>：</p>
+<p><strong>应对措施</strong>：</p>
+<p>以上步骤用于将负载逐步转移到新加入的服务器，并避免对新增服务器及异常服务器的冲击。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/FromCSDN/" rel="tag"># FromCSDN</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2018/01/23/%E6%90%BA%E7%A8%8B%E6%8C%81%E7%BB%AD%E4%BA%A4%E4%BB%98%E5%B9%B3%E5%8F%B0%E7%9A%84%E6%BC%94%E8%BF%9B%E3%80%81%E5%8F%98%E9%9D%A9%E4%B8%8E%E5%B1%95%E6%9C%9B/" rel="next" title="携程持续交付平台的演进、变革与展望">
+                  <i class="fa fa-chevron-left"></i> 携程持续交付平台的演进、变革与展望
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2018/02/02/tomcat%20%E9%83%A8%E7%BD%B2https%20apr%E6%AD%A3%E7%A1%AE%E5%AE%89%E8%A3%85%EF%BC%8C%E5%90%AF%E5%8A%A8%E6%89%BE%E4%B8%8D%E5%88%B0apr%E7%9A%84%E9%97%AE%E9%A2%98/" rel="prev" title="tomcat 部署https apr正确安装，启动找不到apr的问题">
+                  tomcat 部署https apr正确安装，启动找不到apr的问题 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="comments"></div>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#负载均衡（SLB）使用最佳实践"><span class="nav-number">1.</span> <span class="nav-text">负载均衡（SLB）使用最佳实践</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SLB-基础原理"><span class="nav-number">2.</span> <span class="nav-text">SLB 基础原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SLB-使用限制"><span class="nav-number">3.</span> <span class="nav-text">SLB 使用限制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#产品与业务规格限制"><span class="nav-number">3.1.</span> <span class="nav-text">产品与业务规格限制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#技术限制"><span class="nav-number">3.2.</span> <span class="nav-text">技术限制</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SLB-常见误区"><span class="nav-number">4.</span> <span class="nav-text">SLB 常见误区</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#误区：单个连接就能达到监听配置的带宽峰值"><span class="nav-number">4.0.0.1.</span> <span class="nav-text">误区：单个连接就能达到监听配置的带宽峰值</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SLB-使用最佳实践"><span class="nav-number">5.</span> <span class="nav-text">SLB 使用最佳实践</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#设计业务架构"><span class="nav-number">5.1.</span> <span class="nav-text">设计业务架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置监听"><span class="nav-number">5.2.</span> <span class="nav-text">配置监听</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选择监听协议"><span class="nav-number">5.3.</span> <span class="nav-text">选择监听协议</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#调整后端-ECS-的操作建议"><span class="nav-number">5.4.</span> <span class="nav-text">调整后端 ECS 的操作建议</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#常见问题的排查思路"><span class="nav-number">6.</span> <span class="nav-text">常见问题的排查思路</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#典型案例"><span class="nav-number">7.</span> <span class="nav-text">典型案例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#后端-ECS-负载不均"><span class="nav-number">7.1.</span> <span class="nav-text">后端 ECS 负载不均</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="windanchaos"
+    src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">windanchaos</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">96</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/windanchaos" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/windanchaos" title="Gitee &amp;rarr; https:&#x2F;&#x2F;gitee.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="fa fa-fw fa-gitee"></i>Gitee</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/mailto:454722630@qq.com" title="E-Mail &amp;rarr; mailto:454722630@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/windanchaos" title="Weibo &amp;rarr; https:&#x2F;&#x2F;weibo.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/windanchaos" title="CSDN &amp;rarr; https:&#x2F;&#x2F;blog.csdn.net&#x2F;windanchaos" rel="noopener" target="_blank"><i class="fa fa-fw fa-CSDN"></i>CSDN</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank">备案/许可证编号 </a>
+      <img src="http://www.beian.gov.cn/portal/download" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=19036728" rel="noopener" target="_blank">蜀ICP备19036728号 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">windanchaos</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.5.0
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+  <script>
+  function leancloudSelector(url) {
+    return document.getElementById(url).querySelector('.leancloud-visitors-count');
+  }
+  if (CONFIG.page.isPost) {
+    function addCount(Counter) {
+      var visitors = document.querySelector('.leancloud_visitors');
+      var url = visitors.getAttribute('id').trim();
+      var title = visitors.getAttribute('data-flag-title').trim();
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            var counter = results[0];
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .then(response => response.json())
+              .then(() => {
+                leancloudSelector(url).innerText = counter.time + 1;
+              })
+              .catch(error => {
+                console.log('Failed to save visitor count', error);
+              })
+          } else {
+              Counter('post', '/classes/Counter', { title: title, url: url, time: 1 })
+                .then(response => response.json())
+                .then(() => {
+                  leancloudSelector(url).innerText = 1;
+                })
+                .catch(error => {
+                  console.log('Failed to create', error);
+                });
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  } else {
+    function showTime(Counter) {
+      var visitors = document.querySelectorAll('.leancloud_visitors');
+      var entries = [...visitors].map(element => {
+        return element.getAttribute('id').trim();
+      });
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url: { '$in': entries } })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length === 0) {
+            document.querySelectorAll('.leancloud_visitors .leancloud-visitors-count').forEach(element => {
+              element.innerText = 0;
+            });
+            return;
+          }
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.url;
+            var time = item.time;
+            leancloudSelector(url).innerText = time;
+          }
+          for (var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = leancloudSelector(url);
+            if (element.innerText == '') {
+              element.innerText = 0;
+            }
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  }
+
+  fetch('https://app-router.leancloud.cn/2/route?appId=0indNw0niJU8jN2a1E43bDW7-gzGzoHsz')
+    .then(response => response.json())
+    .then(({ api_server }) => {
+      var Counter = (method, url, data) => {
+        return fetch(`https://${api_server}/1.1${url}`, {
+          method: method,
+          headers: {
+            'X-LC-Id': '0indNw0niJU8jN2a1E43bDW7-gzGzoHsz',
+            'X-LC-Key': 'toErPcjDI3431WvXQVKoy0rC',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        const localhost = /http:\/\/(localhost|127.0.0.1|0.0.0.0)/;
+        if (localhost.test(document.URL)) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(item => {
+    return GUEST.includes(item);
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: '0indNw0niJU8jN2a1E43bDW7-gzGzoHsz',
+    appKey: 'toErPcjDI3431WvXQVKoy0rC',
+    placeholder: "Just go go",
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: 'zh-cn' || 'zh-cn',
+    path: location.pathname,
+    recordIP: false,
+    serverURLs: ''
+  });
+}, window.Valine);
+</script>
+
+</body>
+</html>

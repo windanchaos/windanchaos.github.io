@@ -1,0 +1,1639 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta property="og:type" content="website">
+<meta property="og:title" content="宇弦">
+<meta property="og:url" content="https:&#x2F;&#x2F;blog.windanchaos.tech&#x2F;page&#x2F;4&#x2F;index.html">
+<meta property="og:site_name" content="宇弦">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://blog.windanchaos.tech/page/4/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: true,
+    isPost: false,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>宇弦</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">宇弦</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-首页">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-分类">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-归档">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-标签">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-关于">
+
+    <a href="/about/me.html" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/windanchaos" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://blog.windanchaos.tech/2017/11/26/%E6%88%91%E5%85%AC%E5%8F%B8%E7%9B%AE%E5%89%8D%E7%9A%84%E6%95%8F%E6%8D%B7%E6%8C%81%E7%BB%AD%E9%83%A8%E7%BD%B2%E6%80%BB%E7%BB%93%E5%92%8C%E5%B1%95%E6%9C%9B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="windanchaos">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇弦">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/11/26/%E6%88%91%E5%85%AC%E5%8F%B8%E7%9B%AE%E5%89%8D%E7%9A%84%E6%95%8F%E6%8D%B7%E6%8C%81%E7%BB%AD%E9%83%A8%E7%BD%B2%E6%80%BB%E7%BB%93%E5%92%8C%E5%B1%95%E6%9C%9B/" class="post-title-link" itemprop="url">我公司目前的敏捷持续部署总结和展望</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-11-26 17:40:49" itemprop="dateCreated datePublished" datetime="2017-11-26T17:40:49+08:00">2017-11-26</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-11-23 23:11:57" itemprop="dateModified" datetime="2019-11-23T23:11:57+08:00">2019-11-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/" itemprop="url" rel="index">
+                    <span itemprop="name">持续集成</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2017/11/26/%E6%88%91%E5%85%AC%E5%8F%B8%E7%9B%AE%E5%89%8D%E7%9A%84%E6%95%8F%E6%8D%B7%E6%8C%81%E7%BB%AD%E9%83%A8%E7%BD%B2%E6%80%BB%E7%BB%93%E5%92%8C%E5%B1%95%E6%9C%9B/" class="post-meta-item leancloud_visitors" data-flag-title="我公司目前的敏捷持续部署总结和展望" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2017/11/26/%E6%88%91%E5%85%AC%E5%8F%B8%E7%9B%AE%E5%89%8D%E7%9A%84%E6%95%8F%E6%8D%B7%E6%8C%81%E7%BB%AD%E9%83%A8%E7%BD%B2%E6%80%BB%E7%BB%93%E5%92%8C%E5%B1%95%E6%9C%9B/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2017/11/26/%E6%88%91%E5%85%AC%E5%8F%B8%E7%9B%AE%E5%89%8D%E7%9A%84%E6%95%8F%E6%8D%B7%E6%8C%81%E7%BB%AD%E9%83%A8%E7%BD%B2%E6%80%BB%E7%BB%93%E5%92%8C%E5%B1%95%E6%9C%9B/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>上一篇文章用了我２个晚上，今天把老早之前就想写的公司持续集成的总结和展望写了，算是给自己大脑一个交代——对自己说到做到。</p>
+<p>持续的干货三大块：</p>
+<p>为了规避风险，隔离不可控因素。三大块中又可以插入环境差异。通常是二到四个：</p>
+<p>持续集成三大块，通常就在1\2\3环境里不停的迭代。最后到生产上被利用。生产迭代频率相对低一些。</p>
+<h1 id="代码管理"><a href="#代码管理" class="headerlink" title="代码管理"></a>代码管理</h1><p>公司刚建立的时候用的是SVN，那个时代我还是个小白，并没有过多参与。后来，公司领导看git的分布式代码仓库牛掰，就在观望、学习、变革中，把代码管理的环境迁移到了git上面，这期间，团队经历了不适应，不会，抱怨，理解，能用，会用，善用的转变。主要还是招聘到了一个git小王子，他帮助团队对git的理解大踏步前进。废话讲完。</p>
+<h2 id="git工作流"><a href="#git工作流" class="headerlink" title="git工作流"></a>git工作流</h2><p><img src="/images/sercontent.com-quickhack-translations-master-git-workflows-and-tutorials-images-git-workflow-release-cycle-4maintenance-.png" alt="git工作流"><br>从推动力上来说，研发团队的推动力来自产品和市场。这个在写公司srum流的文章里有提及。<br>这个地方就不啰嗦git的工作流了。我们遵从了<strong>Gitflow工作流</strong>的基本逻辑。实际运用中灵活处理。<br>想了解git的工作流请移步github上的<a href="https://github.com/mjrao/git-workflows-and-tutorials" target="_blank" rel="noopener">git-workflows-and-tutorials</a>。</p>
+<h2 id="数据库变更管理"><a href="#数据库变更管理" class="headerlink" title="数据库变更管理"></a>数据库变更管理</h2><p>数据库是最难控制变更的。因此我们经过探索和总结摸索了一套较为有效的管理方式。可能还不是最科学的，虽然会有些问题，但是目前运作问题不算大。也很少看到这方面的文章。我们约定，数据库变更以脚本方式提交，禁止研发在测试环境自己修改数据库，变更需提交脚本作为依据。那么，我在执行过程中，如测试环境A，跑了，我就会以修改文件夹名称，以名称为标记。如果脚本还要再修改，则研发口头告知或他直接提交新的变更脚本。变更脚本有若干个，通常以任务标号为命名规则，没有项目标号则按自定义方式定义。<br>这套机制，实施最大的难度是协调，让研发了解这个规则。了解并熟悉这套流程之后，基本就没有什么大问题。</p>
+<h1 id="编译打包发布测试环境"><a href="#编译打包发布测试环境" class="headerlink" title="编译打包发布测试环境"></a>编译打包发布测试环境</h1><p>现在这一套全部脚本化，总结就是流程是逐步完善起来的，一个阶段有一个阶段的做法。<br>开始，研发手动在本地打包，工具eclipse+maven，打包完后手动上传到服务器的tomcat指定目录。那会我们只有３个项目，这么做问题不大。<br>后来，总是等着研发发布，太慢了，这么low的重复劳动我说我来做好了，你教下我怎么打包的，然后我就会了，我就研究了maven的一起机制。搞了那么一周多点，由于拿到了测试服务器的账户密码，我就在想怎么可以提高效率。研究了明白了里面的原理，我就很自然的认为，既然本地可以打包，那服务器上到打包拷贝过去不是更快，网络传输的时间就略去了。于是，我测试了下，填了很多坑，手动在服务器上打包发布成功。就掌握了最原始的发布。<br>再后来，项目越来越多，多到大于１０个，虽然只有几个发布频率很高，但是手动发布感觉劳心费力，效率底下，我就琢磨如何提高。shell就引入。项目进度太快，我根本没有时间利用上班时间搞，于是下班后，自己一点一点测试。把第一版的自动发布脚本写出来，结合crontab 命令，每天自动发布。然后就轻松多了。后来专门利用业余时间对shell做了一个深化，就有了一次重构。<br>可以参考：<a href="http://blog.csdn.net/windanchaos/article/details/53490630" target="_blank" rel="noopener">http://blog.csdn.net/windanchaos/article/details/53490630</a><br>现在使用的脚本已经不是这个版本了，又被我重构了一次。由之前的一锅贴全部发布，改进为任意项目选择发布，由jenkins驱动。现在的模式：自动＋手动方式。比起从前还是大大的加快了迭代测试效率。虽然还有很多问题。比如现在的不熟结构是所有项目都在一个tomcat下面，发布一个，其实是影响全局的。全套发布下来，花了很多不必要的时间。<br>当然，还写了很多发布小工具，比如自动识别24小时内修改提交到代码库的js/css/jsp等静态资源文件，巧个命令自动拷贝过去，完全不用重新打包。<br>还存在的问题：<br>１、tomcat部署在一起导致的发布启动效率，浪费不必要的时间。主要是系统资源不够，没有去拆分。<br>２、外网地址一周要变２－３次，需要手动去修改域名映射。浪费时间。<br>３、jenkins让人人都具备发布能力，从某种意义上来说是不恰当的。虽然解放了我，但是还是存在相互干扰的情况。不算严重。</p>
+<h1 id="发布生产"><a href="#发布生产" class="headerlink" title="发布生产"></a>发布生产</h1><p>测试完成就发生产。<br>这个也是一个迭代过程。迭代到目前，重要核心项目都有多个节点。服务端使用了负载均衡。负载均衡是第三方服务，目前无法脚本自动化，所以除了核心的几个节点外，其他脚本发布。<br>核心节点，是第三方上断掉某节点，然后手动执行发布。发布后，再把节点放回去。接着另一个节点，基本上做到了热发布。<br>目前的问题：<br>１、手动发布的没有要手动做备份。<br>２、核心节点的手动发布效率不敢恭维，但是得接受，因为生产，不能出事故。<br>３、热修代码提交没有得到控制。已经出台提交代码规约去限制。<br>４、发布后的验证。</p>
+<h1 id="整个流程的不足和展望"><a href="#整个流程的不足和展望" class="headerlink" title="整个流程的不足和展望"></a>整个流程的不足和展望</h1><p>１、环节上来说，缺乏自动化的测试，包含常规的代码检测，核心的api自动化测试。<br>２、上线后，核心功能需要人肉去验证，微信的ui自动化受阻。人肉总是不太稳定的，所以很多时候功能一多，一修改一个小地方，其他地方就受影响。<br>３、生产错误日志，没有很好的利用起来。现阶段，我人肉去tail and grep，排查错误，看到有问题的直接喊研发到我那看，这个工作没有人喊我做，但是必要。而错误日志很多是没有必要打印的，这也是一个可以优化的。</p>
+<p>展望，就是解决不足。<br>１、这个不是我一个人能推动的事，需要团队配合。<br>２、已有计划推动自动化的一些使用。<br>３、日志监控系统，搭一套。开源软件。后期（很远很远）就是线上监控。<br>４、安全测试的还比较少。所以可以搞一搞，安全扫描工具。<br>５、代码的静态扫描也要搞起来，研发现在是反感态度，空指针……<br>６、内网从新搭建测试环境。tomcat分开部署。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://blog.windanchaos.tech/2017/11/23/%E6%88%91%E5%85%AC%E5%8F%B8%E5%95%86%E5%9F%8E%E6%9E%B6%E6%9E%84%E5%AD%A6%E4%B9%A0%E5%92%8C%E7%A0%94%E7%A9%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="windanchaos">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇弦">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/11/23/%E6%88%91%E5%85%AC%E5%8F%B8%E5%95%86%E5%9F%8E%E6%9E%B6%E6%9E%84%E5%AD%A6%E4%B9%A0%E5%92%8C%E7%A0%94%E7%A9%B6/" class="post-title-link" itemprop="url">我公司商城架构学习和研究</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-11-23 22:45:29" itemprop="dateCreated datePublished" datetime="2017-11-23T22:45:29+08:00">2017-11-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-11-23 23:11:57" itemprop="dateModified" datetime="2019-11-23T23:11:57+08:00">2019-11-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B5%8B%E8%AF%95%E7%9A%84%E6%A1%86%E6%9E%B6%E5%92%8C%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index">
+                    <span itemprop="name">测试的框架和技术</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2017/11/23/%E6%88%91%E5%85%AC%E5%8F%B8%E5%95%86%E5%9F%8E%E6%9E%B6%E6%9E%84%E5%AD%A6%E4%B9%A0%E5%92%8C%E7%A0%94%E7%A9%B6/" class="post-meta-item leancloud_visitors" data-flag-title="我公司商城架构学习和研究" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2017/11/23/%E6%88%91%E5%85%AC%E5%8F%B8%E5%95%86%E5%9F%8E%E6%9E%B6%E6%9E%84%E5%AD%A6%E4%B9%A0%E5%92%8C%E7%A0%94%E7%A9%B6/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2017/11/23/%E6%88%91%E5%85%AC%E5%8F%B8%E5%95%86%E5%9F%8E%E6%9E%B6%E6%9E%84%E5%AD%A6%E4%B9%A0%E5%92%8C%E7%A0%94%E7%A9%B6/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>我可以一口气把我所了解的技术说一遍，但是我却无法更深入的理解这些东西在具体使用中的职责是什么，所以有了本篇博客一个记录、学习。</p>
+<p>商城的后台是java语言的，所以很自然的使用了：</p>
+<p>jsp+servlet+structs2+hibernate+spring+ajax</p>
+<p><a href="http://blog.csdn.net/windanchaos/article/details/78290985" target="_blank" rel="noopener">jsp</a>和<a href="http://www.runoob.com/servlet/servlet-tutorial.html" target="_blank" rel="noopener">serlet</a>我之前学习过了，其中一个整理了一篇日志。我手上有一本《JavaWeb编程实战宝典》，学习到jsp写登陆就暂停了。哦～大不当啊，没有持续。当时我在干什么呢？从日志记录来看是分神了，去捅了一点研发管理、测试管理的理论，加上最近太忙，就没有拐回来所致，哎，我这个人就是太贪心了，面面俱到，没有深入的。所以这个计划还是要继续下去。话又说回来，学这么多，其实我在测试这块的累计还是有限啊，明年怎么涨工资啊，万一干的不爽出去找工作，卖什么啊？说什么jmeter会用，讲真我真不觉得那工具能怎么样，我花了２天晚上就把教学视频看完了。真的在工作中使用，作为一个测试，你唯一厉害一点的就是工具熟悉一点，压测的时候也需要研发配置你，给你开接口才可以压测。真的不能以为你掌握了一个性能工具就懂性能测试了，不是那样的，要做一个压测，都是团队合作，反正我做了很多次压测，基本上是low的一逼，我甚至教研发用jmeter，最简单那种一教就会，在研发内部推荐大家自己压，一个研发反应快马上就懂压测自己的代码了，嘿，测试小朋友，你的价值呢，搞笑啊，会用jmeter？由于我之前研究学习了http协议，用起jmeter还是没有什么障碍。知识网上有，不懂２分钟后就懂了，再不行，开源的有官方文档，读啊，尼玛六级不是白过的。最近一周读完了《操作系统之哲学原理》后，对计算机又加深了认识，看看对性能测试这个方向真的感觉我做的太low逼了。扯得远了点，就是说学的东西（就是这个javaweb宝典）啊，不好卖钱，我又缺钱，而且还很贪（双11买了一堆无关测试的书）。三难啊。</p>
+<p>使用的容器：tomcat，这个基本配置是我在维护，有所了解，但是还没有达到精进的程度，比如性能优化怎么搞，我就不太懂。这里还有提升空间。最近去看了jvm的原理，忘了摘抄，大概知道些，堆栈，垃圾回收，线程，这个地方回头单独出文。</p>
+<p>代码管理工具：git，这个在公司内部使用最深的人大概就是我了，命令行操作无形的装逼，脚本自动化之类的，可以解决各种发布的问题，什么多少小时内提交过代码就怎么样之类的逻辑。不懂，查一下就解决了，所以没有什么困难了。</p>
+<p>编译和包管理工具：maven。能用，编译打包，其他的更深的没有必要纠结。</p>
+<p>研发工具：eclipse。只能呵呵了，java用的少，基本能用起来，一般是看git log，查看方法调用、查看研发修改代码引用之类，自己写代码还差点火候，还有延展空间。</p>
+<p>数据库：mysql。我负责刷脚本，研发提交脚本过来，我负责刷生产和测试库，一些语法错误可以纠正，什么左联右连不熟啊亲。其他select\update\insert\之类的知道，但是不熟练。所以这个地方可以找个时间再总结下，虽然已经看过２次教材了，但是平时用得少，知而已。哎，一切以效率为先，navicat足够了。。。自我鄙视</p>
+<p>页面框架：vue+kendo。哦，这个就完全不是我的领域了。但是我shell帮他们解决了每次发布手动替换的问题，自动化发布。我的水平，知道css/html/javascript的分工，css的几个样式分类器（不确定这么叫），html的标签啊，大概知道html里面的结构之类。好歹也是用selenium玩过jQuery的啊╮（╯▽╰）╭</p>
+<p>技术对我来说，知道个大概，具体要说明白，说出点道道来不是一下两下的事，就目前这种状态呢，基本和我大学时代接受一个观点相同，那个观点的核心就是：这是一个知识大爆炸的时代，你不可能也不用去记住具体的知识是怎么样的，但是你一定要搞清楚知识是如何被使用的，已经有哪些知识可以被使用，最关键的是你要知道如何找到它们，并用起来。这里想起另一观点，知识是分级别的，一手知识来自源头，二手知识来自无差别转发，三手就是自己理解转述之类，最好是去拿一手的知识。</p>
+<p>其他我暂时还无法知道具体作用的：</p>
+<p>netty是代码里的，从研发口中听说过，其他我在负责维护，基本的启动配置都知道。但就点到为止了，不能再深入。所以这篇文章主要是它们几个。</p>
+<h1 id="Netty"><a href="#Netty" class="headerlink" title="Netty"></a>Netty</h1><p>homepage<br><a href="http://netty.io/" target="_blank" rel="noopener">http://netty.io/</a><br>百度百科基本忠实了官网描述，那我再引用一张官网的图：<br><img src="/images/ges-components-.png" alt="这里写图片描述"></p>
+<p>Netty is an asynchronous event-driven network application framework<br>for rapid development of maintainable high performance protocol servers &amp; clients.<br>在我目前这种层次来看，我们用netty就是简化了网络通信的编程复杂程度，把底层的通信都交给了netty打理。<br>基于netty提供的能力（可扩展的事件模型、通用的通信api、防内存溢出的富字节缓存机制（意译二手）），构建起我们商城的各类网络通信。<br>过程中了解到一个新词语:NIO<br><a href="http://ifeve.com/java-nio-vs-io/" target="_blank" rel="noopener">Java NIO与IO</a><br><a href="http://ifeve.com/java-nio-all/" target="_blank" rel="noopener">Java NIO 系列教程</a></p>
+<h1 id="zookeeper"><a href="#zookeeper" class="headerlink" title="zookeeper"></a>zookeeper</h1><p>HomePage<br><a href="http://zookeeper.apache.org/" target="_blank" rel="noopener">http://zookeeper.apache.org/</a><br>zookeeper系列文章<br><a href="http://www.cnblogs.com/wuxl360/category/874409.html" target="_blank" rel="noopener">http://www.cnblogs.com/wuxl360/category/874409.html</a><br>它是一个为分布式应用提供一致性服务的软件，提供的功能包括：配置维护、域名服务、分布式同步、组服务等。<br>那，在我们这个商城里面，zookeeper被用作了和RPC打交道。找到下面文章基本上就是它的原理了：<br><a href="https://www.cnblogs.com/xingzc/p/5754039.html" target="_blank" rel="noopener">你应该知道的RPC原理</a></p>
+<p>读完文章，就对RPC有了更深入的理解。比如我们有大脑总控定位的uic，与之对应的是uic-rpc服务。它们两的jdbc使用的是相同账户和密码，uic-rpc最开始是没有的，是从uic里面分离出来的，干了uic的一些对外提供服务的事情，大部分还是操作uic的数据库，这样就解放了uic的代码，使uic修改减少，更加强壮，易于扩展。而zookeeper还具备分布式同步的能力，就能保证多个rpc操作同一个表的数据一致性。在整个体系中起到了一个服务自动注册与发现功能。<br><img src="/images/nblogs.com-blog-522490-201510-522490-20151003183747543-2138843838-.png" alt="这里写图片描述"><br>所以，调用方，通常也会配置zookeeper的链接方式和账户密码，以及它需要调用的rpc的服务名字，有如下配置：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpc.call.models=<span class="built_in">module</span>,imgr,mdata,uic</span><br></pre></td></tr></table></figure>
+
+<p>接着结合zookeeper的特性，它的多节点（虽然目前我们是单服务器多节点的方式，不过未来肯定是真的多服务器多节点方式），选举机制，加上同一个rpc的多节点，就可以构成一个网状的，分布式的服务集群，可以确保服务注册表的高可用性。</p>
+<h1 id="memcache"><a href="#memcache" class="headerlink" title="memcache"></a>memcache</h1><p>HomePage:<br><a href="http://memcached.org/" target="_blank" rel="noopener">http://memcached.org/</a><br>Free &amp; open source, high-performance, distributed memory object caching system, generic in nature, but intended for use in speeding up dynamic web applications by alleviating database load.<br>缓存，而且是分布式的缓存，顶替数据库承受压力。<br>由于网站的高并发读写需求，传统的关系型数据库开始出现瓶颈，例如： 1）对数据库的高并发读写：<br>关系型数据库本身就是个庞然大物，处理过程非常耗时（如解析SQL语句，事务处理等）。如果对关系型数据库进行高并发读写（每秒上万次的访问），那么它是无法承受的。<br>2）对海量数据的处理： 对于大型的SNS网站，每天有上千万次的数据产生（如twitter,&gt; 新浪微博）。对于关系型数据库，如果在一个有上亿条数据的数据表种查找某条记录，效率将非常低。<br>在实际使用中，通常把数据库查询的结果保存到Memcache中，下次访问时直接从memcache中读取，而不再进行数据库查询操作，这样就在很大程度上减少了数据库的负担。保存在memcache中的对象实际放置在内存中，这也是memcache如此高效的原因。<br><img src="/images/dn.net-20140113235214078-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd3VzdW9wdUJVUFQ=-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png" alt="这里写图片描述"><br>from: <a href="http://blog.csdn.net/wusuopuBUPT/article/details/18238003" target="_blank" rel="noopener">http://blog.csdn.net/wusuopuBUPT/article/details/18238003</a></p>
+<h1 id="redis"><a href="#redis" class="headerlink" title="redis"></a>redis</h1><p>HomePage:<br><a href="https://redis.io/" target="_blank" rel="noopener">https://redis.io/</a><br>Redis is an open source (BSD licensed), in-memory data structure store, used as a database, cache and message broker（代理）. It supports data structures such as strings, hashes, lists, sets, sorted sets with range queries, bitmaps, hyperloglogs and geospatial indexes with radius queries. Redis has built-in replication, Lua scripting, LRU eviction, transactions and different levels of on-disk persistence, and provides high availability via Redis Sentinel and automatic partitioning with Redis Cluster.</p>
+<p>在我查阅资料的时候我疑惑了，我们的架构怎么用了memcache又用redis，虽然两者都有缓存特性。<br>读此文：<a href="https://www.cnblogs.com/tuyile006/p/6382062.html" target="_blank" rel="noopener">Redis、Memcache和MongoDB的区别</a><br>我们使用redis主要用来记录了各种商家配置，平台配置等。大概用它的原因是目前我们的压力还没有说高到突破它性能瓶颈的程度，另一方面，它支持主从同步，可以分布式部署，数据还可以持久化，目前用起来没有问题。一个比较头疼的问题是刷缓存，呵呵哒，数据库变更了，缓存不会主动更新，需手动刷key。这个不难，一学就会。<br>我疑惑的是memcache被用在了哪里。<br>补充：上班问开发，session。</p>
+<h1 id="active-mq"><a href="#active-mq" class="headerlink" title="active-mq　"></a>active-mq　</h1><p>HomePage:<br><a href="http://activemq.apache.org/" target="_blank" rel="noopener">http://activemq.apache.org/</a><br>Apache ActiveMQ ™ is the most popular and powerful open source messaging and Integration Patterns server.</p>
+<p>这理解起来就简单了，我们平台用它来发消息。各种消息，微信下单，优惠券，活动之类的。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://blog.windanchaos.tech/2017/11/17/Jmeter%E7%9A%84Non_GUI%E6%A8%A1%E5%BC%8F%EF%BC%8C%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%A8%A1%E5%BC%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="windanchaos">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇弦">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/11/17/Jmeter%E7%9A%84Non_GUI%E6%A8%A1%E5%BC%8F%EF%BC%8C%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%A8%A1%E5%BC%8F/" class="post-title-link" itemprop="url">Jmeter的Non_GUI模式，命令行模式</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-11-17 10:28:52" itemprop="dateCreated datePublished" datetime="2017-11-17T10:28:52+08:00">2017-11-17</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-11-23 23:11:57" itemprop="dateModified" datetime="2019-11-23T23:11:57+08:00">2019-11-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index">
+                    <span itemprop="name">性能测试</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2017/11/17/Jmeter%E7%9A%84Non_GUI%E6%A8%A1%E5%BC%8F%EF%BC%8C%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%A8%A1%E5%BC%8F/" class="post-meta-item leancloud_visitors" data-flag-title="Jmeter的Non_GUI模式，命令行模式" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2017/11/17/Jmeter%E7%9A%84Non_GUI%E6%A8%A1%E5%BC%8F%EF%BC%8C%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%A8%A1%E5%BC%8F/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2017/11/17/Jmeter%E7%9A%84Non_GUI%E6%A8%A1%E5%BC%8F%EF%BC%8C%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%A8%A1%E5%BC%8F/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>For load testing, you must run JMeter in this mode (Without the GUI) to get the optimal results from it. To do so, use the following command options:<br>-n This specifies JMeter is to run in non-gui mode -t [name of JMX file that contains the Test Plan]. -l [name of JTL file to log sample results to]. -j [name of JMeter run log file]. -r Run the test in the servers specified by the JMeter property “ remote_hosts” -R [list of remote servers] Run the test in the specified remote servers -g [path to CSV file] generate report dashboard only -e generate report dashboard after load test -o output folder where to generate the report dashboard after load test. Folder must not exist or be empty</p>
+<p>The script also lets you specify the optional firewall/proxy server information:</p>
+<p>-H [proxy server hostname or ip address] -P [proxy server port]</p>
+<p><strong>Example</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jmeter -n -t my_test.jmx -l log.jtl -H my.proxy.server -P <span class="number">8000</span></span><br></pre></td></tr></table></figure>
+
+<p>If the property jmeterengine.stopfail.system.exit is set to true (default is false), then JMeter will invoke System.exit(1) if it cannot stop all threads. Normally this is not necessary.</p>
+<p>reference:<br><a href="http://jmeter.apache.org/usermanual/get-started.html#running" target="_blank" rel="noopener">http://jmeter.apache.org/usermanual/get-started.html/#running</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://blog.windanchaos.tech/2017/11/08/%E6%88%91%E7%90%86%E8%A7%A3%E7%9A%84%E8%AE%A1%E7%AE%97%E6%9C%BA/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="windanchaos">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇弦">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/11/08/%E6%88%91%E7%90%86%E8%A7%A3%E7%9A%84%E8%AE%A1%E7%AE%97%E6%9C%BA/" class="post-title-link" itemprop="url">我理解的计算机</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-11-08 00:12:07" itemprop="dateCreated datePublished" datetime="2017-11-08T00:12:07+08:00">2017-11-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-11-23 23:11:57" itemprop="dateModified" datetime="2019-11-23T23:11:57+08:00">2019-11-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux%E7%AE%A1%E7%90%86%E7%BB%B4%E6%8A%A4/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux管理维护</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2017/11/08/%E6%88%91%E7%90%86%E8%A7%A3%E7%9A%84%E8%AE%A1%E7%AE%97%E6%9C%BA/" class="post-meta-item leancloud_visitors" data-flag-title="我理解的计算机" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2017/11/08/%E6%88%91%E7%90%86%E8%A7%A3%E7%9A%84%E8%AE%A1%E7%AE%97%E6%9C%BA/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2017/11/08/%E6%88%91%E7%90%86%E8%A7%A3%E7%9A%84%E8%AE%A1%E7%AE%97%E6%9C%BA/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>研究完了http的协议及操作，下面计划把网络测试和性能有关偏底层一点的概念梳理梳理。固本求原。<br>进程\线程\死锁在《软件设计师教程》中已经阅读学习过，虽然软考挂了没过，但是毕竟还是看过的，再温故知新一遍。就脱离课本上高精深的描述求个自我解脱型的理解。不足之处以后深入再补。<br>计算机的本质或者说对人类的价值是计算，非要加个定语的话，超高速的计算。<br>抽象出来的模型为：输入－&gt;计算－&gt;输出。<br>那么执行这个模型的硬件及软件就构成了计算机系统。<br>我们忽略输入设备及各类线，关注最重要的几个设备:CPU、内存。<br>然后计算模型就变成了：<br>内存作为数据输入给CPU计算，CPU高速处理（它有个高速缓存，其实就是超高速的内存，太贵所以不能多用，临时中转数据用的），处理结果返还给内存，内存再分配出去。<br>以上的工作完成是靠操作系统的底层支持完成的。<br>那么CPU的计算能力是怎么评估的呢，这个要理解才能理解后面的并发。<br>最原始的计算器，占据了一个很大的房间，多大我不晓得，但是很大就是了。基本的计算单元，利用的是晶体管的“阴阳”属性，或者是电流的“正负极”，抽象为二进制的“０和１”，等于一个晶体管有两种状态，把它们组合起来，做各种变化（比如位运算，位运算就是直接操作二进制，可以实现十进制的加减乘除）完成计算，至于它是如何实现计算的，还是去<a href="https://www.zhihu.com/question/24648757" target="_blank" rel="noopener">知乎一下</a>。那结论就是就是要让它，通电断电。所以了，速度就是你能让晶体管，一秒内断电和通电多少次咯。我们来一个转悠名词，叫时钟频率，也可以叫CPU的主频，它的单位是兆赫（ MHz），以Intel 酷睿i5 7500 的CPU主频为例，它的主频为3.4GHz，就是一秒钟开关（它的一个周期就一个开关）3.4/<em>1000/</em>1000/*1000次，容我算算。１MHz是100万次，那么3.4G就是34000000000次。呵呵呵，我已经深深怀疑人生了。插个题外话，人类的CPU主频已经瓶颈好多年了，据说到了４Ｇ就不得了了，所以才出了什么多核CPU，可以看看这个<a href="https://www.zhihu.com/question/32096371?sort=created" target="_blank" rel="noopener">帖子</a>。主流中央处理器的确在05年之后就很少超过4GHz的频率，只能依靠并行运算来为摩尔定律续命。我们这里抛开多核，就说一个事情，CPU很牛逼。</p>
+<p>所以，能者多劳。人类工程师，就很合理的会想如何压榨这个计算怪兽。如果是你你会怎么做？如果你老板发现你干活特别快质量又好，你说老板会干什么？当然是给你加活儿啊，涨工资？想多了。老板会让你干更多的活，多么痛的领悟。所以，我们也会让CPU干更多的事。而操作系统就是实现这个目的的基础设备。<br>操作系统是悬浮在计算硬件和其他软件之间的一个基础性的软件。恶补下操作系统主要干了什么呢？<br>（1）作业管理：包括任务、界面管理、人机交互、图形界面、语音控制和虚拟现实等；<br>（2）文件管理：又称为信息管理；<br>（3）存储管理：实质是对存储“空间”的管理，主要指对主存的管理；<br>（4）设备管理：实质是对硬件设备的管理，其中包括对输入输出设备的分配、启动、完成和回收；<br>（5）进程管理：实质上是对处理机执行“时间”的管理，即如何将CPU真正合理地分配给每个任务。</p>
+<p>一个程序被激活，操作系统会为它分配资源(进程控制块、内存空间、寄存器等），并控制程序进入CPU的次序。而操作系统并不是主动为程序服务的，需要程序编码者提交系统资源的申请，相当于调用系统提供的API。</p>
+<p>以上全敲键盘码字，无意中看到的系列文章：<a href="http://www.cnblogs.com/edisonchou/category/625054.html" target="_blank" rel="noopener">计算机理论基础</a>。花了一晚上读完，读了以后感觉倍儿棒，简单明白，所以我也买了一本他参考的图书《计算机的心智 操作系统之哲学原理 第2版》，这广告做的就很好。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://blog.windanchaos.tech/2017/11/07/python%20requests%E8%AF%B7%E6%B1%82http/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="windanchaos">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇弦">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/11/07/python%20requests%E8%AF%B7%E6%B1%82http/" class="post-title-link" itemprop="url">python requests请求http</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-11-07 23:13:14" itemprop="dateCreated datePublished" datetime="2017-11-07T23:13:14+08:00">2017-11-07</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-11-23 23:11:57" itemprop="dateModified" datetime="2019-11-23T23:11:57+08:00">2019-11-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/python%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index">
+                    <span itemprop="name">python编程语言</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2017/11/07/python%20requests%E8%AF%B7%E6%B1%82http/" class="post-meta-item leancloud_visitors" data-flag-title="python requests请求http" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2017/11/07/python%20requests%E8%AF%B7%E6%B1%82http/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2017/11/07/python%20requests%E8%AF%B7%E6%B1%82http/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>主要还是参考官方文档，摘抄改改，runrun</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line"><span class="string">''</span><span class="string">'学习使用requests，集合了大部分方法的使用Demo.by windanchaos'</span><span class="string">''</span></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"># we have a Response object called r. We can get all the information we need from this object.</span><br><span class="line"></span><br><span class="line">r1 = requests.get(<span class="string">'https://api.github.com/events'</span>)</span><br><span class="line"># Response Content</span><br><span class="line">print(r1.text)</span><br><span class="line">print(r1.encoding)</span><br><span class="line"></span><br><span class="line"># POST</span><br><span class="line">r2 = requests.post(<span class="string">'http://httpbin.org/post'</span>, data = &#123;<span class="string">'key'</span>:<span class="string">'value'</span>&#125;)</span><br><span class="line">print (r2.status_code)</span><br><span class="line">payload = &#123;<span class="string">'key1'</span>: <span class="string">'value1'</span>, <span class="string">'key2'</span>: <span class="string">'value2'</span>&#125;</span><br><span class="line">r2 =requests.post(<span class="string">"http://httpbin.org/post"</span>,data=payload)</span><br><span class="line"></span><br><span class="line">url = <span class="string">'http://httpbin.org/post'</span></span><br><span class="line">files = &#123;<span class="string">'file'</span>: (<span class="string">'report.xls'</span>, open(<span class="string">'report.xls'</span>, <span class="string">'rb'</span>), <span class="string">'application/vnd.ms-excel'</span>, &#123;<span class="string">'Expires'</span>: <span class="string">'0'</span>&#125;)&#125;</span><br><span class="line">r = requests.post(url, files=files)</span><br><span class="line">r.text</span><br><span class="line"></span><br><span class="line"># PUT, DELETE, HEAD and OPTIONS</span><br><span class="line">r3 = requests.put(<span class="string">'http://httpbin.org/put'</span>, data = &#123;<span class="string">'key'</span>:<span class="string">'value'</span>&#125;)</span><br><span class="line">print (r3.status_code)</span><br><span class="line">r4 = requests.delete(<span class="string">'http://httpbin.org/delete'</span>)</span><br><span class="line">print (r4.status_code)</span><br><span class="line">r5 = requests.head(<span class="string">'http://httpbin.org/get'</span>)</span><br><span class="line">print (r5.headers)</span><br><span class="line">r6 = requests.options(<span class="string">'http://httpbin.org/get'</span>)</span><br><span class="line"></span><br><span class="line"># Passing Parameters In URLs</span><br><span class="line">payload = &#123;<span class="string">'key1'</span>: <span class="string">'value1'</span>, <span class="string">'key2'</span>: <span class="string">'value2'</span>&#125;</span><br><span class="line">r7 = requests.get(<span class="string">'http://httpbin.org/get'</span>, params=payload, timeout=<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line"># Binary Response Content</span><br><span class="line">r8 = requests.get(<span class="string">'http://dynamic-image.yesky.com/640x-//uploadImages/leadimage/2014/266/55/QS4928ATRIR1_W.jpg'</span>)</span><br><span class="line">print(r8.content)</span><br><span class="line"></span><br><span class="line"># JSON Response Content</span><br><span class="line">r9 = requests.get(<span class="string">'https://api.github.com/events'</span>)</span><br><span class="line">print(r9.json())</span><br><span class="line"></span><br><span class="line"># raw socket response</span><br><span class="line">r10 = requests.get(<span class="string">'https://api.github.com/events'</span>, stream=True)</span><br><span class="line">r10.raw</span><br><span class="line">r10.raw.read(<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"># Custom Headers</span><br><span class="line"><span class="string">''</span><span class="string">'</span></span><br><span class="line"><span class="string">    Authorization headers set with headers= will be overridden if credentials are specified in .netrc, </span></span><br><span class="line"><span class="string">    which in turn will be overridden by the auth= parameter.</span></span><br><span class="line"><span class="string">    Authorization headers will be removed if you get redirected off-host.</span></span><br><span class="line"><span class="string">    Proxy-Authorization headers will be overridden by proxy credentials provided in the URL.</span></span><br><span class="line"><span class="string">    Content-Length headers will be overridden when we can determine the length of the content.</span></span><br><span class="line"><span class="string">'</span><span class="string">''</span></span><br><span class="line">url = <span class="string">'https://api.github.com/some/endpoint'</span></span><br><span class="line">headers = &#123;<span class="string">'user-agent'</span>: <span class="string">'my-app/0.0.1'</span>&#125;</span><br><span class="line">r11 = requests.get(url, headers=headers)</span><br><span class="line"></span><br><span class="line"># Cookies</span><br><span class="line">url = <span class="string">'http://example.com/some/cookie/setting/url'</span></span><br><span class="line">r12 = requests.get(url)</span><br><span class="line">print(r12.cookies[<span class="string">'example_cookie_name'</span>])</span><br><span class="line"></span><br><span class="line">url = <span class="string">'http://httpbin.org/cookies'</span></span><br><span class="line">cookies = dict(cookies_are=<span class="string">'working'</span>)</span><br><span class="line">r13 = requests.get(url, cookies=cookies)</span><br><span class="line">r13.text</span><br><span class="line"></span><br><span class="line"><span class="string">''</span><span class="string">'</span></span><br><span class="line"><span class="string">Cookies are returned in a RequestsCookieJar, which acts like a dict but also offers a more complete interface, </span></span><br><span class="line"><span class="string">suitable for use over multiple domains or paths. Cookie jars can also be passed in to requests</span></span><br><span class="line"><span class="string">'</span><span class="string">''</span></span><br><span class="line">jar = requests.cookies.RequestsCookieJar()</span><br><span class="line">jar.set(<span class="string">'tasty_cookie'</span>, <span class="string">'yum'</span>, domain=<span class="string">'httpbin.org'</span>, path=<span class="string">'/cookies'</span>)</span><br><span class="line">jar.set(<span class="string">'gross_cookie'</span>, <span class="string">'blech'</span>, domain=<span class="string">'httpbin.org'</span>, path=<span class="string">'/elsewhere'</span>)</span><br><span class="line">url = <span class="string">'http://httpbin.org/cookies'</span></span><br><span class="line">r14 = requests.get(url, cookies=jar)</span><br><span class="line">r14.text</span><br><span class="line"></span><br><span class="line"># Redirection and History</span><br><span class="line"><span class="string">''</span><span class="string">'</span></span><br><span class="line"><span class="string">By default Requests will perform location redirection for all verbs except HEAD.</span></span><br><span class="line"><span class="string">We can use the history property of the Response object to track redirection.</span></span><br><span class="line"><span class="string">'</span><span class="string">''</span></span><br><span class="line">r15= requests.get(<span class="string">'http://github.com'</span>)</span><br><span class="line">r15.status_code</span><br><span class="line">r15.history</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://blog.windanchaos.tech/2017/11/06/ubuntu16.04%E5%8D%87%E7%BA%A7%E9%9C%80%E8%A6%81%E7%9F%A5%E9%81%93%E7%9A%84%E4%BA%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="windanchaos">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇弦">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/11/06/ubuntu16.04%E5%8D%87%E7%BA%A7%E9%9C%80%E8%A6%81%E7%9F%A5%E9%81%93%E7%9A%84%E4%BA%8B/" class="post-title-link" itemprop="url">ubuntu16.04升级需要知道的事</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-11-06 00:43:47" itemprop="dateCreated datePublished" datetime="2017-11-06T00:43:47+08:00">2017-11-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-11-23 23:11:57" itemprop="dateModified" datetime="2019-11-23T23:11:57+08:00">2019-11-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux%E7%AE%A1%E7%90%86%E7%BB%B4%E6%8A%A4/" itemprop="url" rel="index">
+                    <span itemprop="name">Linux管理维护</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2017/11/06/ubuntu16.04%E5%8D%87%E7%BA%A7%E9%9C%80%E8%A6%81%E7%9F%A5%E9%81%93%E7%9A%84%E4%BA%8B/" class="post-meta-item leancloud_visitors" data-flag-title="ubuntu16.04升级需要知道的事" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2017/11/06/ubuntu16.04%E5%8D%87%E7%BA%A7%E9%9C%80%E8%A6%81%E7%9F%A5%E9%81%93%E7%9A%84%E4%BA%8B/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2017/11/06/ubuntu16.04%E5%8D%87%E7%BA%A7%E9%9C%80%E8%A6%81%E7%9F%A5%E9%81%93%E7%9A%84%E4%BA%8B/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>１、你有一个快速且正确的源<br>/etc/apt/sources.list</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"># deb cdrom:[Ubuntu 16.04.1 LTS _Xenial Xerus_ - Release amd64 (20160719)]/ xenial main restricted</span><br><span class="line">deb-src http:<span class="comment">//archive.ubuntu.com/ubuntu xenial main restricted #Added by software-properties</span></span><br><span class="line">deb http:<span class="comment">//mirrors.aliyun.com/ubuntu/ xenial main restricted</span></span><br><span class="line">deb-src http:<span class="comment">//mirrors.aliyun.com/ubuntu/ xenial main restricted multiverse universe #Added by software-properties</span></span><br><span class="line">deb http:<span class="comment">//mirrors.aliyun.com/ubuntu/ xenial-updates main restricted</span></span><br><span class="line">deb-src http:<span class="comment">//mirrors.aliyun.com/ubuntu/ xenial-updates main restricted multiverse universe #Added by software-properties</span></span><br><span class="line">deb http:<span class="comment">//mirrors.aliyun.com/ubuntu/ xenial universe</span></span><br><span class="line">deb http:<span class="comment">//mirrors.aliyun.com/ubuntu/ xenial-updates universe</span></span><br><span class="line">deb http:<span class="comment">//mirrors.aliyun.com/ubuntu/ xenial multiverse</span></span><br><span class="line">deb http:<span class="comment">//mirrors.aliyun.com/ubuntu/ xenial-updates multiverse</span></span><br><span class="line">deb http:<span class="comment">//mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse</span></span><br><span class="line">deb-src http:<span class="comment">//mirrors.aliyun.com/ubuntu/ xenial-backports main restricted universe multiverse #Added by software-properties</span></span><br><span class="line">deb http:<span class="comment">//mirrors.aliyun.com/ubuntu/ xenial-security main restricted</span></span><br><span class="line">deb-src http:<span class="comment">//mirrors.aliyun.com/ubuntu/ xenial-security main restricted multiverse universe #Added by software-properties</span></span><br><span class="line">deb http:<span class="comment">//mirrors.aliyun.com/ubuntu/ xenial-security universe</span></span><br><span class="line">deb http:<span class="comment">//mirrors.aliyun.com/ubuntu/ xenial-security multiverse</span></span><br></pre></td></tr></table></figure>
+
+<p>注意：里面的内容要统一。如果安装过程中提示和sources.list.d冲突，就删除其中一个的冲突行。</p>
+<p>2、出现错误，不要怕，研究一下。<br>Ubuntu 16.04出现：Problem executing scripts APT::Update::Post-Invoke-Success ‘if /usr/bin/test -w /var/cache/app-info -a -e /usr/bin/appstreamcli; then appstreamcli refresh &gt; /dev/null; fi’</p>
+<p>解决：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo pkill -KILL appstreamcli</span><br><span class="line">wget -P /tmp https:<span class="comment">//launchpad.net/ubuntu/+archive/primary/+files/appstream_0.9.4-1ubuntu1_amd64.deb https://launchpad.net/ubuntu/+archive/primary/+files/libappstream3_0.9.4-1ubuntu1_amd64.deb</span></span><br><span class="line">sudo dpkg -i /tmp/appstream_0<span class="number">.9</span><span class="number">.4</span><span class="number">-1</span>ubuntu1_amd64.deb /tmp/libappstream3_0<span class="number">.9</span><span class="number">.4</span><span class="number">-1</span>ubuntu1_amd64.deb</span><br></pre></td></tr></table></figure>
+
+<p>３、先update再upgrade<br>update 是同步 /etc/apt/sources.list 和 /etc/apt/sources.list.d 中列出的源的索引，这样才能获取到最新的软件包。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="keyword">get</span> update</span><br><span class="line">sudo apt-<span class="keyword">get</span> upgrade</span><br></pre></td></tr></table></figure>
+
+<p>done</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://blog.windanchaos.tech/2017/11/05/http%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3%E5%8F%8A%E6%93%8D%E4%BD%9C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="windanchaos">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇弦">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/11/05/http%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3%E5%8F%8A%E6%93%8D%E4%BD%9C/" class="post-title-link" itemprop="url">http协议详解及操作</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-11-05 20:21:55" itemprop="dateCreated datePublished" datetime="2017-11-05T20:21:55+08:00">2017-11-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-11-23 23:11:57" itemprop="dateModified" datetime="2019-11-23T23:11:57+08:00">2019-11-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index">
+                    <span itemprop="name">自动化测试</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2017/11/05/http%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3%E5%8F%8A%E6%93%8D%E4%BD%9C/" class="post-meta-item leancloud_visitors" data-flag-title="http协议详解及操作" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2017/11/05/http%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3%E5%8F%8A%E6%93%8D%E4%BD%9C/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2017/11/05/http%E5%8D%8F%E8%AE%AE%E8%AF%A6%E8%A7%A3%E5%8F%8A%E6%93%8D%E4%BD%9C/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>互联网，绝大多数的Web开发，都是构建在HTTP协议之上的Web应用,核心就是不同构建在TCP/IP协议基础上的http请求。固本求原，本篇文章将对http协议进行整理学习、然后使用代码去操作。</p>
+<h1 id="１-http协议"><a href="#１-http协议" class="headerlink" title="１.http协议"></a>１.http协议</h1><h2 id="１-1如何工作"><a href="#１-1如何工作" class="headerlink" title="１.1如何工作"></a>１.1如何工作</h2><p>HTTP协议是Hyper Text Transfer Protocol（超文本传输协议）的缩写,是用于从万维网（WWW:World Wide Web ）服务器传输超文本到本地浏览器的传送协议。</p>
+<p>HTTP是基于客户端/服务端（C/S）的架构模型，通过一个可靠的链接来交换信息，是一个无状态的请求/响应协议。<br>一个HTTP”客户端”是一个应用程序（Web浏览器或其他任何客户端），通过连接到服务器达到向服务器发送一个或多个HTTP的请求的目的。</p>
+<p>一个HTTP”服务器”同样也是一个应用程序（通常是一个Web服务，如Apache Web服务器或IIS服务器等），通过接收客户端的请求并向客户端发送HTTP响应数据。</p>
+<p>HTTP使用统一资源标识符（Uniform Resource Identifiers, URI）来传输数据和建立连接。<br>HTTP是一个基于TCP/IP通信协议来传递数据（HTML 文件, 图片文件, 查询结果等）。<br>以下图表展示了HTTP协议通信流程：<br><img src="/images/om-wp-content-uploads-2013-11-cgiarch.gif.png" alt="这里写图片描述"></p>
+<p>因此，该协议就是客户端和服务器交换数据的一揽子标准。</p>
+<p>可以是浏览器发起请求，也可以是程序代码去发起。<br>序号 方法 描述 1 GET 请求指定的页面信息，并返回实体主体。 2 HEAD 类似于get请求，只不过返回的响应中没有具体的内容，用于获取报文 3 POST 向指定资源提交数据进行处理请求（例如提交表单或者上传文件）。数据被包含在请求体中。POST请求可能会导致新的资源的建立和/或已有资源的修改。 4 PUT 从客户端向服务器传送的数据取代指定的文档的内容。 5 DELETE 请求服务器删除指定的页面。 6 CONNECT HTTP/1.1协议中预留给能够将连接改为管道方式的代理服务器。 7 OPTIONS 允许客户端查看服务器的性能。 8 TRACE 回显服务器收到的请求，主要用于测试或诊断。 客户端发送一个HTTP请求到服务器的请求消息包括以下格式：请求行（request line）、请求头部（header）、空行和请求数据四个部分组成，见下文http报文。</p>
+<p>HTTP响应也由四个部分组成，分别是：状态行、消息报文、空行和响应正文。<br><img src="/images/om-wp-content-uploads-2013-11-httpmessage.jpg.png" alt="这里写图片描述"></p>
+<h2 id="１-2协议特点"><a href="#１-2协议特点" class="headerlink" title="１.2协议特点"></a>１.2协议特点</h2><p>HTTP协议的主要特点可概括如下：<br>1.支持客户/服务器模式。<br>2.简单快速：客户向服务器请求服务时，只需传送请求方法和路径。请求方法常用的有GET、HEAD、POST。每种方法规定了客户与服务器联系的类型不同。由于HTTP协议简单，使得HTTP服务器的程序规模小，因而通信速度很快。<br>3.灵活：HTTP允许传输任意类型的数据对象。正在传输的类型由Content-Type加以标记。<br>4.无连接：无连接的含义是限制每次连接只处理一个请求。服务器处理完客户的请求，并收到客户的应答后，即断开连接。采用这种方式可以节省传输时间。<br>5.无状态：HTTP协议是无状态协议。无状态是指协议对于事务处理没有记忆能力。缺少状态意味着如果后续处理需要前面的信息，则它必须重传，这样可能导致每次连接传送的数据量增大。另一方面，在服务器不需要先前信息时它的应答就较快。</p>
+<h2 id="1-3HTTP协议的报文"><a href="#1-3HTTP协议的报文" class="headerlink" title="1.3HTTP协议的报文"></a>1.3HTTP协议的报文</h2><p>HTTP消息由客户端到服务器的请求和服务器到客户端的响应组成，请求和响应由HTTP报文传递，报文是简单的格式化数据块。<br>起始行和首部就是由行分隔的ASCII文本。每行都以一个由两个字符组成的行终止序列作为结束，其中包括一个回车符（ASCII码13）和一个换行符（ASCII码10）。</p>
+<p>请求消息和响应消息都是由以下内容<strong>组成</strong>:</p>
+<p><img src="/images/blog.com-upload-8-69-86959da15dff4b43.jpg.png" alt="这里写图片描述"><br>如图，一个请求报文的示意：<br><img src="/images/om-wp-content-uploads-2013-11-2012072810301161-.png" alt="这里写图片描述"><br>每一个报文域都是由名字+“：”+空格+值 组成，消息报文域的名字是大小写无关的。<br>如图：一个访问百度的请求报文和响应报文(header)</p>
+<p><img src="/images/dn.net-20171105210421826-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2luZGFuY2hhb3M=-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png" alt="这里写图片描述"></p>
+<p><strong>HTTP消息报文包括普通报文、请求报文、响应报文、实体报文。</strong></p>
+<p>在普通报文中，有少数报文域用于所有的请求和响应消息，但并不用于被传输的实体，只用于传输的消息。<br>eg：<br>Cache-Control 用于指定缓存指令，缓存指令是单向的（响应中出现的缓存指令在请求中未必会出现），且是独立的（一个消息的缓存指令不会影响另一个消息处理的缓存机制），HTTP1.0使用的类似的报文域为Pragma。<br>请求时的缓存指令包括：no-cache（用于指示请求或响应消息不能缓存）、no-store、max-age、max-stale、min-fresh、only-if-cached;<br>响应时的缓存指令包括：public、private、no-cache、no-store、no-transform、must-revalidate、proxy-revalidate、max-age、s-maxage.</p>
+<p>请求报文允许客户端向服务器端传递请求的附加信息以及客户端自身的信息。<br>Header 解释 示例 Accept 指定客户端能够接收的内容类型 Accept: text/plain, text/html Accept-Charset 浏览器可以接受的字符编码集。 Accept-Charset: iso-8859-5 Accept-Encoding 指定浏览器可以支持的web服务器返回内容压缩编码类型。 Accept-Encoding: compress, gzip Accept-Language 浏览器可接受的语言 Accept-Language: en,zh Accept-Ranges 可以请求网页实体的一个或者多个子范围字段 Accept-Ranges: bytes Authorization HTTP授权的授权证书 Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ== Cache-Control 指定请求和响应遵循的缓存机制 Cache-Control: no-cache Connection 表示是否需要持久连接。（HTTP 1.1默认进行持久连接） Connection: close Cookie HTTP请求发送时，会把保存在该请求域名下的所有cookie值一起发送给web服务器。 Cookie: $Version=1; Skin=new; Content-Length 请求的内容长度 Content-Length: 348 Content-Type 请求的与实体对应的MIME信息 Content-Type: application/x-www-form-urlencoded Date 请求发送的日期和时间 Date: Tue, 15 Nov 2010 08:12:31 GMT Expect 请求的特定的服务器行为 Expect: 100-continue From 发出请求的用户的Email From: <a href="mailto:user@email.com" target="_blank" rel="noopener">user@email.com</a> Host 指定请求的服务器的域名和端口号 Host: <a href="http://www.zcmhi.com" target="_blank" rel="noopener">www.zcmhi.com</a> If-Match 只有请求内容与实体相匹配才有效 If-Match: “737060cd8c284d8af7ad3082f209582d” If-Modified-Since 如果请求的部分在指定时间之后被修改则请求成功，未被修改则返回304代码 If-Modified-Since: Sat, 29 Oct 2010 19:43:31 GMT If-None-Match 如果内容未改变返回304代码，参数为服务器先前发送的Etag，与服务器回应的Etag比较判断是否改变 If-None-Match: “737060cd8c284d8af7ad3082f209582d” If-Range 如果实体未改变，服务器发送客户端丢失的部分，否则发送整个实体。参数也为Etag If-Range: “737060cd8c284d8af7ad3082f209582d” If-Unmodified-Since 只在实体在指定时间之后未被修改才请求成功 If-Unmodified-Since: Sat, 29 Oct 2010 19:43:31 GMT Max-Forwards 限制信息通过代理和网关传送的时间 Max-Forwards: 10 Pragma 用来包含实现特定的指令 Pragma: no-cache Proxy-Authorization 连接到代理的授权证书 Proxy-Authorization: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ== Range 只请求实体的一部分，指定范围 Range: bytes=500-999 Referer 先前网页的地址，当前请求网页紧随其后,即来路 Referer: <a href="http://www.zcmhi.com/archives/71.html" target="_blank" rel="noopener">http://www.zcmhi.com/archives/71.html</a> TE 客户端愿意接受的传输编码，并通知服务器接受接受尾加头信息 TE: trailers,deflate;q=0.5 Upgrade 向服务器指定某种传输协议以便服务器进行转换（如果支持） Upgrade: HTTP/2.0, SHTTP/1.3, IRC/6.9, RTA/x11 User-Agent User-Agent的内容包含发出请求的用户信息 User-Agent: Mozilla/5.0 (Linux; X11) Via 通知中间网关或代理服务器地址，通信协议 Via: 1.0 fred, 1.1 nowhere.com (Apache/1.1) Warning 关于消息实体的警告信息 Warn: 199 Miscellaneous warning</p>
+<p>响应报文允许服务器传递不能放在状态行中的附加响应信息，以及关于服务器的信息和对Request-URI所标识的资源进行下一步访问的信息。<br>Header 解释 示例 Accept-Ranges 表明服务器是否支持指定范围请求及哪种类型的分段请求 Accept-Ranges: bytes Age 从原始服务器到代理缓存形成的估算时间（以秒计，非负） Age: 12 Allow 对某网络资源的有效的请求行为，不允许则返回405 Allow: GET, HEAD Cache-Control 告诉所有的缓存机制是否可以缓存及哪种类型 Cache-Control: no-cache Content-Encoding web服务器支持的返回内容压缩编码类型。 Content-Encoding: gzip Content-Language 响应体的语言 Content-Language: en,zh Content-Length 响应体的长度 Content-Length: 348 Content-Location 请求资源可替代的备用的另一地址 Content-Location: /index.htm Content-MD5 返回资源的MD5校验值 Content-MD5: Q2hlY2sgSW50ZWdyaXR5IQ== Content-Range 在整个返回体中本部分的字节位置 Content-Range: bytes 21010-47021/47022 Content-Type 返回内容的MIME类型 Content-Type: text/html; charset=utf-8 Date 原始服务器消息发出的时间 Date: Tue, 15 Nov 2010 08:12:31 GMT ETag 请求变量的实体标签的当前值 ETag: “737060cd8c284d8af7ad3082f209582d” Expires 响应过期的日期和时间 Expires: Thu, 01 Dec 2010 16:00:00 GMT Last-Modified 请求资源的最后修改时间 Last-Modified: Tue, 15 Nov 2010 12:45:26 GMT Location 用来重定向接收方到非请求URL的位置来完成请求或标识新的资源 Location: <a href="http://www.zcmhi.com/archives/94.html" target="_blank" rel="noopener">http://www.zcmhi.com/archives/94.html</a> Pragma 包括实现特定的指令，它可应用到响应链上的任何接收方 Pragma: no-cache Proxy-Authenticate 它指出认证方案和可应用到代理的该URL上的参数 Proxy-Authenticate: Basic refresh 应用于重定向或一个新的资源被创造，在5秒之后重定向（由网景提出，被大部分浏览器支持）<br>Refresh: 5; url=</p>
+<p><a href="http://www.zcmhi.com/archives/94.html" target="_blank" rel="noopener">http://www.zcmhi.com/archives/94.html</a> Retry-After 如果实体暂时不可取，通知客户端在指定时间之后再次尝试 Retry-After: 120 Server web服务器软件名称 Server: Apache/1.3.27 (Unix) (Red-Hat/Linux) Set-Cookie 设置Http Cookie Set-Cookie: UserID=JohnDoe; Max-Age=3600; Version=1 Trailer 指出头域在分块传输编码的尾部存在 Trailer: Max-Forwards Transfer-Encoding 文件传输编码 Transfer-Encoding:chunked Vary 告诉下游代理是使用缓存响应还是从原始服务器请求 Vary: /* Via 告知代理客户端响应是通过哪里发送的 Via: 1.0 fred, 1.1 nowhere.com (Apache/1.1) Warning 警告实体可能存在的问题 Warning: 199 Miscellaneous warning WWW-Authenticate 表明客户端请求实体应该使用的授权方案 WWW-Authenticate: Basic</p>
+<p>请求和响应消息都可以传送一个实体。一个实体由实体报文域和实体正文组成，但并不是说实体报文域和实体正文要在一起发送，可以只发送实体报文域。<br>HTTP实体的组成：实体首部和实体主体。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">实体首部：描述了HTTP报文的内容</span><br><span class="line">实体主体：实体主体即原始数据</span><br></pre></td></tr></table></figure>
+
+<h4 id="1-3-4-1实体首部"><a href="#1-3-4-1实体首部" class="headerlink" title="1.3.4.1实体首部"></a>1.3.4.1实体首部</h4><p>Allow：列出了可以对此实体执行的请求方法</p>
+<p>Location：告知客户端实体实际上位于何处，用于将接收端定向到资源的位置(URL)上去</p>
+<p>Content-Base：解析主体中的相对URL时使用的基础URL</p>
+<p>Content-Encoding：对主体执行的任意编码方式</p>
+<p>Content-Language：理解主体时最适宜使用的自然语言</p>
+<p>Content-Length：主体的长度</p>
+<p>Content-Location：资源实际所处的位置</p>
+<p>Content-MD5：主体的MD5校验和</p>
+<p>Content-Range：在整个资源中此实体表示的字节范围</p>
+<p>Content-Type：这个主体的对象类型</p>
+<p>ETag：与此实体相关的实体标记</p>
+<p>Expires：实体不再有效，要从原始的源端再次获取实体的日期和时间</p>
+<p>Last-Modified：这个实体最后一次被修改的日期和时间</p>
+<h4 id="1-3-4-2-实体的主体"><a href="#1-3-4-2-实体的主体" class="headerlink" title="1.3.4.2.实体的主体"></a>1.3.4.2.实体的主体</h4><p>该部分其实就是HTTP要传输的内容，是可选的。HTTP报文可以承载很多类型的数字数据，比如，图片、视频、HTML文档电子邮件、软件应用程序等等。<br>这是大头。但是描述的信息很少，说明http并不是很care你传输的是什么东西，它就是一个负责运输的工具。</p>
+<p>当浏览者访问一个网页时，浏览者的浏览器会向网页所在服务器发出请求。当浏览器接收并显示网页前，此网页所在的服务器会返回一个包含HTTP状态码的信息头（server header）用以响应浏览器的请求。<br>HTTP状态码由三个十进制数字组成，第一个十进制数字定义了状态码的类型，后两个数字没有分类的作用。HTTP状态码共分为5种类型：<br>HTTP状态码的英文为HTTP Status Code。 下面是常见的HTTP状态码：<br>分类 分类描述 1/<em>/</em> 信息，服务器收到请求，需要请求者继续执行操作 2/<em>/</em> 成功，操作被成功接收并处理 3/<em>/</em> 重定向，需要进一步的操作以完成请求 4/<em>/</em> 客户端错误，请求包含语法错误或无法完成请求 5/<em>/</em> 服务器错误，服务器在处理请求的过程中发生了错误</p>
+<h1 id="２用Python操作http请求"><a href="#２用Python操作http请求" class="headerlink" title="２用Python操作http请求"></a>２用Python操作http请求</h1><h2 id="２-1python处理http的包选型"><a href="#２-1python处理http的包选型" class="headerlink" title="２.1python处理http的包选型"></a>２.1python处理http的包选型</h2><p>根据前人踩坑描述，Python 3 处理HTTP请求的包：http，urllib，urllib3，requests。<br>http是偏低层的，一般不使用。</p>
+<p>下面摘录官网的document地址：<br>http: <a href="https://docs.python.org/3/library/http.html" target="_blank" rel="noopener">https://docs.python.org/3/library/http.html</a></p>
+<p>urllib也是一个包，里面含有多个模块：urllib.request，urllib.error，urllib.parse，urllib.robotparser。<br>这里的urllib.request 跟python 2.X 的urllib2有点像。urllib.request 基于http.client，但是比 http.client 更高层一些。</p>
+<p>urllib：<a href="https://docs.python.org/3/library/urllib.html" target="_blank" rel="noopener">https://docs.python.org/3/library/urllib.html</a></p>
+<p>相比python的标准库，urllib3有很多很重要的特性，比如线程安全等。同时urllib3也很强大而且易于使用。<br>urllib3：<a href="https://pypi.python.org/pypi/urllib3" target="_blank" rel="noopener">https://pypi.python.org/pypi/urllib3</a></p>
+<p>Requests 基于urllib3，号称“Requests is an elegant and simple HTTP library for Python, built for human beings.”，意思就是专门为人类设计的HTTP库。<br>Requests：<a href="http://docs.python-requests.org/en/latest/index.html" target="_blank" rel="noopener">http://docs.python-requests.org/en/latest/index.html</a></p>
+<p>选型结论:requests和urllib3<br><a href="http://docs.python-requests.org/en/latest/user/quickstart/" target="_blank" rel="noopener">http://docs.python-requests.org/en/latest/user/quickstart/</a><br><a href="https://urllib3.readthedocs.io/en/latest/user-guide.html" target="_blank" rel="noopener">https://urllib3.readthedocs.io/en/latest/user-guide.html</a><br>剩下的事就简单了，在document里面翱翔一番。</p>
+<h2 id="2-2urllib3"><a href="#2-2urllib3" class="headerlink" title="2.2urllib3"></a>2.2urllib3</h2><p>我作为爬坑的，我说还是不要用它了，不方便。urllib3默认不支持https，支持也可以，请你做点额外的工作。user-guide上都有。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line"><span class="string">''</span><span class="string">'学习使用urlib3，集合了大部分方法的使用Demo.by windanchaos'</span><span class="string">''</span></span><br><span class="line"><span class="keyword">import</span> urllib3</span><br><span class="line"></span><br><span class="line"><span class="string">''</span><span class="string">'</span></span><br><span class="line"><span class="string">You’ll need a PoolManager instance to make requests. </span></span><br><span class="line"><span class="string">This object handles all of the details of connection pooling and thread safety.</span></span><br><span class="line"><span class="string">'</span><span class="string">''</span></span><br><span class="line">http = urllib3.PoolManager()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># make a request use request()</span><br><span class="line"># request() returns a HTTPResponse object</span><br><span class="line"># HTTPResponse返回了http的表头headers\状态码status\实体data.</span><br><span class="line"># 定义超时和重试次数</span><br><span class="line">r1 = http.request(<span class="string">'GET'</span>, <span class="string">'http://www.baidu.com'</span>,timeout=<span class="number">4.0</span>,retries=<span class="number">10</span>)</span><br><span class="line">r2 = http.request(<span class="string">'GET'</span>, <span class="string">'http://httpbin.org/robots.txt'</span>)</span><br><span class="line"></span><br><span class="line">print(r1.status)</span><br><span class="line"># headers 是header的dict</span><br><span class="line">print(r1.headers)</span><br><span class="line">print(r1.data)</span><br><span class="line"></span><br><span class="line">print(r2.status)</span><br><span class="line">print(r2.headers)</span><br><span class="line">print(r2.data)</span><br><span class="line"></span><br><span class="line"># 请求数据的组织,下面访问baidu，使用手机端的User-Agent组织请求报头,返回的data就是移动端的了</span><br><span class="line">agent=&#123;<span class="string">'User-Agent'</span>:<span class="string">'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) \</span></span><br><span class="line"><span class="string">    Version/9.0 Mobile/13B143 Safari/601.1'</span>&#125;</span><br><span class="line">r3 = http.request(<span class="string">'GET'</span>, <span class="string">'http://www.baidu.com'</span>, headers=agent)</span><br><span class="line">print(r3.data)</span><br><span class="line"></span><br><span class="line"># post和put请求，需要自己encode请求的参数</span><br><span class="line"><span class="keyword">from</span> urllib <span class="keyword">import</span> urlencode</span><br><span class="line"><span class="keyword">import</span> json</span><br><span class="line">encoded_args = urlencode(&#123;<span class="string">'arg'</span>: <span class="string">'value'</span>&#125;)</span><br><span class="line">url4 = <span class="string">'http://httpbin.org/post?'</span> + encoded_args</span><br><span class="line">r4 = http.request(<span class="string">'POST'</span>, url4)</span><br><span class="line">print(json.loads(r4.data.decode(<span class="string">'utf-8'</span>))[<span class="string">'args'</span>])</span><br><span class="line"></span><br><span class="line"># 当然如果是form数据，urllib3也可以帮你encode，如：</span><br><span class="line">r5 = http.request(<span class="string">'POST'</span>, <span class="string">'http://httpbin.org/post'</span>, fields=&#123;<span class="string">'field'</span>: <span class="string">'value'</span>&#125;)</span><br><span class="line">print(json.loads(r5.data.decode(<span class="string">'utf-8'</span>))[<span class="string">'form'</span>],r5.status)</span><br><span class="line"></span><br><span class="line"># post json demo</span><br><span class="line">data = &#123;<span class="string">'attribute'</span>: <span class="string">'value'</span>&#125;</span><br><span class="line">encoded_data = json.dumps(data).encode(<span class="string">'utf-8'</span>)</span><br><span class="line">r6 = http.request(<span class="string">'POST'</span>, <span class="string">'http://httpbin.org/post'</span>, body=encoded_data, headers=&#123;<span class="string">'Content-Type'</span>: <span class="string">'application/json'</span>&#125;)</span><br><span class="line">print(json.loads(r6.data.decode(<span class="string">'utf-8'</span>))[<span class="string">'json'</span>])</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># post file and binary data</span><br><span class="line"><span class="string">''</span><span class="string">'</span></span><br><span class="line"><span class="string">For uploading files using multipart/form-data encoding you can use the same approach as Form data and specify </span></span><br><span class="line"><span class="string">the file field as a tuple of (file_name, file_data)</span></span><br><span class="line"><span class="string">'</span><span class="string">''</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'example.txt'</span>) <span class="keyword">as</span> fp:</span><br><span class="line">    file_data = fp.read()</span><br><span class="line">r7 = http.request(<span class="string">'POST'</span>,<span class="string">'http://httpbin.org/post'</span>, fields=&#123;<span class="string">'filefield'</span>: (<span class="string">'example.txt'</span>, file_data, <span class="string">'text/plain'</span>)&#125;)</span><br><span class="line">json.loads(r7.data.decode(<span class="string">'utf-8'</span>))[<span class="string">'files'</span>]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="string">''</span><span class="string">'</span></span><br><span class="line"><span class="string">For sending raw binary data simply specify the body argument. It’s also recommended to set the Content-Type header</span></span><br><span class="line"><span class="string">'</span><span class="string">''</span></span><br><span class="line"><span class="keyword">with</span> open(<span class="string">'example.jpg'</span>, <span class="string">'rb'</span>) <span class="keyword">as</span> fp:</span><br><span class="line">    binary_data = fp.read()</span><br><span class="line">r8 = http.request(<span class="string">'POST'</span>,<span class="string">'http://httpbin.org/post'</span>,body=binary_data,headers=&#123;<span class="string">'Content-Type'</span>: <span class="string">'image/jpeg'</span>&#125;)</span><br><span class="line">json.loads(r8.data.decode(<span class="string">'utf-8'</span>))[<span class="string">'data'</span>]</span><br><span class="line"></span><br><span class="line"># 对ssl默认是不支持的。需要提供额外的配置或下载额外的包。</span><br><span class="line"></span><br><span class="line"># log &amp; Errors &amp; Exceptions¶</span><br><span class="line"><span class="string">''</span><span class="string">'</span></span><br><span class="line"><span class="string">If you are using the standard library logging module urllib3 will emit several logs. </span></span><br><span class="line"><span class="string">In some cases this can be undesirable. </span></span><br><span class="line"><span class="string">You can use the standard logger interface to change the log level for urllib3’s logger</span></span><br><span class="line"><span class="string">&gt;&gt;&gt;logging.getLogger("urllib3").setLevel(logging.WARNING)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&gt;&gt;&gt; try:</span></span><br><span class="line"><span class="string">...     http.request('</span>GET<span class="string">', '</span>nx.example.com<span class="string">', retries=False)</span></span><br><span class="line"><span class="string">&gt;&gt;&gt; except urllib3.exceptions.NewConnectionError:</span></span><br><span class="line"><span class="string">...     print('</span>Connection failed.<span class="string">')</span></span><br><span class="line"><span class="string">'</span><span class="string">''</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="2-3requests"><a href="#2-3requests" class="headerlink" title="2.3requests"></a>2.3requests</h2><p>文章超长了。转到<a href="http://blog.csdn.net/windanchaos/article/details/78473728" target="_blank" rel="noopener">下一篇</a>继续。</p>
+<p>Reference参考文献（网页）：<br><a href="http://www.runoob.com/http/http-tutorial.html" target="_blank" rel="noopener">http://www.runoob.com/http/http-tutorial.html</a><br><a href="http://www.cnblogs.com/li0803/archive/2008/11/03/1324746.html" target="_blank" rel="noopener">http://www.cnblogs.com/li0803/archive/2008/11/03/1324746.html</a><br><a href="http://tools.jb51.net/table/http_status_code" target="_blank" rel="noopener">http://tools.jb51.net/table/http_status_code</a><br><a href="http://www.cnblogs.com/miniren/p/5885393.html" target="_blank" rel="noopener">http://www.cnblogs.com/miniren/p/5885393.html</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://blog.windanchaos.tech/2017/11/01/%E4%BA%BA%E7%B1%BB%E3%80%81%E7%BB%8F%E6%B5%8E%E3%80%81%E5%A4%AA%E9%98%B3%EF%BC%8C%E7%AE%A1%E4%BB%96%E5%91%A2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="windanchaos">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇弦">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/11/01/%E4%BA%BA%E7%B1%BB%E3%80%81%E7%BB%8F%E6%B5%8E%E3%80%81%E5%A4%AA%E9%98%B3%EF%BC%8C%E7%AE%A1%E4%BB%96%E5%91%A2/" class="post-title-link" itemprop="url">人类、经济、太阳，管他呢</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-11-01 21:39:41" itemprop="dateCreated datePublished" datetime="2017-11-01T21:39:41+08:00">2017-11-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-11-23 23:11:57" itemprop="dateModified" datetime="2019-11-23T23:11:57+08:00">2019-11-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%9D%82%E6%96%87/" itemprop="url" rel="index">
+                    <span itemprop="name">杂文</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2017/11/01/%E4%BA%BA%E7%B1%BB%E3%80%81%E7%BB%8F%E6%B5%8E%E3%80%81%E5%A4%AA%E9%98%B3%EF%BC%8C%E7%AE%A1%E4%BB%96%E5%91%A2/" class="post-meta-item leancloud_visitors" data-flag-title="人类、经济、太阳，管他呢" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2017/11/01/%E4%BA%BA%E7%B1%BB%E3%80%81%E7%BB%8F%E6%B5%8E%E3%80%81%E5%A4%AA%E9%98%B3%EF%BC%8C%E7%AE%A1%E4%BB%96%E5%91%A2/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2017/11/01/%E4%BA%BA%E7%B1%BB%E3%80%81%E7%BB%8F%E6%B5%8E%E3%80%81%E5%A4%AA%E9%98%B3%EF%BC%8C%E7%AE%A1%E4%BB%96%E5%91%A2/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>对我来说，这个世界的存在简直太其妙了！我能听见音响里传出的音乐声，我知道自己能听见，我能跟着旋律，能陶醉其中，但是我却不知道，我为什么能听见。你可能会说，因为你有耳膜啊，通过录音设备，把音乐声波转存成了电信号，电信号再被计算机识别成二进制，再通过流媒体的格式从网络传输到你的电脑上，你的计算机接受到信息，再把音乐的流信号翻译成电信号，电信号强弱控制音响震动，在音响还原上按一定比例真实感把音乐还原，音响激荡空气震动，声波通过空气震动，和耳膜共振，耳膜将震动信号传递给了大脑，然后你就听见了啊。这种解释，是在描述，而不是真的本质的解释，我们人类，缺的是上帝/造物主/造物神的视角，我们探索世界，发现认识，我们利用已有的知识，尊重已知的认识。但，我们人类还不具备创造认识的能力。这不可悲，可悲的是失去了那种探索的能力和欲望。<br>地球存在生命这一事实，就是已知宇宙范围内，最奇妙的存在了。生命中，繁衍出人类，人类发展到现在，生成了一个你，就更是奇妙中的奇妙了，你能和身边的人认识，简直了。我已经无法拟制内心的激动，喝了一口水，感受到了水的奇妙。但是我却很焦虑，因为我还没有买房。现在的经济就是这样，没有压力的持有房子能很大提升幸福感，不幸的是父亲没有完成家庭人口的城市化进程，只能到我这来完成了。作为时代的浮萍，家乡是一个再也回不去的地方。Mountain妈妈，再见了。<br>所以我还是妄自的道理下经济吧。经济的定义，从百度百科抄来了。<br>经济是价值的创造、转化与实现；人类经济活动就是创造、转化、实现价值，满足人类物质文化生活需要的活动。</p>
+<p>这定义里，价值又是什么？价值里的定义又什么？</p>
+<p>（1）体现在商品里的社会必要劳动。（社会必要劳动是指在现有社会正常的生产条件下，在社会平均劳动熟练程度下，生产某种产品所需要的劳动。用劳动时间来衡量。）＝＝》（劳动，是发生在人与自然界之间的活动.其实质是通过人的有意识的，有一定目的的自身活动来调整和控制自然界，使之发生物质变换，即改变自然物的形态或性质，为人类的生活和自己的需要服务。）<br>（2）积极作用。出自《闲情偶寄·声容·薰陶》。国语词语解释是（1）泛称物品的价格。（2）以各种等值标准或交换标准所表示的价值。<br>（3）凡有助于促进道德上的善，便是价值。</p>
+<p>所以，经济是什么？定义要足够的抽象，才能阻止足够多的人类去理解，深以为这是知识门槛和隔离，是人类虚伪的一种表现。那种离最简单最基本越近的概念，越难解释清楚。就像我能听见音乐，就算你详尽的阐述听到音乐的事实也并不能安慰我。所以经济是什么，怎么表述，大概的意思都是一个模式：“我听见音乐”，经济可以阐述为“人类利用环境”，“人类调整控制自然界的一切活动，从而生存”。其实不管怎么阐述，它是一种事实。这其中，有一个被大家忽略的地方，便是我们头顶的太阳。每个人都知道太阳对我们的重要程度和危险程度。近一点，地球烤成火星一样干，远一点，冻成狗。若没有和太阳恰到好处的距离，说孕育生命可能都是在开玩笑了。太阳的最大作用，便是地球生态系统的“动”起来的能量源，能量要定义一下：</p>
+<p>能量是物质运动转换的量度，简称“能”。世界万物是不断运动的，在物质的一切属性中，运动是最基本的属性，其他属性都是运动的具体表现。能量是表征物理系统做功的本领的量度。</p>
+<p>基于以上逻辑，人类隶属于地球生态，它的主要行为还是太阳能量的攫取和使用。这一点应该不会有人反对，因为我加了个定语“主要”，狡猾的一笑。人类的食物，素食和肉食，都是太阳能的物质化。植被光合作用，留住太阳能。动物食草，人食草吃肉。石油煤炭，电力，是上前万年的太阳能精华。水电，是太阳能转水势能被人类利用。下雨，闪电，风，几乎都是太阳能量输入地球后的能量形态。所以，如果我想做研究，我最想拿到的数据恐怕是，人类各种活动中利用太阳能的能力了。比如，电力发电量、粮食生产量、养殖肉量之类，转成纯的能量单位（这不比发射火箭容易）。<br>所以，经济我想表述为，能量在人类社会中流转的事实。<br>所以，生产力的提高，可以描述为人类利用太阳能能力的提高。劳动，可以描述人主动输出能量的活动（跑步也要算，跑步会消耗食物水、磨损衣物鞋子，会创造需求）。解放生产力，可以描述为，减少利用相同太阳能的人力，多出来的人力去干其他事。在食物生产领域，要求的就是单位面积的土地，产出更多的粮食。<br>所以，我最喜欢的钱，就成为能量流通的代表。所以，是不是可以通过度量一个完整经济体内部的能量利用量和流通效率，来度量整个经济体需要多少货币量呢？我觉得是可以的，至少在宏观层面是可行的，至于是否精准另当别论。所以，如此，是否可以消灭不合理的通胀或者通缩呢？我不知道。<br>等等，写到这里，我不禁思考我的思考已经不是什么新鲜事了，于是我百度了一个“能量经济学”，果不其然，已经有人写了一本书叫“能量经济学”。恩，大概看了下，思考得有点深入，把概念都体系化了，很抽象，参考了已有的政治经济学框架结构，加上能量的概念，就新开了一个政治课题。我要不要再结合理科，写一本书？叫“计量能量经济学”？开个玩笑，术业专工，我要养活自己和家庭的。既然有了一个能量经济学的概念在那我的思考就暂停到这了。以后想写了再写出来玩。说起理论，又跑题一下，本来就没有主题的哈。大学时代，曾想到一个特别新奇的论文，现在我已经想不起来课题是什么了，只记得当时鄙视院里统管学生会对那个老师的为人（主要是官僚气息），并不想找他指导课题，然后上报课题的时候找了一个经管院的美女老师，自然我上报的课题在院内就被毙掉了，这一可有可无，对于我来说心觉现实的讽刺以及自己的愚钝，感慨良师难觅，活着不易（被我鄙视的老师不容易）的一段记忆。然后和理论有关的另一个记忆就是我的本科毕业论文，我选了一个课题，是任何一个老师都未曾研究过的方向。以至于，七八年后，还具有被低年级同学研究的可能。那文章后来再看过，我自己是看不过去的，因为数据匮乏，其中的50%数据捏造，结论不痛不痒的分析，无病呻吟。但方向绝对靠谱。恩，我已经在自我陶醉的路上停不下来了。可惜了，祖国错失了一个潜力的科研/理论工作者。<br>每个人，都在或多或少的思考活着是什么，答案各种各样，不管是什么，思考的那个主体客观的以为自己是活着着，就像敲打键盘码字的这个“我”，以及读着这些文字的那“你”。说，阳光底下没有新鲜事，真的不要奇怪，世界上类似的事件在人类有限的历史来说，已经够多了，而我刚到这个世界几十年，一切都是新的，虽然“我”和世界某个角落的某个人，在某个方面出奇的相似，“我”还是以为自己是世界上独一无二的。“我思故我在”，如果“我”都不是唯一的了，那这个世界恐怕就真的不会是唯一的了。说你是世界上独一无二的欧美文化，不会告诉你，说“我”独一无二，不代表什么，所有的独一无二的集合，便是众了。承认自己的“众”性，是肉眼凡胎适应环境必须经历的一个思想过程，承认不代表妥协，所以人类中有精英的类型。我是一个曾以为自己会属于精英的肉球，我思考了一些道理，自娱自乐。管他呢，反正我还有几十年就要走了，有道理没有道理，都是我的道理。道理，就像吹牛皮，我不是实干家，不会给别人的生活造成困扰，不会掀起什么革命浪潮，更不会让人们变更好。能写，对我来说，就很好了。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://blog.windanchaos.tech/2017/10/31/Docker%20CE%20%E9%95%9C%E5%83%8F%E6%BA%90%E7%AB%99/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="windanchaos">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇弦">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/10/31/Docker%20CE%20%E9%95%9C%E5%83%8F%E6%BA%90%E7%AB%99/" class="post-title-link" itemprop="url">Docker CE 镜像源站</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-10-31 18:29:44" itemprop="dateCreated datePublished" datetime="2017-10-31T18:29:44+08:00">2017-10-31</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-11-23 23:11:57" itemprop="dateModified" datetime="2019-11-23T23:11:57+08:00">2019-11-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/" itemprop="url" rel="index">
+                    <span itemprop="name">持续集成</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2017/10/31/Docker%20CE%20%E9%95%9C%E5%83%8F%E6%BA%90%E7%AB%99/" class="post-meta-item leancloud_visitors" data-flag-title="Docker CE 镜像源站" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2017/10/31/Docker%20CE%20%E9%95%9C%E5%83%8F%E6%BA%90%E7%AB%99/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2017/10/31/Docker%20CE%20%E9%95%9C%E5%83%8F%E6%BA%90%E7%AB%99/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="安装帮助"><a href="#安装帮助" class="headerlink" title="安装帮助"></a>安装帮助</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># step 1: 安装必要的一些系统工具</span><br><span class="line">sudo apt-<span class="keyword">get</span> update</span><br><span class="line">sudo apt-<span class="keyword">get</span> -y install apt-transport-https ca-certificates curl software-properties-common</span><br><span class="line"># step 2: 安装GPG证书</span><br><span class="line">curl -fsSL http://mirrors.aliyun.com/docker-ce/linux/ubuntu/gpg | sudo apt-key add -</span><br><span class="line"># Step 3: 写入软件源信息</span><br><span class="line">sudo add-apt-repository "deb [arch=amd64] http://mirrors.aliyun.com/docker-ce/linux/ubuntu $(lsb_release -cs) stable"</span><br><span class="line"># Step 4: 更新并安装 Docker-CE</span><br><span class="line">sudo apt-<span class="keyword">get</span> -y update</span><br><span class="line">sudo apt-<span class="keyword">get</span> -y install docker-ce</span><br><span class="line"></span><br><span class="line"># 安装指定版本的Docker-CE:</span><br><span class="line"># Step 1: 查找Docker-CE的版本:</span><br><span class="line"># apt-cache madison docker-ce</span><br><span class="line">#   docker-ce | 17.03.1~ce-0~ubuntu-xenial | http://mirrors.aliyun.com/docker-ce/linux/ubuntu xenial/stable amd64 Packages</span><br><span class="line">#   docker-ce | 17.03.0~ce-0~ubuntu-xenial | http://mirrors.aliyun.com/docker-ce/linux/ubuntu xenial/stable amd64 Packages</span><br><span class="line"># Step 2: 安装指定版本的Docker-CE: (VERSION 例如上面的 17.03.1~ce-0~ubuntu-xenial)</span><br><span class="line"># sudo apt-<span class="keyword">get</span> -y install docker-ce=[VERSION]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"># step 1: 安装必要的一些系统工具</span><br><span class="line">sudo yum install -y yum-utils device-mapper-persistent-data lvm2</span><br><span class="line"># Step 2: 添加软件源信息</span><br><span class="line">sudo yum-config-manager --add-repo http:<span class="comment">//mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo</span></span><br><span class="line"># Step 3: 更新并安装 Docker-CE</span><br><span class="line">sudo yum makecache fast</span><br><span class="line">sudo yum -y install docker-ce</span><br><span class="line"># Step 4: 开启Docker服务</span><br><span class="line">sudo service docker start</span><br><span class="line"></span><br><span class="line"># 注意：</span><br><span class="line"># 官方软件源默认启用了最新的软件，您可以通过编辑软件源的方式获取各个版本的软件包。例如官方并没有将测试版本的软件源置为可用，你可以通过以下方式开启。同理可以开启各种测试版本等。</span><br><span class="line"># vim /etc/yum.repos.d/docker-ee.repo</span><br><span class="line">#   将 [docker-ce-test] 下方的 enabled=0 修改为 enabled=1</span><br><span class="line">#</span><br><span class="line"># 安装指定版本的Docker-CE:</span><br><span class="line"># Step 1: 查找Docker-CE的版本:</span><br><span class="line"># yum list docker-ce.x86_64 --showduplicates | sort -r</span><br><span class="line">#   Loading mirror speeds from cached hostfile</span><br><span class="line">#   Loaded plugins: branch, fastestmirror, langpacks</span><br><span class="line">#   docker-ce.x86_64            17.03.1.ce-1.el7.centos            docker-ce-stable</span><br><span class="line">#   docker-ce.x86_64            17.03.1.ce-1.el7.centos            @docker-ce-stable</span><br><span class="line">#   docker-ce.x86_64            17.03.0.ce-1.el7.centos            docker-ce-stable</span><br><span class="line">#   Available Packages</span><br><span class="line"># Step2 : 安装指定版本的Docker-CE: (VERSION 例如上面的 17.03.0.ce.1-1.el7.centos)</span><br><span class="line"># sudo yum -y install docker-ce-[VERSION]</span><br></pre></td></tr></table></figure>
+
+<h2 id="安装校验"><a href="#安装校验" class="headerlink" title="安装校验"></a>安装校验</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">root@iZbp12adskpuoxodbkqzjfZ:$ docker version</span><br><span class="line">Client:</span><br><span class="line"> Version:      <span class="number">17.03</span><span class="number">.0</span>-ce</span><br><span class="line"> API version:  <span class="number">1.26</span></span><br><span class="line"> Go version:   go1<span class="number">.7</span><span class="number">.5</span></span><br><span class="line"> Git commit:   <span class="number">3</span>a232c8</span><br><span class="line"> Built:        Tue Feb <span class="number">28</span> <span class="number">07</span>:<span class="number">52</span>:<span class="number">04</span> <span class="number">2017</span></span><br><span class="line"> OS/Arch:      linux/amd64</span><br><span class="line"></span><br><span class="line">Server:</span><br><span class="line"> Version:      <span class="number">17.03</span><span class="number">.0</span>-ce</span><br><span class="line"> API version:  <span class="number">1.26</span> (minimum version <span class="number">1.12</span>)</span><br><span class="line"> Go version:   go1<span class="number">.7</span><span class="number">.5</span></span><br><span class="line"> Git commit:   <span class="number">3</span>a232c8</span><br><span class="line"> Built:        Tue Feb <span class="number">28</span> <span class="number">07</span>:<span class="number">52</span>:<span class="number">04</span> <span class="number">2017</span></span><br><span class="line"> OS/Arch:      linux/amd64</span><br><span class="line"> Experimental: <span class="literal">false</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p>其他关于旧版本Docker卸载以及测试开发版本Docker安装的帮助，可以参考官方文档的说明进行安装</p>
+<ul>
+<li><a href="https://docs.docker.com/engine/installation/linux/docker-ce/centos/" target="_blank" rel="noopener">CentOS帮助链接</a></li>
+<li><a href="https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/" target="_blank" rel="noopener">Ubuntu帮助链接</a></li>
+<li><a href="https://docs.docker.com/engine/installation/linux/docker-ce/debian/" target="_blank" rel="noopener">Debian帮助链接</a></li>
+<li><a href="https://docs.docker.com/engine/installation/linux/docker-ce/fedora/" target="_blank" rel="noopener">Fedora帮助链接</a></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+        
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block home" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://blog.windanchaos.tech/2017/10/30/%E6%9C%89%E8%B5%9E.%E6%B5%8B%E8%AF%95%E5%9B%A2%E9%98%9F%E4%BB%8B%E7%BB%8D%EF%BC%88%E8%BD%AC%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="windanchaos">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇弦">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          
+            <a href="/2017/10/30/%E6%9C%89%E8%B5%9E.%E6%B5%8B%E8%AF%95%E5%9B%A2%E9%98%9F%E4%BB%8B%E7%BB%8D%EF%BC%88%E8%BD%AC%EF%BC%89/" class="post-title-link" itemprop="url">有赞.测试团队介绍（转）</a>
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-10-30 19:33:19" itemprop="dateCreated datePublished" datetime="2017-10-30T19:33:19+08:00">2017-10-30</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-11-23 23:11:57" itemprop="dateModified" datetime="2019-11-23T23:11:57+08:00">2019-11-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%96%B9%E6%B3%95%E4%B8%8E%E7%AE%A1%E7%90%86/" itemprop="url" rel="index">
+                    <span itemprop="name">方法与管理</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2017/10/30/%E6%9C%89%E8%B5%9E.%E6%B5%8B%E8%AF%95%E5%9B%A2%E9%98%9F%E4%BB%8B%E7%BB%8D%EF%BC%88%E8%BD%AC%EF%BC%89/" class="post-meta-item leancloud_visitors" data-flag-title="有赞.测试团队介绍（转）" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2017/10/30/%E6%9C%89%E8%B5%9E.%E6%B5%8B%E8%AF%95%E5%9B%A2%E9%98%9F%E4%BB%8B%E7%BB%8D%EF%BC%88%E8%BD%AC%EF%BC%89/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2017/10/30/%E6%9C%89%E8%B5%9E.%E6%B5%8B%E8%AF%95%E5%9B%A2%E9%98%9F%E4%BB%8B%E7%BB%8D%EF%BC%88%E8%BD%AC%EF%BC%89/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a href="https://tech.youzan.com" target="_blank" rel="noopener">转载自：友赞技术团队主页</a><br>转载原因：学习、借鉴先进生产力<br>一、基本概况</p>
+<p>有赞，旨在为商户提供强大的微商城和完整的移动零售解决方案，是一个移动零售服务商，正在新零售的潮流中激流勇进、开疆拓土，用产品技术撬动巨大的市场。有赞拥有世界级的 SaaS 电商解决方案，每天处理几百万订单、几亿条消息，且量级仍在不断攀升中，有赞还开放了有赞云，连接数十万开发者，大大提升了SaaS 对商家产生的价值。<br>有赞测试团队三分之二以上成员来自于阿里、腾讯、网易等公司，他/她们分别在电商事业部、零售事业部、餐饮事业部、支付事业部及共享技术事业部等部门贡献自己的力量。</p>
+<h2 id="二、我们的日常工作"><a href="#二、我们的日常工作" class="headerlink" title="二、我们的日常工作"></a>二、我们的日常工作</h2><p>测试团队负责相关项目具体测试工作、自动化建设、合并发布流程管控、设计开发线上业务级别可用性监控、同时在研发提升测试效率的工具。<br>有赞测试职位主要负责度量产品质量及研发测试效率工具。从度量产品质量角度讲，有赞测试人员需要具备白盒测试能力、CodeReview能力、业务功能测试，从而实现核心系统可持续自动化测试，保障系统在频繁发布情况依然是稳定的、高可用的。对于效率工具研发，测试同学完成相关第三方mock(例如短信、支付)、应用级健康检查、线上业务级可用性监控、持续集成工具、UI自动化、测试工作台、性能测试平台、全链路性能压测等。</p>
+<h2 id="2-1-具体项目测试"><a href="#2-1-具体项目测试" class="headerlink" title="2.1 具体项目测试"></a>2.1 具体项目测试</h2><p>有赞的项目分为标准需求项目、技术重构项目、优化项目、缺陷修复项目。有限的测试资源通过不同策略支持着绝大部分业务产品的测试工作。<br>第一、对于标准需求项目或者跨多个业务的项目，一定会有测试投入，并且会有一位PTM来协调测试工作。PTM需要确保所有需求点都拆分到各个业务测试同学手里，跟踪相关测试同学按时提交标准测试方案。当测试方案汇总后，PTM需要评估后续测试过程中，测试人员如何投入。即哪些业务的功能测试PTM可顺带执行掉，哪些确实需要对应业务线测试同学来完成，以避免一个项目投入过多测试同学。<br>第二、技术重构改造项目，这种一般是单应用或者极少应用改造，但不改变业务使用规则。这类项目测试同学只要设计测试方案并完成测试用例落地即可，用例的执行由开发自行完成。测试同学要做的就是对新系统进行自动化覆盖。如有需要，测试会在上线前做质量check。<br>第三、对于小型项目，如果开发的自测场景与测试同学的测试场景基本一致，那开发自行搞定即可；或者测试同学把需要特别关注的或者风险点给开发同学简单介绍。对于有差异的，测试同学把差异点向开发同学描述清楚即可。<br>有赞测试同学拿到具体需求后，按照有赞测试对需求分析和测试方案统一要求，完成相关工作。<br><strong>有赞.项目协作图</strong><br><img src="/images/.com-content-images-2017-09-15029627816175.jpg.png" alt=""></p>
+<p>测试同学在参加需求评审或者测试方案设计之前，需要认证阅读需求文档，从获取相关的信息：<br>第一、这个需求是给哪些角色使用的。例如，高级管理员、普通管理员、库管人员、核销员；还是买家，是大众买家还是特定买家。<br>第二、不同角色，在什么环境下使用这个些功能。例如PC后台、店铺收银台、手机端、还是有赞的移动终端。<br>第三、整个项目是否存在对象的生命周期扭转，例如订单对象、店铺等，它们在什么条件下会发生什么样的扭转。即明确状态发生变更的条件规则，确保对象生命周期是有终态的。<br>第四、明确每个业务点的人机交互过程及规则，业务过程是否连贯明确；即如何使用这个需求。<br>需求分析后，需要输出对象生命周期图、业务时序图、用例图、待确认的问题、风险点清单。并就相关问题、风险与产品、开发进行多次沟通，直到问题得到明确答复。<br><strong>有赞.需求分析.需求拆解</strong><br><img src="/images/.com-content-images-2017-09-15039932694477.jpg.png" alt=""></p>
+<p>一、功能测试设计的完整性，取决于测试人员对需求分析的深入程度及其经验。为了弥补测试同学经验不足，我们梳理了《功能测试.页面测试.基础篇》《有赞云.测试参考规范》《有赞云.carmen接口自动化参考规范》等供平时设计参考。同时，不定期组织业务分享，提高测试人员的业务全局观及跨业务耦合与风险评估能力。<br>二、提供《有赞.异常测试基本场景》指导测试人员如何考虑异常。包括Redis缓存、消息、大数据定时任务处理、多系统协同等。<br>三、有赞有安全测试专员及虚拟小组，提供安全测试方面的指导和工具；针对SQL注入、XSS、越权、业务规则安全、文件上传&amp;下载、重定向定制常规安全测试用例，指导日常测试。<br>四、其它的专项测试，根据实际情况定义指导案例及分享。<br><strong>有赞.测试大纲模板</strong><br><img src="/images/.com-content-images-2017-09-15039887594031.jpg.png" alt=""></p>
+<h2 id="2-2-自动化开发"><a href="#2-2-自动化开发" class="headerlink" title="2.2 自动化开发"></a>2.2 自动化开发</h2><p>前面提到有赞测试开发的职责，自动化是必修课。我们从接口层、端对端的数据层、端对端的UI层来做自动化建设。有赞前端应用交互与后端业务是分离的，数据通过.json请求获取或者提交数据。UI自动化依赖于前端元素的稳定性且Selenium测试具有的一定不稳定性，我们构建了在不打开浏览器的情况，对前端请求数据进行覆盖的端对端数据层自动化。各层自动化比例如下。<br><strong>有赞.自动化分布图</strong><br><img src="/images/.com-content-images-2017-09-15040005482699.jpg.png" alt=""></p>
+<p>一、接口自动化主要包含对Rest、Dubbo、Nova提供的业务接口进行覆盖。在youzan-boostrap框架上设计了接口自动化框架。根据不同业务线构建独立自动化应用。有赞接口自动化用例总量已经达到3000+，其中商品中心+库存中心+物流中心的用例总数就达到500+。</p>
+<p><strong>有赞.接口自动化项目</strong><br><img src="/images/.com-content-images-2017-09-15040971279838.jpg.png" alt=""> <img src="/images/.com-content-images-2017-09-15041716348739.jpg.png" alt=""></p>
+<p>二、端对端数据层，基于Spring Aop技术封装有赞帐号登录与店铺切换的前端测试插件yago。测试人员可以更关注自己的业务自动化开发。</p>
+<p><strong>有赞.端对端数据层自动化</strong><br><img src="/images/.com-content-images-2017-09-15040975585355-1.jpg.png" alt=""></p>
+<p>三、UI自动化框架是基于Selenide和Selenium框架进行的二次封装。框架支持Web和Wap页面的元素操作，其中Selenide用来支持Web页面，Selenium用来支持Wap页面。以下从三方面对框架作简要阐述。 框架结构。driver层二次封装Selenide和Selenium的接口，是操作页面元素的核心；pageObject层用于封装业务流程中需要使用的每一个页面元素，是业务流程实现的核心；dataprovider层自定义测试数据，实现测试数据的隔离；service层用于定义各模块之间的公共业务流程，实现模块间业务的调用。 用例组织。从账户登入到一个业务流程结束作为一个完整的UI自动化用例。用例由每一个pageObject接口的调用来实现业务流程。所有测试用例使用testng进行管理。<br>报告展示。采用reportng收集测试数据再结合jenkins插件呈现测试报告。<br><strong>有赞.UI自动化标准接口</strong><br><img src="/images/.com-content-images-2017-09-15040990711910.jpg.png" alt=""></p>
+<h2 id="2-3-线上监控开发"><a href="#2-3-线上监控开发" class="headerlink" title="2.3 线上监控开发"></a>2.3 线上监控开发</h2><p>随着有赞系统网络拓扑与业务场景越来越复杂，发布频率越来越高，同时系统是部署在公有云上；节假日、及频繁的发布后，有赞自己如何知道当前系统中核心业务场景的健康情况。在上半年我们开始设计建设「业务级可用性监控系统」，从商家后台业务管理，到买家端的交易前、交易中，交易后等核心业务场景执行用户真实操作，监控线上业务级可用性。<br>现在，有赞发布系统完成应用发布后，调用「线上监控系统」的Rest接口发起业务级可用性检查；监控系统以多线程方式把各业务的监控点拉起，每个业务的多个检查点，也以多线程方式来运行。若发现业务失败，通过有赞告警系统向业务的开发&amp;测试发送告警。<br>在非发布时间，该系统以10分钟一次的频率监控线上业务可用性。<br><strong>有赞.业务级可用性监控模型</strong><br><img src="/images/.com-content-images-2017-09-15041522704175.jpg.png" alt=""></p>
+<p>Rest请求返回对象如下。对定时任务，如果检查失败，将AppResult对象转成告警对象发送给业务开发及测试人员。</p>
+<p><strong>有赞.业务级可用性监控接口输出对象及告警</strong><br><img src="/images/.com-content-images-2017-09-15041648405780-1.jpg.png" alt=""> <img src="/images/.com-content-images-2017-09-15041654400224.jpg.png" alt=""></p>
+<h2 id="2-4-合并发布运作"><a href="#2-4-合并发布运作" class="headerlink" title="2.4 合并发布运作"></a>2.4 合并发布运作</h2><p>今年，有赞开发小伙伴超过600+,主站每天需要发布十几至二十几个代码分支。有赞开始实行公交车发布模式，将需要发布的分支集中后由测试管控发布。统一部分，一来、测试同学能够验证一次核心场景，确保上线质量；二来，可以节省测试投入成本。我们的每次发布，需要经过前面提到的接口自动化、Ui自动化验证，及预发环境核心场景验证。<br><strong>有赞.公交车系统简图</strong><br><img src="/images/.com-content-images-2017-09-15041679302528.jpg.png" alt=""></p>
+<p><strong>有赞.公交车发布流程步骤</strong><br><img src="/images/.com-content-images-2017-09-15041690399214.jpg.png" alt=""></p>
+<h2 id="2-5-工具建设"><a href="#2-5-工具建设" class="headerlink" title="2.5 工具建设"></a>2.5 工具建设</h2><p>有赞QA平台提供了「构造测试数据」「项目质量报告」「项目日报」「环境健康检查」能力。由Dmm_platform提供统一工具开发标准，然后测试同学完成相关工具开发。<br><strong>有赞.QA平台</strong><br><img src="/images/.com-content-images-2017-09-15041729719832.jpg.png" alt=""></p>
+<p>构造测试数据，通过直接写DB、或调用各业务系统接口来构造测试数据。例如新建帐号、店铺、不同类型的商品、交易订单等；<br>测试报告，包含项目质量报告及项目日报。用于跟踪项目过程质量、进展、风险及最终项目上线的质量。</p>
+<p><strong>有赞.项目日报</strong><br><img src="/images/.com-content-images-2017-09-15041935306514.jpg.png" alt=""></p>
+<p>环境健康检查，通过检查Etcd(有赞的dubbo&amp;Nova注册中心)服务，判别各应用本该提供的Rest、Dubbo、Nova服务是否正常。以了解测试和性能环境，全站应用的运行情况，解决过去测试遇到环境问题，但是不知道那个应用有问题的痛点。</p>
+<p><strong>有赞.环境健康检查</strong><br><img src="/images/.com-content-images-2017-09-15041940539948.jpg.png" alt=""></p>
+<p>作为互联网应用，依赖部分外部系统实属正常，例如支付、短信、物流等第三方。为了实现可测性、稳定性、高效性和节约成本而构建了Mock服务。例如测试环境订单支付，真正去付钱，不现实且成本太高；测试环境短信若真的通过通讯运营商发送到手机上，也需要成本。<br><strong>有赞.Mock服务</strong><br><img src="/images/.com-content-images-2017-09-15041735220706.jpg.png" alt=""></p>
+<p>SecLab单机工具为有赞安全在线扫描系统单机版工具，工具基于Python2.7及Mac OS平台。主要功能为实现XSS、SQL注入、安全配置检查错误等问题的工具化扫描，提供与《通用基础安全测试用例》相配套的安全测试工具能力，降低在此类安全问题测试上的人力与时间投入。<br><strong>有赞.安全测试工具</strong><br><img src="/images/.com-content-images-2017-09-15041765286316.jpg.png" alt=""></p>
+<p>性能测试平台简化了性能测试的步骤，提高了测试的效率，使得普通测试工程师也能方便地进行性能测试。平台后端引擎采用普遍使用的Jmeter，并能实时收集、展示性能数据（响应时间、TPS、并发用户数等），自动采集并实时展示监控数据（如Linux系统的CPU使用率、系统负载等，JVM GC的eden、S0、S1、old区的使用率，垃圾回收的次数、时间等）。<br><strong>有赞.性能测试任务与结果</strong><br><img src="/images/.com-content-images-2017-09-1505283244927.jpg.png" alt=""></p>
+<h4 id="2-5-5-1-Carmen测试平台"><a href="#2-5-5-1-Carmen测试平台" class="headerlink" title="2.5.5.1 Carmen测试平台"></a>2.5.5.1 Carmen测试平台</h4><p>该平台开始一种新的尝试，即实现测试用例管理，又能够将用例自动化与用例绑定在一起；重点解决开发也可以帮忙维护自动化用例，并提供精准用例验证开发代码质量。第一版提供用例维护、单用例测试，批量用例测试。该项目后期将整合到测试工作台中。<br>用例维护，可以录制用例的基本信息，运行的环境、用例执行结果校验。<br>批量用例测试，开发或者测试人员，可以根据项目的需求，选择需要的测试用例群，并创建一个用例任务。过后，再回头查看任务的运行情况。<br>用例测试执行，按照Carmen的调用规则，组装测试执行。这里重点解决用例依赖、测试结果检查。测试结果检查分三期：一期、根据静态检查数据，检查返回数据；二期、采用Goovy等方式支持能够到数据库核查。三期，接入Diffy平台，实现测试分支与master环境测试结果的去燥比对。<br><strong>有赞.卡门测试平台模型</strong><br><img src="/images/.com-content-images-2017-09-15042424315587.jpg.png" alt=""></p>
+<h4 id="2-5-5-2-持续集成平台"><a href="#2-5-5-2-持续集成平台" class="headerlink" title="2.5.5.2 持续集成平台"></a>2.5.5.2 持续集成平台</h4><p>持续集成平台一期主要实现可流程化配置业务应用发布顺序并与测试自动化相结合的工作流，同时提供自动运行及外部触发的运行模式。<br>随着有赞系统的SOA服务化进程，系统依赖越来越复杂，根据事先定义的系统依赖关系，计算合理的应用发布顺序；并最终与Sona、自动化项目等相结合；实现发布、单侧覆盖率统计存储、测试覆盖率统计存储等。<br>持续集成同时实现与Gitlib对接，根据应用代码commit情况，自动或定时更行应用代码；同时提供Restfull接口，供外部触发工作流或查询相关数据。<br><strong>有赞.持续集成平台雏形</strong><br><img src="/images/.com-content-images-2017-09-15045072687071.jpg.png" alt=""></p>
+<h4 id="2-5-5-3-测试工作台"><a href="#2-5-5-3-测试工作台" class="headerlink" title="2.5.5.3 测试工作台"></a>2.5.5.3 测试工作台</h4><p>该工作台的目标是把测试小伙伴平时奋斗的成果展示出来，即可以回顾，也可以预警。例如某个产品线，近一个月自动化用例及相关应用的覆盖率变化曲线如何；测试同学参与了哪些项目，项目的提测质量、测试质量、相关报告及风险点。第一期的 主要目标，从应用到项目到人员的维度，及从项目到应用到人员的维度查看当前的团队工作情况。<br><strong>有赞.测试工作台雏形</strong><br><img src="/images/.com-content-images-2017-09-15042491041292.jpg.png" alt=""> /#有赞.测试团队介绍(二)之团队建设 之前，我们在 介绍了有赞测试团队日常工作情况。本文来讲讲从我入职有赞后看到的整个测试团队发展与变化。<br>我16年加入有赞，当时测试团队只有17位测试同学，一年半以后的今天，测试团队已经有50+同学了。大部分同学已在互联网行业深耕多年，当然也有从传统行业转型过来的。我从事通讯运营商产品测试6年。同学们的能力各有所长，包括在白盒测试、安全测试、性能测试、工具研发……。测试同学的职责也从之前的业务测试，向度量产品质量与研发测试效率工具转变。<br>下面，我们从小伙伴能力培养与融入团队两方面展开介绍。<br>/#/#一、小伙伴能力培养</p>
+<p>这里我们主要从新人到老人，从初级到高级的过程介绍。</p>
+<h2 id="1-1-新人入职"><a href="#1-1-新人入职" class="headerlink" title="1.1 新人入职"></a>1.1 新人入职</h2><p>在有幸加入有赞的第一天，办理完入职手续后续后，HR天使会领着小伙伴到各团队办公地点参观并作些必要的介绍，以便于大家了解公司的情况。之后，有伴会去把新同学带回来。<br>有伴，顾名思义，就是新伙伴的Buddy，由团队TL指定，在新伙伴入职时介绍给对方；直至转正，需要持续的关注新同学和提供帮助，陪伴融入，共同成长；下面介绍测试团队关于新人融入的培养。<br>新人可以拿到《有赞环境知多少.key》文档，介绍如下内容。<br><img src="/images/.com-content-images-2017-09-15059759881151.jpg.png" alt=""></p>
+<p>同时文档《2017年4月12日XXXXX分析思路.pdf》会给出基于上面的介绍内容，从实战角度介绍在有赞工作中，如何排查问题。<br><img src="/images/.com-content-images-2017-09-15059769920968.jpg.png" alt=""></p>
+<p>为期3个月的试用期里，有伴还会在很多方面手把手指导新同学如何快速适应有赞的日常工作。当然包括如何使用Mac Book电脑。<br>公司层面会组织一个礼拜脱产入职培训，介绍公司发展历程、公司文化、如何开店等。还有脱产两天到有赞技术大学学习以下内容。</p>
+<p><img src="/images/.com-content-images-2017-09-15059837629181.jpg.png" alt=""></p>
+<h2 id="1-2-业务梳理与分享"><a href="#1-2-业务梳理与分享" class="headerlink" title="1.2 业务梳理与分享"></a>1.2 业务梳理与分享</h2><p>我们坚信测试方案设计的深度如何及项目风险评估能力高低等在一定程度上，取决于测试同学对业务熟悉程度及对周边业务的了解程度。所以，我们要求测试同学阅读自己负责的业务线代码，并整理成文档，文档需要从宏观到微观描述业务。总体上包含如下内容</p>
+<p>业务文档整理好了，小伙伴可以把业务分享约起来了。用最通俗的语言，让不知道该业务的同学，了解该业务，以便于他们在工作中做参考。例如他手里有个项目，他可以评估，他的项目对你是否有影响。<br>经历这个过程，小伙伴的文档能力与演讲能力都会在一定程度上得到提升。<br><img src="/images/.com-content-images-2017-09-15059798305030.jpg.png" alt=""></p>
+<h2 id="1-3-测试能力培训"><a href="#1-3-测试能力培训" class="headerlink" title="1.3 测试能力培训"></a>1.3 测试能力培训</h2><p>随着有赞系统的复杂度越来越高，系统用户越来越多。我们对系统的要求也随之提高，那么，测试能力也需要不断提升。从一般的业务测试、再到专项测试。</p>
+<p>业务测试能力的培养，我们准备了从测试小白到测试进阶分三个阶段的能力培养教程。<br><strong>第一阶段，测试入门级培训,从最简单的，以实例介绍出发，讲解如何测试。</strong><br><img src="/images/.com-content-images-2017-09-15059809103149.jpg.png" alt=""></p>
+<p>以页面基本元素为例，介绍了常见的Html标签如何测试。</p>
+<p><img src="/images/.com-content-images-2017-09-15059810952773.jpg.png" alt=""></p>
+<p>对于文件上传测试，除了测试文件是否能够正常上传，上传后验证外；测试时，还需要再考虑下如下内容。</p>
+<p><img src="/images/.com-content-images-2017-09-15059813034176.jpg.png" alt=""></p>
+<p><strong>第二阶段，中级能力培训，主要以项目实战为例，介绍一个项目的测试方案设计该如何思考。</strong></p>
+<p><img src="/images/.com-content-images-2017-09-15059815524758.jpg.png" alt=""></p>
+<p>这里以具体中型项目为例介绍项目如何拆解，该从哪些方面思考测试关键词，每个业务点如何思考和设计。例如，什么时候需要考虑幂等，什么时候需要考虑资损防控。</p>
+<p><img src="/images/.com-content-images-2017-09-15059822382622.jpg.png" alt=""></p>
+<p>这里就需要知道对于有赞系统，哪些是用户资产，例如，钱、用户资源、可用消息资源。例如微信公众号每个月只能给用户推送3次消息，那这3次就不能随便浪费，不能因为系统设计缺陷导致浪费，否则就是资损。<br><strong>第三阶段，大型项目测试方案如何设计、项目管控与管理进行介绍</strong></p>
+<p><img src="/images/.com-content-images-2017-09-15059827742635.jpg.png" alt=""></p>
+<p>该阶段，部分比较抽象，偏向理论，需要有一定的测试工作经历。这里就展开介绍。</p>
+<p>有赞今年成立安全测试小组，负责公司安全意识培训与安全检查。同时，我们制定日常项目安全测试培训及实战案例，并搭建环境给小伙伴亲身实战安全测试。<br><strong>公司信息安全意识宣讲</strong><br><img src="/images/.com-content-images-2017-09-15059831070498.jpg.png" alt=""></p>
+<p>日常项目测试培训大纲内容。这里会详细介绍每个测试点的解释、如何测试、如何避免等。</p>
+<p><strong>项目测试主要关注点</strong><br><img src="/images/.com-content-images-2017-09-15059863811253.jpg.png" alt=""></p>
+<p><strong>安全测试案例</strong><br><img src="/images/.com-content-images-2017-09-15059868126551.jpg.png" alt=""></p>
+<p>性能测试已成为我们日常工作的一部分。如果你是性能测试的老司机，入职有赞后，你可以成为专项测试小组一员，给其他小伙伴提供帮助。如果你在性能测试刚入门，你可以到专项测试小组里寻求指导和帮助，学习如何做性能测试和性能测试分析。这个后面我们推出性能测试入门博客来专门介绍。</p>
+<h2 id="1-4-技术提升计划"><a href="#1-4-技术提升计划" class="headerlink" title="1.4 技术提升计划"></a>1.4 技术提升计划</h2><p>在提到，我们在做一些效率提升工具。这些工具建设，由资深测试开发工程师设计，带领其他测试开发工程师实施完成。前端使用AdminLte或者Vue框架，后端以Spring、Spring boot、Goovy等来开发。这里就会遇到之前没有学过的，那就需要学习。<br>学习就会学习计划和作业。我们给不同同学指定不同学习任务，然后每天发学习日报。每周做一次学习分享。学习了2、3周后，开始投入到项目。<br><strong>学习小组每周分享</strong><br><img src="/images/.com-content-images-2017-09-15059849385082.jpg.png" alt=""></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+  </div>
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="windanchaos"
+    src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">windanchaos</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">96</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/windanchaos" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/windanchaos" title="Gitee &amp;rarr; https:&#x2F;&#x2F;gitee.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="fa fa-fw fa-gitee"></i>Gitee</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/mailto:454722630@qq.com" title="E-Mail &amp;rarr; mailto:454722630@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/windanchaos" title="Weibo &amp;rarr; https:&#x2F;&#x2F;weibo.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/windanchaos" title="CSDN &amp;rarr; https:&#x2F;&#x2F;blog.csdn.net&#x2F;windanchaos" rel="noopener" target="_blank"><i class="fa fa-fw fa-CSDN"></i>CSDN</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank">备案/许可证编号 </a>
+      <img src="http://www.beian.gov.cn/portal/download" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=19036728" rel="noopener" target="_blank">蜀ICP备19036728号 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">windanchaos</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.5.0
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+  <script>
+  function leancloudSelector(url) {
+    return document.getElementById(url).querySelector('.leancloud-visitors-count');
+  }
+  if (CONFIG.page.isPost) {
+    function addCount(Counter) {
+      var visitors = document.querySelector('.leancloud_visitors');
+      var url = visitors.getAttribute('id').trim();
+      var title = visitors.getAttribute('data-flag-title').trim();
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            var counter = results[0];
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .then(response => response.json())
+              .then(() => {
+                leancloudSelector(url).innerText = counter.time + 1;
+              })
+              .catch(error => {
+                console.log('Failed to save visitor count', error);
+              })
+          } else {
+              Counter('post', '/classes/Counter', { title: title, url: url, time: 1 })
+                .then(response => response.json())
+                .then(() => {
+                  leancloudSelector(url).innerText = 1;
+                })
+                .catch(error => {
+                  console.log('Failed to create', error);
+                });
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  } else {
+    function showTime(Counter) {
+      var visitors = document.querySelectorAll('.leancloud_visitors');
+      var entries = [...visitors].map(element => {
+        return element.getAttribute('id').trim();
+      });
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url: { '$in': entries } })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length === 0) {
+            document.querySelectorAll('.leancloud_visitors .leancloud-visitors-count').forEach(element => {
+              element.innerText = 0;
+            });
+            return;
+          }
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.url;
+            var time = item.time;
+            leancloudSelector(url).innerText = time;
+          }
+          for (var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = leancloudSelector(url);
+            if (element.innerText == '') {
+              element.innerText = 0;
+            }
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  }
+
+  fetch('https://app-router.leancloud.cn/2/route?appId=0indNw0niJU8jN2a1E43bDW7-gzGzoHsz')
+    .then(response => response.json())
+    .then(({ api_server }) => {
+      var Counter = (method, url, data) => {
+        return fetch(`https://${api_server}/1.1${url}`, {
+          method: method,
+          headers: {
+            'X-LC-Id': '0indNw0niJU8jN2a1E43bDW7-gzGzoHsz',
+            'X-LC-Key': 'toErPcjDI3431WvXQVKoy0rC',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        const localhost = /http:\/\/(localhost|127.0.0.1|0.0.0.0)/;
+        if (localhost.test(document.URL)) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(item => {
+    return GUEST.includes(item);
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: '0indNw0niJU8jN2a1E43bDW7-gzGzoHsz',
+    appKey: 'toErPcjDI3431WvXQVKoy0rC',
+    placeholder: "Just go go",
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: 'zh-cn' || 'zh-cn',
+    path: location.pathname,
+    recordIP: false,
+    serverURLs: ''
+  });
+}, window.Valine);
+</script>
+
+</body>
+</html>

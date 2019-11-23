@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="我可以一口气把我所了解的技术说一遍，但是我却无法更深入的理解这些东西在具体使用中的职责是什么，所以有了本篇博客一个记录、学习。 商城的后台是java语言的，所以很自然的使用了： jsp+servlet+structs2+hibernate+spring+ajax jsp和serlet我之前学习过了，其中一个整理了一篇日志。我手上有一本《JavaWeb编程实战宝典》，学习到jsp写登陆就暂停了。哦～">
+<meta name="keywords" content="FromCSDN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="我公司商城架构学习和研究">
+<meta property="og:url" content="https:&#x2F;&#x2F;blog.windanchaos.tech&#x2F;2017&#x2F;11&#x2F;23&#x2F;%E6%88%91%E5%85%AC%E5%8F%B8%E5%95%86%E5%9F%8E%E6%9E%B6%E6%9E%84%E5%AD%A6%E4%B9%A0%E5%92%8C%E7%A0%94%E7%A9%B6&#x2F;index.html">
+<meta property="og:site_name" content="宇弦">
+<meta property="og:description" content="我可以一口气把我所了解的技术说一遍，但是我却无法更深入的理解这些东西在具体使用中的职责是什么，所以有了本篇博客一个记录、学习。 商城的后台是java语言的，所以很自然的使用了： jsp+servlet+structs2+hibernate+spring+ajax jsp和serlet我之前学习过了，其中一个整理了一篇日志。我手上有一本《JavaWeb编程实战宝典》，学习到jsp写登陆就暂停了。哦～">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https:&#x2F;&#x2F;blog.windanchaos.tech&#x2F;images&#x2F;ges-components-.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;blog.windanchaos.tech&#x2F;images&#x2F;nblogs.com-blog-522490-201510-522490-20151003183747543-2138843838-.png">
+<meta property="og:image" content="https:&#x2F;&#x2F;blog.windanchaos.tech&#x2F;images&#x2F;dn.net-20140113235214078-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd3VzdW9wdUJVUFQ=-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png">
+<meta property="og:updated_time" content="2019-11-23T15:11:57.820Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;blog.windanchaos.tech&#x2F;images&#x2F;ges-components-.png">
+
+<link rel="canonical" href="https://blog.windanchaos.tech/2017/11/23/%E6%88%91%E5%85%AC%E5%8F%B8%E5%95%86%E5%9F%8E%E6%9E%B6%E6%9E%84%E5%AD%A6%E4%B9%A0%E5%92%8C%E7%A0%94%E7%A9%B6/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>我公司商城架构学习和研究 | 宇弦</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">宇弦</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-首页">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-分类">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-归档">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-标签">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-关于">
+
+    <a href="/about/me.html" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/windanchaos" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://blog.windanchaos.tech/2017/11/23/%E6%88%91%E5%85%AC%E5%8F%B8%E5%95%86%E5%9F%8E%E6%9E%B6%E6%9E%84%E5%AD%A6%E4%B9%A0%E5%92%8C%E7%A0%94%E7%A9%B6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="windanchaos">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇弦">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          我公司商城架构学习和研究
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2017-11-23 22:45:29" itemprop="dateCreated datePublished" datetime="2017-11-23T22:45:29+08:00">2017-11-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-11-23 23:11:57" itemprop="dateModified" datetime="2019-11-23T23:11:57+08:00">2019-11-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B5%8B%E8%AF%95%E7%9A%84%E6%A1%86%E6%9E%B6%E5%92%8C%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index">
+                    <span itemprop="name">测试的框架和技术</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2017/11/23/%E6%88%91%E5%85%AC%E5%8F%B8%E5%95%86%E5%9F%8E%E6%9E%B6%E6%9E%84%E5%AD%A6%E4%B9%A0%E5%92%8C%E7%A0%94%E7%A9%B6/" class="post-meta-item leancloud_visitors" data-flag-title="我公司商城架构学习和研究" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2017/11/23/%E6%88%91%E5%85%AC%E5%8F%B8%E5%95%86%E5%9F%8E%E6%9E%B6%E6%9E%84%E5%AD%A6%E4%B9%A0%E5%92%8C%E7%A0%94%E7%A9%B6/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2017/11/23/%E6%88%91%E5%85%AC%E5%8F%B8%E5%95%86%E5%9F%8E%E6%9E%B6%E6%9E%84%E5%AD%A6%E4%B9%A0%E5%92%8C%E7%A0%94%E7%A9%B6/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>我可以一口气把我所了解的技术说一遍，但是我却无法更深入的理解这些东西在具体使用中的职责是什么，所以有了本篇博客一个记录、学习。</p>
+<p>商城的后台是java语言的，所以很自然的使用了：</p>
+<p>jsp+servlet+structs2+hibernate+spring+ajax</p>
+<p><a href="http://blog.csdn.net/windanchaos/article/details/78290985" target="_blank" rel="noopener">jsp</a>和<a href="http://www.runoob.com/servlet/servlet-tutorial.html" target="_blank" rel="noopener">serlet</a>我之前学习过了，其中一个整理了一篇日志。我手上有一本《JavaWeb编程实战宝典》，学习到jsp写登陆就暂停了。哦～大不当啊，没有持续。当时我在干什么呢？从日志记录来看是分神了，去捅了一点研发管理、测试管理的理论，加上最近太忙，就没有拐回来所致，哎，我这个人就是太贪心了，面面俱到，没有深入的。所以这个计划还是要继续下去。话又说回来，学这么多，其实我在测试这块的累计还是有限啊，明年怎么涨工资啊，万一干的不爽出去找工作，卖什么啊？说什么jmeter会用，讲真我真不觉得那工具能怎么样，我花了２天晚上就把教学视频看完了。真的在工作中使用，作为一个测试，你唯一厉害一点的就是工具熟悉一点，压测的时候也需要研发配置你，给你开接口才可以压测。真的不能以为你掌握了一个性能工具就懂性能测试了，不是那样的，要做一个压测，都是团队合作，反正我做了很多次压测，基本上是low的一逼，我甚至教研发用jmeter，最简单那种一教就会，在研发内部推荐大家自己压，一个研发反应快马上就懂压测自己的代码了，嘿，测试小朋友，你的价值呢，搞笑啊，会用jmeter？由于我之前研究学习了http协议，用起jmeter还是没有什么障碍。知识网上有，不懂２分钟后就懂了，再不行，开源的有官方文档，读啊，尼玛六级不是白过的。最近一周读完了《操作系统之哲学原理》后，对计算机又加深了认识，看看对性能测试这个方向真的感觉我做的太low逼了。扯得远了点，就是说学的东西（就是这个javaweb宝典）啊，不好卖钱，我又缺钱，而且还很贪（双11买了一堆无关测试的书）。三难啊。</p>
+<p>使用的容器：tomcat，这个基本配置是我在维护，有所了解，但是还没有达到精进的程度，比如性能优化怎么搞，我就不太懂。这里还有提升空间。最近去看了jvm的原理，忘了摘抄，大概知道些，堆栈，垃圾回收，线程，这个地方回头单独出文。</p>
+<p>代码管理工具：git，这个在公司内部使用最深的人大概就是我了，命令行操作无形的装逼，脚本自动化之类的，可以解决各种发布的问题，什么多少小时内提交过代码就怎么样之类的逻辑。不懂，查一下就解决了，所以没有什么困难了。</p>
+<p>编译和包管理工具：maven。能用，编译打包，其他的更深的没有必要纠结。</p>
+<p>研发工具：eclipse。只能呵呵了，java用的少，基本能用起来，一般是看git log，查看方法调用、查看研发修改代码引用之类，自己写代码还差点火候，还有延展空间。</p>
+<p>数据库：mysql。我负责刷脚本，研发提交脚本过来，我负责刷生产和测试库，一些语法错误可以纠正，什么左联右连不熟啊亲。其他select\update\insert\之类的知道，但是不熟练。所以这个地方可以找个时间再总结下，虽然已经看过２次教材了，但是平时用得少，知而已。哎，一切以效率为先，navicat足够了。。。自我鄙视</p>
+<p>页面框架：vue+kendo。哦，这个就完全不是我的领域了。但是我shell帮他们解决了每次发布手动替换的问题，自动化发布。我的水平，知道css/html/javascript的分工，css的几个样式分类器（不确定这么叫），html的标签啊，大概知道html里面的结构之类。好歹也是用selenium玩过jQuery的啊╮（╯▽╰）╭</p>
+<p>技术对我来说，知道个大概，具体要说明白，说出点道道来不是一下两下的事，就目前这种状态呢，基本和我大学时代接受一个观点相同，那个观点的核心就是：这是一个知识大爆炸的时代，你不可能也不用去记住具体的知识是怎么样的，但是你一定要搞清楚知识是如何被使用的，已经有哪些知识可以被使用，最关键的是你要知道如何找到它们，并用起来。这里想起另一观点，知识是分级别的，一手知识来自源头，二手知识来自无差别转发，三手就是自己理解转述之类，最好是去拿一手的知识。</p>
+<p>其他我暂时还无法知道具体作用的：</p>
+<p>netty是代码里的，从研发口中听说过，其他我在负责维护，基本的启动配置都知道。但就点到为止了，不能再深入。所以这篇文章主要是它们几个。</p>
+<h1 id="Netty"><a href="#Netty" class="headerlink" title="Netty"></a>Netty</h1><p>homepage<br><a href="http://netty.io/" target="_blank" rel="noopener">http://netty.io/</a><br>百度百科基本忠实了官网描述，那我再引用一张官网的图：<br><img src="/images/ges-components-.png" alt="这里写图片描述"></p>
+<p>Netty is an asynchronous event-driven network application framework<br>for rapid development of maintainable high performance protocol servers &amp; clients.<br>在我目前这种层次来看，我们用netty就是简化了网络通信的编程复杂程度，把底层的通信都交给了netty打理。<br>基于netty提供的能力（可扩展的事件模型、通用的通信api、防内存溢出的富字节缓存机制（意译二手）），构建起我们商城的各类网络通信。<br>过程中了解到一个新词语:NIO<br><a href="http://ifeve.com/java-nio-vs-io/" target="_blank" rel="noopener">Java NIO与IO</a><br><a href="http://ifeve.com/java-nio-all/" target="_blank" rel="noopener">Java NIO 系列教程</a></p>
+<h1 id="zookeeper"><a href="#zookeeper" class="headerlink" title="zookeeper"></a>zookeeper</h1><p>HomePage<br><a href="http://zookeeper.apache.org/" target="_blank" rel="noopener">http://zookeeper.apache.org/</a><br>zookeeper系列文章<br><a href="http://www.cnblogs.com/wuxl360/category/874409.html" target="_blank" rel="noopener">http://www.cnblogs.com/wuxl360/category/874409.html</a><br>它是一个为分布式应用提供一致性服务的软件，提供的功能包括：配置维护、域名服务、分布式同步、组服务等。<br>那，在我们这个商城里面，zookeeper被用作了和RPC打交道。找到下面文章基本上就是它的原理了：<br><a href="https://www.cnblogs.com/xingzc/p/5754039.html" target="_blank" rel="noopener">你应该知道的RPC原理</a></p>
+<p>读完文章，就对RPC有了更深入的理解。比如我们有大脑总控定位的uic，与之对应的是uic-rpc服务。它们两的jdbc使用的是相同账户和密码，uic-rpc最开始是没有的，是从uic里面分离出来的，干了uic的一些对外提供服务的事情，大部分还是操作uic的数据库，这样就解放了uic的代码，使uic修改减少，更加强壮，易于扩展。而zookeeper还具备分布式同步的能力，就能保证多个rpc操作同一个表的数据一致性。在整个体系中起到了一个服务自动注册与发现功能。<br><img src="/images/nblogs.com-blog-522490-201510-522490-20151003183747543-2138843838-.png" alt="这里写图片描述"><br>所以，调用方，通常也会配置zookeeper的链接方式和账户密码，以及它需要调用的rpc的服务名字，有如下配置：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rpc.call.models=<span class="built_in">module</span>,imgr,mdata,uic</span><br></pre></td></tr></table></figure>
+
+<p>接着结合zookeeper的特性，它的多节点（虽然目前我们是单服务器多节点的方式，不过未来肯定是真的多服务器多节点方式），选举机制，加上同一个rpc的多节点，就可以构成一个网状的，分布式的服务集群，可以确保服务注册表的高可用性。</p>
+<h1 id="memcache"><a href="#memcache" class="headerlink" title="memcache"></a>memcache</h1><p>HomePage:<br><a href="http://memcached.org/" target="_blank" rel="noopener">http://memcached.org/</a><br>Free &amp; open source, high-performance, distributed memory object caching system, generic in nature, but intended for use in speeding up dynamic web applications by alleviating database load.<br>缓存，而且是分布式的缓存，顶替数据库承受压力。<br>由于网站的高并发读写需求，传统的关系型数据库开始出现瓶颈，例如： 1）对数据库的高并发读写：<br>关系型数据库本身就是个庞然大物，处理过程非常耗时（如解析SQL语句，事务处理等）。如果对关系型数据库进行高并发读写（每秒上万次的访问），那么它是无法承受的。<br>2）对海量数据的处理： 对于大型的SNS网站，每天有上千万次的数据产生（如twitter,&gt; 新浪微博）。对于关系型数据库，如果在一个有上亿条数据的数据表种查找某条记录，效率将非常低。<br>在实际使用中，通常把数据库查询的结果保存到Memcache中，下次访问时直接从memcache中读取，而不再进行数据库查询操作，这样就在很大程度上减少了数据库的负担。保存在memcache中的对象实际放置在内存中，这也是memcache如此高效的原因。<br><img src="/images/dn.net-20140113235214078-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd3VzdW9wdUJVUFQ=-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png" alt="这里写图片描述"><br>from: <a href="http://blog.csdn.net/wusuopuBUPT/article/details/18238003" target="_blank" rel="noopener">http://blog.csdn.net/wusuopuBUPT/article/details/18238003</a></p>
+<h1 id="redis"><a href="#redis" class="headerlink" title="redis"></a>redis</h1><p>HomePage:<br><a href="https://redis.io/" target="_blank" rel="noopener">https://redis.io/</a><br>Redis is an open source (BSD licensed), in-memory data structure store, used as a database, cache and message broker（代理）. It supports data structures such as strings, hashes, lists, sets, sorted sets with range queries, bitmaps, hyperloglogs and geospatial indexes with radius queries. Redis has built-in replication, Lua scripting, LRU eviction, transactions and different levels of on-disk persistence, and provides high availability via Redis Sentinel and automatic partitioning with Redis Cluster.</p>
+<p>在我查阅资料的时候我疑惑了，我们的架构怎么用了memcache又用redis，虽然两者都有缓存特性。<br>读此文：<a href="https://www.cnblogs.com/tuyile006/p/6382062.html" target="_blank" rel="noopener">Redis、Memcache和MongoDB的区别</a><br>我们使用redis主要用来记录了各种商家配置，平台配置等。大概用它的原因是目前我们的压力还没有说高到突破它性能瓶颈的程度，另一方面，它支持主从同步，可以分布式部署，数据还可以持久化，目前用起来没有问题。一个比较头疼的问题是刷缓存，呵呵哒，数据库变更了，缓存不会主动更新，需手动刷key。这个不难，一学就会。<br>我疑惑的是memcache被用在了哪里。<br>补充：上班问开发，session。</p>
+<h1 id="active-mq"><a href="#active-mq" class="headerlink" title="active-mq　"></a>active-mq　</h1><p>HomePage:<br><a href="http://activemq.apache.org/" target="_blank" rel="noopener">http://activemq.apache.org/</a><br>Apache ActiveMQ ™ is the most popular and powerful open source messaging and Integration Patterns server.</p>
+<p>这理解起来就简单了，我们平台用它来发消息。各种消息，微信下单，优惠券，活动之类的。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/FromCSDN/" rel="tag"># FromCSDN</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2017/11/17/Jmeter%E7%9A%84Non_GUI%E6%A8%A1%E5%BC%8F%EF%BC%8C%E5%91%BD%E4%BB%A4%E8%A1%8C%E6%A8%A1%E5%BC%8F/" rel="next" title="Jmeter的Non_GUI模式，命令行模式">
+                  <i class="fa fa-chevron-left"></i> Jmeter的Non_GUI模式，命令行模式
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2017/11/26/%E6%88%91%E5%85%AC%E5%8F%B8%E7%9B%AE%E5%89%8D%E7%9A%84%E6%95%8F%E6%8D%B7%E6%8C%81%E7%BB%AD%E9%83%A8%E7%BD%B2%E6%80%BB%E7%BB%93%E5%92%8C%E5%B1%95%E6%9C%9B/" rel="prev" title="我公司目前的敏捷持续部署总结和展望">
+                  我公司目前的敏捷持续部署总结和展望 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="comments"></div>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Netty"><span class="nav-number">1.</span> <span class="nav-text">Netty</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#zookeeper"><span class="nav-number">2.</span> <span class="nav-text">zookeeper</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#memcache"><span class="nav-number">3.</span> <span class="nav-text">memcache</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#redis"><span class="nav-number">4.</span> <span class="nav-text">redis</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#active-mq"><span class="nav-number">5.</span> <span class="nav-text">active-mq　</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="windanchaos"
+    src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">windanchaos</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">96</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/windanchaos" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/windanchaos" title="Gitee &amp;rarr; https:&#x2F;&#x2F;gitee.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="fa fa-fw fa-gitee"></i>Gitee</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/mailto:454722630@qq.com" title="E-Mail &amp;rarr; mailto:454722630@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/windanchaos" title="Weibo &amp;rarr; https:&#x2F;&#x2F;weibo.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/windanchaos" title="CSDN &amp;rarr; https:&#x2F;&#x2F;blog.csdn.net&#x2F;windanchaos" rel="noopener" target="_blank"><i class="fa fa-fw fa-CSDN"></i>CSDN</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank">备案/许可证编号 </a>
+      <img src="http://www.beian.gov.cn/portal/download" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=19036728" rel="noopener" target="_blank">蜀ICP备19036728号 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">windanchaos</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.5.0
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+  <script>
+  function leancloudSelector(url) {
+    return document.getElementById(url).querySelector('.leancloud-visitors-count');
+  }
+  if (CONFIG.page.isPost) {
+    function addCount(Counter) {
+      var visitors = document.querySelector('.leancloud_visitors');
+      var url = visitors.getAttribute('id').trim();
+      var title = visitors.getAttribute('data-flag-title').trim();
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            var counter = results[0];
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .then(response => response.json())
+              .then(() => {
+                leancloudSelector(url).innerText = counter.time + 1;
+              })
+              .catch(error => {
+                console.log('Failed to save visitor count', error);
+              })
+          } else {
+              Counter('post', '/classes/Counter', { title: title, url: url, time: 1 })
+                .then(response => response.json())
+                .then(() => {
+                  leancloudSelector(url).innerText = 1;
+                })
+                .catch(error => {
+                  console.log('Failed to create', error);
+                });
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  } else {
+    function showTime(Counter) {
+      var visitors = document.querySelectorAll('.leancloud_visitors');
+      var entries = [...visitors].map(element => {
+        return element.getAttribute('id').trim();
+      });
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url: { '$in': entries } })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length === 0) {
+            document.querySelectorAll('.leancloud_visitors .leancloud-visitors-count').forEach(element => {
+              element.innerText = 0;
+            });
+            return;
+          }
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.url;
+            var time = item.time;
+            leancloudSelector(url).innerText = time;
+          }
+          for (var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = leancloudSelector(url);
+            if (element.innerText == '') {
+              element.innerText = 0;
+            }
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  }
+
+  fetch('https://app-router.leancloud.cn/2/route?appId=0indNw0niJU8jN2a1E43bDW7-gzGzoHsz')
+    .then(response => response.json())
+    .then(({ api_server }) => {
+      var Counter = (method, url, data) => {
+        return fetch(`https://${api_server}/1.1${url}`, {
+          method: method,
+          headers: {
+            'X-LC-Id': '0indNw0niJU8jN2a1E43bDW7-gzGzoHsz',
+            'X-LC-Key': 'toErPcjDI3431WvXQVKoy0rC',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        const localhost = /http:\/\/(localhost|127.0.0.1|0.0.0.0)/;
+        if (localhost.test(document.URL)) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(item => {
+    return GUEST.includes(item);
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: '0indNw0niJU8jN2a1E43bDW7-gzGzoHsz',
+    appKey: 'toErPcjDI3431WvXQVKoy0rC',
+    placeholder: "Just go go",
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: 'zh-cn' || 'zh-cn',
+    path: location.pathname,
+    recordIP: false,
+    serverURLs: ''
+  });
+}, window.Valine);
+</script>
+
+</body>
+</html>

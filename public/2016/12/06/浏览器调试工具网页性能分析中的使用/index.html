@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+
+<script id="hexo-configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.5.0',
+    exturl: false,
+    sidebar: {"position":"right","display":"post","offset":12,"onmobile":false},
+    copycode: {"enable":false,"show_result":false,"style":null},
+    back2top: {"enable":true,"sidebar":false,"scrollpercent":false},
+    bookmark: {"enable":false,"color":"#222","save":"auto"},
+    fancybox: false,
+    mediumzoom: false,
+    lazyload: false,
+    pangu: false,
+    algolia: {
+      appID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    },
+    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: '',
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    translation: {
+      copy_button: 'Copy',
+      copy_success: 'Copied',
+      copy_failure: 'Copy failed'
+    },
+    sidebarPadding: 40
+  };
+</script>
+
+  <meta name="description" content="IE、chrome、firefox等按F12可以掉出它们自带的页面调试工具，作为测试当然不能非常精通在页面上修改样式，调试页面jsp，js，但是却可以很轻松的使用它来分析网页的性能优化项。 基础篇现在的网络模式粗糙的理解，就是BS结构（客户&#x2F;服务端），一个负责请求展现，一个负责响应提供内容。这个过程包括底层网络的三次握手，TCP&#x2F;IP的通信巴拉巴拉的一些列低级的我们不需要了解过细的活动（大牛除外）">
+<meta name="keywords" content="FromCSDN">
+<meta property="og:type" content="article">
+<meta property="og:title" content="浏览器调试工具网页性能分析中的使用">
+<meta property="og:url" content="https:&#x2F;&#x2F;blog.windanchaos.tech&#x2F;2016&#x2F;12&#x2F;06&#x2F;%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7%E7%BD%91%E9%A1%B5%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8&#x2F;index.html">
+<meta property="og:site_name" content="宇弦">
+<meta property="og:description" content="IE、chrome、firefox等按F12可以掉出它们自带的页面调试工具，作为测试当然不能非常精通在页面上修改样式，调试页面jsp，js，但是却可以很轻松的使用它来分析网页的性能优化项。 基础篇现在的网络模式粗糙的理解，就是BS结构（客户&#x2F;服务端），一个负责请求展现，一个负责响应提供内容。这个过程包括底层网络的三次握手，TCP&#x2F;IP的通信巴拉巴拉的一些列低级的我们不需要了解过细的活动（大牛除外）">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https:&#x2F;&#x2F;blog.windanchaos.tech&#x2F;images&#x2F;dn.net-20161206231134554-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2luZGFuY2hhb3M=-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png">
+<meta property="og:updated_time" content="2019-11-23T15:11:57.824Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;blog.windanchaos.tech&#x2F;images&#x2F;dn.net-20161206231134554-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2luZGFuY2hhb3M=-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png">
+
+<link rel="canonical" href="https://blog.windanchaos.tech/2016/12/06/%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7%E7%BD%91%E9%A1%B5%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome: false,
+    isPost: true,
+    isPage: false,
+    isArchive: false
+  };
+</script>
+
+  <title>浏览器调试工具网页性能分析中的使用 | 宇弦</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">宇弦</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+  </div>
+
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-首页">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-分类">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-归档">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
+
+  </li>
+        <li class="menu-item menu-item-标签">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-关于">
+
+    <a href="/about/me.html" rel="section"><i class="fa fa-fw fa-user"></i>关于</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+  <a href="https://github.com/windanchaos" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://blog.windanchaos.tech/2016/12/06/%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7%E7%BD%91%E9%A1%B5%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="windanchaos">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="宇弦">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          浏览器调试工具网页性能分析中的使用
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              <time title="Created: 2016-12-06 22:54:09" itemprop="dateCreated datePublished" datetime="2016-12-06T22:54:09+08:00">2016-12-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-11-23 23:11:57" itemprop="dateModified" datetime="2019-11-23T23:11:57+08:00">2019-11-23</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B5%8B%E8%AF%95%E7%9A%84%E6%A1%86%E6%9E%B6%E5%92%8C%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index">
+                    <span itemprop="name">测试的框架和技术</span>
+                  </a>
+                </span>
+            </span>
+
+          
+            <span id="/2016/12/06/%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7%E7%BD%91%E9%A1%B5%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8/" class="post-meta-item leancloud_visitors" data-flag-title="浏览器调试工具网页性能分析中的使用" title="Views">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+            <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">Views: </span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine: </span>
+    
+    <a title="valine" href="/2016/12/06/%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7%E7%BD%91%E9%A1%B5%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2016/12/06/%E6%B5%8F%E8%A7%88%E5%99%A8%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7%E7%BD%91%E9%A1%B5%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>IE、chrome、firefox等按F12可以掉出它们自带的页面调试工具，作为测试当然不能非常精通在页面上修改样式，调试页面jsp，js，但是却可以很轻松的使用它来分析网页的性能优化项。</p>
+<h1 id="基础篇"><a href="#基础篇" class="headerlink" title="基础篇"></a>基础篇</h1><p>现在的网络模式粗糙的理解，就是BS结构（客户/服务端），一个负责请求展现，一个负责响应提供内容。这个过程包括底层网络的三次握手，TCP/IP的通信巴拉巴拉的一些列低级的我们不需要了解过细的活动（大牛除外），这些活动浏览器会有记录。</p>
+<p>客户端/服务器传输过程很多内容，可以阅读<a href="http://blog.csdn.net/lmh12506/article/details/7794512" target="_blank" rel="noopener">深入理解HTTP协议、HTTP协议原理分析</a> ，</p>
+<p>网络通信的链接四个基一步骤：<br>1、浏览器与服务器建立连接；这个建立链接，简单说通信双方需要相互确认对方的存在以及合法身份，所以会有<a href="http://blog.csdn.net/whuslei/article/details/6667471/" target="_blank" rel="noopener">TCP的3次握手</a> ，<br>2、浏览器向服务器请求文档；简单理解就是url（统一资源定位符的英文缩写），资源定位符自然请求过去就是在请求文档咯，泪崩吧。<br>3 、服务器响应浏览器请求；把资源吐出来给浏览器，浏览器接收并显示。<br>4、 断开连接。</p>
+<p>在客户端和服务端通信的过程中，还需要了解：<br>1、客户端请求方法，最常用的： GET，POST。get简单说，直接拿资源，服务器拿现货提供；post简单说，附带上请求信息去告诉服务器自己要拿的东西，服务器现炒现卖。<br>2、动态资源和静态资源：简单的说动态资源就是服务器上非现成的资源，如某商品的列表订单信息（有人买卖自然的变化的，需要实时去查）；静态资源就是现成的，如各种css\html\js\jsp文件。<br>3、缓存。静态资源可以缓存来加快网络二次请求的响应速度。缓存也是可以在服务器上（至少apache可以）控制过期。<br>4、XHR（XMLHtmlRequest），一种结构化的对象，用于在后台与服务器交换数据。可理解为服务吐出来的动态资源的一种形式。</p>
+<h1 id="实践篇"><a href="#实践篇" class="headerlink" title="实践篇"></a>实践篇</h1><p>以下，记录一次使用浏览器调试工具分析我们商城后台各类资源加载性能，发现问题，促成问题改善和优化。</p>
+<h2 id="发现问题"><a href="#发现问题" class="headerlink" title="发现问题"></a>发现问题</h2><p>虽然是主打移动微信电商，但是商户的管理端使用的还是PC电脑，浏览器，每天测试商户后台，我有个习惯，就是使用chrome的第三方插件清理缓存（当然是关闭浏览器自动的清），一次发版前，产品+前端+后端一起把登陆主页给优化了，简单的说界面比上一个版本更好看，内容也更丰富。当然这个是优化项，没有提交给测试这边验证。但是……我发现这页面加载很久，开始因为是网络和测试服务器性能不行也没深究，但是多几次我就觉得不太对劲，F12打开一看，加载10s+了，这性能自然是不行的。然后反馈研发，推动修改。</p>
+<h2 id="分析问题"><a href="#分析问题" class="headerlink" title="分析问题"></a>分析问题</h2><p>下面以另一个商品管理页面作为实例（写文章的时候还没修改），手动清空浏览器缓存，打开F12，刷新并访问首页。<br>非常明晰的时间加载曲线展现，如下图（仅示意）：<br><img src="/images/dn.net-20161206231134554-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2luZGFuY2hhb3M=-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png" alt="这里写图片描述"><br>图中显示了2个时间消耗大户都在800ms以上。<br>点击开文件的响应内容包含了若干object，都是按商品的productID分类的，这个数据是从后台数据库查询得到的动态数据（xhr），点开一个object的内容如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;<span class="string">"pId"</span>:<span class="number">5989</span>,<span class="string">"name"</span>:<span class="string">"聚实惠测试商品01"</span>,<span class="string">"status"</span>:<span class="string">"shelve_on"</span>,<span class="string">"imgUrl"</span>:<span class="string">"http://×××××××××××.aliyuncs.com/sgc/200015/image/145c1974fdaa4a9f81d20614a4af1327.jpg"</span>,<span class="string">"shopId"</span>:<span class="literal">null</span>,<span class="string">"inventory"</span>:<span class="number">1464</span>,<span class="string">"maxPrice"</span>:<span class="number">1.11</span>,<span class="string">"minPrice"</span>:<span class="number">1.11</span>,<span class="string">"createdWhen"</span>:<span class="string">"2016-12-01 11:10:55"</span>,<span class="string">"modifyWhen"</span>:<span class="literal">null</span>,<span class="string">"salesNum"</span>:<span class="number">0</span>,<span class="string">"pv"</span>:<span class="number">2</span>,<span class="string">"uv"</span>:<span class="number">2</span>,<span class="string">"itemCatId"</span>:<span class="literal">null</span>,<span class="string">"shortDesc"</span>:<span class="string">"聚实惠测试商品01"</span>,<span class="string">"salesLimited"</span>:<span class="literal">null</span>,<span class="string">"saleStartTime"</span>:<span class="literal">null</span>,<span class="string">"saleStartSeconds"</span>:<span class="literal">null</span>,<span class="string">"stockReduceType"</span>:<span class="literal">null</span>,<span class="string">"freightType"</span>:<span class="literal">null</span>,<span class="string">"shippingFee"</span>:<span class="literal">null</span>,<span class="string">"shippingTemplateId"</span>:<span class="literal">null</span>,<span class="string">"displayInventory"</span>:<span class="literal">false</span>,<span class="string">"displaySoldQty"</span>:<span class="literal">false</span>,<span class="string">"shareImg"</span>:<span class="literal">null</span>,<span class="string">"shareTitle"</span>:<span class="literal">null</span>,<span class="string">"shareContent"</span>:<span class="literal">null</span>,<span class="string">"imgs"</span>:<span class="literal">null</span>,<span class="string">"delSkuIds"</span>:<span class="literal">null</span>,<span class="string">"productCode"</span>:<span class="literal">null</span>,<span class="string">"modifyWhenDate"</span>:<span class="literal">null</span>,<span class="string">"productSizeTemplateId"</span>:<span class="literal">null</span>,<span class="string">"taxRate"</span>:<span class="literal">null</span>,<span class="string">"toInactive"</span>:<span class="literal">false</span>,<span class="string">"spec"</span>:<span class="literal">null</span>,<span class="string">"maxquto"</span>:<span class="number">121.00</span>,<span class="string">"minquto"</span>:<span class="number">121.00</span>,<span class="string">"onStatus"</span>:<span class="literal">null</span>,<span class="string">"offStatus"</span>:<span class="literal">null</span>,<span class="string">"selectedIds"</span>:<span class="literal">null</span>,<span class="string">"defaultImg"</span>:<span class="literal">null</span>,<span class="string">"indexCode"</span>:<span class="literal">null</span>,<span class="string">"selIds"</span>:<span class="literal">null</span>,<span class="string">"groupId"</span>:<span class="literal">null</span>,<span class="string">"sortNo"</span>:<span class="literal">null</span>,<span class="string">"skus"</span>:<span class="literal">null</span>,<span class="string">"querySelInType"</span>:<span class="literal">null</span>,<span class="string">"commissionRate"</span>:<span class="number">0.2000</span>,<span class="string">"commissionTemplateId"</span>:<span class="literal">null</span>,<span class="string">"notQueryPids"</span>:<span class="literal">null</span>,<span class="string">"imgShape"</span>:<span class="literal">null</span>,<span class="string">"orderStatus"</span>:<span class="literal">null</span>,<span class="string">"oldStockType"</span>:<span class="literal">null</span>,<span class="string">"shelveOnWhen"</span>:<span class="literal">null</span>,<span class="string">"shelveOffWhen"</span>:<span class="literal">null</span>,<span class="string">"minFrontPrice"</span>:<span class="literal">null</span>,<span class="string">"minBackPrice"</span>:<span class="literal">null</span>,<span class="string">"maxFrontPrice"</span>:<span class="literal">null</span>,<span class="string">"maxBackPrice"</span>:<span class="literal">null</span>,<span class="string">"qrCodeUrl"</span>:<span class="string">"http://XXXXXXXX200015/product/productDetailPage?pId="</span>,<span class="string">"groupIds"</span>:<span class="literal">null</span>,<span class="string">"statusComments"</span>:<span class="string">"上架"</span>,<span class="string">"rectImgUrl"</span>:<span class="string">"1abc808b34884fcbb78b187e533bfaa1.jpg"</span>,<span class="string">"activityId"</span>:<span class="literal">null</span>,<span class="string">"activityUniqueId"</span>:<span class="literal">null</span>,<span class="string">"activityName"</span>:<span class="literal">null</span>,<span class="string">"fansQuantity"</span>:<span class="literal">null</span>,<span class="string">"fansCount"</span>:<span class="literal">null</span>,<span class="string">"activityStartTime"</span>:<span class="literal">null</span>,<span class="string">"activityEndSeconds"</span>:<span class="literal">null</span>,<span class="string">"activityLabel"</span>:<span class="literal">null</span>,<span class="string">"activityLabelStyle"</span>:<span class="literal">null</span>,<span class="string">"activityMinPrice"</span>:<span class="literal">null</span>,<span class="string">"activitySalesLimited"</span>:<span class="number">0</span>,<span class="string">"activityRemark"</span>:<span class="literal">null</span>,<span class="string">"noticeActivityId"</span>:<span class="literal">null</span>,<span class="string">"noticeActivityUniqueId"</span>:<span class="literal">null</span>,<span class="string">"noticeActivityName"</span>:<span class="literal">null</span>,<span class="string">"noticeActivityStartTime"</span>:<span class="literal">null</span>,<span class="string">"noticeActivityEndSeconds"</span>:<span class="literal">null</span>,<span class="string">"noticeActivityLabel"</span>:<span class="literal">null</span>,<span class="string">"noticeActivityMinPrice"</span>:<span class="literal">null</span>,<span class="string">"noticeActivitySalesLimited"</span>:<span class="number">0</span>,<span class="string">"groupActivityId"</span>:<span class="literal">null</span>,<span class="string">"groupActivityUniqueId"</span>:<span class="literal">null</span>,<span class="string">"groupActivityName"</span>:<span class="literal">null</span>,<span class="string">"groupActivityStartTime"</span>:<span class="literal">null</span>,<span class="string">"groupActivityEndSeconds"</span>:<span class="literal">null</span>,<span class="string">"groupActivityLabel"</span>:<span class="literal">null</span>,<span class="string">"groupActivityLabelStyle"</span>:<span class="literal">null</span>,<span class="string">"groupActivitySalesLimited"</span>:<span class="literal">null</span>,<span class="string">"groupActivityRemark"</span>:<span class="literal">null</span>,<span class="string">"fulfilActivityLadders"</span>:<span class="literal">null</span>,<span class="string">"fulfilActivityDiscountList"</span>:<span class="literal">null</span>,<span class="string">"fulfilActivityPointsList"</span>:<span class="literal">null</span>,<span class="string">"fulfilActivityCouponList"</span>:<span class="literal">null</span>,<span class="string">"crowdActivityLadders"</span>:<span class="literal">null</span>,<span class="string">"quantityLimited"</span>:<span class="number">0</span>,<span class="string">"productGivePoints"</span>:<span class="literal">null</span>,<span class="string">"productSizeRowString"</span>:<span class="literal">null</span>,<span class="string">"productSizeRowData"</span>:[],<span class="string">"pids"</span>:<span class="literal">null</span>,<span class="string">"packageDiscountAmout"</span>:<span class="literal">null</span>,<span class="string">"imprestPrice"</span>:<span class="literal">null</span>,<span class="string">"imprestFrontPrice"</span>:<span class="literal">null</span>,<span class="string">"imprestBackPrice"</span>:<span class="literal">null</span>,<span class="string">"currentPrice"</span>:<span class="literal">null</span>,<span class="string">"crowdCurrentPersons"</span>:<span class="literal">null</span>,<span class="string">"crowdMaxPersons"</span>:<span class="literal">null</span>,<span class="string">"returnImprest"</span>:<span class="literal">null</span>,<span class="string">"payLimitHours"</span>:<span class="literal">null</span>,<span class="string">"showCartFlag"</span>:<span class="literal">true</span>&#125;</span><br></pre></td></tr></table></figure>
+
+<p>商品列表中展现的内容最多不会超过20个属性（商品名称及ID 价格 访问量 总库存 总销量 创建时间），反回来的object里面怎么会有那么多内容呢？然后大概一看，查了一大堆null的空数据出来。说明在执行查询操作的时候多查了不需要的内容。然后，作为一个测试，这个模块是谁开发的，找到他询问，得知他原来的方法已经被很多人修改过……于是不禁想到，研发都很懒，有现成的他是不会自己去搞的，复用人家的方法（一个方法只做一件事的原则被彻底放弃或者遗忘），改改……经过多轮功能和版本的迭代，一个曾经单纯的干净十足的方法，变成了一个拖泥带水的方法……</p>
+<h2 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h2><p>首页加载慢的问题是如何被解决的？<br>1、我发现问题，向对应研发提出性能慢的问题；研发表示没有办法，是某某地方查询数据库慢导致的，现在有点忙。我告诉他我的想法，作为首页，性能不能太低，否则会被用户觉得产品low。他同意但是事情太多，没有说要马上解决。基于发现的这个性能问题，我把后台快速的清理一遍，看是否还有类似的情况，清理完毕，问题提交到了bug管理系统，作为一个重要但不紧急的事项。<br>2、在我反馈后大概2小时，产品经理发觉有点慢，过来找我问情况，我告诉他原因，和我对这个问题的处理方式，又说了我的想法。产品经理应该是认同的，迅速口头把问题反馈给老大，咨询意见（这就是优秀的产品经理和蹩脚测试的区别——发版也不是理由），老大的想法和我一样。然后我继续准备发版的各项工作，研发-老大碰了一会得到解决方案。发版完成后，这个问题的修复作为hotfix被发到生产环境。性能提升到加载5s+。</p>
+<p>商品查询sql性能问题应该如何被解决？<br>1、首先是代码编写原则问题，说白了是研发管理问题。没有普及科学规范的编码规范。所以这个问题要在源头上解决的话需要上升到管理层，督促开发遵守基本的代码编码规范。——开会，宣贯，清查，批评，通报批评，惩罚。。。<br>2、修复该问题。<br>3、类似遗留的代码需要清理。有一定工作量，需要和开发任务平衡。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/FromCSDN/" rel="tag"># FromCSDN</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-next post-nav-item">
+                <a href="/2016/12/06/%E5%85%AC%E5%8F%B8%E5%8F%91%E7%89%88shell%E8%84%9A%E6%9C%AC%E9%87%8D%E6%9E%84/" rel="next" title="公司发版shell脚本重构">
+                  <i class="fa fa-chevron-left"></i> 公司发版shell脚本重构
+                </a>
+            </div>
+
+            <span class="post-nav-divider"></span>
+
+            <div class="post-nav-prev post-nav-item">
+                <a href="/2016/12/15/Python%20Django%E5%AD%A6%E4%B9%A0%E5%92%8C%E5%AE%9E%E8%B7%B5/" rel="prev" title="Python Django学习和实践">
+                  Python Django学习和实践 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+    <div class="comments" id="comments"></div>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#基础篇"><span class="nav-number">1.</span> <span class="nav-text">基础篇</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实践篇"><span class="nav-number">2.</span> <span class="nav-text">实践篇</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#发现问题"><span class="nav-number">2.1.</span> <span class="nav-text">发现问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分析问题"><span class="nav-number">2.2.</span> <span class="nav-text">分析问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决问题"><span class="nav-number">2.3.</span> <span class="nav-text">解决问题</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <img class="site-author-image" itemprop="image" alt="windanchaos"
+    src="/images/avatar.gif">
+  <p class="site-author-name" itemprop="name">windanchaos</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">96</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/windanchaos" title="GitHub &amp;rarr; https:&#x2F;&#x2F;github.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/windanchaos" title="Gitee &amp;rarr; https:&#x2F;&#x2F;gitee.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="fa fa-fw fa-gitee"></i>Gitee</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/mailto:454722630@qq.com" title="E-Mail &amp;rarr; mailto:454722630@qq.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/windanchaos" title="Weibo &amp;rarr; https:&#x2F;&#x2F;weibo.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="fa fa-fw fa-weibo"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/windanchaos" title="CSDN &amp;rarr; https:&#x2F;&#x2F;blog.csdn.net&#x2F;windanchaos" rel="noopener" target="_blank"><i class="fa fa-fw fa-CSDN"></i>CSDN</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+  <div class="beian"><a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank">备案/许可证编号 </a>
+      <img src="http://www.beian.gov.cn/portal/download" style="display: inline-block;"><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=19036728" rel="noopener" target="_blank">蜀ICP备19036728号 </a>
+  </div>
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">windanchaos</span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> v4.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">Theme – <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.5.0
+  </div>
+
+        
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+
+
+
+
+  <script>
+  function leancloudSelector(url) {
+    return document.getElementById(url).querySelector('.leancloud-visitors-count');
+  }
+  if (CONFIG.page.isPost) {
+    function addCount(Counter) {
+      var visitors = document.querySelector('.leancloud_visitors');
+      var url = visitors.getAttribute('id').trim();
+      var title = visitors.getAttribute('data-flag-title').trim();
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length > 0) {
+            var counter = results[0];
+            Counter('put', '/classes/Counter/' + counter.objectId, { time: { '__op': 'Increment', 'amount': 1 } })
+              .then(response => response.json())
+              .then(() => {
+                leancloudSelector(url).innerText = counter.time + 1;
+              })
+              .catch(error => {
+                console.log('Failed to save visitor count', error);
+              })
+          } else {
+              Counter('post', '/classes/Counter', { title: title, url: url, time: 1 })
+                .then(response => response.json())
+                .then(() => {
+                  leancloudSelector(url).innerText = 1;
+                })
+                .catch(error => {
+                  console.log('Failed to create', error);
+                });
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  } else {
+    function showTime(Counter) {
+      var visitors = document.querySelectorAll('.leancloud_visitors');
+      var entries = [...visitors].map(element => {
+        return element.getAttribute('id').trim();
+      });
+
+      Counter('get', `/classes/Counter?where=${JSON.stringify({ url: { '$in': entries } })}`)
+        .then(response => response.json())
+        .then(({ results }) => {
+          if (results.length === 0) {
+            document.querySelectorAll('.leancloud_visitors .leancloud-visitors-count').forEach(element => {
+              element.innerText = 0;
+            });
+            return;
+          }
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.url;
+            var time = item.time;
+            leancloudSelector(url).innerText = time;
+          }
+          for (var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = leancloudSelector(url);
+            if (element.innerText == '') {
+              element.innerText = 0;
+            }
+          }
+        })
+        .catch(error => {
+          console.log('LeanCloud Counter Error', error);
+        });
+    }
+  }
+
+  fetch('https://app-router.leancloud.cn/2/route?appId=0indNw0niJU8jN2a1E43bDW7-gzGzoHsz')
+    .then(response => response.json())
+    .then(({ api_server }) => {
+      var Counter = (method, url, data) => {
+        return fetch(`https://${api_server}/1.1${url}`, {
+          method: method,
+          headers: {
+            'X-LC-Id': '0indNw0niJU8jN2a1E43bDW7-gzGzoHsz',
+            'X-LC-Key': 'toErPcjDI3431WvXQVKoy0rC',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+      };
+      if (CONFIG.page.isPost) {
+        const localhost = /http:\/\/(localhost|127.0.0.1|0.0.0.0)/;
+        if (localhost.test(document.URL)) return;
+        addCount(Counter);
+      } else if (document.querySelectorAll('.post-title-link').length >= 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/muse.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+
+<script>
+NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(item => {
+    return GUEST.includes(item);
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: '0indNw0niJU8jN2a1E43bDW7-gzGzoHsz',
+    appKey: 'toErPcjDI3431WvXQVKoy0rC',
+    placeholder: "Just go go",
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: 'zh-cn' || 'zh-cn',
+    path: location.pathname,
+    recordIP: false,
+    serverURLs: ''
+  });
+}, window.Valine);
+</script>
+
+</body>
+</html>
