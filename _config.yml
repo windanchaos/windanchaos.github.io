@@ -112,10 +112,4 @@ theme: hexo-theme-next-7.5.0
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: sftp
-  host: 47.99.147.232
-  user: windanchaos
-  pass:
-  remotePath: /workspace/sites/blog/public
-  port: 22
-  privateKey: /home/chaosbom/.ssh/id_rsa
+  type: ''
