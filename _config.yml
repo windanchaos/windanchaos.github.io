@@ -8,7 +8,7 @@ subtitle: ''
 description: ''
 keywords:
 author: windanchaos
-language: zh-Hans
+language: zh-CN
 timezone: 'asia/shanghai'
 
 # URL
@@ -112,4 +112,12 @@ theme: hexo-theme-next-7.5.0
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type: ''
+  type: sftp
+  host: blog.windanchaos.tech
+  user: windanchaos
+  pass: 
+  remotePath: /workspace/sites/blog/public
+  port: 22
+  privateKey: 
+  passphrase: 
+  agent: 
