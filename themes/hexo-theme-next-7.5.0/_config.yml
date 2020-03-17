@@ -85,9 +85,9 @@ footer:
     enable: true
     icp: 蜀ICP备19036728号 
     # The digit in the num of gongan beian.
-    gongan_id: 19036728
+    gongan_id: 51012202000611
     # The full num of gongan beian.
-    gongan_num: 蜀ICP备19036728号
+    gongan_num: 川公网安备 51012202000611号
     # The icon for gongan beian. See: http://www.beian.gov.cn/portal/download
     gongan_icon_url: http://www.beian.gov.cn/portal/download
   counter: true
