@@ -115,9 +115,9 @@ deploy:
   type: sftp
   host: blog.windanchaos.tech
   user: windanchaos
-  pass: yb198697
+  pass: 
   remotePath: /workspace/sites/blog/public
   port: 22
-  privateKey: 
+  privateKey: /Users/boy/.ssh/id_rsa
   passphrase: 
   agent: 
