@@ -46,6 +46,7 @@ W3C Webdriver标准协议内容：http://www.w3.org/TR/webdriver/
 
 重新跑前一节FirefoxDriver的代码，查看截获的请求和响应。如下图所示：
 ![这里写图片描述](/images/dn.net-20160424101223635.png)
+<!-- more -->
 ![这里写图片描述](/images/dn.net-20160424101313041.png)
 可以清楚地看到代码与DriverServer之间是如何根据WebDriver协议连通的。
 WebDriver协议是RESTful风格的。

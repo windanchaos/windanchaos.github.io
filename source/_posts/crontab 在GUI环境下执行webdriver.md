@@ -46,6 +46,7 @@ vi /etc/yum.repos.d/google.repo
 
 ```js 
 [google]
+<!-- more -->
 name=Google-x86_64
 baseurl=http://dl.google.com/linux/rpm/stable/x86_64
 enabled=1

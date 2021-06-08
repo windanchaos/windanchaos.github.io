@@ -46,6 +46,7 @@ wait
 ```js 
 for i in {1..5}
 do
+<!-- more -->
    echo ${i}
    (
      echo block one sleep:${i}

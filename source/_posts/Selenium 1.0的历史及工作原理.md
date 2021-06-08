@@ -46,6 +46,7 @@ type name=q Selenium
 6. Selenium Server接收到浏览器发送的Http请求后，自己重组Http请求，获取对应的页面
 
 7. Selenium Server中的Http Proxy把接受到的页面返回给浏览器。
+<!-- more -->
 
 **同源策略**，它是由Netscape提出的一个著名的安全策略，现在所有的可支持javascript的浏览器都会使用这个策略。所谓**同源**，就是指域名、协议、端口相同。所以，打开一个baidu的网页只能执行baidu下的JavaScript脚本，而另外一个tab是google，baidu下的JavaScript则不能执行，从而防止对本网页的非法篡改。
 

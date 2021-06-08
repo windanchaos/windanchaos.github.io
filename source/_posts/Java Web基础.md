@@ -46,6 +46,7 @@ Struts——控制用的；
 Hibernate——操作数据库的；
 
 Spring——解耦用的。
+<!-- more -->
 
 详细地说：
 

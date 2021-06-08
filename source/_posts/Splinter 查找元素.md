@@ -46,6 +46,7 @@ links_found = browser.find_link_by_partial_href('example')
 As the other find_/* methods, these returns a list of all found elements.
 You also can search for links using other selector types with the methods find_by_css, find_by_xpath, find_by_tag, find_by_name, find_by_value and find_by_id.
 
+<!-- more -->
 ## 链式查询元素
 
 Finding methods are chainable, so you can find the descendants of a previously found element.

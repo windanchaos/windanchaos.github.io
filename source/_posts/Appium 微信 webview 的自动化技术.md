@@ -46,6 +46,7 @@ test("test chromedriver weixin") {
   val capability = DesiredCapabilities.chrome()
   capability.setCapability(ChromeOptions.CAPABILITY, options)
   val url = "http://127.0.0.1:8000/wd/hub"
+<!-- more -->
   val driver = new AndroidDriver[WebElement](new URL(url), capability)
   driver.get("https://testerhome.com/topics/6954")
   println(driver.getPageSource)

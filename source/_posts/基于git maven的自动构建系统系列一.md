@@ -46,6 +46,7 @@ import time,datetime
 import config as config
 from pygit2 import Repository
 from pygit2 import GIT_SORT_NONE,GIT_SORT_TOPOLOGICAL, GIT_SORT_REVERSE,GIT_SORT_TIME
+<!-- more -->
 import mysql.connector
 
 cnx = mysql.connector.connect(**config)

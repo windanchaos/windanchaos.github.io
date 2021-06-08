@@ -46,6 +46,7 @@ while not q.empty():
 
 ## LIFO队列
 
+<!-- more -->
 **class Queue.LifoQueue(maxsize=0)**
 
 LIFO即Last in First Out,后进先出。与栈的类似，使用也很简单,maxsize用法同上

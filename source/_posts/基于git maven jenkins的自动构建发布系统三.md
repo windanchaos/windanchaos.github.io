@@ -46,6 +46,7 @@ git pull origin `git status |awk '{print $4}'|head -1`
 ```
 
 build auto 的pipline script:
+<!-- more -->
 
 ```js 
 node {

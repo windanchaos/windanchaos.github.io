@@ -46,6 +46,7 @@ python/git版本对比
 主要参考官网的翻译资料：[http://python.usyiyi.cn/translate/django_182/index.html](http://python.usyiyi.cn/translate/django_182/index.html)
 这里从文章发出到现在（2017/1/8），持续有40多天，期间断断续续的看，断断续续的边学边练习里面的例子。插播了很多其他事情，尤其是一些无聊的手机游戏，双休要跟老婆见面，时间蛮少了，坚持下来确实有点苦难，还好基础看完了。继续加油！下面硬着头皮继续下一个阶段的学习实践。
 
+<!-- more -->
 ## 发版系统的原型
 
 1. 编译完成后，shell代码要将编译结果发布到tomcat容器中，容器路径在server.xml中配置了。其实这个地方理论上来将是没有必要的，个人认为，编译阶段就可以定义好编译的路径。研究下maven，把现在的shell流程简化。参考：[http://blog.csdn.net/rj042/article/details/6834557](http://blog.csdn.net/rj042/article/details/6834557)。后发现pom.xml修改会影响研发的windows下编译发布路径，维持现状。

@@ -46,6 +46,7 @@ sudo service docker start
 # 注意：
 # 官方软件源默认启用了最新的软件，您可以通过编辑软件源的方式获取各个版本的软件包。例如官方并没有将测试版本的软件源置为可用，你可以通过以下方式开启。同理可以开启各种测试版本等。
 # vim /etc/yum.repos.d/docker-ee.repo
+<!-- more -->
 #   将 [docker-ce-test] 下方的 enabled=0 修改为 enabled=1
 #
 # 安装指定版本的Docker-CE:

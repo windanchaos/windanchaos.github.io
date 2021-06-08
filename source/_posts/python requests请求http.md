@@ -46,6 +46,7 @@ r6 = requests.options('http://httpbin.org/get')
 payload = {'key1': 'value1', 'key2': 'value2'}
 r7 = requests.get('http://httpbin.org/get', params=payload, timeout=3)
 
+<!-- more -->
 # Binary Response Content
 r8 = requests.get('http://dynamic-image.yesky.com/640x-//uploadImages/leadimage/2014/266/55/QS4928ATRIR1_W.jpg')
 print(r8.content)

@@ -46,6 +46,7 @@ UNION 查询的结果集 SUBQUERY
  
 子查询中的第一个 select 查询，不依赖于外部查询的结果集 DEPENDENT SUBQUERY
  
+<!-- more -->
 子查询中的第一个 select 查询，依赖于外部 查询的结果集 **DERIVED**
  
 **用于 from 子句里有子查询的情况。MySQL 会 递归执行这些子查询，把结果放在临时表里。** UNCACHEABLE SUBQUERY
