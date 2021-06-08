@@ -46,6 +46,7 @@ printf '匹配式' 输入内容
 
 ID      Name    Linux   PHP     MySQL   Java
 1       Liming  82      55      58      87
+<!-- more -->
 2       SC      82      65      72      77
 3       Tg      88      83      93      75
 

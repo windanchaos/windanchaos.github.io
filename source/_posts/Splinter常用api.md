@@ -46,6 +46,7 @@ window.is_current = True     # set this window to be current window
 window.next                  # the next window
 window.prev                  # the previous window
 window.close()               # close this window
+<!-- more -->
 window.close_others()        # close all windows except this one
 # Reload/back/forward a page
 browser.reload()

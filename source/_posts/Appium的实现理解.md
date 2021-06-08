@@ -46,6 +46,7 @@ node build\main.js
 ```js 
 ...
  "main": "./build/lib/main.js",
+<!-- more -->
   "bin": {
     "appium": "./build/lib/main.js"
   },

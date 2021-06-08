@@ -46,6 +46,7 @@ git status
 
 /#清理本地分支（远程仓库已经不存在的分支）
 git remote prune origin
+<!-- more -->
 
 /#本地所有修改的。没有的提交的，都返回到原来的状态
 git checkout .

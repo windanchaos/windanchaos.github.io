@@ -46,6 +46,7 @@ Infer适用范围
 
 1:Resource leak
 2:Memory leak
+<!-- more -->
 3:Null dereference
 4:Premature nil termination argument
 

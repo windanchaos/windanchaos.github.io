@@ -46,6 +46,7 @@ The same HTTP server which serves the web UI serves up an XML-RPC interface that
 3、参考别写的源码文章，找到程序入口，阅读代码
 
 4、debug若干次，追中代码运行逻辑
+<!-- more -->
 
 ## 执行逻辑和核心
 supervisord作为进程入口，启动后先将自己的进程daemon化。接着开始利用opitons.py中的代码，对配置进行初始化，读取关键配置，我目前只研究了启动监控进程部分。读取完配置后，去检查运行环境、进程状态等，没有启动则启动受控进程，受控进程和supervisor的进程通过pipes通信，子进程状态上报。其中的核心方法只有一句：

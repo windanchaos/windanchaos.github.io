@@ -46,6 +46,7 @@ DevOps 是一个完整的面向IT运维的工作流，以 IT 自动化以及持�
 
 ## DevOps 的技术栈与工具链
 
+<!-- more -->
 Everything is Code，DevOps 也同样要通过技术工具链完成持续集成、持续交付、用户反馈和系统优化的整合。[Elasticbox](https://elasticbox.com/) 整理了 [60+ 开源工具与分类](https://elasticbox.com/blog/devops-open-source-tools/)，其中包括版本控制&协作开发工具、自动化构建和测试工具、持续集成&交付工具、部署工具、维护工具、监控，警告&分析工具等等， 补充了一些国内的服务，可以让你更好的执行实施 DevOps 工作流。
 
 ![flow.ci](/images/s.jianshu.io-upload_images-310906-d7baf300841107a2.jpg-imageMogr2-auto-orient-strip%7CimageView2-2-w-1240.png)

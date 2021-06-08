@@ -46,6 +46,7 @@ org.jvnet.hudson.project.testResul -> /org/jvnet/hudson/project/testResult/index
 命中之后，response.forward(this,"/org/jvnet/hudson/project/testResult/index.jelly",request)
 ```
 ## jenkins用了stapler
+<!-- more -->
 
 stapler放在model后是因为两者关系密切；
 

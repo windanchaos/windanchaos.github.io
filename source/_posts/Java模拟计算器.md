@@ -46,6 +46,7 @@ public class Calculator2 extends JFrame implements ActionListener
     /** 计算器左边的M的显示名字 */
     private final String[] M = { " ", "MC", "MR", "MS", "M+" };
     /** 计算器上键的按钮 */
+<!-- more -->
     private JButton keys[] = new JButton[KEYS.length];
     /** 计算器上的功能键的按钮 */
     private JButton commands[] = new JButton[COMMAND.length];

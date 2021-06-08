@@ -46,6 +46,7 @@ Returns the current context of the current session.
 
 **4. find_element_by_ios_uiautomation**
 find_element_by_ios_uiautomation(self, uia_string):
+<!-- more -->
 
 ```js 
 Finds an element by uiautomation in iOS.

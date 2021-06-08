@@ -46,6 +46,7 @@ Lifecycle接口的方法：
 ![这里写图片描述](/images/dn.net-20161006125439657.png)
 继承关系图：
 ![这里写图片描述](/images/dn.net-20161006124601442.png)
+<!-- more -->
 StandardServer，StandardService，Connector和上面4个容器等很多组件都实现了Lifecycle，组件实现这个接口就可以统一被拥有它的组件控制了，这样一层一层的直到一个 **最高级的组件** 就可以控制 Tomcat 中所有组件的生命周期，这个最高的组件就是 **
 ```js 
 Server

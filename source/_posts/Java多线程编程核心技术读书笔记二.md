@@ -46,6 +46,7 @@ join(long) 同wait(long)。
 
 join(long) 和sleep(long) 区别。锁释放阻塞和和锁持有等待（阻塞）。
 
+<!-- more -->
 ## 类ThreadLocal
 
 主要解决每个线程绑定自己线程的值。教程向我们展示了如何使用ThreadLocal，我这里做下变通自己写了测试代码。

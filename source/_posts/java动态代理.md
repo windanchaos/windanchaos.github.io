@@ -46,6 +46,7 @@ static Object newProxyInstance(ClassLoader loader, Class<?>[] interfaces,Invocat
 // 接口
 public interface InvocationHandler {....}
 ```
+<!-- more -->
 
 基本思路是使用上面的方法，动态生成代理对象。
 

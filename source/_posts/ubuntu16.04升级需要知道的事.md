@@ -46,6 +46,7 @@ sudo dpkg -i /tmp/appstream_0.9.4-1ubuntu1_amd64.deb /tmp/libappstream3_0.9.4-1u
 update 是同步 /etc/apt/sources.list 和 /etc/apt/sources.list.d 中列出的源的索引，这样才能获取到最新的软件包。
 
 ```js 
+<!-- more -->
 sudo apt-get update
 sudo apt-get upgrade
 ```

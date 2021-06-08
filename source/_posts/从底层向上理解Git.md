@@ -46,6 +46,7 @@ branches  description  hooks  info  objects      refs
 config    HEAD         index  logs  packed-refs
 $ find .git/objects/
 .git/objects/
+<!-- more -->
 .git/objects/9b
 .git/objects/9b/8d924eb8a9beaa43e8090c9d4e0a225aa4ce3a
 .git/objects/a4

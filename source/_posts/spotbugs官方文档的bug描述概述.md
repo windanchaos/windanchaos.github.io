@@ -46,6 +46,7 @@ code that is confusing, anomalous, or written in a way that leads itself to erro
 
 code flaws having to do with internationalization and locale
 代码没有遵守必要的本地化和国际化
+<!-- more -->
 这个要看公司要求
 
 Bogus random noise: intended to be useful as a control in data mining experiments, not in finding actual bugs in software

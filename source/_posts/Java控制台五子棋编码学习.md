@@ -46,6 +46,7 @@ public class GobangGame {
 
     public void setPosY(int posY) {
         this.posY = posY;
+<!-- more -->
     }
 
     public static void main(String[] args) {

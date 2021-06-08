@@ -46,6 +46,7 @@ Thread的构造法中支持实现了Runnble接口的类，恩，面向抽象的�
 
 
 停止线程需要说的。
+<!-- more -->
 
 - 不能暴力停止线程
 - 判定线程是否是中断的方法this.interrupted()和this.isInterrupted()的区别是,前者是静态方法，测试状态后，状态会被清除。

@@ -46,6 +46,7 @@ Appium server 是用 Node.js 写的。我们可以用源码编译或者从 NPM �
 ## Appium客户端
 
 Appium 客户端端有很多语言库 Java, Ruby, Python, PHP, JavaScript 和 C/#，这些库都实现了 Appium 对 WebDriver 协议的扩展。当使用 Appium 的时候，你只需使用这些库代替常规的 WebDriver 库就可以了。 你可以从[这里](http://appium.io/slate/cn/master/#appium-clients.cn.md)看到所有的库的列表。
+<!-- more -->
 
 # Appium的组成和安装
 

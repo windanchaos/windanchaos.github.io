@@ -46,6 +46,7 @@ browser.find_by_id('batch_quto').fill("120")
 browser.evaluate_script('document.getElementById("batch_quto").style="display: none; visibility: visible;"')
 ```
 
+<!-- more -->
 3、Message: unknown error: Element 。。。 is not clickable at point。。。
 如果确认能找到元素，那么time.sleep(1)。
 如果细心的你发现要点击的元素在浏览器底部位置，那么真的是被什么元素给遮挡了。所以可以：

@@ -46,6 +46,7 @@ for commit in repo.walk(repo.head.target,GIT_SORT_TOPOLOGICAL | GIT_SORT_REVERSE
         logtmp.append('')
         logtmp.append(commit.tree.id.hex)
         logtmp.append(datetime.datetime.utcfromtimestamp(commit.author.time).strftime("%Y-%m-%d %H:%M:%S"))
+<!-- more -->
         print(logtmp)
         argslog.append(logtmp)
         #log=(commit.author.name,commit.message,commit.tree.id.hex,datetime.datetime.utcfromtimestamp(commit.author.time).strftime("%Y-%m-%d %H:%M:%S"))

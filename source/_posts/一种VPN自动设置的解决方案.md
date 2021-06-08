@@ -46,6 +46,7 @@ category:
 ## docker的安装和配置优化
 其中user是可以操作docker的普通账户，换成自己的即可
 ```shell script
+<!-- more -->
 bash installDocker.sh user
 ```
 ## 监控程序启动操作

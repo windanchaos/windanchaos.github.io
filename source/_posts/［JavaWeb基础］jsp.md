@@ -46,6 +46,7 @@ servlet容器编译servlet源文件，生成servlet类
 销毁阶段：
 
 调用与JSP对应的servlet实例的销毁方法，然后销毁servlet实例
+<!-- more -->
 ```
 
 # JSP作用和Servlet分工

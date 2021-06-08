@@ -46,5 +46,6 @@ BUILD_ID=dontKillMe nohup java -Xms246m -Xmx500m -jar ?????.jar > log.log &
 + BUILD_ID=dontKillMe
 + nohup java -Xms246m -Xmx500m -jar ????.jar
 ```
+<!-- more -->
 
 然后进程就可以在服务器上看到了。

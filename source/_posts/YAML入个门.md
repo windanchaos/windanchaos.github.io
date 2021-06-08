@@ -46,6 +46,7 @@ animal: pets
 ```
 
 Yaml 也允许另一种写法，将所有键值对写成一个行内对象。
+<!-- more -->
 
 ```js 
 hash: { name: Steve, foo: bar }

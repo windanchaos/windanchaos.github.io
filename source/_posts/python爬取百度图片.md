@@ -46,6 +46,7 @@ class Crawler:
                 browser.driver.set_script_timeout(15)
                 if browser.is_element_present_by_text('下载'):
                     browser.find_by_text('下载').first.click()
+<!-- more -->
                 else:
                     browser.evaluate_script('$(".img-switch-btn").last().click()')
             except:

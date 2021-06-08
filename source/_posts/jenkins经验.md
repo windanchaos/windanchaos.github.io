@@ -46,6 +46,7 @@ Build step 'Execute shell' marked build as failure
 
 ```js 
 function kill_process(){
+<!-- more -->
     local process=${1}
     #进程存在则执行kill动作，进程不存在什么也不做
     [ -n "`ps -ef |grep ${process}|grep -v grep| awk '{print $2}' | head -1`" ] && \

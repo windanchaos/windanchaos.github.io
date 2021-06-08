@@ -46,6 +46,7 @@ echo "编译gg-img-webent"
 cd $githome"gg-img-webent"
 mvn -q -ff clean install -P st
 echo "编译gg-job-webent"
+<!-- more -->
 cd $githome"gg-job-webent"
 mvn -q -ff clean install -P st
 echo "编译gg-sn-webent"
