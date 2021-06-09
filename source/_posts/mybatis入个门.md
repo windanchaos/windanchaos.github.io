@@ -45,8 +45,8 @@ insert into t_account(username,password,age) values(#{username},#
 
 实体对象是mysql中表字段对应到java的类，通常在代码框架中被叫做entity。下面分别展示了java类和表结构。
 
-```java
 <!-- more -->
+```java
 package com.chaosbom.entity;
 import lombok.Data;
 @Data
