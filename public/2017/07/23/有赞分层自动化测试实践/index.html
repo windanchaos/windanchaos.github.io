@@ -7,45 +7,45 @@
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="pulibc/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="pulibc/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="pulibc/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="pulibc/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="pulibc/css/main.css">
 
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"windanchaos.gitee.io","root":"pulibc/","images":"pulibc/images","scheme":"Mist","darkmode":true,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="pulibc/js/config.js"></script>
 
     <meta name="description" content="1. 背景先理一下自动化测试的概念，从广义上来说，一切通过工具(程序)的方式来代替或者辅助手工测试的行为都可以成为自动化。从狭义上来说，通过编写脚本的方式，模拟手工测试的过程，从而替代人工对系统的功能进行验证。 有赞是一家互联网行业的创业公司，测试起步较晚，发布非常频繁，就算每次只回归核心功能，对人数极少的几个测试人员来说工作量巨大，且基本是重复劳动，极其枯燥，持续时间长了也容易出错。 所以初期我">
 <meta property="og:type" content="article">
 <meta property="og:title" content="有赞分层自动化测试实践">
-<meta property="og:url" content="http://example.com/2017/07/23/%E6%9C%89%E8%B5%9E%E5%88%86%E5%B1%82%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%AE%9E%E8%B7%B5/index.html">
+<meta property="og:url" content="https://windanchaos.gitee.io/2017/07/23/%E6%9C%89%E8%B5%9E%E5%88%86%E5%B1%82%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%AE%9E%E8%B7%B5/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="1. 背景先理一下自动化测试的概念，从广义上来说，一切通过工具(程序)的方式来代替或者辅助手工测试的行为都可以成为自动化。从狭义上来说，通过编写脚本的方式，模拟手工测试的过程，从而替代人工对系统的功能进行验证。 有赞是一家互联网行业的创业公司，测试起步较晚，发布非常频繁，就算每次只回归核心功能，对人数极少的几个测试人员来说工作量巨大，且基本是重复劳动，极其枯燥，持续时间长了也容易出错。 所以初期我">
 <meta property="og:locale">
-<meta property="og:image" content="http://example.com/images/com--content-images-2016-04-1461922037377-1-.png">
-<meta property="og:image" content="http://example.com/images/com--content-images-2016-04-1461918918740-.png">
-<meta property="og:image" content="http://example.com/images/com--content-images-2016-04-1461919415256-.png">
-<meta property="og:image" content="http://example.com/images/com--content-images-2016-04-1461919378850-.png">
-<meta property="og:image" content="http://example.com/images/com--content-images-2016-04-1461922374507-1-.png">
+<meta property="og:image" content="https://windanchaos.gitee.io/2017/07/23/%E6%9C%89%E8%B5%9E%E5%88%86%E5%B1%82%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%AE%9E%E8%B7%B5/pulibc/images/com--content-images-2016-04-1461922037377-1-.png">
+<meta property="og:image" content="https://windanchaos.gitee.io/2017/07/23/%E6%9C%89%E8%B5%9E%E5%88%86%E5%B1%82%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%AE%9E%E8%B7%B5/pulibc/images/com--content-images-2016-04-1461918918740-.png">
+<meta property="og:image" content="https://windanchaos.gitee.io/2017/07/23/%E6%9C%89%E8%B5%9E%E5%88%86%E5%B1%82%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%AE%9E%E8%B7%B5/pulibc/images/com--content-images-2016-04-1461919415256-.png">
+<meta property="og:image" content="https://windanchaos.gitee.io/2017/07/23/%E6%9C%89%E8%B5%9E%E5%88%86%E5%B1%82%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%AE%9E%E8%B7%B5/pulibc/images/com--content-images-2016-04-1461919378850-.png">
+<meta property="og:image" content="https://windanchaos.gitee.io/2017/07/23/%E6%9C%89%E8%B5%9E%E5%88%86%E5%B1%82%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%AE%9E%E8%B7%B5/pulibc/images/com--content-images-2016-04-1461922374507-1-.png">
 <meta property="article:published_time" content="2017-07-23T14:01:31.000Z">
 <meta property="article:modified_time" content="2021-06-08T10:39:48.810Z">
 <meta property="article:author" content="windanchaos">
 <meta property="article:tag" content="FromCSDN">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/images/com--content-images-2016-04-1461922037377-1-.png">
+<meta name="twitter:image" content="https://windanchaos.gitee.io/2017/07/23/%E6%9C%89%E8%B5%9E%E5%88%86%E5%B1%82%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%AE%9E%E8%B7%B5/pulibc/images/com--content-images-2016-04-1461922037377-1-.png">
 
 
-<link rel="canonical" href="http://example.com/2017/07/23/%E6%9C%89%E8%B5%9E%E5%88%86%E5%B1%82%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%AE%9E%E8%B7%B5/">
+<link rel="canonical" href="https://windanchaos.gitee.io/2017/07/23/%E6%9C%89%E8%B5%9E%E5%88%86%E5%B1%82%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%AE%9E%E8%B7%B5/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"http://example.com/2017/07/23/%E6%9C%89%E8%B5%9E%E5%88%86%E5%B1%82%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%AE%9E%E8%B7%B5/","path":"2017/07/23/有赞分层自动化测试实践/","title":"有赞分层自动化测试实践"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"https://windanchaos.gitee.io/2017/07/23/%E6%9C%89%E8%B5%9E%E5%88%86%E5%B1%82%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%AE%9E%E8%B7%B5/","path":"2017/07/23/有赞分层自动化测试实践/","title":"有赞分层自动化测试实践"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>有赞分层自动化测试实践 | Hexo</title>
@@ -57,7 +57,7 @@
 
 
   <noscript>
-    <link rel="stylesheet" href="/css/noscript.css">
+    <link rel="stylesheet" href="pulibc/css/noscript.css">
   </noscript>
 </head>
 
@@ -77,7 +77,7 @@
 
   <div class="site-meta">
 
-    <a href="/" class="brand" rel="start">
+    <a href="pulibc/" class="brand" rel="start">
       <i class="logo-line"></i>
       <p class="site-title">Hexo</p>
       <i class="logo-line"></i>
@@ -93,7 +93,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-首页"><a href="/" rel="section"><i class="home fa-fw"></i>首页</a></li><li class="menu-item menu-item-分类"><a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a></li><li class="menu-item menu-item-归档"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-标签"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-关于"><a href="/about/me.html" rel="section"><i class="user fa-fw"></i>关于</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-首页"><a href="pulibc/" rel="section"><i class="home fa-fw"></i>首页</a></li><li class="menu-item menu-item-分类"><a href="pulibc/categories/" rel="section"><i class="th fa-fw"></i>分类</a></li><li class="menu-item menu-item-归档"><a href="pulibc/archives/" rel="section"><i class="archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-标签"><a href="pulibc/tags/" rel="section"><i class="tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-关于"><a href="pulibc/about/me.html" rel="section"><i class="user fa-fw"></i>关于</a></li>
   </ul>
 </nav>
 
@@ -131,25 +131,25 @@
         <div class="site-overview-wrap sidebar-panel">
           <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="windanchaos"
-      src="/images/avatar.jpeg">
+      src="pulibc/images/avatar.jpeg">
   <p class="site-author-name" itemprop="name">windanchaos</p>
   <div class="site-description" itemprop="description"></div>
 </div>
 <div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-        <a href="/archives/">
+        <a href="pulibc/archives/">
           <span class="site-state-item-count">111</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-          <a href="/categories/">
+          <a href="pulibc/categories/">
         <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-          <a href="/tags/">
+          <a href="pulibc/tags/">
         <span class="site-state-item-count">1</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
@@ -209,10 +209,10 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2017/07/23/%E6%9C%89%E8%B5%9E%E5%88%86%E5%B1%82%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%AE%9E%E8%B7%B5/">
+    <link itemprop="mainEntityOfPage" href="https://windanchaos.gitee.io/2017/07/23/%E6%9C%89%E8%B5%9E%E5%88%86%E5%B1%82%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%AE%9E%E8%B7%B5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="image" content="pulibc/images/avatar.jpeg">
       <meta itemprop="name" content="windanchaos">
     </span>
 
@@ -253,7 +253,7 @@
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">自动化测试</span></a>
+          <a href="pulibc/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">自动化测试</span></a>
         </span>
     </span>
 
@@ -274,14 +274,14 @@
 <p>虽然我们在测试框架和工具层面通过结合selenium-grid实现了脚本并发执行和失败用例重试机制以提高执行效率和降低误报率，但是这种方式只能缓解问题，并不能从根本解决覆盖不全的问题。</p>
 <p>正好赶上公司的SOA服务化进程，测试这边也开始配合的做自动化方面的转变，从原来的黑盒系统级自动化测试向分层自动化测试转变。</p>
 <h1 id="2-分层自动化测试"><a href="#2-分层自动化测试" class="headerlink" title="2. 分层自动化测试"></a>2. 分层自动化测试</h1><p>在谈分层测试之前，先回顾几个概念：</p>
-<p>接下来我们谈谈有赞是如何随着系统拆分SOA服务化推进分层自动化测试的。先来看看经典的测试金字塔： <img data-src="/images/com--content-images-2016-04-1461922037377-1-.png" alt="Alt text"> 其中Unit代表单元测试，Service代表服务集成测试，UI代表页面级的系统测试。分层的自动化测试倡导产品的不同层次都需要自动化测试，这个金字塔也正表示不同层次需要投入的精力和工作量。下面我会逐层介绍有赞的分层自动化实践。</p>
+<p>接下来我们谈谈有赞是如何随着系统拆分SOA服务化推进分层自动化测试的。先来看看经典的测试金字塔： <img data-src="pulibc/images/com--content-images-2016-04-1461922037377-1-.png" alt="Alt text"> 其中Unit代表单元测试，Service代表服务集成测试，UI代表页面级的系统测试。分层的自动化测试倡导产品的不同层次都需要自动化测试，这个金字塔也正表示不同层次需要投入的精力和工作量。下面我会逐层介绍有赞的分层自动化实践。</p>
 <h2 id="2-1-Unit-单元测试"><a href="#2-1-Unit-单元测试" class="headerlink" title="2.1 Unit-单元测试"></a>2.1 Unit-单元测试</h2><p>在系统拆分之前，有赞只有一个庞大的巨无霸系统，单元测试极度缺失。在系统逐渐SOA服务化的过程中，我们逐渐提出了对单元测试覆盖率的要求。</p>
 <p>我们的单元测试会分别做DAO层和服务层的测试。DAO层的单元测试主要保障SQL脚本的正确性，在做服务层的单元测试时就可以以DAO层是正确的前提进行用例编写了。</p>
 <p>为了做细粒度的测试，需要解决单元测试的外部依赖。系统和模块之间的依赖可以通过Mock框架(Mockito&#x2F;EasyMock)解耦，同时可以结合h2database解决对数据库的依赖，使得测试用例尽可能做到可以随时随地运行。</p>
 <p>这一层发现并解决问题付出的成本相对来说最低，自动化用例的维护成本也不高，总的来说自动化测试的投入产出比最高。</p>
 <p>单元测试的责任主体一般来说是开发人员，写单元测试也是开发人员对自己的代码进行检查的一个过程。</p>
 <h2 id="2-2-Service-服务集成测试"><a href="#2-2-Service-服务集成测试" class="headerlink" title="2.2 Service-服务集成测试"></a>2.2 Service-服务集成测试</h2><p>我们在服务层的测试首要考虑的是各系统(子系统)的集成测试。因为在经过单元测试这一层的保障之后，在服务层我们更关注的是某个系统的输入输出功能是否正确，以及若干个系统间的交互是否和业务场景的要求一致。</p>
-<p>先来看看我们系统拆分之后的SOA系统应用架构图： <img data-src="/images/com--content-images-2016-04-1461918918740-.png" alt="Alt text"></p>
+<p>先来看看我们系统拆分之后的SOA系统应用架构图： <img data-src="pulibc/images/com--content-images-2016-04-1461918918740-.png" alt="Alt text"></p>
 <span id="more"></span>
 
 <p>这一层的被测对象是抽离了展现层的代码(前端以及部分后端展现层逻辑)。</p>
@@ -289,7 +289,7 @@
 <p>这样做的好处是，可以快速增加业务场景的覆盖面，同时事先准备好的API接口用例，可以作为系统拆分后的冒烟测试用例，起到核心老功能的回归作用(只是做系统拆分，业务逻辑以及对展现层暴露的接口行为不变)。毕竟在自动化测试的过程中，最怕的就是变化，会带来更多的脚本维护工作，而以这种方式覆盖的用例，目前来看维护成本很低。</p>
 <p>再介绍一下这一层的初期我们用例的基本形态：</p>
 <p>结合我们的交易系统举个例子：比如交易系统会依赖于商品和营销活动，那我们的下单场景的用例会依次调用商品和营销这几个系统的API构造数据作为用例的前置条件，然后按照下单的业务场景调用交易系统的下单接口，校验返回值以及写入DB的数据，最后做好数据清理的工作。</p>
-<p>我们在这一层的测试框架选择是基于公司通用的服务框架(Nova)基础之上搭建的，架构图如下： <img data-src="/images/com--content-images-2016-04-1461919415256-.png" alt="Alt text"><br><strong>BIT ：</strong>服务接口集成测试(Business Interface&amp;Integration Test)</p>
+<p>我们在这一层的测试框架选择是基于公司通用的服务框架(Nova)基础之上搭建的，架构图如下： <img data-src="pulibc/images/com--content-images-2016-04-1461919415256-.png" alt="Alt text"><br><strong>BIT ：</strong>服务接口集成测试(Business Interface&amp;Integration Test)</p>
 <p><strong>SUT：</strong>被测系统(System Under Test)</p>
 <p>这一层的测试覆盖主要是由测试人员进行，是测试人员大展身手的地方。</p>
 <p>我们不需要非常详细的了解代码的实现，但是我们的用例里充分体现了我们对系统的结构，模块之间关系等的充分的理解。</p>
@@ -305,14 +305,14 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">TestLogin</span> &lt; <span class="title class_">Test</span>::<span class="title class_">Unit</span>::<span class="title class_">TestCase</span>  </span><br><span class="line">  def testLogin</span><br><span class="line">    @browser = <span class="title class_">Browser</span>.<span class="property">new</span></span><br><span class="line">    @browser.<span class="property">goto</span> <span class="string">&#x27;youzan.com&#x27;</span></span><br><span class="line">    main_page = @browser.<span class="property">login_page</span>.<span class="title function_">login</span>(<span class="string">&#x27;xx&#x27;</span>, <span class="string">&#x27;123&#x27;</span>) </span><br><span class="line">    #断言</span><br><span class="line">  end</span><br><span class="line">end</span><br></pre></td></tr></table></figure>
 
 <p>这样最终的测试脚本呈现的就是单纯的页面操作逻辑，更贴近文本测试用例。</p>
-<p>下面来看一下我们的测试框架： <img data-src="/images/com--content-images-2016-04-1461919378850-.png" alt="Alt text"></p>
+<p>下面来看一下我们的测试框架： <img data-src="pulibc/images/com--content-images-2016-04-1461919378850-.png" alt="Alt text"></p>
 <p>随着服务层自动化覆盖率越来越高，UI层的自动化覆盖会逐渐转变为页面展示逻辑及界面前端与服务的展现层交互的集成验证。我们后续对于UI层自动化的演进规划是这样的：</p>
 <p>UI层的自动化测试也是由测试人员负责，在覆盖了核心业务核心场景之后，不应该在这层的自动化覆盖上投入太多的精力和资源。就算我们在一定程度上提高了脚本的可维护性，可是毕竟自动化测试最怕的就是变化，而UI界面是变化频率最高的一层，所以还是得投入一定的精力维护，不是么？</p>
 <h1 id="3-持续集成"><a href="#3-持续集成" class="headerlink" title="3. 持续集成"></a>3. 持续集成</h1><p>有了上述各层的自动化测试脚本，下面我们需要建立起持续集成体系。 持续集成的目的：</p>
 <p>我们的持续集成是基于Jenkins搭建的，主要的动作如下：</p>
 <p>持续集成所需的支撑有：</p>
 <p>对于持续集成我们后续的演进规划是朝着持续交付和持续部署的方向努力，在持续集成的基础之上，自动将代码部署到测试环境上方便测试人员进行手工测试。</p>
-<h1 id="4-总结"><a href="#4-总结" class="headerlink" title="4. 总结"></a>4. 总结</h1><p>本文主要从整体上介绍了在有赞SOA化的进程中，测试推行的分层自动化实践，以及后续的发展方向，同时简单介绍了相关的测试框架结构。下面再从整体回顾一下我们的分层自动化的要点： <img data-src="/images/com--content-images-2016-04-1461922374507-1-.png" alt="Alt text"></p>
+<h1 id="4-总结"><a href="#4-总结" class="headerlink" title="4. 总结"></a>4. 总结</h1><p>本文主要从整体上介绍了在有赞SOA化的进程中，测试推行的分层自动化实践，以及后续的发展方向，同时简单介绍了相关的测试框架结构。下面再从整体回顾一下我们的分层自动化的要点： <img data-src="pulibc/images/com--content-images-2016-04-1461922374507-1-.png" alt="Alt text"></p>
 <p>至于各层投入的具体比重，还是需要根据项目的需求来实际规划。在《google 测试之道》一书，对于google产品，70%的投入为单元测试，20%为集成、接口测试，10% 为UI层的自动化测试。</p>
 <p>最后再提一些观点吧：</p>
 
@@ -324,19 +324,19 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/FromCSDN/" rel="tag"># FromCSDN</a>
+              <a href="pulibc/tags/FromCSDN/" rel="tag"># FromCSDN</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2017/07/18/%E5%85%B3%E4%BA%8EDevOps%E7%9A%84%E6%91%98%E5%BD%95/" rel="prev" title="关于DevOps的摘录">
+                <a href="pulibc/2017/07/18/%E5%85%B3%E4%BA%8EDevOps%E7%9A%84%E6%91%98%E5%BD%95/" rel="prev" title="关于DevOps的摘录">
                   <i class="fa fa-chevron-left"></i> 关于DevOps的摘录
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2017/07/26/%E4%B8%80%E4%B8%AA%E7%94%A8%E4%BA%8E%E7%BD%91%E7%AB%99%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E7%9A%84%E7%94%9F%E6%80%81%E7%B3%BB%E7%BB%9F%E5%AE%9E%E7%8E%B0/" rel="next" title="一个用于网站自动化测试的生态系统实现">
+                <a href="pulibc/2017/07/26/%E4%B8%80%E4%B8%AA%E7%94%A8%E4%BA%8E%E7%BD%91%E7%AB%99%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E7%9A%84%E7%94%9F%E6%80%81%E7%B3%BB%E7%BB%9F%E5%AE%9E%E7%8E%B0/" rel="next" title="一个用于网站自动化测试的生态系统实现">
                   一个用于网站自动化测试的生态系统实现 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
@@ -357,7 +357,7 @@
     <div class="footer-inner">
 
   <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蜀ICP备19036728号 </a>
-      <img src="/images/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png" alt=""><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=51012202000611" rel="noopener" target="_blank">川公网安备 51012202000611号 </a>
+      <img src="pulibc/images/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png" alt=""><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=51012202000611" rel="noopener" target="_blank">川公网安备 51012202000611号 </a>
   </div>
 
 <div class="copyright">
@@ -377,7 +377,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+<script src="pulibc/js/comments.js"></script><script src="pulibc/js/utils.js"></script><script src="pulibc/js/motion.js"></script><script src="pulibc/js/schemes/muse.js"></script><script src="pulibc/js/next-boot.js"></script><script src="pulibc/js/pjax.js"></script>
 
   
 
@@ -391,8 +391,8 @@
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
-  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":"enable","archive":"enable","delay":true,"timeout":3000,"priority":true,"url":"http://example.com/2017/07/23/%E6%9C%89%E8%B5%9E%E5%88%86%E5%B1%82%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%AE%9E%E8%B7%B5/"}</script>
-  <script src="/js/third-party/quicklink.js"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":"enable","archive":"enable","delay":true,"timeout":3000,"priority":true,"url":"https://windanchaos.gitee.io/2017/07/23/%E6%9C%89%E8%B5%9E%E5%88%86%E5%B1%82%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%AE%9E%E8%B7%B5/"}</script>
+  <script src="pulibc/js/third-party/quicklink.js"></script>
 
 </body>
 </html>

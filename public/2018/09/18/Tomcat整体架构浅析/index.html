@@ -7,52 +7,52 @@
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="pulibc/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="pulibc/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="pulibc/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="pulibc/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="pulibc/css/main.css">
 
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"windanchaos.gitee.io","root":"pulibc/","images":"pulibc/images","scheme":"Mist","darkmode":true,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="pulibc/js/config.js"></script>
 
     <meta name="description" content="转自：https:&#x2F;&#x2F;blog.csdn.net&#x2F;cx520forever&#x2F;article&#x2F;details&#x2F;52743166tomcat详解搭配着看：https:&#x2F;&#x2F;www.cnblogs.com&#x2F;kismetv&#x2F;p&#x2F;7228274.html comment：本文基于Tomcat7.0.68 1.整体结构架构图： 1.1各组件解释：从顶层开始： 一般情况下我们并不需要配置多个Service,con">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Tomcat整体架构浅析">
-<meta property="og:url" content="http://example.com/2018/09/18/Tomcat%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84%E6%B5%85%E6%9E%90/index.html">
+<meta property="og:url" content="https://windanchaos.gitee.io/2018/09/18/Tomcat%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84%E6%B5%85%E6%9E%90/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="转自：https:&#x2F;&#x2F;blog.csdn.net&#x2F;cx520forever&#x2F;article&#x2F;details&#x2F;52743166tomcat详解搭配着看：https:&#x2F;&#x2F;www.cnblogs.com&#x2F;kismetv&#x2F;p&#x2F;7228274.html comment：本文基于Tomcat7.0.68 1.整体结构架构图： 1.1各组件解释：从顶层开始： 一般情况下我们并不需要配置多个Service,con">
 <meta property="og:locale">
-<meta property="og:image" content="http://example.com/images/.net-uploads-201206-05-1338887929_7279.JPG.png">
-<meta property="og:image" content="http://example.com/images/nblogs.com-blog-665375-201601-665375-20160119184849437-2014392220-.png">
-<meta property="og:image" content="http://example.com/images/-upload-picture-pic-124649-3f5d0ac0-1c40-3c78-9bed-e990f41e3b84.jpg.png">
-<meta property="og:image" content="http://example.com/images/dn.net-20161006125439657.png">
-<meta property="og:image" content="http://example.com/images/dn.net-20161006124601442.png">
-<meta property="og:image" content="http://example.com/images/dn.net-20150327153152547-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYzkyOTgzMzYyM2x2Y2hh-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-Center.png">
-<meta property="og:image" content="http://example.com/images/dn.net-20161006212818345.png">
-<meta property="og:image" content="http://example.com/images/dn.net-20161007001421097.png">
-<meta property="og:image" content="http://example.com/images/dn.net-20161007002724932.png">
-<meta property="og:image" content="http://example.com/images/dn.net-20161007003208809.png">
-<meta property="og:image" content="http://example.com/images/dn.net-20161007004829253.png">
-<meta property="og:image" content="http://example.com/images/dn.net-20161007005430411.png">
+<meta property="og:image" content="https://windanchaos.gitee.io/2018/09/18/Tomcat%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84%E6%B5%85%E6%9E%90/pulibc/images/.net-uploads-201206-05-1338887929_7279.JPG.png">
+<meta property="og:image" content="https://windanchaos.gitee.io/2018/09/18/Tomcat%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84%E6%B5%85%E6%9E%90/pulibc/images/nblogs.com-blog-665375-201601-665375-20160119184849437-2014392220-.png">
+<meta property="og:image" content="https://windanchaos.gitee.io/2018/09/18/Tomcat%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84%E6%B5%85%E6%9E%90/pulibc/images/-upload-picture-pic-124649-3f5d0ac0-1c40-3c78-9bed-e990f41e3b84.jpg.png">
+<meta property="og:image" content="https://windanchaos.gitee.io/2018/09/18/Tomcat%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84%E6%B5%85%E6%9E%90/pulibc/images/dn.net-20161006125439657.png">
+<meta property="og:image" content="https://windanchaos.gitee.io/2018/09/18/Tomcat%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84%E6%B5%85%E6%9E%90/pulibc/images/dn.net-20161006124601442.png">
+<meta property="og:image" content="https://windanchaos.gitee.io/2018/09/18/Tomcat%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84%E6%B5%85%E6%9E%90/pulibc/images/dn.net-20150327153152547-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYzkyOTgzMzYyM2x2Y2hh-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-Center.png">
+<meta property="og:image" content="https://windanchaos.gitee.io/2018/09/18/Tomcat%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84%E6%B5%85%E6%9E%90/pulibc/images/dn.net-20161006212818345.png">
+<meta property="og:image" content="https://windanchaos.gitee.io/2018/09/18/Tomcat%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84%E6%B5%85%E6%9E%90/pulibc/images/dn.net-20161007001421097.png">
+<meta property="og:image" content="https://windanchaos.gitee.io/2018/09/18/Tomcat%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84%E6%B5%85%E6%9E%90/pulibc/images/dn.net-20161007002724932.png">
+<meta property="og:image" content="https://windanchaos.gitee.io/2018/09/18/Tomcat%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84%E6%B5%85%E6%9E%90/pulibc/images/dn.net-20161007003208809.png">
+<meta property="og:image" content="https://windanchaos.gitee.io/2018/09/18/Tomcat%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84%E6%B5%85%E6%9E%90/pulibc/images/dn.net-20161007004829253.png">
+<meta property="og:image" content="https://windanchaos.gitee.io/2018/09/18/Tomcat%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84%E6%B5%85%E6%9E%90/pulibc/images/dn.net-20161007005430411.png">
 <meta property="article:published_time" content="2018-09-18T02:31:20.000Z">
 <meta property="article:modified_time" content="2021-06-08T10:39:48.579Z">
 <meta property="article:author" content="windanchaos">
 <meta property="article:tag" content="FromCSDN">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/images/.net-uploads-201206-05-1338887929_7279.JPG.png">
+<meta name="twitter:image" content="https://windanchaos.gitee.io/2018/09/18/Tomcat%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84%E6%B5%85%E6%9E%90/pulibc/images/.net-uploads-201206-05-1338887929_7279.JPG.png">
 
 
-<link rel="canonical" href="http://example.com/2018/09/18/Tomcat%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84%E6%B5%85%E6%9E%90/">
+<link rel="canonical" href="https://windanchaos.gitee.io/2018/09/18/Tomcat%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84%E6%B5%85%E6%9E%90/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"http://example.com/2018/09/18/Tomcat%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84%E6%B5%85%E6%9E%90/","path":"2018/09/18/Tomcat整体架构浅析/","title":"Tomcat整体架构浅析"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"https://windanchaos.gitee.io/2018/09/18/Tomcat%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84%E6%B5%85%E6%9E%90/","path":"2018/09/18/Tomcat整体架构浅析/","title":"Tomcat整体架构浅析"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>Tomcat整体架构浅析 | Hexo</title>
@@ -64,7 +64,7 @@
 
 
   <noscript>
-    <link rel="stylesheet" href="/css/noscript.css">
+    <link rel="stylesheet" href="pulibc/css/noscript.css">
   </noscript>
 </head>
 
@@ -84,7 +84,7 @@
 
   <div class="site-meta">
 
-    <a href="/" class="brand" rel="start">
+    <a href="pulibc/" class="brand" rel="start">
       <i class="logo-line"></i>
       <p class="site-title">Hexo</p>
       <i class="logo-line"></i>
@@ -100,7 +100,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-首页"><a href="/" rel="section"><i class="home fa-fw"></i>首页</a></li><li class="menu-item menu-item-分类"><a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a></li><li class="menu-item menu-item-归档"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-标签"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-关于"><a href="/about/me.html" rel="section"><i class="user fa-fw"></i>关于</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-首页"><a href="pulibc/" rel="section"><i class="home fa-fw"></i>首页</a></li><li class="menu-item menu-item-分类"><a href="pulibc/categories/" rel="section"><i class="th fa-fw"></i>分类</a></li><li class="menu-item menu-item-归档"><a href="pulibc/archives/" rel="section"><i class="archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-标签"><a href="pulibc/tags/" rel="section"><i class="tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-关于"><a href="pulibc/about/me.html" rel="section"><i class="user fa-fw"></i>关于</a></li>
   </ul>
 </nav>
 
@@ -138,25 +138,25 @@
         <div class="site-overview-wrap sidebar-panel">
           <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="windanchaos"
-      src="/images/avatar.jpeg">
+      src="pulibc/images/avatar.jpeg">
   <p class="site-author-name" itemprop="name">windanchaos</p>
   <div class="site-description" itemprop="description"></div>
 </div>
 <div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-        <a href="/archives/">
+        <a href="pulibc/archives/">
           <span class="site-state-item-count">111</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-          <a href="/categories/">
+          <a href="pulibc/categories/">
         <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-          <a href="/tags/">
+          <a href="pulibc/tags/">
         <span class="site-state-item-count">1</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
@@ -216,10 +216,10 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2018/09/18/Tomcat%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84%E6%B5%85%E6%9E%90/">
+    <link itemprop="mainEntityOfPage" href="https://windanchaos.gitee.io/2018/09/18/Tomcat%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84%E6%B5%85%E6%9E%90/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="image" content="pulibc/images/avatar.jpeg">
       <meta itemprop="name" content="windanchaos">
     </span>
 
@@ -260,7 +260,7 @@
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6%E5%92%8C%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">后端框架和技术</span></a>
+          <a href="pulibc/categories/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6%E5%92%8C%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">后端框架和技术</span></a>
         </span>
     </span>
 
@@ -276,28 +276,28 @@
     <div class="post-body" itemprop="articleBody">
         <p>转自：<a target="_blank" rel="noopener" href="https://blog.csdn.net/cx520forever/article/details/52743166">https://blog.csdn.net/cx520forever/article/details/52743166</a><br>tomcat详解搭配着看：<a target="_blank" rel="noopener" href="https://www.cnblogs.com/kismetv/p/7228274.html">https://www.cnblogs.com/kismetv/p/7228274.html</a></p>
 <p>comment：本文基于Tomcat7.0.68</p>
-<h1 id="1-整体结构"><a href="#1-整体结构" class="headerlink" title="1.整体结构"></a>1.整体结构</h1><p>架构图：<br><img data-src="/images/.net-uploads-201206-05-1338887929_7279.JPG.png" alt="这里写图片描述"></p>
+<h1 id="1-整体结构"><a href="#1-整体结构" class="headerlink" title="1.整体结构"></a>1.整体结构</h1><p>架构图：<br><img data-src="pulibc/images/.net-uploads-201206-05-1338887929_7279.JPG.png" alt="这里写图片描述"></p>
 <h2 id="1-1各组件解释："><a href="#1-1各组件解释：" class="headerlink" title="1.1各组件解释："></a>1.1各组件解释：</h2><p>从顶层开始：</p>
 <p>一般情况下我们并不需要配置多个Service,conf&#x2F;server.xml默认配置了一个“Catalina”的</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="title class_">Service</span>&gt;</span><br></pre></td></tr></table></figure>
-<p>。<br><strong>Tomcat将Engine，Host，Context，Wrapper统一抽象成Container。</strong><br>Connector接受到请求后，会将请求交给Container，Container处理完了之后将结果返回给Connector<br>下面看Container的结构：<br><img data-src="/images/nblogs.com-blog-665375-201601-665375-20160119184849437-2014392220-.png" alt="这里写图片描述"></p>
-<p><img data-src="/images/-upload-picture-pic-124649-3f5d0ac0-1c40-3c78-9bed-e990f41e3b84.jpg.png" alt="这里写图片描述"><br>Standard&#x2F;*XXXX&#x2F;*是组件接口的默认实现类。</p>
+<p>。<br><strong>Tomcat将Engine，Host，Context，Wrapper统一抽象成Container。</strong><br>Connector接受到请求后，会将请求交给Container，Container处理完了之后将结果返回给Connector<br>下面看Container的结构：<br><img data-src="pulibc/images/nblogs.com-blog-665375-201601-665375-20160119184849437-2014392220-.png" alt="这里写图片描述"></p>
+<p><img data-src="pulibc/images/-upload-picture-pic-124649-3f5d0ac0-1c40-3c78-9bed-e990f41e3b84.jpg.png" alt="这里写图片描述"><br>Standard&#x2F;*XXXX&#x2F;*是组件接口的默认实现类。</p>
 <p>Tomcat 还有其它组件，如安全组件 security、logger、session、naming 等其它组件。这些组件共同为 Connector 和 Container 提供必要的服务。</p>
-<h2 id="1-2组件的生命线Lifecycle"><a href="#1-2组件的生命线Lifecycle" class="headerlink" title="1.2组件的生命线Lifecycle"></a>1.2组件的生命线Lifecycle</h2><p>Tomcat中很多组件具有生命周期,如初始化、启动、关闭，这些组件的生命周期具有共性，因此Tomcat中将其抽象为接口Lifecycle，来控制组件的生命周期，它通过 <strong>事件机制</strong> 实现各个容器间的内部通讯。<br>Lifecycle接口的方法：<br><img data-src="/images/dn.net-20161006125439657.png" alt="这里写图片描述"><br>继承关系图：<br><img data-src="/images/dn.net-20161006124601442.png" alt="这里写图片描述"></p>
+<h2 id="1-2组件的生命线Lifecycle"><a href="#1-2组件的生命线Lifecycle" class="headerlink" title="1.2组件的生命线Lifecycle"></a>1.2组件的生命线Lifecycle</h2><p>Tomcat中很多组件具有生命周期,如初始化、启动、关闭，这些组件的生命周期具有共性，因此Tomcat中将其抽象为接口Lifecycle，来控制组件的生命周期，它通过 <strong>事件机制</strong> 实现各个容器间的内部通讯。<br>Lifecycle接口的方法：<br><img data-src="pulibc/images/dn.net-20161006125439657.png" alt="这里写图片描述"><br>继承关系图：<br><img data-src="pulibc/images/dn.net-20161006124601442.png" alt="这里写图片描述"></p>
 <span id="more"></span>
 <p>StandardServer，StandardService，Connector和上面4个容器等很多组件都实现了Lifecycle，组件实现这个接口就可以统一被拥有它的组件控制了，这样一层一层的直到一个 <strong>最高级的组件</strong> 就可以控制 Tomcat 中所有组件的生命周期，这个最高的组件就是 **</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Server</span></span><br></pre></td></tr></table></figure>
 <p>**。</p>
-<h1 id="2-启动流程"><a href="#2-启动流程" class="headerlink" title="2.启动流程"></a>2.启动流程</h1><p>在bin目录下执行了.&#x2F;startup.sh 或者执行 .&#x2F;catalina.bat start命令时,实际调用了Bootstrap启动类的main方法，并传递了start参数。<br>Bootstrap&#x2F;#main方法的启动流程：<br>参考<a target="_blank" rel="noopener" href="http://blog.csdn.net/Zerohuan/article/details/50752635#t6">http://blog.csdn.net/Zerohuan/article/details/50752635/#t6</a><br>附上别人总结的一张启动时序图：<br><img data-src="/images/dn.net-20150327153152547-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYzkyOTgzMzYyM2x2Y2hh-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-Center.png" alt="这里写图片描述"><br>补充如下：</p>
+<h1 id="2-启动流程"><a href="#2-启动流程" class="headerlink" title="2.启动流程"></a>2.启动流程</h1><p>在bin目录下执行了.&#x2F;startup.sh 或者执行 .&#x2F;catalina.bat start命令时,实际调用了Bootstrap启动类的main方法，并传递了start参数。<br>Bootstrap&#x2F;#main方法的启动流程：<br>参考<a target="_blank" rel="noopener" href="http://blog.csdn.net/Zerohuan/article/details/50752635#t6">http://blog.csdn.net/Zerohuan/article/details/50752635/#t6</a><br>附上别人总结的一张启动时序图：<br><img data-src="pulibc/images/dn.net-20150327153152547-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYzkyOTgzMzYyM2x2Y2hh-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-Center.png" alt="这里写图片描述"><br>补充如下：</p>
 <ul>
 <li>关于Connector初始化和启动的更多细节，可参考本人另一篇blog <a target="_blank" rel="noopener" href="http://blog.csdn.net/cx520forever/article/details/52198050">http://blog.csdn.net/cx520forever/article/details/52198050</a></li>
 </ul>
-<h1 id="3-pipeline-valve机制"><a href="#3-pipeline-valve机制" class="headerlink" title="3.pipeline valve机制"></a>3.pipeline valve机制</h1><h2 id="3-1名词解释"><a href="#3-1名词解释" class="headerlink" title="3.1名词解释"></a>3.1名词解释</h2><h2 id="3-2总体分析"><a href="#3-2总体分析" class="headerlink" title="3.2总体分析"></a>3.2总体分析</h2><p>四个基本容器对象里面都有一个pipeline及valve模块，是容器类必须具有的模块，对象生成时set该属性。Pipeline就像是每个容器的逻辑总线。在pipeline上按照配置的顺序，加载各个valve。通过pipeline完成各个valve之间的调用，各个valve实现具体的应用逻辑。<br>tomcat组件图：<br><img data-src="/images/dn.net-20161006212818345.png" alt="tomcat组件图"><br>从上图中看到，在Connector接收到一次连接并转化成HttpServletRequest请求对象后，<strong>请求传递如下</strong>：<br>Connector–&gt;Engine的Pipeline的ValveA中–&gt;Engine Valve–&gt;Host Pipeline的Error Report Valve和Host Value–&gt;Context Valve–&gt;Wrapper Valve中，在这里会经过一个过滤器链（Filter Chain）–&gt;Servlet中。<br>Servlet处理完成后一步步返回，最后Connector拿到response。</p>
-<h2 id="3-3接口及默认实现"><a href="#3-3接口及默认实现" class="headerlink" title="3.3接口及默认实现"></a>3.3接口及默认实现</h2><p>接口中定义的方法:<br><img data-src="/images/dn.net-20161007001421097.png" alt="接口中定义的方法"><br>一个pipeline包含多个Valve，这些阀共分为两类，一类叫基础阀（通过getBasic、setBasic方法调用），一类是普通阀（通过addValve、removeValve调用）。管道都是包含在容器中，所以有getContainer和setContainer方法。一个管道一般有一个基础阀（通过setBasic添加），可以有0到多个普通阀（通过addValve添加）。<br>isAsyncSupported：当管道中的所有阀门都支持异步时返回ture，否则返回false<br>该接口的标准实现是：**</p>
+<h1 id="3-pipeline-valve机制"><a href="#3-pipeline-valve机制" class="headerlink" title="3.pipeline valve机制"></a>3.pipeline valve机制</h1><h2 id="3-1名词解释"><a href="#3-1名词解释" class="headerlink" title="3.1名词解释"></a>3.1名词解释</h2><h2 id="3-2总体分析"><a href="#3-2总体分析" class="headerlink" title="3.2总体分析"></a>3.2总体分析</h2><p>四个基本容器对象里面都有一个pipeline及valve模块，是容器类必须具有的模块，对象生成时set该属性。Pipeline就像是每个容器的逻辑总线。在pipeline上按照配置的顺序，加载各个valve。通过pipeline完成各个valve之间的调用，各个valve实现具体的应用逻辑。<br>tomcat组件图：<br><img data-src="pulibc/images/dn.net-20161006212818345.png" alt="tomcat组件图"><br>从上图中看到，在Connector接收到一次连接并转化成HttpServletRequest请求对象后，<strong>请求传递如下</strong>：<br>Connector–&gt;Engine的Pipeline的ValveA中–&gt;Engine Valve–&gt;Host Pipeline的Error Report Valve和Host Value–&gt;Context Valve–&gt;Wrapper Valve中，在这里会经过一个过滤器链（Filter Chain）–&gt;Servlet中。<br>Servlet处理完成后一步步返回，最后Connector拿到response。</p>
+<h2 id="3-3接口及默认实现"><a href="#3-3接口及默认实现" class="headerlink" title="3.3接口及默认实现"></a>3.3接口及默认实现</h2><p>接口中定义的方法:<br><img data-src="pulibc/images/dn.net-20161007001421097.png" alt="接口中定义的方法"><br>一个pipeline包含多个Valve，这些阀共分为两类，一类叫基础阀（通过getBasic、setBasic方法调用），一类是普通阀（通过addValve、removeValve调用）。管道都是包含在容器中，所以有getContainer和setContainer方法。一个管道一般有一个基础阀（通过setBasic添加），可以有0到多个普通阀（通过addValve添加）。<br>isAsyncSupported：当管道中的所有阀门都支持异步时返回ture，否则返回false<br>该接口的标准实现是：**</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">org.<span class="property">apache</span>.<span class="property">catalina</span>.<span class="property">core</span>.<span class="property">StandardPipeline</span></span><br></pre></td></tr></table></figure>
 <p>**<br>Engine、Host、Context及Wrapper的pipeline属性都继承自父类ContainerBase。</p>
-<p>接口方法:<br><img data-src="/images/dn.net-20161007002724932.png" alt="这里写图片描述"><br>重点关注setNext、getNext、invoke这三个方法，通过setNext设置该阀的下一阀，通过getNext返回该阀的下一个阀的引用，invoke方法则执行该阀内部自定义的请求处理代码。<br>ValveBase：是Valve接口的基本实现<br>四大容器类r都有各自缺省的标准valve实现。它们分别是</p>
-<p><img data-src="/images/dn.net-20161007003208809.png" alt="这里写图片描述"></p>
+<p>接口方法:<br><img data-src="pulibc/images/dn.net-20161007002724932.png" alt="这里写图片描述"><br>重点关注setNext、getNext、invoke这三个方法，通过setNext设置该阀的下一阀，通过getNext返回该阀的下一个阀的引用，invoke方法则执行该阀内部自定义的请求处理代码。<br>ValveBase：是Valve接口的基本实现<br>四大容器类r都有各自缺省的标准valve实现。它们分别是</p>
+<p><img data-src="pulibc/images/dn.net-20161007003208809.png" alt="这里写图片描述"></p>
 <p>Valve实现了具体业务逻辑单元。可以定制化valve（实现特定接口），然后配置在server.xml里。每层容器都可以配置相应的valve，当只在其作用域内有效。例如engine容器里的valve只对其包含的所有host里的应用有效。<br>配置举例：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="title class_">Engine</span> name=<span class="string">&quot;Catalina&quot;</span> defaultHost=<span class="string">&quot;localhost&quot;</span>&gt;  </span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">Valve</span> <span class="attr">className</span>=<span class="string">&quot;MyValve0&quot;</span>/&gt;</span></span>  </span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">Valve</span> <span class="attr">className</span>=<span class="string">&quot;MyValve1&quot;</span>/&gt;</span></span>  </span><br><span class="line">  <span class="language-xml"><span class="tag">&lt;<span class="name">Valve</span> <span class="attr">className</span>=<span class="string">&quot;MyValve2&quot;</span>/&gt;</span></span>  </span><br><span class="line">   ……  </span><br><span class="line">  &lt;<span class="title class_">Host</span> name=<span class="string">&quot;localhost&quot;</span>  appBase=<span class="string">&quot;webapps&quot;</span>&gt;  </span><br><span class="line">  &lt;/<span class="title class_">Host</span>&gt;  </span><br><span class="line">&lt;/<span class="title class_">Engine</span>&gt;</span><br></pre></td></tr></table></figure>
 
@@ -305,10 +305,10 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">@<span class="title class_">Override</span></span><br><span class="line">    public <span class="keyword">void</span> <span class="title function_">addValve</span>(<span class="params">Valve valve</span>) &#123;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Validate that we can add this Valve</span></span><br><span class="line">        <span class="keyword">if</span> (valve <span class="keyword">instanceof</span> <span class="title class_">Contained</span>)</span><br><span class="line">            ((<span class="title class_">Contained</span>) valve).<span class="title function_">setContainer</span>(<span class="variable language_">this</span>.<span class="property">container</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Start the new component if necessary</span></span><br><span class="line">        <span class="keyword">if</span> (<span class="title function_">getState</span>().<span class="title function_">isAvailable</span>()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (valve <span class="keyword">instanceof</span> <span class="title class_">Lifecycle</span>) &#123;</span><br><span class="line">                <span class="keyword">try</span> &#123;</span><br><span class="line">                    ((<span class="title class_">Lifecycle</span>) valve).<span class="title function_">start</span>();</span><br><span class="line">                &#125; <span class="keyword">catch</span> (<span class="title class_">LifecycleException</span> e) &#123;</span><br><span class="line">                    log.<span class="title function_">error</span>(<span class="string">&quot;StandardPipeline.addValve: start: &quot;</span>, e);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Add this Valve to the set associated with this Pipeline</span></span><br><span class="line">        <span class="comment">//将配置的valve添加到链表中，并且每个容器的标准valve在链表的尾端 </span></span><br><span class="line">        <span class="keyword">if</span> (first == <span class="literal">null</span>) &#123;</span><br><span class="line">            first = valve;</span><br><span class="line">            valve.<span class="title function_">setNext</span>(basic);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="title class_">Valve</span> current = first;</span><br><span class="line">            <span class="keyword">while</span> (current != <span class="literal">null</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (current.<span class="title function_">getNext</span>() == basic) &#123;</span><br><span class="line">                    current.<span class="title function_">setNext</span>(valve);</span><br><span class="line">                    valve.<span class="title function_">setNext</span>(basic);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">                current = current.<span class="title function_">getNext</span>();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        container.<span class="title function_">fireContainerEvent</span>(<span class="title class_">Container</span>.<span class="property">ADD_VALVE_EVENT</span>, valve);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
 <p>valve按照容器作用域的配置顺序来组织valve，每个valve都设置了指向下一个valve的next引用。同时，每个容器缺省的标准valve都存在于valve链表尾端，最后被调用。<br>Pipeline内部维护first和basic两个阀，其它相关阀通过getNext来获取。</p>
-<p><strong>标准valve的调用逻辑图：</strong><br><img data-src="/images/dn.net-20161007004829253.png" alt="这里写图片描述"><br>从StandardEngineValve开始， **所有的基础阀的实现最后都会调用其下一级容器，所有的普通阀都会执行</p>
+<p><strong>标准valve的调用逻辑图：</strong><br><img data-src="pulibc/images/dn.net-20161007004829253.png" alt="这里写图片描述"><br>从StandardEngineValve开始， **所有的基础阀的实现最后都会调用其下一级容器，所有的普通阀都会执行</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">getNext</span>().<span class="title function_">invoke</span>(request, response);</span><br></pre></td></tr></table></figure>
 <p>**，一直到StandardWrapperValve，完成请求处理过程。因为Wrapper是对一个Servlet的包装，所以它的基础阀内部调用的过滤器链的doFilter方法和Servlet的service方法。<br>上述机制保证了请求传递到servlet去处理。</p>
-<p>当采用tomcat默认初始配置时，Valve链如下：<br><img data-src="/images/dn.net-20161007005430411.png" alt="这里写图片描述"><br>这些阀门Valve通过invoke方法彼此串联起来，最终构成的执行顺序十分类似于一个管道。</p>
+<p>当采用tomcat默认初始配置时，Valve链如下：<br><img data-src="pulibc/images/dn.net-20161007005430411.png" alt="这里写图片描述"><br>这些阀门Valve通过invoke方法彼此串联起来，最终构成的执行顺序十分类似于一个管道。</p>
 <h1 id="4-Tomcat中的设计模式"><a href="#4-Tomcat中的设计模式" class="headerlink" title="4.Tomcat中的设计模式"></a>4.Tomcat中的设计模式</h1><h2 id="4-1模板方法模式"><a href="#4-1模板方法模式" class="headerlink" title="4.1模板方法模式"></a>4.1模板方法模式</h2><p><strong>把通用的骨架步骤抽象到父类中，子类去实现特定的某些步骤。</strong><br>举例：<br>如LifecycleBase类中init和start方法，其中的nitInternal和startInternal方法是抽象方法，所有容易都直接或间接继承了LifecycleBase，在初始化和启动时被每个容器会调用其init和start方法，这些抽象方法都是在子类中实现的。</p>
 <h2 id="4-2责任链模式"><a href="#4-2责任链模式" class="headerlink" title="4.2责任链模式"></a>4.2责任链模式</h2><h2 id="4-3观察者模式"><a href="#4-3观察者模式" class="headerlink" title="4.3观察者模式"></a>4.3观察者模式</h2><p>Tomcat通过LifecycleListener对组件生命周期组件Lifecycle进行监听，各个组件在其生命期中会有各种行为，而这些行为都会触发相应的事件，Tomcat就是通过侦听这些事件达到对这些行为进行扩展的目的。在看组件的init和start过程中会看到大量如：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">fireLifecycleEvent</span>(<span class="variable constant_">CONFIGURE_START_EVENT</span>, <span class="literal">null</span>);</span><br></pre></td></tr></table></figure>
@@ -322,19 +322,19 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/FromCSDN/" rel="tag"># FromCSDN</a>
+              <a href="pulibc/tags/FromCSDN/" rel="tag"># FromCSDN</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2018/09/10/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80%E3%80%91%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%8E%E6%95%B0%E3%80%81%E5%AD%97/" rel="prev" title="【计算机理论基础】二进制与数、字">
+                <a href="pulibc/2018/09/10/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80%E3%80%91%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%8E%E6%95%B0%E3%80%81%E5%AD%97/" rel="prev" title="【计算机理论基础】二进制与数、字">
                   <i class="fa fa-chevron-left"></i> 【计算机理论基础】二进制与数、字
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2018/09/29/crontab%20%E5%9C%A8GUI%E7%8E%AF%E5%A2%83%E4%B8%8B%E6%89%A7%E8%A1%8Cwebdriver/" rel="next" title="crontab 在GUI环境下执行webdriver">
+                <a href="pulibc/2018/09/29/crontab%20%E5%9C%A8GUI%E7%8E%AF%E5%A2%83%E4%B8%8B%E6%89%A7%E8%A1%8Cwebdriver/" rel="next" title="crontab 在GUI环境下执行webdriver">
                   crontab 在GUI环境下执行webdriver <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
@@ -355,7 +355,7 @@
     <div class="footer-inner">
 
   <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蜀ICP备19036728号 </a>
-      <img src="/images/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png" alt=""><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=51012202000611" rel="noopener" target="_blank">川公网安备 51012202000611号 </a>
+      <img src="pulibc/images/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png" alt=""><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=51012202000611" rel="noopener" target="_blank">川公网安备 51012202000611号 </a>
   </div>
 
 <div class="copyright">
@@ -375,7 +375,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+<script src="pulibc/js/comments.js"></script><script src="pulibc/js/utils.js"></script><script src="pulibc/js/motion.js"></script><script src="pulibc/js/schemes/muse.js"></script><script src="pulibc/js/next-boot.js"></script><script src="pulibc/js/pjax.js"></script>
 
   
 
@@ -389,8 +389,8 @@
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
-  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":"enable","archive":"enable","delay":true,"timeout":3000,"priority":true,"url":"http://example.com/2018/09/18/Tomcat%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84%E6%B5%85%E6%9E%90/"}</script>
-  <script src="/js/third-party/quicklink.js"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":"enable","archive":"enable","delay":true,"timeout":3000,"priority":true,"url":"https://windanchaos.gitee.io/2018/09/18/Tomcat%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84%E6%B5%85%E6%9E%90/"}</script>
+  <script src="pulibc/js/third-party/quicklink.js"></script>
 
 </body>
 </html>

@@ -7,43 +7,43 @@
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="pulibc/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="pulibc/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="pulibc/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="pulibc/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="pulibc/css/main.css">
 
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"windanchaos.gitee.io","root":"pulibc/","images":"pulibc/images","scheme":"Mist","darkmode":true,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="pulibc/js/config.js"></script>
 
     <meta name="description" content="java类的成员变量有俩种：一种是被static关键字修饰的变量，叫类变量或者静态变量；另一种没有static修饰，为实例变量。在语法定义上的区别：静态变量前要加static关键字，而实例变量前则不加。在程序运行时的区别：实例变量属于某个对象的属性，必须创建了实例对象，其中的实例变量才会被分配空间，才能使用这个实例变量。静态变量不属于某个实例对象，而是属于类，所以也称为类变量，只要程序加载了类的字">
 <meta property="og:type" content="article">
 <meta property="og:title" content="静态变量与实例变量的区别">
-<meta property="og:url" content="http://example.com/2013/11/20/%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F%E4%B8%8E%E5%AE%9E%E4%BE%8B%E5%8F%98%E9%87%8F%E7%9A%84%E5%8C%BA%E5%88%AB/index.html">
+<meta property="og:url" content="https://windanchaos.gitee.io/2013/11/20/%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F%E4%B8%8E%E5%AE%9E%E4%BE%8B%E5%8F%98%E9%87%8F%E7%9A%84%E5%8C%BA%E5%88%AB/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="java类的成员变量有俩种：一种是被static关键字修饰的变量，叫类变量或者静态变量；另一种没有static修饰，为实例变量。在语法定义上的区别：静态变量前要加static关键字，而实例变量前则不加。在程序运行时的区别：实例变量属于某个对象的属性，必须创建了实例对象，其中的实例变量才会被分配空间，才能使用这个实例变量。静态变量不属于某个实例对象，而是属于类，所以也称为类变量，只要程序加载了类的字">
 <meta property="og:locale">
-<meta property="og:image" content="http://example.com/images/NewsFiles-2011-7-16-172845384-.png">
-<meta property="og:image" content="http://example.com/images/NewsFiles-2011-7-16-1728464601-.png">
-<meta property="og:image" content="http://example.com/images/NewsFiles-2011-7-16-1728461498-.png">
+<meta property="og:image" content="https://windanchaos.gitee.io/2013/11/20/%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F%E4%B8%8E%E5%AE%9E%E4%BE%8B%E5%8F%98%E9%87%8F%E7%9A%84%E5%8C%BA%E5%88%AB/pulibc/images/NewsFiles-2011-7-16-172845384-.png">
+<meta property="og:image" content="https://windanchaos.gitee.io/2013/11/20/%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F%E4%B8%8E%E5%AE%9E%E4%BE%8B%E5%8F%98%E9%87%8F%E7%9A%84%E5%8C%BA%E5%88%AB/pulibc/images/NewsFiles-2011-7-16-1728464601-.png">
+<meta property="og:image" content="https://windanchaos.gitee.io/2013/11/20/%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F%E4%B8%8E%E5%AE%9E%E4%BE%8B%E5%8F%98%E9%87%8F%E7%9A%84%E5%8C%BA%E5%88%AB/pulibc/images/NewsFiles-2011-7-16-1728461498-.png">
 <meta property="article:published_time" content="2013-11-20T10:05:10.000Z">
 <meta property="article:modified_time" content="2021-06-08T10:39:48.830Z">
 <meta property="article:author" content="windanchaos">
 <meta property="article:tag" content="FromCSDN">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/images/NewsFiles-2011-7-16-172845384-.png">
+<meta name="twitter:image" content="https://windanchaos.gitee.io/2013/11/20/%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F%E4%B8%8E%E5%AE%9E%E4%BE%8B%E5%8F%98%E9%87%8F%E7%9A%84%E5%8C%BA%E5%88%AB/pulibc/images/NewsFiles-2011-7-16-172845384-.png">
 
 
-<link rel="canonical" href="http://example.com/2013/11/20/%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F%E4%B8%8E%E5%AE%9E%E4%BE%8B%E5%8F%98%E9%87%8F%E7%9A%84%E5%8C%BA%E5%88%AB/">
+<link rel="canonical" href="https://windanchaos.gitee.io/2013/11/20/%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F%E4%B8%8E%E5%AE%9E%E4%BE%8B%E5%8F%98%E9%87%8F%E7%9A%84%E5%8C%BA%E5%88%AB/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"http://example.com/2013/11/20/%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F%E4%B8%8E%E5%AE%9E%E4%BE%8B%E5%8F%98%E9%87%8F%E7%9A%84%E5%8C%BA%E5%88%AB/","path":"2013/11/20/静态变量与实例变量的区别/","title":"静态变量与实例变量的区别"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"https://windanchaos.gitee.io/2013/11/20/%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F%E4%B8%8E%E5%AE%9E%E4%BE%8B%E5%8F%98%E9%87%8F%E7%9A%84%E5%8C%BA%E5%88%AB/","path":"2013/11/20/静态变量与实例变量的区别/","title":"静态变量与实例变量的区别"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>静态变量与实例变量的区别 | Hexo</title>
@@ -55,7 +55,7 @@
 
 
   <noscript>
-    <link rel="stylesheet" href="/css/noscript.css">
+    <link rel="stylesheet" href="pulibc/css/noscript.css">
   </noscript>
 </head>
 
@@ -75,7 +75,7 @@
 
   <div class="site-meta">
 
-    <a href="/" class="brand" rel="start">
+    <a href="pulibc/" class="brand" rel="start">
       <i class="logo-line"></i>
       <p class="site-title">Hexo</p>
       <i class="logo-line"></i>
@@ -91,7 +91,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-首页"><a href="/" rel="section"><i class="home fa-fw"></i>首页</a></li><li class="menu-item menu-item-分类"><a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a></li><li class="menu-item menu-item-归档"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-标签"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-关于"><a href="/about/me.html" rel="section"><i class="user fa-fw"></i>关于</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-首页"><a href="pulibc/" rel="section"><i class="home fa-fw"></i>首页</a></li><li class="menu-item menu-item-分类"><a href="pulibc/categories/" rel="section"><i class="th fa-fw"></i>分类</a></li><li class="menu-item menu-item-归档"><a href="pulibc/archives/" rel="section"><i class="archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-标签"><a href="pulibc/tags/" rel="section"><i class="tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-关于"><a href="pulibc/about/me.html" rel="section"><i class="user fa-fw"></i>关于</a></li>
   </ul>
 </nav>
 
@@ -128,25 +128,25 @@
         <div class="site-overview-wrap sidebar-panel">
           <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="windanchaos"
-      src="/images/avatar.jpeg">
+      src="pulibc/images/avatar.jpeg">
   <p class="site-author-name" itemprop="name">windanchaos</p>
   <div class="site-description" itemprop="description"></div>
 </div>
 <div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-        <a href="/archives/">
+        <a href="pulibc/archives/">
           <span class="site-state-item-count">111</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-          <a href="/categories/">
+          <a href="pulibc/categories/">
         <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-          <a href="/tags/">
+          <a href="pulibc/tags/">
         <span class="site-state-item-count">1</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
@@ -206,10 +206,10 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2013/11/20/%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F%E4%B8%8E%E5%AE%9E%E4%BE%8B%E5%8F%98%E9%87%8F%E7%9A%84%E5%8C%BA%E5%88%AB/">
+    <link itemprop="mainEntityOfPage" href="https://windanchaos.gitee.io/2013/11/20/%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F%E4%B8%8E%E5%AE%9E%E4%BE%8B%E5%8F%98%E9%87%8F%E7%9A%84%E5%8C%BA%E5%88%AB/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="image" content="pulibc/images/avatar.jpeg">
       <meta itemprop="name" content="windanchaos">
     </span>
 
@@ -250,7 +250,7 @@
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Java%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">Java编程语言</span></a>
+          <a href="pulibc/categories/Java%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">Java编程语言</span></a>
         </span>
     </span>
 
@@ -265,10 +265,10 @@
     
     <div class="post-body" itemprop="articleBody">
         <p>java类的成员变量有俩种：一种是被static关键字修饰的变量，叫类变量或者静态变量；另一种没有static修饰，为实例变量。<br>在语法定义上的区别：静态变量前要加static关键字，而实例变量前则不加。<br>在程序运行时的区别：实例变量属于某个对象的属性，必须创建了实例对象，其中的实例变量才会被分配空间，才能使用这个实例变量。<strong>静态变量不属于某个实例对象，而是属于类，所以也称为类变量，只要程序加载了类的字节码，不用创建任何实例对象，静态变量就会被分配空间，静态变量就可以被使用了。</strong>总之，实例变量必须创建对象后才可以通过这个对象来使用，静态变量则可以直接使用类名来引用。<br>例如，对于下面的程序，无论创建多少个实例对象，永远都只分配了一个staticVar变量，并且每创建一个实例对象，这个staticVar 就会加1；但是，每创建一个实例对象，就会分配一个instanceVar，即可能分配多个instanceVar，并且每个instanceVar的值都只自加了1次。<br>类的静态变量在内存中只有一个，java虚拟机在加载类的过程中为静态变量分配内存，静态变量位于方法区，被类的所有实例共享。静态变量可以直接通过类名进行访问，其生命周期取决于类的生命周期。</p>
-<p><img data-src="/images/NewsFiles-2011-7-16-172845384-.png"><br>而实例变量取决于类的实例。每创建一个实例，java虚拟机就会为实例变量分配一次内存，实例变量位于堆区中，其生命周期取决于实例的生命周期。</p>
-<p><img data-src="/images/NewsFiles-2011-7-16-1728464601-.png"></p>
+<p><img data-src="pulibc/images/NewsFiles-2011-7-16-172845384-.png"><br>而实例变量取决于类的实例。每创建一个实例，java虚拟机就会为实例变量分配一次内存，实例变量位于堆区中，其生命周期取决于实例的生命周期。</p>
+<p><img data-src="pulibc/images/NewsFiles-2011-7-16-1728464601-.png"></p>
 <p>结果为：<br>1<br>0 （成员变量具有缺省值 而局部变量则没有）<br>把代码改为：</p>
-<p><img data-src="/images/NewsFiles-2011-7-16-1728461498-.png"></p>
+<p><img data-src="pulibc/images/NewsFiles-2011-7-16-1728461498-.png"></p>
 <p>结果则为<br>0<br>1<br>0</p>
 <p>引用网址：<a target="_blank" rel="noopener" href="http://www.233.com/Java/zhuanye/20110716/17284517.html">http://www.233.com/Java/zhuanye/20110716/17284517.html</a></p>
 
@@ -280,19 +280,19 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/FromCSDN/" rel="tag"># FromCSDN</a>
+              <a href="pulibc/tags/FromCSDN/" rel="tag"># FromCSDN</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2013/11/20/Java%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D/" rel="prev" title="Java数据类型和内存分配">
+                <a href="pulibc/2013/11/20/Java%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%86%85%E5%AD%98%E5%88%86%E9%85%8D/" rel="prev" title="Java数据类型和内存分配">
                   <i class="fa fa-chevron-left"></i> Java数据类型和内存分配
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2016/06/23/Java%20Web%E5%9F%BA%E7%A1%80/" rel="next" title="Java Web基础">
+                <a href="pulibc/2016/06/23/Java%20Web%E5%9F%BA%E7%A1%80/" rel="next" title="Java Web基础">
                   Java Web基础 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
@@ -313,7 +313,7 @@
     <div class="footer-inner">
 
   <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蜀ICP备19036728号 </a>
-      <img src="/images/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png" alt=""><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=51012202000611" rel="noopener" target="_blank">川公网安备 51012202000611号 </a>
+      <img src="pulibc/images/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png" alt=""><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=51012202000611" rel="noopener" target="_blank">川公网安备 51012202000611号 </a>
   </div>
 
 <div class="copyright">
@@ -333,7 +333,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+<script src="pulibc/js/comments.js"></script><script src="pulibc/js/utils.js"></script><script src="pulibc/js/motion.js"></script><script src="pulibc/js/schemes/muse.js"></script><script src="pulibc/js/next-boot.js"></script><script src="pulibc/js/pjax.js"></script>
 
   
 
@@ -347,8 +347,8 @@
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
-  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":"enable","archive":"enable","delay":true,"timeout":3000,"priority":true,"url":"http://example.com/2013/11/20/%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F%E4%B8%8E%E5%AE%9E%E4%BE%8B%E5%8F%98%E9%87%8F%E7%9A%84%E5%8C%BA%E5%88%AB/"}</script>
-  <script src="/js/third-party/quicklink.js"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":"enable","archive":"enable","delay":true,"timeout":3000,"priority":true,"url":"https://windanchaos.gitee.io/2013/11/20/%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F%E4%B8%8E%E5%AE%9E%E4%BE%8B%E5%8F%98%E9%87%8F%E7%9A%84%E5%8C%BA%E5%88%AB/"}</script>
+  <script src="pulibc/js/third-party/quicklink.js"></script>
 
 </body>
 </html>

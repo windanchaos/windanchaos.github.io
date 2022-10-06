@@ -7,41 +7,41 @@
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="pulibc/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="pulibc/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="pulibc/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="pulibc/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="/css/main.css">
+<link rel="stylesheet" href="pulibc/css/main.css">
 
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"windanchaos.gitee.io","root":"pulibc/","images":"pulibc/images","scheme":"Mist","darkmode":true,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="pulibc/js/config.js"></script>
 
     <meta name="description" content="git在维护版本库的时候统一使用的是LF，这样就可以保证文件跨平台的时候保持一致。在Linux下默认的换行符也是LF，那也就不存在什么问题。在Windows下默认的换行符是CRLF，那么我们需要保证在文件提交到版本库的时候文件的换行符是LF，通常来说有两种方法： 123456# 在工作区使用CRLF，使用git commit提交的时候git帮你把所有的CRLF转换为LF。git config --">
 <meta property="og:type" content="article">
 <meta property="og:title" content="git换行符冲突CRLF、LF的解决方案">
-<meta property="og:url" content="http://example.com/2019/08/09/git%E6%8D%A2%E8%A1%8C%E7%AC%A6%E5%86%B2%E7%AA%81CRLF%E3%80%81LF%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/index.html">
+<meta property="og:url" content="https://windanchaos.gitee.io/2019/08/09/git%E6%8D%A2%E8%A1%8C%E7%AC%A6%E5%86%B2%E7%AA%81CRLF%E3%80%81LF%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="git在维护版本库的时候统一使用的是LF，这样就可以保证文件跨平台的时候保持一致。在Linux下默认的换行符也是LF，那也就不存在什么问题。在Windows下默认的换行符是CRLF，那么我们需要保证在文件提交到版本库的时候文件的换行符是LF，通常来说有两种方法： 123456# 在工作区使用CRLF，使用git commit提交的时候git帮你把所有的CRLF转换为LF。git config --">
 <meta property="og:locale">
-<meta property="og:image" content="http://example.com/images/20190809144730689.jpg-x-oss-process=image-watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dpbmRhbmNoYW9z,size_16,color_FFFFFF,t_70.png">
+<meta property="og:image" content="https://windanchaos.gitee.io/2019/08/09/git%E6%8D%A2%E8%A1%8C%E7%AC%A6%E5%86%B2%E7%AA%81CRLF%E3%80%81LF%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/pulibc/images/20190809144730689.jpg-x-oss-process=image-watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dpbmRhbmNoYW9z,size_16,color_FFFFFF,t_70.png">
 <meta property="article:published_time" content="2019-08-09T06:51:32.000Z">
 <meta property="article:modified_time" content="2021-06-08T10:39:48.620Z">
 <meta property="article:author" content="windanchaos">
 <meta property="article:tag" content="FromCSDN">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/images/20190809144730689.jpg-x-oss-process=image-watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dpbmRhbmNoYW9z,size_16,color_FFFFFF,t_70.png">
+<meta name="twitter:image" content="https://windanchaos.gitee.io/2019/08/09/git%E6%8D%A2%E8%A1%8C%E7%AC%A6%E5%86%B2%E7%AA%81CRLF%E3%80%81LF%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/pulibc/images/20190809144730689.jpg-x-oss-process=image-watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dpbmRhbmNoYW9z,size_16,color_FFFFFF,t_70.png">
 
 
-<link rel="canonical" href="http://example.com/2019/08/09/git%E6%8D%A2%E8%A1%8C%E7%AC%A6%E5%86%B2%E7%AA%81CRLF%E3%80%81LF%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">
+<link rel="canonical" href="https://windanchaos.gitee.io/2019/08/09/git%E6%8D%A2%E8%A1%8C%E7%AC%A6%E5%86%B2%E7%AA%81CRLF%E3%80%81LF%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"http://example.com/2019/08/09/git%E6%8D%A2%E8%A1%8C%E7%AC%A6%E5%86%B2%E7%AA%81CRLF%E3%80%81LF%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/","path":"2019/08/09/git换行符冲突CRLF、LF的解决方案/","title":"git换行符冲突CRLF、LF的解决方案"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"https://windanchaos.gitee.io/2019/08/09/git%E6%8D%A2%E8%A1%8C%E7%AC%A6%E5%86%B2%E7%AA%81CRLF%E3%80%81LF%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/","path":"2019/08/09/git换行符冲突CRLF、LF的解决方案/","title":"git换行符冲突CRLF、LF的解决方案"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>git换行符冲突CRLF、LF的解决方案 | Hexo</title>
@@ -53,7 +53,7 @@
 
 
   <noscript>
-    <link rel="stylesheet" href="/css/noscript.css">
+    <link rel="stylesheet" href="pulibc/css/noscript.css">
   </noscript>
 </head>
 
@@ -73,7 +73,7 @@
 
   <div class="site-meta">
 
-    <a href="/" class="brand" rel="start">
+    <a href="pulibc/" class="brand" rel="start">
       <i class="logo-line"></i>
       <p class="site-title">Hexo</p>
       <i class="logo-line"></i>
@@ -89,7 +89,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-首页"><a href="/" rel="section"><i class="home fa-fw"></i>首页</a></li><li class="menu-item menu-item-分类"><a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a></li><li class="menu-item menu-item-归档"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-标签"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-关于"><a href="/about/me.html" rel="section"><i class="user fa-fw"></i>关于</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-首页"><a href="pulibc/" rel="section"><i class="home fa-fw"></i>首页</a></li><li class="menu-item menu-item-分类"><a href="pulibc/categories/" rel="section"><i class="th fa-fw"></i>分类</a></li><li class="menu-item menu-item-归档"><a href="pulibc/archives/" rel="section"><i class="archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-标签"><a href="pulibc/tags/" rel="section"><i class="tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-关于"><a href="pulibc/about/me.html" rel="section"><i class="user fa-fw"></i>关于</a></li>
   </ul>
 </nav>
 
@@ -126,25 +126,25 @@
         <div class="site-overview-wrap sidebar-panel">
           <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="windanchaos"
-      src="/images/avatar.jpeg">
+      src="pulibc/images/avatar.jpeg">
   <p class="site-author-name" itemprop="name">windanchaos</p>
   <div class="site-description" itemprop="description"></div>
 </div>
 <div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-        <a href="/archives/">
+        <a href="pulibc/archives/">
           <span class="site-state-item-count">111</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-          <a href="/categories/">
+          <a href="pulibc/categories/">
         <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-          <a href="/tags/">
+          <a href="pulibc/tags/">
         <span class="site-state-item-count">1</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
@@ -204,10 +204,10 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
-    <link itemprop="mainEntityOfPage" href="http://example.com/2019/08/09/git%E6%8D%A2%E8%A1%8C%E7%AC%A6%E5%86%B2%E7%AA%81CRLF%E3%80%81LF%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">
+    <link itemprop="mainEntityOfPage" href="https://windanchaos.gitee.io/2019/08/09/git%E6%8D%A2%E8%A1%8C%E7%AC%A6%E5%86%B2%E7%AA%81CRLF%E3%80%81LF%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="image" content="pulibc/images/avatar.jpeg">
       <meta itemprop="name" content="windanchaos">
     </span>
 
@@ -248,7 +248,7 @@
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Linux%E7%AE%A1%E7%90%86%E7%BB%B4%E6%8A%A4/" itemprop="url" rel="index"><span itemprop="name">Linux管理维护</span></a>
+          <a href="pulibc/categories/Linux%E7%AE%A1%E7%90%86%E7%BB%B4%E6%8A%A4/" itemprop="url" rel="index"><span itemprop="name">Linux管理维护</span></a>
         </span>
     </span>
 
@@ -265,7 +265,7 @@
         <p>git在维护版本库的时候统一使用的是LF，这样就可以保证文件跨平台的时候保持一致。<br>在Linux下默认的换行符也是LF，那也就不存在什么问题。<br>在Windows下默认的换行符是CRLF，那么我们需要保证在文件提交到版本库的时候文件的换行符是LF，通常来说有两种方法：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 在工作区使用<span class="variable constant_">CRLF</span>，使用git commit提交的时候git帮你把所有的<span class="variable constant_">CRLF</span>转换为<span class="variable constant_">LF</span>。</span><br><span class="line">git config --<span class="variable language_">global</span> core.<span class="property">autocrlf</span> <span class="literal">true</span></span><br><span class="line"># 在工作区使用<span class="variable constant_">LF</span></span><br><span class="line">git config --<span class="variable language_">global</span> core.<span class="property">autocrlf</span> input</span><br><span class="line"># 避免文件中有混用换行符</span><br><span class="line">git config --<span class="variable language_">global</span> core.<span class="property">safecrlf</span> <span class="literal">true</span></span><br></pre></td></tr></table></figure>
 
-<p>以上措施如果都不管用，尤其是莫名其妙的，git刚刚clone的代码库就存在图片换行符的问题，比如我的。<br><img data-src="/images/20190809144730689.jpg-x-oss-process=image-watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dpbmRhbmNoYW9z,size_16,color_FFFFFF,t_70.png" alt="刚clone的代码库就存在换行符导致的问题"><br>那么你可以试试——————————————————————————升级你的git，是的，所有设置方案都试过后，这一招彻底解决。</p>
+<p>以上措施如果都不管用，尤其是莫名其妙的，git刚刚clone的代码库就存在图片换行符的问题，比如我的。<br><img data-src="pulibc/images/20190809144730689.jpg-x-oss-process=image-watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dpbmRhbmNoYW9z,size_16,color_FFFFFF,t_70.png" alt="刚clone的代码库就存在换行符导致的问题"><br>那么你可以试试——————————————————————————升级你的git，是的，所有设置方案都试过后，这一招彻底解决。</p>
 <p>这里下载：<a target="_blank" rel="noopener" href="https://github.com/git/git/releases?after=v2.21.0-rc1">https://github.com/git/git/releases?after=v2.21.0-rc1</a></p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># centos自带<span class="title class_">Git</span>，<span class="number">7.</span>x版本自带git <span class="number">1.8</span><span class="number">.3</span><span class="number">.1</span>，安装新版本之前需要使用卸载。</span><br><span class="line">yum remove -y git</span><br><span class="line"># 依赖</span><br><span class="line">yum install -y curl-devel expat-devel gettext-devel openssl-devel zlib-devel  gcc perl-<span class="title class_">ExtUtils</span>-<span class="title class_">MakeMaker</span></span><br><span class="line">wget <span class="attr">https</span>:<span class="comment">//github.com/git/git/archive/v2.20.0.tar.gz</span></span><br><span class="line">tar xzf v2<span class="number">.20</span><span class="number">.0</span>.<span class="property">tar</span>.<span class="property">gz</span></span><br><span class="line">cd git-<span class="number">2.22</span><span class="number">.0</span></span><br><span class="line">make prefix=<span class="regexp">/usr/</span>local/git all</span><br><span class="line">make prefix=<span class="regexp">/usr/</span>local/git install</span><br><span class="line"># 创建软连接</span><br><span class="line">ln -s  /usr/local/git/bin/git /usr/bin/git</span><br><span class="line">git --version</span><br></pre></td></tr></table></figure>
 
@@ -277,19 +277,19 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/FromCSDN/" rel="tag"># FromCSDN</a>
+              <a href="pulibc/tags/FromCSDN/" rel="tag"># FromCSDN</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2019/07/21/%E7%BC%96%E7%A8%8B%E6%B1%82%EF%BC%9A%E2%88%911+%E2%88%912+%E2%80%A6%E2%80%A6+%E2%88%91100/" rel="prev" title="编程求：∑1+∑2+……+∑100">
+                <a href="pulibc/2019/07/21/%E7%BC%96%E7%A8%8B%E6%B1%82%EF%BC%9A%E2%88%911+%E2%88%912+%E2%80%A6%E2%80%A6+%E2%88%91100/" rel="prev" title="编程求：∑1+∑2+……+∑100">
                   <i class="fa fa-chevron-left"></i> 编程求：∑1+∑2+……+∑100
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2019/08/27/Systemd%20%E6%B7%BB%E5%8A%A0tomcat%E6%9C%8D%E5%8A%A1%EF%BC%8C%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%EF%BC%8C%E6%94%AF%E6%8C%81apr/" rel="next" title="Systemd 添加tomcat服务，开机启动，支持apr">
+                <a href="pulibc/2019/08/27/Systemd%20%E6%B7%BB%E5%8A%A0tomcat%E6%9C%8D%E5%8A%A1%EF%BC%8C%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%EF%BC%8C%E6%94%AF%E6%8C%81apr/" rel="next" title="Systemd 添加tomcat服务，开机启动，支持apr">
                   Systemd 添加tomcat服务，开机启动，支持apr <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
@@ -310,7 +310,7 @@
     <div class="footer-inner">
 
   <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蜀ICP备19036728号 </a>
-      <img src="/images/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png" alt=""><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=51012202000611" rel="noopener" target="_blank">川公网安备 51012202000611号 </a>
+      <img src="pulibc/images/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png" alt=""><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=51012202000611" rel="noopener" target="_blank">川公网安备 51012202000611号 </a>
   </div>
 
 <div class="copyright">
@@ -330,7 +330,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+<script src="pulibc/js/comments.js"></script><script src="pulibc/js/utils.js"></script><script src="pulibc/js/motion.js"></script><script src="pulibc/js/schemes/muse.js"></script><script src="pulibc/js/next-boot.js"></script><script src="pulibc/js/pjax.js"></script>
 
   
 
@@ -344,8 +344,8 @@
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
-  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":"enable","archive":"enable","delay":true,"timeout":3000,"priority":true,"url":"http://example.com/2019/08/09/git%E6%8D%A2%E8%A1%8C%E7%AC%A6%E5%86%B2%E7%AA%81CRLF%E3%80%81LF%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"}</script>
-  <script src="/js/third-party/quicklink.js"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":"enable","archive":"enable","delay":true,"timeout":3000,"priority":true,"url":"https://windanchaos.gitee.io/2019/08/09/git%E6%8D%A2%E8%A1%8C%E7%AC%A6%E5%86%B2%E7%AA%81CRLF%E3%80%81LF%E7%9A%84%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"}</script>
+  <script src="pulibc/js/third-party/quicklink.js"></script>
 
 </body>
 </html>
