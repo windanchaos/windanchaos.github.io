@@ -24,7 +24,7 @@
     <meta name="description" content="业务描述：用户扫二维码，关注公众号后推送微信图文消息。用户分享自己的二维码拉取下线关注公众号。拉满N个后，可获得低价商品购买权。这里面涉及：新建账户、修改账户、关系绑定、获取微信鉴权（） 问题抛出：生产环境，用户反馈，无法收到微信推送的消息，或者等了很久都没有收到消息，商城访问速度慢。 云里雾里的解决：研发到我这里，查看日志。日志提供的信息有限，无法判断问题所在。通过在线监控各项指标，发现网络带宽">
 <meta property="og:type" content="article">
 <meta property="og:title" content="记一次解决线上压力的过程">
-<meta property="og:url" content="https://windanchaos.github.io/2017/09/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E8%A7%A3%E5%86%B3%E7%BA%BF%E4%B8%8A%E5%8E%8B%E5%8A%9B%E7%9A%84%E8%BF%87%E7%A8%8B/index.html">
+<meta property="og:url" content="https://windanchaos.github.io/docs/2017/09/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E8%A7%A3%E5%86%B3%E7%BA%BF%E4%B8%8A%E5%8E%8B%E5%8A%9B%E7%9A%84%E8%BF%87%E7%A8%8B/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="业务描述：用户扫二维码，关注公众号后推送微信图文消息。用户分享自己的二维码拉取下线关注公众号。拉满N个后，可获得低价商品购买权。这里面涉及：新建账户、修改账户、关系绑定、获取微信鉴权（） 问题抛出：生产环境，用户反馈，无法收到微信推送的消息，或者等了很久都没有收到消息，商城访问速度慢。 云里雾里的解决：研发到我这里，查看日志。日志提供的信息有限，无法判断问题所在。通过在线监控各项指标，发现网络带宽">
 <meta property="og:locale">
@@ -35,11 +35,11 @@
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://windanchaos.github.io/2017/09/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E8%A7%A3%E5%86%B3%E7%BA%BF%E4%B8%8A%E5%8E%8B%E5%8A%9B%E7%9A%84%E8%BF%87%E7%A8%8B/">
+<link rel="canonical" href="https://windanchaos.github.io/docs/2017/09/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E8%A7%A3%E5%86%B3%E7%BA%BF%E4%B8%8A%E5%8E%8B%E5%8A%9B%E7%9A%84%E8%BF%87%E7%A8%8B/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"https://windanchaos.github.io/2017/09/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E8%A7%A3%E5%86%B3%E7%BA%BF%E4%B8%8A%E5%8E%8B%E5%8A%9B%E7%9A%84%E8%BF%87%E7%A8%8B/","path":"2017/09/08/记一次解决线上压力的过程/","title":"记一次解决线上压力的过程"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"https://windanchaos.github.io/docs/2017/09/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E8%A7%A3%E5%86%B3%E7%BA%BF%E4%B8%8A%E5%8E%8B%E5%8A%9B%E7%9A%84%E8%BF%87%E7%A8%8B/","path":"2017/09/08/记一次解决线上压力的过程/","title":"记一次解决线上压力的过程"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>记一次解决线上压力的过程 | Hexo</title>
@@ -202,7 +202,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
-    <link itemprop="mainEntityOfPage" href="https://windanchaos.github.io/2017/09/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E8%A7%A3%E5%86%B3%E7%BA%BF%E4%B8%8A%E5%8E%8B%E5%8A%9B%E7%9A%84%E8%BF%87%E7%A8%8B/">
+    <link itemprop="mainEntityOfPage" href="https://windanchaos.github.io/docs/2017/09/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E8%A7%A3%E5%86%B3%E7%BA%BF%E4%B8%8A%E5%8E%8B%E5%8A%9B%E7%9A%84%E8%BF%87%E7%A8%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="docs/images/avatar.jpeg">
@@ -346,7 +346,7 @@
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
-  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":"enable","archive":"enable","delay":true,"timeout":3000,"priority":true,"url":"https://windanchaos.github.io/2017/09/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E8%A7%A3%E5%86%B3%E7%BA%BF%E4%B8%8A%E5%8E%8B%E5%8A%9B%E7%9A%84%E8%BF%87%E7%A8%8B/"}</script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":"enable","archive":"enable","delay":true,"timeout":3000,"priority":true,"url":"https://windanchaos.github.io/docs/2017/09/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E8%A7%A3%E5%86%B3%E7%BA%BF%E4%B8%8A%E5%8E%8B%E5%8A%9B%E7%9A%84%E8%BF%87%E7%A8%8B/"}</script>
   <script src="docs/js/third-party/quicklink.js"></script>
 
 </body>

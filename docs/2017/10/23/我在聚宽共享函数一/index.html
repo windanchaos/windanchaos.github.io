@@ -24,7 +24,7 @@
     <meta name="description" content="该函数设计目的：保护既得利润，以N日内持仓股票最低盈利被突破为触发条件，所以持股时间最低为N日，为保证有效持股，N日之前亏损不会计入（该条件不需要的可以自己去掉）。函数以股票为输入，需要在自己的函数（持股或卖出判断）每日调用。需要自定义全局（JQ提交代码不能提交函数外的东东）。 函数怎么运行的：为输入的股票（当然是自己的持仓的）建立一个长度为N的队列（FIFO，先进先出），比如，建仓股票A了，则新">
 <meta property="og:type" content="article">
 <meta property="og:title" content="我在聚宽共享函数一">
-<meta property="og:url" content="https://windanchaos.github.io/2017/10/23/%E6%88%91%E5%9C%A8%E8%81%9A%E5%AE%BD%E5%85%B1%E4%BA%AB%E5%87%BD%E6%95%B0%E4%B8%80/index.html">
+<meta property="og:url" content="https://windanchaos.github.io/docs/2017/10/23/%E6%88%91%E5%9C%A8%E8%81%9A%E5%AE%BD%E5%85%B1%E4%BA%AB%E5%87%BD%E6%95%B0%E4%B8%80/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="该函数设计目的：保护既得利润，以N日内持仓股票最低盈利被突破为触发条件，所以持股时间最低为N日，为保证有效持股，N日之前亏损不会计入（该条件不需要的可以自己去掉）。函数以股票为输入，需要在自己的函数（持股或卖出判断）每日调用。需要自定义全局（JQ提交代码不能提交函数外的东东）。 函数怎么运行的：为输入的股票（当然是自己的持仓的）建立一个长度为N的队列（FIFO，先进先出），比如，建仓股票A了，则新">
 <meta property="og:locale">
@@ -35,11 +35,11 @@
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://windanchaos.github.io/2017/10/23/%E6%88%91%E5%9C%A8%E8%81%9A%E5%AE%BD%E5%85%B1%E4%BA%AB%E5%87%BD%E6%95%B0%E4%B8%80/">
+<link rel="canonical" href="https://windanchaos.github.io/docs/2017/10/23/%E6%88%91%E5%9C%A8%E8%81%9A%E5%AE%BD%E5%85%B1%E4%BA%AB%E5%87%BD%E6%95%B0%E4%B8%80/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"https://windanchaos.github.io/2017/10/23/%E6%88%91%E5%9C%A8%E8%81%9A%E5%AE%BD%E5%85%B1%E4%BA%AB%E5%87%BD%E6%95%B0%E4%B8%80/","path":"2017/10/23/我在聚宽共享函数一/","title":"我在聚宽共享函数一"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"https://windanchaos.github.io/docs/2017/10/23/%E6%88%91%E5%9C%A8%E8%81%9A%E5%AE%BD%E5%85%B1%E4%BA%AB%E5%87%BD%E6%95%B0%E4%B8%80/","path":"2017/10/23/我在聚宽共享函数一/","title":"我在聚宽共享函数一"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>我在聚宽共享函数一 | Hexo</title>
@@ -202,7 +202,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
-    <link itemprop="mainEntityOfPage" href="https://windanchaos.github.io/2017/10/23/%E6%88%91%E5%9C%A8%E8%81%9A%E5%AE%BD%E5%85%B1%E4%BA%AB%E5%87%BD%E6%95%B0%E4%B8%80/">
+    <link itemprop="mainEntityOfPage" href="https://windanchaos.github.io/docs/2017/10/23/%E6%88%91%E5%9C%A8%E8%81%9A%E5%AE%BD%E5%85%B1%E4%BA%AB%E5%87%BD%E6%95%B0%E4%B8%80/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="docs/images/avatar.jpeg">
@@ -340,7 +340,7 @@
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
-  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":"enable","archive":"enable","delay":true,"timeout":3000,"priority":true,"url":"https://windanchaos.github.io/2017/10/23/%E6%88%91%E5%9C%A8%E8%81%9A%E5%AE%BD%E5%85%B1%E4%BA%AB%E5%87%BD%E6%95%B0%E4%B8%80/"}</script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":"enable","archive":"enable","delay":true,"timeout":3000,"priority":true,"url":"https://windanchaos.github.io/docs/2017/10/23/%E6%88%91%E5%9C%A8%E8%81%9A%E5%AE%BD%E5%85%B1%E4%BA%AB%E5%87%BD%E6%95%B0%E4%B8%80/"}</script>
   <script src="docs/js/third-party/quicklink.js"></script>
 
 </body>

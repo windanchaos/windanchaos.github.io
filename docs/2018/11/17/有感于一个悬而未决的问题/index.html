@@ -24,24 +24,24 @@
     <meta name="description" content="我们新开启了一个项目。项目仍然使用tomcat作为容器发布，但是这次出现了高CPU占用的情况，当然使用了ssl证书，但是我们仍然遵照了生产其他tomcat的配置方式，使用的是apr（最初是nio，导致cpu资源无法释放）。这个tomcat还出现过几次假死。也在发现假死后把堆栈都输出以发现情况具体在哪里。但是，都没有解决。由于是我在摆弄部署的事，研发leader跟我确认配置是否正确，把问题告诉了我，">
 <meta property="og:type" content="article">
 <meta property="og:title" content="有感于一个悬而未决的问题">
-<meta property="og:url" content="https://windanchaos.github.io/2018/11/17/%E6%9C%89%E6%84%9F%E4%BA%8E%E4%B8%80%E4%B8%AA%E6%82%AC%E8%80%8C%E6%9C%AA%E5%86%B3%E7%9A%84%E9%97%AE%E9%A2%98/index.html">
+<meta property="og:url" content="https://windanchaos.github.io/docs/2018/11/17/%E6%9C%89%E6%84%9F%E4%BA%8E%E4%B8%80%E4%B8%AA%E6%82%AC%E8%80%8C%E6%9C%AA%E5%86%B3%E7%9A%84%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="我们新开启了一个项目。项目仍然使用tomcat作为容器发布，但是这次出现了高CPU占用的情况，当然使用了ssl证书，但是我们仍然遵照了生产其他tomcat的配置方式，使用的是apr（最初是nio，导致cpu资源无法释放）。这个tomcat还出现过几次假死。也在发现假死后把堆栈都输出以发现情况具体在哪里。但是，都没有解决。由于是我在摆弄部署的事，研发leader跟我确认配置是否正确，把问题告诉了我，">
 <meta property="og:locale">
-<meta property="og:image" content="https://windanchaos.github.io/2018/11/17/%E6%9C%89%E6%84%9F%E4%BA%8E%E4%B8%80%E4%B8%AA%E6%82%AC%E8%80%8C%E6%9C%AA%E5%86%B3%E7%9A%84%E9%97%AE%E9%A2%98/docs/images/20181029215037807.jpg-x-oss-process=image-watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dpbmRhbmNoYW9z,size_16,color_FFFFFF,t_70.png">
+<meta property="og:image" content="https://windanchaos.github.io/docs/2018/11/17/%E6%9C%89%E6%84%9F%E4%BA%8E%E4%B8%80%E4%B8%AA%E6%82%AC%E8%80%8C%E6%9C%AA%E5%86%B3%E7%9A%84%E9%97%AE%E9%A2%98/docs/images/20181029215037807.jpg-x-oss-process=image-watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dpbmRhbmNoYW9z,size_16,color_FFFFFF,t_70.png">
 <meta property="article:published_time" content="2018-11-17T13:52:07.000Z">
 <meta property="article:modified_time" content="2021-06-08T10:39:48.825Z">
 <meta property="article:author" content="windanchaos">
 <meta property="article:tag" content="FromCSDN">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://windanchaos.github.io/2018/11/17/%E6%9C%89%E6%84%9F%E4%BA%8E%E4%B8%80%E4%B8%AA%E6%82%AC%E8%80%8C%E6%9C%AA%E5%86%B3%E7%9A%84%E9%97%AE%E9%A2%98/docs/images/20181029215037807.jpg-x-oss-process=image-watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dpbmRhbmNoYW9z,size_16,color_FFFFFF,t_70.png">
+<meta name="twitter:image" content="https://windanchaos.github.io/docs/2018/11/17/%E6%9C%89%E6%84%9F%E4%BA%8E%E4%B8%80%E4%B8%AA%E6%82%AC%E8%80%8C%E6%9C%AA%E5%86%B3%E7%9A%84%E9%97%AE%E9%A2%98/docs/images/20181029215037807.jpg-x-oss-process=image-watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dpbmRhbmNoYW9z,size_16,color_FFFFFF,t_70.png">
 
 
-<link rel="canonical" href="https://windanchaos.github.io/2018/11/17/%E6%9C%89%E6%84%9F%E4%BA%8E%E4%B8%80%E4%B8%AA%E6%82%AC%E8%80%8C%E6%9C%AA%E5%86%B3%E7%9A%84%E9%97%AE%E9%A2%98/">
+<link rel="canonical" href="https://windanchaos.github.io/docs/2018/11/17/%E6%9C%89%E6%84%9F%E4%BA%8E%E4%B8%80%E4%B8%AA%E6%82%AC%E8%80%8C%E6%9C%AA%E5%86%B3%E7%9A%84%E9%97%AE%E9%A2%98/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"https://windanchaos.github.io/2018/11/17/%E6%9C%89%E6%84%9F%E4%BA%8E%E4%B8%80%E4%B8%AA%E6%82%AC%E8%80%8C%E6%9C%AA%E5%86%B3%E7%9A%84%E9%97%AE%E9%A2%98/","path":"2018/11/17/有感于一个悬而未决的问题/","title":"有感于一个悬而未决的问题"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"https://windanchaos.github.io/docs/2018/11/17/%E6%9C%89%E6%84%9F%E4%BA%8E%E4%B8%80%E4%B8%AA%E6%82%AC%E8%80%8C%E6%9C%AA%E5%86%B3%E7%9A%84%E9%97%AE%E9%A2%98/","path":"2018/11/17/有感于一个悬而未决的问题/","title":"有感于一个悬而未决的问题"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>有感于一个悬而未决的问题 | Hexo</title>
@@ -204,7 +204,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
-    <link itemprop="mainEntityOfPage" href="https://windanchaos.github.io/2018/11/17/%E6%9C%89%E6%84%9F%E4%BA%8E%E4%B8%80%E4%B8%AA%E6%82%AC%E8%80%8C%E6%9C%AA%E5%86%B3%E7%9A%84%E9%97%AE%E9%A2%98/">
+    <link itemprop="mainEntityOfPage" href="https://windanchaos.github.io/docs/2018/11/17/%E6%9C%89%E6%84%9F%E4%BA%8E%E4%B8%80%E4%B8%AA%E6%82%AC%E8%80%8C%E6%9C%AA%E5%86%B3%E7%9A%84%E9%97%AE%E9%A2%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="docs/images/avatar.jpeg">
@@ -343,7 +343,7 @@
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
-  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":"enable","archive":"enable","delay":true,"timeout":3000,"priority":true,"url":"https://windanchaos.github.io/2018/11/17/%E6%9C%89%E6%84%9F%E4%BA%8E%E4%B8%80%E4%B8%AA%E6%82%AC%E8%80%8C%E6%9C%AA%E5%86%B3%E7%9A%84%E9%97%AE%E9%A2%98/"}</script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":"enable","archive":"enable","delay":true,"timeout":3000,"priority":true,"url":"https://windanchaos.github.io/docs/2018/11/17/%E6%9C%89%E6%84%9F%E4%BA%8E%E4%B8%80%E4%B8%AA%E6%82%AC%E8%80%8C%E6%9C%AA%E5%86%B3%E7%9A%84%E9%97%AE%E9%A2%98/"}</script>
   <script src="docs/js/third-party/quicklink.js"></script>
 
 </body>

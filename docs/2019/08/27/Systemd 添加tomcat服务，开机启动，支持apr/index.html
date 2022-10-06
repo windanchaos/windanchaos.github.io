@@ -24,7 +24,7 @@
     <meta name="description" content="问题描述：我们的tomcat启动了apr启动https端口，我设置了systemd的tomcat.service的文件，使用systemctl start tomcat，始终无法识别apr的环境变量。研究了一会后解决。先贴tomcat.service最终设置，只需加一行配置即可。 12345678910111213141516[Unit]Description&#x3D;java tomcat projec">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Systemd 添加tomcat服务，开机启动，支持apr">
-<meta property="og:url" content="https://windanchaos.github.io/2019/08/27/Systemd%20%E6%B7%BB%E5%8A%A0tomcat%E6%9C%8D%E5%8A%A1%EF%BC%8C%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%EF%BC%8C%E6%94%AF%E6%8C%81apr/index.html">
+<meta property="og:url" content="https://windanchaos.github.io/docs/2019/08/27/Systemd%20%E6%B7%BB%E5%8A%A0tomcat%E6%9C%8D%E5%8A%A1%EF%BC%8C%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%EF%BC%8C%E6%94%AF%E6%8C%81apr/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="问题描述：我们的tomcat启动了apr启动https端口，我设置了systemd的tomcat.service的文件，使用systemctl start tomcat，始终无法识别apr的环境变量。研究了一会后解决。先贴tomcat.service最终设置，只需加一行配置即可。 12345678910111213141516[Unit]Description&#x3D;java tomcat projec">
 <meta property="og:locale">
@@ -35,11 +35,11 @@
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://windanchaos.github.io/2019/08/27/Systemd%20%E6%B7%BB%E5%8A%A0tomcat%E6%9C%8D%E5%8A%A1%EF%BC%8C%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%EF%BC%8C%E6%94%AF%E6%8C%81apr/">
+<link rel="canonical" href="https://windanchaos.github.io/docs/2019/08/27/Systemd%20%E6%B7%BB%E5%8A%A0tomcat%E6%9C%8D%E5%8A%A1%EF%BC%8C%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%EF%BC%8C%E6%94%AF%E6%8C%81apr/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"https://windanchaos.github.io/2019/08/27/Systemd%20%E6%B7%BB%E5%8A%A0tomcat%E6%9C%8D%E5%8A%A1%EF%BC%8C%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%EF%BC%8C%E6%94%AF%E6%8C%81apr/","path":"2019/08/27/Systemd 添加tomcat服务，开机启动，支持apr/","title":"Systemd 添加tomcat服务，开机启动，支持apr"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"https://windanchaos.github.io/docs/2019/08/27/Systemd%20%E6%B7%BB%E5%8A%A0tomcat%E6%9C%8D%E5%8A%A1%EF%BC%8C%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%EF%BC%8C%E6%94%AF%E6%8C%81apr/","path":"2019/08/27/Systemd 添加tomcat服务，开机启动，支持apr/","title":"Systemd 添加tomcat服务，开机启动，支持apr"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>Systemd 添加tomcat服务，开机启动，支持apr | Hexo</title>
@@ -202,7 +202,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
-    <link itemprop="mainEntityOfPage" href="https://windanchaos.github.io/2019/08/27/Systemd%20%E6%B7%BB%E5%8A%A0tomcat%E6%9C%8D%E5%8A%A1%EF%BC%8C%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%EF%BC%8C%E6%94%AF%E6%8C%81apr/">
+    <link itemprop="mainEntityOfPage" href="https://windanchaos.github.io/docs/2019/08/27/Systemd%20%E6%B7%BB%E5%8A%A0tomcat%E6%9C%8D%E5%8A%A1%EF%BC%8C%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%EF%BC%8C%E6%94%AF%E6%8C%81apr/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="docs/images/avatar.jpeg">
@@ -346,7 +346,7 @@
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
-  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":"enable","archive":"enable","delay":true,"timeout":3000,"priority":true,"url":"https://windanchaos.github.io/2019/08/27/Systemd%20%E6%B7%BB%E5%8A%A0tomcat%E6%9C%8D%E5%8A%A1%EF%BC%8C%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%EF%BC%8C%E6%94%AF%E6%8C%81apr/"}</script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":"enable","archive":"enable","delay":true,"timeout":3000,"priority":true,"url":"https://windanchaos.github.io/docs/2019/08/27/Systemd%20%E6%B7%BB%E5%8A%A0tomcat%E6%9C%8D%E5%8A%A1%EF%BC%8C%E5%BC%80%E6%9C%BA%E5%90%AF%E5%8A%A8%EF%BC%8C%E6%94%AF%E6%8C%81apr/"}</script>
   <script src="docs/js/third-party/quicklink.js"></script>
 
 </body>

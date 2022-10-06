@@ -24,28 +24,28 @@
     <meta name="description" content="本文转自：blog.csdn.net&#x2F;zzzmmmkkk&#x2F;article&#x2F;details&#x2F;10034213 布局和JavaScript 浏览器自动化工具基本上由三部分构成： ·与DOM交互的方法 ·执行Javascript的机制 ·一些模拟用户输入的办法 本节重点介绍第一部分：提供与DOM交互的机制。浏览器的办法是通过Javascript，所以看起来与DOM">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Selenium 2.0的由来及设计架构">
-<meta property="og:url" content="https://windanchaos.github.io/2017/04/13/Selenium%202.0%E7%9A%84%E7%94%B1%E6%9D%A5%E5%8F%8A%E8%AE%BE%E8%AE%A1%E6%9E%B6%E6%9E%84/index.html">
+<meta property="og:url" content="https://windanchaos.github.io/docs/2017/04/13/Selenium%202.0%E7%9A%84%E7%94%B1%E6%9D%A5%E5%8F%8A%E8%AE%BE%E8%AE%A1%E6%9E%B6%E6%9E%84/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="本文转自：blog.csdn.net&#x2F;zzzmmmkkk&#x2F;article&#x2F;details&#x2F;10034213 布局和JavaScript 浏览器自动化工具基本上由三部分构成： ·与DOM交互的方法 ·执行Javascript的机制 ·一些模拟用户输入的办法 本节重点介绍第一部分：提供与DOM交互的机制。浏览器的办法是通过Javascript，所以看起来与DOM">
 <meta property="og:locale">
-<meta property="og:image" content="https://windanchaos.github.io/2017/04/13/Selenium%202.0%E7%9A%84%E7%94%B1%E6%9D%A5%E5%8F%8A%E8%AE%BE%E8%AE%A1%E6%9E%B6%E6%9E%84/docs/images/dn.net-20130817205048703-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvenp6bW1ta2tr-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png">
-<meta property="og:image" content="https://windanchaos.github.io/2017/04/13/Selenium%202.0%E7%9A%84%E7%94%B1%E6%9D%A5%E5%8F%8A%E8%AE%BE%E8%AE%A1%E6%9E%B6%E6%9E%84/docs/images/dn.net-20130817205030234-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvenp6bW1ta2tr-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png">
-<meta property="og:image" content="https://windanchaos.github.io/2017/04/13/Selenium%202.0%E7%9A%84%E7%94%B1%E6%9D%A5%E5%8F%8A%E8%AE%BE%E8%AE%A1%E6%9E%B6%E6%9E%84/docs/images/dn.net-20130825221212171-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvenp6bW1ta2tr-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png">
-<meta property="og:image" content="https://windanchaos.github.io/2017/04/13/Selenium%202.0%E7%9A%84%E7%94%B1%E6%9D%A5%E5%8F%8A%E8%AE%BE%E8%AE%A1%E6%9E%B6%E6%9E%84/docs/images/dn.net-20130825221246921-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvenp6bW1ta2tr-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png">
-<meta property="og:image" content="https://windanchaos.github.io/2017/04/13/Selenium%202.0%E7%9A%84%E7%94%B1%E6%9D%A5%E5%8F%8A%E8%AE%BE%E8%AE%A1%E6%9E%B6%E6%9E%84/docs/images/dn.net-20130825221313500-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvenp6bW1ta2tr-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png">
+<meta property="og:image" content="https://windanchaos.github.io/docs/2017/04/13/Selenium%202.0%E7%9A%84%E7%94%B1%E6%9D%A5%E5%8F%8A%E8%AE%BE%E8%AE%A1%E6%9E%B6%E6%9E%84/docs/images/dn.net-20130817205048703-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvenp6bW1ta2tr-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png">
+<meta property="og:image" content="https://windanchaos.github.io/docs/2017/04/13/Selenium%202.0%E7%9A%84%E7%94%B1%E6%9D%A5%E5%8F%8A%E8%AE%BE%E8%AE%A1%E6%9E%B6%E6%9E%84/docs/images/dn.net-20130817205030234-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvenp6bW1ta2tr-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png">
+<meta property="og:image" content="https://windanchaos.github.io/docs/2017/04/13/Selenium%202.0%E7%9A%84%E7%94%B1%E6%9D%A5%E5%8F%8A%E8%AE%BE%E8%AE%A1%E6%9E%B6%E6%9E%84/docs/images/dn.net-20130825221212171-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvenp6bW1ta2tr-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png">
+<meta property="og:image" content="https://windanchaos.github.io/docs/2017/04/13/Selenium%202.0%E7%9A%84%E7%94%B1%E6%9D%A5%E5%8F%8A%E8%AE%BE%E8%AE%A1%E6%9E%B6%E6%9E%84/docs/images/dn.net-20130825221246921-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvenp6bW1ta2tr-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png">
+<meta property="og:image" content="https://windanchaos.github.io/docs/2017/04/13/Selenium%202.0%E7%9A%84%E7%94%B1%E6%9D%A5%E5%8F%8A%E8%AE%BE%E8%AE%A1%E6%9E%B6%E6%9E%84/docs/images/dn.net-20130825221313500-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvenp6bW1ta2tr-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png">
 <meta property="article:published_time" content="2017-04-13T14:24:44.000Z">
 <meta property="article:modified_time" content="2021-06-08T10:44:42.095Z">
 <meta property="article:author" content="windanchaos">
 <meta property="article:tag" content="FromCSDN">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://windanchaos.github.io/2017/04/13/Selenium%202.0%E7%9A%84%E7%94%B1%E6%9D%A5%E5%8F%8A%E8%AE%BE%E8%AE%A1%E6%9E%B6%E6%9E%84/docs/images/dn.net-20130817205048703-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvenp6bW1ta2tr-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png">
+<meta name="twitter:image" content="https://windanchaos.github.io/docs/2017/04/13/Selenium%202.0%E7%9A%84%E7%94%B1%E6%9D%A5%E5%8F%8A%E8%AE%BE%E8%AE%A1%E6%9E%B6%E6%9E%84/docs/images/dn.net-20130817205048703-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvenp6bW1ta2tr-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png">
 
 
-<link rel="canonical" href="https://windanchaos.github.io/2017/04/13/Selenium%202.0%E7%9A%84%E7%94%B1%E6%9D%A5%E5%8F%8A%E8%AE%BE%E8%AE%A1%E6%9E%B6%E6%9E%84/">
+<link rel="canonical" href="https://windanchaos.github.io/docs/2017/04/13/Selenium%202.0%E7%9A%84%E7%94%B1%E6%9D%A5%E5%8F%8A%E8%AE%BE%E8%AE%A1%E6%9E%B6%E6%9E%84/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"https://windanchaos.github.io/2017/04/13/Selenium%202.0%E7%9A%84%E7%94%B1%E6%9D%A5%E5%8F%8A%E8%AE%BE%E8%AE%A1%E6%9E%B6%E6%9E%84/","path":"2017/04/13/Selenium 2.0的由来及设计架构/","title":"Selenium 2.0的由来及设计架构"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"https://windanchaos.github.io/docs/2017/04/13/Selenium%202.0%E7%9A%84%E7%94%B1%E6%9D%A5%E5%8F%8A%E8%AE%BE%E8%AE%A1%E6%9E%B6%E6%9E%84/","path":"2017/04/13/Selenium 2.0的由来及设计架构/","title":"Selenium 2.0的由来及设计架构"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>Selenium 2.0的由来及设计架构 | Hexo</title>
@@ -208,7 +208,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
-    <link itemprop="mainEntityOfPage" href="https://windanchaos.github.io/2017/04/13/Selenium%202.0%E7%9A%84%E7%94%B1%E6%9D%A5%E5%8F%8A%E8%AE%BE%E8%AE%A1%E6%9E%B6%E6%9E%84/">
+    <link itemprop="mainEntityOfPage" href="https://windanchaos.github.io/docs/2017/04/13/Selenium%202.0%E7%9A%84%E7%94%B1%E6%9D%A5%E5%8F%8A%E8%AE%BE%E8%AE%A1%E6%9E%B6%E6%9E%84/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="docs/images/avatar.jpeg">
@@ -479,7 +479,7 @@
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
-  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":"enable","archive":"enable","delay":true,"timeout":3000,"priority":true,"url":"https://windanchaos.github.io/2017/04/13/Selenium%202.0%E7%9A%84%E7%94%B1%E6%9D%A5%E5%8F%8A%E8%AE%BE%E8%AE%A1%E6%9E%B6%E6%9E%84/"}</script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":"enable","archive":"enable","delay":true,"timeout":3000,"priority":true,"url":"https://windanchaos.github.io/docs/2017/04/13/Selenium%202.0%E7%9A%84%E7%94%B1%E6%9D%A5%E5%8F%8A%E8%AE%BE%E8%AE%A1%E6%9E%B6%E6%9E%84/"}</script>
   <script src="docs/js/third-party/quicklink.js"></script>
 
 </body>

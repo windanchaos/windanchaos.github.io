@@ -24,7 +24,7 @@
     <meta name="description" content="理解异步，需要理解shell壳的原理，父shell和子shell进程之间关系。shell什么情况下会产生子进程下英文摘自info bash1、后台执行命令 &amp;。If a command is terminated by the control operator ‘&amp;’, the shell executes the command asynchronously in a subsh">
 <meta property="og:type" content="article">
 <meta property="og:title" content="shell for 循环中实现异步处理">
-<meta property="og:url" content="https://windanchaos.github.io/2018/07/18/shell%20for%20%E5%BE%AA%E7%8E%AF%E4%B8%AD%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86/index.html">
+<meta property="og:url" content="https://windanchaos.github.io/docs/2018/07/18/shell%20for%20%E5%BE%AA%E7%8E%AF%E4%B8%AD%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="理解异步，需要理解shell壳的原理，父shell和子shell进程之间关系。shell什么情况下会产生子进程下英文摘自info bash1、后台执行命令 &amp;。If a command is terminated by the control operator ‘&amp;’, the shell executes the command asynchronously in a subsh">
 <meta property="og:locale">
@@ -35,11 +35,11 @@
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://windanchaos.github.io/2018/07/18/shell%20for%20%E5%BE%AA%E7%8E%AF%E4%B8%AD%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86/">
+<link rel="canonical" href="https://windanchaos.github.io/docs/2018/07/18/shell%20for%20%E5%BE%AA%E7%8E%AF%E4%B8%AD%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"https://windanchaos.github.io/2018/07/18/shell%20for%20%E5%BE%AA%E7%8E%AF%E4%B8%AD%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86/","path":"2018/07/18/shell for 循环中实现异步处理/","title":"shell for 循环中实现异步处理"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"https://windanchaos.github.io/docs/2018/07/18/shell%20for%20%E5%BE%AA%E7%8E%AF%E4%B8%AD%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86/","path":"2018/07/18/shell for 循环中实现异步处理/","title":"shell for 循环中实现异步处理"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>shell for 循环中实现异步处理 | Hexo</title>
@@ -202,7 +202,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
-    <link itemprop="mainEntityOfPage" href="https://windanchaos.github.io/2018/07/18/shell%20for%20%E5%BE%AA%E7%8E%AF%E4%B8%AD%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86/">
+    <link itemprop="mainEntityOfPage" href="https://windanchaos.github.io/docs/2018/07/18/shell%20for%20%E5%BE%AA%E7%8E%AF%E4%B8%AD%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="docs/images/avatar.jpeg">
@@ -353,7 +353,7 @@
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
-  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":"enable","archive":"enable","delay":true,"timeout":3000,"priority":true,"url":"https://windanchaos.github.io/2018/07/18/shell%20for%20%E5%BE%AA%E7%8E%AF%E4%B8%AD%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86/"}</script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":"enable","archive":"enable","delay":true,"timeout":3000,"priority":true,"url":"https://windanchaos.github.io/docs/2018/07/18/shell%20for%20%E5%BE%AA%E7%8E%AF%E4%B8%AD%E5%AE%9E%E7%8E%B0%E5%BC%82%E6%AD%A5%E5%A4%84%E7%90%86/"}</script>
   <script src="docs/js/third-party/quicklink.js"></script>
 
 </body>

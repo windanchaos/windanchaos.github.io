@@ -24,25 +24,25 @@
     <meta name="description" content="本人使用Linux的shell脚本对公司测试及生产代码的自动构建发布进行了开发工作，并实际运用到工作当中，显著提高了代码发布的效率，减少了人工发版出错的概率。但是，公司迭代速度非常快，开发进度十分聊得，敏捷的模式下，研发提交代码，再到发布到测试环境的频率很高，由于我负责维护和使用这套东西，在解决bug的过程中，个人的生产力大部分被发版占据。痛定思痛，本人打算将shell脚本升级到更加自动化的程度，">
 <meta property="og:type" content="article">
 <meta property="og:title" content="基于git maven jenkins的自动构建发布系统三">
-<meta property="og:url" content="https://windanchaos.github.io/2017/05/06/%E5%9F%BA%E4%BA%8Egit%20maven%20jenkins%E7%9A%84%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA%E5%8F%91%E5%B8%83%E7%B3%BB%E7%BB%9F%E4%B8%89/index.html">
+<meta property="og:url" content="https://windanchaos.github.io/docs/2017/05/06/%E5%9F%BA%E4%BA%8Egit%20maven%20jenkins%E7%9A%84%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA%E5%8F%91%E5%B8%83%E7%B3%BB%E7%BB%9F%E4%B8%89/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="本人使用Linux的shell脚本对公司测试及生产代码的自动构建发布进行了开发工作，并实际运用到工作当中，显著提高了代码发布的效率，减少了人工发版出错的概率。但是，公司迭代速度非常快，开发进度十分聊得，敏捷的模式下，研发提交代码，再到发布到测试环境的频率很高，由于我负责维护和使用这套东西，在解决bug的过程中，个人的生产力大部分被发版占据。痛定思痛，本人打算将shell脚本升级到更加自动化的程度，">
 <meta property="og:locale">
-<meta property="og:image" content="https://windanchaos.github.io/2017/05/06/%E5%9F%BA%E4%BA%8Egit%20maven%20jenkins%E7%9A%84%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA%E5%8F%91%E5%B8%83%E7%B3%BB%E7%BB%9F%E4%B8%89/docs/images/dn.net-20170506175834112-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2luZGFuY2hhb3M=-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png">
-<meta property="og:image" content="https://windanchaos.github.io/2017/05/06/%E5%9F%BA%E4%BA%8Egit%20maven%20jenkins%E7%9A%84%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA%E5%8F%91%E5%B8%83%E7%B3%BB%E7%BB%9F%E4%B8%89/docs/images/dn.net-20170506183004352-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2luZGFuY2hhb3M=-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png">
+<meta property="og:image" content="https://windanchaos.github.io/docs/2017/05/06/%E5%9F%BA%E4%BA%8Egit%20maven%20jenkins%E7%9A%84%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA%E5%8F%91%E5%B8%83%E7%B3%BB%E7%BB%9F%E4%B8%89/docs/images/dn.net-20170506175834112-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2luZGFuY2hhb3M=-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png">
+<meta property="og:image" content="https://windanchaos.github.io/docs/2017/05/06/%E5%9F%BA%E4%BA%8Egit%20maven%20jenkins%E7%9A%84%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA%E5%8F%91%E5%B8%83%E7%B3%BB%E7%BB%9F%E4%B8%89/docs/images/dn.net-20170506183004352-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2luZGFuY2hhb3M=-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png">
 <meta property="article:published_time" content="2017-05-06T10:22:56.000Z">
 <meta property="article:modified_time" content="2021-06-08T10:44:42.149Z">
 <meta property="article:author" content="windanchaos">
 <meta property="article:tag" content="FromCSDN">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://windanchaos.github.io/2017/05/06/%E5%9F%BA%E4%BA%8Egit%20maven%20jenkins%E7%9A%84%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA%E5%8F%91%E5%B8%83%E7%B3%BB%E7%BB%9F%E4%B8%89/docs/images/dn.net-20170506175834112-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2luZGFuY2hhb3M=-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png">
+<meta name="twitter:image" content="https://windanchaos.github.io/docs/2017/05/06/%E5%9F%BA%E4%BA%8Egit%20maven%20jenkins%E7%9A%84%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA%E5%8F%91%E5%B8%83%E7%B3%BB%E7%BB%9F%E4%B8%89/docs/images/dn.net-20170506175834112-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2luZGFuY2hhb3M=-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png">
 
 
-<link rel="canonical" href="https://windanchaos.github.io/2017/05/06/%E5%9F%BA%E4%BA%8Egit%20maven%20jenkins%E7%9A%84%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA%E5%8F%91%E5%B8%83%E7%B3%BB%E7%BB%9F%E4%B8%89/">
+<link rel="canonical" href="https://windanchaos.github.io/docs/2017/05/06/%E5%9F%BA%E4%BA%8Egit%20maven%20jenkins%E7%9A%84%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA%E5%8F%91%E5%B8%83%E7%B3%BB%E7%BB%9F%E4%B8%89/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"https://windanchaos.github.io/2017/05/06/%E5%9F%BA%E4%BA%8Egit%20maven%20jenkins%E7%9A%84%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA%E5%8F%91%E5%B8%83%E7%B3%BB%E7%BB%9F%E4%B8%89/","path":"2017/05/06/基于git maven jenkins的自动构建发布系统三/","title":"基于git maven jenkins的自动构建发布系统三"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"https://windanchaos.github.io/docs/2017/05/06/%E5%9F%BA%E4%BA%8Egit%20maven%20jenkins%E7%9A%84%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA%E5%8F%91%E5%B8%83%E7%B3%BB%E7%BB%9F%E4%B8%89/","path":"2017/05/06/基于git maven jenkins的自动构建发布系统三/","title":"基于git maven jenkins的自动构建发布系统三"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>基于git maven jenkins的自动构建发布系统三 | Hexo</title>
@@ -205,7 +205,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
-    <link itemprop="mainEntityOfPage" href="https://windanchaos.github.io/2017/05/06/%E5%9F%BA%E4%BA%8Egit%20maven%20jenkins%E7%9A%84%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA%E5%8F%91%E5%B8%83%E7%B3%BB%E7%BB%9F%E4%B8%89/">
+    <link itemprop="mainEntityOfPage" href="https://windanchaos.github.io/docs/2017/05/06/%E5%9F%BA%E4%BA%8Egit%20maven%20jenkins%E7%9A%84%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA%E5%8F%91%E5%B8%83%E7%B3%BB%E7%BB%9F%E4%B8%89/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="docs/images/avatar.jpeg">
@@ -363,7 +363,7 @@
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
-  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":"enable","archive":"enable","delay":true,"timeout":3000,"priority":true,"url":"https://windanchaos.github.io/2017/05/06/%E5%9F%BA%E4%BA%8Egit%20maven%20jenkins%E7%9A%84%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA%E5%8F%91%E5%B8%83%E7%B3%BB%E7%BB%9F%E4%B8%89/"}</script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":"enable","archive":"enable","delay":true,"timeout":3000,"priority":true,"url":"https://windanchaos.github.io/docs/2017/05/06/%E5%9F%BA%E4%BA%8Egit%20maven%20jenkins%E7%9A%84%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA%E5%8F%91%E5%B8%83%E7%B3%BB%E7%BB%9F%E4%B8%89/"}</script>
   <script src="docs/js/third-party/quicklink.js"></script>
 
 </body>

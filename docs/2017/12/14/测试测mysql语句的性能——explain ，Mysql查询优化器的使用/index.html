@@ -24,25 +24,25 @@
     <meta name="description" content="MySQL 查询优化器有几个目标，但是其中最主要的目标是尽可能地使用索引，并且使用最严格的索引来消除尽可能多的数据行。最终目标是提交 SELECT 语句查找数据行，而不是排除数据行。优化器试图排除数据行的原因在于它排除数据行的速度越快，那么找到与条件匹配的数据行也就越快。如果能够首先进行最严格的测试，查询就可以执行地更快。MySql 深化学习 1 explain用法explain可以帮助我们分析s">
 <meta property="og:type" content="article">
 <meta property="og:title" content="测试测mysql语句的性能——explain ，Mysql查询优化器的使用">
-<meta property="og:url" content="https://windanchaos.github.io/2017/12/14/%E6%B5%8B%E8%AF%95%E6%B5%8Bmysql%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%80%A7%E8%83%BD%E2%80%94%E2%80%94explain%20%EF%BC%8CMysql%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/index.html">
+<meta property="og:url" content="https://windanchaos.github.io/docs/2017/12/14/%E6%B5%8B%E8%AF%95%E6%B5%8Bmysql%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%80%A7%E8%83%BD%E2%80%94%E2%80%94explain%20%EF%BC%8CMysql%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="MySQL 查询优化器有几个目标，但是其中最主要的目标是尽可能地使用索引，并且使用最严格的索引来消除尽可能多的数据行。最终目标是提交 SELECT 语句查找数据行，而不是排除数据行。优化器试图排除数据行的原因在于它排除数据行的速度越快，那么找到与条件匹配的数据行也就越快。如果能够首先进行最严格的测试，查询就可以执行地更快。MySql 深化学习 1 explain用法explain可以帮助我们分析s">
 <meta property="og:locale">
-<meta property="og:image" content="https://windanchaos.github.io/2017/12/14/%E6%B5%8B%E8%AF%95%E6%B5%8Bmysql%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%80%A7%E8%83%BD%E2%80%94%E2%80%94explain%20%EF%BC%8CMysql%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/docs/images/dn.net-20171214200235222-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2luZGFuY2hhb3M=-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png">
-<meta property="og:image" content="https://windanchaos.github.io/2017/12/14/%E6%B5%8B%E8%AF%95%E6%B5%8Bmysql%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%80%A7%E8%83%BD%E2%80%94%E2%80%94explain%20%EF%BC%8CMysql%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/docs/images/dn.net-20171215113203697-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2luZGFuY2hhb3M=-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png">
+<meta property="og:image" content="https://windanchaos.github.io/docs/2017/12/14/%E6%B5%8B%E8%AF%95%E6%B5%8Bmysql%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%80%A7%E8%83%BD%E2%80%94%E2%80%94explain%20%EF%BC%8CMysql%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/docs/images/dn.net-20171214200235222-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2luZGFuY2hhb3M=-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png">
+<meta property="og:image" content="https://windanchaos.github.io/docs/2017/12/14/%E6%B5%8B%E8%AF%95%E6%B5%8Bmysql%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%80%A7%E8%83%BD%E2%80%94%E2%80%94explain%20%EF%BC%8CMysql%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/docs/images/dn.net-20171215113203697-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2luZGFuY2hhb3M=-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png">
 <meta property="article:published_time" content="2017-12-14T12:07:49.000Z">
 <meta property="article:modified_time" content="2021-06-08T10:44:42.160Z">
 <meta property="article:author" content="windanchaos">
 <meta property="article:tag" content="FromCSDN">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://windanchaos.github.io/2017/12/14/%E6%B5%8B%E8%AF%95%E6%B5%8Bmysql%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%80%A7%E8%83%BD%E2%80%94%E2%80%94explain%20%EF%BC%8CMysql%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/docs/images/dn.net-20171214200235222-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2luZGFuY2hhb3M=-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png">
+<meta name="twitter:image" content="https://windanchaos.github.io/docs/2017/12/14/%E6%B5%8B%E8%AF%95%E6%B5%8Bmysql%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%80%A7%E8%83%BD%E2%80%94%E2%80%94explain%20%EF%BC%8CMysql%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/docs/images/dn.net-20171214200235222-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2luZGFuY2hhb3M=-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png">
 
 
-<link rel="canonical" href="https://windanchaos.github.io/2017/12/14/%E6%B5%8B%E8%AF%95%E6%B5%8Bmysql%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%80%A7%E8%83%BD%E2%80%94%E2%80%94explain%20%EF%BC%8CMysql%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/">
+<link rel="canonical" href="https://windanchaos.github.io/docs/2017/12/14/%E6%B5%8B%E8%AF%95%E6%B5%8Bmysql%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%80%A7%E8%83%BD%E2%80%94%E2%80%94explain%20%EF%BC%8CMysql%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"https://windanchaos.github.io/2017/12/14/%E6%B5%8B%E8%AF%95%E6%B5%8Bmysql%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%80%A7%E8%83%BD%E2%80%94%E2%80%94explain%20%EF%BC%8CMysql%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/","path":"2017/12/14/测试测mysql语句的性能——explain ，Mysql查询优化器的使用/","title":"测试测mysql语句的性能——explain ，Mysql查询优化器的使用"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"https://windanchaos.github.io/docs/2017/12/14/%E6%B5%8B%E8%AF%95%E6%B5%8Bmysql%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%80%A7%E8%83%BD%E2%80%94%E2%80%94explain%20%EF%BC%8CMysql%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/","path":"2017/12/14/测试测mysql语句的性能——explain ，Mysql查询优化器的使用/","title":"测试测mysql语句的性能——explain ，Mysql查询优化器的使用"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>测试测mysql语句的性能——explain ，Mysql查询优化器的使用 | Hexo</title>
@@ -206,7 +206,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
-    <link itemprop="mainEntityOfPage" href="https://windanchaos.github.io/2017/12/14/%E6%B5%8B%E8%AF%95%E6%B5%8Bmysql%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%80%A7%E8%83%BD%E2%80%94%E2%80%94explain%20%EF%BC%8CMysql%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/">
+    <link itemprop="mainEntityOfPage" href="https://windanchaos.github.io/docs/2017/12/14/%E6%B5%8B%E8%AF%95%E6%B5%8Bmysql%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%80%A7%E8%83%BD%E2%80%94%E2%80%94explain%20%EF%BC%8CMysql%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="docs/images/avatar.jpeg">
@@ -387,7 +387,7 @@
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
-  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":"enable","archive":"enable","delay":true,"timeout":3000,"priority":true,"url":"https://windanchaos.github.io/2017/12/14/%E6%B5%8B%E8%AF%95%E6%B5%8Bmysql%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%80%A7%E8%83%BD%E2%80%94%E2%80%94explain%20%EF%BC%8CMysql%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/"}</script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":"enable","archive":"enable","delay":true,"timeout":3000,"priority":true,"url":"https://windanchaos.github.io/docs/2017/12/14/%E6%B5%8B%E8%AF%95%E6%B5%8Bmysql%E8%AF%AD%E5%8F%A5%E7%9A%84%E6%80%A7%E8%83%BD%E2%80%94%E2%80%94explain%20%EF%BC%8CMysql%E6%9F%A5%E8%AF%A2%E4%BC%98%E5%8C%96%E5%99%A8%E7%9A%84%E4%BD%BF%E7%94%A8/"}</script>
   <script src="docs/js/third-party/quicklink.js"></script>
 
 </body>
