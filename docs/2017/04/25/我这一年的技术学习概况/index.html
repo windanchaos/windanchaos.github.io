@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="docs/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="docs/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="docs/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="docs/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="docs/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"windanchaos.github.io","root":"docs/","images":"docs/images","scheme":"Mist","darkmode":true,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="docs/js/config.js"></script>
+
+    <meta name="description" content="2016年上半年５月之前，准备中级软考，主考软件设计师，最后没有考过。考证的主要出发点是恶补下计算机基础，能过最好过不了也可以接受。开始写技术日志是从２０１６年的７月，那段时间在学习java代码，曾尝试阅读公司商城的源代码，代码大而全，确实切入困难，尝试过了解spring的架构之类的，最后还是没有达到看源码的水平。用java写了个自动登录系统投票的小软件给未来丈母娘的一个活动定时自动投票，最后被人">
+<meta property="og:type" content="article">
+<meta property="og:title" content="我这一年的技术学习概况">
+<meta property="og:url" content="https://windanchaos.github.io/2017/04/25/%E6%88%91%E8%BF%99%E4%B8%80%E5%B9%B4%E7%9A%84%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E6%A6%82%E5%86%B5/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="2016年上半年５月之前，准备中级软考，主考软件设计师，最后没有考过。考证的主要出发点是恶补下计算机基础，能过最好过不了也可以接受。开始写技术日志是从２０１６年的７月，那段时间在学习java代码，曾尝试阅读公司商城的源代码，代码大而全，确实切入困难，尝试过了解spring的架构之类的，最后还是没有达到看源码的水平。用java写了个自动登录系统投票的小软件给未来丈母娘的一个活动定时自动投票，最后被人">
+<meta property="og:locale">
+<meta property="article:published_time" content="2017-04-25T15:37:16.000Z">
+<meta property="article:modified_time" content="2021-06-08T10:39:48.807Z">
+<meta property="article:author" content="windanchaos">
+<meta property="article:tag" content="FromCSDN">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://windanchaos.github.io/2017/04/25/%E6%88%91%E8%BF%99%E4%B8%80%E5%B9%B4%E7%9A%84%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E6%A6%82%E5%86%B5/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"https://windanchaos.github.io/2017/04/25/%E6%88%91%E8%BF%99%E4%B8%80%E5%B9%B4%E7%9A%84%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E6%A6%82%E5%86%B5/","path":"2017/04/25/我这一年的技术学习概况/","title":"我这一年的技术学习概况"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>我这一年的技术学习概况 | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="docs/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="docs/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Hexo</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-首页"><a href="docs/" rel="section"><i class="home fa-fw"></i>首页</a></li><li class="menu-item menu-item-分类"><a href="docs/categories/" rel="section"><i class="th fa-fw"></i>分类</a></li><li class="menu-item menu-item-归档"><a href="docs/archives/" rel="section"><i class="archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-标签"><a href="docs/tags/" rel="section"><i class="tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-关于"><a href="docs/about/me.html" rel="section"><i class="user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="windanchaos"
+      src="docs/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">windanchaos</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="docs/archives/">
+          <span class="site-state-item-count">111</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="docs/categories/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="docs/tags/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/windanchaos" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/windanchaos" title="Gitee → https:&#x2F;&#x2F;gitee.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="gitee fa-fw"></i>Gitee</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:454722630@qq.com" title="E-Mail → mailto:454722630@qq.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/windanchaos" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/windanchaos" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;windanchaos" rel="noopener" target="_blank"><i class="CSDN fa-fw"></i>CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
+    <link itemprop="mainEntityOfPage" href="https://windanchaos.github.io/2017/04/25/%E6%88%91%E8%BF%99%E4%B8%80%E5%B9%B4%E7%9A%84%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E6%A6%82%E5%86%B5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="docs/images/avatar.jpeg">
+      <meta itemprop="name" content="windanchaos">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="我这一年的技术学习概况 | Hexo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          我这一年的技术学习概况
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2017-04-25 23:37:16" itemprop="dateCreated datePublished" datetime="2017-04-25T23:37:16+08:00">2017-04-25</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2021-06-08 18:39:48" itemprop="dateModified" datetime="2021-06-08T18:39:48+08:00">2021-06-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="docs/categories/%E6%B5%8B%E8%AF%95%E7%9A%84%E6%A1%86%E6%9E%B6%E5%92%8C%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">测试的框架和技术</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>2016年上半年５月之前，准备中级软考，主考软件设计师，最后没有考过。考证的主要出发点是恶补下计算机基础，能过最好过不了也可以接受。<br>开始写技术日志是从２０１６年的７月，那段时间在学习java代码，曾尝试阅读公司商城的源代码，代码大而全，确实切入困难，尝试过了解spring的架构之类的，最后还是没有达到看源码的水平。用java写了个自动登录系统投票的小软件给未来丈母娘的一个活动定时自动投票，最后被人家发现了，加了IP限制，吼吼，最后排了个第二，排第一的那个增长其实我猜测也。<br>期间，公司发生变化，技术研发独立出来成立新公司。由于个人的努力，慢慢掌管了公司的发版工作，无论是生产环境还是测试环境。于是做了些设计，比如自动发版、使用jenkins自动发版、提供出一个网页让任何一个人可以简单培训后执行发版工作。为此专门业余（只能晚上自己弄，上班正常的测试工作多，忙得很），大概如下：<br>学习了shell基础，这个东东实践了，使公司日常测试代码和生产发版都可以自动脚本化。<br>学习了python的djongo框架（选python是因为，脚本语言来得快,java看不到成果灰心了），基于这个架构整了个简单的，读取ｇｉｔ日志到数据库的代码，用了pygit，这一套东西最初的目的是方便测试在网页上查看提交历史，甚至可以查询修改影响的文件有哪些，从而让测试从源头上遏制代码的影响。但设想归设想，我做的还是简单粗陋，仅达到了设想的第一步，第二步没有走，第三步就更不用说了，这个demo练了手，没有用起来，对djongo的三个层次（model\view\urls）有了个大概了解。<br>研究学习了jenkins的安装和使用，部署很简单，但是它插件太多，我竟不知所措，没有详细研究在项目中使用。另一个原因是测试服务器资源太紧，哎，私下研究，搞慢了怕被批。<br>研究学习了一段时间Docker容器技术。可以自己写dockerfile生成，了解了docker的一些基本原理，image和容器的关系之类的。目的是想通过docker来改造下测试环境上多个ｗebent部署到一个tomcat，修改一个要重启半天的问题。最后，无疾而终，现在想来，主要还是测试环境发版频率很高，生成docker镜像速度并不见得快，当然另一个原因还是我没有搞明白docker容器之间的通信，以及多个webent（支付、鉴权、api等）强依赖８0端口，怎么解决８０端口的问题。<br>由于负责发版，所以很顺利的我必须了解git如何使用及管理。所以顺带了把git恶补了下。什么分支、本地代码库、远程代码库、版本号、commit、add、push、fetch巴拉的，可以说有的研发同学也没有我懂git，因为我操作代码是在服务器上，完全使用命令。如果出现问题，代码库里谁干了坏事一目了然，感觉飞起来了一样，质量把控精准到代码行。当然插一句，每次发版有很多hotfix要我手动往生产提，提之前自己要简单测试下，这些比较低端繁琐的工作，还是影响了我的生产效率。出现这种情况，主要还是我们测试这边并没有很好的模拟生产环境，当然我的搭档纯功能测试，leader给她定义的是管理，我则是偏技术的测试，人少活急，敏捷开发嘛，容错改错是常情。<br>这期间，我还煞有介事的研究过facebook的一个开源工具infer，木有写日志。不过我是真真切切的感受到了大中华的围墙的威力，为了安装infer，我在家里的电脑上搞了差不多一周，每次装到一半就不动，哎ＴＭＤ，我是爱普老用户。。。最终安装好了，run了代码库，记得最后的结果里２０多处可能出现空指针的地方，我逐条给代码生产者提bug，当时心理那个高兴劲儿，现在都忘不了，新技术新工具，发现异常潜在风险，心里都了开花了，哎，可惜，仅一条被接受，其他的基本上是“代码确实会出空指针，但是业务逻辑走不到那去”。俺看不懂他们的代码，更谈不上在业务基础上去看java代码，所以我毫无辩解或者有起码的跟他们讨论代码的能力，这辛苦也就算东流了。但是，为了安装infer，我接触了dokcer，虽然最后木有用，但也木有坏处。倒是把我引到了新技术上。要在我的ubuntu上装infer，解决各种依赖，最后还是解决了。<br>然后，随着系统主干功能趋于稳定，我认为合适引入UI自动测试了，主要是每次发版，２个手去回归，总是有遗漏，另一个人之常情的是老功能，回归的时候思想上难免懈怠（测试了无数回，以前是好的，现在也假设是它是好的，难免会疏漏）。然后我就着手用python的splinter来搞UI自动测试了。还真别说，顺带把python的基础教程，语法之类的全部看完。这里要换行，强调下我是多么的能学。<br>splinter有github的源代码，api就那么多，用起来确实爽。python脚本语言出东西就是快，我很快就把公司发布商品的功能自动化了。还顺带写了写常用的工具和方法，什么特殊字符串、随机选图啊、随机数、随机字符串啊之类。写这个功能的时候没有使用脚本录制，完全纯手工，突破很多技术难题（主要是界面动态元素、元素不可见之类的），顺带看了点jquery的语法，又把html&#x2F;css的基础看了一遍。<br>在演习python过程中，内心一直按耐不住用程序去识别股票的想法。于是，很顺利的，借着一边学习python一边学习“宽客”技术的理念，开始研究股票的一些开源api，还把api读取到的数据写入到了本地数据库，本来打算自己从数据库里读数据，但果断放弃了，因为过程中发现摆在我面前的是无数个python库。了解了python中的dataFrame这个东西的一些使用方法，看完了聚宽网上面的api，然后自己在上面了几个策略，然后就是测试自己的策略，第一个策略是多头回调，买二股，最终复测10年的上证，年化收益18%，还不错。写第二次策略，希望结合多头选股和rsi来操作股票，最终测试不是很合理。然后，顺带看了些机器学习的东西，浅尝。还看了一本python和数学计算有关的书，大致了解并未深入，只需要知道有那么个东西，需要的是再查。<br>最后，UI的测试case要管理起来，我发现python的unittest，不能在case和case之间传递公共变量，也就是我一个case要登陆一遍后台，要重新拉取一次页面，这效率我还是挺难接受的，在没有知道很好的解决办法之后，我相信肯定有，只不过我还没有发现。我在网上看有人自定义了firefox的webdriver，但是是java的，然后我就去看看……发现selenium对java支持的历史好早。。。然后我就转java去了，搞了一周，我设想的搞出来了。登陆-发布商品等操作不同case之间，一个driver搞定，目前感情出了点情况，没有推动下去，不过会推动的。<br>我还学了基本的mysql语法，日常测试为了制作测试数据还会用到。增删改查，都很简单，这里还需要深化点。发版对数据库操作也是我负责，研发提交的脚本，我基本可以帮他们修改到可以run。但是呢，让我写估计速度会慢点。<br>其他测试相关的，有很多小的技术累计。质量把关等，就不总结了，技术日志都记录有。<br>反观这一年，基本大部分的时候都在晚上学，LOL基本放弃。坚持在ubuntu环境下学习，还是有点收获，好歹是一种奋进的姿态。不过自我感觉进步并不明显，我现在希望更多的工作是编码，因为潜意识里我认为功能测试，是拿不多高薪水的。我们来看看，牛逼测试的技术要求：<br>工作职责：</p>
+<p>1.搭建、维护、改进测试系统环境；<br>2.使用类似Robot Framework工具搭建自动化测试系统环境；<br>3.编写系统集成系统测试计划、方案及执行；<br>4.编写、维护测试报告及评估测试工作进度和计划；<br>5.配合程序员对bug的复现和追踪，研究新的测试方法；<br>6.指导初级测试人员进行技术指导与培训；</p>
+<p>任职资格：<br>7.本科及以上学历，计算机、软件、电子信息等相关专业；<br>8.具有5年以上软件测试工作经历，熟悉软件测试理论，测试流程，能够根据需求文档编写测试用例，形成测试报告；<br>9.具有运用编程语言（比如Python）进行自动化测试系统开发经验；<br>10.熟悉Windows&#x2F;Linux系统 ，具有数据库脚本使用经验（MSSQL, MYSQL）；<br>11.熟悉性能测试，能够使用loadrunner、Jmeter等性能工具；</p>
+<p>所以呢，这一年多的技术学习，真正那得到台面上的是我在Linux环境下搞的自动发版，因为它动了真格。其他相关的，都是散打。下一步重点培养：mysql方面、继续把UI自动化的设想变成现实，留意平台性能测试。我以前面过这个公司，那时候想找个研发测试类初级点的，跟人聊说起来我学过，但是一问呢都是学过，人家根本不care你学过，人家要听你真的做过，做的细节，咋解决的，你做过他们才觉得你配，学过算不上。哎，当然本身我能力还可以，不过呢，不太会口述，口述100分的出来可能人家就给你70了，当然我做过售前的，文字描述那还是很厉害的。。。</p>
+<p>最后作为一个测试，我并不认为应该局限于测试领域内，因为，人的价值并不是而且不应该被他职位所限定，自己可以发现自己对组织有价值的点，然后做出成绩，就像发版和代码库的管理在大多数组织里不一定是测试负责，但是在我们公司是测试在负责，因为开始是低端的手动发，研发不愿做，然后我想学东西，我愿意做，然后发现了可以提高效率的方法，然后就深入做，而且我也做得很好，毕竟只要是生产发版，我几乎可以掌控全局，吼吼，这个还有提升的空间，比如持续集成概念引入后又是一番景象了。<br>总结到此，终。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="docs/tags/FromCSDN/" rel="tag"># FromCSDN</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="docs/2017/04/18/eclipse%20class%20file%20editor%20source%20not%20found/" rel="prev" title="eclipse class file editor source not found">
+                  <i class="fa fa-chevron-left"></i> eclipse class file editor source not found
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="docs/2017/05/06/%E5%9F%BA%E4%BA%8Egit%20maven%20jenkins%E7%9A%84%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA%E5%8F%91%E5%B8%83%E7%B3%BB%E7%BB%9F%E4%B8%89/" rel="next" title="基于git maven jenkins的自动构建发布系统三">
+                  基于git maven jenkins的自动构建发布系统三 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蜀ICP备19036728号 </a>
+      <img src="docs/images/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png" alt=""><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=51012202000611" rel="noopener" target="_blank">川公网安备 51012202000611号 </a>
+  </div>
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-dragon"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">windanchaos</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="docs/js/comments.js"></script><script src="docs/js/utils.js"></script><script src="docs/js/motion.js"></script><script src="docs/js/schemes/muse.js"></script><script src="docs/js/next-boot.js"></script><script src="docs/js/pjax.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":"enable","archive":"enable","delay":true,"timeout":3000,"priority":true,"url":"https://windanchaos.github.io/2017/04/25/%E6%88%91%E8%BF%99%E4%B8%80%E5%B9%B4%E7%9A%84%E6%8A%80%E6%9C%AF%E5%AD%A6%E4%B9%A0%E6%A6%82%E5%86%B5/"}</script>
+  <script src="docs/js/third-party/quicklink.js"></script>
+
+</body>
+</html>

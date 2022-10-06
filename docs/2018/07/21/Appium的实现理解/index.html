@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="docs/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="docs/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="docs/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="docs/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="docs/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"windanchaos.github.io","root":"docs/","images":"docs/images","scheme":"Mist","darkmode":true,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="docs/js/config.js"></script>
+
+    <meta name="description" content="本文转自：TesterHome的文章 本文针对appium(version:1.6.4-beta)「比较粗糙」的介绍了下它的源码的实现流程。难免有不妥支出，有任何问题，可直接沟通交流。（本文中没有相应的测试） Appium的架构   下载appium的源码，并安装依赖： 12git clone https:&#x2F;&#x2F;github.com&#x2F;appium&#x2F;appium.gitnpm install  启动a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Appium的实现理解">
+<meta property="og:url" content="https://windanchaos.github.io/2018/07/21/Appium%E7%9A%84%E5%AE%9E%E7%8E%B0%E7%90%86%E8%A7%A3/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="本文转自：TesterHome的文章 本文针对appium(version:1.6.4-beta)「比较粗糙」的介绍了下它的源码的实现流程。难免有不妥支出，有任何问题，可直接沟通交流。（本文中没有相应的测试） Appium的架构   下载appium的源码，并安装依赖： 12git clone https:&#x2F;&#x2F;github.com&#x2F;appium&#x2F;appium.gitnpm install  启动a">
+<meta property="og:locale">
+<meta property="og:image" content="https://windanchaos.github.io/2018/07/21/Appium%E7%9A%84%E5%AE%9E%E7%8E%B0%E7%90%86%E8%A7%A3/docs/images/thub.io-public-appium-packages-.png">
+<meta property="og:image" content="https://windanchaos.github.io/2018/07/21/Appium%E7%9A%84%E5%AE%9E%E7%8E%B0%E7%90%86%E8%A7%A3/docs/images/thub.io-public-images-appium_ios-.png">
+<meta property="og:image" content="https://windanchaos.github.io/2018/07/21/Appium%E7%9A%84%E5%AE%9E%E7%8E%B0%E7%90%86%E8%A7%A3/docs/images/thub.io-public-images-apium_android-.png">
+<meta property="og:image" content="https://windanchaos.github.io/2018/07/21/Appium%E7%9A%84%E5%AE%9E%E7%8E%B0%E7%90%86%E8%A7%A3/docs/images/thub.io-public-images-appium_uml-.png">
+<meta property="article:published_time" content="2018-07-21T03:54:10.000Z">
+<meta property="article:modified_time" content="2021-06-08T10:39:48.481Z">
+<meta property="article:author" content="windanchaos">
+<meta property="article:tag" content="FromCSDN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://windanchaos.github.io/2018/07/21/Appium%E7%9A%84%E5%AE%9E%E7%8E%B0%E7%90%86%E8%A7%A3/docs/images/thub.io-public-appium-packages-.png">
+
+
+<link rel="canonical" href="https://windanchaos.github.io/2018/07/21/Appium%E7%9A%84%E5%AE%9E%E7%8E%B0%E7%90%86%E8%A7%A3/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"https://windanchaos.github.io/2018/07/21/Appium%E7%9A%84%E5%AE%9E%E7%8E%B0%E7%90%86%E8%A7%A3/","path":"2018/07/21/Appium的实现理解/","title":"Appium的实现理解"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Appium的实现理解 | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="docs/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="docs/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Hexo</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-首页"><a href="docs/" rel="section"><i class="home fa-fw"></i>首页</a></li><li class="menu-item menu-item-分类"><a href="docs/categories/" rel="section"><i class="th fa-fw"></i>分类</a></li><li class="menu-item menu-item-归档"><a href="docs/archives/" rel="section"><i class="archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-标签"><a href="docs/tags/" rel="section"><i class="tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-关于"><a href="docs/about/me.html" rel="section"><i class="user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Appium%E7%9A%84%E6%9E%B6%E6%9E%84"><span class="nav-number">1.</span> <span class="nav-text">Appium的架构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#URL%E8%B7%AF%E7%94%B1%E8%A7%A3%E6%9E%90"><span class="nav-number">1.0.1.</span> <span class="nav-text">URL路由解析</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="windanchaos"
+      src="docs/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">windanchaos</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="docs/archives/">
+          <span class="site-state-item-count">111</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="docs/categories/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="docs/tags/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/windanchaos" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/windanchaos" title="Gitee → https:&#x2F;&#x2F;gitee.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="gitee fa-fw"></i>Gitee</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:454722630@qq.com" title="E-Mail → mailto:454722630@qq.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/windanchaos" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/windanchaos" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;windanchaos" rel="noopener" target="_blank"><i class="CSDN fa-fw"></i>CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
+    <link itemprop="mainEntityOfPage" href="https://windanchaos.github.io/2018/07/21/Appium%E7%9A%84%E5%AE%9E%E7%8E%B0%E7%90%86%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="docs/images/avatar.jpeg">
+      <meta itemprop="name" content="windanchaos">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Appium的实现理解 | Hexo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Appium的实现理解
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2018-07-21 11:54:10" itemprop="dateCreated datePublished" datetime="2018-07-21T11:54:10+08:00">2018-07-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2021-06-08 18:39:48" itemprop="dateModified" datetime="2021-06-08T18:39:48+08:00">2021-06-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="docs/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">自动化测试</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>本文转自：<a target="_blank" rel="noopener" href="https://testerhome.com/topics/7352">TesterHome的文章</a></p>
+<p>本文针对appium(version:1.6.4-beta)「比较粗糙」的介绍了下它的源码的实现流程。难免有不妥支出，有任何问题，可直接沟通交流。<br>（本文中没有相应的测试）</p>
+<h2 id="Appium的架构"><a href="#Appium的架构" class="headerlink" title="Appium的架构"></a>Appium的架构</h2><p><a target="_blank" rel="noopener" href="https://myersguo.github.io/public/appium-packages.png"></a><br><img data-src="docs/images/thub.io-public-appium-packages-.png" alt="appium"><br><a target="_blank" rel="noopener" href="https://myersguo.github.io/public/images/appium_ios.png"></a></p>
+<p><img data-src="docs/images/thub.io-public-images-appium_ios-.png" alt="appium"><br><a target="_blank" rel="noopener" href="https://myersguo.github.io/public/images/apium_android.png"></a></p>
+<p><img data-src="docs/images/thub.io-public-images-apium_android-.png" alt="appium"></p>
+<p>下载appium的源码，并安装依赖：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git clone <span class="attr">https</span>:<span class="comment">//github.com/appium/appium.git</span></span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
+<p>启动appium:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node .</span><br></pre></td></tr></table></figure>
+
+<p>这个启动命令实际是执行的：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node build\main.<span class="property">js</span></span><br></pre></td></tr></table></figure>
+<p>(package.json中指定了main入口)：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">...</span><br><span class="line"> <span class="string">&quot;main&quot;</span>: <span class="string">&quot;./build/lib/main.js&quot;</span>,</span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line">  <span class="string">&quot;bin&quot;</span>: &#123;</span><br><span class="line">    <span class="string">&quot;appium&quot;</span>: <span class="string">&quot;./build/lib/main.js&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+<p>&#x2F;build&#x2F;main.js是由&#x2F;lib&#x2F;main.js经babel翻译后的结果，所以，我们来看下&#x2F;lib&#x2F;main.js来理解appium的流程。<br>(备注：由于appium源码执行都是执行的编译后的方法，即build目录下，因此如果你想要调试进行测试，需要在各个模块build目录下更改调试,如果更改源码，需要gulp transpile进行编译)</p>
+<p><a target="_blank" rel="noopener" href="https://myersguo.github.io/public/images/appium_uml.png"></a><br><img data-src="docs/images/thub.io-public-images-appium_uml-.png" alt="appium uml"></p>
+<p>appium server端实现了HTTP REST API接口，将client端发来的API请求，解析，发送给执行端。apium server,以及其他的driver（android,ios）都实现了basedriver类。basedriver定义了session的创建，命令的执行方式(cmd执行)。</p>
+<p>appium server(appium driver)大致的流程为：</p>
+<p>我们看一下<a target="_blank" rel="noopener" href="https://github.com/appium/appium/blob/master/lib/main.js">appium server的源码</a>实现。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; server <span class="keyword">as</span> baseServer &#125; <span class="keyword">from</span> <span class="string">&#x27;appium-base-driver&#x27;</span>;</span><br><span class="line"><span class="keyword">import</span> getAppiumRouter <span class="keyword">from</span> <span class="string">&#x27;./appium&#x27;</span>;</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="keyword">async</span> <span class="keyword">function</span> <span class="title function_">main</span> (args = <span class="literal">null</span>) &#123;</span><br><span class="line">  <span class="comment">//解析参数</span></span><br><span class="line">  <span class="keyword">let</span> parser = <span class="title function_">getParser</span>();</span><br><span class="line">  <span class="keyword">let</span> throwInsteadOfExit = <span class="literal">false</span>;</span><br><span class="line">  <span class="keyword">if</span> (args) &#123;</span><br><span class="line">    args = <span class="title class_">Object</span>.<span class="title function_">assign</span>(&#123;&#125;, <span class="title function_">getDefaultArgs</span>(), args);</span><br><span class="line">    <span class="keyword">if</span> (args.<span class="property">throwInsteadOfExit</span>) &#123;</span><br><span class="line">      throwInsteadOfExit = <span class="literal">true</span>;</span><br><span class="line">      <span class="keyword">delete</span> args.<span class="property">throwInsteadOfExit</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    args = parser.<span class="title function_">parseArgs</span>();</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">await</span> <span class="title function_">logsinkInit</span>(args);</span><br><span class="line">  <span class="keyword">await</span> <span class="title function_">preflightChecks</span>(parser, args, throwInsteadOfExit);</span><br><span class="line">  <span class="comment">//输出欢迎信息</span></span><br><span class="line">  <span class="keyword">await</span> <span class="title function_">logStartupInfo</span>(parser, args);</span><br><span class="line">  <span class="comment">//注册接口路由,参见(appium-base-driver\lib\jsonwp\Mjsonwp.js)</span></span><br><span class="line">  <span class="keyword">let</span> router = <span class="title function_">getAppiumRouter</span>(args);</span><br><span class="line">  <span class="comment">//express server类(appium-base-driver\lib\express\server.js)</span></span><br><span class="line">  <span class="comment">//将注册的路由，传递给express注册.</span></span><br><span class="line">  <span class="keyword">let</span> server = <span class="keyword">await</span> <span class="title function_">baseServer</span>(router, args.<span class="property">port</span>, args.<span class="property">address</span>);</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    <span class="comment">//是否为appium grid的node节点</span></span><br><span class="line">    <span class="keyword">if</span> (args.<span class="property">nodeconfig</span> !== <span class="literal">null</span>) &#123;</span><br><span class="line">      <span class="keyword">await</span> <span class="title function_">registerNode</span>(args.<span class="property">nodeconfig</span>, args.<span class="property">address</span>, args.<span class="property">port</span>);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">    <span class="keyword">await</span> server.<span class="title function_">close</span>();</span><br><span class="line">    <span class="keyword">throw</span> err;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  process.<span class="title function_">once</span>(<span class="string">&#x27;SIGINT&#x27;</span>, <span class="keyword">async</span> <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    logger.<span class="title function_">info</span>(<span class="string">`Received SIGINT - shutting down`</span>);</span><br><span class="line">    <span class="keyword">await</span> server.<span class="title function_">close</span>();</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  process.<span class="title function_">once</span>(<span class="string">&#x27;SIGTERM&#x27;</span>, <span class="keyword">async</span> <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">    logger.<span class="title function_">info</span>(<span class="string">`Received SIGTERM - shutting down`</span>);</span><br><span class="line">    <span class="keyword">await</span> server.<span class="title function_">close</span>();</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">  <span class="title function_">logServerPort</span>(args.<span class="property">address</span>, args.<span class="property">port</span>);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> server;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line"><span class="comment">//路由</span></span><br><span class="line"><span class="comment">//appium.js,下面会讲解路由解析</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getAppiumRouter</span> (args) &#123;</span><br><span class="line">  <span class="keyword">let</span> appium = <span class="keyword">new</span> <span class="title class_">AppiumDriver</span>(args);</span><br><span class="line">  <span class="keyword">return</span> <span class="title function_">routeConfiguringFunction</span>(appium);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="URL路由解析"><a href="#URL路由解析" class="headerlink" title="URL路由解析"></a>URL路由解析</h4><p>上面说道，路由注册。所有支持的请求都<a target="_blank" rel="noopener" href="https://github.com/appium/appium-base-driver/blob/master/lib/mjsonwp/routes.js">METHOD_MAP</a>这个全局变量里面。它是一个path:commd的对象集合。路由执行过程是：</p>
+<p>我们来详细看一下(routeConfiguringFunction)到底做了什么(appium-base-driver\lib\mjsonwp\Mjsonwp.js):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">routeConfiguringFunction</span> (driver) &#123;</span><br><span class="line">  <span class="keyword">if</span> (!driver.<span class="property">sessionExists</span>) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&#x27;Drivers used with MJSONWP must implement `sessionExists`&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">if</span> (!(driver.<span class="property">executeCommand</span> || driver.<span class="property">execute</span>)) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="title class_">Error</span>(<span class="string">&#x27;Drivers used with MJSONWP must implement `executeCommand` or `execute`&#x27;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// return a function which will add all the routes to the driver</span></span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">function</span> (<span class="params">app</span>) &#123;</span><br><span class="line">    <span class="comment">//[METHOD_MAP](#route_config),是所有的路由配置,key为path,value为method的数组</span></span><br><span class="line">   <span class="comment">//对METHOD_MAP的配置进行绑定</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> [path, methods] <span class="keyword">of</span> _.<span class="title function_">toPairs</span>(<span class="variable constant_">METHOD_MAP</span>)) &#123;</span><br><span class="line">      <span class="keyword">for</span> (<span class="keyword">let</span> [method, spec] <span class="keyword">of</span> _.<span class="title function_">toPairs</span>(methods)) &#123;</span><br><span class="line">        <span class="comment">// set up the express route handler</span></span><br><span class="line">        <span class="title function_">buildHandler</span>(app, method, path, spec, driver, <span class="title function_">isSessionCommand</span>(spec.<span class="property">command</span>));</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//路由绑定</span></span><br><span class="line"><span class="comment">//示例：</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">  &#x27;/wd/hub/session&#x27;: &#123;</span></span><br><span class="line"><span class="comment">    POST: &#123;command: &#x27;createSession&#x27;, payloadParams: &#123;required: [&#x27;desiredCapabilities&#x27;], optional: [&#x27;requiredCapabilities&#x27;, &#x27;capabilities&#x27;]&#125;&#125;</span></span><br><span class="line"><span class="comment">  &#125;,</span></span><br><span class="line"><span class="comment">即:</span></span><br><span class="line"><span class="comment">method: POST</span></span><br><span class="line"><span class="comment">path: /wd/hub/session</span></span><br><span class="line"><span class="comment">spec: array</span></span><br><span class="line"><span class="comment">driver: appium</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">buildHandler</span> (app, method, path, spec, driver, isSessCmd) &#123;</span><br><span class="line">  <span class="keyword">let</span> <span class="title function_">asyncHandler</span> = <span class="keyword">async</span> (<span class="params">req, res</span>) =&gt; &#123;</span><br><span class="line">    <span class="keyword">let</span> jsonObj = req.<span class="property">body</span>;</span><br><span class="line">    <span class="keyword">let</span> httpResBody = &#123;&#125;;</span><br><span class="line">    <span class="keyword">let</span> httpStatus = <span class="number">200</span>;</span><br><span class="line">    <span class="keyword">let</span> newSessionId;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">      <span class="comment">//判断是否是创建session命令(包含createSession,getStatus,getSessions) </span></span><br><span class="line">      <span class="comment">//是否有session</span></span><br><span class="line">      <span class="keyword">if</span> (isSessCmd &amp;&amp; !driver.<span class="title function_">sessionExists</span>(req.<span class="property">params</span>.<span class="property">sessionId</span>)) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> errors.<span class="title class_">NoSuchDriverError</span>();</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">//设置了代理则透传</span></span><br><span class="line">      <span class="keyword">if</span> (isSessCmd &amp;&amp; <span class="title function_">driverShouldDoJwpProxy</span>(driver, req, spec.<span class="property">command</span>)) &#123;</span><br><span class="line">        <span class="keyword">await</span> <span class="title function_">doJwpProxy</span>(driver, req, res);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">//命令是否支持</span></span><br><span class="line">      <span class="keyword">if</span> (!spec.<span class="property">command</span>) &#123;</span><br><span class="line">        <span class="keyword">throw</span> <span class="keyword">new</span> errors.<span class="title class_">NotImplementedError</span>();</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">//POST参数检查 </span></span><br><span class="line">      <span class="keyword">if</span> (spec.<span class="property">payloadParams</span> &amp;&amp; spec.<span class="property">payloadParams</span>.<span class="property">wrap</span>) &#123;</span><br><span class="line">        jsonObj = <span class="title function_">wrapParams</span>(spec.<span class="property">payloadParams</span>, jsonObj);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">if</span> (spec.<span class="property">payloadParams</span> &amp;&amp; spec.<span class="property">payloadParams</span>.<span class="property">unwrap</span>) &#123;</span><br><span class="line">        jsonObj = <span class="title function_">unwrapParams</span>(spec.<span class="property">payloadParams</span>, jsonObj);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="title function_">checkParams</span>(spec.<span class="property">payloadParams</span>, jsonObj);</span><br><span class="line">      <span class="comment">//构造参数</span></span><br><span class="line">      <span class="keyword">let</span> args = <span class="title function_">makeArgs</span>(req.<span class="property">params</span>, jsonObj, spec.<span class="property">payloadParams</span> || []);</span><br><span class="line">      <span class="keyword">let</span> driverRes;</span><br><span class="line">      <span class="keyword">if</span> (validators[spec.<span class="property">command</span>]) &#123;</span><br><span class="line">        validators[spec.<span class="property">command</span>](...args);</span><br><span class="line">      &#125;</span><br><span class="line">      <span class="comment">//!!!!执行命令</span></span><br><span class="line">      <span class="comment">//捕获返回值</span></span><br><span class="line">      <span class="keyword">if</span> (driver.<span class="property">executeCommand</span>) &#123;</span><br><span class="line">        driverRes = <span class="keyword">await</span> driver.<span class="title function_">executeCommand</span>(spec.<span class="property">command</span>, ...args);</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        driverRes = <span class="keyword">await</span> driver.<span class="title function_">execute</span>(spec.<span class="property">command</span>, ...args);</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="comment">// unpack createSession response</span></span><br><span class="line">      <span class="keyword">if</span> (spec.<span class="property">command</span> === <span class="string">&#x27;createSession&#x27;</span>) &#123;</span><br><span class="line">        newSessionId = driverRes[<span class="number">0</span>];</span><br><span class="line">        driverRes = driverRes[<span class="number">1</span>];</span><br><span class="line">      &#125;</span><br><span class="line">      ...</span><br><span class="line">    &#125; <span class="keyword">catch</span> (err) &#123;</span><br><span class="line">      [httpStatus, httpResBody] = <span class="title function_">getResponseForJsonwpError</span>(actualErr);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (_.<span class="title function_">isString</span>(httpResBody)) &#123;</span><br><span class="line">      res.<span class="title function_">status</span>(httpStatus).<span class="title function_">send</span>(httpResBody);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (newSessionId) &#123;</span><br><span class="line">        httpResBody.<span class="property">sessionId</span> = newSessionId;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        httpResBody.<span class="property">sessionId</span> = req.<span class="property">params</span>.<span class="property">sessionId</span> || <span class="literal">null</span>;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      res.<span class="title function_">status</span>(httpStatus).<span class="title function_">json</span>(httpResBody);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="comment">// add the method to the app</span></span><br><span class="line">  app[method.<span class="title function_">toLowerCase</span>()](path, <span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">    B.<span class="title function_">resolve</span>(<span class="title function_">asyncHandler</span>(req, res)).<span class="title function_">done</span>();</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://github.com/appium/appium/blob/master/lib/appium.js">lib\appium.js</a></p>
+<p>上面说了</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">appium server</span><br></pre></td></tr></table></figure>
+<p>已经启动了，第一件事情，当然是创建<em><strong>session</strong></em>,然后把command交给这个session的不同driver去执行了。<br>appium先根据caps进行session创建（</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">getDriverForCaps</span><br></pre></td></tr></table></figure>
+<p>）,然后保存InnerDriver到当前session,以后每次执行命令(executeDCommand)会判断是否为appiumdriver的命令，不是则转给相应的driver去执行命令(android,ios等)。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">async</span> createSession (caps, reqCaps) &#123;</span><br><span class="line">  caps = _.<span class="title function_">defaults</span>(_.<span class="title function_">clone</span>(caps), <span class="variable language_">this</span>.<span class="property">args</span>.<span class="property">defaultCapabilities</span>);</span><br><span class="line">  <span class="keyword">let</span> <span class="title class_">InnerDriver</span> = <span class="variable language_">this</span>.<span class="title function_">getDriverForCaps</span>(caps);</span><br><span class="line">  <span class="variable language_">this</span>.<span class="title function_">printNewSessionAnnouncement</span>(<span class="title class_">InnerDriver</span>, caps);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="variable language_">this</span>.<span class="property">args</span>.<span class="property">sessionOverride</span> &amp;&amp; !!<span class="variable language_">this</span>.<span class="property">sessions</span> &amp;&amp; _.<span class="title function_">keys</span>(<span class="variable language_">this</span>.<span class="property">sessions</span>).<span class="property">length</span> &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> id <span class="keyword">of</span> _.<span class="title function_">keys</span>(<span class="variable language_">this</span>.<span class="property">sessions</span>)) &#123;</span><br><span class="line">      log.<span class="title function_">info</span>(<span class="string">`    Deleting session &#x27;<span class="subst">$&#123;id&#125;</span>&#x27;`</span>);</span><br><span class="line">      <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="keyword">await</span> <span class="variable language_">this</span>.<span class="title function_">deleteSession</span>(id);</span><br><span class="line">      &#125; <span class="keyword">catch</span> (ign) &#123;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> curSessions;</span><br><span class="line">  <span class="keyword">try</span> &#123;</span><br><span class="line">    curSessions = <span class="variable language_">this</span>.<span class="title function_">curSessionDataForDriver</span>(<span class="title class_">InnerDriver</span>);</span><br><span class="line">  &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> errors.<span class="title class_">SessionNotCreatedError</span>(e.<span class="property">message</span>);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> d = <span class="keyword">new</span> <span class="title class_">InnerDriver</span>(<span class="variable language_">this</span>.<span class="property">args</span>);</span><br><span class="line">  <span class="keyword">let</span> [innerSessionId, dCaps] = <span class="keyword">await</span> d.<span class="title function_">createSession</span>(caps, reqCaps, curSessions);</span><br><span class="line">  <span class="variable language_">this</span>.<span class="property">sessions</span>[innerSessionId] = d;</span><br><span class="line">  <span class="variable language_">this</span>.<span class="title function_">attachUnexpectedShutdownHandler</span>(d, innerSessionId);</span><br><span class="line">  d.<span class="title function_">startNewCommandTimeout</span>();</span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> [innerSessionId, dCaps];</span><br><span class="line">&#125;</span><br><span class="line">  <span class="keyword">async</span> executeCommand (cmd, ...args) &#123;</span><br><span class="line">  <span class="keyword">if</span> (<span class="title function_">isAppiumDriverCommand</span>(cmd)) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="variable language_">super</span>.<span class="title function_">executeCommand</span>(cmd, ...args);</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">let</span> sessionId = args[args.<span class="property">length</span> - <span class="number">1</span>];</span><br><span class="line">  <span class="keyword">return</span> <span class="variable language_">this</span>.<span class="property">sessions</span>[sessionId].<span class="title function_">executeCommand</span>(cmd, ...args);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在basedriver中</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">executeDCommand</span><br></pre></td></tr></table></figure>
+<p>其实是调用类的</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmd</span><br></pre></td></tr></table></figure>
+<p>定义的方法。</p>
+<p>我们以</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uiautomator2</span><br></pre></td></tr></table></figure>
+<p>(\appium-uiautomator2-driver\build\lib)为例看一下它的</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cmd</span><br></pre></td></tr></table></figure>
+<p>执行情况。</p>
+<p>以</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">getAttribute</span><br></pre></td></tr></table></figure>
+<p>(appium-uiautomator2-driver\lib\commands\element.js)为例说明：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">commands.<span class="property">getAttribute</span> = <span class="keyword">async</span> <span class="keyword">function</span> (<span class="params">attribute, elementId</span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">await</span> <span class="variable language_">this</span>.<span class="property">uiautomator2</span>.<span class="property">jwproxy</span>.<span class="title function_">command</span>(<span class="string">`/element/<span class="subst">$&#123;elementId&#125;</span>/attribute/<span class="subst">$&#123;attribute&#125;</span>`</span>, <span class="string">&#x27;GET&#x27;</span>, &#123;&#125;);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><em><strong>appium 通过adb forward将主机的HTTP请求转发到设备中</strong></em></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">await</span> <span class="variable language_">this</span>.<span class="property">adb</span>.<span class="title function_">forwardPort</span>(<span class="variable language_">this</span>.<span class="property">opts</span>.<span class="property">systemPort</span>, <span class="variable constant_">DEVICE_PORT</span>);</span><br><span class="line"><span class="comment">//主机端口号:8200,8299</span></span><br><span class="line"><span class="comment">//设备端口号：6790</span></span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="docs/tags/FromCSDN/" rel="tag"># FromCSDN</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="docs/2018/07/21/spotbugs%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3%E7%9A%84bug%E6%8F%8F%E8%BF%B0%E6%A6%82%E8%BF%B0/" rel="prev" title="spotbugs官方文档的bug描述概述">
+                  <i class="fa fa-chevron-left"></i> spotbugs官方文档的bug描述概述
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="docs/2018/07/28/%E5%9B%BE%E7%81%B5%E6%9C%BA%E7%9A%84%E9%80%BB%E8%BE%91%E7%AD%89%E4%BB%B7%E5%BD%A2%E5%BC%8F%E2%80%94%E2%80%94lambda%E6%BC%94%E7%AE%97%E7%AE%80%E4%BB%8B/" rel="next" title="图灵机的逻辑等价形式——lambda演算简介">
+                  图灵机的逻辑等价形式——lambda演算简介 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蜀ICP备19036728号 </a>
+      <img src="docs/images/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png" alt=""><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=51012202000611" rel="noopener" target="_blank">川公网安备 51012202000611号 </a>
+  </div>
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-dragon"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">windanchaos</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="docs/js/comments.js"></script><script src="docs/js/utils.js"></script><script src="docs/js/motion.js"></script><script src="docs/js/schemes/muse.js"></script><script src="docs/js/next-boot.js"></script><script src="docs/js/pjax.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":"enable","archive":"enable","delay":true,"timeout":3000,"priority":true,"url":"https://windanchaos.github.io/2018/07/21/Appium%E7%9A%84%E5%AE%9E%E7%8E%B0%E7%90%86%E8%A7%A3/"}</script>
+  <script src="docs/js/third-party/quicklink.js"></script>
+
+</body>
+</html>

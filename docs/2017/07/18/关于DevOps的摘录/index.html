@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="docs/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="docs/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="docs/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="docs/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="docs/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"windanchaos.github.io","root":"docs/","images":"docs/images","scheme":"Mist","darkmode":true,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="docs/js/config.js"></script>
+
+    <meta name="description" content="DevOps（英文Development和Operations的组合）是一组过程、方法与系统的统称，用于促进开发（应用程序&#x2F;软件工程）、技术运营和质量保障（QA）部门之间的沟通、协作与整合。简单地来说，就是更好的优化开发(DEV)、测试(QA)、运维(OPS)的流程，开发运维一体化，通过高度自动化工具与流程来使得软件构建、测试、发布更加快捷、频繁和可靠。 以下内容转自：http:&#x2F;&#x2F;ww">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于DevOps的摘录">
+<meta property="og:url" content="https://windanchaos.github.io/2017/07/18/%E5%85%B3%E4%BA%8EDevOps%E7%9A%84%E6%91%98%E5%BD%95/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="DevOps（英文Development和Operations的组合）是一组过程、方法与系统的统称，用于促进开发（应用程序&#x2F;软件工程）、技术运营和质量保障（QA）部门之间的沟通、协作与整合。简单地来说，就是更好的优化开发(DEV)、测试(QA)、运维(OPS)的流程，开发运维一体化，通过高度自动化工具与流程来使得软件构建、测试、发布更加快捷、频繁和可靠。 以下内容转自：http:&#x2F;&#x2F;ww">
+<meta property="og:locale">
+<meta property="og:image" content="https://windanchaos.github.io/2017/07/18/%E5%85%B3%E4%BA%8EDevOps%E7%9A%84%E6%91%98%E5%BD%95/docs/images/s.jianshu.io-upload_images-310906-735d15ceea69b44d.jpg-imageMogr2-auto-orient-strip%7CimageView2-2-w-1240.png">
+<meta property="og:image" content="https://windanchaos.github.io/2017/07/18/%E5%85%B3%E4%BA%8EDevOps%E7%9A%84%E6%91%98%E5%BD%95/docs/images/s.jianshu.io-upload_images-310906-98ac44a2bdf136de--imageMogr2-auto-orient-strip%7CimageView2-2-w-1240.png">
+<meta property="og:image" content="https://windanchaos.github.io/2017/07/18/%E5%85%B3%E4%BA%8EDevOps%E7%9A%84%E6%91%98%E5%BD%95/docs/images/s.jianshu.io-upload_images-310906-d7baf300841107a2.jpg-imageMogr2-auto-orient-strip%7CimageView2-2-w-1240.png">
+<meta property="article:published_time" content="2017-07-18T08:25:53.000Z">
+<meta property="article:modified_time" content="2021-06-08T10:39:48.742Z">
+<meta property="article:author" content="windanchaos">
+<meta property="article:tag" content="FromCSDN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://windanchaos.github.io/2017/07/18/%E5%85%B3%E4%BA%8EDevOps%E7%9A%84%E6%91%98%E5%BD%95/docs/images/s.jianshu.io-upload_images-310906-735d15ceea69b44d.jpg-imageMogr2-auto-orient-strip%7CimageView2-2-w-1240.png">
+
+
+<link rel="canonical" href="https://windanchaos.github.io/2017/07/18/%E5%85%B3%E4%BA%8EDevOps%E7%9A%84%E6%91%98%E5%BD%95/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"https://windanchaos.github.io/2017/07/18/%E5%85%B3%E4%BA%8EDevOps%E7%9A%84%E6%91%98%E5%BD%95/","path":"2017/07/18/关于DevOps的摘录/","title":"关于DevOps的摘录"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>关于DevOps的摘录 | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="docs/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="docs/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Hexo</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-首页"><a href="docs/" rel="section"><i class="home fa-fw"></i>首页</a></li><li class="menu-item menu-item-分类"><a href="docs/categories/" rel="section"><i class="th fa-fw"></i>分类</a></li><li class="menu-item menu-item-归档"><a href="docs/archives/" rel="section"><i class="archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-标签"><a href="docs/tags/" rel="section"><i class="tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-关于"><a href="docs/about/me.html" rel="section"><i class="user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AFDevOps"><span class="nav-number">1.</span> <span class="nav-text">什么是DevOps</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Devops-%E7%9A%84%E5%A5%BD%E5%A4%84%E4%B8%8E%E4%BB%B7%E5%80%BC"><span class="nav-number">2.</span> <span class="nav-text">Devops 的好处与价值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Devops%E4%B8%8E%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90"><span class="nav-number">3.</span> <span class="nav-text">Devops与持续集成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DevOps-%E7%9A%84%E6%8A%80%E6%9C%AF%E6%A0%88%E4%B8%8E%E5%B7%A5%E5%85%B7%E9%93%BE"><span class="nav-number">4.</span> <span class="nav-text">DevOps 的技术栈与工具链</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DevOps-%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5"><span class="nav-number">5.</span> <span class="nav-text">DevOps 最佳实践</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DevOps-x3D-Culture-Tools"><span class="nav-number">6.</span> <span class="nav-text">DevOps &#x3D; Culture + Tools</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="windanchaos"
+      src="docs/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">windanchaos</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="docs/archives/">
+          <span class="site-state-item-count">111</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="docs/categories/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="docs/tags/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/windanchaos" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/windanchaos" title="Gitee → https:&#x2F;&#x2F;gitee.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="gitee fa-fw"></i>Gitee</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:454722630@qq.com" title="E-Mail → mailto:454722630@qq.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/windanchaos" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/windanchaos" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;windanchaos" rel="noopener" target="_blank"><i class="CSDN fa-fw"></i>CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
+    <link itemprop="mainEntityOfPage" href="https://windanchaos.github.io/2017/07/18/%E5%85%B3%E4%BA%8EDevOps%E7%9A%84%E6%91%98%E5%BD%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="docs/images/avatar.jpeg">
+      <meta itemprop="name" content="windanchaos">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="关于DevOps的摘录 | Hexo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          关于DevOps的摘录
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2017-07-18 16:25:53" itemprop="dateCreated datePublished" datetime="2017-07-18T16:25:53+08:00">2017-07-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2021-06-08 18:39:48" itemprop="dateModified" datetime="2021-06-08T18:39:48+08:00">2021-06-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="docs/categories/%E6%B5%8B%E8%AF%95%E7%9A%84%E6%A1%86%E6%9E%B6%E5%92%8C%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">测试的框架和技术</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>DevOps（英文Development和Operations的组合）是一组过程、方法与系统的统称，用于促进开发（应用程序&#x2F;软件工程）、技术运营和质量保障（QA）部门之间的沟通、协作与整合。简单地来说，就是更好的优化开发(DEV)、测试(QA)、运维(OPS)的流程，开发运维一体化，通过高度自动化工具与流程来使得软件构建、测试、发布更加快捷、频繁和可靠。</p>
+<p>以下内容转自：<a target="_blank" rel="noopener" href="http://www.ituring.com.cn/article/265237">http://www.ituring.com.cn/article/265237</a><br>当我们谈到 DevOps 时，可能讨论的是：流程和管理，运维和自动化，架构和服务，以及文化和组织等等概念。那么，到底什么是”DevOps”呢？</p>
+<h2 id="什么是DevOps"><a href="#什么是DevOps" class="headerlink" title="什么是DevOps"></a>什么是DevOps</h2><p>随着软件发布迭代的频率越来越高，传统的「瀑布型」（开发—测试—发布）模式已经不能满足快速交付的需求。2009 年左右 DevOps 应运而生，简单地来说，就是更好的优化开发(DEV)、测试(QA)、运维(OPS)的流程，开发运维一体化，通过高度自动化工具与流程来使得软件构建、测试、发布更加快捷、频繁和可靠。</p>
+<p><img data-src="docs/images/s.jianshu.io-upload_images-310906-735d15ceea69b44d.jpg-imageMogr2-auto-orient-strip%7CimageView2-2-w-1240.png" alt="flow.ci"></p>
+<p>关于 DevOps 是什么，DevOps 的合著者 John Willis 写了一个非常好的帖子，在<a target="_blank" rel="noopener" href="http://itrevolution.com/the-convergence-of-devops/">这里</a>.</p>
+<h2 id="Devops-的好处与价值"><a href="#Devops-的好处与价值" class="headerlink" title="Devops 的好处与价值"></a>Devops 的好处与价值</h2><p>在<a target="_blank" rel="noopener" href="http://www.infoq.com/cn/articles/2016-devops-new-trend">2016 DevOps 新趋势调查报告</a>显示，74% 的公司在尝试接受 DevOps，那么 Devops 有哪些好处与价值呢？</p>
+<p>以上可以看出，DevOps 的好处更多基于在于持续部署与交付，这是对于业务与产品而言。而 DevOps 始于接受 DevOps 文化与技术方法论，它是部门间沟通协作的一组流程和方法，有助于改善公司组织文化、提高员工的参与感。</p>
+<h2 id="Devops与持续集成"><a href="#Devops与持续集成" class="headerlink" title="Devops与持续集成"></a>Devops与持续集成</h2><p>DevOps 是一个完整的面向IT运维的工作流，以 IT 自动化以及持续集成（CI）、持续部署（CD）为基础，来优化程式开发、测试、系统运维等所有环节。</p>
+<p>纵观各个 DevOps 实践公司的技术资料，最全面最经典的是 flickr 的<a target="_blank" rel="noopener" href="http://www.slideshare.net/jallspaw/10-deploys-per-day-dev-and-ops-cooperation-at-flickr">10+ deploys per day</a>最佳实践提到的 DevOps Tools 的技术关键点:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span><span class="title class_">Automated</span> infrastructure（自动化，系统之间的集成） <span class="number">2.</span>shared version control（<span class="variable constant_">SVN</span>共享源码） <span class="number">3.</span>one step build and deploy（持续构建和部署） <span class="number">4.</span>feature flags（主干开发） <span class="number">5.</span><span class="title class_">Shared</span> metrics <span class="number">6.</span><span class="variable constant_">IRC</span> and <span class="variable constant_">IM</span> robots（信息整合）</span><br></pre></td></tr></table></figure>
+
+<p>以上的技术要点由持续集成&#x2F;部署一线贯穿，主干开发是进行持续集成的前提，自动化以及代码周边集中管理是实施持续集成的必要条件。毫无疑问，DevOps 是持续集成思想的延伸，持续集成&#x2F;部署是 DevOps 的技术核心，在没有自动化测试、持续集成&#x2F;部署之下，DevOps就是空中楼阁。</p>
+<p>我们做了一款 Hosted 持续集成产品—— <a target="_blank" rel="noopener" href="http://flow.ci/?utm_source=ituring&utm_medium=passage&utm_content=devops_guide">flow.ci</a> ，它融入了 workflow 机制的持续集成（CI）服务，也可以理解为自动化流程平台，除了集成代码、编译、测试之外，还可以集成常用的工具、灵活自定义流程，帮助你们塑造一个更优秀智能的 DevOps 环境。</p>
+<p><img data-src="docs/images/s.jianshu.io-upload_images-310906-98ac44a2bdf136de--imageMogr2-auto-orient-strip%7CimageView2-2-w-1240.png" alt="flow.ci"></p>
+<h2 id="DevOps-的技术栈与工具链"><a href="#DevOps-的技术栈与工具链" class="headerlink" title="DevOps 的技术栈与工具链"></a>DevOps 的技术栈与工具链</h2><span id="more"></span>
+<p>Everything is Code，DevOps 也同样要通过技术工具链完成持续集成、持续交付、用户反馈和系统优化的整合。<a target="_blank" rel="noopener" href="https://elasticbox.com/">Elasticbox</a> 整理了 <a target="_blank" rel="noopener" href="https://elasticbox.com/blog/devops-open-source-tools/">60+ 开源工具与分类</a>，其中包括版本控制&amp;协作开发工具、自动化构建和测试工具、持续集成&amp;交付工具、部署工具、维护工具、监控，警告&amp;分析工具等等， 补充了一些国内的服务，可以让你更好的执行实施 DevOps 工作流。</p>
+<p><img data-src="docs/images/s.jianshu.io-upload_images-310906-d7baf300841107a2.jpg-imageMogr2-auto-orient-strip%7CimageView2-2-w-1240.png" alt="flow.ci"></p>
+<p>顺便再分享一个 <a target="_blank" rel="noopener" href="http://www.devopsbookmarks.com/">DevOps BookMarks</a>，涉及了DevOps方方面面的工具和内容，有兴趣的同学可以去学习下。</p>
+<h2 id="DevOps-最佳实践"><a href="#DevOps-最佳实践" class="headerlink" title="DevOps 最佳实践"></a>DevOps 最佳实践</h2><p>自 2009 年提出 DevOps 的概念起，很多公司都开始实施 DevOps，国外比较著名的有Amazon 、Google、Facebook等，国内著名的有百度、华为、阿里等。Amazon 是 DevOps 最佳实践的最有说服力的代表之一。这是 Amazon 在 <a target="_blank" rel="noopener" href="http://www.youtube.com/watch?v=877OCQA_xzE">Why We Need DevOps</a> 一个月的 DevOps 快照：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">11.6</span> <span class="attr">seconds</span>: 平均部署时长 (工作日) <span class="number">1</span>,<span class="number">079</span>: 一小时的最大部署量 <span class="number">10</span>,<span class="number">000</span>: 主机平均并发接收部署量 <span class="number">30</span>,<span class="number">000</span>: 主机最高并发接收部署量</span><br></pre></td></tr></table></figure>
+
+<p>从早期的大型 SOA (Service Oriented Architecture)到 DevOps 文化的形成，Amazon 的每个工程师都可以完全独立地编写代码，测试代码，版本管理，部署上线，服务监测等任务。这套内部强大的 DevOps 文化最终形成核聚变， Amazon 一跃成为世界级别的云服务领导者 —— Amazon Web Services (AWS)。</p>
+<p>除了 Amazon 外还有一些国内外的 DevOps 实践公司，一起来看看。</p>
+<p>最全面最经典的是 flickr 的<a target="_blank" rel="noopener" href="http://www.slideshare.net/jallspaw/10-deploys-per-day-dev-and-ops-cooperation-at-flickr">10+ deploys per day</a>，简直是 DevOps 教科书般的存在。</p>
+<p>百度技术团队是如何利用DevOps，来看看<a target="_blank" rel="noopener" href="http://dbaplus.cn/news-21-471-1.html">解密百度持续交付方法与实践</a>。</p>
+<p>百度技术团队是如何利用DevOps，来看看<a target="_blank" rel="noopener" href="http://dbaplus.cn/news-21-471-1.html">解密百度持续交付方法与实践</a>。</p>
+<p>解密Netflix 技术团队在整个 DevOps 过程中使用的部署工具和服务.</p>
+<p><a target="_blank" rel="noopener" href="http://techblog.netflix.com/2016/03/how-we-build-code-at-netflix.html">How We Build Code at Netflix</a>.</p>
+<p>2009年，Etsy建立自己的工具来更好更快地部署发布，<a target="_blank" rel="noopener" href="http://www.networkworld.com/article/2886672/software/how-etsy-makes-devops-work.html">「Etsy 如何应用 DevOps」</a>值得一读。</p>
+<p>2009年，LinkedIn 团队就开始使用自动化部署工具，用于管理在1000+节点环境下发布上千个应用&#x2F;服务的复杂性。这是 LinkedIn 自己造的轮子 &gt;&gt;<a target="_blank" rel="noopener" href="http://devops.com/2014/04/02/deployment-and-monitoring-automation-glu/">Deployment and Monitoring Automation with glu</a>.</p>
+<p>Airbnb 作为第三方平台公司，需要迅速发布多个小型部署。关于 Airbnb 的数据和基础设施，可以参考这个<a target="_blank" rel="noopener" href="http://www.slideshare.net/InfoQ/data-infrastructure-at-airbnb">slides</a>。</p>
+<p>星巴克的 DevOps 计划&gt;&gt; <a target="_blank" rel="noopener" href="https://medium.com/@cloud_opinion/starbucks-announces-devopstogether-2933aad59d74">Starbucks Announces &#x2F;#DevOpsTogether</a>.</p>
+<p>Ancestry.com 是 DevOps 运动的早期采用者，是 Continuous Delivery 和 DevOps 运动的先锋。想了解更多关于他们的过程、迁移和 DevOps 文化，不妨查看一下他们的系列文章<a target="_blank" rel="noopener" href="http://blogs.ancestry.com/techroots/category/devops/">http://blogs.ancestry.com/techroots/category/devops/</a>。</p>
+<h2 id="DevOps-x3D-Culture-Tools"><a href="#DevOps-x3D-Culture-Tools" class="headerlink" title="DevOps &#x3D; Culture + Tools"></a>DevOps &#x3D; Culture + Tools</h2><p>如果想整个业务部署 DevOps，不但需要软性要求即从上而下的培养 DevOps 文化自上而下地进行探索，也有硬性工具链要求，才能获得更高质量的软件交付。</p>
+<p>最后，不论你是技术Leader，还是一名Dev、QA 或 Ops，实现全面的 DevOps 非常理想化也十分有挑战，希望这份 DevOps 初学者指南是一个好的开始:)</p>
+<p><a target="_blank" rel="noopener" href="http://flow.ci/?utm_source=ituring&utm_medium=passage&utm_content=devops_guide">flow.ci</a> 是融入了 workflow 机制的持续集成（CI）服务，也可以理解为自动化流程平台，除了集成代码、编译、测试之外，还可以集成常用的工具、灵活自定义流程。1 分钟即可完成开发测试环境搭建，开启第一个 Build。</p>
+<p>本文来自 <a target="_blank" rel="noopener" href="http://blog.flow.ci/">flow.ci 官方博客</a>，转载请联系:)</p>
+<p>&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;分割线&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;<br>1、监控工具比较老牌的就是Zabbix,Nagios，用Zabbix的感觉是最多的。国内的有小米开源的OpenFalcon。这类监控工具一般是对服务器、服务（中间件，数据库）做一些常用指标的监控。</p>
+<p>2、性能分析&#x2F;APM工具APM很多时候被认为是监控的一个细分领域。但在现代复杂分布式系统架构下，APM工具往往更能准确、直接的帮助用户定位到性能瓶颈，比如哪一个URL访问慢、哪一个方法执行慢、哪一个SQL执行慢。在以往要想拿到这些数据，往往得需要比较资深的架构师、DBA一起合作才能拿到这些数据，而定位瓶颈的效率往往还不太高。现在通过APM工具能让普通技能的运维人员，也很高效的定位到这些深层的问题。现在商用的APM工具不少，国外的有Newrelic，国内知名的就有听云、Oneapm、透视宝这些。开源的也有Pinpoint（naver开源）、Zipkin（twitter开源）、CAT（大众点评开源）.</p>
+<p>3、批量+自动化运维工具这里就比较多了，知名的有Puppet、Ansible、Chef、Saltstack这些。这些在网上的资料也比较多，找比较新版本的官方文档看就行了。Puppet和chef是比较早期的工具，受众面也很大，不过这两个工具基于ruby实现，现在要找到熟悉ruby的人来做这块的二次开发可不容易。而ansible和saltstack则相对新生代一些，目前用户基数增长很快，基于python实现，要找做二次开发的人也相对容易的多。</p>
+<p>4、集中日志分析工具在一个服务器比较多的环境下，如何集中的管理和分析、查询日志，已经变成一个比较强的需求了。想象一下，如果发生了某个错误，你还得一台台机器去翻日志文件，是不是很蛋疼。在这个需求驱动下，就诞生了一些集中日志分析工具。在开源领域，比较知名的就是ELK这一套工具了，涵盖了日志采集、上报、搜索、展现这一类基本需求，现在比较多的上规模的企业都用这个，网上资料也大把。核心实现机制都是通过一些日志采集代理（类似Filebeat）去爬日志文件，将最新的部分提交到采集服务端，后端再对接搜索引擎，能支持很快速、准确的搜索即可。有一个国内不怎么知名的Sentry日志收集服务，比较轻量级，本身是Python做的，与各种语言的日志框架做了非常好的集成，可以很方便的集中收集异常日志，并分配给对应的开发人员。它在github上有10000多个star了，这在DevOps相关的软件里，都是排名非常靠前的了。git的地址：<a target="_blank" rel="noopener" href="https://github.com/getsentry/sentry">https://github.com/getsentry/sentry</a></p>
+<p>5、持续集成&#x2F;发布工具我接触的人都是用Jenkins的，没有用其他的，可能跟我所在的技术圈子有关。集成打包的过程其实一般都比较简单，配好版本库和打包脚本就行。但发布的过程就比较复杂，有些是全量发布，但也有非常多的IT团队采用增量发布。这个方面如果想用工具，还是得先分析清楚现有的发布流程，手工情况下怎么做，哪些能通过自动化工具来完成。</p>
+<p>6、IaaS集成最近两年的公有云推广比较迅速，很多新的服务器采购都被导入到云上去了。现在主流的公有云都提供了比较完备的API，基于这些API也可以做一些针对基础资源的自动化操作，比如游戏行业的快速开服。</p>
+<p>关于DevOps对效率的提升，Puppet出过一份调研报告，算是比较成体系的。中文版的报告链接在此：<a target="_blank" rel="noopener" href="http://www.idcos.com/download/devops-report">http://www.idcos.com/download/devops-report</a></p>
+<p>DevOps 开源工具:<br><a target="_blank" rel="noopener" href="https://www.oschina.net/question/2012764_246208">https://www.oschina.net/question/2012764_246208</a><br><a target="_blank" rel="noopener" href="https://blog.profitbricks.com/51-best-devops-tools-for-devops-engineers/">https://blog.profitbricks.com/51-best-devops-tools-for-devops-engineers/</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="docs/tags/FromCSDN/" rel="tag"># FromCSDN</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="docs/2017/07/11/ubuntu%20adb%20unautorized%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/" rel="prev" title="ubuntu adb unautorized的解决办法">
+                  <i class="fa fa-chevron-left"></i> ubuntu adb unautorized的解决办法
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="docs/2017/07/23/%E6%9C%89%E8%B5%9E%E5%88%86%E5%B1%82%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E5%AE%9E%E8%B7%B5/" rel="next" title="有赞分层自动化测试实践">
+                  有赞分层自动化测试实践 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蜀ICP备19036728号 </a>
+      <img src="docs/images/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png" alt=""><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=51012202000611" rel="noopener" target="_blank">川公网安备 51012202000611号 </a>
+  </div>
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-dragon"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">windanchaos</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="docs/js/comments.js"></script><script src="docs/js/utils.js"></script><script src="docs/js/motion.js"></script><script src="docs/js/schemes/muse.js"></script><script src="docs/js/next-boot.js"></script><script src="docs/js/pjax.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":"enable","archive":"enable","delay":true,"timeout":3000,"priority":true,"url":"https://windanchaos.github.io/2017/07/18/%E5%85%B3%E4%BA%8EDevOps%E7%9A%84%E6%91%98%E5%BD%95/"}</script>
+  <script src="docs/js/third-party/quicklink.js"></script>
+
+</body>
+</html>

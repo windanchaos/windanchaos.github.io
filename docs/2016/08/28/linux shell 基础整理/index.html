@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="docs/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="docs/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="docs/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="docs/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="docs/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"windanchaos.github.io","root":"docs/","images":"docs/images","scheme":"Mist","darkmode":true,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="docs/js/config.js"></script>
+
+    <meta name="description" content="特殊变量变 量 含义 $0 当前脚本的文件名 $n 传递给脚本或函数的参数。n 是一个数字，表示第几个参数。例如，第一个参数是$1，第二个参数是$2。 $&#x2F;# 传递给脚本或函数的参数个数。 $&#x2F;* 传递给脚本或函数的所有参数。 $@ 传递给脚本或函数的所有参数。被双引号(” “)包含时，与 $&#x2F;* 稍有不同，下面将会讲到。 $? 上个命令的退出状态，或函数的返回值。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux shell 基础整理">
+<meta property="og:url" content="https://windanchaos.github.io/2016/08/28/linux%20shell%20%E5%9F%BA%E7%A1%80%E6%95%B4%E7%90%86/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="特殊变量变 量 含义 $0 当前脚本的文件名 $n 传递给脚本或函数的参数。n 是一个数字，表示第几个参数。例如，第一个参数是$1，第二个参数是$2。 $&#x2F;# 传递给脚本或函数的参数个数。 $&#x2F;* 传递给脚本或函数的所有参数。 $@ 传递给脚本或函数的所有参数。被双引号(” “)包含时，与 $&#x2F;* 稍有不同，下面将会讲到。 $? 上个命令的退出状态，或函数的返回值。">
+<meta property="og:locale">
+<meta property="article:published_time" content="2016-08-28T13:13:09.000Z">
+<meta property="article:modified_time" content="2021-06-08T10:44:42.124Z">
+<meta property="article:author" content="windanchaos">
+<meta property="article:tag" content="FromCSDN">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://windanchaos.github.io/2016/08/28/linux%20shell%20%E5%9F%BA%E7%A1%80%E6%95%B4%E7%90%86/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"https://windanchaos.github.io/2016/08/28/linux%20shell%20%E5%9F%BA%E7%A1%80%E6%95%B4%E7%90%86/","path":"2016/08/28/linux shell 基础整理/","title":"linux shell 基础整理"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>linux shell 基础整理 | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="docs/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="docs/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Hexo</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-首页"><a href="docs/" rel="section"><i class="home fa-fw"></i>首页</a></li><li class="menu-item menu-item-分类"><a href="docs/categories/" rel="section"><i class="th fa-fw"></i>分类</a></li><li class="menu-item menu-item-归档"><a href="docs/archives/" rel="section"><i class="archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-标签"><a href="docs/tags/" rel="section"><i class="tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-关于"><a href="docs/about/me.html" rel="section"><i class="user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%89%B9%E6%AE%8A%E5%8F%98%E9%87%8F"><span class="nav-number">1.</span> <span class="nav-text">特殊变量</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6"><span class="nav-number">2.</span> <span class="nav-text">转义字符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8F%98%E9%87%8F%E6%9B%BF%E6%8D%A2"><span class="nav-number">3.</span> <span class="nav-text">变量替换</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Shell-%E4%BC%A0%E9%80%92%E5%8F%82%E6%95%B0"><span class="nav-number">4.</span> <span class="nav-text">Shell 传递参数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#shell%E6%95%B0%E7%BB%84"><span class="nav-number">5.</span> <span class="nav-text">shell数组</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#shell%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">6.</span> <span class="nav-text">shell运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E6%B5%8B%E8%AF%95%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">6.1.</span> <span class="nav-text">文件测试运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">6.2.</span> <span class="nav-text">算术运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%85%B3%E7%B3%BB%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">6.3.</span> <span class="nav-text">关系运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%83%E5%B0%94%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">6.4.</span> <span class="nav-text">布尔运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">6.5.</span> <span class="nav-text">逻辑运算符</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">6.6.</span> <span class="nav-text">字符串运算符</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#shell%E6%B5%81%E7%A8%8B%E6%8E%A7%E5%88%B6"><span class="nav-number">7.</span> <span class="nav-text">shell流程控制</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#if%E5%8F%A5%E6%B3%95"><span class="nav-number">7.1.</span> <span class="nav-text">if句法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#for%E5%8F%A5%E6%B3%95"><span class="nav-number">7.2.</span> <span class="nav-text">for句法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#while%E5%8F%A5%E6%B3%95"><span class="nav-number">7.3.</span> <span class="nav-text">while句法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Shell-%E5%87%BD%E6%95%B0"><span class="nav-number">8.</span> <span class="nav-text">Shell 函数</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Shell-%E8%BE%93%E5%85%A5-x2F-%E8%BE%93%E5%87%BA%E9%87%8D%E5%AE%9A%E5%90%91"><span class="nav-number">9.</span> <span class="nav-text">Shell 输入&#x2F;输出重定向</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%8D%E5%AE%9A%E5%90%91%E5%91%BD%E4%BB%A4%E5%88%97%E8%A1%A8%E5%A6%82%E4%B8%8B"><span class="nav-number">9.1.</span> <span class="nav-text">重定向命令列表如下</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%87%8D%E5%AE%9A%E5%90%91%E6%B7%B1%E5%85%A5%E8%AE%B2%E8%A7%A3"><span class="nav-number">9.2.</span> <span class="nav-text">重定向深入讲解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#x2F-dev-x2F-null-%E6%96%87%E4%BB%B6"><span class="nav-number">9.3.</span> <span class="nav-text">&#x2F;dev&#x2F;null 文件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Shell-%E6%96%87%E4%BB%B6%E5%BC%95%E7%94%A8"><span class="nav-number">10.</span> <span class="nav-text">Shell 文件引用</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="windanchaos"
+      src="docs/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">windanchaos</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="docs/archives/">
+          <span class="site-state-item-count">111</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="docs/categories/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="docs/tags/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/windanchaos" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/windanchaos" title="Gitee → https:&#x2F;&#x2F;gitee.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="gitee fa-fw"></i>Gitee</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:454722630@qq.com" title="E-Mail → mailto:454722630@qq.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/windanchaos" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/windanchaos" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;windanchaos" rel="noopener" target="_blank"><i class="CSDN fa-fw"></i>CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
+    <link itemprop="mainEntityOfPage" href="https://windanchaos.github.io/2016/08/28/linux%20shell%20%E5%9F%BA%E7%A1%80%E6%95%B4%E7%90%86/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="docs/images/avatar.jpeg">
+      <meta itemprop="name" content="windanchaos">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="linux shell 基础整理 | Hexo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          linux shell 基础整理
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2016-08-28 21:13:09" itemprop="dateCreated datePublished" datetime="2016-08-28T21:13:09+08:00">2016-08-28</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2021-06-08 18:44:42" itemprop="dateModified" datetime="2021-06-08T18:44:42+08:00">2021-06-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="docs/categories/Linux%E7%AE%A1%E7%90%86%E7%BB%B4%E6%8A%A4/" itemprop="url" rel="index"><span itemprop="name">Linux管理维护</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="特殊变量"><a href="#特殊变量" class="headerlink" title="特殊变量"></a>特殊变量</h1><p>变 量 含义 $0 当前脚本的文件名 $n 传递给脚本或函数的参数。n 是一个数字，表示第几个参数。例如，第一个参数是$1，第二个参数是$2。 $&#x2F;# 传递给脚本或函数的参数个数。 $&#x2F;* 传递给脚本或函数的所有参数。 $@ 传递给脚本或函数的所有参数。被双引号(” “)包含时，与 $&#x2F;* 稍有不同，下面将会讲到。 $? 上个命令的退出状态，或函数的返回值。 $$ 当前Shell进程ID。对于 Shell 脚本，就是这些脚本所在的进程ID。</p>
+<h1 id="转义字符"><a href="#转义字符" class="headerlink" title="转义字符"></a>转义字符</h1><p>转义字符 含义 \ 反斜杠 \a 警报，响铃 \b 退格（删除键） \f 换页(FF)，将当前位置移到下页开头 \n 换行 \r 回车 \t 水平制表符（tab键） \v 垂直制表符</p>
+<h1 id="变量替换"><a href="#变量替换" class="headerlink" title="变量替换"></a>变量替换</h1><p>变量替换可以根据变量的状态（是否为空、是否定义等）来改变它的值。<br>转义字符 含义 ${var} 变量本来的值 ${var:-word} 如果变量 var 为空或已被删除(unset)，那么返回 word，但不改变 var 的值。 ${var:&#x3D;word} 如果变量 var 为空或已被删除(unset)，那么返回 word，并将 var 的值设置为 word。 ${var:?message} 如果变量 var 为空或已被删除(unset)，那么将消息 message 送到标准错误输出，可以用来检测变量 var 是否可以被正常赋值。若此替换出现在Shell脚本中，那么脚本将停止运行。 ${var:+word} 如果变量 var 被定义，那么返回 word，但不改变 var 的值。</p>
+<h1 id="Shell-传递参数"><a href="#Shell-传递参数" class="headerlink" title="Shell 传递参数"></a>Shell 传递参数</h1><p>在执行 Shell 脚本时，向脚本传递参数，脚本内获取参数的格式为：$n。n 代表一个数字，1 为执行脚本的第一个参数，2 为执行脚本的第二个参数，以此类推……<br>参数处理 说明 $&#x2F;# 传递到脚本的参数个数 $&#x2F;* 以一个单字符串显示所有向脚本传递的参数。如”$&#x2F;*”用「”」括起来的情况、以”1、$2…n”的形式输出所有参数。跟0，表示执行脚本自己的名称。 $$ 脚本运行的当前进程ID号 $! 后台运行的最后一个进程的ID号 $@ 与∗相同，但是使用时加引号，并在引号中返回每个参数。如”@”用「”」括起来的情况、以”1”“2” … “$n” 的形式输出所有参数。 $- 显示Shell使用的当前选项，与set命令功能相同。 $? 显示最后命令的退出状态。0表示没有错误，其他任何值表明有错误。</p>
+<p>$&#x2F;* 与 $@ 区别：<br>相同点：都是引用所有参数。<br>不同点：只有在双引号中体现出来。假设在脚本运行时写了三个参数 1、2、3，，则 ” &#x2F;* ” 等价于 “1 2 3”（传递了一个参数），而 “@” 等价于 “1” “2” “3”（传递了三个参数）。</p>
+<h1 id="shell数组"><a href="#shell数组" class="headerlink" title="shell数组"></a>shell数组</h1><p>数组中可以存放多个值。Bash Shell 只支持一维数组（不支持多维数组），初始化时不需要定义数组大小。与大部分编程语言类似，数组元素的下标由0开始。</p>
+<h1 id="shell运算符"><a href="#shell运算符" class="headerlink" title="shell运算符"></a>shell运算符</h1><h2 id="文件测试运算符"><a href="#文件测试运算符" class="headerlink" title="文件测试运算符"></a>文件测试运算符</h2><p>文件测试运算符用于检测 Unix 文件的各种属性。</p>
+<p>属性检测描述如下：<br>操作符 说明 举例 -d file 检测文件是否是目录，如果是，则返回 true。 [ -d $file ] 返回 false。 -f file 检测文件是否是普通文件（既不是目录，也不是设备文件），如果是，则返回 true。 [ -f $file ] 返回 true。 -k file 检测文件是否设置了粘着位(Sticky Bit)，如果是，则返回 true。 [ -k $file ] 返回 false。 -p file 检测文件是否是有名管道，如果是，则返回 true。 [ -p $file ] 返回 false。 -u file 检测文件是否设置了 SUID 位，如果是，则返回 true。 [ -u $file ] 返回 false。 -g file 检测文件是否设置了 SGID 位，如果是，则返回 true。 [ -g $file ] 返回 false。 -r file 检测文件是否可读，如果是，则返回 true。 [ -r $file ] 返回 true。 -w file 检测文件是否可写，如果是，则返回 true。 [ -w $file ] 返回 true。 -x file 检测文件是否可执行，如果是，则返回 true。 [ -x $file ] 返回 true。 -s file 检测文件是否为空（文件大小是否大于0），不为空返回 true。 [ -s $file ] 返回 true。 -e file 检测文件（包括目录）是否存在，如果是，则返回 true。 [ -e $file ] 返回 true。</p>
+<p>PS:SUID 是 Set User ID, SGID 是 Set Group ID的意思。设置了suid的程序文件,在用户执行该程序时,用户的权限是该程序文件属主的权限。例如程序文件的属主是root，那么执行该程序的用户就将暂时获得root账户的权限。sgid与suid类似，只是执行程序时获得的是文件属组的权限。</p>
+<span id="more"></span>
+<h2 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h2><p>原生bash不支持简单的数学运算，但是可以通过其他命令来实现，例如 awk 和 expr，expr 最常用。<br>expr 是一款表达式计算工具，使用它能完成表达式的求值操作。<br>例如，两个数相加(注意使用的是反引号 &#96; 而不是单引号 ‘)：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#!<span class="regexp">/bin/</span>bash</span><br><span class="line">val=<span class="string">`expr 2 + 2`</span></span><br><span class="line">echo <span class="string">&quot;两数之和为 : $val&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>PS：表达式和运算符之间要有空格，例如 2+2 是不对的，必须写成 2 + 2，这与我们熟悉的大多数编程语言不一样。</p>
+<p>运算符 说明 举例 + 加法 </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">expr $a + $b</span><br></pre></td></tr></table></figure>
+<p>结果为 30。 - 减法 </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">expr $a - $b</span><br></pre></td></tr></table></figure>
+<p>结果为 -10。 &#x2F;* 乘法 </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">expr $a \* $b</span><br></pre></td></tr></table></figure>
+<p>结果为 200。 &#x2F; 除法 </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">expr $b / $a</span><br></pre></td></tr></table></figure>
+<p>结果为 2。 % 取余 </p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">expr $b % $a</span><br></pre></td></tr></table></figure>
+<p>结果为 0。 &#x3D; 赋值 a&#x3D;$b 将把变量 b 的值赋给 a。 &#x3D;&#x3D; 相等 用于比较两个数字，相同则返回 true。 [ a&#x3D;&#x3D;b ] 返回 false。 !&#x3D; 不相等 用于比较两个数字，不相同则返回 true。 [ a!&#x3D;b ] 返回 true。</p>
+<p>注意：条件表达式要放在方括号之间，并且要有空格，例如: [a&#x3D;&#x3D;b] 是错误的，必须写成 [ a&#x3D;&#x3D;b ]。</p>
+<h2 id="关系运算符"><a href="#关系运算符" class="headerlink" title="关系运算符"></a>关系运算符</h2><p>关系运算符只支持数字，不支持字符串，除非字符串的值是数字。</p>
+<p>下表列出了常用的关系运算符，假定变量 a 为 10，变量 b 为 20：<br>运算符 说明 举例 -eq 检测两个数是否相等，相等返回 true。 [ a−eqb ] 返回 false。 -gt 检测左边的数是否大于右边的，如果是，则返回 true。 [ a−gtb ] 返回 false。 -ge 检测左边的数是否大于等于右边的，如果是，则返回 true。 [ a−geb ] 返回 false。</p>
+<h2 id="布尔运算符"><a href="#布尔运算符" class="headerlink" title="布尔运算符"></a>布尔运算符</h2><p>下表列出了常用的布尔运算符，假定变量 a 为 10，变量 b 为 20：<br>运算符 说明 举例 ! 非运算，表达式为 true 则返回 false，否则返回 true。 [ ! false ] 返回 true。 -o 或运算，有一个表达式为 true 则返回 true。 [ a−lt20−ob -gt 100 ] 返回 true。 -a 与运算，两个表达式都为 true 才返回 true。 [ a−lt20−ab -gt 100 ] 返回 false。</p>
+<h2 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h2><p>以下介绍 Shell 的逻辑运算符，假定变量 a 为 10，变量 b 为 20:<br>运算符 说明 举例 &amp;&amp; 逻辑的 AND [[ $a -lt 100 &amp;&amp; $b -gt 100 ]] 返回 false || 逻辑的 OR [[ $a -lt 100 || $b -gt 100 ]] 返回 true</p>
+<h2 id="字符串运算符"><a href="#字符串运算符" class="headerlink" title="字符串运算符"></a>字符串运算符</h2><p>下表列出了常用的字符串运算符，假定变量 a 为 “abc”，变量 b 为 “efg”：<br>运算符 说明 举例 &#x3D; 检测两个字符串是否相等，相等返回 true。 [ $a &#x3D; $b ] 返回 false。 !&#x3D; 检测两个字符串是否相等，不相等返回 true。 [ $a !&#x3D; $b ] 返回 true。 -z 检测字符串长度是否为0，为0返回 true。 [ -z $a ] 返回 false。 str 检测字符串是否为空，不为空返回 true。 [ $a ] 返回 true。</p>
+<h1 id="shell流程控制"><a href="#shell流程控制" class="headerlink" title="shell流程控制"></a>shell流程控制</h1><h2 id="if句法"><a href="#if句法" class="headerlink" title="if句法"></a>if句法</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> condition1</span><br><span class="line">then</span><br><span class="line">    command1</span><br><span class="line">elif condition2 </span><br><span class="line">then </span><br><span class="line">    command2</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    commandN</span><br><span class="line">fi</span><br></pre></td></tr></table></figure>
+
+<h2 id="for句法"><a href="#for句法" class="headerlink" title="for句法"></a>for句法</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> <span class="keyword">var</span> <span class="keyword">in</span> item1 item2 ... itemN</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    command1</span><br><span class="line">    command2</span><br><span class="line">    ...</span><br><span class="line">    commandN</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<h2 id="while句法"><a href="#while句法" class="headerlink" title="while句法"></a>while句法</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">while</span> condition</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    command</span><br><span class="line">done</span><br></pre></td></tr></table></figure>
+
+<p>break和continue适用于for和while循环。</p>
+<h1 id="Shell-函数"><a href="#Shell-函数" class="headerlink" title="Shell 函数"></a>Shell 函数</h1><p>shell中函数的定义格式如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[ <span class="keyword">function</span> ] funname [()]</span><br><span class="line">&#123;</span><br><span class="line">    command</span><br><span class="line">    [<span class="keyword">return</span> int]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>实例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">funWithReturn</span>(<span class="params"></span>)&#123;</span><br><span class="line">    echo <span class="string">&quot;这个函数会对输入的两个数字进行相加运算...&quot;</span></span><br><span class="line">    echo <span class="string">&quot;输入第一个数字: &quot;</span></span><br><span class="line">    read aNum</span><br><span class="line">    echo <span class="string">&quot;输入第二个数字: &quot;</span></span><br><span class="line">    read anotherNum</span><br><span class="line">    echo <span class="string">&quot;两个数字分别为 $aNum 和 $anotherNum !&quot;</span></span><br><span class="line">    <span class="keyword">return</span> $(($aNum+$anotherNum))</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="Shell-输入-x2F-输出重定向"><a href="#Shell-输入-x2F-输出重定向" class="headerlink" title="Shell 输入&#x2F;输出重定向"></a>Shell 输入&#x2F;输出重定向</h1><p>扫盲：在Linux系统的世界观里几乎视一切为文件。对于目录、设备的操作也可以完全等同于对纯文本文件的操作。。。<br>文件描述符是一些小数值，你可以通过它们访问的打开的文件设备，而有多少文件描述符可用取决于系统的配置情况。但是当一个程序开始运行时，它一般会有3个已经打开的文件描述符，就是<br>0：标准输入<br>1：标准输出<br>2：标准错误<br>那些数学（即0、1、2）就是文件描述符，因为在Linux上一切都是文件，所以标准输入（stdin），标准输出（stdout）和标准错误（stderr）也可看作文件来对待。<br>关于输入输出重定向深入浅出的文章： <a target="_blank" rel="noopener" href="http://blog.chinaunix.net/uid-26495963-id-3067275.html">输入输出重定向详解</a></p>
+<h2 id="重定向命令列表如下"><a href="#重定向命令列表如下" class="headerlink" title="重定向命令列表如下"></a>重定向命令列表如下</h2><p>命令 说明 command &gt; file 将输出重定向到 file。 command &lt; file 将输入重定向到 file。 command &gt;&gt; file 将输出以追加的方式重定向到 file。 n &gt; file 将文件描述符为 n 的文件重定向到 file。 n &gt;&gt; file 将文件描述符为 n 的文件以追加的方式重定向到 file。 n &gt;&amp; m 将输出文件 m 和 n 合并。 n &lt;&amp; m 将输入文件 m 和 n 合并。 &lt;&lt; tag 将开始标记 tag 和结束标记 tag 之间的内容作为输入。</p>
+<h2 id="重定向深入讲解"><a href="#重定向深入讲解" class="headerlink" title="重定向深入讲解"></a>重定向深入讲解</h2><p>一般情况下，每个 Unix&#x2F;Linux 命令运行时都会打开三个文件：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">标准输入文件(stdin)：stdin的文件描述符为<span class="number">0</span>，<span class="title class_">Unix</span>程序默认从stdin读取数据。</span><br><span class="line">标准输出文件(stdout)：stdout 的文件描述符为<span class="number">1</span>，<span class="title class_">Unix</span>程序默认向stdout输出数据。</span><br><span class="line">标准错误文件(stderr)：stderr的文件描述符为<span class="number">2</span>，<span class="title class_">Unix</span>程序会向stderr流中写入错误信息。</span><br></pre></td></tr></table></figure>
+
+<p>默认情况下，command &gt; file 将 stdout 重定向到 file，command &lt; file 将stdin 重定向到 file。</p>
+<p>如果希望 stderr 重定向到 file，可以这样写：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ command <span class="number">2</span> &gt; file</span><br></pre></td></tr></table></figure>
+
+<p>如果希望 stderr 追加到 file 文件末尾，可以这样写：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ command <span class="number">2</span> &gt;&gt; file</span><br></pre></td></tr></table></figure>
+
+<p>2 表示标准错误文件(stderr)。</p>
+<p>如果希望将 stdout 和 stderr 合并后重定向到 file，可以这样写：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ command &gt; file <span class="number">2</span>&gt;&amp;<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>或者</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ command &gt;&gt; file <span class="number">2</span>&gt;&amp;<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>如果希望对 stdin 和 stdout 都重定向，可以这样写：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ command &lt; file1 &gt;file2</span><br></pre></td></tr></table></figure>
+
+<p>command 命令将 stdin 重定向到 file1，将 stdout 重定向到 file2。</p>
+<h2 id="x2F-dev-x2F-null-文件"><a href="#x2F-dev-x2F-null-文件" class="headerlink" title="&#x2F;dev&#x2F;null 文件"></a>&#x2F;dev&#x2F;null 文件</h2><p>如果希望执行某个命令，但又不希望在屏幕上显示输出结果，那么可以将输出重定向到 &#x2F;dev&#x2F;null：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ command &gt; <span class="regexp">/dev/</span><span class="literal">null</span></span><br></pre></td></tr></table></figure>
+
+<p>&#x2F;dev&#x2F;null 是一个特殊的文件，写入到它的内容都会被丢弃；如果尝试从该文件读取内容，那么什么也读不到。但是 &#x2F;dev&#x2F;null 文件非常有用，将命令的输出重定向到它，会起到”禁止输出”的效果。</p>
+<p>如果希望屏蔽 stdout 和 stderr，可以这样写：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ command &gt; <span class="regexp">/dev/</span><span class="literal">null</span> <span class="number">2</span>&gt;&amp;<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="Shell-文件引用"><a href="#Shell-文件引用" class="headerlink" title="Shell 文件引用"></a>Shell 文件引用</h1><p>和其他语言一样，Shell 也可以包含外部脚本。这样可以很方便的封装一些公用的代码作为一个独立的文件。<br>Shell 文件包含的语法格式如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">. filename   # 注意点号(.)和文件名中间有一空格</span><br><span class="line">或</span><br><span class="line">source filename</span><br></pre></td></tr></table></figure>
+
+<p>实例：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#使用 . 号来引用test1.<span class="property">sh</span> 文件</span><br><span class="line">. ./test1.<span class="property">sh</span></span><br><span class="line"># 或者使用以下包含文件代码</span><br><span class="line"># source ./test1.<span class="property">sh</span></span><br><span class="line">echo <span class="string">&quot;地址：$url&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>以上内容引用自：<a target="_blank" rel="noopener" href="http://www.runoob.com/">菜鸟教程官网地址</a></p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="docs/tags/FromCSDN/" rel="tag"># FromCSDN</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="docs/2016/07/21/Java%E6%A8%A1%E6%8B%9F%E8%AE%A1%E7%AE%97%E5%99%A8/" rel="prev" title="Java模拟计算器">
+                  <i class="fa fa-chevron-left"></i> Java模拟计算器
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="docs/2016/11/03/%E5%9F%BA%E4%BA%8Egit%20maven%E7%9A%84%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA%E7%B3%BB%E7%BB%9F%E7%B3%BB%E5%88%97%E4%B8%80/" rel="next" title="基于git maven的自动构建系统系列一">
+                  基于git maven的自动构建系统系列一 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蜀ICP备19036728号 </a>
+      <img src="docs/images/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png" alt=""><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=51012202000611" rel="noopener" target="_blank">川公网安备 51012202000611号 </a>
+  </div>
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-dragon"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">windanchaos</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="docs/js/comments.js"></script><script src="docs/js/utils.js"></script><script src="docs/js/motion.js"></script><script src="docs/js/schemes/muse.js"></script><script src="docs/js/next-boot.js"></script><script src="docs/js/pjax.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":"enable","archive":"enable","delay":true,"timeout":3000,"priority":true,"url":"https://windanchaos.github.io/2016/08/28/linux%20shell%20%E5%9F%BA%E7%A1%80%E6%95%B4%E7%90%86/"}</script>
+  <script src="docs/js/third-party/quicklink.js"></script>
+
+</body>
+</html>

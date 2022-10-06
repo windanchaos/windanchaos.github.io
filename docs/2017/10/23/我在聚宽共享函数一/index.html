@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="docs/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="docs/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="docs/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="docs/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="docs/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"windanchaos.github.io","root":"docs/","images":"docs/images","scheme":"Mist","darkmode":true,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="docs/js/config.js"></script>
+
+    <meta name="description" content="该函数设计目的：保护既得利润，以N日内持仓股票最低盈利被突破为触发条件，所以持股时间最低为N日，为保证有效持股，N日之前亏损不会计入（该条件不需要的可以自己去掉）。函数以股票为输入，需要在自己的函数（持股或卖出判断）每日调用。需要自定义全局（JQ提交代码不能提交函数外的东东）。 函数怎么运行的：为输入的股票（当然是自己的持仓的）建立一个长度为N的队列（FIFO，先进先出），比如，建仓股票A了，则新">
+<meta property="og:type" content="article">
+<meta property="og:title" content="我在聚宽共享函数一">
+<meta property="og:url" content="https://windanchaos.github.io/2017/10/23/%E6%88%91%E5%9C%A8%E8%81%9A%E5%AE%BD%E5%85%B1%E4%BA%AB%E5%87%BD%E6%95%B0%E4%B8%80/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="该函数设计目的：保护既得利润，以N日内持仓股票最低盈利被突破为触发条件，所以持股时间最低为N日，为保证有效持股，N日之前亏损不会计入（该条件不需要的可以自己去掉）。函数以股票为输入，需要在自己的函数（持股或卖出判断）每日调用。需要自定义全局（JQ提交代码不能提交函数外的东东）。 函数怎么运行的：为输入的股票（当然是自己的持仓的）建立一个长度为N的队列（FIFO，先进先出），比如，建仓股票A了，则新">
+<meta property="og:locale">
+<meta property="article:published_time" content="2017-10-23T15:37:16.000Z">
+<meta property="article:modified_time" content="2021-06-08T10:39:48.801Z">
+<meta property="article:author" content="windanchaos">
+<meta property="article:tag" content="FromCSDN">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://windanchaos.github.io/2017/10/23/%E6%88%91%E5%9C%A8%E8%81%9A%E5%AE%BD%E5%85%B1%E4%BA%AB%E5%87%BD%E6%95%B0%E4%B8%80/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"https://windanchaos.github.io/2017/10/23/%E6%88%91%E5%9C%A8%E8%81%9A%E5%AE%BD%E5%85%B1%E4%BA%AB%E5%87%BD%E6%95%B0%E4%B8%80/","path":"2017/10/23/我在聚宽共享函数一/","title":"我在聚宽共享函数一"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>我在聚宽共享函数一 | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="docs/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="docs/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Hexo</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-首页"><a href="docs/" rel="section"><i class="home fa-fw"></i>首页</a></li><li class="menu-item menu-item-分类"><a href="docs/categories/" rel="section"><i class="th fa-fw"></i>分类</a></li><li class="menu-item menu-item-归档"><a href="docs/archives/" rel="section"><i class="archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-标签"><a href="docs/tags/" rel="section"><i class="tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-关于"><a href="docs/about/me.html" rel="section"><i class="user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="windanchaos"
+      src="docs/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">windanchaos</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="docs/archives/">
+          <span class="site-state-item-count">111</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="docs/categories/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="docs/tags/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/windanchaos" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/windanchaos" title="Gitee → https:&#x2F;&#x2F;gitee.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="gitee fa-fw"></i>Gitee</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:454722630@qq.com" title="E-Mail → mailto:454722630@qq.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/windanchaos" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/windanchaos" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;windanchaos" rel="noopener" target="_blank"><i class="CSDN fa-fw"></i>CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
+    <link itemprop="mainEntityOfPage" href="https://windanchaos.github.io/2017/10/23/%E6%88%91%E5%9C%A8%E8%81%9A%E5%AE%BD%E5%85%B1%E4%BA%AB%E5%87%BD%E6%95%B0%E4%B8%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="docs/images/avatar.jpeg">
+      <meta itemprop="name" content="windanchaos">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="我在聚宽共享函数一 | Hexo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          我在聚宽共享函数一
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2017-10-23 23:37:16" itemprop="dateCreated datePublished" datetime="2017-10-23T23:37:16+08:00">2017-10-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2021-06-08 18:39:48" itemprop="dateModified" datetime="2021-06-08T18:39:48+08:00">2021-06-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="docs/categories/python%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">python编程语言</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>该函数设计目的：保护既得利润，以N日内持仓股票最低盈利被突破为触发条件，所以持股时间最低为N日，为保证有效持股，N日之前亏损不会计入（该条件不需要的可以自己去掉）。函数以股票为输入，需要在自己的函数（持股或卖出判断）每日调用。需要自定义全局（JQ提交代码不能提交函数外的东东）。</p>
+<p>函数怎么运行的：<br>为输入的股票（当然是自己的持仓的）建立一个长度为N的队列（FIFO，先进先出），比如，建仓股票A了，则新建队列{A:队列}的数据格式，然后每日调用将盈亏比例记录到队列当中，当队列长度达到N，就开始取队列中的最小值和新来的（就是第N+1天来的）盈亏比进行比较，新来的大，就把第一天的盈利数据删除，再把新来的记录进去。反之就触发卖出。如此，只要不触发卖出就继续持股，判断的始终是距离函数调用日期前N日的盈利，从而实现动态保护利润。</p>
+<p>当然，该函数还可以改成你想的形式（自己实现咯）：<br>比如：N日内平均利润被突破后触发卖出<br>比如：N日内最高利润回调多少后触发卖出<br>比如：最高利润达到一定范围回调触发卖出，最高利润10%回调3%就卖，20%回调6%就卖，30%回调10%就买等。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">#全局参数</span><br><span class="line"> #存储持股的字典&#123;<span class="attr">security</span>:qu.<span class="title class_">Queue</span>(maxsize = g.<span class="property">queue_longth</span> )&#125;</span><br><span class="line"> g.<span class="property">security_win_queue</span> = &#123;&#125;</span><br><span class="line"> #N日长度定义</span><br><span class="line"> g.<span class="property">queue_longth</span> = <span class="number">12</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def <span class="title function_">security_win_queue</span>(context,security):</span><br><span class="line">    current_price = <span class="title function_">history</span>(<span class="number">1</span>, <span class="string">&#x27;1m&#x27;</span>, <span class="string">&#x27;close&#x27;</span>, security).<span class="property">iloc</span>[<span class="number">0</span>].<span class="property">iloc</span>[<span class="number">0</span>]</span><br><span class="line">    # 获取买入平均价格</span><br><span class="line">    avg_cost = context.<span class="property">portfolio</span>.<span class="property">positions</span>[security].<span class="property">avg_cost</span></span><br><span class="line">    #盈利推入队列dd[<span class="string">&#x27;bar&#x27;</span>].<span class="title function_">append</span>(<span class="string">&#x27;quux&#x27;</span>)</span><br><span class="line">    win_percentage = (current_price - avg_cost)/avg_cost * <span class="number">100</span></span><br><span class="line">    #若是新增，则例行初始化&#123;<span class="attr">security</span>:queue&#125;</span><br><span class="line">    <span class="keyword">if</span> not g.<span class="property">security_win_queue</span>.<span class="title function_">has_key</span>(security):</span><br><span class="line">        g.<span class="property">security_win_queue</span>[security] = qu.<span class="title class_">Queue</span>(maxsize=g.<span class="property">queue_longth</span>)</span><br><span class="line"></span><br><span class="line">    #没有记满，就继续记</span><br><span class="line">    <span class="keyword">if</span> not g.<span class="property">security_win_queue</span>[security].<span class="title function_">full</span>():</span><br><span class="line">        #亏损的比例在持股初期不录入保证未突破止损线之前不卖出</span><br><span class="line">         <span class="keyword">if</span> win_percentage &gt; <span class="number">0</span>:</span><br><span class="line">            g.<span class="property">security_win_queue</span>[security].<span class="title function_">put</span>(win_percentage)</span><br><span class="line">            <span class="title function_">print</span>(security,win_percentage,<span class="string">&#x27;qsize:&#x27;</span>,g.<span class="property">security_win_queue</span>[security].<span class="title function_">qsize</span>())</span><br><span class="line">    #满了则进行盈利比较</span><br><span class="line">    <span class="attr">else</span>:</span><br><span class="line">        #取N日最小值盈利</span><br><span class="line">        tmp_win_list = []</span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line">        queue_size = g.<span class="property">security_win_queue</span>[security].<span class="title function_">qsize</span>()</span><br><span class="line">        <span class="keyword">for</span> w <span class="keyword">in</span> <span class="title function_">range</span>(queue_size):</span><br><span class="line">            tmp_win_list.<span class="title function_">append</span>(g.<span class="property">security_win_queue</span>[security].<span class="title function_">get</span>())</span><br><span class="line"></span><br><span class="line">        #排序盈利并取最小</span><br><span class="line">        sorted_tmp_win_list = <span class="title function_">sorted</span>(tmp_win_list)</span><br><span class="line">        #排除最小值后把队列恢复。</span><br><span class="line">        minimum = sorted_tmp_win_list[<span class="number">0</span>]</span><br><span class="line">        #排除最小值[<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">for</span> w <span class="keyword">in</span> <span class="title function_">range</span>(<span class="number">1</span>,queue_size):</span><br><span class="line">            g.<span class="property">security_win_queue</span>[security].<span class="title function_">put</span>(sorted_tmp_win_list[w])</span><br><span class="line">        <span class="keyword">if</span> win_percentage &lt; <span class="attr">minimum</span>:</span><br><span class="line">            #返回<span class="literal">true</span>则需要卖出否则返回<span class="literal">false</span>继续持有</span><br><span class="line">            <span class="keyword">return</span> <span class="title class_">True</span></span><br><span class="line">        <span class="attr">else</span>:</span><br><span class="line">        #将新的盈利推入队列    </span><br><span class="line">            g.<span class="property">security_win_queue</span>[security].<span class="title function_">put</span>(win_percentage)</span><br><span class="line">            <span class="keyword">return</span> <span class="title class_">False</span></span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="docs/tags/FromCSDN/" rel="tag"># FromCSDN</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="docs/2017/10/20/%EF%BC%BBJavaWeb%E5%9F%BA%E7%A1%80%EF%BC%BDjsp/" rel="prev" title="［JavaWeb基础］jsp">
+                  <i class="fa fa-chevron-left"></i> ［JavaWeb基础］jsp
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="docs/2017/10/28/jenkins%E7%BB%8F%E9%AA%8C/" rel="next" title="jenkins经验">
+                  jenkins经验 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蜀ICP备19036728号 </a>
+      <img src="docs/images/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png" alt=""><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=51012202000611" rel="noopener" target="_blank">川公网安备 51012202000611号 </a>
+  </div>
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-dragon"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">windanchaos</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="docs/js/comments.js"></script><script src="docs/js/utils.js"></script><script src="docs/js/motion.js"></script><script src="docs/js/schemes/muse.js"></script><script src="docs/js/next-boot.js"></script><script src="docs/js/pjax.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":"enable","archive":"enable","delay":true,"timeout":3000,"priority":true,"url":"https://windanchaos.github.io/2017/10/23/%E6%88%91%E5%9C%A8%E8%81%9A%E5%AE%BD%E5%85%B1%E4%BA%AB%E5%87%BD%E6%95%B0%E4%B8%80/"}</script>
+  <script src="docs/js/third-party/quicklink.js"></script>
+
+</body>
+</html>
