@@ -7,41 +7,41 @@
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="docs/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="docs/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="docs/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="docs/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="docs/css/main.css">
+<link rel="stylesheet" href="/css/main.css">
 
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"windanchaos.github.io","root":"docs/","images":"docs/images","scheme":"Mist","darkmode":true,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="docs/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"windanchaos.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="参考来源：http:&#x2F;&#x2F;www.xuebuyuan.com&#x2F;2153333.htm 1.Action&#x2F;Service&#x2F;DAO简介： Action是管理业务（Service）调度和管理跳转的。 Service是管理具体的功能的。 Action只负责管理，而Service负责实施。 DAO只完成增删改查，虽然可以1-n，n-n，1-1关联，模糊、动态、子查询都可以。但是无论多么复杂">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java Web基础">
-<meta property="og:url" content="https://windanchaos.github.io/docs/2016/06/23/Java%20Web%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:url" content="https://windanchaos.github.io/2016/06/23/Java%20Web%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="参考来源：http:&#x2F;&#x2F;www.xuebuyuan.com&#x2F;2153333.htm 1.Action&#x2F;Service&#x2F;DAO简介： Action是管理业务（Service）调度和管理跳转的。 Service是管理具体的功能的。 Action只负责管理，而Service负责实施。 DAO只完成增删改查，虽然可以1-n，n-n，1-1关联，模糊、动态、子查询都可以。但是无论多么复杂">
 <meta property="og:locale">
-<meta property="og:image" content="https://windanchaos.github.io/docs/2016/06/23/Java%20Web%E5%9F%BA%E7%A1%80/docs/images/dn.net-20141111230225984.png">
+<meta property="og:image" content="https://windanchaos.github.io/images/dn.net-20141111230225984.png">
 <meta property="article:published_time" content="2016-06-23T03:30:10.000Z">
 <meta property="article:modified_time" content="2021-06-08T10:44:42.082Z">
 <meta property="article:author" content="windanchaos">
 <meta property="article:tag" content="FromCSDN">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://windanchaos.github.io/docs/2016/06/23/Java%20Web%E5%9F%BA%E7%A1%80/docs/images/dn.net-20141111230225984.png">
+<meta name="twitter:image" content="https://windanchaos.github.io/images/dn.net-20141111230225984.png">
 
 
-<link rel="canonical" href="https://windanchaos.github.io/docs/2016/06/23/Java%20Web%E5%9F%BA%E7%A1%80/">
+<link rel="canonical" href="https://windanchaos.github.io/2016/06/23/Java%20Web%E5%9F%BA%E7%A1%80/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"https://windanchaos.github.io/docs/2016/06/23/Java%20Web%E5%9F%BA%E7%A1%80/","path":"2016/06/23/Java Web基础/","title":"Java Web基础"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"https://windanchaos.github.io/2016/06/23/Java%20Web%E5%9F%BA%E7%A1%80/","path":"2016/06/23/Java Web基础/","title":"Java Web基础"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>Java Web基础 | Hexo</title>
@@ -53,7 +53,7 @@
 
 
   <noscript>
-    <link rel="stylesheet" href="docs/css/noscript.css">
+    <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
 </head>
 
@@ -73,7 +73,7 @@
 
   <div class="site-meta">
 
-    <a href="docs/" class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
       <p class="site-title">Hexo</p>
       <i class="logo-line"></i>
@@ -89,7 +89,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-首页"><a href="docs/" rel="section"><i class="home fa-fw"></i>首页</a></li><li class="menu-item menu-item-分类"><a href="docs/categories/" rel="section"><i class="th fa-fw"></i>分类</a></li><li class="menu-item menu-item-归档"><a href="docs/archives/" rel="section"><i class="archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-标签"><a href="docs/tags/" rel="section"><i class="tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-关于"><a href="docs/about/me.html" rel="section"><i class="user fa-fw"></i>关于</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-首页"><a href="/" rel="section"><i class="home fa-fw"></i>首页</a></li><li class="menu-item menu-item-分类"><a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a></li><li class="menu-item menu-item-归档"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-标签"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-关于"><a href="/about/me.html" rel="section"><i class="user fa-fw"></i>关于</a></li>
   </ul>
 </nav>
 
@@ -126,25 +126,25 @@
         <div class="site-overview-wrap sidebar-panel">
           <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="windanchaos"
-      src="docs/images/avatar.jpeg">
+      src="/images/avatar.jpeg">
   <p class="site-author-name" itemprop="name">windanchaos</p>
   <div class="site-description" itemprop="description"></div>
 </div>
 <div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-        <a href="docs/archives/">
+        <a href="/archives/">
           <span class="site-state-item-count">111</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-          <a href="docs/categories/">
+          <a href="/categories/">
         <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-          <a href="docs/tags/">
+          <a href="/tags/">
         <span class="site-state-item-count">1</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
@@ -204,10 +204,10 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
-    <link itemprop="mainEntityOfPage" href="https://windanchaos.github.io/docs/2016/06/23/Java%20Web%E5%9F%BA%E7%A1%80/">
+    <link itemprop="mainEntityOfPage" href="https://windanchaos.github.io/2016/06/23/Java%20Web%E5%9F%BA%E7%A1%80/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="docs/images/avatar.jpeg">
+      <meta itemprop="image" content="/images/avatar.jpeg">
       <meta itemprop="name" content="windanchaos">
     </span>
 
@@ -248,7 +248,7 @@
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="docs/categories/Java%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">Java编程语言</span></a>
+          <a href="/categories/Java%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">Java编程语言</span></a>
         </span>
     </span>
 
@@ -301,7 +301,7 @@
 <p>Spring，省去了在类里面new对象的过程，把这个调用与被调用的关系直接展示到了配置文件里，做任何操作都变得简单了。</p>
 <p>简单流程举例说明：</p>
 <p>程序框架搭建好，并且把各种jar包导入后，就开始进行业务逻辑分析——假设一个最基本的注册功能：页面有两个文本框，一个用户名(username)和一个密码(password)。以QQ注册网页说明，这里以昵称和密码为代表进行举例。</p>
-<p><img data-src="docs/images/dn.net-20141111230225984.png" alt="这里写图片描述"></p>
+<p><img data-src="/images/dn.net-20141111230225984.png" alt="这里写图片描述"></p>
 <p>首先是action层：它是负责在页面和程序之间传输数据的，还有作用是做页面跳转。页面由用户填写表单数据，点击提交按钮，页面的表单数据由Hibernate自动封装到该<br>页面表单所对应的ActionFrom（ActionFrom跟实体类不是一个东西，ActionFrom是页面有什么值，类里就写什么属性，是用来封装表单数据用的；而实体类是完全按照数据库的<br>字段生成的，实体类可以当做ActionFrom用，但ActionFrom绝对不可以当做实体类用），这样表单数据就以ActionFrom对象的形式在Action的点击“提交按钮”执行的那个<br>方法里存在了。这个时候需要做的就是把表单数据存入数据库中。此时，Action的功能告一段落，接着是把数据传入BIZ层。</p>
 <p>BIZE层（业务逻辑层）：负责的是对数据的处理。如果没有数据处理任务的话，此层只做单纯的数据传递作用，而后又到了DAO层。</p>
 <p>DAO层（数据库操作层）：负责对数据向数据库增删改查的操作。</p>
@@ -315,19 +315,19 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="docs/tags/FromCSDN/" rel="tag"># FromCSDN</a>
+              <a href="/tags/FromCSDN/" rel="tag"># FromCSDN</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="docs/2013/11/20/%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F%E4%B8%8E%E5%AE%9E%E4%BE%8B%E5%8F%98%E9%87%8F%E7%9A%84%E5%8C%BA%E5%88%AB/" rel="prev" title="静态变量与实例变量的区别">
+                <a href="/2013/11/20/%E9%9D%99%E6%80%81%E5%8F%98%E9%87%8F%E4%B8%8E%E5%AE%9E%E4%BE%8B%E5%8F%98%E9%87%8F%E7%9A%84%E5%8C%BA%E5%88%AB/" rel="prev" title="静态变量与实例变量的区别">
                   <i class="fa fa-chevron-left"></i> 静态变量与实例变量的区别
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="docs/2016/07/07/Java%E6%8E%A7%E5%88%B6%E5%8F%B0%E4%BA%94%E5%AD%90%E6%A3%8B%E7%BC%96%E7%A0%81%E5%AD%A6%E4%B9%A0/" rel="next" title="Java控制台五子棋编码学习">
+                <a href="/2016/07/07/Java%E6%8E%A7%E5%88%B6%E5%8F%B0%E4%BA%94%E5%AD%90%E6%A3%8B%E7%BC%96%E7%A0%81%E5%AD%A6%E4%B9%A0/" rel="next" title="Java控制台五子棋编码学习">
                   Java控制台五子棋编码学习 <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
@@ -348,7 +348,7 @@
     <div class="footer-inner">
 
   <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蜀ICP备19036728号 </a>
-      <img src="docs/images/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png" alt=""><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=51012202000611" rel="noopener" target="_blank">川公网安备 51012202000611号 </a>
+      <img src="/images/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png" alt=""><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=51012202000611" rel="noopener" target="_blank">川公网安备 51012202000611号 </a>
   </div>
 
 <div class="copyright">
@@ -368,7 +368,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
-<script src="docs/js/comments.js"></script><script src="docs/js/utils.js"></script><script src="docs/js/motion.js"></script><script src="docs/js/schemes/muse.js"></script><script src="docs/js/next-boot.js"></script><script src="docs/js/pjax.js"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
 
   
 
@@ -382,8 +382,8 @@
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
-  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":"enable","archive":"enable","delay":true,"timeout":3000,"priority":true,"url":"https://windanchaos.github.io/docs/2016/06/23/Java%20Web%E5%9F%BA%E7%A1%80/"}</script>
-  <script src="docs/js/third-party/quicklink.js"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":"enable","archive":"enable","delay":true,"timeout":3000,"priority":true,"url":"https://windanchaos.github.io/2016/06/23/Java%20Web%E5%9F%BA%E7%A1%80/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
 
 </body>
 </html>

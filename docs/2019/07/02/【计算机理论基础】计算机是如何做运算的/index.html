@@ -7,52 +7,52 @@
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="docs/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="docs/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="docs/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="docs/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="docs/css/main.css">
+<link rel="stylesheet" href="/css/main.css">
 
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"windanchaos.github.io","root":"docs/","images":"docs/images","scheme":"Mist","darkmode":true,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="docs/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"windanchaos.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="由低向上的学习计算机是一条比较漫长的道路。但是，得来的知识却是体系化的。而且越到上边，学习的理解的效率是越高的（暂且自我欺骗，毕竟还没达到那高度）下面就最近研究和学习做一个复盘。以问题出发为脉络。1、计算机是怎么做运算的？关键字：二进制、逻辑门2、在问题1的基础上又问：为什么是二进制？3、CPU是如何工作？ 1、计算机是怎么做运算的？回答这个问题，要先弄懂人类在使用10进制做计算时的方法，不赘述。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【计算机理论基础】计算机是如何做运算的">
-<meta property="og:url" content="https://windanchaos.github.io/docs/2019/07/02/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E5%A6%82%E4%BD%95%E5%81%9A%E8%BF%90%E7%AE%97%E7%9A%84/index.html">
+<meta property="og:url" content="https://windanchaos.github.io/2019/07/02/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E5%A6%82%E4%BD%95%E5%81%9A%E8%BF%90%E7%AE%97%E7%9A%84/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="由低向上的学习计算机是一条比较漫长的道路。但是，得来的知识却是体系化的。而且越到上边，学习的理解的效率是越高的（暂且自我欺骗，毕竟还没达到那高度）下面就最近研究和学习做一个复盘。以问题出发为脉络。1、计算机是怎么做运算的？关键字：二进制、逻辑门2、在问题1的基础上又问：为什么是二进制？3、CPU是如何工作？ 1、计算机是怎么做运算的？回答这个问题，要先弄懂人类在使用10进制做计算时的方法，不赘述。">
 <meta property="og:locale">
-<meta property="og:image" content="https://windanchaos.github.io/docs/2019/07/02/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E5%A6%82%E4%BD%95%E5%81%9A%E8%BF%90%E7%AE%97%E7%9A%84/docs/images/dn.net-20180721164506133-watermark-2-text-aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dpbmRhbmNoYW9z-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70.png">
-<meta property="og:image" content="https://windanchaos.github.io/docs/2019/07/02/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E5%A6%82%E4%BD%95%E5%81%9A%E8%BF%90%E7%AE%97%E7%9A%84/docs/images/dn.net-20180722094433922-watermark-2-text-aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dpbmRhbmNoYW9z-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70.png">
-<meta property="og:image" content="https://windanchaos.github.io/docs/2019/07/02/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E5%A6%82%E4%BD%95%E5%81%9A%E8%BF%90%E7%AE%97%E7%9A%84/docs/images/dn.net-20180721172756811-watermark-2-text-aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dpbmRhbmNoYW9z-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70.png">
-<meta property="og:image" content="https://windanchaos.github.io/docs/2019/07/02/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E5%A6%82%E4%BD%95%E5%81%9A%E8%BF%90%E7%AE%97%E7%9A%84/docs/images/csdnimg.cn-aHR0cDovL3d3dy5lbGVjZmFucy5jb20vdXBsb2Fkcy9hbGxpbWcvMTcwNTIyLzI0NzQyMTMtMUY1MjIxNDA0MzkzNTAucG5n.png">
-<meta property="og:image" content="https://windanchaos.github.io/docs/2019/07/02/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E5%A6%82%E4%BD%95%E5%81%9A%E8%BF%90%E7%AE%97%E7%9A%84/docs/images/csdnimg.cn-aHR0cDovL3d3dy5lbGVjZmFucy5jb20vL3VwbG9hZHMvYWxsaW1nLzE3MDUyMi8yNDc0MjEzLTFGNTIyMTQwNDU1M0gucG5n.png">
-<meta property="og:image" content="https://windanchaos.github.io/docs/2019/07/02/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E5%A6%82%E4%BD%95%E5%81%9A%E8%BF%90%E7%AE%97%E7%9A%84/docs/images/csdnimg.cn-aHR0cDovL3d3dy5lbGVjZmFucy5jb20vL3VwbG9hZHMvYWxsaW1nLzE3MDUyMi8yNDc0MjEzLTFGNTIyMTQwNTExVDkucG5n.png">
-<meta property="og:image" content="https://windanchaos.github.io/docs/2019/07/02/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E5%A6%82%E4%BD%95%E5%81%9A%E8%BF%90%E7%AE%97%E7%9A%84/docs/images/csdnimg.cn-aHR0cDovL3d3dy5lbGVjZmFucy5jb20vL3VwbG9hZHMvYWxsaW1nLzE3MDUyMi8yNDc0MjEzLTFGNTIyMTQyVTkzMzgucG5n.png">
-<meta property="og:image" content="https://windanchaos.github.io/docs/2019/07/02/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E5%A6%82%E4%BD%95%E5%81%9A%E8%BF%90%E7%AE%97%E7%9A%84/docs/images/dn.net-20180721185732424-watermark-2-text-aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dpbmRhbmNoYW9z-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70.png">
-<meta property="og:image" content="https://windanchaos.github.io/docs/2019/07/02/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E5%A6%82%E4%BD%95%E5%81%9A%E8%BF%90%E7%AE%97%E7%9A%84/docs/images/dn.net-20180721194713506-watermark-2-text-aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dpbmRhbmNoYW9z-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70.png">
-<meta property="og:image" content="https://windanchaos.github.io/docs/2019/07/02/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E5%A6%82%E4%BD%95%E5%81%9A%E8%BF%90%E7%AE%97%E7%9A%84/docs/images/dn.net-20180722102849490-watermark-2-text-aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dpbmRhbmNoYW9z-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70.png">
-<meta property="og:image" content="https://windanchaos.github.io/docs/2019/07/02/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E5%A6%82%E4%BD%95%E5%81%9A%E8%BF%90%E7%AE%97%E7%9A%84/docs/images/dn.net-20180722103125994-watermark-2-text-aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dpbmRhbmNoYW9z-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70.png">
-<meta property="og:image" content="https://windanchaos.github.io/docs/2019/07/02/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E5%A6%82%E4%BD%95%E5%81%9A%E8%BF%90%E7%AE%97%E7%9A%84/docs/images/dn.net-20180723124650394-watermark-2-text-aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dpbmRhbmNoYW9z-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70.png">
+<meta property="og:image" content="https://windanchaos.github.io/images/dn.net-20180721164506133-watermark-2-text-aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dpbmRhbmNoYW9z-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70.png">
+<meta property="og:image" content="https://windanchaos.github.io/images/dn.net-20180722094433922-watermark-2-text-aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dpbmRhbmNoYW9z-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70.png">
+<meta property="og:image" content="https://windanchaos.github.io/images/dn.net-20180721172756811-watermark-2-text-aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dpbmRhbmNoYW9z-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70.png">
+<meta property="og:image" content="https://windanchaos.github.io/images/csdnimg.cn-aHR0cDovL3d3dy5lbGVjZmFucy5jb20vdXBsb2Fkcy9hbGxpbWcvMTcwNTIyLzI0NzQyMTMtMUY1MjIxNDA0MzkzNTAucG5n.png">
+<meta property="og:image" content="https://windanchaos.github.io/images/csdnimg.cn-aHR0cDovL3d3dy5lbGVjZmFucy5jb20vL3VwbG9hZHMvYWxsaW1nLzE3MDUyMi8yNDc0MjEzLTFGNTIyMTQwNDU1M0gucG5n.png">
+<meta property="og:image" content="https://windanchaos.github.io/images/csdnimg.cn-aHR0cDovL3d3dy5lbGVjZmFucy5jb20vL3VwbG9hZHMvYWxsaW1nLzE3MDUyMi8yNDc0MjEzLTFGNTIyMTQwNTExVDkucG5n.png">
+<meta property="og:image" content="https://windanchaos.github.io/images/csdnimg.cn-aHR0cDovL3d3dy5lbGVjZmFucy5jb20vL3VwbG9hZHMvYWxsaW1nLzE3MDUyMi8yNDc0MjEzLTFGNTIyMTQyVTkzMzgucG5n.png">
+<meta property="og:image" content="https://windanchaos.github.io/images/dn.net-20180721185732424-watermark-2-text-aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dpbmRhbmNoYW9z-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70.png">
+<meta property="og:image" content="https://windanchaos.github.io/images/dn.net-20180721194713506-watermark-2-text-aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dpbmRhbmNoYW9z-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70.png">
+<meta property="og:image" content="https://windanchaos.github.io/images/dn.net-20180722102849490-watermark-2-text-aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dpbmRhbmNoYW9z-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70.png">
+<meta property="og:image" content="https://windanchaos.github.io/images/dn.net-20180722103125994-watermark-2-text-aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dpbmRhbmNoYW9z-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70.png">
+<meta property="og:image" content="https://windanchaos.github.io/images/dn.net-20180723124650394-watermark-2-text-aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dpbmRhbmNoYW9z-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70.png">
 <meta property="article:published_time" content="2019-07-02T08:56:46.000Z">
 <meta property="article:modified_time" content="2021-06-08T10:39:48.882Z">
 <meta property="article:author" content="windanchaos">
 <meta property="article:tag" content="FromCSDN">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://windanchaos.github.io/docs/2019/07/02/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E5%A6%82%E4%BD%95%E5%81%9A%E8%BF%90%E7%AE%97%E7%9A%84/docs/images/dn.net-20180721164506133-watermark-2-text-aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dpbmRhbmNoYW9z-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70.png">
+<meta name="twitter:image" content="https://windanchaos.github.io/images/dn.net-20180721164506133-watermark-2-text-aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dpbmRhbmNoYW9z-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70.png">
 
 
-<link rel="canonical" href="https://windanchaos.github.io/docs/2019/07/02/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E5%A6%82%E4%BD%95%E5%81%9A%E8%BF%90%E7%AE%97%E7%9A%84/">
+<link rel="canonical" href="https://windanchaos.github.io/2019/07/02/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E5%A6%82%E4%BD%95%E5%81%9A%E8%BF%90%E7%AE%97%E7%9A%84/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"https://windanchaos.github.io/docs/2019/07/02/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E5%A6%82%E4%BD%95%E5%81%9A%E8%BF%90%E7%AE%97%E7%9A%84/","path":"2019/07/02/【计算机理论基础】计算机是如何做运算的/","title":"【计算机理论基础】计算机是如何做运算的"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"https://windanchaos.github.io/2019/07/02/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E5%A6%82%E4%BD%95%E5%81%9A%E8%BF%90%E7%AE%97%E7%9A%84/","path":"2019/07/02/【计算机理论基础】计算机是如何做运算的/","title":"【计算机理论基础】计算机是如何做运算的"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>【计算机理论基础】计算机是如何做运算的 | Hexo</title>
@@ -64,7 +64,7 @@
 
 
   <noscript>
-    <link rel="stylesheet" href="docs/css/noscript.css">
+    <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
 </head>
 
@@ -84,7 +84,7 @@
 
   <div class="site-meta">
 
-    <a href="docs/" class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
       <p class="site-title">Hexo</p>
       <i class="logo-line"></i>
@@ -100,7 +100,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-首页"><a href="docs/" rel="section"><i class="home fa-fw"></i>首页</a></li><li class="menu-item menu-item-分类"><a href="docs/categories/" rel="section"><i class="th fa-fw"></i>分类</a></li><li class="menu-item menu-item-归档"><a href="docs/archives/" rel="section"><i class="archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-标签"><a href="docs/tags/" rel="section"><i class="tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-关于"><a href="docs/about/me.html" rel="section"><i class="user fa-fw"></i>关于</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-首页"><a href="/" rel="section"><i class="home fa-fw"></i>首页</a></li><li class="menu-item menu-item-分类"><a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a></li><li class="menu-item menu-item-归档"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-标签"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-关于"><a href="/about/me.html" rel="section"><i class="user fa-fw"></i>关于</a></li>
   </ul>
 </nav>
 
@@ -138,25 +138,25 @@
         <div class="site-overview-wrap sidebar-panel">
           <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="windanchaos"
-      src="docs/images/avatar.jpeg">
+      src="/images/avatar.jpeg">
   <p class="site-author-name" itemprop="name">windanchaos</p>
   <div class="site-description" itemprop="description"></div>
 </div>
 <div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-        <a href="docs/archives/">
+        <a href="/archives/">
           <span class="site-state-item-count">111</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-          <a href="docs/categories/">
+          <a href="/categories/">
         <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-          <a href="docs/tags/">
+          <a href="/tags/">
         <span class="site-state-item-count">1</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
@@ -216,10 +216,10 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
-    <link itemprop="mainEntityOfPage" href="https://windanchaos.github.io/docs/2019/07/02/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E5%A6%82%E4%BD%95%E5%81%9A%E8%BF%90%E7%AE%97%E7%9A%84/">
+    <link itemprop="mainEntityOfPage" href="https://windanchaos.github.io/2019/07/02/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E5%A6%82%E4%BD%95%E5%81%9A%E8%BF%90%E7%AE%97%E7%9A%84/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="docs/images/avatar.jpeg">
+      <meta itemprop="image" content="/images/avatar.jpeg">
       <meta itemprop="name" content="windanchaos">
     </span>
 
@@ -260,7 +260,7 @@
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="docs/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">计算机科学基础</span></a>
+          <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">计算机科学基础</span></a>
         </span>
     </span>
 
@@ -284,21 +284,21 @@
 <p>比如5进制的23+12&#x3D;40，它的10进制是多少呢？</p>
 <p>23的10进制为：2x51+3x50&#x3D;13<br>12的10进制为：1x51+2x50&#x3D;7<br>40的10进制为：4x51+0&#x2F;*50&#x3D;20</p>
 <p>数字的实际意义则有进行运算的人赋予，抽象的作用便在于此。</p>
-<h2 id="逻辑门和它们的电路实现"><a href="#逻辑门和它们的电路实现" class="headerlink" title="逻辑门和它们的电路实现"></a>逻辑门和它们的电路实现</h2><p>计算机使用二进制，为什么是二进制呢？<br>早期的计算机有3进制、还有5进制的，都是电驱动，用简单的电子元件来构建。<br><img data-src="docs/images/dn.net-20180721164506133-watermark-2-text-aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dpbmRhbmNoYW9z-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70.png" alt="这里写图片描述"><br>电信号的电压强弱来表征数字，如上图，如果是5进制，那么不稳定的电压，必然导致不稳定的数。不稳定代表了不可信。<br>二进制就不同了，电压不稳定，只要在范围内，取值就确定的。所以二进制被优胜劣汰的剩下来了。</p>
-<p><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%BA%8C%E6%9E%81%E7%AE%A1/102466?fr=aladdin">传送门</a><br>二极管有个特性，就是在某个电压值Uon之前，不导电，一旦突破，则通电，如下图。死区电压不导电。<br><img data-src="docs/images/dn.net-20180722094433922-watermark-2-text-aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dpbmRhbmNoYW9z-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70.png" alt="这里写图片描述"><br>晶体二极管为一个由p型半导体和n型半导体形成的pn结，在其界面处两侧形成空间电荷层，并建有自建电场。当不存在外加电压时，由于pn结两边载流子浓度差引起的扩散电流和自建电场引起的漂移电流相等而处于电平衡状态。当外界有正向电压偏置时，外界电场和自建电场的互相抑消作用使载流子的扩散电流增加引起了正向电流。当外界有反向电压偏置时，外界电场和自建电场进一步加强，形成在一定反向电压范围内与反向偏置电压值无关的反向饱和电流I0。当外加的反向电压高到一定程度时，pn结空间电荷层中的电场强度达到临界值产生载流子的倍增过程，产生大量电子空穴对，产生了数值很大的反向击穿电流，称为二极管的击穿现象。pn结的反向击穿有齐纳击穿和雪崩击穿之分。</p>
+<h2 id="逻辑门和它们的电路实现"><a href="#逻辑门和它们的电路实现" class="headerlink" title="逻辑门和它们的电路实现"></a>逻辑门和它们的电路实现</h2><p>计算机使用二进制，为什么是二进制呢？<br>早期的计算机有3进制、还有5进制的，都是电驱动，用简单的电子元件来构建。<br><img data-src="/images/dn.net-20180721164506133-watermark-2-text-aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dpbmRhbmNoYW9z-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70.png" alt="这里写图片描述"><br>电信号的电压强弱来表征数字，如上图，如果是5进制，那么不稳定的电压，必然导致不稳定的数。不稳定代表了不可信。<br>二进制就不同了，电压不稳定，只要在范围内，取值就确定的。所以二进制被优胜劣汰的剩下来了。</p>
+<p><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E4%BA%8C%E6%9E%81%E7%AE%A1/102466?fr=aladdin">传送门</a><br>二极管有个特性，就是在某个电压值Uon之前，不导电，一旦突破，则通电，如下图。死区电压不导电。<br><img data-src="/images/dn.net-20180722094433922-watermark-2-text-aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dpbmRhbmNoYW9z-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70.png" alt="这里写图片描述"><br>晶体二极管为一个由p型半导体和n型半导体形成的pn结，在其界面处两侧形成空间电荷层，并建有自建电场。当不存在外加电压时，由于pn结两边载流子浓度差引起的扩散电流和自建电场引起的漂移电流相等而处于电平衡状态。当外界有正向电压偏置时，外界电场和自建电场的互相抑消作用使载流子的扩散电流增加引起了正向电流。当外界有反向电压偏置时，外界电场和自建电场进一步加强，形成在一定反向电压范围内与反向偏置电压值无关的反向饱和电流I0。当外加的反向电压高到一定程度时，pn结空间电荷层中的电场强度达到临界值产生载流子的倍增过程，产生大量电子空穴对，产生了数值很大的反向击穿电流，称为二极管的击穿现象。pn结的反向击穿有齐纳击穿和雪崩击穿之分。</p>
 <p><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/PN%E7%BB%93/898090?fr=aladdin">PN结的工作原理传送门</a><br>P是多电子的一个，N是缺电子的一个，他们都导电，P是多电子要对外输出，N是缺电子要对内吸纳。电子多和少是工程师们利用化学原理制造出来的。它们中间隔了一道空气墙，适当电压可以打通，就导电了。</p>
 <p>于是：二极管的导电性就可以抽象出1和0，1为通，0为不通。而通和不通，可以被人类（用电压大小的方式）掌控，下图是3个1。有没有觉得像位的抽象？</p>
-<p><img data-src="docs/images/dn.net-20180721172756811-watermark-2-text-aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dpbmRhbmNoYW9z-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70.png" alt="通电的二极管111"></p>
-<p><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E9%97%A8%E7%94%B5%E8%B7%AF/10796427">传送门</a><br>我不知道是谁发明或发现了这种转换，五体投地。但其中的核心逻辑：由简单到复杂。<br>将2个二极管，按照不同的线路布线，就可以得到逻辑运算中的“或、与、非”运算。<br>下面是盗图，<a target="_blank" rel="noopener" href="http://www.elecfans.com/dianzichangshi/20170522518207.html">盗图源链接</a><br>注意下图表示的电流方向。<br>“与”门<br><img data-src="docs/images/csdnimg.cn-aHR0cDovL3d3dy5lbGVjZmFucy5jb20vdXBsb2Fkcy9hbGxpbWcvMTcwNTIyLzI0NzQyMTMtMUY1MjIxNDA0MzkzNTAucG5n.png" alt="“与”门"><br>“或”门<br><img data-src="docs/images/csdnimg.cn-aHR0cDovL3d3dy5lbGVjZmFucy5jb20vL3VwbG9hZHMvYWxsaW1nLzE3MDUyMi8yNDc0MjEzLTFGNTIyMTQwNDU1M0gucG5n.png" alt="“或”门"><br>“非”门<br><img data-src="docs/images/csdnimg.cn-aHR0cDovL3d3dy5lbGVjZmFucy5jb20vL3VwbG9hZHMvYWxsaW1nLzE3MDUyMi8yNDc0MjEzLTFGNTIyMTQwNTExVDkucG5n.png" alt="“非”门"></p>
-<p>最后那些常用的电路都有了固定的接线模式，逻辑门的电路被抽象成了符号，它们共有一个特点：实现了抽象逻辑符号，在物理世界的正确表达：<br>盗图<br><img data-src="docs/images/csdnimg.cn-aHR0cDovL3d3dy5lbGVjZmFucy5jb20vL3VwbG9hZHMvYWxsaW1nLzE3MDUyMi8yNDc0MjEzLTFGNTIyMTQyVTkzMzgucG5n.png" alt="“非”门"></p>
+<p><img data-src="/images/dn.net-20180721172756811-watermark-2-text-aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dpbmRhbmNoYW9z-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70.png" alt="通电的二极管111"></p>
+<p><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E9%97%A8%E7%94%B5%E8%B7%AF/10796427">传送门</a><br>我不知道是谁发明或发现了这种转换，五体投地。但其中的核心逻辑：由简单到复杂。<br>将2个二极管，按照不同的线路布线，就可以得到逻辑运算中的“或、与、非”运算。<br>下面是盗图，<a target="_blank" rel="noopener" href="http://www.elecfans.com/dianzichangshi/20170522518207.html">盗图源链接</a><br>注意下图表示的电流方向。<br>“与”门<br><img data-src="/images/csdnimg.cn-aHR0cDovL3d3dy5lbGVjZmFucy5jb20vdXBsb2Fkcy9hbGxpbWcvMTcwNTIyLzI0NzQyMTMtMUY1MjIxNDA0MzkzNTAucG5n.png" alt="“与”门"><br>“或”门<br><img data-src="/images/csdnimg.cn-aHR0cDovL3d3dy5lbGVjZmFucy5jb20vL3VwbG9hZHMvYWxsaW1nLzE3MDUyMi8yNDc0MjEzLTFGNTIyMTQwNDU1M0gucG5n.png" alt="“或”门"><br>“非”门<br><img data-src="/images/csdnimg.cn-aHR0cDovL3d3dy5lbGVjZmFucy5jb20vL3VwbG9hZHMvYWxsaW1nLzE3MDUyMi8yNDc0MjEzLTFGNTIyMTQwNTExVDkucG5n.png" alt="“非”门"></p>
+<p>最后那些常用的电路都有了固定的接线模式，逻辑门的电路被抽象成了符号，它们共有一个特点：实现了抽象逻辑符号，在物理世界的正确表达：<br>盗图<br><img data-src="/images/csdnimg.cn-aHR0cDovL3d3dy5lbGVjZmFucy5jb20vL3VwbG9hZHMvYWxsaW1nLzE3MDUyMi8yNDc0MjEzLTFGNTIyMTQyVTkzMzgucG5n.png" alt="“非”门"></p>
 <p>还可以看看这个网站的逻辑门<br><a target="_blank" rel="noopener" href="http://www.ee.surrey.ac.uk/Projects/CAL/digital-logic/gatesfunc/index.html">Basic Gates and Functions</a></p>
-<p>下面这个电路设计图，实现了单个位的二进制计算逻辑，sum是输出，carry是进位。——专业术语，或者叫抽象名“半加器”。<br><img data-src="docs/images/dn.net-20180721185732424-watermark-2-text-aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dpbmRhbmNoYW9z-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70.png" alt="这里写图片描述"><br>这里贴张这个逻辑电路的真值表：<br>A输入 B输入 sum输出 carry输出 0 0 0 0 0 1 1 0 1 0 1 0 1 1 0 1</p>
-<p>上边电路解决了一位的加法，那么多位的呢？<br>把电路单元连接起来！<br>所以引出另一个电路图——全加器，由半加器（上边提到的半加器单元用HALF ADDER来表示了）进化而来。<br><img data-src="docs/images/dn.net-20180721194713506-watermark-2-text-aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dpbmRhbmNoYW9z-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70.png" alt="这里写图片描述"></p>
+<p>下面这个电路设计图，实现了单个位的二进制计算逻辑，sum是输出，carry是进位。——专业术语，或者叫抽象名“半加器”。<br><img data-src="/images/dn.net-20180721185732424-watermark-2-text-aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dpbmRhbmNoYW9z-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70.png" alt="这里写图片描述"><br>这里贴张这个逻辑电路的真值表：<br>A输入 B输入 sum输出 carry输出 0 0 0 0 0 1 1 0 1 0 1 0 1 1 0 1</p>
+<p>上边电路解决了一位的加法，那么多位的呢？<br>把电路单元连接起来！<br>所以引出另一个电路图——全加器，由半加器（上边提到的半加器单元用HALF ADDER来表示了）进化而来。<br><img data-src="/images/dn.net-20180721194713506-watermark-2-text-aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dpbmRhbmNoYW9z-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70.png" alt="这里写图片描述"></p>
 <p>上图实现了，进位场景下（三个输入：低位进位的位、高位的两位），两个输出（sum和carry)的计算单元。</p>
-<p>所以继续复杂深化，得到２位的计算电路。下图A0 A1分别代表第１位，第二位的二进制数。<br><img data-src="docs/images/dn.net-20180722102849490-watermark-2-text-aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dpbmRhbmNoYW9z-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70.png" alt="这里写图片描述"><br>继续下去得到一个８位的加法电路：<br><img data-src="docs/images/dn.net-20180722103125994-watermark-2-text-aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dpbmRhbmNoYW9z-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70.png" alt="这里写图片描述"></p>
+<p>所以继续复杂深化，得到２位的计算电路。下图A0 A1分别代表第１位，第二位的二进制数。<br><img data-src="/images/dn.net-20180722102849490-watermark-2-text-aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dpbmRhbmNoYW9z-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70.png" alt="这里写图片描述"><br>继续下去得到一个８位的加法电路：<br><img data-src="/images/dn.net-20180722103125994-watermark-2-text-aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dpbmRhbmNoYW9z-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70.png" alt="这里写图片描述"></p>
 <p>所以，这个图很清晰告诉了一个编程中经常出现的名字：“溢出”。装不下了就溢出了。</p>
 <p>乘法运算，是带进位的加法运算。首先要搞定的是位乘法运算。使用And运算即可。比如A&#x2F;*B，前置条件是假设不会溢出。所以限定A和B都小于1进制的4，结果用8位二进制来保存。如下图：原谅我画图不专业。。核心就是B乘Ai的时候，根据B当前位，为结果进位（左移），我仔细想了想，比较low的是接线的时候，按位来接（比如B1就进1位接在结果线路）。加法器这里，抽象了一把，把所有结果加起来。（里面是应该有3个加法器串联在一起）</p>
-<p><img data-src="docs/images/dn.net-20180723124650394-watermark-2-text-aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dpbmRhbmNoYW9z-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70.png" alt="这里写图片描述"></p>
+<p><img data-src="/images/dn.net-20180723124650394-watermark-2-text-aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dpbmRhbmNoYW9z-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70.png" alt="这里写图片描述"></p>
 <p>以上，运算有关的就到此为止（逻辑的没有写就略过了）。</p>
 <p>关于计算机的可计算性等价于Lambda算子，请百度。本人还未深刻理解Lambda。</p>
 <p>参考：<br><a target="_blank" rel="noopener" href="https://space.bilibili.com/5385034/#/channel/detail?cid=16059">【10分钟速成课：计算机科学】</a><br><a target="_blank" rel="noopener" href="http://www.cppblog.com/Achilleus/articles/154768.html">Lambda算子简介</a><br><a target="_blank" rel="noopener" href="http://www.cnblogs.com/denallo/archive/2012/12/22/2889704.html">denallo学习笔记:λ演算(lambda calculate)</a></p>
@@ -311,19 +311,19 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="docs/tags/FromCSDN/" rel="tag"># FromCSDN</a>
+              <a href="/tags/FromCSDN/" rel="tag"># FromCSDN</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="docs/2019/04/17/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="prev" title="正则表达式">
+                <a href="/2019/04/17/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/" rel="prev" title="正则表达式">
                   <i class="fa fa-chevron-left"></i> 正则表达式
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="docs/2019/07/18/jenkins%E4%BF%AE%E5%A4%8D%E6%9C%80%E6%96%B0Apache%20Struts%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E(CVE-2016-1000031%EF%BC%89/" rel="next" title="jenkins修复最新Apache Struts远程代码执行漏洞(CVE-2016-1000031）">
+                <a href="/2019/07/18/jenkins%E4%BF%AE%E5%A4%8D%E6%9C%80%E6%96%B0Apache%20Struts%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E(CVE-2016-1000031%EF%BC%89/" rel="next" title="jenkins修复最新Apache Struts远程代码执行漏洞(CVE-2016-1000031）">
                   jenkins修复最新Apache Struts远程代码执行漏洞(CVE-2016-1000031） <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
@@ -344,7 +344,7 @@
     <div class="footer-inner">
 
   <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蜀ICP备19036728号 </a>
-      <img src="docs/images/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png" alt=""><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=51012202000611" rel="noopener" target="_blank">川公网安备 51012202000611号 </a>
+      <img src="/images/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png" alt=""><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=51012202000611" rel="noopener" target="_blank">川公网安备 51012202000611号 </a>
   </div>
 
 <div class="copyright">
@@ -364,7 +364,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
-<script src="docs/js/comments.js"></script><script src="docs/js/utils.js"></script><script src="docs/js/motion.js"></script><script src="docs/js/schemes/muse.js"></script><script src="docs/js/next-boot.js"></script><script src="docs/js/pjax.js"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
 
   
 
@@ -378,8 +378,8 @@
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
-  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":"enable","archive":"enable","delay":true,"timeout":3000,"priority":true,"url":"https://windanchaos.github.io/docs/2019/07/02/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E5%A6%82%E4%BD%95%E5%81%9A%E8%BF%90%E7%AE%97%E7%9A%84/"}</script>
-  <script src="docs/js/third-party/quicklink.js"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":"enable","archive":"enable","delay":true,"timeout":3000,"priority":true,"url":"https://windanchaos.github.io/2019/07/02/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80%E3%80%91%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%98%AF%E5%A6%82%E4%BD%95%E5%81%9A%E8%BF%90%E7%AE%97%E7%9A%84/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
 
 </body>
 </html>

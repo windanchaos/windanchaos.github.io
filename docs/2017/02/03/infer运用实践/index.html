@@ -7,48 +7,48 @@
 <meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="docs/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="docs/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="docs/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="docs/images/logo.svg" color="#222">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
-<link rel="stylesheet" href="docs/css/main.css">
+<link rel="stylesheet" href="/css/main.css">
 
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"windanchaos.github.io","root":"docs/","images":"docs/images","scheme":"Mist","darkmode":true,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="docs/js/config.js"></script>
+<script class="next-config" data-name="main" type="application/json">{"hostname":"windanchaos.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
     <meta name="description" content="2016年上半年研究过一段时间infer，最难的是安装到ubuntu上各种依赖环境要解决，最后在公司的java代码上跑出来30多个可能存在空指针的代码段，并提交给研发处理。在使用过程中，我发现了一个infer的bug，并提交到infer的github上，该问题在：https:&#x2F;&#x2F;github.com&#x2F;facebook&#x2F;infer&#x2F;issues&#x2F;442当然我的大部分提交都阵亡了，研发看了存在空指针可">
 <meta property="og:type" content="article">
 <meta property="og:title" content="infer运用实践">
-<meta property="og:url" content="https://windanchaos.github.io/docs/2017/02/03/infer%E8%BF%90%E7%94%A8%E5%AE%9E%E8%B7%B5/index.html">
+<meta property="og:url" content="https://windanchaos.github.io/2017/02/03/infer%E8%BF%90%E7%94%A8%E5%AE%9E%E8%B7%B5/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="2016年上半年研究过一段时间infer，最难的是安装到ubuntu上各种依赖环境要解决，最后在公司的java代码上跑出来30多个可能存在空指针的代码段，并提交给研发处理。在使用过程中，我发现了一个infer的bug，并提交到infer的github上，该问题在：https:&#x2F;&#x2F;github.com&#x2F;facebook&#x2F;infer&#x2F;issues&#x2F;442当然我的大部分提交都阵亡了，研发看了存在空指针可">
 <meta property="og:locale">
-<meta property="og:image" content="https://windanchaos.github.io/docs/2017/02/03/infer%E8%BF%90%E7%94%A8%E5%AE%9E%E8%B7%B5/docs/images/uqiu.net-static-images-Infer-landing-.png">
-<meta property="og:image" content="https://windanchaos.github.io/docs/2017/02/03/infer%E8%BF%90%E7%94%A8%E5%AE%9E%E8%B7%B5/docs/images/s.jianshu.io-upload_images-1673979-f9716e18248c7933.jpg-imageMogr2-auto-orient-strip.png">
-<meta property="og:image" content="https://windanchaos.github.io/docs/2017/02/03/infer%E8%BF%90%E7%94%A8%E5%AE%9E%E8%B7%B5/docs/images/s.jianshu.io-upload_images-1673979-90e8889c74a7ed1c.jpg-imageMogr2-auto-orient-strip.png">
-<meta property="og:image" content="https://windanchaos.github.io/docs/2017/02/03/infer%E8%BF%90%E7%94%A8%E5%AE%9E%E8%B7%B5/docs/images/s.jianshu.io-upload_images-1673979-4ce4efc6e7e9980b.jpg-imageMogr2-auto-orient-strip%7CimageView2-2-w-1240.png">
-<meta property="og:image" content="https://windanchaos.github.io/docs/2017/02/03/infer%E8%BF%90%E7%94%A8%E5%AE%9E%E8%B7%B5/docs/images/s.jianshu.io-upload_images-1673979-8e23f650dda9195c.jpg-imageMogr2-auto-orient-strip%7CimageView2-2-w-1240.png">
-<meta property="og:image" content="https://windanchaos.github.io/docs/2017/02/03/infer%E8%BF%90%E7%94%A8%E5%AE%9E%E8%B7%B5/docs/images/s.jianshu.io-upload_images-1673979-2862699ff2c6ef3c.jpg-imageMogr2-auto-orient-strip%7CimageView2-2-w-1240.png">
-<meta property="og:image" content="https://windanchaos.github.io/docs/2017/02/03/infer%E8%BF%90%E7%94%A8%E5%AE%9E%E8%B7%B5/docs/images/s.jianshu.io-upload_images-1673979-b5e95982029f61e6.jpg-imageMogr2-auto-orient-strip%7CimageView2-2-w-1240.png">
-<meta property="og:image" content="https://windanchaos.github.io/docs/2017/02/03/infer%E8%BF%90%E7%94%A8%E5%AE%9E%E8%B7%B5/docs/images/s.jianshu.io-upload_images-1673979-41992bd81a373283--imageMogr2-auto-orient-strip%7CimageView2-2-w-1240.png">
+<meta property="og:image" content="https://windanchaos.github.io/images/uqiu.net-static-images-Infer-landing-.png">
+<meta property="og:image" content="https://windanchaos.github.io/images/s.jianshu.io-upload_images-1673979-f9716e18248c7933.jpg-imageMogr2-auto-orient-strip.png">
+<meta property="og:image" content="https://windanchaos.github.io/images/s.jianshu.io-upload_images-1673979-90e8889c74a7ed1c.jpg-imageMogr2-auto-orient-strip.png">
+<meta property="og:image" content="https://windanchaos.github.io/images/s.jianshu.io-upload_images-1673979-4ce4efc6e7e9980b.jpg-imageMogr2-auto-orient-strip%7CimageView2-2-w-1240.png">
+<meta property="og:image" content="https://windanchaos.github.io/images/s.jianshu.io-upload_images-1673979-8e23f650dda9195c.jpg-imageMogr2-auto-orient-strip%7CimageView2-2-w-1240.png">
+<meta property="og:image" content="https://windanchaos.github.io/images/s.jianshu.io-upload_images-1673979-2862699ff2c6ef3c.jpg-imageMogr2-auto-orient-strip%7CimageView2-2-w-1240.png">
+<meta property="og:image" content="https://windanchaos.github.io/images/s.jianshu.io-upload_images-1673979-b5e95982029f61e6.jpg-imageMogr2-auto-orient-strip%7CimageView2-2-w-1240.png">
+<meta property="og:image" content="https://windanchaos.github.io/images/s.jianshu.io-upload_images-1673979-41992bd81a373283--imageMogr2-auto-orient-strip%7CimageView2-2-w-1240.png">
 <meta property="article:published_time" content="2017-02-03T09:30:18.000Z">
 <meta property="article:modified_time" content="2021-06-08T10:39:48.627Z">
 <meta property="article:author" content="windanchaos">
 <meta property="article:tag" content="FromCSDN">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://windanchaos.github.io/docs/2017/02/03/infer%E8%BF%90%E7%94%A8%E5%AE%9E%E8%B7%B5/docs/images/uqiu.net-static-images-Infer-landing-.png">
+<meta name="twitter:image" content="https://windanchaos.github.io/images/uqiu.net-static-images-Infer-landing-.png">
 
 
-<link rel="canonical" href="https://windanchaos.github.io/docs/2017/02/03/infer%E8%BF%90%E7%94%A8%E5%AE%9E%E8%B7%B5/">
+<link rel="canonical" href="https://windanchaos.github.io/2017/02/03/infer%E8%BF%90%E7%94%A8%E5%AE%9E%E8%B7%B5/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"https://windanchaos.github.io/docs/2017/02/03/infer%E8%BF%90%E7%94%A8%E5%AE%9E%E8%B7%B5/","path":"2017/02/03/infer运用实践/","title":"infer运用实践"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"https://windanchaos.github.io/2017/02/03/infer%E8%BF%90%E7%94%A8%E5%AE%9E%E8%B7%B5/","path":"2017/02/03/infer运用实践/","title":"infer运用实践"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
 <title>infer运用实践 | Hexo</title>
@@ -60,7 +60,7 @@
 
 
   <noscript>
-    <link rel="stylesheet" href="docs/css/noscript.css">
+    <link rel="stylesheet" href="/css/noscript.css">
   </noscript>
 </head>
 
@@ -80,7 +80,7 @@
 
   <div class="site-meta">
 
-    <a href="docs/" class="brand" rel="start">
+    <a href="/" class="brand" rel="start">
       <i class="logo-line"></i>
       <p class="site-title">Hexo</p>
       <i class="logo-line"></i>
@@ -96,7 +96,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-首页"><a href="docs/" rel="section"><i class="home fa-fw"></i>首页</a></li><li class="menu-item menu-item-分类"><a href="docs/categories/" rel="section"><i class="th fa-fw"></i>分类</a></li><li class="menu-item menu-item-归档"><a href="docs/archives/" rel="section"><i class="archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-标签"><a href="docs/tags/" rel="section"><i class="tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-关于"><a href="docs/about/me.html" rel="section"><i class="user fa-fw"></i>关于</a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-首页"><a href="/" rel="section"><i class="home fa-fw"></i>首页</a></li><li class="menu-item menu-item-分类"><a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a></li><li class="menu-item menu-item-归档"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-标签"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-关于"><a href="/about/me.html" rel="section"><i class="user fa-fw"></i>关于</a></li>
   </ul>
 </nav>
 
@@ -134,25 +134,25 @@
         <div class="site-overview-wrap sidebar-panel">
           <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <img class="site-author-image" itemprop="image" alt="windanchaos"
-      src="docs/images/avatar.jpeg">
+      src="/images/avatar.jpeg">
   <p class="site-author-name" itemprop="name">windanchaos</p>
   <div class="site-description" itemprop="description"></div>
 </div>
 <div class="site-state-wrap site-overview-item animated">
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
-        <a href="docs/archives/">
+        <a href="/archives/">
           <span class="site-state-item-count">111</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
-          <a href="docs/categories/">
+          <a href="/categories/">
         <span class="site-state-item-count">16</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
-          <a href="docs/tags/">
+          <a href="/tags/">
         <span class="site-state-item-count">1</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
@@ -212,10 +212,10 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
-    <link itemprop="mainEntityOfPage" href="https://windanchaos.github.io/docs/2017/02/03/infer%E8%BF%90%E7%94%A8%E5%AE%9E%E8%B7%B5/">
+    <link itemprop="mainEntityOfPage" href="https://windanchaos.github.io/2017/02/03/infer%E8%BF%90%E7%94%A8%E5%AE%9E%E8%B7%B5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="docs/images/avatar.jpeg">
+      <meta itemprop="image" content="/images/avatar.jpeg">
       <meta itemprop="name" content="windanchaos">
     </span>
 
@@ -256,7 +256,7 @@
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="docs/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">自动化测试</span></a>
+          <a href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">自动化测试</span></a>
         </span>
     </span>
 
@@ -272,7 +272,7 @@
     <div class="post-body" itemprop="articleBody">
         <p>2016年上半年研究过一段时间infer，最难的是安装到ubuntu上各种依赖环境要解决，最后在公司的java代码上跑出来30多个可能存在空指针的代码段，并提交给研发处理。在使用过程中，我发现了一个infer的bug，并提交到infer的github上，该问题在：<a target="_blank" rel="noopener" href="https://github.com/facebook/infer/issues/442">https://github.com/facebook/infer/issues/442</a><br>当然我的大部分提交都阵亡了，研发看了存在空指针可能的地方，告诉我代码确实会有空指针出现的可能，但是基于业务逻辑，是不会有问题的，由于鄙人对java不是很懂，难以识别代码，一股废了九牛二虎之力后，轻易的就消逝的感觉萦绕心间。下面把别人安装infer的文章转过来，以表纪念。</p>
 <p>所有内容可以参考：<a target="_blank" rel="noopener" href="https://infer.liaohuqiu.net/">infer官网</a><br>本文转自：<a target="_blank" rel="noopener" href="http://www.jianshu.com/p/4667e36aadea">http://www.jianshu.com/p/4667e36aadea</a></p>
-<h1 id="About-Infer"><a href="#About-Infer" class="headerlink" title="About Infer"></a>About Infer</h1><p>Infer 是一个静态分析工具。Infer 可以分析 Objective-C， Java 或者 C 代码，报告潜在的问题。<br>任何人都可以使用 Infer 检测应用，这可以将那些严重的 bug 扼杀在发布之前，同时防止应用崩溃和性能低下。<br><img data-src="docs/images/uqiu.net-static-images-Infer-landing-.png" alt="这里写图片描述"></p>
+<h1 id="About-Infer"><a href="#About-Infer" class="headerlink" title="About Infer"></a>About Infer</h1><p>Infer 是一个静态分析工具。Infer 可以分析 Objective-C， Java 或者 C 代码，报告潜在的问题。<br>任何人都可以使用 Infer 检测应用，这可以将那些严重的 bug 扼杀在发布之前，同时防止应用崩溃和性能低下。<br><img data-src="/images/uqiu.net-static-images-Infer-landing-.png" alt="这里写图片描述"></p>
 <h1 id="Infer特性"><a href="#Infer特性" class="headerlink" title="Infer特性"></a>Infer特性</h1><h2 id="Android-和-Java"><a href="#Android-和-Java" class="headerlink" title="Android 和 Java"></a>Android 和 Java</h2><p>Infer 可检查 Android 和 Java 代码中的 NullPointException 和 资源泄露。</p>
 <h2 id="iOS"><a href="#iOS" class="headerlink" title="iOS"></a>iOS</h2><p>除了以上，Infer 还可发现 iOS 和 C 代码中的内存泄露，内存泄露，内存泄露。<br>Infer适用范围</p>
 <p>包括 Facebook Android 和 iOS 主客户端，Facebook Messenger， Instagram 在内的，以及其他影响亿万用户的手机应用，每次代码变更，都要经过 Infer 的检测。</p>
@@ -291,20 +291,20 @@
 <h2 id="Git克隆＋clang"><a href="#Git克隆＋clang" class="headerlink" title="Git克隆＋clang"></a>Git克隆＋clang</h2><p>（网速特别慢就不推荐了，因为俩步操作都很耗时）</p>
 <p>git clone <a target="_blank" rel="noopener" href="https://github.com/facebook/infer.git">https://github.com/facebook/infer.git</a></p>
 <p>注意：如果要分析C和Objective-C，Infer还需要clang以及facebook-clang-plugin插件。 facebook-clang-plugin插件见：facebook-clang-plugin如果只想分析Java&#x2F;Android代码，那么无需以上的依赖库</p>
-<h1 id="Infer-的使用"><a href="#Infer-的使用" class="headerlink" title="Infer 的使用"></a>Infer 的使用</h1><p><a target="_blank" rel="noopener" href="https://github.com/facebook/infer%20">facebook&#x2F;infer</a> demo<br>目前infer支持的编译器有如下几种：<br><img data-src="docs/images/s.jianshu.io-upload_images-1673979-f9716e18248c7933.jpg-imageMogr2-auto-orient-strip.png" alt="这里写图片描述"><br>infer能分析的文件类型<br>在github上下载demo，demo下examples目录里，你会发现有android项目、C语言文件、java类、oc类、iOS项目，没错啦，infer完全支持以上几种类型的BUG分析。这里我们用ios_hello项目来做栗子：<br>首先用cd命令进入ios_hello目录，然后运行以下命令进行编译</p>
+<h1 id="Infer-的使用"><a href="#Infer-的使用" class="headerlink" title="Infer 的使用"></a>Infer 的使用</h1><p><a target="_blank" rel="noopener" href="https://github.com/facebook/infer%20">facebook&#x2F;infer</a> demo<br>目前infer支持的编译器有如下几种：<br><img data-src="/images/s.jianshu.io-upload_images-1673979-f9716e18248c7933.jpg-imageMogr2-auto-orient-strip.png" alt="这里写图片描述"><br>infer能分析的文件类型<br>在github上下载demo，demo下examples目录里，你会发现有android项目、C语言文件、java类、oc类、iOS项目，没错啦，infer完全支持以上几种类型的BUG分析。这里我们用ios_hello项目来做栗子：<br>首先用cd命令进入ios_hello目录，然后运行以下命令进行编译</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">infer -- xcodebuild -target <span class="title class_">HelloWorldApp</span> -configuration <span class="title class_">Debug</span> -sdk</span><br><span class="line">iphonesimulator</span><br></pre></td></tr></table></figure>
 
 <p>注意： 其中HelloWorldApp是你的项目名称</p>
-<h1 id="编译结果"><a href="#编译结果" class="headerlink" title="编译结果"></a>编译结果</h1><p>1: 在项目所在目录下多出build和infer-out文件夹<br><img data-src="docs/images/s.jianshu.io-upload_images-1673979-90e8889c74a7ed1c.jpg-imageMogr2-auto-orient-strip.png" alt="这里写图片描述"></p>
-<p>编译 后<br>build文件夹：捕获阶段: Infer 捕获编译命令(上面介绍的编译器命令)，将文件翻译成 Infer 内部的中间语言。运行环境和设备信息也有所体现。<br>infer-out文件夹：分析阶段产生的文件，Infer将分析bugs结果输出到不同格式文件中，如csv、txt、json 方便对分析结果进行加工分析。<br>2: 运行后在终端会看到大量日志信息(同infer-out文件，可以以多种形式查看log信息)<br><img data-src="docs/images/s.jianshu.io-upload_images-1673979-4ce4efc6e7e9980b.jpg-imageMogr2-auto-orient-strip%7CimageView2-2-w-1240.png" alt="这里写图片描述"><br><img data-src="docs/images/s.jianshu.io-upload_images-1673979-8e23f650dda9195c.jpg-imageMogr2-auto-orient-strip%7CimageView2-2-w-1240.png" alt="这里写图片描述"><br>代码分析<br>cc</p>
+<h1 id="编译结果"><a href="#编译结果" class="headerlink" title="编译结果"></a>编译结果</h1><p>1: 在项目所在目录下多出build和infer-out文件夹<br><img data-src="/images/s.jianshu.io-upload_images-1673979-90e8889c74a7ed1c.jpg-imageMogr2-auto-orient-strip.png" alt="这里写图片描述"></p>
+<p>编译 后<br>build文件夹：捕获阶段: Infer 捕获编译命令(上面介绍的编译器命令)，将文件翻译成 Infer 内部的中间语言。运行环境和设备信息也有所体现。<br>infer-out文件夹：分析阶段产生的文件，Infer将分析bugs结果输出到不同格式文件中，如csv、txt、json 方便对分析结果进行加工分析。<br>2: 运行后在终端会看到大量日志信息(同infer-out文件，可以以多种形式查看log信息)<br><img data-src="/images/s.jianshu.io-upload_images-1673979-4ce4efc6e7e9980b.jpg-imageMogr2-auto-orient-strip%7CimageView2-2-w-1240.png" alt="这里写图片描述"><br><img data-src="/images/s.jianshu.io-upload_images-1673979-8e23f650dda9195c.jpg-imageMogr2-auto-orient-strip%7CimageView2-2-w-1240.png" alt="这里写图片描述"><br>代码分析<br>cc</p>
 <p>错误总结</p>
 <h1 id="注意事项总结"><a href="#注意事项总结" class="headerlink" title="注意事项总结"></a>注意事项总结</h1><p>1:在俩次执行编译命令的过程中，发现在没有对代码做任何更改的时候，报出BUILD SUCCEEDED的提示：我懵了！</p>
 <p>我懵了<br>根据提示可以看到，此次build并没有分析任何文件。原因就是上面所提到的增量分析。</p>
 <p><strong>增量模式和非增量模式</strong><br>在第一次运行的时候，两种模式是一样的，都会对工程的所有文件进行编译检查，产生检查结果:<br>增量模式：当已经产生分析结果后（build和infer-out文件夹），再执行编译命令，即为增量模式。如有代码没有改动，则此次不会有编译结果产生，如果代码有新的改动，此次只产生新的编译结果。这种以增量为基准的原则叫做增量模式。<br>非增量模式：在删除了俩个文件夹的情况下，运行文件，会输出所有的编译信息，即此时处于非增量模式。</p>
-<h2 id="增量模式和非增量模式的转化"><a href="#增量模式和非增量模式的转化" class="headerlink" title="增量模式和非增量模式的转化"></a>增量模式和非增量模式的转化</h2><p>1:简单粗暴的做法是删除文件夹，即增量－&gt;非增量<br>2:科学的做法是这样的：xcodebuild -target HelloWorldApp -configuration Debug -sdk iphonesimulator clean，以保证增量－&gt;非增量状态<br>but…项目中我们更常用到的方式是修改单个文件，然后检测。 比如我检测出了这样的问题：<br><img data-src="docs/images/s.jianshu.io-upload_images-1673979-2862699ff2c6ef3c.jpg-imageMogr2-auto-orient-strip%7CimageView2-2-w-1240.png" alt="这里写图片描述"><br>查到bug<br>然后我去代码修正了这个问题：<br><img data-src="docs/images/s.jianshu.io-upload_images-1673979-b5e95982029f61e6.jpg-imageMogr2-auto-orient-strip%7CimageView2-2-w-1240.png" alt="这里写图片描述"><br>修改代码<br>执行：</p>
+<h2 id="增量模式和非增量模式的转化"><a href="#增量模式和非增量模式的转化" class="headerlink" title="增量模式和非增量模式的转化"></a>增量模式和非增量模式的转化</h2><p>1:简单粗暴的做法是删除文件夹，即增量－&gt;非增量<br>2:科学的做法是这样的：xcodebuild -target HelloWorldApp -configuration Debug -sdk iphonesimulator clean，以保证增量－&gt;非增量状态<br>but…项目中我们更常用到的方式是修改单个文件，然后检测。 比如我检测出了这样的问题：<br><img data-src="/images/s.jianshu.io-upload_images-1673979-2862699ff2c6ef3c.jpg-imageMogr2-auto-orient-strip%7CimageView2-2-w-1240.png" alt="这里写图片描述"><br>查到bug<br>然后我去代码修正了这个问题：<br><img data-src="/images/s.jianshu.io-upload_images-1673979-b5e95982029f61e6.jpg-imageMogr2-auto-orient-strip%7CimageView2-2-w-1240.png" alt="这里写图片描述"><br>修改代码<br>执行：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xcodebuild -target <span class="title class_">HelloWorldApp</span> -configuration <span class="title class_">Debug</span> -sdk iphonesimulator clean</span><br></pre></td></tr></table></figure>
 
-<p>然后看终端，问题就修复了。<br>2:如果编译过程出现‘AttributeError: ‘NoneType’ object has no attribute ‘encode’’<br><img data-src="docs/images/s.jianshu.io-upload_images-1673979-41992bd81a373283--imageMogr2-auto-orient-strip%7CimageView2-2-w-1240.png" alt="这里写图片描述"><br>encode错误<br>解决办法：1，pwd查看你当前目录，应该在工程所在目录下，而不是图上用户目录。<br>2，猴塞雷，请关注你的额代码，可能有错误。</p>
+<p>然后看终端，问题就修复了。<br>2:如果编译过程出现‘AttributeError: ‘NoneType’ object has no attribute ‘encode’’<br><img data-src="/images/s.jianshu.io-upload_images-1673979-41992bd81a373283--imageMogr2-auto-orient-strip%7CimageView2-2-w-1240.png" alt="这里写图片描述"><br>encode错误<br>解决办法：1，pwd查看你当前目录，应该在工程所在目录下，而不是图上用户目录。<br>2，猴塞雷，请关注你的额代码，可能有错误。</p>
 
     </div>
 
@@ -314,19 +314,19 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="docs/tags/FromCSDN/" rel="tag"># FromCSDN</a>
+              <a href="/tags/FromCSDN/" rel="tag"># FromCSDN</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="docs/2017/02/03/2016%E5%B0%8F%E7%BB%93/" rel="prev" title="2016小结">
+                <a href="/2017/02/03/2016%E5%B0%8F%E7%BB%93/" rel="prev" title="2016小结">
                   <i class="fa fa-chevron-left"></i> 2016小结
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="docs/2017/02/04/%E4%BB%8E%E5%BA%95%E5%B1%82%E5%90%91%E4%B8%8A%E7%90%86%E8%A7%A3Git/" rel="next" title="从底层向上理解Git">
+                <a href="/2017/02/04/%E4%BB%8E%E5%BA%95%E5%B1%82%E5%90%91%E4%B8%8A%E7%90%86%E8%A7%A3Git/" rel="next" title="从底层向上理解Git">
                   从底层向上理解Git <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
@@ -347,7 +347,7 @@
     <div class="footer-inner">
 
   <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蜀ICP备19036728号 </a>
-      <img src="docs/images/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png" alt=""><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=51012202000611" rel="noopener" target="_blank">川公网安备 51012202000611号 </a>
+      <img src="/images/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png" alt=""><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=51012202000611" rel="noopener" target="_blank">川公网安备 51012202000611号 </a>
   </div>
 
 <div class="copyright">
@@ -367,7 +367,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
-<script src="docs/js/comments.js"></script><script src="docs/js/utils.js"></script><script src="docs/js/motion.js"></script><script src="docs/js/schemes/muse.js"></script><script src="docs/js/next-boot.js"></script><script src="docs/js/pjax.js"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
 
   
 
@@ -381,8 +381,8 @@
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
-  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":"enable","archive":"enable","delay":true,"timeout":3000,"priority":true,"url":"https://windanchaos.github.io/docs/2017/02/03/infer%E8%BF%90%E7%94%A8%E5%AE%9E%E8%B7%B5/"}</script>
-  <script src="docs/js/third-party/quicklink.js"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":"enable","archive":"enable","delay":true,"timeout":3000,"priority":true,"url":"https://windanchaos.github.io/2017/02/03/infer%E8%BF%90%E7%94%A8%E5%AE%9E%E8%B7%B5/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
 
 </body>
 </html>
