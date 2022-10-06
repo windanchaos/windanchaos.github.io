@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="本文转自TesterHome《Appium_Python_Api文档》 1.contextscontexts(self): 123456Returns the contexts within the current session.    返回当前会话中的上下文，使用后可以识别H5页面的控件    :Usage:        driver.contexts用法 driver.contexts">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Appium_Python_Api">
+<meta property="og:url" content="http://example.com/2017/09/27/Appium_Python_Api/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="本文转自TesterHome《Appium_Python_Api文档》 1.contextscontexts(self): 123456Returns the contexts within the current session.    返回当前会话中的上下文，使用后可以识别H5页面的控件    :Usage:        driver.contexts用法 driver.contexts">
+<meta property="og:locale">
+<meta property="article:published_time" content="2017-09-27T15:54:22.000Z">
+<meta property="article:modified_time" content="2021-06-08T10:39:48.473Z">
+<meta property="article:author" content="windanchaos">
+<meta property="article:tag" content="FromCSDN">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2017/09/27/Appium_Python_Api/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"http://example.com/2017/09/27/Appium_Python_Api/","path":"2017/09/27/Appium_Python_Api/","title":"Appium_Python_Api"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Appium_Python_Api | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Hexo</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-首页"><a href="/" rel="section"><i class="home fa-fw"></i>首页</a></li><li class="menu-item menu-item-分类"><a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a></li><li class="menu-item menu-item-归档"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-标签"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-关于"><a href="/about/me.html" rel="section"><i class="user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="windanchaos"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">windanchaos</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">111</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/windanchaos" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/windanchaos" title="Gitee → https:&#x2F;&#x2F;gitee.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="gitee fa-fw"></i>Gitee</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:454722630@qq.com" title="E-Mail → mailto:454722630@qq.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/windanchaos" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/windanchaos" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;windanchaos" rel="noopener" target="_blank"><i class="CSDN fa-fw"></i>CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2017/09/27/Appium_Python_Api/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="windanchaos">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Appium_Python_Api | Hexo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Appium_Python_Api
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2017-09-27 23:54:22" itemprop="dateCreated datePublished" datetime="2017-09-27T23:54:22+08:00">2017-09-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2021-06-08 18:39:48" itemprop="dateModified" datetime="2021-06-08T18:39:48+08:00">2021-06-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">自动化测试</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>本文转自<a target="_blank" rel="noopener" href="https://testerhome.com/topics/3711">TesterHome</a>《<strong>Appium_Python_Api文档</strong>》</p>
+<p><strong>1.contexts</strong><br>contexts(self):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Returns</span> the contexts within the current session.</span><br><span class="line">    返回当前会话中的上下文，使用后可以识别<span class="variable constant_">H5</span>页面的控件</span><br><span class="line"></span><br><span class="line">    :<span class="title class_">Usage</span>:</span><br><span class="line">        driver.<span class="property">contexts</span></span><br><span class="line">用法 driver.<span class="property">contexts</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>2. current_context</strong><br>current_context(self):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Returns</span> the current context <span class="keyword">of</span> the current session.</span><br><span class="line">    返回当前会话的当前上下文</span><br><span class="line">    :<span class="title class_">Usage</span>:</span><br><span class="line">        driver.<span class="property">current_context</span></span><br><span class="line">用法driver. current_context</span><br></pre></td></tr></table></figure>
+
+<p><strong>3. context</strong><br>context(self):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Returns</span> the current context <span class="keyword">of</span> the current session.</span><br><span class="line">    返回当前会话的当前上下文。</span><br><span class="line">    :<span class="title class_">Usage</span>:</span><br><span class="line">        driver.<span class="property">context</span></span><br><span class="line">用法driver. <span class="title class_">Context</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>4. find_element_by_ios_uiautomation</strong><br>find_element_by_ios_uiautomation(self, uia_string):</p>
+<span id="more"></span>
+
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Finds</span> an element by uiautomation <span class="keyword">in</span> iOS.</span><br><span class="line">    通过iOS uiautomation查找元素</span><br><span class="line">    :<span class="title class_">Args</span>:</span><br><span class="line">     - uia_string - <span class="title class_">The</span> element name <span class="keyword">in</span> the iOS <span class="title class_">UIAutomation</span> library</span><br><span class="line"></span><br><span class="line">    :<span class="title class_">Usage</span>:</span><br><span class="line">        driver.<span class="title function_">find_element_by_ios_uiautomation</span>(<span class="string">&#x27;.elements()[1].cells()[2]&#x27;</span>)</span><br><span class="line">用法dr. <span class="title function_">find_element_by_ios_uiautomation</span>(‘elements’)</span><br></pre></td></tr></table></figure>
+
+<p><strong>5. find_element_by_accessibility_id</strong><br>find_element_by_accessibility_id(self, id):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Finds</span> an element by accessibility id.</span><br><span class="line">    通过accessibility id查找元素</span><br><span class="line">    :<span class="title class_">Args</span>:</span><br><span class="line">     - id - a string corresponding to a recursive element search using the</span><br><span class="line">     <span class="title class_">Id</span>/<span class="title class_">Name</span> that the native <span class="title class_">Accessibility</span> options utilize</span><br><span class="line"></span><br><span class="line">    :<span class="title class_">Usage</span>:</span><br><span class="line">        driver.<span class="title function_">find_element_by_accessibility_id</span>()</span><br><span class="line">用法driver.<span class="title function_">find_element_by_accessibility_id</span>(‘id’)</span><br></pre></td></tr></table></figure>
+
+<p><strong>6.scroll</strong><br>scroll(self, origin_el, destination_el):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Scrolls</span> <span class="keyword">from</span> one element to another</span><br><span class="line">    从元素origin_el滚动至元素destination_el</span><br><span class="line">    :<span class="title class_">Args</span>:</span><br><span class="line">     - originalEl - the element <span class="keyword">from</span> which to being scrolling</span><br><span class="line">     - destinationEl - the element to scroll to</span><br><span class="line"></span><br><span class="line">    :<span class="title class_">Usage</span>:</span><br><span class="line">        driver.<span class="title function_">scroll</span>(el1, el2)</span><br><span class="line">用法 driver.<span class="title function_">scroll</span>(el1,el2)</span><br></pre></td></tr></table></figure>
+
+<p><strong>7. drag_and_drop</strong><br>drag_and_drop(self, origin_el, destination_el):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Drag</span> the origin element to the destination element</span><br><span class="line">    将元素origin_el拖到目标元素destination_el</span><br><span class="line">    :<span class="title class_">Args</span>:</span><br><span class="line">     - originEl - the element to drag</span><br><span class="line">     - destinationEl - the element to drag to</span><br><span class="line">用法 driver.<span class="title function_">drag_and_drop</span>(el1,el2)</span><br></pre></td></tr></table></figure>
+
+<p><strong>8.tap</strong><br>tap(self, positions, duration&#x3D;None):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Taps</span> on an particular place <span class="keyword">with</span> up to five fingers, holding <span class="keyword">for</span> a certain time</span><br><span class="line">模拟手指点击（最多五个手指），可设置按住时间长度（毫秒）</span><br><span class="line"></span><br><span class="line">    :<span class="title class_">Args</span>:</span><br><span class="line">     - positions - an array <span class="keyword">of</span> tuples representing the x/y coordinates <span class="keyword">of</span></span><br><span class="line">     the fingers to tap. <span class="title class_">Length</span> can be up to five.</span><br><span class="line">     - duration - (optional) length <span class="keyword">of</span> time to tap, <span class="keyword">in</span> ms</span><br><span class="line"></span><br><span class="line">    :<span class="title class_">Usage</span>:</span><br><span class="line">        driver.<span class="title function_">tap</span>([(<span class="number">100</span>, <span class="number">20</span>), (<span class="number">100</span>, <span class="number">60</span>), (<span class="number">100</span>, <span class="number">100</span>)], <span class="number">500</span>)</span><br><span class="line">用法 driver.<span class="title function_">tap</span>([(x,y),(x1,y1)],<span class="number">500</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>9. swipe</strong><br>swipe(self, start_x, start_y, end_x, end_y, duration&#x3D;None):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Swipe</span> <span class="keyword">from</span> one point to another point, <span class="keyword">for</span> an optional duration.</span><br><span class="line">    从A点滑动至B点，滑动时间为毫秒</span><br><span class="line">    :<span class="title class_">Args</span>:</span><br><span class="line">     - start_x - x-coordinate at which to start</span><br><span class="line">     - start_y - y-coordinate at which to start</span><br><span class="line">     - end_x - x-coordinate at which to stop</span><br><span class="line">     - end_y - y-coordinate at which to stop</span><br><span class="line">     - duration - (optional) time to take the swipe, <span class="keyword">in</span> ms.</span><br><span class="line"></span><br><span class="line">    :<span class="title class_">Usage</span>:</span><br><span class="line">        driver.<span class="title function_">swipe</span>(<span class="number">100</span>, <span class="number">100</span>, <span class="number">100</span>, <span class="number">400</span>)</span><br><span class="line">用法 driver.<span class="title function_">swipe</span>(x1,y1,x2,y2,<span class="number">500</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>10.flick</strong><br>flick(self, start_x, start_y, end_x, end_y):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Flick</span> <span class="keyword">from</span> one point to another point.</span><br><span class="line">    按住A点后快速滑动至B点</span><br><span class="line">    :<span class="title class_">Args</span>:</span><br><span class="line">     - start_x - x-coordinate at which to start</span><br><span class="line">     - start_y - y-coordinate at which to start</span><br><span class="line">     - end_x - x-coordinate at which to stop</span><br><span class="line">     - end_y - y-coordinate at which to stop</span><br><span class="line"></span><br><span class="line">    :<span class="title class_">Usage</span>:</span><br><span class="line">        driver.<span class="title function_">flick</span>(<span class="number">100</span>, <span class="number">100</span>, <span class="number">100</span>, <span class="number">400</span>)</span><br></pre></td></tr></table></figure>
+
+<p>用法 driver.flick(x1,y1,x2,y2)<br><strong>11.pinch</strong><br>pinch(self, element&#x3D;None, percent&#x3D;200, steps&#x3D;50):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Pinch</span> on an element a certain amount</span><br><span class="line">    在元素上执行模拟双指捏（缩小操作）</span><br><span class="line">    :<span class="title class_">Args</span>:</span><br><span class="line">     - element - the element to pinch</span><br><span class="line">     - percent - (optional) amount to pinch. <span class="title class_">Defaults</span> to <span class="number">200</span>%</span><br><span class="line">     - steps - (optional) number <span class="keyword">of</span> steps <span class="keyword">in</span> the pinch action</span><br><span class="line"></span><br><span class="line">    :<span class="title class_">Usage</span>:</span><br><span class="line">        driver.<span class="title function_">pinch</span>(element)</span><br></pre></td></tr></table></figure>
+
+<p>用法 driver.pinch(element)<br><strong>12.zoom</strong><br>zoom(self, element&#x3D;None, percent&#x3D;200, steps&#x3D;50):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Zooms</span> <span class="keyword">in</span> on an element a certain amount</span><br><span class="line">    在元素上执行放大操作</span><br><span class="line">    :<span class="title class_">Args</span>:</span><br><span class="line">     - element - the element to zoom</span><br><span class="line">     - percent - (optional) amount to zoom. <span class="title class_">Defaults</span> to <span class="number">200</span>%</span><br><span class="line">     - steps - (optional) number <span class="keyword">of</span> steps <span class="keyword">in</span> the zoom action</span><br><span class="line"></span><br><span class="line">    :<span class="title class_">Usage</span>:</span><br><span class="line">        driver.<span class="title function_">zoom</span>(element)</span><br></pre></td></tr></table></figure>
+
+<p>用法 driver.zoom(element)<br><strong>13.reset</strong><br>reset(self):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Resets</span> the current application on the device.</span><br><span class="line">重置应用(类似删除应用数据)</span><br><span class="line">用法 driver.<span class="title function_">reset</span>()</span><br></pre></td></tr></table></figure>
+
+<p><strong>14. hide_keyboard</strong><br>hide_keyboard(self, key_name&#x3D;None, key&#x3D;None, strategy&#x3D;None):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Hides</span> the software keyboard on the device. <span class="title class_">In</span> iOS, use <span class="string">`key_name`</span> to press a particular key, or <span class="string">`strategy`</span>. <span class="title class_">In</span> <span class="title class_">Android</span>, no parameters are used.</span><br><span class="line">    隐藏键盘,iOS使用key_name隐藏，安卓不使用参数</span><br><span class="line"></span><br><span class="line">    :<span class="title class_">Args</span>:</span><br><span class="line">     - key_name - key to press</span><br><span class="line">     - strategy - strategy <span class="keyword">for</span> closing the keyboard (e.<span class="property">g</span>., <span class="string">`tapOutside`</span>)</span><br><span class="line">driver.<span class="title function_">hide_keyboard</span>()</span><br></pre></td></tr></table></figure>
+
+<p><strong>15. keyevent</strong><br>keyevent(self, keycode, metastate&#x3D;None):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Sends</span> a keycode to the device. <span class="title class_">Android</span> only. <span class="title class_">Possible</span> keycodes can be found <span class="keyword">in</span> <span class="attr">http</span>:<span class="comment">//developer.android.com/reference/android/view/KeyEvent.html.</span></span><br><span class="line">    发送按键码（安卓仅有），按键码可以上网址中找到</span><br><span class="line">    :<span class="title class_">Args</span>:</span><br><span class="line">     - keycode - the keycode to be sent to the device</span><br><span class="line">     - metastate - meta information about the keycode being sent</span><br><span class="line">用法 dr.<span class="title function_">keyevent</span>(‘<span class="number">4</span>’)</span><br></pre></td></tr></table></figure>
+
+<p><strong>16. press_keycode</strong><br>press_keycode(self, keycode, metastate&#x3D;None):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Sends</span> a keycode to the device. <span class="title class_">Android</span> only. <span class="title class_">Possible</span> keycodes can be found <span class="keyword">in</span> <span class="attr">http</span>:<span class="comment">//developer.android.com/reference/android/view/KeyEvent.html.</span></span><br><span class="line">    发送按键码（安卓仅有），按键码可以上网址中找到</span><br><span class="line"></span><br><span class="line">    :<span class="title class_">Args</span>:</span><br><span class="line">     - keycode - the keycode to be sent to the device</span><br><span class="line">     - metastate - meta information about the keycode being sent</span><br><span class="line">用法 driver.<span class="property">press_</span> <span class="title function_">keycode</span>(‘<span class="number">4</span>’)</span><br></pre></td></tr></table></figure>
+
+<p>dr.keyevent(‘4’)与driver.press_ keycode(‘4’) 功能实现上一样的，都是按了返回键<br><strong>17. long_press_keycode</strong><br>long_press_keycode(self, keycode, metastate&#x3D;None):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Sends</span> a long press <span class="keyword">of</span> keycode to the device. <span class="title class_">Android</span> only. <span class="title class_">Possible</span> keycodes can be</span><br><span class="line">    found <span class="keyword">in</span> <span class="attr">http</span>:<span class="comment">//developer.android.com/reference/android/view/KeyEvent.html.</span></span><br><span class="line">    发送一个长按的按键码（长按某键）</span><br><span class="line">   详细的按键代码见这里  <span class="attr">http</span>:<span class="comment">//developer.android.com/reference/android/view/KeyEvent.html.</span></span><br><span class="line"></span><br><span class="line">    :<span class="title class_">Args</span>:</span><br><span class="line">     - keycode - the keycode to be sent to the device</span><br><span class="line">     - metastate - meta information about the keycode being sent</span><br><span class="line"> 用法 driver.<span class="title function_">long_press_keycode</span>(<span class="number">4</span>)  谢谢@t880216t童鞋反馈</span><br></pre></td></tr></table></figure>
+
+<p><strong>18.current_activity</strong><br>current_activity(self):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Retrieves</span> the current activity on the device.</span><br><span class="line">获取当前的activity</span><br><span class="line">用法 <span class="title function_">print</span>(driver.<span class="property">current_activity</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>19. wait_activity</strong><br>wait_activity(self, activity, timeout, interval&#x3D;1):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Wait</span> <span class="keyword">for</span> an <span class="attr">activity</span>: block until target activity presents or time out.</span><br><span class="line">    <span class="title class_">This</span> is an <span class="title class_">Android</span>-only method.</span><br><span class="line">    等待指定的activity出现直到超时，interval为扫描间隔<span class="number">1</span>秒</span><br><span class="line">即每隔几秒获取一次当前的activity</span><br><span class="line">返回的<span class="title class_">True</span> 或 <span class="title class_">False</span></span><br><span class="line">    :<span class="title class_">Agrs</span>:</span><br><span class="line">     - activity - target activity</span><br><span class="line">     - timeout - max wait time, <span class="keyword">in</span> seconds</span><br><span class="line">     - interval - sleep interval between retries, <span class="keyword">in</span> seconds</span><br><span class="line">用法driver.<span class="title function_">wait_activity</span>(‘.<span class="property">activity</span>.<span class="property">xxx</span>’,<span class="number">5</span>,<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>20. background_app</strong><br>background_app(self, seconds):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Puts</span> the application <span class="keyword">in</span> the background on the device <span class="keyword">for</span> a certain duration.</span><br><span class="line">    后台运行app多少秒</span><br><span class="line">    :<span class="title class_">Args</span>:</span><br><span class="line">     - seconds - the duration <span class="keyword">for</span> the application to remain <span class="keyword">in</span> the background</span><br><span class="line">用法 driver.<span class="title function_">background_app</span>(<span class="number">5</span>)   置后台<span class="number">5</span>秒后再运行</span><br></pre></td></tr></table></figure>
+
+<p><strong>21.is_app_installed</strong><br>is_app_installed(self, bundle_id):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Checks</span> whether the application specified by <span class="string">`bundle_id`</span> is installed on the device.</span><br><span class="line">    检查app是否有安装</span><br><span class="line">返回 <span class="title class_">True</span> or <span class="title class_">False</span></span><br><span class="line">    :<span class="title class_">Args</span>:</span><br><span class="line">     - bundle_id - the id <span class="keyword">of</span> the application to query</span><br><span class="line">用法 driver.<span class="title function_">is_app_installed</span>(“com.<span class="property">xxxx</span>”)</span><br></pre></td></tr></table></figure>
+
+<p><strong>22.install_app</strong><br>install_app(self, app_path):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Install</span> the application found at <span class="string">`app_path`</span> on the device.</span><br><span class="line">    安装app,app_path为安装包路径</span><br><span class="line">    :<span class="title class_">Args</span>:</span><br><span class="line">     - app_path - the local or remote path to the application to install</span><br><span class="line">用法 driver.<span class="title function_">install_app</span>(app_path)</span><br></pre></td></tr></table></figure>
+
+<p><strong>23.remove_app</strong><br>remove_app(self, app_id):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Remove</span> the specified application <span class="keyword">from</span> the device.</span><br><span class="line">    删除app</span><br><span class="line">    :<span class="title class_">Args</span>:</span><br><span class="line">     - app_id - the application id to be removed</span><br><span class="line">用法 driver.<span class="title function_">remove_app</span>(“com.<span class="property">xxx</span>.”)</span><br></pre></td></tr></table></figure>
+
+<p><strong>24.launch_app</strong><br>launch_app(self):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Start</span> on the device the application specified <span class="keyword">in</span> the desired capabilities.</span><br><span class="line">启动app</span><br><span class="line">用法 driver.<span class="title function_">launch_app</span>()</span><br></pre></td></tr></table></figure>
+
+<p><strong>25.close_app</strong><br>close_app(self):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Stop</span> the running application, specified <span class="keyword">in</span> the desired capabilities, on the device.</span><br><span class="line">关闭app</span><br><span class="line">用法 driver.<span class="title function_">close_app</span>()</span><br><span class="line">启动和关闭app运行好像会出错</span><br></pre></td></tr></table></figure>
+
+<p><strong>26. start_activity</strong><br>start_activity(self, app_package, app_activity, &#x2F;*&#x2F;*opts):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Opens</span> an arbitrary activity during a test. <span class="title class_">If</span> the activity belongs to</span><br><span class="line">    another application, that application is started and the activity is opened.</span><br><span class="line"></span><br><span class="line">    <span class="title class_">This</span> is an <span class="title class_">Android</span>-only method.</span><br><span class="line">    在测试过程中打开任意活动。如果活动属于另一个应用程序，该应用程序的启动和活动被打开。</span><br><span class="line">这是一个安卓的方法</span><br><span class="line">    :<span class="title class_">Args</span>:</span><br><span class="line">    - app_package - <span class="title class_">The</span> package containing the activity to start.</span><br><span class="line">    - app_activity - <span class="title class_">The</span> activity to start.</span><br><span class="line">    - app_wait_package - <span class="title class_">Begin</span> automation after <span class="variable language_">this</span> package starts (optional).</span><br><span class="line">    - app_wait_activity - <span class="title class_">Begin</span> automation after <span class="variable language_">this</span> activity starts (optional).</span><br><span class="line">    - intent_action - <span class="title class_">Intent</span> to start (optional).</span><br><span class="line">    - intent_category - <span class="title class_">Intent</span> category to start (optional).</span><br><span class="line">    - intent_flags - <span class="title class_">Flags</span> to send to the intent (optional).</span><br><span class="line">    - optional_intent_arguments - <span class="title class_">Optional</span> <span class="variable language_">arguments</span> to the intent (optional).</span><br><span class="line">    - stop_app_on_reset - <span class="title class_">Should</span> the app be stopped on reset (optional)?</span><br><span class="line">用法 driver.<span class="title function_">start_activity</span>(app_package, app_activity)</span><br></pre></td></tr></table></figure>
+
+<p><strong>27.lock</strong><br>lock(self, seconds):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Lock</span> the device <span class="keyword">for</span> a certain period <span class="keyword">of</span> time. iOS only.</span><br><span class="line">    锁屏一段时间  iOS专有</span><br><span class="line">    :<span class="title class_">Args</span>:</span><br><span class="line">     - the duration to lock the device, <span class="keyword">in</span> seconds</span><br><span class="line">用法 driver.<span class="title function_">lock</span>()</span><br></pre></td></tr></table></figure>
+
+<p><strong>28.shake</strong><br>shake(self):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Shake</span> the device.</span><br><span class="line">摇一摇手机</span><br><span class="line">用法 driver.<span class="title function_">shake</span>()</span><br></pre></td></tr></table></figure>
+
+<p><strong>29.open_notifications</strong><br>open_notifications(self):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Open</span> notification shade <span class="keyword">in</span> <span class="title class_">Android</span> (<span class="variable constant_">API</span> <span class="title class_">Level</span> <span class="number">18</span> and above)</span><br><span class="line">打系统通知栏（仅支持<span class="variable constant_">API</span> <span class="number">18</span> 以上的安卓系统）</span><br><span class="line">用法 driver.<span class="title function_">open_notifications</span>()</span><br></pre></td></tr></table></figure>
+
+<p><strong>30.network_connection</strong><br>network_connection(self):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Returns</span> an integer bitmask specifying the network connection type.</span><br><span class="line">    <span class="title class_">Android</span> only.</span><br><span class="line">返回网络类型  数值</span><br><span class="line">    <span class="title class_">Possible</span> values are available through the enumeration <span class="string">`appium.webdriver.ConnectionType`</span></span><br><span class="line"></span><br><span class="line">用法 driver.<span class="property">network_connection</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>31. set_network_connection</strong><br>set_network_connection(self, connectionType):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Sets</span> the network connection type. <span class="title class_">Android</span> only.</span><br><span class="line">    <span class="title class_">Possible</span> <span class="attr">values</span>:</span><br><span class="line">        <span class="title class_">Value</span> (<span class="title class_">Alias</span>)      | <span class="title class_">Data</span> | <span class="title class_">Wifi</span> | <span class="title class_">Airplane</span> <span class="title class_">Mode</span></span><br><span class="line">        -------------------------------------------------</span><br><span class="line">        <span class="number">0</span> (<span class="title class_">None</span>)           | <span class="number">0</span>    | <span class="number">0</span>    | <span class="number">0</span></span><br><span class="line">        <span class="number">1</span> (<span class="title class_">Airplane</span> <span class="title class_">Mode</span>)  | <span class="number">0</span>    | <span class="number">0</span>    | <span class="number">1</span></span><br><span class="line">        <span class="number">2</span> (<span class="title class_">Wifi</span> only)      | <span class="number">0</span>    | <span class="number">1</span>    | <span class="number">0</span></span><br><span class="line">        <span class="number">4</span> (<span class="title class_">Data</span> only)      | <span class="number">1</span>    | <span class="number">0</span>    | <span class="number">0</span></span><br><span class="line">        <span class="number">6</span> (<span class="title class_">All</span> network on) | <span class="number">1</span>    | <span class="number">1</span>    | <span class="number">0</span></span><br><span class="line">    <span class="title class_">These</span> are available through the enumeration <span class="string">`appium.webdriver.ConnectionType`</span></span><br><span class="line">    设置网络类型</span><br><span class="line">    :<span class="title class_">Args</span>:</span><br><span class="line">     - connectionType - a member <span class="keyword">of</span> the enum appium.<span class="property">webdriver</span>.<span class="property">ConnectionType</span></span><br><span class="line"></span><br><span class="line">用法  先加载<span class="keyword">from</span> appium.<span class="property">webdriver</span>.<span class="property">connectiontype</span> <span class="keyword">import</span> <span class="title class_">ConnectionType</span></span><br><span class="line">dr.<span class="title function_">set_network_connection</span>(<span class="title class_">ConnectionType</span>.<span class="property">WIFI_ONLY</span>)</span><br><span class="line"><span class="title class_">ConnectionType</span>的类型有</span><br><span class="line"><span class="variable constant_">NO_CONNECTION</span> = <span class="number">0</span></span><br><span class="line"><span class="variable constant_">AIRPLANE_MODE</span> = <span class="number">1</span></span><br><span class="line"><span class="variable constant_">WIFI_ONLY</span> = <span class="number">2</span></span><br><span class="line"><span class="variable constant_">DATA_ONLY</span> = <span class="number">4</span></span><br><span class="line"><span class="variable constant_">ALL_NETWORK_ON</span> = <span class="number">6</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>32. available_ime_engines</strong><br>available_ime_engines(self):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Get</span> the available input methods <span class="keyword">for</span> an <span class="title class_">Android</span> device. <span class="title class_">Package</span> and activity are returned (e.<span class="property">g</span>., [<span class="string">&#x27;com.android.inputmethod.latin/.LatinIME&#x27;</span>])</span><br><span class="line">    <span class="title class_">Android</span> only.</span><br><span class="line">返回安卓设备可用的输入法</span><br><span class="line">用法<span class="title function_">print</span>(driver.<span class="property">available_ime_engines</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>33.is_ime_active</strong><br>is_ime_active(self):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Checks</span> whether the device has <span class="variable constant_">IME</span> service active. <span class="title class_">Returns</span> <span class="title class_">True</span>/<span class="title class_">False</span>.</span><br><span class="line">    <span class="title class_">Android</span> only.</span><br><span class="line">检查设备是否有输入法服务活动。返回真/假。</span><br><span class="line">安卓</span><br><span class="line">用法 <span class="title function_">print</span>(driver.<span class="title function_">is_ime_active</span>())</span><br></pre></td></tr></table></figure>
+
+<p><strong>34.activate_ime_engine</strong><br>activate_ime_engine(self, engine):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Activates</span> the given <span class="variable constant_">IME</span> engine on the device.</span><br><span class="line">    <span class="title class_">Android</span> only.</span><br><span class="line">    激活安卓设备中的指定输入法，设备可用输入法可以从“available_ime_engines”获取</span><br><span class="line">    :<span class="title class_">Args</span>:</span><br><span class="line">     - engine - the package and activity <span class="keyword">of</span> the <span class="variable constant_">IME</span> engine to activate (e.<span class="property">g</span>.,</span><br><span class="line">        <span class="string">&#x27;com.android.inputmethod.latin/.LatinIME&#x27;</span>)</span><br><span class="line"></span><br><span class="line">用法 driver.<span class="title function_">activate_ime_engine</span>(“com.<span class="property">android</span>.<span class="property">inputmethod</span>.<span class="property">latin</span>/.<span class="property">LatinIME</span>”)</span><br></pre></td></tr></table></figure>
+
+<p><strong>35.deactivate_ime_engine</strong><br>deactivate_ime_engine(self):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Deactivates</span> the currently active <span class="variable constant_">IME</span> engine on the device.</span><br><span class="line">    <span class="title class_">Android</span> only.</span><br><span class="line">关闭安卓设备当前的输入法</span><br><span class="line">用法 driver.<span class="title function_">deactivate_ime_engine</span>()</span><br></pre></td></tr></table></figure>
+
+<p><strong>36.active_ime_engine</strong><br>active_ime_engine(self):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Returns</span> the activity and package <span class="keyword">of</span> the currently active <span class="variable constant_">IME</span> engine (e.<span class="property">g</span>.,</span><br><span class="line">    <span class="string">&#x27;com.android.inputmethod.latin/.LatinIME&#x27;</span>).</span><br><span class="line">    <span class="title class_">Android</span> only.</span><br><span class="line">    返回当前输入法的包名</span><br><span class="line">用法 driver.<span class="property">active_ime_engine</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>37. toggle_location_services</strong><br>toggle_location_services(self):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Toggle</span> the location services on the device. <span class="title class_">Android</span> only.</span><br><span class="line">打开安卓设备上的位置定位设置</span><br><span class="line">用法 driver.<span class="title function_">toggle_location_services</span>()</span><br></pre></td></tr></table></figure>
+
+<p><strong>38.set_location</strong><br>set_location(self, latitude, longitude, altitude):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Set</span> the location <span class="keyword">of</span> the device</span><br><span class="line">    设置设备的经纬度</span><br><span class="line">    :<span class="title class_">Args</span>:</span><br><span class="line">     - latitude纬度 - <span class="title class_">String</span> or numeric value between -<span class="number">90.0</span> and <span class="number">90.00</span></span><br><span class="line">     - longitude经度 - <span class="title class_">String</span> or numeric value between -<span class="number">180.0</span> and <span class="number">180.0</span></span><br><span class="line">     - altitude海拔高度- <span class="title class_">String</span> or numeric value</span><br><span class="line">用法 driver.<span class="title function_">set_location</span>(纬度，经度，高度)</span><br></pre></td></tr></table></figure>
+
+<p><strong>39.tag_name</strong><br>tag_name(self):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">This</span> element<span class="string">&#x27;s ``tagName`` property.</span></span><br><span class="line"><span class="string">返回元素的tagName属性</span></span><br><span class="line"><span class="string">经实践返回的是class name</span></span><br><span class="line"><span class="string">用法 element.tag_name()</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>40.text</strong><br>text(self):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">The</span> text <span class="keyword">of</span> the element.</span><br><span class="line">    返回元素的文本值</span><br><span class="line">用法 element.<span class="property">text</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>41.click</strong><br>click(self):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Clicks</span> the element.</span><br><span class="line">  点击元素</span><br><span class="line">用法 element.<span class="title function_">click</span>()</span><br></pre></td></tr></table></figure>
+
+<p><strong>42.submit</strong><br>submit(self):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Submits</span> a form.</span><br><span class="line">    提交表单</span><br><span class="line">用法 暂无</span><br></pre></td></tr></table></figure>
+
+<p><strong>43.clear</strong><br>clear(self):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Clears</span> the text <span class="keyword">if</span> it<span class="string">&#x27;s a text entry element.</span></span><br><span class="line"><span class="string">    清除输入的内容</span></span><br><span class="line"><span class="string">用法 element.clear()</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>44.get_attribute</strong><br>get_attribute(self, name):<br>详见 的<a target="_blank" rel="noopener" href="https://testerhome.com/topics/2606">超级链接</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Gets</span> the given attribute or property <span class="keyword">of</span> the element.</span><br><span class="line"><span class="number">1</span>、获取 content-desc 的方法为 <span class="title function_">get_attribute</span>(<span class="string">&quot;name&quot;</span>) ，而且还不能保证返回的一定是 content-desc （content-desc 为空时会返回 text 属性值）</span><br><span class="line"><span class="number">2</span>、get_attribute 方法不是我们在 uiautomatorviewer 看到的所有属性都能获取的（此处的名称均为使用 get_attribute 时使用的属性名称）：</span><br><span class="line">可获取的：</span><br><span class="line">字符串类型：</span><br><span class="line"><span class="title function_">name</span>(返回 content-desc 或 text)</span><br><span class="line"><span class="title function_">text</span>(返回 text)</span><br><span class="line"><span class="title function_">className</span>(返回 <span class="keyword">class</span>，只有 <span class="variable constant_">API</span>=&gt;<span class="number">18</span> 才能支持)</span><br><span class="line"><span class="title function_">resourceId</span>(返回 resource-id，只有 <span class="variable constant_">API</span>=&gt;<span class="number">18</span> 才能支持)</span><br><span class="line">    <span class="title class_">This</span> method will first <span class="keyword">try</span> to <span class="keyword">return</span> the value <span class="keyword">of</span> a property <span class="keyword">with</span> the</span><br><span class="line">    given name. <span class="title class_">If</span> a property <span class="keyword">with</span> that name doesn<span class="string">&#x27;t exist, it returns the</span></span><br><span class="line"><span class="string">    value of the attribute with the same name. If there&#x27;</span>s no attribute <span class="keyword">with</span></span><br><span class="line">    that name, <span class="string">``</span><span class="title class_">None</span><span class="string">``</span> is returned.</span><br><span class="line"></span><br><span class="line">    <span class="title class_">Values</span> which are considered truthy, that is equals <span class="string">&quot;true&quot;</span> or <span class="string">&quot;false&quot;</span>,</span><br><span class="line">    are returned <span class="keyword">as</span> booleans.  <span class="title class_">All</span> other non-<span class="string">``</span><span class="title class_">None</span><span class="string">``</span> values are returned</span><br><span class="line">    <span class="keyword">as</span> strings.  <span class="title class_">For</span> attributes or properties which <span class="keyword">do</span> not exist, <span class="string">``</span><span class="title class_">None</span><span class="string">``</span></span><br><span class="line">    is returned.</span><br><span class="line"></span><br><span class="line">    :<span class="title class_">Args</span>:</span><br><span class="line">        - name - <span class="title class_">Name</span> <span class="keyword">of</span> the attribute/property to retrieve.</span><br><span class="line"></span><br><span class="line">    <span class="title class_">Example</span>::</span><br><span class="line"></span><br><span class="line">        # <span class="title class_">Check</span> <span class="keyword">if</span> the <span class="string">&quot;active&quot;</span> <span class="variable constant_">CSS</span> <span class="keyword">class</span> <span class="title class_">is</span> applied to an element.</span><br><span class="line">        is_active = <span class="string">&quot;active&quot;</span> <span class="keyword">in</span> target_element.<span class="title function_">get_attribute</span>(<span class="string">&quot;class&quot;</span>)</span><br><span class="line">用法 暂无</span><br></pre></td></tr></table></figure>
+
+<p><strong>45.is_selected</strong><br>is_selected(self):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Returns</span> whether the element is selected.</span><br><span class="line"></span><br><span class="line">    <span class="title class_">Can</span> be used to check <span class="keyword">if</span> a checkbox or radio button is selected.</span><br><span class="line">返回元素是否选择。</span><br><span class="line">可以用来检查一个复选框或单选按钮被选中。</span><br><span class="line">用法 element.<span class="title function_">is_slected</span>()</span><br></pre></td></tr></table></figure>
+
+<p><strong>46.is_enabled</strong><br>is_enabled(self):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Returns</span> whether the element is enabled.</span><br><span class="line">    返回元素是否可用<span class="title class_">True</span> <span class="keyword">of</span> <span class="title class_">False</span></span><br><span class="line">用法 element.<span class="title function_">is_enabled</span>()</span><br></pre></td></tr></table></figure>
+
+<p><strong>47.find_element_by_id</strong><br>find_element_by_id(self, id_):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Finds</span> element within <span class="variable language_">this</span> element<span class="string">&#x27;s children by ID.</span></span><br><span class="line"><span class="string">    通过元素的ID定位元素</span></span><br><span class="line"><span class="string">    :Args:</span></span><br><span class="line"><span class="string">        - id_ - ID of child element to locate.</span></span><br><span class="line"><span class="string">用法 driver. find_element_by_id(“id”)</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>48. find_elements_by_id</strong><br>find_elements_by_id(self, id_):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Finds</span> a list <span class="keyword">of</span> elements within <span class="variable language_">this</span> element<span class="string">&#x27;s children by ID.</span></span><br><span class="line"><span class="string">    通过元素ID定位,含有该属性的所有元素</span></span><br><span class="line"><span class="string">    :Args:</span></span><br><span class="line"><span class="string">        - id_ - Id of child element to find.</span></span><br><span class="line"><span class="string">用法 driver. find_elements_by_id(“id”)</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>49. find_element_by_name 1.5以上的版本已弃用</strong><br>find_element_by_name(self, name):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Finds</span> element within <span class="variable language_">this</span> element<span class="string">&#x27;s children by name.</span></span><br><span class="line"><span class="string">     通过元素Name定位（元素的名称属性text）</span></span><br><span class="line"><span class="string">    :Args:</span></span><br><span class="line"><span class="string">        - name - name property of the element to find.</span></span><br><span class="line"><span class="string">用法 driver.find_element_by_name(“name”)</span></span><br><span class="line"><span class="string">替代方法 driver.find_element_by_xpath(&quot;//*[@text=&#x27;</span>我的<span class="string">&#x27;]&quot;)</span></span><br><span class="line"><span class="string">还有其它方法的话欢迎补充</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>50. find_elements_by_name</strong><br>find_elements_by_name(self, name):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Finds</span> a list <span class="keyword">of</span> elements within <span class="variable language_">this</span> element<span class="string">&#x27;s children by name.</span></span><br><span class="line"><span class="string">    通过元素Name定位（元素的名称属性text），含有该属性的所有元素</span></span><br><span class="line"><span class="string">    :Args:</span></span><br><span class="line"><span class="string">        - name - name property to search for.</span></span><br><span class="line"><span class="string">用法 driver.find_element_by_name(“name”)</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>51. find_element_by_link_text</strong><br>find_element_by_link_text(self, link_text):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Finds</span> element within <span class="variable language_">this</span> element<span class="string">&#x27;s children by visible link text.</span></span><br><span class="line"><span class="string">    通过元素可见链接文本定位</span></span><br><span class="line"><span class="string">    :Args:</span></span><br><span class="line"><span class="string">        - link_text - Link text string to search for.</span></span><br><span class="line"><span class="string">用法 driver.find_element_by_link_text(“text”)</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>52. find_elements_by_link_text</strong><br>find_element_by_link_text(self, link_text):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Finds</span> a list <span class="keyword">of</span> elements within <span class="variable language_">this</span> element<span class="string">&#x27;s children by visible link text</span></span><br><span class="line"><span class="string">    通过元素可见链接文本定位,含有该属性的所有元素</span></span><br><span class="line"><span class="string">    :Args:</span></span><br><span class="line"><span class="string">        - link_text - Link text string to search for.</span></span><br><span class="line"><span class="string">用法 driver.find_elements_by_link_text(“text”)</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>53. find_element_by_partial_link_text</strong><br>find_element_by_partial_link_text(self, link_text):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Finds</span> element within <span class="variable language_">this</span> element<span class="string">&#x27;s children by partially visible link text.</span></span><br><span class="line"><span class="string">    通过元素部分可见链接文本定位</span></span><br><span class="line"><span class="string">    :Args:</span></span><br><span class="line"><span class="string">        - link_text - Link text string to search for.</span></span><br><span class="line"><span class="string">driver. find_element_by_partial_link_text(“text”)</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>54. find_elements_by_partial_link_text</strong><br>find_elements_by_partial_link_text(self, link_text):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Finds</span> a list <span class="keyword">of</span> elements within <span class="variable language_">this</span> element<span class="string">&#x27;s children by link text.</span></span><br><span class="line"><span class="string">    通过元素部分可见链接文本定位,含有该属性的所有元素</span></span><br><span class="line"><span class="string">    :Args:</span></span><br><span class="line"><span class="string">        - link_text - Link text string to search for.</span></span><br><span class="line"><span class="string">driver. find_elements_by_partial_link_text(“text”)</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>55. find_element_by_tag_name</strong><br>find_element_by_tag_name(self, name):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Finds</span> element within <span class="variable language_">this</span> element<span class="string">&#x27;s children by tag name.</span></span><br><span class="line"><span class="string">    通过查找html的标签名称定位元素</span></span><br><span class="line"><span class="string">    :Args:</span></span><br><span class="line"><span class="string">        - name - name of html tag (eg: h1, a, span)</span></span><br><span class="line"><span class="string">用法  driver.find_element_by_tag_name(“name”)</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>56. find_elements_by_tag_name</strong><br>find_elements_by_tag_name(self, name):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Finds</span> a list <span class="keyword">of</span> elements within <span class="variable language_">this</span> element<span class="string">&#x27;s children by tag name.</span></span><br><span class="line"><span class="string">   通过查找html的标签名称定位所有元素</span></span><br><span class="line"><span class="string">    :Args:</span></span><br><span class="line"><span class="string">        - name - name of html tag (eg: h1, a, span)</span></span><br><span class="line"><span class="string">用法driver.find_elements_by_tag_name(“name”)</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>57. find_element_by_xpath</strong><br>find_element_by_xpath(self, xpath):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Finds</span> element by xpath.</span><br><span class="line">    通过<span class="title class_">Xpath</span>定位元素，详细方法可参阅<span class="attr">http</span>:<span class="comment">//www.w3school.com.cn/xpath/</span></span><br><span class="line">    :<span class="title class_">Args</span>:</span><br><span class="line">        xpath - xpath <span class="keyword">of</span> element to locate.  <span class="string">&quot;//input[@class=&#x27;myelement&#x27;]&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="title class_">Note</span>: <span class="title class_">The</span> base path will be relative to <span class="variable language_">this</span> element<span class="string">&#x27;s location.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    This will select the first link under this element.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    ::</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        myelement.find_elements_by_xpath(&quot;.//a&quot;)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    However, this will select the first link on the page.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    ::</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        myelement.find_elements_by_xpath(&quot;//a&quot;)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">用法 find_element_by_xpath(“//*”)</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>58. find_elements_by_xpath</strong><br>find_elements_by_xpath(self, xpath):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Finds</span> elements within the element by xpath.</span><br><span class="line"></span><br><span class="line">    :<span class="title class_">Args</span>:</span><br><span class="line">        - xpath - xpath locator string.</span><br><span class="line"></span><br><span class="line">    <span class="title class_">Note</span>: <span class="title class_">The</span> base path will be relative to <span class="variable language_">this</span> element<span class="string">&#x27;s location.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    This will select all links under this element.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    ::</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        myelement.find_elements_by_xpath(&quot;.//a&quot;)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    However, this will select all links in the page itself.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">    ::</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">        myelement.find_elements_by_xpath(&quot;//a&quot;)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">用法find_elements_by_xpath(“//*”)</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>59. find_element_by_class_name</strong><br>find_element_by_class_name(self, name):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Finds</span> element within <span class="variable language_">this</span> element<span class="string">&#x27;s children by class name.</span></span><br><span class="line"><span class="string">    通过元素class name属性定位元素</span></span><br><span class="line"><span class="string">    :Args:</span></span><br><span class="line"><span class="string">        - name - class name to search for.</span></span><br><span class="line"><span class="string">用法 driver. find_element_by_class_name(“android.widget.LinearLayout”)</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>60. find_elements_by_class_name</strong><br>find_elements_by_class_name(self, name):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Finds</span> a list <span class="keyword">of</span> elements within <span class="variable language_">this</span> element<span class="string">&#x27;s children by class name.</span></span><br><span class="line"><span class="string">    通过元素class name属性定位所有含有该属性的元素</span></span><br><span class="line"><span class="string">    :Args:</span></span><br><span class="line"><span class="string">        - name - class name to search for.</span></span><br><span class="line"><span class="string">用法 driver. find_elements_by_class_name(“android.widget.LinearLayout”)</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>61. find_element_by_css_selector</strong><br>find_element_by_css_selector(self, css_selector):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Finds</span> element within <span class="variable language_">this</span> element<span class="string">&#x27;s children by CSS selector.</span></span><br><span class="line"><span class="string">    通过CSS选择器定位元素</span></span><br><span class="line"><span class="string">    :Args:</span></span><br><span class="line"><span class="string">        - css_selector - CSS selctor string, ex: &#x27;</span>a.<span class="property">nav</span>#home<span class="string">&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>62.send_keys</strong><br>send_keys(self, &#x2F;*value):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Simulates</span> typing into the element.</span><br><span class="line">    在元素中模拟输入（开启appium自带的输入法并配置了appium输入法后，可以输入中英文）</span><br><span class="line">    :<span class="title class_">Args</span>:</span><br><span class="line">        - value - A string <span class="keyword">for</span> typing, or setting form fields.  <span class="title class_">For</span> setting</span><br><span class="line">        file inputs, <span class="variable language_">this</span> could be a local file path.</span><br><span class="line"></span><br><span class="line">    <span class="title class_">Use</span> <span class="variable language_">this</span> to send simple key events or to fill out form <span class="attr">fields</span>::</span><br><span class="line"></span><br><span class="line">        form_textfield = driver.<span class="title function_">find_element_by_name</span>(<span class="string">&#x27;username&#x27;</span>)</span><br><span class="line">        form_textfield.<span class="title function_">send_keys</span>(<span class="string">&quot;admin&quot;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="title class_">This</span> can also be used to set file inputs.</span><br><span class="line"></span><br><span class="line">    ::</span><br><span class="line"></span><br><span class="line">        file_input = driver.<span class="title function_">find_element_by_name</span>(<span class="string">&#x27;profilePic&#x27;</span>)</span><br><span class="line">        file_input.<span class="title function_">send_keys</span>(<span class="string">&quot;path/to/profilepic.gif&quot;</span>)</span><br><span class="line">        # <span class="title class_">Generally</span> it<span class="string">&#x27;s better to wrap the file path in one of the methods</span></span><br><span class="line"><span class="string">        # in os.path to return the actual path to support cross OS testing.</span></span><br><span class="line"><span class="string">        # file_input.send_keys(os.path.abspath(&quot;path/to/profilepic.gif&quot;))</span></span><br><span class="line"><span class="string">driver.element.send_keys(“中英”)</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>63. is_displayed</strong><br>is_displayed(self):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Whether</span> the element is visible to a user.    </span><br><span class="line">此元素用户是否可见。简单地说就是隐藏元素和被控件挡住无法操作的元素（仅限 <span class="title class_">Selenium</span>，appium是否实现了类似功能不是太确定）这一项都会返回 <span class="title class_">False</span></span><br><span class="line"></span><br><span class="line">用法 driver.<span class="property">element</span>.<span class="title function_">is_displayed</span>()</span><br></pre></td></tr></table></figure>
+
+<p><strong>64. location_once_scrolled_into_view</strong><br>location_once_scrolled_into_view(self):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;</span><span class="string">&quot;THIS PROPERTY MAY CHANGE WITHOUT WARNING. Use this to discover</span></span><br><span class="line"><span class="string">   where on the screen an element is so that we can click it. This method</span></span><br><span class="line"><span class="string">   should cause the element to be scrolled into view.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">   Returns the top lefthand corner location on the screen, or ``None`` if</span></span><br><span class="line"><span class="string">   the element is not visible.</span></span><br><span class="line"><span class="string">   暂不知道用法</span></span><br><span class="line"><span class="string">   &quot;</span><span class="string">&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>65.size</strong><br>size(self):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">The</span> size <span class="keyword">of</span> the element.</span><br><span class="line">获取元素的大小（高和宽）</span><br><span class="line"></span><br><span class="line">new_size[<span class="string">&quot;height&quot;</span>] = size[<span class="string">&quot;height&quot;</span>]</span><br><span class="line">new_size[<span class="string">&quot;width&quot;</span>] = size[<span class="string">&quot;width&quot;</span>]</span><br><span class="line"></span><br><span class="line">用法 driver.<span class="property">element</span>.<span class="property">size</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>66. value_of_css_property</strong><br>value_of_css_property(self, property_name):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">The</span> value <span class="keyword">of</span> a <span class="variable constant_">CSS</span> property.</span><br><span class="line"><span class="variable constant_">CSS</span>属性</span><br><span class="line"></span><br><span class="line">用法 暂不知</span><br></pre></td></tr></table></figure>
+
+<p><strong>67.location</strong><br>location(self):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">The</span> location <span class="keyword">of</span> the element <span class="keyword">in</span> the renderable canvas.</span><br><span class="line">    获取元素左上角的坐标</span><br><span class="line"></span><br><span class="line">用法 driver.<span class="property">element</span>.<span class="property">location</span></span><br><span class="line"><span class="string">&#x27;&#x27;</span><span class="string">&#x27;返回element的x坐标, int类型&#x27;</span><span class="string">&#x27;&#x27;</span></span><br><span class="line">driver.<span class="property">element</span>.<span class="property">location</span>.<span class="title function_">get</span>(<span class="string">&#x27;x&#x27;</span>)</span><br><span class="line"><span class="string">&#x27;&#x27;</span><span class="string">&#x27;返回element的y坐标, int类型&#x27;</span><span class="string">&#x27;&#x27;</span></span><br><span class="line">driver.<span class="property">element</span>.<span class="property">location</span>.<span class="title function_">get</span>(<span class="string">&#x27;y&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>68.rect</strong><br>rect(self):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">A dictionary <span class="keyword">with</span> the size and location <span class="keyword">of</span> the element.</span><br><span class="line">    元素的大小和位置的字典</span><br></pre></td></tr></table></figure>
+
+<p><strong>69. get_screenshot_as_base64</strong><br>screenshot_as_base64(self):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Gets</span> the screenshot <span class="keyword">of</span> the current <span class="variable language_">window</span> <span class="keyword">as</span> a base64 encoded string</span><br><span class="line">        which is useful <span class="keyword">in</span> embedded images <span class="keyword">in</span> <span class="variable constant_">HTML</span>.</span><br><span class="line"> 获取当前元素的截图为<span class="title class_">Base64</span>编码的字符串,在<span class="variable constant_">HTML</span>中嵌入的图像</span><br><span class="line"> :<span class="title class_">Usage</span>:</span><br><span class="line">     img_b64 = element.<span class="property">get_screenshot_as_base64</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>70.execute_script</strong><br>execute_script(self, script, &#x2F;*args):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Synchronously</span> <span class="title class_">Executes</span> <span class="title class_">JavaScript</span> <span class="keyword">in</span> the current <span class="variable language_">window</span>/frame.</span><br><span class="line">在当前窗口/框架（特指 <span class="title class_">Html</span> 的 iframe ）同步执行 javascript 代码。你可以理解为如果这段代码是睡眠<span class="number">5</span>秒，这五秒内主线程的 javascript 不会执行</span><br><span class="line">    :<span class="title class_">Args</span>:</span><br><span class="line">     - <span class="attr">script</span>: <span class="title class_">The</span> <span class="title class_">JavaScript</span> to execute.</span><br><span class="line">     - \*<span class="attr">args</span>: <span class="title class_">Any</span> applicable <span class="variable language_">arguments</span> <span class="keyword">for</span> your <span class="title class_">JavaScript</span>.</span><br><span class="line"></span><br><span class="line">    :<span class="title class_">Usage</span>:</span><br><span class="line">        driver.<span class="title function_">execute_script</span>(<span class="string">&#x27;document.title&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>71.execute_async_script</strong><br>execute_async_script(self, script, &#x2F;*args):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Asynchronously</span> <span class="title class_">Executes</span> <span class="title class_">JavaScript</span> <span class="keyword">in</span> the current <span class="variable language_">window</span>/frame.</span><br><span class="line">插入 javascript 代码，只是这个是异步的，也就是如果你的代码是睡眠<span class="number">5</span>秒，那么你只是自己在睡，页面的其他 javascript 代码还是照常执行</span><br><span class="line">    :<span class="title class_">Args</span>:</span><br><span class="line">     - <span class="attr">script</span>: <span class="title class_">The</span> <span class="title class_">JavaScript</span> to execute.</span><br><span class="line">     - \*<span class="attr">args</span>: <span class="title class_">Any</span> applicable <span class="variable language_">arguments</span> <span class="keyword">for</span> your <span class="title class_">JavaScript</span>.</span><br><span class="line"></span><br><span class="line">    :<span class="title class_">Usage</span>:</span><br><span class="line">        driver.<span class="title function_">execute_async_script</span>(<span class="string">&#x27;document.title&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>72.current_url</strong><br>current_url(self):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Gets</span> the <span class="variable constant_">URL</span> <span class="keyword">of</span> the current page.</span><br><span class="line">    获取当前页面的网址。</span><br><span class="line">    :<span class="title class_">Usage</span>:</span><br><span class="line">        driver.<span class="property">current_url</span></span><br><span class="line">用法 driver.<span class="property">current_url</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>73. page_source</strong><br>page_source(self):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Gets</span> the source <span class="keyword">of</span> the current page.</span><br><span class="line">获取当前页面的源。</span><br><span class="line">:<span class="title class_">Usage</span>:</span><br><span class="line">    driver.<span class="property">page_source</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>74.close</strong><br>close(self):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Closes</span> the current <span class="variable language_">window</span>.</span><br><span class="line">关闭当前窗口</span><br><span class="line">:<span class="title class_">Usage</span>:</span><br><span class="line">    driver.<span class="title function_">close</span>()</span><br></pre></td></tr></table></figure>
+
+<p><strong>75.quit</strong><br>quit(self):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Quits</span> the driver and closes every associated <span class="variable language_">window</span>.</span><br><span class="line">退出脚本运行并关闭每个相关的窗口连接</span><br><span class="line">:<span class="title class_">Usage</span>:</span><br><span class="line">    driver.<span class="title function_">quit</span>()</span><br></pre></td></tr></table></figure>
+
+<p><strong>76.get_screenshot_as_file</strong><br>get_screenshot_as_file(self, filename):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Gets</span> the screenshot <span class="keyword">of</span> the current <span class="variable language_">window</span>. <span class="title class_">Returns</span> <span class="title class_">False</span> <span class="keyword">if</span> there is</span><br><span class="line">       any <span class="title class_">IOError</span>, <span class="keyword">else</span> returns <span class="title class_">True</span>. <span class="title class_">Use</span> full paths <span class="keyword">in</span> your filename.</span><br><span class="line">  截取当前窗口的截图，如果有写入错误会返回<span class="title class_">False</span>，其它返回<span class="title class_">True</span></span><br><span class="line">filename 使用绝对路径</span><br><span class="line">    :<span class="title class_">Args</span>:</span><br><span class="line">     - <span class="attr">filename</span>: <span class="title class_">The</span> full path you wish to save your screenshot to.</span><br><span class="line"></span><br><span class="line">    :<span class="title class_">Usage</span>:</span><br><span class="line">       driver.<span class="title function_">get_screenshot_as_file</span>(<span class="string">&#x27;c:/foo.png&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>77.get_window_size</strong><br>get_window_size(self, filename):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Gets</span> the width and height <span class="keyword">of</span> the current <span class="variable language_">window</span>.</span><br><span class="line">获取当前屏幕的分辨率（长和宽）</span><br><span class="line">  :<span class="title class_">Usage</span>:</span><br><span class="line">      driver.<span class="title function_">get_window_size</span>()</span><br></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/FromCSDN/" rel="tag"># FromCSDN</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2017/09/09/jenkins%E5%90%8E%E5%8F%B0%E6%89%A7%E8%A1%8Cshell%E5%91%BD%E4%BB%A4/" rel="prev" title="jenkins后台执行shell命令">
+                  <i class="fa fa-chevron-left"></i> jenkins后台执行shell命令
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2017/10/20/%EF%BC%BBJavaWeb%E5%9F%BA%E7%A1%80%EF%BC%BDjsp/" rel="next" title="［JavaWeb基础］jsp">
+                  ［JavaWeb基础］jsp <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蜀ICP备19036728号 </a>
+      <img src="/images/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png" alt=""><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=51012202000611" rel="noopener" target="_blank">川公网安备 51012202000611号 </a>
+  </div>
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-dragon"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">windanchaos</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":"enable","archive":"enable","delay":true,"timeout":3000,"priority":true,"url":"http://example.com/2017/09/27/Appium_Python_Api/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+
+</body>
+</html>

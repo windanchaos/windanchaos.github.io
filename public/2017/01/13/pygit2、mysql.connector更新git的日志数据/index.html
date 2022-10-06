@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="由于最近拓展视野，发现了splinter和 Hp Utf 两个东西，很想去学习，基于django的自动发版系统又不能半途而非（实属自我约束，不能太没有恒心）。故而，更新日志的就不用django的web方式了，因为我尝试了很久，python本来就不熟悉，困难那是重重的，直接上python提供的mysql接口更新git的log日志。以下是代码： 1234567891011121314151617181">
+<meta property="og:type" content="article">
+<meta property="og:title" content="pygit2、mysql.connector更新git的日志数据">
+<meta property="og:url" content="http://example.com/2017/01/13/pygit2%E3%80%81mysql.connector%E6%9B%B4%E6%96%B0git%E7%9A%84%E6%97%A5%E5%BF%97%E6%95%B0%E6%8D%AE/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="由于最近拓展视野，发现了splinter和 Hp Utf 两个东西，很想去学习，基于django的自动发版系统又不能半途而非（实属自我约束，不能太没有恒心）。故而，更新日志的就不用django的web方式了，因为我尝试了很久，python本来就不熟悉，困难那是重重的，直接上python提供的mysql接口更新git的log日志。以下是代码： 1234567891011121314151617181">
+<meta property="og:locale">
+<meta property="article:published_time" content="2017-01-12T17:23:17.000Z">
+<meta property="article:modified_time" content="2021-06-08T10:39:48.676Z">
+<meta property="article:author" content="windanchaos">
+<meta property="article:tag" content="FromCSDN">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2017/01/13/pygit2%E3%80%81mysql.connector%E6%9B%B4%E6%96%B0git%E7%9A%84%E6%97%A5%E5%BF%97%E6%95%B0%E6%8D%AE/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"http://example.com/2017/01/13/pygit2%E3%80%81mysql.connector%E6%9B%B4%E6%96%B0git%E7%9A%84%E6%97%A5%E5%BF%97%E6%95%B0%E6%8D%AE/","path":"2017/01/13/pygit2、mysql.connector更新git的日志数据/","title":"pygit2、mysql.connector更新git的日志数据"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>pygit2、mysql.connector更新git的日志数据 | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Hexo</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-首页"><a href="/" rel="section"><i class="home fa-fw"></i>首页</a></li><li class="menu-item menu-item-分类"><a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a></li><li class="menu-item menu-item-归档"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-标签"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-关于"><a href="/about/me.html" rel="section"><i class="user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="windanchaos"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">windanchaos</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">111</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/windanchaos" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/windanchaos" title="Gitee → https:&#x2F;&#x2F;gitee.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="gitee fa-fw"></i>Gitee</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:454722630@qq.com" title="E-Mail → mailto:454722630@qq.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/windanchaos" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/windanchaos" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;windanchaos" rel="noopener" target="_blank"><i class="CSDN fa-fw"></i>CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2017/01/13/pygit2%E3%80%81mysql.connector%E6%9B%B4%E6%96%B0git%E7%9A%84%E6%97%A5%E5%BF%97%E6%95%B0%E6%8D%AE/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="windanchaos">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="pygit2、mysql.connector更新git的日志数据 | Hexo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          pygit2、mysql.connector更新git的日志数据
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2017-01-13 01:23:17" itemprop="dateCreated datePublished" datetime="2017-01-13T01:23:17+08:00">2017-01-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2021-06-08 18:39:48" itemprop="dateModified" datetime="2021-06-08T18:39:48+08:00">2021-06-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93/" itemprop="url" rel="index"><span itemprop="name">MySQL数据库</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>由于最近拓展视野，发现了splinter和 Hp Utf 两个东西，很想去学习，基于django的自动发版系统又不能半途而非（实属自我约束，不能太没有恒心）。故而，更新日志的就不用django的web方式了，因为我尝试了很久，python本来就不熟悉，困难那是重重的，直接上python提供的mysql接口更新git的log日志。以下是代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time,datetime</span><br><span class="line"></span><br><span class="line">#<span class="keyword">import</span> config <span class="keyword">as</span> config</span><br><span class="line"><span class="keyword">from</span> pygit2 <span class="keyword">import</span> <span class="title class_">Repository</span></span><br><span class="line"><span class="keyword">from</span> pygit2 <span class="keyword">import</span> <span class="variable constant_">GIT_SORT_NONE</span>,<span class="variable constant_">GIT_SORT_TOPOLOGICAL</span>, <span class="variable constant_">GIT_SORT_REVERSE</span>,<span class="variable constant_">GIT_SORT_TIME</span></span><br><span class="line"><span class="keyword">import</span> mysql.<span class="property">connector</span></span><br><span class="line"></span><br><span class="line"># noinspection <span class="title class_">PyArgumentList</span></span><br><span class="line">cnx = mysql.<span class="property">connector</span>.<span class="title function_">connect</span>(user=<span class="string">&#x27;root&#x27;</span>,password=<span class="string">&#x27;我的密码吧告诉你&#x27;</span>,host=<span class="string">&#x27;127.0.0.1&#x27;</span>,database=<span class="string">&#x27;gitlog&#x27;</span>)</span><br><span class="line">argslog=[]</span><br><span class="line">cursor = cnx.<span class="title function_">cursor</span>()</span><br><span class="line">cursor.<span class="title function_">execute</span>(<span class="string">&quot;SELECT UNIX_TIMESTAMP(commit_date) FROM gitlog.gitlog_commits order by id desc limit 1&quot;</span>)</span><br><span class="line"></span><br><span class="line">dataNewtime=<span class="number">1357006210</span></span><br><span class="line"><span class="keyword">for</span> (datetimelog) <span class="keyword">in</span> <span class="attr">cursor</span>:</span><br><span class="line">    <span class="keyword">if</span> (datetimelog[<span class="number">0</span>]!=<span class="string">&#x27;&#x27;</span>):</span><br><span class="line">        dataNewtime= datetimelog[<span class="number">0</span>]</span><br><span class="line">idnum=<span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> (i) <span class="keyword">in</span> <span class="attr">cursor</span>:</span><br><span class="line">    idnum=i[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">repo = <span class="title class_">Repository</span>(<span class="string">&#x27;/home/chaosbom/git/ArhasMK/.git&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> commit <span class="keyword">in</span> repo.<span class="title function_">walk</span>(repo.<span class="property">head</span>.<span class="property">target</span>,<span class="variable constant_">GIT_SORT_TOPOLOGICAL</span> | <span class="variable constant_">GIT_SORT_REVERSE</span>):</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(commit.<span class="property">author</span>.<span class="property">time</span> &gt; dataNewtime):</span><br><span class="line">        #print (commit.<span class="property">author</span>.<span class="property">time</span>, dataNewtime, commit.<span class="property">author</span>.<span class="property">time</span> &gt; dataNewtime, commit.<span class="property">author</span>.<span class="property">time</span> - dataNewtime)</span><br><span class="line">        logtmp=[]</span><br><span class="line">        idnum += <span class="number">1</span></span><br><span class="line">        logtmp.<span class="title function_">append</span>(idnum)</span><br><span class="line">        logtmp.<span class="title function_">append</span>(commit.<span class="property">author</span>.<span class="property">name</span>)</span><br><span class="line">        logtmp.<span class="title function_">append</span>(commit.<span class="property">message</span>)</span><br><span class="line">        logtmp.<span class="title function_">append</span>(<span class="string">&#x27;&#x27;</span>)</span><br><span class="line">        logtmp.<span class="title function_">append</span>(commit.<span class="property">tree</span>.<span class="property">id</span>.<span class="property">hex</span>)</span><br><span class="line">        logtmp.<span class="title function_">append</span>(datetime.<span class="property">datetime</span>.<span class="title function_">utcfromtimestamp</span>(commit.<span class="property">author</span>.<span class="property">time</span>).<span class="title function_">strftime</span>(<span class="string">&quot;%Y-%m-%d %H:%M:%S&quot;</span>))</span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line">        <span class="title function_">print</span>(logtmp)</span><br><span class="line">        argslog.<span class="title function_">append</span>(logtmp)</span><br><span class="line">        #log=(commit.<span class="property">author</span>.<span class="property">name</span>,commit.<span class="property">message</span>,commit.<span class="property">tree</span>.<span class="property">id</span>.<span class="property">hex</span>,datetime.<span class="property">datetime</span>.<span class="title function_">utcfromtimestamp</span>(commit.<span class="property">author</span>.<span class="property">time</span>).<span class="title function_">strftime</span>(<span class="string">&quot;%Y-%m-%d %H:%M:%S&quot;</span>))</span><br><span class="line">##以下两句放在<span class="keyword">for</span>循环中的时候，会增加海量的数据。是由于argslog的不断变大，递增处理。</span><br><span class="line">##但是如果直接在<span class="keyword">for</span>循环中传递logtmp给cursor，又包参数不足的错误。此处留个大大的疑问。</span><br><span class="line">add_log=<span class="string">&quot;INSERT INTO gitlog.gitlog_commits (id,author,message,commitsFile,nvalue,commit_date) VALUES (%s,%s,%s,%s,%s,%s)&quot;</span></span><br><span class="line">cursor.<span class="title function_">executemany</span>(add_log, argslog)</span><br><span class="line">cursor.<span class="title function_">close</span>()</span><br><span class="line">cnx.<span class="title function_">commit</span>()</span><br><span class="line">cnx.<span class="title function_">close</span>()</span><br></pre></td></tr></table></figure>
+
+<p>在mysqlworkbench里执行了下统计：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">SELECT</span> <span class="title function_">count</span>(author) <span class="variable constant_">FROM</span> gitlog.<span class="property">gitlog_commits</span>;</span><br></pre></td></tr></table></figure>
+
+<p>得到：’4438’条记录</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/FromCSDN/" rel="tag"># FromCSDN</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2017/01/13/Django%20%E5%AD%A6%E4%B9%A0%EF%BC%8C%E5%BC%82%E5%B8%B8%E8%A7%A3%E5%86%B3%E8%AE%B0%E5%BD%95/" rel="prev" title="Django 学习，异常解决记录">
+                  <i class="fa fa-chevron-left"></i> Django 学习，异常解决记录
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2017/01/22/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E7%9A%84%E5%88%A9%E5%BC%8A/" rel="next" title="自动化测试的利弊">
+                  自动化测试的利弊 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蜀ICP备19036728号 </a>
+      <img src="/images/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png" alt=""><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=51012202000611" rel="noopener" target="_blank">川公网安备 51012202000611号 </a>
+  </div>
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-dragon"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">windanchaos</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":"enable","archive":"enable","delay":true,"timeout":3000,"priority":true,"url":"http://example.com/2017/01/13/pygit2%E3%80%81mysql.connector%E6%9B%B4%E6%96%B0git%E7%9A%84%E6%97%A5%E5%BF%97%E6%95%B0%E6%8D%AE/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+
+</body>
+</html>

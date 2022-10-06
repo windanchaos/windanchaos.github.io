@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="一点总结由于自己本身就对shell中常用的命令有所了解，所以基础的就不啰嗦了。在我之前的博客中已经有不少内容 就写过的很多shell脚本经验看，最近作为助教又在跟着霍格沃兹第三期，又有了新感受。结合以前的经验，做个简单的总结。  代码要规范 虽然是shell，代码在逻辑上也要缜密  Linux文本三剑客awk最基本的作用，按规则输出列。 前置学习printf 或print。 printf命令格式：">
+<meta property="og:type" content="article">
+<meta property="og:title" content="shell三剑客实战">
+<meta property="og:url" content="http://example.com/2020/05/17/shell%E4%B8%89%E5%89%91%E5%AE%A2%E5%AE%9E%E6%88%98/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="一点总结由于自己本身就对shell中常用的命令有所了解，所以基础的就不啰嗦了。在我之前的博客中已经有不少内容 就写过的很多shell脚本经验看，最近作为助教又在跟着霍格沃兹第三期，又有了新感受。结合以前的经验，做个简单的总结。  代码要规范 虽然是shell，代码在逻辑上也要缜密  Linux文本三剑客awk最基本的作用，按规则输出列。 前置学习printf 或print。 printf命令格式：">
+<meta property="og:locale">
+<meta property="article:published_time" content="2020-05-17T08:55:03.000Z">
+<meta property="article:modified_time" content="2021-06-08T10:39:48.701Z">
+<meta property="article:author" content="windanchaos">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2020/05/17/shell%E4%B8%89%E5%89%91%E5%AE%A2%E5%AE%9E%E6%88%98/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"http://example.com/2020/05/17/shell%E4%B8%89%E5%89%91%E5%AE%A2%E5%AE%9E%E6%88%98/","path":"2020/05/17/shell三剑客实战/","title":"shell三剑客实战"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>shell三剑客实战 | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Hexo</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-首页"><a href="/" rel="section"><i class="home fa-fw"></i>首页</a></li><li class="menu-item menu-item-分类"><a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a></li><li class="menu-item menu-item-归档"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-标签"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-关于"><a href="/about/me.html" rel="section"><i class="user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%80%E7%82%B9%E6%80%BB%E7%BB%93"><span class="nav-number">1.</span> <span class="nav-text">一点总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux%E6%96%87%E6%9C%AC%E4%B8%89%E5%89%91%E5%AE%A2"><span class="nav-number">2.</span> <span class="nav-text">Linux文本三剑客</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#awk"><span class="nav-number">2.1.</span> <span class="nav-text">awk</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#printf"><span class="nav-number">2.1.1.</span> <span class="nav-text">printf</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#awk%E5%8F%A5%E6%B3%95"><span class="nav-number">2.1.2.</span> <span class="nav-text">awk句法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#awk%E5%B8%B8%E7%94%A8%E5%86%85%E7%BD%AE%E5%8F%98%E9%87%8F"><span class="nav-number">2.1.3.</span> <span class="nav-text">awk常用内置变量</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sed"><span class="nav-number">2.2.</span> <span class="nav-text">sed</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%A5%E6%B3%95"><span class="nav-number">2.2.1.</span> <span class="nav-text">句法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#grep"><span class="nav-number">2.3.</span> <span class="nav-text">grep</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%B5%84%E6%BA%90"><span class="nav-number">3.</span> <span class="nav-text">资源</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#ps"><span class="nav-number">3.1.</span> <span class="nav-text">ps</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#top"><span class="nav-number">3.2.</span> <span class="nav-text">top</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#netstat"><span class="nav-number">3.3.</span> <span class="nav-text">netstat</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E7%BB%84%E7%9A%84%E5%A5%97%E8%B7%AF"><span class="nav-number">4.</span> <span class="nav-text">数组的套路</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AE%9E%E6%88%98"><span class="nav-number">5.</span> <span class="nav-text">实战</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%9C%80%E6%B1%82"><span class="nav-number">5.1.</span> <span class="nav-text">需求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%BD%E5%A5%96%E9%A2%98%E4%B8%80"><span class="nav-number">5.2.</span> <span class="nav-text">抽奖题一</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8A%BD%E5%A5%96%E9%A2%98%E4%BA%8C"><span class="nav-number">5.3.</span> <span class="nav-text">抽奖题二</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="windanchaos"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">windanchaos</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">111</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/windanchaos" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/windanchaos" title="Gitee → https:&#x2F;&#x2F;gitee.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="gitee fa-fw"></i>Gitee</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:454722630@qq.com" title="E-Mail → mailto:454722630@qq.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/windanchaos" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/windanchaos" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;windanchaos" rel="noopener" target="_blank"><i class="CSDN fa-fw"></i>CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2020/05/17/shell%E4%B8%89%E5%89%91%E5%AE%A2%E5%AE%9E%E6%88%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="windanchaos">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="shell三剑客实战 | Hexo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          shell三剑客实战
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2020-05-17 16:55:03" itemprop="dateCreated datePublished" datetime="2020-05-17T16:55:03+08:00">2020-05-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2021-06-08 18:39:48" itemprop="dateModified" datetime="2021-06-08T18:39:48+08:00">2021-06-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Linux%E7%AE%A1%E7%90%86%E7%BB%B4%E6%8A%A4/" itemprop="url" rel="index"><span itemprop="name">Linux管理维护</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="一点总结"><a href="#一点总结" class="headerlink" title="一点总结"></a>一点总结</h1><p>由于自己本身就对shell中常用的命令有所了解，所以基础的就不啰嗦了。在我之前的<a href="%5Bhttps://blog.windanchaos.tech/categories/Linux%E7%AE%A1%E7%90%86%E7%BB%B4%E6%8A%A4/%5D(https://blog.windanchaos.tech/categories/Linux%E7%AE%A1%E7%90%86%E7%BB%B4%E6%8A%A4/)">博客</a>中已经有不少内容</p>
+<p>就写过的很多shell脚本经验看，最近作为助教又在跟着霍格沃兹第三期，又有了新感受。结合以前的经验，做个简单的总结。</p>
+<ul>
+<li>代码要<strong>规范</strong></li>
+<li>虽然是shell，代码在逻辑上也要<strong>缜密</strong></li>
+</ul>
+<h1 id="Linux文本三剑客"><a href="#Linux文本三剑客" class="headerlink" title="Linux文本三剑客"></a>Linux文本三剑客</h1><h2 id="awk"><a href="#awk" class="headerlink" title="awk"></a>awk</h2><p>最基本的作用，按规则输出列。</p>
+<p>前置学习printf 或print。</p>
+<h3 id="printf"><a href="#printf" class="headerlink" title="printf"></a>printf</h3><p>命令格式：</p>
+<p>printf ‘匹配式’ 输入内容</p>
+<p>它的输出全部当成字符串。所以需要自己来设置换行或空格。</p>
+<p>%ns</p>
+<p>输出字符串。n是数字指代输出几个字符</p>
+<p>%ni</p>
+<p>输出整数。n是数字自带输出几个数字。</p>
+<p>%m.nf</p>
+<p>输出浮点数。m是总的位数，n是小数位数</p>
+<p>下面是例子，文本demo.txt</p>
+<p>ID      Name    Linux   PHP     MySQL   Java<br>1       Liming  82      55      58      87</p>
+<span id="more"></span>
+<p>2       SC      82      65      72      77<br>3       Tg      88      83      93      75</p>
+<p>下面的命令会无差别打印全部字符，没有任何分隔符。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">printf</span> <span class="string">&#x27;%s&#x27;</span> `<span class="built_in">cat</span> demo.txt`</span><br><span class="line"><span class="comment">#打印结果如下</span></span><br><span class="line"><span class="comment">#IDNameLinuxPHPMySQLJava1Liming825558872SC826572773Tg88839375</span></span><br></pre></td></tr></table></figure>
+
+<p>下面命令正常输出。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">printf</span> <span class="string">&#x27;%s\t%s\t%s\t%s\t%s\t%s\t\n&#x27;</span> `<span class="built_in">cat</span> demo.txt`</span><br></pre></td></tr></table></figure>
+
+<h3 id="awk句法"><a href="#awk句法" class="headerlink" title="awk句法"></a>awk句法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk <span class="string">&#x27;条件1&#123;动作1&#125; 条件2&#123;动作2&#125;...&#x27;</span> 文件名</span><br></pre></td></tr></table></figure>
+
+<p>awk 是一行一行执行的，先第一行全部内容给$0,依次列给$N。依据条件类型判定动作执行，不断的迭代。</p>
+<p>条件可以是以下：**</p>
+<p>保留字<strong>BEGIN</strong>，awk程序尚未读取数据之前执行1次。</p>
+<p>保留字<strong>END</strong>，awk处理完数据，即将结束执行1次。</p>
+<p>没有条件</p>
+<p>x &gt; &#x3D;10</p>
+<p>x &#x3D;&#x3D; y</p>
+<p>A ~ B  A中是包含B的字符串</p>
+<p>A !~ B A中不包含B的字符串</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">awk <span class="string">&#x27;BEGIN&#123;print &quot;hellow world&quot;&#125; &#123;printf $2 &quot;\t&quot; $6 &quot;\n&quot;&#125;&#x27;</span> demo.txt </span><br><span class="line"><span class="comment"># 第二列中匹配关键字Tg，需要//包裹关键字，告知是正则</span></span><br><span class="line">awk <span class="string">&#x27;$2 ~ /Tg/ &#123;print $3&#125;&#x27;</span> demo.txt</span><br><span class="line"><span class="comment"># 整行是否包含关键字，打印</span></span><br><span class="line">awk <span class="string">&#x27;/Tg/ &#123;print $3&#125;&#x27;</span> demo.txt</span><br></pre></td></tr></table></figure>
+
+<p><strong>动作可以是</strong>：</p>
+<p>格式化输出</p>
+<p>流程控制语句</p>
+<h3 id="awk常用内置变量"><a href="#awk常用内置变量" class="headerlink" title="awk常用内置变量"></a>awk常用内置变量</h3><p>NF  当前拥有的的列总数</p>
+<p>NR  awk所处理的行，总行数据的第几行</p>
+<p>$n 代表目前读入的第n个字段（$0  $1….）</p>
+<p>FS  定义分隔符，指定分隔符是个动作</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 打印bash权限的用户</span></span><br><span class="line"><span class="built_in">cat</span> /etc/passwd |grep /bin/bash|awk <span class="string">&#x27;BEGIN&#123;FS=&quot;:&quot;&#125; &#123;print $1&#125;&#x27;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="sed"><a href="#sed" class="headerlink" title="sed"></a>sed</h2><p>用途：数据选、换、增、查。</p>
+<h3 id="句法"><a href="#句法" class="headerlink" title="句法"></a>句法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sed [选项] <span class="string">&#x27;[动作]&#x27;</span> 文件名</span><br></pre></td></tr></table></figure>
+
+<p>选项：</p>
+<p>-n	处理过的数据才输入到屏幕，不加打印全部并加上处理过的。</p>
+<p>-e	允许对输入数据多条sed操作</p>
+<p>-f	从脚本读取sed操作</p>
+<p>-r	支持正则</p>
+<p>-i	sed修改写回文件</p>
+<p>动作：<br>a \	追加。追加多行时，需要每行末尾用”\“代表数据未完。</p>
+<p>c \	行替换。追加多行时，需要每行末尾用”\“代表数据未完。</p>
+<p>i \	前插入。追加多行时，需要每行末尾用”\“代表数据未完。</p>
+<p>p3	打印第三行。</p>
+<p>d 删除</p>
+<p>s	字符替换。格式“行范围s&#x2F;旧字符&#x2F;新字符&#x2F;g”</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">sed <span class="string">&#x27;2p&#x27;</span> demo.txt</span><br><span class="line">sed -n <span class="string">&#x27;2p&#x27;</span> demo.txt</span><br><span class="line">sed  <span class="string">&#x27;2,4d&#x27;</span> demo.txt</span><br><span class="line">sed  <span class="string">&#x27;2c 11111&#x27;</span> demo.txt</span><br><span class="line">sed <span class="string">&#x27;s/Liming/Limi/g ; s/Tg/TTTT/g&#x27;</span> demo.txt</span><br><span class="line"><span class="comment"># 同文本多次操作</span></span><br><span class="line">sed -e <span class="string">&#x27;2c 11111&#x27;</span> -e <span class="string">&#x27;3c gogogo&#x27;</span> demo.txt</span><br><span class="line"><span class="comment"># 一个统计nginx中每类别url响应时间的函数</span></span><br><span class="line"><span class="function"><span class="title">url_avg_time</span></span>()&#123;</span><br><span class="line">  awk <span class="string">&#x27;&#123;print $(NF-1), $7&#125;&#x27;</span> nginx.log | \</span><br><span class="line">  sed <span class="string">&#x27;s#\?.*##g&#x27;</span> | \</span><br><span class="line">  sed <span class="string">&#x27;s#%21#\!#g&#x27;</span> | \</span><br><span class="line">  sed <span class="string">&#x27;s#/\(topics\|replies\|avatar\)/[0-9]\+#/\1/int#g&#x27;</span> | \</span><br><span class="line">  sed <span class="string">&#x27;s#\(.\+\)/[^/].*\(png\|jpg\|gif\|jpeg.*\)#\1/id\.\2#g&#x27;</span> | \</span><br><span class="line">  sed <span class="string">&#x27;s# /[^/]\+/\(topics\|following\|replies\|columns\|favorites\|reward\|followers\)$# /username/\1#g&#x27;</span> | \</span><br><span class="line">  sed <span class="string">&#x27;s#\.\(tar\.tgz\|tar\.gz\|tar\|gz\|zip\|rar\)$#\.compress#g&#x27;</span> | \</span><br><span class="line">  <span class="built_in">sort</span> -k 2 | \</span><br><span class="line">  awk <span class="string">&#x27;&#123;total[$2]+=$1; times[$2]++;&#125; END&#123;for(url in total)&#123;avg=sprintf(&quot;%.3f&quot;, total[url]/times[url]); print(avg, url)&#125;&#125;&#x27;</span> | \</span><br><span class="line">  <span class="built_in">sort</span> -k 1 -nr | \</span><br><span class="line">  awk <span class="string">&#x27;BEGIN&#123;printf(&quot;%s\t%s\n&quot;, &quot;平均响应时间&quot;, &quot;接口地址&quot;)&#125; &#123;printf(&quot;%8s\t%s\n&quot;, $1, $2)&#125;&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="grep"><a href="#grep" class="headerlink" title="grep"></a>grep</h2><p>数据查找和定位。用得比较熟，略过。</p>
+<h1 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h1><h2 id="ps"><a href="#ps" class="headerlink" title="ps"></a>ps</h2><p>ps查询出来cpu利用率的是时间范围内的平均值，不是实时</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ps -ef</span><br><span class="line">ps aux</span><br><span class="line">ps -p -o</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="top"><a href="#top" class="headerlink" title="top"></a>top</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">top -hv|-bcHiOSs -d secs -n max -u|U user -p pid -o fld -w [cols]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>常用套路</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查询进程的现成</span></span><br><span class="line">top -p pid -H</span><br><span class="line"><span class="comment"># -b 批处理，刷新评率下稳定输出文本</span></span><br><span class="line">top -b </span><br><span class="line"><span class="comment"># -n 输出多少次</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 格式化输出</span></span><br><span class="line">ps -o %cpu,%mem -p 22056</span><br><span class="line"></span><br><span class="line"><span class="comment"># 一个综合函数,打印进程10s内的cpu和mem使用率。最后输出平均</span></span><br><span class="line"><span class="function"><span class="title">perf_get</span></span>() &#123;</span><br><span class="line">    <span class="comment">#使用变量替换位置参数</span></span><br><span class="line">    <span class="built_in">local</span> proc=<span class="string">&quot;<span class="variable">$1</span>&quot;</span></span><br><span class="line">    <span class="built_in">local</span> <span class="built_in">timeout</span>=<span class="string">&quot;<span class="variable">$2</span>&quot;</span></span><br><span class="line">    <span class="comment">#基本使用给予基本检查</span></span><br><span class="line">    [ -z <span class="string">&quot;<span class="variable">$proc</span>&quot;</span> ] &amp;&amp; &#123; <span class="built_in">echo</span> please give a proc name or pid; <span class="built_in">return</span> 1; &#125;</span><br><span class="line">    [ -z <span class="string">&quot;<span class="variable">$timeout</span>&quot;</span> ] &amp;&amp; <span class="built_in">timeout</span>=10</span><br><span class="line">    <span class="comment">#top的批处理输出</span></span><br><span class="line">    top -b -d 1 -n <span class="variable">$timeout</span> |</span><br><span class="line">    <span class="comment">#范围限定，为了精准处理</span></span><br><span class="line">        grep <span class="string">&#x27;^[ 0-9][1-9]&#x27;</span> |</span><br><span class="line">        <span class="comment">#提取精准数据</span></span><br><span class="line">        awk <span class="string">&#x27;&#123;print $1,$9,$10,$12&#125;&#x27;</span> |</span><br><span class="line">        <span class="comment">#取出感兴趣数据，同时读一行就给后面的管道进程，方便实时显示</span></span><br><span class="line">        grep --line-buffered -i <span class="string">&quot;<span class="variable">$proc</span>&quot;</span> |</span><br><span class="line">        <span class="comment">#分组统计并打印，使用tab作为OFS进行输出，fflush()可以实时输出给后面的进程</span></span><br><span class="line">        awk <span class="string">&#x27;</span></span><br><span class="line"><span class="string">    BEGIN&#123;OFS=&quot;\t&quot;;print &quot;CPU&quot;,&quot;MEM&quot;&#125;</span></span><br><span class="line"><span class="string">    &#123;cpu+=$2; mem+=$3;print $1,$2,$3,$4;&#125;</span></span><br><span class="line"><span class="string">    END&#123;print &quot;&quot;;print &quot;avg: &quot;,cpu/NR,mem/NR&#125;&#x27;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="netstat"><a href="#netstat" class="headerlink" title="netstat"></a>netstat</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">netstat -anp</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="数组的套路"><a href="#数组的套路" class="headerlink" title="数组的套路"></a>数组的套路</h1><p>套路就是招式。。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 定义</span></span><br><span class="line">array=()</span><br><span class="line">array=(a b c)</span><br><span class="line"><span class="comment"># 取值</span></span><br><span class="line">b=<span class="variable">$&#123;array[1]&#125;</span></span><br><span class="line"><span class="comment"># 取index集合0 1 2</span></span><br><span class="line">index=<span class="variable">$&#123;!array[@]&#125;</span></span><br><span class="line"><span class="comment"># 数组长度</span></span><br><span class="line">length=<span class="variable">$&#123;#array[@]&#125;</span></span><br><span class="line"><span class="comment"># 数组所有元素</span></span><br><span class="line">all_1=<span class="variable">$&#123;array[@]&#125;</span> //数组</span><br><span class="line">all_2=<span class="variable">$&#123;array[*]&#125;</span> //字符串</span><br><span class="line"><span class="comment"># 遍历</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="variable">$&#123;array[@]&#125;</span></span><br><span class="line"><span class="keyword">do</span></span><br><span class="line"><span class="variable">$&#123;i&#125;</span></span><br><span class="line">...</span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"><span class="comment"># index的遍历</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="variable">$&#123;!array[@]&#125;</span></span><br><span class="line"><span class="keyword">do</span></span><br><span class="line"><span class="variable">$&#123;array[$i]&#125;</span></span><br><span class="line">...</span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h1 id="实战"><a href="#实战" class="headerlink" title="实战"></a>实战</h1><h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>题一：</p>
+<p>一家公司有N多人，老板要在年会上抽奖，编写一个脚本进行抽奖。模拟， 每个人掷骰子 。</p>
+<p>输出每一轮的掷骰子的结果；</p>
+<p>选出最后一个人。 </p>
+<p>题二：</p>
+<p>增加输出参数N，为最后抽到的人数。如果没有抽足，则从未抽中人群中继续抽，直到抽完。输入同上。</p>
+<h2 id="抽奖题一"><a href="#抽奖题一" class="headerlink" title="抽奖题一"></a>抽奖题一</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 抽奖函数，传入数组</span></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">draw</span></span>()&#123;</span><br><span class="line">        <span class="built_in">local</span> array=<span class="variable">$&#123;1&#125;</span></span><br><span class="line">        <span class="built_in">local</span> number=<span class="variable">$&#123;2&#125;</span></span><br><span class="line">        <span class="comment"># 数组长度</span></span><br><span class="line">        <span class="built_in">local</span> size=<span class="variable">$&#123;#array[@]&#125;</span></span><br><span class="line">        <span class="comment"># 淘汰list</span></span><br><span class="line">        <span class="built_in">local</span> removed=()</span><br><span class="line">        <span class="keyword">if</span> [ <span class="variable">$&#123;size&#125;</span> -eq <span class="variable">$&#123;number&#125;</span> ]</span><br><span class="line">        <span class="keyword">then</span></span><br><span class="line">        &#123;</span><br><span class="line">           <span class="comment"># 打印/返回中奖名单</span></span><br><span class="line">           <span class="built_in">echo</span> <span class="variable">$&#123;array[*]&#125;</span></span><br><span class="line">           <span class="built_in">return</span> 0;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">           <span class="keyword">for</span> i <span class="keyword">in</span> <span class="string">&quot;<span class="variable">$&#123;!array[@]&#125;</span>&quot;</span>;</span><br><span class="line">           <span class="keyword">do</span> </span><br><span class="line">              ((RANDOM%6+1 &lt; 4))</span><br><span class="line">              <span class="comment"># 记录淘汰名单</span></span><br><span class="line">              removed[<span class="variable">$&#123;#removed[@]&#125;</span>]=array[<span class="variable">$i</span>]</span><br><span class="line">              <span class="comment"># 淘汰</span></span><br><span class="line">              <span class="built_in">unset</span> array[<span class="variable">$i</span>];</span><br><span class="line">           <span class="keyword">done</span></span><br><span class="line">           <span class="comment"># 对名单进行判定，如果小于预期值，则重新从淘汰列表抽取（size-已抽取数）</span></span><br><span class="line">           <span class="keyword">if</span> [ <span class="variable">$&#123;#array[@]&#125;</span> -lt <span class="variable">$&#123;number&#125;</span> ]</span><br><span class="line">           <span class="keyword">then</span></span><br><span class="line">              <span class="comment"># 先输出已选出的名单</span></span><br><span class="line">              <span class="built_in">printf</span> <span class="variable">$&#123;array[*]&#125;</span><span class="string">&quot; &quot;</span></span><br><span class="line">              <span class="comment"># 递归调用</span></span><br><span class="line">              draw <span class="variable">$&#123;removed[@]&#125;</span> ((<span class="variable">$&#123;number&#125;</span>-<span class="variable">$&#123;#array[@]&#125;</span>))</span><br><span class="line">           <span class="keyword">else</span></span><br><span class="line">              <span class="comment"># 否则递归调用</span></span><br><span class="line">              draw <span class="variable">$&#123;array[@]&#125;</span></span><br><span class="line">           <span class="keyword">fi</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">lucky</span></span>()&#123;</span><br><span class="line">	<span class="comment"># 选出人数要求</span></span><br><span class="line">	number=<span class="variable">$&#123;1&#125;</span></span><br><span class="line">    <span class="comment"># 数组准备</span></span><br><span class="line">    array=$(<span class="built_in">cat</span> ~/username.txt |<span class="built_in">sort</span> |<span class="built_in">uniq</span> |grep -v ^$)</span><br><span class="line">    <span class="comment"># 中奖名单</span></span><br><span class="line">    draw <span class="variable">$&#123;array[@]&#125;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="抽奖题二"><a href="#抽奖题二" class="headerlink" title="抽奖题二"></a>抽奖题二</h2><p>第二个抽奖，递归</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">draw</span></span>()&#123;</span><br><span class="line">        <span class="built_in">local</span> array=($*)</span><br><span class="line">        <span class="comment"># 由于数组做参数传递，多个参数情况下难以操作，做特殊处理</span></span><br><span class="line">        <span class="comment"># 传递参数全部当做数据，取最后一个做人数，然后删除</span></span><br><span class="line">        <span class="built_in">local</span> number=<span class="variable">$&#123;array[<span class="variable">$&#123;#array[@]&#125;</span>-1]&#125;</span></span><br><span class="line">        <span class="built_in">unset</span> array[<span class="variable">$&#123;#array[@]&#125;</span>-1]</span><br><span class="line">        <span class="comment"># 数组长度</span></span><br><span class="line">        <span class="built_in">local</span> size=<span class="variable">$&#123;#array[@]&#125;</span></span><br><span class="line">        <span class="comment"># 淘汰list</span></span><br><span class="line">        <span class="built_in">local</span> removed=()</span><br><span class="line">        <span class="comment"># 递归结束的条件一:抽足人数</span></span><br><span class="line">        <span class="keyword">if</span> [ <span class="variable">$&#123;size&#125;</span> -eq <span class="variable">$&#123;number&#125;</span> ]</span><br><span class="line">        <span class="keyword">then</span></span><br><span class="line">        &#123;</span><br><span class="line">           <span class="comment"># 打印/返回中奖名单</span></span><br><span class="line">           <span class="built_in">echo</span> <span class="string">&quot;已中奖名单：&quot;</span><span class="variable">$&#123;array[*]&#125;</span></span><br><span class="line">           <span class="built_in">return</span> 0;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment"># 递归结束的条件二：没有抽奖的人</span></span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> [ <span class="variable">$&#123;#array[@]&#125;</span> -gt 0 ];<span class="keyword">then</span></span><br><span class="line">        &#123;</span><br><span class="line">           <span class="keyword">for</span> i <span class="keyword">in</span> <span class="variable">$&#123;!array[@]&#125;</span>;</span><br><span class="line">           <span class="keyword">do</span></span><br><span class="line">              <span class="comment"># 记录淘汰名单</span></span><br><span class="line">              ((RANDOM%6+1 &lt; 4)) &amp;&amp; removed[<span class="variable">$&#123;#removed[@]&#125;</span>]=<span class="variable">$&#123;array[$i]&#125;</span> &amp;&amp; <span class="built_in">unset</span> array[<span class="variable">$i</span>]</span><br><span class="line">           <span class="keyword">done</span></span><br><span class="line">           <span class="comment"># 对名单进行判定，如果小于预期值，则重新从淘汰列表抽取（预期人数 - 已抽取数）的人数</span></span><br><span class="line">           <span class="keyword">if</span> [ <span class="variable">$&#123;#array[@]&#125;</span> -lt <span class="variable">$&#123;number&#125;</span> ]</span><br><span class="line">           <span class="keyword">then</span></span><br><span class="line">              <span class="comment"># 先输出已选出的名单</span></span><br><span class="line">              <span class="built_in">echo</span> <span class="string">&quot;已中奖名单如下。由于中奖人数不足，剩余人员抽继续抽取。。。&quot;</span></span><br><span class="line">              <span class="built_in">echo</span> <span class="variable">$&#123;array[*]&#125;</span> </span><br><span class="line">              <span class="comment"># 条件二的递归调用</span></span><br><span class="line">              draw <span class="variable">$&#123;removed[@]&#125;</span> $((<span class="variable">$&#123;number&#125;</span> - <span class="variable">$&#123;#array[@]&#125;</span>))</span><br><span class="line">           <span class="keyword">else</span></span><br><span class="line">              <span class="comment"># 条件一的递归调用</span></span><br><span class="line">              draw <span class="variable">$&#123;array[@]&#125;</span> <span class="variable">$&#123;number&#125;</span></span><br><span class="line">           <span class="keyword">fi</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">fi</span></span><br><span class="line">        <span class="keyword">fi</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">lucky_top</span></span>()&#123;</span><br><span class="line">    <span class="comment"># 选出人数要求</span></span><br><span class="line">    number=<span class="variable">$&#123;1&#125;</span></span><br><span class="line">    <span class="comment"># 数组准备</span></span><br><span class="line">    array=$(<span class="built_in">cat</span> ~/username.txt |<span class="built_in">sort</span> |<span class="built_in">uniq</span> |grep -v ^$)</span><br><span class="line">    <span class="comment"># 抽奖函数，传入数组</span></span><br><span class="line">    draw <span class="variable">$&#123;array[@]&#125;</span> <span class="variable">$&#123;number&#125;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>第二个抽奖，非递归方法</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">lucky_top2</span></span>()&#123;</span><br><span class="line">    <span class="comment"># 选出人数要求</span></span><br><span class="line">    number=<span class="variable">$&#123;1&#125;</span></span><br><span class="line">    <span class="comment"># 数组准备</span></span><br><span class="line">    array=$(<span class="built_in">cat</span> ~/username.txt |<span class="built_in">sort</span> |<span class="built_in">uniq</span> |grep -v ^$)</span><br><span class="line">    <span class="comment"># 无人中奖直接返回</span></span><br><span class="line">    [ 0 -eq <span class="variable">$&#123;number&#125;</span> ] &amp;&amp; <span class="built_in">echo</span> <span class="string">&quot;不需要有人中奖&quot;</span> &amp;&amp; <span class="built_in">return</span> 0</span><br><span class="line">    <span class="comment"># 中奖数超过候选人直接返回</span></span><br><span class="line">    [ <span class="variable">$&#123;#array[@]&#125;</span> -lt <span class="variable">$&#123;number&#125;</span> ] &amp;&amp; <span class="built_in">echo</span> <span class="string">&quot;全部中奖：&quot;</span><span class="variable">$&#123;array[*]&#125;</span> &amp;&amp; <span class="built_in">return</span> 0</span><br><span class="line">    <span class="comment"># 淘汰list</span></span><br><span class="line">    <span class="built_in">local</span> removed=()</span><br><span class="line">    <span class="keyword">while</span> [ <span class="variable">$&#123;#selected[@]&#125;</span> -lt <span class="variable">$&#123;number&#125;</span> ];<span class="keyword">do</span></span><br><span class="line">    	<span class="comment"># 中奖循环</span></span><br><span class="line">    	<span class="comment"># 中奖list</span></span><br><span class="line">    	<span class="built_in">local</span> selected=()</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="variable">$&#123;!array[@]&#125;</span>;</span><br><span class="line">        <span class="keyword">do</span></span><br><span class="line">           <span class="comment"># 记录中奖名单,删除中奖者</span></span><br><span class="line">           ((RANDOM%6+1 &gt; 3)) &amp;&amp; selected[<span class="variable">$&#123;#selected[@]&#125;</span>]=<span class="variable">$&#123;array[$i]&#125;</span> &amp;&amp; <span class="built_in">unset</span> array[<span class="variable">$i</span>]</span><br><span class="line">        <span class="keyword">done</span></span><br><span class="line">        <span class="comment"># 打印每次抽奖的中奖名单</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="string">&quot;已中奖名单如下。由于中奖人数不足，剩余人员抽继续抽取。。。&quot;</span></span><br><span class="line">        <span class="built_in">echo</span> <span class="variable">$&#123;selected[@]&#125;</span></span><br><span class="line">    <span class="keyword">done</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2020/04/16/mybatis%E5%85%A5%E4%B8%AA%E9%97%A8/" rel="prev" title="mybatis入个门">
+                  <i class="fa fa-chevron-left"></i> mybatis入个门
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/06/07/SpringBoot%E4%B9%8B%E5%8D%9A%E5%AE%A2%E5%AE%9E%E6%88%98/" rel="next" title="SpringBoot之博客实战">
+                  SpringBoot之博客实战 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蜀ICP备19036728号 </a>
+      <img src="/images/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png" alt=""><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=51012202000611" rel="noopener" target="_blank">川公网安备 51012202000611号 </a>
+  </div>
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-dragon"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">windanchaos</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":"enable","archive":"enable","delay":true,"timeout":3000,"priority":true,"url":"http://example.com/2020/05/17/shell%E4%B8%89%E5%89%91%E5%AE%A2%E5%AE%9E%E6%88%98/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+
+</body>
+</html>

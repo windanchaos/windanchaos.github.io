@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="以下内容分别来自：http:&#x2F;&#x2F;www.cnblogs.com&#x2F;itogo&#x2F;p&#x2F;5635629.htmlhttp:&#x2F;&#x2F;blog.csdn.net&#x2F;u010504064&#x2F;article&#x2F;details&#x2F;71173041 Queue是python标准库中的线程安全的队列（FIFO）实现,提供了一个适用于多线程编程的先进先出的数据结构，即队列，用来在生产者和消费者线程之间的信息传递 基本FIFO队列cl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="python队列在Queue，Collection 的基础">
+<meta property="og:url" content="http://example.com/2017/08/10/python%E9%98%9F%E5%88%97%E5%9C%A8Queue%EF%BC%8CCollection%20%E7%9A%84%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="以下内容分别来自：http:&#x2F;&#x2F;www.cnblogs.com&#x2F;itogo&#x2F;p&#x2F;5635629.htmlhttp:&#x2F;&#x2F;blog.csdn.net&#x2F;u010504064&#x2F;article&#x2F;details&#x2F;71173041 Queue是python标准库中的线程安全的队列（FIFO）实现,提供了一个适用于多线程编程的先进先出的数据结构，即队列，用来在生产者和消费者线程之间的信息传递 基本FIFO队列cl">
+<meta property="og:locale">
+<meta property="article:published_time" content="2017-08-09T23:26:38.000Z">
+<meta property="article:modified_time" content="2021-06-08T10:44:42.133Z">
+<meta property="article:author" content="windanchaos">
+<meta property="article:tag" content="FromCSDN">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2017/08/10/python%E9%98%9F%E5%88%97%E5%9C%A8Queue%EF%BC%8CCollection%20%E7%9A%84%E5%9F%BA%E7%A1%80/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"http://example.com/2017/08/10/python%E9%98%9F%E5%88%97%E5%9C%A8Queue%EF%BC%8CCollection%20%E7%9A%84%E5%9F%BA%E7%A1%80/","path":"2017/08/10/python队列在Queue，Collection 的基础/","title":"python队列在Queue，Collection 的基础"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>python队列在Queue，Collection 的基础 | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Hexo</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-首页"><a href="/" rel="section"><i class="home fa-fw"></i>首页</a></li><li class="menu-item menu-item-分类"><a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a></li><li class="menu-item menu-item-归档"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-标签"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-关于"><a href="/about/me.html" rel="section"><i class="user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%ACFIFO%E9%98%9F%E5%88%97"><span class="nav-number">1.</span> <span class="nav-text">基本FIFO队列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LIFO%E9%98%9F%E5%88%97"><span class="nav-number">2.</span> <span class="nav-text">LIFO队列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BC%98%E5%85%88%E7%BA%A7%E9%98%9F%E5%88%97"><span class="nav-number">3.</span> <span class="nav-text">优先级队列</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80%E4%BA%9B%E5%B8%B8%E7%94%A8%E6%96%B9%E6%B3%95"><span class="nav-number">4.</span> <span class="nav-text">一些常用方法</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Cellection"><span class="nav-number"></span> <span class="nav-text">Cellection</span></a></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="windanchaos"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">windanchaos</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">111</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/windanchaos" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/windanchaos" title="Gitee → https:&#x2F;&#x2F;gitee.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="gitee fa-fw"></i>Gitee</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:454722630@qq.com" title="E-Mail → mailto:454722630@qq.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/windanchaos" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/windanchaos" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;windanchaos" rel="noopener" target="_blank"><i class="CSDN fa-fw"></i>CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2017/08/10/python%E9%98%9F%E5%88%97%E5%9C%A8Queue%EF%BC%8CCollection%20%E7%9A%84%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="windanchaos">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="python队列在Queue，Collection 的基础 | Hexo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          python队列在Queue，Collection 的基础
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2017-08-10 07:26:38" itemprop="dateCreated datePublished" datetime="2017-08-10T07:26:38+08:00">2017-08-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2021-06-08 18:44:42" itemprop="dateModified" datetime="2021-06-08T18:44:42+08:00">2021-06-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/python%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">python编程语言</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>以下内容分别来自：<br><a target="_blank" rel="noopener" href="http://www.cnblogs.com/itogo/p/5635629.html">http://www.cnblogs.com/itogo/p/5635629.html</a><br><a target="_blank" rel="noopener" href="http://blog.csdn.net/u010504064/article/details/71173041">http://blog.csdn.net/u010504064/article/details/71173041</a></p>
+<p>Queue是python标准库中的线程安全的队列（FIFO）实现,提供了一个适用于多线程编程的先进先出的数据结构，即队列，用来在生产者和消费者线程之间的信息传递</p>
+<h2 id="基本FIFO队列"><a href="#基本FIFO队列" class="headerlink" title="基本FIFO队列"></a>基本FIFO队列</h2><p><strong>class Queue.Queue(maxsize&#x3D;0)</strong></p>
+<p>FIFO即First in First Out,先进先出。Queue提供了一个基本的FIFO容器，使用方法很简单,maxsize是个整数，指明了队列中能存放的数据个数的上限。一旦达到上限，插入会导致阻塞，直到队列中的数据被消费掉。如果maxsize小于或者等于0，队列大小没有限制。</p>
+<p>举个栗子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">Queue</span></span><br><span class="line"></span><br><span class="line">q = <span class="title class_">Queue</span>.<span class="title class_">Queue</span>()</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="title function_">range</span>(<span class="number">5</span>):</span><br><span class="line">    q.<span class="title function_">put</span>(i)</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> not q.<span class="title function_">empty</span>():</span><br><span class="line">    print q.<span class="title function_">get</span>()</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">0</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">4</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="LIFO队列"><a href="#LIFO队列" class="headerlink" title="LIFO队列"></a>LIFO队列</h2><span id="more"></span>
+<p><strong>class Queue.LifoQueue(maxsize&#x3D;0)</strong></p>
+<p>LIFO即Last in First Out,后进先出。与栈的类似，使用也很简单,maxsize用法同上</p>
+<p>再举个栗子：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">Queue</span></span><br><span class="line"></span><br><span class="line">q = <span class="title class_">Queue</span>.<span class="title class_">LifoQueue</span>()</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="title function_">range</span>(<span class="number">5</span>):</span><br><span class="line">    q.<span class="title function_">put</span>(i)</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> not q.<span class="title function_">empty</span>():</span><br><span class="line">    print q.<span class="title function_">get</span>()</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<p>可以看到仅仅是将</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Queue</span>.<span class="property">Quenu</span>类</span><br></pre></td></tr></table></figure>
+<p>替换为</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Queue</span>.<span class="property">LifiQueue</span>类</span><br></pre></td></tr></table></figure>
+
+<h2 id="优先级队列"><a href="#优先级队列" class="headerlink" title="优先级队列"></a>优先级队列</h2><p><strong>class Queue.PriorityQueue(maxsize&#x3D;0)</strong></p>
+<p>构造一个优先队列。maxsize用法同上。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> <span class="title class_">Queue</span></span><br><span class="line"><span class="keyword">import</span> threading</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Job</span>(object):</span><br><span class="line">    def <span class="title function_">__init__</span>(self, priority, description):</span><br><span class="line">        self.<span class="property">priority</span> = priority</span><br><span class="line">        self.<span class="property">description</span> = description</span><br><span class="line">        print <span class="string">&#x27;Job:&#x27;</span>,description</span><br><span class="line">        <span class="keyword">return</span></span><br><span class="line">    def <span class="title function_">__cmp__</span>(self, other):</span><br><span class="line">        <span class="keyword">return</span> <span class="title function_">cmp</span>(self.<span class="property">priority</span>, other.<span class="property">priority</span>)</span><br><span class="line"></span><br><span class="line">q = <span class="title class_">Queue</span>.<span class="title class_">PriorityQueue</span>()</span><br><span class="line"></span><br><span class="line">q.<span class="title function_">put</span>(<span class="title class_">Job</span>(<span class="number">3</span>, <span class="string">&#x27;level 3 job&#x27;</span>))</span><br><span class="line">q.<span class="title function_">put</span>(<span class="title class_">Job</span>(<span class="number">10</span>, <span class="string">&#x27;level 10 job&#x27;</span>))</span><br><span class="line">q.<span class="title function_">put</span>(<span class="title class_">Job</span>(<span class="number">1</span>, <span class="string">&#x27;level 1 job&#x27;</span>))</span><br><span class="line"></span><br><span class="line">def <span class="title function_">process_job</span>(q):</span><br><span class="line">    <span class="keyword">while</span> <span class="title class_">True</span>:</span><br><span class="line">        next_job = q.<span class="title function_">get</span>()</span><br><span class="line">        print <span class="string">&#x27;for:&#x27;</span>, next_job.<span class="property">description</span></span><br><span class="line">        q.<span class="title function_">task_done</span>()</span><br><span class="line"></span><br><span class="line">workers = [threading.<span class="title class_">Thread</span>(target=process_job, args=(q,)),</span><br><span class="line">        threading.<span class="title class_">Thread</span>(target=process_job, args=(q,))</span><br><span class="line">        ]</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> w <span class="keyword">in</span> <span class="attr">workers</span>:</span><br><span class="line">    w.<span class="title function_">setDaemon</span>(<span class="title class_">True</span>)</span><br><span class="line">    w.<span class="title function_">start</span>()</span><br><span class="line"></span><br><span class="line">q.<span class="title function_">join</span>()</span><br></pre></td></tr></table></figure>
+
+<p>结果</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="title class_">Job</span>: level <span class="number">3</span> job</span><br><span class="line"><span class="title class_">Job</span>: level <span class="number">10</span> job</span><br><span class="line"><span class="title class_">Job</span>: level <span class="number">1</span> job</span><br><span class="line"><span class="attr">for</span>: level <span class="number">1</span> job</span><br><span class="line"><span class="attr">for</span>: level <span class="number">3</span> job</span><br><span class="line"><span class="attr">for</span>: <span class="attr">job</span>: level <span class="number">10</span> job</span><br></pre></td></tr></table></figure>
+
+<h2 id="一些常用方法"><a href="#一些常用方法" class="headerlink" title="一些常用方法"></a>一些常用方法</h2><p>意味着之前入队的一个任务已经完成。由队列的消费者线程调用。每一个get()调用得到一个任务，接下来的task_done()调用告诉队列该任务已经处理完毕。</p>
+<p>如果当前一个join()正在阻塞，它将在队列中的所有任务都处理完时恢复执行（即每一个由put()调用入队的任务都有一个对应的task_done()调用）。</p>
+<p>阻塞调用线程，直到队列中的所有任务被处理掉。</p>
+<p>只要有数据被加入队列，未完成的任务数就会增加。当消费者线程调用task_done()（意味着有消费者取得任务并完成任务），未完成的任务数就会减少。当未完成的任务数降到0，join()解除阻塞。</p>
+<p>将item放入队列中。</p>
+<p>其非阻塞版本为</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">put_nowait</span><br></pre></td></tr></table></figure>
+<p>等同于</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">put</span>(item, <span class="title class_">False</span>)</span><br></pre></td></tr></table></figure>
+
+<p>从队列中移除并返回一个数据。block跟timeout参数同</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">put</span><br></pre></td></tr></table></figure>
+<p>方法</p>
+<p>其非阻塞方法为｀get_nowait()｀相当与</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_">get</span>(<span class="title class_">False</span>)</span><br></pre></td></tr></table></figure>
+
+<p>如果队列为空，返回True,反之返回False</p>
+<p>＝＝＝＝＝＝＝＝＝＝＝＝这＝＝＝是＝＝＝分＝＝＝割＝＝＝线＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝＝</p>
+<h1 id="Cellection"><a href="#Cellection" class="headerlink" title="Cellection"></a>Cellection</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br></pre></td><td class="code"><pre><span class="line">#!<span class="regexp">/usr/</span>bin/env python</span><br><span class="line"># -*- <span class="attr">coding</span>: utf-<span class="number">8</span> -*-</span><br><span class="line"># @<span class="title class_">Time</span>    : <span class="number">2017</span>-<span class="number">4</span>-<span class="number">25</span> <span class="number">10</span>:<span class="number">33</span></span><br><span class="line"># @<span class="title class_">Author</span>  : coderManFans</span><br><span class="line"># @<span class="title class_">Site</span>    : <span class="title class_">Python</span> 高级数据结构模块</span><br><span class="line">#            <span class="number">1.</span><span class="title class_">Python</span>中的高级数据结构包括</span><br><span class="line">#            <span class="title class_">Collections</span>,<span class="title class_">Array</span>,<span class="title class_">Heapq</span>,<span class="title class_">Bisect</span>,<span class="title class_">Weakref</span>,<span class="title class_">Copy</span>,<span class="title class_">Pprint</span></span><br><span class="line">#            <span class="number">2.</span><span class="title class_">Collections</span>模块包含了内建类型之外的一些有用的工具，如<span class="title class_">Counter</span>,defaultdict,<span class="title class_">OrderDict</span></span><br><span class="line">#              deque以及nametuple.其中<span class="title class_">Counter</span>,deque以及defaultdict是最常用的类</span><br><span class="line">#</span><br><span class="line"># @<span class="title class_">File</span>    : collectionsDemo.<span class="property">py</span></span><br><span class="line"># @<span class="title class_">Software</span>: <span class="title class_">PyCharm</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#<span class="number">1.</span><span class="title class_">Collections</span></span><br><span class="line"></span><br><span class="line">#<span class="number">1.1</span> <span class="title class_">Counter</span>()</span><br><span class="line"><span class="string">&#x27;&#x27;</span><span class="string">&#x27;</span></span><br><span class="line"><span class="string">Counter继承了dict类，其中seq为可迭代对象。接收seq,并以字典的形式返回seq</span></span><br><span class="line"><span class="string">中每个元素（hashable）出现的次数</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Counter的应用场景：</span></span><br><span class="line"><span class="string">1.统计一个单词在给定序列中一共出现了多少次</span></span><br><span class="line"><span class="string">2.统计给定序列中不同单词出现的次数</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&#x27;</span><span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> <span class="title class_">Counter</span></span><br><span class="line"></span><br><span class="line">list1 = [<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;c&#x27;</span>,<span class="number">23</span>,<span class="number">23</span>,<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;d&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="string">&#x27;e&#x27;</span>]</span><br><span class="line">counter1 = <span class="title class_">Counter</span>(list1)</span><br><span class="line"><span class="title function_">print</span>(counter1)</span><br><span class="line"><span class="title function_">print</span>(counter1[<span class="string">&#x27;a&#x27;</span>])</span><br><span class="line"></span><br><span class="line">#<span class="number">1.1</span><span class="number">.1</span>统计不同单词的数目</span><br><span class="line"><span class="title function_">print</span>(<span class="title function_">len</span>(<span class="title function_">set</span>(list1)))</span><br><span class="line"></span><br><span class="line">#<span class="number">1.1</span><span class="number">.2</span>对统计结果进行分组 下面的方法表示分为<span class="number">4</span>组，不填默认全部分组，以列表</span><br><span class="line">#存储，里面元素是tuple对象</span><br><span class="line"><span class="title function_">print</span>(counter1.<span class="title function_">most_common</span>(<span class="number">4</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#<span class="number">1.1</span><span class="number">.3</span> <span class="title function_">elements</span>()获取<span class="title class_">Counter</span>()生成对象的所有键名，重复的几个会全部打印</span><br><span class="line"># 该方法返回一个迭代器对象</span><br><span class="line">keylist = counter1.<span class="title function_">elements</span>()</span><br><span class="line"><span class="title function_">print</span>(keylist)</span><br><span class="line"><span class="title function_">print</span>(<span class="title function_">list</span>(keylist))</span><br><span class="line"></span><br><span class="line">#<span class="number">1.1</span><span class="number">.4</span> <span class="title function_">update</span>(x) 更新计数器 把x的内容加入到原来计数器中</span><br><span class="line">#x可以作为字符串，列表，元组，集合，但是不能作为字典，纯数字，否则报错</span><br><span class="line">list2 = [<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;d&#x27;</span>,<span class="string">&#x27;f&#x27;</span>,<span class="string">&#x27;q&#x27;</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line"><span class="title function_">print</span>(counter1)</span><br><span class="line">counter1.<span class="title function_">update</span>(list2)</span><br><span class="line"><span class="title function_">print</span>(counter1)</span><br><span class="line"></span><br><span class="line">#<span class="number">1.1</span><span class="number">.5</span> <span class="title function_">substract</span>(x) 更新计数器 把x代表的次数减少<span class="number">1</span>，默认减少<span class="number">1</span>,(通过字典形式指定一次减少的个数)</span><br><span class="line">#，不存在则减为-<span class="number">1</span>，依次减，作用与<span class="title function_">update</span>()相反</span><br><span class="line"></span><br><span class="line">counter1.<span class="title function_">subtract</span>(<span class="string">&#x27;a&#x27;</span>)</span><br><span class="line"><span class="title function_">print</span>(counter1)</span><br><span class="line">counter1.<span class="title function_">subtract</span>([<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;b&#x27;</span>,<span class="number">2</span>])</span><br><span class="line"><span class="title function_">print</span>(counter1)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#<span class="number">1.2</span> <span class="title class_">Deque</span></span><br><span class="line"><span class="string">&#x27;&#x27;</span><span class="string">&#x27;</span></span><br><span class="line"><span class="string">Deque是一种由队列结构扩展而来的双端队列（double-ended queue），队列元素</span></span><br><span class="line"><span class="string">能够在队列两端添加或者删除。因此还被称为头尾连接列表（head-tail linked list）,当然还有另一个特殊的数据结构也实现了这个</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Deque 支持线程安全的，经过优化的append和pop操作，在队列两端的相关操作都能够</span></span><br><span class="line"><span class="string">达到近乎O(1)的时间复杂度。虽然list也支持类似的操作，但是它是</span></span><br><span class="line"><span class="string">对定长列表的操作表现很不错，而当遇到pop(0)和insert(o,v)</span></span><br><span class="line"><span class="string">这样既改变了列表的长度又改变其元素位置的操作时，其复杂度就变为O(n)了、</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&#x27;</span><span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> deque</span><br><span class="line"></span><br><span class="line">#<span class="number">1.2</span><span class="number">.1</span> 定义一个双向队列（循环队列）</span><br><span class="line">de1 = <span class="title function_">deque</span>()</span><br><span class="line">#默认往双向队列右边加入元素</span><br><span class="line">de1.<span class="title function_">append</span>(<span class="string">&#x27;asdf&#x27;</span>)</span><br><span class="line"><span class="title function_">print</span>(de1)</span><br><span class="line"></span><br><span class="line">#<span class="number">1.2</span><span class="number">.2</span> 往双向队列左边加入一个元素</span><br><span class="line">de1.<span class="title function_">appendleft</span>(<span class="string">&#x27;2323&#x27;</span>)</span><br><span class="line">de1.<span class="title function_">appendleft</span>(<span class="number">232324</span>)</span><br><span class="line">de1.<span class="title function_">appendleft</span>(<span class="string">&#x27;2323&#x27;</span>)</span><br><span class="line">de1.<span class="title function_">appendleft</span>(<span class="number">23</span>)</span><br><span class="line">de1.<span class="title function_">appendleft</span>(<span class="number">23</span>)</span><br><span class="line"><span class="title function_">print</span>(de1)</span><br><span class="line"></span><br><span class="line">#<span class="number">1.2</span><span class="number">.3</span> 返回指定元素在双向队列中的个数</span><br><span class="line">count1 = de1.<span class="title function_">count</span>(<span class="number">23</span>)</span><br><span class="line"><span class="title function_">print</span>(count1)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#<span class="number">1.2</span><span class="number">.4</span> 反转双向队列</span><br><span class="line"><span class="title function_">print</span>(de1)</span><br><span class="line">de1.<span class="title function_">reverse</span>()</span><br><span class="line"><span class="title function_">print</span>(de1)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#<span class="number">1.2</span><span class="number">.5</span> 向双向队列中指定位置插入一个元素</span><br><span class="line">de1.<span class="title function_">insert</span>(<span class="number">2</span>,<span class="string">&#x27;abced&#x27;</span>)</span><br><span class="line"><span class="title function_">print</span>(de1)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#<span class="number">1.2</span><span class="number">.6</span> 用一个迭代器从右边扩展双向队列，相当于从右边批量插入</span><br><span class="line">de1.<span class="title function_">extend</span>([<span class="string">&#x27;a&#x27;</span>,<span class="string">&#x27;adfasdf&#x27;</span>,<span class="string">&#x27;asdf&#x27;</span>,<span class="string">&#x27;asdfasd23&#x27;</span>])</span><br><span class="line"><span class="title function_">print</span>(de1)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#<span class="number">1.2</span><span class="number">.7</span> 用一个迭代器从左边扩展双向队列，相当于从左边批量插入</span><br><span class="line">de1.<span class="title function_">extendleft</span>([<span class="string">&#x27;2&#x27;</span>,<span class="string">&#x27;3&#x27;</span>,<span class="string">&#x27;2&#x27;</span>,<span class="number">22</span>,<span class="string">&#x27;;&#x27;</span>,<span class="number">23</span>,<span class="number">233.002</span>,<span class="number">23.22</span>])</span><br><span class="line"><span class="title function_">print</span>(de1)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#<span class="number">1.2</span><span class="number">.8</span> 返回从左到右遇到的第一个value的索引</span><br><span class="line">index1 = de1.<span class="title function_">index</span>(<span class="string">&#x27;3&#x27;</span>)</span><br><span class="line"><span class="title function_">print</span>(index1)</span><br><span class="line"></span><br><span class="line">#<span class="number">1.2</span><span class="number">.9</span> 浅复制双向队列</span><br><span class="line">de2 = de1.<span class="title function_">copy</span>()</span><br><span class="line">de3 = de2</span><br><span class="line">de2.<span class="title function_">append</span>(<span class="string">&#x27;----asdfasdfa-sdf-asd-f&#x27;</span>)</span><br><span class="line"><span class="title function_">print</span>(de3)</span><br><span class="line"><span class="title function_">print</span>(de2)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#<span class="number">1.2</span><span class="number">.10</span> 队列的左旋转，右旋转</span><br><span class="line">#默认向右旋转n步（默认n = <span class="number">1</span>）,n是负数则向左旋转</span><br><span class="line"><span class="title function_">print</span>(de1)</span><br><span class="line">de1.<span class="title function_">rotate</span>(<span class="number">2</span>)</span><br><span class="line"><span class="title function_">print</span>(de1)</span><br><span class="line"></span><br><span class="line">#<span class="number">1.2</span><span class="number">.11</span> 删除并返回右边的一个元素</span><br><span class="line">val1 = de1.<span class="title function_">pop</span>()</span><br><span class="line"><span class="title function_">print</span>(val1)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#<span class="number">1.2</span><span class="number">.12</span> 删除并返回左边的一个元素</span><br><span class="line">val2 = de1.<span class="title function_">popleft</span>()</span><br><span class="line"><span class="title function_">print</span>(val2)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#<span class="number">1.2</span><span class="number">.13</span> 删除第一次出现的值</span><br><span class="line">de1.<span class="title function_">remove</span>(<span class="string">&#x27;2&#x27;</span>)</span><br><span class="line"><span class="title function_">print</span>(de1)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#<span class="number">1.2</span><span class="number">.14</span> 清空队列中的数据</span><br><span class="line">de1.<span class="title function_">clear</span>()</span><br><span class="line"><span class="title function_">print</span>(de1)</span><br><span class="line">#------------------------------------------------------------</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#<span class="number">1.3</span> collections 中的 defaultDict</span><br><span class="line"><span class="string">&#x27;&#x27;</span><span class="string">&#x27;</span></span><br><span class="line"><span class="string">该类型除了在处理不存在的键的操作之外与普通的字典完全相同。当查找一个</span></span><br><span class="line"><span class="string">不存在的键的操作发生时，它的default_factory会被调用，提供一个默认的值，</span></span><br><span class="line"><span class="string">并且将这对键值存储下来。其他的参数同普通的字典方法dict()一致，</span></span><br><span class="line"><span class="string">一个defaultdict的实例同内建dict一样拥有同样的操作</span></span><br><span class="line"><span class="string">defaultdict与dict唯一的区别就是初始化默认值的问题，</span></span><br><span class="line"><span class="string">defaultdict的默认值可以是空list[],或者set&#123;&#125;,或者0</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">defaultdict与dict.setdefault(key,[,default])是等价的，区别是复制的时候会被覆盖</span></span><br><span class="line"><span class="string">其他使用与dict没有区别</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">defaultdict对象在当你希望使用它存放追踪数据的时候很有用。</span></span><br><span class="line"><span class="string">&#x27;</span><span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> defaultdict</span><br><span class="line"></span><br><span class="line">list3 = [(<span class="string">&#x27;yellow&#x27;</span>,<span class="number">1</span>),(<span class="string">&#x27;blue&#x27;</span>,<span class="number">2</span>),(<span class="string">&#x27;yellow&#x27;</span>,<span class="number">3</span>),(<span class="string">&#x27;blue&#x27;</span>,<span class="number">3</span>)]</span><br><span class="line">dict1 = <span class="title function_">defaultdict</span>(list)</span><br><span class="line"><span class="title function_">print</span>(dict1)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> k,v <span class="keyword">in</span> <span class="attr">list3</span>:</span><br><span class="line">    dict1[k].<span class="title function_">append</span>(v)</span><br><span class="line"><span class="title function_">print</span>(dict1)</span><br><span class="line">dict2 = <span class="title function_">defaultdict</span>(set)</span><br><span class="line"><span class="title function_">print</span>(dict2)</span><br><span class="line"></span><br><span class="line">dict3 = &#123;&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#-----------------------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">#<span class="number">1.4</span> collections 有序字典 orderedDict的使用</span><br><span class="line"><span class="string">&#x27;&#x27;</span><span class="string">&#x27;</span></span><br><span class="line"><span class="string">orderedDict是collections中的一个包，能够记录字典元素的插入顺序，常常和排序函数一起使用</span></span><br><span class="line"><span class="string">来生成一个排序的字典</span></span><br><span class="line"><span class="string">默认的dict是不保证顺序的，但是该类可以保证插入的顺序</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">该对象里的元素是字典对象，如果其顺序不同，那么则Python会认为是两个不同的对象</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&#x27;</span><span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> <span class="title class_">OrderedDict</span></span><br><span class="line"></span><br><span class="line">dict4 = &#123;<span class="string">&#x27;ba1&#x27;</span>:<span class="number">3</span>,<span class="string">&#x27;aple&#x27;</span>:<span class="number">2</span>,<span class="string">&#x27;pear&#x27;</span>:<span class="number">23</span>,<span class="string">&#x27;orga&#x27;</span>:<span class="number">4</span>&#125;</span><br><span class="line"></span><br><span class="line">#<span class="number">1.4</span><span class="number">.1</span> 按照key排序</span><br><span class="line">orderdict1 = <span class="title class_">OrderedDict</span>(<span class="title function_">sorted</span>(dict4.<span class="title function_">items</span>(),key = lambda  <span class="attr">t</span>:t[<span class="number">0</span>]))</span><br><span class="line"><span class="title function_">print</span>(orderdict1)</span><br><span class="line"></span><br><span class="line">#<span class="number">1.4</span><span class="number">.2</span> 按照value排序</span><br><span class="line">orderdict1 = <span class="title class_">OrderedDict</span>(<span class="title function_">sorted</span>(dict4.<span class="title function_">items</span>(),key = lambda  <span class="attr">t</span>:t[<span class="number">1</span>]))</span><br><span class="line"><span class="title function_">print</span>(orderdict1)</span><br><span class="line"></span><br><span class="line">dict5 = &#123;<span class="string">&#x27;a&#x27;</span>:<span class="number">1</span>,<span class="string">&#x27;c&#x27;</span>:<span class="number">2</span>,<span class="string">&#x27;b&#x27;</span>:<span class="number">3</span>&#125;</span><br><span class="line">dict6 = &#123;<span class="string">&#x27;b&#x27;</span>:<span class="number">3</span>,<span class="string">&#x27;a&#x27;</span>:<span class="number">1</span>,<span class="string">&#x27;c&#x27;</span>:<span class="number">2</span>&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">print</span>(dict5 == dict6)</span><br><span class="line"></span><br><span class="line">#<span class="number">1.4</span><span class="number">.3</span> 注意这种方式的初始化是保证顺序的</span><br><span class="line">orderdict2 = <span class="title class_">OrderedDict</span>(dict5)</span><br><span class="line">orderdict3 = <span class="title class_">OrderedDict</span>(dict6)</span><br><span class="line"><span class="title function_">print</span>(orderdict2)</span><br><span class="line"><span class="title function_">print</span>(orderdict3)</span><br><span class="line"><span class="title function_">print</span>(orderdict3 == orderdict2)</span><br><span class="line"></span><br><span class="line">orderdict4 = <span class="title class_">OrderedDict</span>()</span><br><span class="line">orderdict4[<span class="string">&#x27;a&#x27;</span>] = <span class="number">123</span></span><br><span class="line">orderdict4[<span class="string">&#x27;b&#x27;</span>] = <span class="number">13</span></span><br><span class="line">orderdict4[<span class="string">&#x27;d&#x27;</span>] = <span class="number">1</span></span><br><span class="line">orderdict5 = <span class="title class_">OrderedDict</span>()</span><br><span class="line">orderdict5[<span class="string">&#x27;d&#x27;</span>] = <span class="number">1</span></span><br><span class="line">orderdict5[<span class="string">&#x27;b&#x27;</span>] = <span class="number">13</span></span><br><span class="line">orderdict5[<span class="string">&#x27;a&#x27;</span>] = <span class="number">123</span></span><br><span class="line"><span class="title function_">print</span>(orderdict4)</span><br><span class="line"><span class="title function_">print</span>(orderdict5)</span><br><span class="line"><span class="title function_">print</span>(orderdict4 == orderdict5)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#<span class="number">1.4</span><span class="number">.4</span> 有序删除 每次删除最后一个，相当于内存的栈存放，后进先出，<span class="title function_">pop</span>()是指定元素进行删除</span><br><span class="line">dict7 = orderdict5.<span class="title function_">popitem</span>()</span><br><span class="line"><span class="title function_">print</span>(dict7)</span><br><span class="line"></span><br><span class="line">orderdict5[<span class="string">&#x27;h&#x27;</span>] = <span class="string">&#x27;asdfasdf&#x27;</span></span><br><span class="line">orderdict5[<span class="string">&#x27;e&#x27;</span>] = <span class="string">&#x27;asdfasdf&#x27;</span></span><br><span class="line"></span><br><span class="line">#<span class="number">1.4</span><span class="number">.5</span> 将指定键值移动到最后,也就是移动到最上面</span><br><span class="line"><span class="title function_">print</span>(orderdict5)</span><br><span class="line">orderdict5.<span class="title function_">move_to_end</span>(<span class="string">&#x27;h&#x27;</span>)</span><br><span class="line"><span class="title function_">print</span>(orderdict5)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#<span class="number">1.4</span><span class="number">.6</span> 设置默认键值</span><br><span class="line">orderdict5.<span class="title function_">setdefault</span>(<span class="string">&#x27;k&#x27;</span>,<span class="string">&#x27;is default value,key&#x27;</span>)</span><br><span class="line"><span class="title function_">print</span>(orderdict5)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#---------------------------------------------------------------------------</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">#<span class="number">1.5</span> namedtuple 可命名元组的使用方式</span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> namedtuple</span><br><span class="line"><span class="string">&#x27;&#x27;</span><span class="string">&#x27;</span></span><br><span class="line"><span class="string">namedtuple继承tuple对象，namedtuple创建一个和tuple类似的对象，而且对象可以通过属性名访问元素值</span></span><br><span class="line"><span class="string">tuple只通过索引去访问，namedtuple可以提供基于对象的方式通过属性名访问元素值</span></span><br><span class="line"><span class="string">每个元素都有自己的名字，类似于java的Bean，C语言中的struct。</span></span><br><span class="line"><span class="string">同样的，对象属性一旦确定则不可更改，tuple中的值一旦确定也不可更改</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">但是在使用namedtuple的时候注意属性名不能使用Python的关键字，如:class def等。</span></span><br><span class="line"><span class="string">而且不能有重复的属性名称。</span></span><br><span class="line"><span class="string">如果有属性冲突的情况下，可以通过namedtuple开启重命名模式</span></span><br><span class="line"><span class="string">&#x27;</span><span class="string">&#x27;&#x27;</span></span><br><span class="line"></span><br><span class="line">#<span class="number">1.5</span><span class="number">.1</span> 初始化 下面的方式相当于创建了一个<span class="title class_">Person</span>类 里面有<span class="number">5</span>个属性</span><br><span class="line">personObj = <span class="title function_">namedtuple</span>(<span class="string">&quot;person&quot;</span>,<span class="string">&#x27;name age gender address money &#x27;</span>)</span><br><span class="line"><span class="title function_">print</span>(<span class="title function_">type</span>(personObj))</span><br><span class="line"><span class="title function_">print</span>(personObj)</span><br><span class="line"></span><br><span class="line"><span class="title class_">Bob</span> = <span class="title function_">personObj</span>(name=<span class="string">&#x27;Bob&#x27;</span>,age=<span class="number">23</span>,gender=<span class="string">&#x27;nan&#x27;</span>,address=<span class="string">&#x27;beijing&#x27;</span>,money=<span class="number">30000.00</span>)</span><br><span class="line">#上面的代码相当于创建了一个<span class="title class_">Person</span>对象，下面则是通过元组的方式打印该<span class="title class_">Person</span>对象</span><br><span class="line"><span class="title function_">print</span>(<span class="title class_">Bob</span>)</span><br><span class="line">zhangsan = <span class="title function_">personObj</span>(name=<span class="string">&#x27;zhangsan&#x27;</span>,age=<span class="number">40</span>,gender=<span class="string">&#x27;nan&#x27;</span>,address=<span class="string">&#x27;nanjing&#x27;</span>,money=<span class="number">303330.00</span>)</span><br><span class="line">#通过属性名之间访问到属性值</span><br><span class="line"><span class="title function_">print</span>(zhangsan.<span class="property">address</span>+<span class="string">&quot;-----&quot;</span>+zhangsan.<span class="property">gender</span>+<span class="string">&quot;----&quot;</span>+zhangsan.<span class="property">name</span>)</span><br><span class="line"></span><br><span class="line">#<span class="number">1.5</span><span class="number">.2</span> 存在命名冲突的情况</span><br><span class="line">#通过设置重命名模式为<span class="title class_">True</span>解决命名冲突的情况</span><br><span class="line">personObj2 = <span class="title function_">namedtuple</span>(<span class="string">&quot;person&quot;</span>,<span class="string">&#x27;name age gender address money age &#x27;</span>,rename=<span class="title class_">True</span>)</span><br><span class="line">#第二个冲突的属性名通过: _+indexNum的方式表示,设置值的时候要通过 _+indexNum=value的方式</span><br><span class="line"><span class="title function_">print</span>(personObj2.<span class="property">_fields</span>)</span><br><span class="line"></span><br><span class="line">lisi = <span class="title function_">personObj2</span>(name=<span class="string">&#x27;zhangsan&#x27;</span>,age=<span class="number">40</span>,gender=<span class="string">&#x27;nan&#x27;</span>,address=<span class="string">&#x27;nanjing&#x27;</span>,money=<span class="number">303330.00</span>,_5=<span class="number">30</span>)</span><br><span class="line"><span class="title function_">print</span>(lisi)</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/FromCSDN/" rel="tag"># FromCSDN</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2017/07/26/%E4%B8%80%E4%B8%AA%E7%94%A8%E4%BA%8E%E7%BD%91%E7%AB%99%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E7%9A%84%E7%94%9F%E6%80%81%E7%B3%BB%E7%BB%9F%E5%AE%9E%E7%8E%B0/" rel="prev" title="一个用于网站自动化测试的生态系统实现">
+                  <i class="fa fa-chevron-left"></i> 一个用于网站自动化测试的生态系统实现
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2017/09/08/%E8%AE%B0%E4%B8%80%E6%AC%A1%E8%A7%A3%E5%86%B3%E7%BA%BF%E4%B8%8A%E5%8E%8B%E5%8A%9B%E7%9A%84%E8%BF%87%E7%A8%8B/" rel="next" title="记一次解决线上压力的过程">
+                  记一次解决线上压力的过程 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蜀ICP备19036728号 </a>
+      <img src="/images/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png" alt=""><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=51012202000611" rel="noopener" target="_blank">川公网安备 51012202000611号 </a>
+  </div>
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-dragon"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">windanchaos</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":"enable","archive":"enable","delay":true,"timeout":3000,"priority":true,"url":"http://example.com/2017/08/10/python%E9%98%9F%E5%88%97%E5%9C%A8Queue%EF%BC%8CCollection%20%E7%9A%84%E5%9F%BA%E7%A1%80/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+
+</body>
+</html>

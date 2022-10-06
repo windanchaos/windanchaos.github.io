@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="本人是测试人员，包括我在内，团队中有2名测试，整个研发不含测试大概10名（后台前端）。除了负责测试工作，还兼任负责发布公司测试环境及生产环境的代码。 代码环境及架构公司所属行业为微信电商，使用java流行的MVC框架（这个我还不是很懂，不知道用了Spring哪些东西），这个了解过，只是并不深入，可以参考我的另一篇入门摘抄的java web基础。言归正传：后台编程语言：java、UI框架kendo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="写在前面：公司代码发布体系总结">
+<meta property="og:url" content="http://example.com/2016/11/23/%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2%EF%BC%9A%E5%85%AC%E5%8F%B8%E4%BB%A3%E7%A0%81%E5%8F%91%E5%B8%83%E4%BD%93%E7%B3%BB%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="本人是测试人员，包括我在内，团队中有2名测试，整个研发不含测试大概10名（后台前端）。除了负责测试工作，还兼任负责发布公司测试环境及生产环境的代码。 代码环境及架构公司所属行业为微信电商，使用java流行的MVC框架（这个我还不是很懂，不知道用了Spring哪些东西），这个了解过，只是并不深入，可以参考我的另一篇入门摘抄的java web基础。言归正传：后台编程语言：java、UI框架kendo">
+<meta property="og:locale">
+<meta property="article:published_time" content="2016-11-23T14:25:08.000Z">
+<meta property="article:modified_time" content="2021-06-08T10:39:48.852Z">
+<meta property="article:author" content="windanchaos">
+<meta property="article:tag" content="FromCSDN">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2016/11/23/%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2%EF%BC%9A%E5%85%AC%E5%8F%B8%E4%BB%A3%E7%A0%81%E5%8F%91%E5%B8%83%E4%BD%93%E7%B3%BB%E6%80%BB%E7%BB%93/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"http://example.com/2016/11/23/%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2%EF%BC%9A%E5%85%AC%E5%8F%B8%E4%BB%A3%E7%A0%81%E5%8F%91%E5%B8%83%E4%BD%93%E7%B3%BB%E6%80%BB%E7%BB%93/","path":"2016/11/23/写在前面：公司代码发布体系总结/","title":"写在前面：公司代码发布体系总结"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>写在前面：公司代码发布体系总结 | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Hexo</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-首页"><a href="/" rel="section"><i class="home fa-fw"></i>首页</a></li><li class="menu-item menu-item-分类"><a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a></li><li class="menu-item menu-item-归档"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-标签"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-关于"><a href="/about/me.html" rel="section"><i class="user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E7%8E%AF%E5%A2%83%E5%8F%8A%E6%9E%B6%E6%9E%84"><span class="nav-number">1.</span> <span class="nav-text">代码环境及架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%A3%E7%A0%81%E5%8F%91%E5%B8%83%E7%9A%84%E4%B8%BB%E8%A6%81%E6%B5%81%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">代码发布的主要流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA"><span class="nav-number">3.</span> <span class="nav-text">环境搭建</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="windanchaos"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">windanchaos</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">111</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/windanchaos" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/windanchaos" title="Gitee → https:&#x2F;&#x2F;gitee.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="gitee fa-fw"></i>Gitee</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:454722630@qq.com" title="E-Mail → mailto:454722630@qq.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/windanchaos" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/windanchaos" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;windanchaos" rel="noopener" target="_blank"><i class="CSDN fa-fw"></i>CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2016/11/23/%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2%EF%BC%9A%E5%85%AC%E5%8F%B8%E4%BB%A3%E7%A0%81%E5%8F%91%E5%B8%83%E4%BD%93%E7%B3%BB%E6%80%BB%E7%BB%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="windanchaos">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="写在前面：公司代码发布体系总结 | Hexo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          写在前面：公司代码发布体系总结
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2016-11-23 22:25:08" itemprop="dateCreated datePublished" datetime="2016-11-23T22:25:08+08:00">2016-11-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2021-06-08 18:39:48" itemprop="dateModified" datetime="2021-06-08T18:39:48+08:00">2021-06-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Linux%E7%AE%A1%E7%90%86%E7%BB%B4%E6%8A%A4/" itemprop="url" rel="index"><span itemprop="name">Linux管理维护</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>本人是测试人员，包括我在内，团队中有2名测试，整个研发不含测试大概10名（后台前端）。除了负责测试工作，还兼任负责发布公司测试环境及生产环境的代码。</p>
+<h2 id="代码环境及架构"><a href="#代码环境及架构" class="headerlink" title="代码环境及架构"></a>代码环境及架构</h2><p>公司所属行业为微信电商，使用java流行的MVC框架（这个我还不是很懂，不知道用了Spring哪些东西），这个了解过，只是并不深入，可以参考我的另一篇入门摘抄的<a target="_blank" rel="noopener" href="http://blog.csdn.net/windanchaos/article/details/51742146">java web基础</a>。言归正传：<br>后台编程语言：java、UI框架kendo ui<br>web容器：tomcat<br>微信端：js、html、vue、css、jsp等<br>代码管理：git<br>构建工具：maven<br>部署操作系统：CentOS7<br>数据库：MySQL<br>其他数据库或工具：Redis、Memche、RPC、activemq、阿里云sso<br>桌面开发工具：eclipse</p>
+<h2 id="代码发布的主要流程"><a href="#代码发布的主要流程" class="headerlink" title="代码发布的主要流程"></a>代码发布的主要流程</h2><p>Created with Raphaël 2.1.0           研发编码&#x2F;修改      发版到测试环境      测试确认       发版到生产环境        yes      no</p>
+<p>流程中两次发版目前都是执行我手动写的脚本。</p>
+<p>Created with Raphaël 2.1.0      发版需求      git pull代码      maven编译构建      发布代码到tomcat      重启tomcat      开始测试</p>
+<p>当然git由于有分支管理，发布的代码需要根据实际情况进行切换。这里git的分支管理就不再赘述。</p>
+<p>由于手工发版实属重复劳动，后来约定定时测试环境每日定时发版2次，一次是中午12点10分，一次是晚上7点30.使用Linux的<a target="_blank" rel="noopener" href="http://www.jb51.net/LINUXjishu/40015.html">crontab</a>。解放后的双手就是生产力。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">crontab -e #编辑任务，进入文本编辑窗口，输入以下内容。两个脚本分别是拉取代/构建maven项目和发版代码用</span><br><span class="line"><span class="number">10</span> <span class="number">12</span> * * <span class="number">1</span>-<span class="number">5</span> bash ~<span class="regexp">/mvn.sh &amp;&amp; bash ~/u</span>pdateSites.<span class="property">sh</span></span><br><span class="line"><span class="number">30</span> <span class="number">19</span> * * <span class="number">1</span>-<span class="number">5</span> bash ~<span class="regexp">/mvn.sh &amp;&amp; bash ~/u</span>pdateSites.<span class="property">sh</span></span><br></pre></td></tr></table></figure>
+
+<p>PS:此处有坑一个，mvn.sh和updateSites.sh中存在git和mvn这两个非系统自带命令，使用crontab定时运行会缺乏环境变量，导致不能执行。解决办法：在脚本中添加：source &#x2F;etc&#x2F;profile。</p>
+<p>生产环境的代码严格执行测试环境的代码为基准，所以发布的代码直接从tomcat的webent下面打包，唯一的不同是执行打包的时候会讲配置文件替换为生产。配置文件在代码库中做了统一的管理。<br>Created with Raphaël 2.1.0      发起发版任务      配置文件check      配置文件替换      代码打包      sftp方式拉取代码包      备份源代码发布代码包      发布代码包      上线回归测试</p>
+<span id="more"></span>
+<h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><p>这简单。<br>sudo apt-get install git</p>
+<p>网上教程多，此处略。</p>
+<p>这个也简单，取apache官网下载，按照通常的maven安装教程安装部署即可。<br>难的地方：maven在执行构建过程中可能遇到pom.xml的配置不正确，导致编译不通过。笔者在初次接触maven的时候并不清楚我们自己的代码具体结构是怎么样的，后来熟悉后知道，maven构建主要有两部分：基础通用的被其他webent依赖调用的先编译，webent单独编译。这里省略若干艰辛的探索过程。。。<br>PS:小技巧，maven的repository可以把本地windows的repository上传到～&#x2F;.m2目录下，省的再编译下载（我们的有1G大）</p>
+<p>sftp是Secure File Transfer Protocol的缩写，安全文件传送协议。可以为传输文件提供一种安全的加密方法。sftp 与 ftp 有着几乎一样的语法和功能。SFTP 为 SSH的一部份，是一种传输档案至 Blogger 伺服器的安全方式。</p>
+<p>简单说：客户机生成秘钥2个，一个是私钥，一个是公钥。公钥用于分发需要登录的服务器，公钥（对称公钥）方法解决了每次都输入密码的问题：使用客户端生成密钥钥对，将公钥添加到服务器的信任公钥表中，即完成了服务器对客户端信任的添加，再次使用SCP或者SFTP则不需要密码。。具体操作参考<a target="_blank" rel="noopener" href="http://jingyan.baidu.com/article/e5c39bf56245ae39d7603331.html%E2%80%8B">百度经验</a>。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/FromCSDN/" rel="tag"># FromCSDN</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2016/11/07/Ubuntu%E5%AF%86%E7%A0%81%E6%AD%A3%E7%A1%AE%EF%BC%8C%E4%B8%80%E7%9B%B4%E5%A4%84%E4%BA%8E%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2/" rel="prev" title="Ubuntu密码正确，一直处于登录界面">
+                  <i class="fa fa-chevron-left"></i> Ubuntu密码正确，一直处于登录界面
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2016/11/24/%E5%9F%BA%E4%BA%8Egit%20maven%E7%9A%84%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA%E7%B3%BB%E7%BB%9F%E7%B3%BB%E5%88%97%E4%BA%8C/" rel="next" title="基于git maven的自动构建系统系列二">
+                  基于git maven的自动构建系统系列二 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蜀ICP备19036728号 </a>
+      <img src="/images/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png" alt=""><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=51012202000611" rel="noopener" target="_blank">川公网安备 51012202000611号 </a>
+  </div>
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-dragon"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">windanchaos</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":"enable","archive":"enable","delay":true,"timeout":3000,"priority":true,"url":"http://example.com/2016/11/23/%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2%EF%BC%9A%E5%85%AC%E5%8F%B8%E4%BB%A3%E7%A0%81%E5%8F%91%E5%B8%83%E4%BD%93%E7%B3%BB%E6%80%BB%E7%BB%93/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+
+</body>
+</html>

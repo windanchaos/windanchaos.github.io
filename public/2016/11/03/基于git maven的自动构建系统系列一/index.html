@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="前言受《分布式自动化版本发布系统》启发，决定对我们公司现有的shell脚本发版进行升级。业余时间研究，主要达到以下目的： 前二个做完，可以了解python的一些基本语法数据类型，把更新记录写入到数据库便于日常查看。第三个，续用当前测试环境发布代码的shell脚本。 python3.5 and mysql5.7mysql5.7 install参考：官网安装方法。首先：下载MySQL APT Repo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于git maven的自动构建系统系列一">
+<meta property="og:url" content="http://example.com/2016/11/03/%E5%9F%BA%E4%BA%8Egit%20maven%E7%9A%84%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA%E7%B3%BB%E7%BB%9F%E7%B3%BB%E5%88%97%E4%B8%80/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="前言受《分布式自动化版本发布系统》启发，决定对我们公司现有的shell脚本发版进行升级。业余时间研究，主要达到以下目的： 前二个做完，可以了解python的一些基本语法数据类型，把更新记录写入到数据库便于日常查看。第三个，续用当前测试环境发布代码的shell脚本。 python3.5 and mysql5.7mysql5.7 install参考：官网安装方法。首先：下载MySQL APT Repo">
+<meta property="og:locale">
+<meta property="article:published_time" content="2016-11-03T14:02:41.000Z">
+<meta property="article:modified_time" content="2021-06-08T10:44:42.152Z">
+<meta property="article:author" content="windanchaos">
+<meta property="article:tag" content="FromCSDN">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://example.com/2016/11/03/%E5%9F%BA%E4%BA%8Egit%20maven%E7%9A%84%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA%E7%B3%BB%E7%BB%9F%E7%B3%BB%E5%88%97%E4%B8%80/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"http://example.com/2016/11/03/%E5%9F%BA%E4%BA%8Egit%20maven%E7%9A%84%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA%E7%B3%BB%E7%BB%9F%E7%B3%BB%E5%88%97%E4%B8%80/","path":"2016/11/03/基于git maven的自动构建系统系列一/","title":"基于git maven的自动构建系统系列一"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>基于git maven的自动构建系统系列一 | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Hexo</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-首页"><a href="/" rel="section"><i class="home fa-fw"></i>首页</a></li><li class="menu-item menu-item-分类"><a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a></li><li class="menu-item menu-item-归档"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-标签"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-关于"><a href="/about/me.html" rel="section"><i class="user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#python3-5-and-mysql5-7"><span class="nav-number">2.</span> <span class="nav-text">python3.5 and mysql5.7</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#mysql5-7-install"><span class="nav-number">2.1.</span> <span class="nav-text">mysql5.7 install</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Connector-x2F-Python-install"><span class="nav-number">2.2.</span> <span class="nav-text">Connector&#x2F;Python install</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9F%BA%E6%9C%AC%E7%9A%84python%E6%95%B0%E6%8D%AE%E5%BA%93%E6%93%8D%E4%BD%9C"><span class="nav-number">2.3.</span> <span class="nav-text">基本的python数据库操作</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#python%E8%B0%83%E7%94%A8shell"><span class="nav-number">3.</span> <span class="nav-text">python调用shell</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%A2%98%E5%A4%96%E8%AF%9D"><span class="nav-number">4.</span> <span class="nav-text">题外话</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#python%E5%9C%A8ubuntu%E4%B8%8B%E7%9A%84%E7%BC%96%E8%AF%91%E5%99%A8"><span class="nav-number">4.1.</span> <span class="nav-text">python在ubuntu下的编译器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#python%E8%BF%9E%E6%8E%A5mysql%E4%BD%BF%E7%94%A8config"><span class="nav-number">4.2.</span> <span class="nav-text">python连接mysql使用config</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%A1%E5%88%92%E5%92%8C%E5%AE%9E%E9%99%85"><span class="nav-number">4.3.</span> <span class="nav-text">计划和实际</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="windanchaos"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">windanchaos</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">111</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/windanchaos" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/windanchaos" title="Gitee → https:&#x2F;&#x2F;gitee.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="gitee fa-fw"></i>Gitee</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:454722630@qq.com" title="E-Mail → mailto:454722630@qq.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/windanchaos" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/windanchaos" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;windanchaos" rel="noopener" target="_blank"><i class="CSDN fa-fw"></i>CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2016/11/03/%E5%9F%BA%E4%BA%8Egit%20maven%E7%9A%84%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA%E7%B3%BB%E7%BB%9F%E7%B3%BB%E5%88%97%E4%B8%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="windanchaos">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="基于git maven的自动构建系统系列一 | Hexo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          基于git maven的自动构建系统系列一
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2016-11-03 22:02:41" itemprop="dateCreated datePublished" datetime="2016-11-03T22:02:41+08:00">2016-11-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2021-06-08 18:44:42" itemprop="dateModified" datetime="2021-06-08T18:44:42+08:00">2021-06-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Linux%E7%AE%A1%E7%90%86%E7%BB%B4%E6%8A%A4/" itemprop="url" rel="index"><span itemprop="name">Linux管理维护</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>受《<a target="_blank" rel="noopener" href="http://wenku.baidu.com/link?url=yfoL8R4aoZb5b56nqYOjW7sEvYxExTaLyRovWFcD3slJoym1P7qKpdcuzelEU52J4jpp_eGWa5rtMGwJhkkrQ5YA8ilmM16GoTBP8F-48NC">分布式自动化版本发布系统</a>》启发，决定对我们公司现有的shell脚本发版进行升级。业余时间研究，主要达到以下目的：</p>
+<p>前二个做完，可以了解python的一些基本语法数据类型，把更新记录写入到数据库便于日常查看。<br>第三个，续用当前测试环境发布代码的shell脚本。</p>
+<h1 id="python3-5-and-mysql5-7"><a href="#python3-5-and-mysql5-7" class="headerlink" title="python3.5 and mysql5.7"></a>python3.5 and mysql5.7</h1><h2 id="mysql5-7-install"><a href="#mysql5-7-install" class="headerlink" title="mysql5.7 install"></a>mysql5.7 install</h2><p>参考：<a target="_blank" rel="noopener" href="http://dev.mysql.com/downloads/repo/apt/">官网安装方法</a>。<br>首先：下载<a target="_blank" rel="noopener" href="http://dev.mysql.com/get/mysql-apt-config_0.8.0-1_all.deb">MySQL APT Repository</a>。参考<a target="_blank" rel="noopener" href="http://dev.mysql.com/doc/mysql-apt-repo-quick-guide/en/">链接</a>的方法，设置MySQL APT Repository。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo dpkg -i mysql-apt-config_0<span class="number">.8</span><span class="number">.0</span>-1_all.<span class="property">deb</span></span><br><span class="line">sudo apt-get update</span><br><span class="line">sudo apt-get install mysql-server</span><br></pre></td></tr></table></figure>
+
+<p><em>第一个命令需要选择自己将要安装的mysql版本。</em><br>启动mysql<br>安装mysql workbench。</p>
+<h2 id="Connector-x2F-Python-install"><a href="#Connector-x2F-Python-install" class="headerlink" title="Connector&#x2F;Python install"></a>Connector&#x2F;Python install</h2><p>参考：<a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/connector-python/en/connector-python-installation.html">官方网站</a></p>
+<h2 id="基本的python数据库操作"><a href="#基本的python数据库操作" class="headerlink" title="基本的python数据库操作"></a>基本的python数据库操作</h2><p>以下操作完成了对git log记录数据库。不足之处在于，没有找到pygit2的方法去追加git 日志，先跳过去了。<br>大部分代码参考：<a target="_blank" rel="noopener" href="http://www.pygit2.org/objects.html">pygit2官网document</a></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time,datetime</span><br><span class="line"><span class="keyword">import</span> config <span class="keyword">as</span> config</span><br><span class="line"><span class="keyword">from</span> pygit2 <span class="keyword">import</span> <span class="title class_">Repository</span></span><br><span class="line"><span class="keyword">from</span> pygit2 <span class="keyword">import</span> <span class="variable constant_">GIT_SORT_NONE</span>,<span class="variable constant_">GIT_SORT_TOPOLOGICAL</span>, <span class="variable constant_">GIT_SORT_REVERSE</span>,<span class="variable constant_">GIT_SORT_TIME</span></span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line"><span class="keyword">import</span> mysql.<span class="property">connector</span></span><br><span class="line"></span><br><span class="line">cnx = mysql.<span class="property">connector</span>.<span class="title function_">connect</span>(**config)</span><br><span class="line">#存储日志的列表[[logA],[logB]...[logN]]</span><br><span class="line">argslog=[]</span><br><span class="line">cursor = cnx.<span class="title function_">cursor</span>()</span><br><span class="line">repo = <span class="title class_">Repository</span>(<span class="string">&#x27;homeOfyourGit/.git&#x27;</span>)</span><br><span class="line"><span class="keyword">for</span> commit <span class="keyword">in</span> repo.<span class="title function_">walk</span>(repo.<span class="property">head</span>.<span class="property">target</span>,<span class="variable constant_">GIT_SORT_TOPOLOGICAL</span> | <span class="variable constant_">GIT_SORT_REVERSE</span>):</span><br><span class="line">    #logA..<span class="property">N</span></span><br><span class="line">    logtmp=[]</span><br><span class="line">    logtmp.<span class="title function_">append</span>(commit.<span class="property">tree</span>.<span class="property">id</span>.<span class="property">hex</span>)</span><br><span class="line">    logtmp.<span class="title function_">append</span>(commit.<span class="property">message</span>)</span><br><span class="line">    logtmp.<span class="title function_">append</span>(datetime.<span class="property">datetime</span>.<span class="title function_">utcfromtimestamp</span>(commit.<span class="property">author</span>.<span class="property">time</span>))</span><br><span class="line">    logtmp.<span class="title function_">append</span>(commit.<span class="property">author</span>.<span class="property">name</span>)</span><br><span class="line">    <span class="title function_">print</span>(logtmp)</span><br><span class="line">    argslog.<span class="title function_">append</span>(logtmp)</span><br><span class="line"></span><br><span class="line">add_log=<span class="string">&quot;INSERT INTO gitlog.gitlog (nvalue,comments,date,Author) VALUES (%s,%s,%s,%s)&quot;</span></span><br><span class="line">cursor.<span class="title function_">executemany</span>(add_log, argslog)</span><br><span class="line">cursor.<span class="title function_">close</span>()</span><br><span class="line">cnx.<span class="title function_">commit</span>()</span><br><span class="line">cnx.<span class="title function_">close</span>()</span><br></pre></td></tr></table></figure>
+
+<p>更新数据涉及到一个增量更新git的log日志问题，pygit2中没有找到类似的api。所以考虑有时间作为新旧数据判断依据。<br>这里面的难点（对于小白的我来说），是如何比较时间。开始直接比较：<br>&#x2F;#下面 datetimelog 是tuple类型的<br>dataNewtime&#x3D; datetimelog<br>&#x2F;#commit.author.time是long型自然是无法比较的，发现这个是使用了commit.author.time - dataNewtime，编译器提示发现类型不正确。</p>
+<p>正确代码：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> time,datetime</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> config <span class="keyword">as</span> config</span><br><span class="line"><span class="keyword">from</span> pygit2 <span class="keyword">import</span> <span class="title class_">Repository</span></span><br><span class="line"><span class="keyword">from</span> pygit2 <span class="keyword">import</span> <span class="variable constant_">GIT_SORT_NONE</span>,<span class="variable constant_">GIT_SORT_TOPOLOGICAL</span>, <span class="variable constant_">GIT_SORT_REVERSE</span>,<span class="variable constant_">GIT_SORT_TIME</span></span><br><span class="line"><span class="keyword">import</span> mysql.<span class="property">connector</span></span><br><span class="line"></span><br><span class="line">cnx = mysql.<span class="property">connector</span>.<span class="title function_">connect</span>(user=<span class="string">&#x27;root&#x27;</span>,password=<span class="string">&#x27;????&#x27;</span>,host=<span class="string">&#x27;127.0.0.1&#x27;</span>,database=<span class="string">&#x27;gitlog&#x27;</span>)</span><br><span class="line">argslog=[]</span><br><span class="line">cursor = cnx.<span class="title function_">cursor</span>()</span><br><span class="line">cursor.<span class="title function_">execute</span>(<span class="string">&quot;SELECT UNIX_TIMESTAMP(date) FROM gitlog.gitlog order by gitlog.date desc limit 1&quot;</span>)</span><br><span class="line"><span class="keyword">for</span> (datetimelog) <span class="keyword">in</span> <span class="attr">cursor</span>:</span><br><span class="line">    #既然是数组，取数组第一个值</span><br><span class="line">    dataNewtime= datetimelog[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">repo = <span class="title class_">Repository</span>(<span class="string">&#x27;/home/chaosbom/git/ArhasMK/.git&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> commit <span class="keyword">in</span> repo.<span class="title function_">walk</span>(repo.<span class="property">head</span>.<span class="property">target</span>,<span class="variable constant_">GIT_SORT_TOPOLOGICAL</span> | <span class="variable constant_">GIT_SORT_REVERSE</span>):</span><br><span class="line">    #时间比数据库里的新则更新进去</span><br><span class="line">    <span class="keyword">if</span>(commit.<span class="property">author</span>.<span class="property">time</span> &gt; dataNewtime):</span><br><span class="line">        logtmp=[]</span><br><span class="line">        logtmp.<span class="title function_">append</span>(commit.<span class="property">tree</span>.<span class="property">id</span>.<span class="property">hex</span>)</span><br><span class="line">        logtmp.<span class="title function_">append</span>(commit.<span class="property">message</span>)</span><br><span class="line">        logtmp.<span class="title function_">append</span>(datetime.<span class="property">datetime</span>.<span class="title function_">utcfromtimestamp</span>(commit.<span class="property">author</span>.<span class="property">time</span>))</span><br><span class="line">        logtmp.<span class="title function_">append</span>(commit.<span class="property">author</span>.<span class="property">name</span>)</span><br><span class="line">        <span class="title function_">print</span>(logtmp)</span><br><span class="line">        argslog.<span class="title function_">append</span>(logtmp)</span><br><span class="line">        log=(commit.<span class="property">tree</span>.<span class="property">id</span>.<span class="property">hex</span>,commit.<span class="property">message</span>,datetime.<span class="property">datetime</span>.<span class="title function_">utcfromtimestamp</span>(commit.<span class="property">author</span>.<span class="property">time</span>).<span class="title function_">strftime</span>(<span class="string">&quot;%Y-%m-%d %H:%M:%S&quot;</span>),commit.<span class="property">author</span>.<span class="property">name</span>)</span><br><span class="line">        add_log=<span class="string">&quot;INSERT INTO gitlog.gitlog (nvalue,comments,date,Author) VALUES (%s,%s,%s,%s)&quot;</span></span><br><span class="line">        cursor.<span class="title function_">executemany</span>(add_log, argslog)</span><br><span class="line">cursor.<span class="title function_">close</span>()</span><br><span class="line">cnx.<span class="title function_">commit</span>()</span><br><span class="line">cnx.<span class="title function_">close</span>()</span><br></pre></td></tr></table></figure>
+
+<p>测试后，新增记录被更新到数据库，当然记录很简单，解决的时候百度了很多次。</p>
+<h1 id="python调用shell"><a href="#python调用shell" class="headerlink" title="python调用shell"></a>python调用shell</h1><p>在百度中看了数篇关于python调用shell的入门文章。推荐使用Python subprocess模块。<br><a target="_blank" rel="noopener" href="http://www.jb51.net/article/48086.htm">Python subprocess模块学习总结</a></p>
+<p>python调用shell命令易如反掌，现在需要考虑的是如何使python调用的脚本联动起来。</p>
+<h1 id="题外话"><a href="#题外话" class="headerlink" title="题外话"></a>题外话</h1><h2 id="python在ubuntu下的编译器"><a href="#python在ubuntu下的编译器" class="headerlink" title="python在ubuntu下的编译器"></a>python在ubuntu下的编译器</h2><p>本次实验使用了：</p>
+<h2 id="python连接mysql使用config"><a href="#python连接mysql使用config" class="headerlink" title="python连接mysql使用config"></a>python连接mysql使用config</h2><p>未解决，使用的时候类型不匹配错误。</p>
+<h2 id="计划和实际"><a href="#计划和实际" class="headerlink" title="计划和实际"></a>计划和实际</h2><p>写这篇文章的时候是希望使用python来自动处理目前公司的发版流程，基于实际考虑，我编写的shell脚本已经足够应付发版工作，再深究下去并不是非常必要，目前发版的不足回头总结再弥补也来得及。那么问题来了，用python去实现的必要性？首先明确一点，我使用python的目的是学习和研究。其次，目前对于web系统的了解程度还不够深入，没有真正的学习过一个web框架。所以还是要做一个发布的系统出来。这个内容留到下一篇文章再继续了。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/FromCSDN/" rel="tag"># FromCSDN</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2016/08/28/linux%20shell%20%E5%9F%BA%E7%A1%80%E6%95%B4%E7%90%86/" rel="prev" title="linux shell 基础整理">
+                  <i class="fa fa-chevron-left"></i> linux shell 基础整理
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2016/11/07/Ubuntu%E5%AF%86%E7%A0%81%E6%AD%A3%E7%A1%AE%EF%BC%8C%E4%B8%80%E7%9B%B4%E5%A4%84%E4%BA%8E%E7%99%BB%E5%BD%95%E7%95%8C%E9%9D%A2/" rel="next" title="Ubuntu密码正确，一直处于登录界面">
+                  Ubuntu密码正确，一直处于登录界面 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蜀ICP备19036728号 </a>
+      <img src="/images/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png" alt=""><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=51012202000611" rel="noopener" target="_blank">川公网安备 51012202000611号 </a>
+  </div>
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-dragon"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">windanchaos</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":"enable","archive":"enable","delay":true,"timeout":3000,"priority":true,"url":"http://example.com/2016/11/03/%E5%9F%BA%E4%BA%8Egit%20maven%E7%9A%84%E8%87%AA%E5%8A%A8%E6%9E%84%E5%BB%BA%E7%B3%BB%E7%BB%9F%E7%B3%BB%E5%88%97%E4%B8%80/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+
+</body>
+</html>

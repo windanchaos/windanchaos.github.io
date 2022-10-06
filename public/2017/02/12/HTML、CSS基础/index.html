@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 6.3.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"example.com","root":"/","images":"/images","scheme":"Mist","darkmode":true,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="本文是使用splinter过程中，遇到阻碍（主要是动态样式导致element not visiable）,而推演出来的基础学习内容。以下内容早在2013年左右就看过，全当复习总结重新来一次，所以html常用的如标题、段落、链接、图像、表格等没有列入。本问内容全部来自：http:&#x2F;&#x2F;www.w3school.com.cn 感谢无私的网站提供的基础学习内容。 HTML基础概念什么是 HTML？ HTM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HTML、CSS基础">
+<meta property="og:url" content="http://example.com/2017/02/12/HTML%E3%80%81CSS%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="本文是使用splinter过程中，遇到阻碍（主要是动态样式导致element not visiable）,而推演出来的基础学习内容。以下内容早在2013年左右就看过，全当复习总结重新来一次，所以html常用的如标题、段落、链接、图像、表格等没有列入。本问内容全部来自：http:&#x2F;&#x2F;www.w3school.com.cn 感谢无私的网站提供的基础学习内容。 HTML基础概念什么是 HTML？ HTM">
+<meta property="og:locale">
+<meta property="og:image" content="http://example.com/images/.com.cn-i-ct_css_selector.gif.png">
+<meta property="article:published_time" content="2017-02-12T06:15:48.000Z">
+<meta property="article:modified_time" content="2021-06-08T10:39:48.501Z">
+<meta property="article:author" content="windanchaos">
+<meta property="article:tag" content="FromCSDN">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/images/.com.cn-i-ct_css_selector.gif.png">
+
+
+<link rel="canonical" href="http://example.com/2017/02/12/HTML%E3%80%81CSS%E5%9F%BA%E7%A1%80/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"http://example.com/2017/02/12/HTML%E3%80%81CSS%E5%9F%BA%E7%A1%80/","path":"2017/02/12/HTML、CSS基础/","title":"HTML、CSS基础"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>HTML、CSS基础 | Hexo</title>
+  
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Hexo</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-首页"><a href="/" rel="section"><i class="home fa-fw"></i>首页</a></li><li class="menu-item menu-item-分类"><a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a></li><li class="menu-item menu-item-归档"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-标签"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-关于"><a href="/about/me.html" rel="section"><i class="user fa-fw"></i>关于</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#HTML%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">HTML基础概念</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#HTML-CSS"><span class="nav-number">2.</span> <span class="nav-text">HTML CSS</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E6%A0%B7%E5%BC%8F"><span class="nav-number">2.1.</span> <span class="nav-text">如何使用样式</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="windanchaos"
+      src="/images/avatar.jpeg">
+  <p class="site-author-name" itemprop="name">windanchaos</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">111</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">16</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/windanchaos" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://gitee.com/windanchaos" title="Gitee → https:&#x2F;&#x2F;gitee.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="gitee fa-fw"></i>Gitee</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:454722630@qq.com" title="E-Mail → mailto:454722630@qq.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/windanchaos" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://blog.csdn.net/windanchaos" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;windanchaos" rel="noopener" target="_blank"><i class="CSDN fa-fw"></i>CSDN</a>
+      </span>
+  </div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2017/02/12/HTML%E3%80%81CSS%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="windanchaos">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="HTML、CSS基础 | Hexo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          HTML、CSS基础
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2017-02-12 14:15:48" itemprop="dateCreated datePublished" datetime="2017-02-12T14:15:48+08:00">2017-02-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2021-06-08 18:39:48" itemprop="dateModified" datetime="2021-06-08T18:39:48+08:00">2021-06-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6%E5%92%8C%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">前端框架和技术</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>本文是使用splinter过程中，遇到阻碍（主要是动态样式导致element not visiable）,而推演出来的基础学习内容。以下内容早在2013年左右就看过，全当复习总结重新来一次，所以html常用的如标题、段落、链接、图像、表格等没有列入。本问内容全部来自：<a target="_blank" rel="noopener" href="http://www.w3school.com.cn/">http://www.w3school.com.cn</a> 感谢无私的网站提供的基础学习内容。</p>
+<h1 id="HTML基础概念"><a href="#HTML基础概念" class="headerlink" title="HTML基础概念"></a>HTML基础概念</h1><p>什么是 HTML？</p>
+<p>HTML 是用来描述网页的一种语言。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">HTML</span> 指的是超文本标记语言 (<span class="title class_">Hyper</span> <span class="title class_">Text</span> <span class="title class_">Markup</span> <span class="title class_">Language</span>)</span><br><span class="line"><span class="variable constant_">HTML</span> 不是一种编程语言，而是一种标记语言 (markup language)</span><br><span class="line">标记语言是一套标记标签 (markup tag)</span><br><span class="line"><span class="variable constant_">HTML</span> 使用标记标签来描述网页</span><br></pre></td></tr></table></figure>
+
+<p>HTML 标签</p>
+<p>HTML 标记标签通常被称为 HTML 标签 (HTML tag)。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">HTML</span> 标签是由尖括号包围的关键词，比如 &lt;html&gt;</span><br><span class="line"><span class="variable constant_">HTML</span> 标签通常是成对出现的，比如 &lt;b&gt; 和 &lt;/b&gt;</span><br><span class="line">标签对中的第一个标签是开始标签，第二个标签是结束标签</span><br><span class="line">开始和结束标签也被称为开放标签和闭合标签</span><br></pre></td></tr></table></figure>
+
+<p>所有标签：<a target="_blank" rel="noopener" href="http://www.w3school.com.cn/tags/index.asp">http://www.w3school.com.cn/tags/index.asp</a></p>
+<p>HTML 文档 &#x3D; 网页</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">HTML</span> 文档描述网页</span><br><span class="line"><span class="variable constant_">HTML</span> 文档包含 <span class="variable constant_">HTML</span> 标签和纯文本</span><br><span class="line"><span class="variable constant_">HTML</span> 文档也被称为网页</span><br></pre></td></tr></table></figure>
+
+<p>HTML 元素</p>
+<p>HTML 元素指的是从开始标签（start tag）到结束标签（end tag）的所有代码。<br>开始标签 元素内容 结束标签</p>
+<span id="more"></span>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;     <span class="title class_">This</span> is a paragraph     &lt;/p&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;default.htm&quot;</span> &gt;</span>     This is a link  <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">br</span> /&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>注释：开始标签常被称为开放标签（opening tag），结束标签常称为闭合标签（closing tag）。</p>
+<p>HTML 元素语法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable constant_">HTML</span> 元素以开始标签起始</span><br><span class="line"><span class="variable constant_">HTML</span> 元素以结束标签终止</span><br><span class="line">元素的内容是开始标签与结束标签之间的内容</span><br><span class="line">某些 <span class="variable constant_">HTML</span> 元素具有空内容（empty content）</span><br><span class="line">空元素在开始标签中进行关闭（以开始标签的结束而结束）</span><br><span class="line">大多数 <span class="variable constant_">HTML</span> 元素可拥有属性</span><br></pre></td></tr></table></figure>
+
+<p>HTML 属性</p>
+<p><strong>HTML 标签可以拥有属性。</strong>属性提供了有关 HTML 元素的更多的信息。</p>
+<p>属性总是以名称&#x2F;值对的形式出现，比如：name&#x3D;”value”。</p>
+<p>属性总是在 HTML 元素的开始标签中规定。新版推荐使用小写属性。属性值应该始终被包括在引号内。双引号是最常用的，不过使用单引号也没有问题。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=<span class="string">&quot;http://www.w3school.com.cn&quot;</span>&gt;<span class="title class_">This</span> is a link&lt;/a&gt;</span><br></pre></td></tr></table></figure>
+
+<p>常用属性：</p>
+<p>属性 值 描述 class classname 规定元素的类名（classname），样式选择器定义样式 id id 规定元素的唯一 id style style_definition 规定元素的行内样式（inline style） title text 规定元素的额外信息（可在工具提示中显示）</p>
+<h1 id="HTML-CSS"><a href="#HTML-CSS" class="headerlink" title="HTML CSS"></a>HTML CSS</h1><h2 id="如何使用样式"><a href="#如何使用样式" class="headerlink" title="如何使用样式"></a>如何使用样式</h2><p>当浏览器读到一个样式表，它就会按照这个样式表来对文档进行格式化。有以下三种方式来插入样式表：</p>
+<p>当样式需要被应用到很多页面的时候，外部样式表将是理想的选择。使用外部样式表，你就可以通过更改一个文件来改变整个站点的外观。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">link</span> <span class="attr">rel</span>=<span class="string">&quot;stylesheet&quot;</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span> <span class="attr">href</span>=<span class="string">&quot;mystyle.css&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>当单个文件需要特别样式时，就可以使用内部样式表。你可以在 head 部分通过</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">style</span> <span class="attr">type</span>=<span class="string">&quot;text/css&quot;</span>&gt;</span><span class="language-css"></span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"><span class="selector-tag">body</span> &#123;<span class="attribute">background-color</span>: red&#125;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"><span class="selector-tag">p</span> &#123;<span class="attribute">margin-left</span>: <span class="number">20px</span>&#125;</span></span></span><br><span class="line"><span class="language-css"><span class="language-xml"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span></span><br><span class="line">&lt;/head&gt;</span><br></pre></td></tr></table></figure>
+
+<p>当特殊的样式需要应用到个别元素时，就可以使用内联样式。 使用内联样式的方法是在相关的标签中使用样式属性。样式属性可以包含任何 CSS 属性。以下实例显示出如何改变段落的颜色和左外边距。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;p style=<span class="string">&quot;color: red; margin-left: 20px&quot;</span>&gt;</span><br><span class="line"><span class="title class_">This</span> is a paragraph</span><br><span class="line">&lt;/p&gt;</span><br></pre></td></tr></table></figure>
+<p> 标签 描述 <style> 定义样式定义。 <link> 定义资源引用。 <div> 定义文档中的节或区域（块级） <span> 定义文档中的行内的小块或区域。</p>
+<h2 id="CSS基本语法"><a href="#CSS基本语法" class="headerlink" title="CSS基本语法"></a>CSS基本语法</h2><p>CSS 规则由两个主要的部分构成：选择器，以及一条或多条声明。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">selector &#123;declaration1; declaration2; ... declarationN &#125;</span><br></pre></td></tr></table></figure>
+
+<p>选择器通常是您需要改变样式的 HTML 元素。</p>
+<p>每条声明由一个属性和一个值组成。</p>
+<p>属性（property）是您希望设置的样式属性（style attribute）。每个属性有一个值。属性和值被冒号分开。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">selector &#123;<span class="attr">property</span>: value&#125;</span><br></pre></td></tr></table></figure>
+
+<p>下面这行代码的作用是将 h1 元素内的文字颜色定义为红色，同时将字体大小设置为 14 像素。</p>
+<p>在这个例子中，h1 是选择器，color 和 font-size 是属性，red 和 14px 是值。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">h1 &#123;<span class="attr">color</span>:red; font-<span class="attr">size</span>:14px;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>下面的示意图为您展示了上面这段代码的结构：</p>
+<p><img data-src="/images/.com.cn-i-ct_css_selector.gif.png" alt="这里写图片描述"></p>
+<h2 id="CSS样式四剑客"><a href="#CSS样式四剑客" class="headerlink" title="CSS样式四剑客"></a>CSS样式四剑客</h2><p>通过依据元素在其位置的上下文关系来定义样式，你可以使标记更加简洁。</p>
+<p>在 CSS1 中，通过这种方式来应用规则的选择器被称为上下文选择器 (contextual selectors)，这是由于它们依赖于上下文关系来应用或者避免某项规则。在 CSS2 中，它们称为派生选择器，但是无论你如何称呼它们，它们的作用都是相同的。</p>
+<p>派生选择器允许你根据文档的上下文关系来确定某个标签的样式。通过合理地使用派生选择器，我们可以使 HTML 代码变得更加整洁。</p>
+<p>比方说，你希望列表中的 strong 元素变为斜体字，而不是通常的粗体字，可以这样定义一个派生选择器：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">li strong &#123;</span><br><span class="line">    font-<span class="attr">style</span>: italic;</span><br><span class="line">    font-<span class="attr">weight</span>: normal;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+
+<p>请注意标记为<strong> 的蓝色代码的上下文关系：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;p&gt;<span class="language-xml"><span class="tag">&lt;<span class="name">strong</span>&gt;</span>我是粗体字，不是斜体字，因为我不在列表当中，所以这个规则对我不起作用<span class="tag">&lt;/<span class="name">strong</span>&gt;</span></span>&lt;/p&gt;</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">ol</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">strong</span>&gt;</span>我是斜体字。这是因为 strong 元素位于 li 元素内。<span class="tag">&lt;/<span class="name">strong</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">li</span>&gt;</span>我是正常的字体。<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">ol</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>id 选择器可以为标有特定 id 的 HTML 元素指定特定的样式。</p>
+<p>id 选择器以 “&#x2F;#” 来定义。</p>
+<p>下面的两个 id 选择器，第一个可以定义元素的颜色为红色，第二个定义元素的颜色为绿色：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#red &#123;<span class="attr">color</span>:red;&#125;</span><br><span class="line">#green &#123;<span class="attr">color</span>:green;&#125;</span><br></pre></td></tr></table></figure>
+
+<p>下面的 HTML 代码中，id 属性为 red 的 p 元素显示为红色，而 id 属性为 green 的 p 元素显示为绿色。</p>
+<p>这个段落是红色。</p>
+<p>这个段落是绿色。</p>
+<p>注意：id 属性只能在每个 HTML 文档中出现一次。</p>
+<p>id 选择器和派生选择器</p>
+<p>在现代布局中，id 选择器常常用于建立派生选择器。下面的样式只会应用于出现在 id 是 sidebar 的元素内的段落。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#sidebar p &#123;</span><br><span class="line">    font-<span class="attr">style</span>: italic;</span><br><span class="line">    text-<span class="attr">align</span>: right;</span><br><span class="line">    margin-<span class="attr">top</span>: <span class="number">0.</span>5em;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>在 CSS 中，类选择器以一个点号显示：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.<span class="property">center</span> &#123;text-<span class="attr">align</span>: center&#125;</span><br></pre></td></tr></table></figure>
+
+<p>在上面的例子中，所有拥有 center 类的 HTML 元素均为居中。</p>
+<p>在下面的 HTML 代码中，h1 和 p 元素都有 center 类。这意味着两者都将遵守 “.center” 选择器中的规则。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1 <span class="keyword">class</span>=<span class="string">&quot;center&quot;</span>&gt;</span><br><span class="line"><span class="title class_">This</span> heading will be center-aligned</span><br><span class="line">&lt;/h1&gt;</span><br><span class="line"></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">&quot;center&quot;</span>&gt;</span></span></span><br><span class="line"><span class="language-xml">This paragraph will also be center-aligned.</span></span><br><span class="line"><span class="language-xml"><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p>注意：类名的第一个字符不能使用数字！它无法在 Mozilla 或 Firefox 中起作用。</p>
+<p>和 id 一样，class 也可被用作派生选择器：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">.<span class="property">fancy</span> td &#123;</span><br><span class="line">    <span class="attr">color</span>: #f60;</span><br><span class="line">    <span class="attr">background</span>: #<span class="number">666</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>在上面这个例子中，类名为 fancy 的更大的元素内部的表格单元都会以灰色背景显示橙色文字。（名为 fancy 的更大的元素可能是一个表格或者一个 div）</p>
+<p>元素也可以基于它们的类而被选择：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">td.<span class="property">fancy</span> &#123;</span><br><span class="line">    <span class="attr">color</span>: #f60;</span><br><span class="line">    <span class="attr">background</span>: #<span class="number">666</span>;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>在上面的例子中，类名为 fancy 的表格单元将是带有灰色背景的橙色。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;td <span class="keyword">class</span>=<span class="string">&quot;fancy&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p>你可以将类 fancy 分配给任何一个表格元素任意多的次数。那些以 fancy 标注的单元格都会是带有灰色背景的橙色。那些没有被分配名为 fancy 的类的单元格不会受这条规则的影响。还有一点值得注意，class 为 fancy 的段落也不会是带有灰色背景的橙色，当然，任何其他被标注为 fancy 的元素也不会受这条规则的影响。这都是由于我们书写这条规则的方式，这个效果被限制于被标注为 fancy 的表格单元（即使用 td 元素来选择 fancy 类）。</p>
+<p>对带有指定属性的 HTML 元素设置样式。<br>可以为拥有指定属性的 HTML 元素设置样式，而不仅限于 class 和 id 属性。</p>
+<p>注释：只有在规定了 !DOCTYPE 时，IE7 和 IE8 才支持属性选择器。在 IE6 及更低的版本中，不支持属性选择。<br>属性选择器</p>
+<p>下面的例子为带有 title 属性的所有元素设置样式：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[title]</span><br><span class="line">&#123;</span><br><span class="line"><span class="attr">color</span>:red;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>属性和值选择器</p>
+<p>下面的例子为 title&#x3D;”W3School” 的所有元素设置样式：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[title=W3School]</span><br><span class="line">&#123;</span><br><span class="line"><span class="attr">border</span>:5px solid blue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>下面的例子为带有包含指定值的 lang 属性的所有元素设置样式。适用于由连字符分隔的属性值：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[lang|=en] &#123; <span class="attr">color</span>:red; &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>CSS 选择器参考手册</strong></p>
+<p>选择器 描述 [attribute] 用于选取带有指定属性的元素。 [attribute&#x3D;value] 用于选取带有指定属性和值的元素。 [attribute~&#x3D;value] 用于选取属性值中包含指定词汇的元素。 [attribute&#x3D;value] 用于选取带有以指定值开头的属性值的元素，该值必须是整个单词。 [attribute^&#x3D;value] 匹配属性值以指定值开头的每个元素。 [attribute$&#x3D;value] 匹配属性值以指定值结尾的每个元素。 [attribute&#x2F;*&#x3D;value] 匹配属性值中包含指定值的每个元素。</p>
+<h1 id="HTML-表单"><a href="#HTML-表单" class="headerlink" title="HTML 表单"></a><a target="_blank" rel="noopener" href="http://www.w3school.com.cn/html/html_forms.asp">HTML 表单</a></h1><p><strong>HTML 表单用于搜集不同类型的用户输入。</strong>包含不同类型的 input 元素、复选框、单选按钮、提交按钮等等。</p>
+<form> 元素定义 HTML 表单：
+实例
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;form&gt;</span><br><span class="line"> .</span><br><span class="line">form elements</span><br><span class="line"> .</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong><input> 元素</strong><br><input> 元素是最重要的表单元素。<br><input> 元素有很多形态，根据不同的 type 属性。</p>
+<p>这是本章中使用的类型：<br>类型 描述 text 定义常规文本输入。 radio 定义单选按钮输入（选择多个选择之一） submit 定义提交按钮（提交表单）</p>
+<p><strong>文本输入</strong></p>
+<p><input type=”text”> 定义用于文本输入的单行输入字段：<br>实例</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;form&gt;</span><br><span class="line"> <span class="title class_">First</span> <span class="attr">name</span>:&lt;br&gt;</span><br><span class="line">&lt;input type=&quot;text&quot; name=&quot;firstname&quot;&gt;</span><br><span class="line">&lt;br&gt;</span><br><span class="line"> Last name:&lt;br&gt;</span><br><span class="line">&lt;input type=&quot;text&quot; name=&quot;lastname&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+
+<p>注释：表单本身并不可见。还要注意文本字段的默认宽度是 20 个字符。</p>
+<p><strong>单选按钮输入</strong></p>
+<p>定义单选按钮。</p>
+<p>单选按钮允许用户在有限数量的选项中选择其中之一：<br>实例</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;form&gt;</span><br><span class="line">&lt;input type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;male&quot; checked&gt;Male</span><br><span class="line">&lt;br&gt;</span><br><span class="line">&lt;input type=&quot;radio&quot; name=&quot;sex&quot; value=&quot;female&quot;&gt;Female</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>提交按钮</strong></p>
+<p><input type=”submit”> 定义用于向表单处理程序（form-handler）提交表单的按钮。</p>
+<p>表单处理程序通常是包含用来处理输入数据的脚本的服务器页面。</p>
+<p>表单处理程序在表单的 action 属性中指定：<br>实例</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=<span class="string">&quot;action_page.php&quot;</span>&gt;</span><br><span class="line"><span class="title class_">First</span> <span class="attr">name</span>:&lt;br&gt;</span><br><span class="line">&lt;input type=&quot;text&quot; name=&quot;firstname&quot; value=&quot;Mickey&quot;&gt;</span><br><span class="line">&lt;br&gt;</span><br><span class="line">Last name:&lt;br&gt;</span><br><span class="line">&lt;input type=&quot;text&quot; name=&quot;lastname&quot; value=&quot;Mouse&quot;&gt;</span><br><span class="line">&lt;br&gt;&lt;br&gt;</span><br><span class="line">&lt;input type=&quot;submit&quot; value=&quot;Submit&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+
+<p><strong>Action 属性</strong></p>
+<p>action 属性定义在提交表单时执行的动作。</p>
+<p>向服务器提交表单的通常做法是使用提交按钮。</p>
+<p>通常，表单会被提交到 web 服务器上的网页。</p>
+<p>在上面的例子中，指定了某个服务器脚本来处理被提交表单：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=<span class="string">&quot;action_page.php&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p>如果省略 action 属性，则 action 会被设置为当前页面。</p>
+<p><strong>Method 属性</strong></p>
+<p>method 属性规定在提交表单时所用的 HTTP 方法（GET 或 POST）：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=<span class="string">&quot;action_page.php&quot;</span> method=<span class="string">&quot;GET&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p>或：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=<span class="string">&quot;action_page.php&quot;</span> method=<span class="string">&quot;POST&quot;</span>&gt;</span><br></pre></td></tr></table></figure>
+
+<p>何时使用 GET？</p>
+<p>您能够使用 GET（默认方法）：</p>
+<p>如果表单提交是被动的（比如搜索引擎查询），并且没有敏感信息。</p>
+<p>当您使用 GET 时，表单数据在页面地址栏中是可见的：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">action_page.<span class="property">php</span>?firstname=<span class="title class_">Mickey</span>&amp;lastname=<span class="title class_">Mouse</span></span><br></pre></td></tr></table></figure>
+
+<p>注释：GET 最适合少量数据的提交。浏览器会设定容量限制。<br>何时使用 POST？</p>
+<p>您应该使用 POST：</p>
+<p>如果表单正在更新数据，或者包含敏感信息（例如密码）。</p>
+<p>POST 的安全性更加，因为在页面地址栏中被提交的数据是不可见的。</p>
+<p><strong>Name 属性</strong></p>
+<p>如果要正确地被提交，每个输入字段必须设置一个 name 属性。</p>
+<p>本例只会提交 “Last name” 输入字段：<br>实例</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=<span class="string">&quot;action_page.php&quot;</span>&gt;</span><br><span class="line"><span class="title class_">First</span> <span class="attr">name</span>:&lt;br&gt;</span><br><span class="line">&lt;input type=&quot;text&quot; value=&quot;Mickey&quot;&gt;</span><br><span class="line">&lt;br&gt;</span><br><span class="line">Last name:&lt;br&gt;</span><br><span class="line">&lt;input type=&quot;text&quot; name=&quot;lastname&quot; value=&quot;Mouse&quot;&gt;</span><br><span class="line">&lt;br&gt;&lt;br&gt;</span><br><span class="line">&lt;input type=&quot;submit&quot; value=&quot;Submit&quot;&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+
+<p>用<fieldset> 组合表单数据</p>
+<fieldset> 元素组合表单中的相关数据
+
+<p>元素为 元素定义标题。<br>实例</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=<span class="string">&quot;action_page.php&quot;</span>&gt;</span><br><span class="line">&lt;fieldset&gt;</span><br><span class="line">&lt;legend&gt;Personal information:&lt;/legend&gt;</span><br><span class="line">First name:&lt;br&gt;</span><br><span class="line">&lt;input type=&quot;text&quot; name=&quot;firstname&quot; value=&quot;Mickey&quot;&gt;</span><br><span class="line">&lt;br&gt;</span><br><span class="line">Last name:&lt;br&gt;</span><br><span class="line">&lt;input type=&quot;text&quot; name=&quot;lastname&quot; value=&quot;Mouse&quot;&gt;</span><br><span class="line">&lt;br&gt;&lt;br&gt;</span><br><span class="line">&lt;input type=&quot;submit&quot; value=&quot;Submit&quot;&gt;&lt;/fieldset&gt;</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+
+<p>HTML 元素，已设置所有可能的属性，是这样的：<br>实例</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;form action=<span class="string">&quot;action_page.php&quot;</span> method=<span class="string">&quot;GET&quot;</span> target=<span class="string">&quot;_blank&quot;</span> accept-charset=<span class="string">&quot;UTF-8&quot;</span></span><br><span class="line">ectype=<span class="string">&quot;application/x-www-form-urlencoded&quot;</span> autocomplete=<span class="string">&quot;off&quot;</span> novalidate&gt;</span><br><span class="line">.</span><br><span class="line">form elements</span><br><span class="line"> .</span><br><span class="line">&lt;/form&gt;</span><br></pre></td></tr></table></figure>
+
+<p>Here is the list of <form> attributes:</p>
+<p>属性 描述 accept-charset 规定在被提交表单中使用的字符集（默认：页面字符集）。 action 规定向何处提交表单的地址（URL）（提交页面）。 autocomplete 规定浏览器应该自动完成表单（默认：开启）。 enctype 规定被提交数据的编码（默认：url-encoded）。 method 规定在提交表单时所用的 HTTP 方法（默认：GET）。 name 规定识别表单的名称（对于 DOM 使用：document.forms.name）。 novalidate 规定浏览器不验证表单。 target 规定 action 属性中地址的目标（默认：_self）。</p>
+<h1 id="HTML其他"><a href="#HTML其他" class="headerlink" title="HTML其他"></a>HTML其他</h1><h2 id="元素的容器"><a href="#元素的容器" class="headerlink" title="元素的容器"></a>元素的容器</h2><p>“块级元素”译为 block level element，“内联元素”译为 inline element。<br>块级元素在浏览器显示时，通常会以新行来开始（和结束）。<br>例子：<h1>, <p>, <ul>, <table><br>内联元素在显示时通常不会以新行开始。<br>例子：<b>,<td>, <a>, <img></p>
+<p>HTML<div> 元素<br>HTML<div> 元素是块级元素，它是可用于组合其他 HTML 元素的容器。</p>
+<div> 元素没有特定的含义。除此之外，由于它属于块级元素，浏览器会在其前后显示折行。
+如果与 CSS 一同使用，<div> 元素可用于对大的内容块设置样式属性。
+<div> 元素的另一个常见的用途是文档布局。它取代了使用表格定义布局的老式方法。使用 <table> 元素进行文档布局不是表格的正确用法。<table> 元素的作用是显示表格化的数据。
+
+<p>HTML <span> 元素<br>HTML <span> 元素是内联元素，可用作文本的容器。<br><span> 元素也没有特定的含义。<br>当与 CSS 一同使用时，<span> 元素可用于为部分文本设置样式属性。</p>
+<h2 id="HTML-脚本"><a href="#HTML-脚本" class="headerlink" title="HTML 脚本"></a>HTML 脚本</h2><script> 标签用于定义客户端脚本，比如 JavaScript。
+
+script 元素既可包含脚本语句，也可通过 src 属性指向外部脚本文件。
+
+必需的 type 属性规定脚本的 MIME 类型。
+
+JavaScript 最常用于图片操作、表单验证以及内容动态更新。
+
+下面的脚本会向浏览器输出“Hello World!”：
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;script type=<span class="string">&quot;text/javascript&quot;</span>&gt;</span><br><span class="line"><span class="variable language_">document</span>.<span class="title function_">write</span>(<span class="string">&quot;Hello World!&quot;</span>)</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/FromCSDN/" rel="tag"># FromCSDN</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2017/02/09/selenium%E3%80%81splinter%E6%9F%A5%E6%89%BE%E6%93%8D%E6%8E%A7%E5%85%83%E7%B4%A0%E7%9A%84%E6%9D%80%E6%89%8B%E9%94%8F/" rel="prev" title="selenium、splinter查找操控元素的杀手锏">
+                  <i class="fa fa-chevron-left"></i> selenium、splinter查找操控元素的杀手锏
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2017/02/17/Splinter%E4%BD%BF%E7%94%A8%E4%B8%AD%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98%E9%9B%86%E9%94%A6/" rel="next" title="Splinter使用中遇到的问题集锦">
+                  Splinter使用中遇到的问题集锦 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蜀ICP备19036728号 </a>
+      <img src="/images/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png" alt=""><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=51012202000611" rel="noopener" target="_blank">川公网安备 51012202000611号 </a>
+  </div>
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-dragon"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">windanchaos</span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
+
+  
+
+
+
+
+
+  
+
+
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":"enable","archive":"enable","delay":true,"timeout":3000,"priority":true,"url":"http://example.com/2017/02/12/HTML%E3%80%81CSS%E5%9F%BA%E7%A1%80/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+
+</body>
+</html>
