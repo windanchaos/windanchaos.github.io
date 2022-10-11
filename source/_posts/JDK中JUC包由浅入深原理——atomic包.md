@@ -14,7 +14,7 @@ tags:
 
 依据可查阅intel开发手册Volume3 - 8.1到3。
 
-![image-20221011093328936](/Users/boy/Code/windanchaos.github.io/source/images/image-20221011093328936.png)
+![image-20221011093328936](../images/image-20221011093328936.png)
 
 从上可知，通常套路原子指令大概就有：
 
@@ -30,7 +30,7 @@ CMPXCHG;  //自带LOCK
 
 以java.util.concurrent.atomic.AtomicInteger为例
 
-![image-20221011142419420](/Users/boy/Code/windanchaos.github.io/source/images/image-20221011142419420.png)
+![image-20221011142419420](../images/image-20221011142419420.png)
 
 上图展示了从jdk到jdk源码，到hotspot源码，类AtomicInteger中的getAndIncrement方法的调用链路。到hotsopt层面就一句核心:
 
@@ -58,7 +58,7 @@ cmpxchgl exchange_value,dest  //dest和exchange_value相比较，如果相等ZF�
 
 intel手册该指令解释如下：
 
-![image-20221011144908523](/Users/boy/Code/windanchaos.github.io/source/images/image-20221011144908523.png)
+![image-20221011144908523](../images/image-20221011144908523.png)
 
 所以，lock;cmpxchg提供了atuomic包下面的底层支持。
 
@@ -72,7 +72,7 @@ lock指令为什么能保证指令的原子性呢？
 
 核心：在CPU内部中有个store buffer，可提高CPU执行效率。同时带来了多核情况下，同一个内存中的值，在不同CPU当中的可能是不同的（写回内存前，没有刷出store buffer）。lock指令锁住了数据总线的同时，主动刷出了store buffer，通过cache的连通性（ Store Forwarding），其他CPU会获知自己拿的值过期，可更新到最新值。
 
-![image-20221011151713702](/Users/boy/Code/windanchaos.github.io/source/images/image-20221011151713702.png)
+![image-20221011151713702](../images/image-20221011151713702.png)
 
 图参考[hwViewForSwHackers](http://www.puppetmastertrading.com/images/hwViewForSwHackers.pdf)
 
