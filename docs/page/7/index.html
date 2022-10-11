@@ -127,7 +127,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">111</span>
+          <span class="site-state-item-count">112</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -187,6 +187,135 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://windanchaos.github.io/2017/10/20/%EF%BC%BBJavaWeb%E5%9F%BA%E7%A1%80%EF%BC%BDjsp/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="windanchaos">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Hexo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2017/10/20/%EF%BC%BBJavaWeb%E5%9F%BA%E7%A1%80%EF%BC%BDjsp/" class="post-title-link" itemprop="url">［JavaWeb基础］jsp</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2017-10-20 00:16:01" itemprop="dateCreated datePublished" datetime="2017-10-20T00:16:01+08:00">2017-10-20</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2021-06-08 18:39:48" itemprop="dateModified" datetime="2021-06-08T18:39:48+08:00">2021-06-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">Java编程语言</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>以下内容整理编辑参考：<br><a target="_blank" rel="noopener" href="http://www.runoob.com/">http://www.runoob.com</a></p>
+<h1 id="什么是jsp"><a href="#什么是jsp" class="headerlink" title="什么是jsp"></a>什么是jsp</h1><p>JSP全称Java Server Pages，是一种动态网页开发技术。它使用JSP标签在HTML网页中插入Java代码。而识别它的方式，是以&lt;%开头以%&gt;结束的标签。</p>
+<p>JSP通过网页表单获取用户输入数据、访问数据库及其他数据源，动态地创建网页。</p>
+<p>JSP标签有多种功能，比如访问数据库、记录用户选择信息、访问JavaBeans组件等，还可以在不同的网页中传递控制信息和共享信息。</p>
+<h1 id="jsp的处理流程和生命周期"><a href="#jsp的处理流程和生命周期" class="headerlink" title="jsp的处理流程和生命周期"></a>jsp的处理流程和生命周期</h1><p><img data-src="/images/om-wp-content-uploads-2014-01-jsp-processing.jpg.png" alt="处理流程"></p>
+<p>就像其他普通的网页一样，您的浏览器发送一个 HTTP 请求给服务器。<br>Web 服务器识别出这是一个对 JSP 网页的请求，并且将该请求传递给 JSP 引擎。通过使用 URL或者 .jsp 文件来完成。<br>JSP 引擎从磁盘中载入 JSP 文件，然后将它们转化为 Servlet。这种转化只是简单地将所有模板文本改用 println() 语句，并且将所有的 JSP 元素转化成 Java 代码。<br>JSP 引擎将 Servlet 编译成可执行类，并且将原始请求传递给 Servlet 引擎。<br>Web 服务器的某组件将会调用 Servlet 引擎，然后载入并执行 Servlet 类。在执行过程中，Servlet 产生 HTML 格式的输出并将其内嵌于 HTTP response 中上交给 Web 服务器。<br>Web 服务器以静态 HTML 网页的形式将 HTTP response 返回到您的浏览器中。<br>最终，Web 浏览器处理 HTTP response 中动态产生的HTML网页，就好像在处理静态网页一样。</p>
+<p><img data-src="/images/om-wp-content-uploads-2014-01-jsp_life_cycle.jpg.png" alt="生命周期"></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">编译阶段：</span><br><span class="line"></span><br><span class="line">servlet容器编译servlet源文件，生成servlet类</span><br><span class="line">初始化阶段：</span><br><span class="line"></span><br><span class="line">加载与<span class="variable constant_">JSP</span>对应的servlet类，创建其实例，并调用它的初始化方法</span><br><span class="line">执行阶段：</span><br><span class="line"></span><br><span class="line">调用与<span class="variable constant_">JSP</span>对应的servlet实例的服务方法</span><br><span class="line">销毁阶段：</span><br><span class="line"></span><br><span class="line">调用与<span class="variable constant_">JSP</span>对应的servlet实例的销毁方法，然后销毁servlet实例</span><br><span class="line">&lt;!-- more --&gt;</span><br></pre></td></tr></table></figure>
+
+<h1 id="JSP作用和Servlet分工"><a href="#JSP作用和Servlet分工" class="headerlink" title="JSP作用和Servlet分工"></a>JSP作用和Servlet分工</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">* <span class="title class_">Servlet</span>：</span><br><span class="line">&gt; 缺点：不适合设置html响应体，需要大量的response.<span class="title function_">getWriter</span>().<span class="title function_">print</span>(<span class="string">&quot;&lt;html&gt;&quot;</span>)</span><br><span class="line">&gt; 优点：动态资源，可以编程。</span><br><span class="line">* html：</span><br><span class="line">&gt; 缺点：html是静态页面，不能包含动态信息</span><br><span class="line">&gt; 优点：不用为输出html标签而发愁</span><br><span class="line">* <span class="title function_">jsp</span>(java server pages)：</span><br><span class="line">&gt; 优点：在原有html的基础上添加java脚本，构成jsp页面。</span><br><span class="line"></span><br><span class="line">* <span class="variable constant_">JSP</span>：</span><br><span class="line">&gt; 作为请求发起页面，例如显示表单、超链接。</span><br><span class="line">&gt; 作为请求结束页面，例如显示数据。</span><br><span class="line">* <span class="title class_">Servlet</span>：</span><br><span class="line">&gt; 作为请求中处理数据的环节。</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="/images/dn.net-20160817155819901-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQv-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-Center.png" alt="这里写图片描述"><br>参考：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq_25827845/article/details/52231724">http://blog.csdn.net/qq_25827845&#x2F;article&#x2F;details&#x2F;52231724</a></p>
+<h1 id="JSP-语法"><a href="#JSP-语法" class="headerlink" title="JSP 语法"></a>JSP 语法</h1><h2 id="脚本程序"><a href="#脚本程序" class="headerlink" title="脚本程序"></a>脚本程序</h2><p>脚本程序可以包含任意量的Java语句、变量、方法或表达式，只要它们在脚本语言中是有效的。</p>
+<p>脚本程序的语法格式：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;% 代码片段 %&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="JSP声明"><a href="#JSP声明" class="headerlink" title="JSP声明"></a>JSP声明</h2><p>一个声明语句可以声明一个或多个变量、方法，供后面的Java代码使用。在JSP文件中，您必须先声明这些变量和方法然后才能使用它们。</p>
+<p>JSP声明的语法格式：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%! declaration; [ declaration; ]+ ... %&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="JSP表达式"><a href="#JSP表达式" class="headerlink" title="JSP表达式"></a>JSP表达式</h2><p>一个JSP表达式中包含的脚本语言表达式，先被转化成String，然后插入到表达式出现的地方。</p>
+<p>由于表达式的值会被转化成String，所以您可以在一个文本行中使用表达式而不用去管它是否是HTML标签。</p>
+<p>表达式元素中可以包含任何符合Java语言规范的表达式，但是不能使用分号来结束表达式。</p>
+<p>JSP表达式的语法格式：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%= 表达式 %&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="JSP注释"><a href="#JSP注释" class="headerlink" title="JSP注释"></a>JSP注释</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%-- 该部分注释在网页中不会被显示--%&gt;</span><br></pre></td></tr></table></figure>
+<p> <strong>语法</strong> 描述 &lt;%– 注释 –%&gt; JSP注释，注释内容不会被发送至浏览器甚至不会被编译 &lt;!– 注释 –&gt; HTML注释，通过浏览器查看网页源代码时可以看见注释内容 &lt;% 代表静态 &lt;%常量 %&gt; 代表静态 %&gt; 常量 \’ 在属性中使用的单引号 \” 在属性中使用的双引号</p>
+<h2 id="JSP指令"><a href="#JSP指令" class="headerlink" title="JSP指令"></a>JSP指令</h2><p>JSP指令用来设置与整个JSP页面相关的属性。</p>
+<p>JSP指令语法格式：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ directive attribute=<span class="string">&quot;value&quot;</span> %&gt;</span><br></pre></td></tr></table></figure>
+<p> <strong>指令</strong> <strong>描述</strong> &lt;%@ page … %&gt; 定义页面的依赖属性，比如脚本语言、error页面、缓存需求等等 &lt;%@ include … %&gt; 包含其他文件 &lt;%@ taglib … %&gt; 引入标签库的定义，可以是自定义标签</p>
+<h2 id="JSP行为"><a href="#JSP行为" class="headerlink" title="JSP行为"></a>JSP行为</h2><p>JSP行为标签使用XML语法结构来控制servlet引擎。它能够动态插入一个文件，重用JavaBean组件，引导用户去另一个页面，为Java插件产生相关的HTML等等。</p>
+<p>行为标签只有一种语法格式，它严格遵守XML标准：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="attr">jsp</span>:action_name attribute=<span class="string">&quot;value&quot;</span> /&gt;</span><br></pre></td></tr></table></figure>
+
+<p>行为标签基本上是一些预先就定义好的函数，下表罗列出了一些可用的JSP行为标签：</p>
+<p><strong>语法</strong> <strong>描述</strong> jsp:include 用于在当前页面中包含静态或动态资源 jsp:useBean 寻找和初始化一个JavaBean组件 jsp:setProperty 设置 JavaBean组件的值 jsp:getProperty 将 JavaBean组件的值插入到 output中 jsp:forward 从一个JSP文件向另一个文件传递一个包含用户请求的request对象 jsp:plugin 用于在生成的HTML页面中包含Applet和JavaBean对象 jsp:element 动态创建一个XML元素 jsp:attribute 定义动态创建的XML元素的属性 jsp:body 定义动态创建的XML元素的主体 jsp:text 用于封装模板数据</p>
+<h2 id="JSP内置对象"><a href="#JSP内置对象" class="headerlink" title="JSP内置对象"></a>JSP内置对象</h2><p><strong>对象</strong> <strong>描述</strong> request <strong>HttpServletRequest</strong>类的实例 response <strong>HttpServletResponse</strong>类的实例 out <strong>PrintWriter</strong>类的实例，用于把结果输出至网页上 session <strong>HttpSession</strong>类的实例 application <strong>ServletContext</strong>类的实例，与应用上下文有关 config <strong>ServletConfig</strong>类的实例 pageContext <strong>PageContext</strong>类的实例，提供对JSP页面所有对象以及命名空间的访问 page 类似于Java类中的this关键字 Exception <strong>Exception</strong>类的对象，代表发生错误的JSP页面中对应的异常对象</p>
+<h1 id="JSP-标准标签库（JSTL）"><a href="#JSP-标准标签库（JSTL）" class="headerlink" title="JSP 标准标签库（JSTL）"></a>JSP 标准标签库（JSTL）</h1><p>JSP标准标签库（JSTL）是一个JSP标签集合，它封装了JSP应用的通用核心功能。</p>
+<p>JSTL支持通用的、结构化的任务，比如迭代，条件判断，XML文档操作，国际化标签，SQL标签。 除了这些，它还提供了一个框架来使用集成JSTL的自定义标签。</p>
+<p>核心标签是最常用的JSTL标签。引用核心标签库的语法如下：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ taglib prefix=<span class="string">&quot;c&quot;</span> </span><br><span class="line">           uri=<span class="string">&quot;http://java.sun.com/jsp/jstl/core&quot;</span> %&gt;</span><br></pre></td></tr></table></figure>
+<p> 标签 描述 用于在JSP中显示数据，就像&lt;%&#x3D; … &gt; 用于保存数据 用于删除数据 用来处理产生错误的异常状况，并且将错误信息储存起来 与我们在一般程序中用的if一样 本身只当做&lt;c:when&gt;和&lt;c:otherwise&gt;的父标签 &lt;c:choose&gt;的子标签，用来判断条件是否成立 &lt;c:choose&gt;的子标签，接在&lt;c:when&gt;标签后，当&lt;c:when&gt;标签判断为false时被执行 检索一个绝对或相对 URL，然后将其内容暴露给页面 基础迭代标签，接受多种集合类型 根据指定的分隔符来分隔内容并迭代输出 用来给包含或重定向的页面传递参数 重定向至一个新的URL. 使用可选的查询参数来创造一个URL</p>
+<p>其他若干标签，参考<a target="_blank" rel="noopener" href="http://www.runoob.com/jsp/jsp-jstl.html">http://www.runoob.com/jsp/jsp-jstl.html</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1079,108 +1208,6 @@
 <p>&#x2F;a&#x2F;b 表示符合模式a的字符串将被b字符串替换，不指定b字符串则是删除。<br>如果被替换串包含&#x2F;字符，那么要转义，写成/</p>
 <p>灵感来源：<br><a target="_blank" rel="noopener" href="http://blog.csdn.net/guojin08/article/details/38704823">http://blog.csdn.net/guojin08/article/details/38704823</a></p>
 
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://windanchaos.github.io/2017/05/19/Appium%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="windanchaos">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Hexo">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2017/05/19/Appium%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/" class="post-title-link" itemprop="url">Appium的基本概念</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2017-05-19 00:10:11" itemprop="dateCreated datePublished" datetime="2017-05-19T00:10:11+08:00">2017-05-19</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2021-06-08 18:39:48" itemprop="dateModified" datetime="2021-06-08T18:39:48+08:00">2021-06-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">自动化测试</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="一、appium是什么？"><a href="#一、appium是什么？" class="headerlink" title="一、appium是什么？"></a>一、appium是什么？</h1><p>Appium 是一个自动化测试开源、跨平台工具。它允许测试人员在不同的平台（iOS，Android）使用同一套API来写自动化测试脚本，这样大大增加了 iOS 和 Android 测试套件间代码的复用性。支持 iOS 平台和 Android 平台上的原生应用，web 应用和混合应用。<br>所谓的“移动原生应用”是指那些用 iOS 或者 Android SDK 写的应用。<br>所谓的“移动 web 应用”是指使用移动浏览器访问的应用（Appium 支持 iOS 上的 Safari 和 Android 上的 Chrome）。<br>所谓的“混合应用”是指原生代码封装网页视图——原生代码和 web 内容交互。比如，像 Phonegap，可以帮助开发者使用网页技术开发应用，然后用原生代码封装，这些就是混合应用。</p>
-<h1 id="二、Appium的基本原理"><a href="#二、Appium的基本原理" class="headerlink" title="二、Appium的基本原理"></a>二、Appium的基本原理</h1><h2 id="基础依赖"><a href="#基础依赖" class="headerlink" title="基础依赖"></a>基础依赖</h2><p>Appium 真正的工作引擎是第三方自动化框架。使用以下的第三方框架：<br><strong>- iOS: 苹果的 UIAutomation</strong><br><strong>- Android 4.2+: Google’s UiAutomator</strong></p>
-<ul>
-<li>Android 2.3+: Google’s Instrumentation. (Instrumentation由单独的项目Selendroid提供支持 )</li>
-<li>Selenium WebDriver等第三方包，<a target="_blank" rel="noopener" href="https://search.maven.org/remotecontent?filepath=io/appium/java-client/5.0.0-BETA8/java-client-5.0.0-BETA8.pom">点此参考java依赖包</a></li>
-</ul>
-<h2 id="C-x2F-S-架构"><a href="#C-x2F-S-架构" class="headerlink" title="C&#x2F;S 架构"></a>C&#x2F;S 架构</h2><p>Appium使用客户端-服务端的架构，它 的核心是一个 web 服务器，它提供了一套 REST 的接口， 指定了客户端到服务端的协议。 (JSON Wire Protocol)。<br>我们可以使用任何语言来编写客户端，向服务端发送恰当的 HTTP 请求。它收到客户端的连接，监听到命令，接着在移动设备上执行这些命令，然后将执行结果放在 HTTP响应中返还给客户端。事实上，这种客户端&#x2F;服务端的架构给予了许多的可能性：比如我们可以使用任何实现了该客户端的语言来写我们的测试代码。比如我们可以把服务端放在不同 的机器上。比如我们可以只写测试代码，然后使用像 Sauce Labs 这样的云服务来解释命令。</p>
-<h2 id="Session"><a href="#Session" class="headerlink" title="Session"></a>Session</h2><p>自动化始终围绕一个session进行，客户端初始化一个seesion（会话）来与服务端交互，不同的语言有不同的实现方式，但是他们最终都是发送为一个POST请求给服务端，请求中包含一个JSON对象，被称作“desired capabilities”。此时，服务端就会开启一个自动化的 session，然后返回一个 session ID，session ID将会被用户发送后续的命令。</p>
-<h2 id="Desired-Capabilities"><a href="#Desired-Capabilities" class="headerlink" title="Desired Capabilities"></a>Desired Capabilities</h2><p>Desired capabilities 是一些键值对的集合 (比如，一个 map 或者 hash），客户端将这些键值对发给服务端，告诉服务端我们想要怎么测试。比如，我们可以把platformName capability 设置为 iOS，告诉 Appium 服务端，我们想要一个iOS 的 session，而不是一个 Android 的。我们也可以设置 safariAllowPopups capability 为 true，确保在 Safari 自动化 session 中，我们可以使用 javascript 来打开新窗口。参见 capabilities 文档，查看完整的 capabilities 列表。</p>
-<h2 id="Appium-Server"><a href="#Appium-Server" class="headerlink" title="Appium Server"></a>Appium Server</h2><p>Appium server 是用 Node.js 写的。我们可以用源码编译或者从 NPM 直接安装。</p>
-<h2 id="Appium客户端"><a href="#Appium客户端" class="headerlink" title="Appium客户端"></a>Appium客户端</h2><p>Appium 客户端端有很多语言库 Java, Ruby, Python, PHP, JavaScript 和 C&#x2F;#，这些库都实现了 Appium 对 WebDriver 协议的扩展。当使用 Appium 的时候，你只需使用这些库代替常规的 WebDriver 库就可以了。 你可以从<a target="_blank" rel="noopener" href="http://appium.io/slate/cn/master/#appium-clients.cn.md">这里</a>看到所有的库的列表。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2017/05/19/Appium%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
       
     </div>
 

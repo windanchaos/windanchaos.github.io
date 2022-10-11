@@ -127,7 +127,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">111</span>
+          <span class="site-state-item-count">112</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -187,6 +187,92 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://windanchaos.github.io/2017/11/07/python%20requests%E8%AF%B7%E6%B1%82http/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="windanchaos">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Hexo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2017/11/07/python%20requests%E8%AF%B7%E6%B1%82http/" class="post-title-link" itemprop="url">python requests请求http</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2017-11-07 23:13:14" itemprop="dateCreated datePublished" datetime="2017-11-07T23:13:14+08:00">2017-11-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2021-06-08 18:44:42" itemprop="dateModified" datetime="2021-06-08T18:44:42+08:00">2021-06-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/python%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">python编程语言</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>主要还是参考官方文档，摘抄改改，runrun</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line"># -*- <span class="attr">coding</span>: utf-<span class="number">8</span> -*-</span><br><span class="line"><span class="string">&#x27;&#x27;</span><span class="string">&#x27;学习使用requests，集合了大部分方法的使用Demo.by windanchaos&#x27;</span><span class="string">&#x27;&#x27;</span></span><br><span class="line"><span class="keyword">import</span> requests</span><br><span class="line"></span><br><span class="line"># we have a <span class="title class_">Response</span> object called r. <span class="title class_">We</span> can get all the information we need <span class="keyword">from</span> <span class="variable language_">this</span> object.</span><br><span class="line"></span><br><span class="line">r1 = requests.<span class="title function_">get</span>(<span class="string">&#x27;https://api.github.com/events&#x27;</span>)</span><br><span class="line"># <span class="title class_">Response</span> <span class="title class_">Content</span></span><br><span class="line"><span class="title function_">print</span>(r1.<span class="property">text</span>)</span><br><span class="line"><span class="title function_">print</span>(r1.<span class="property">encoding</span>)</span><br><span class="line"></span><br><span class="line"># <span class="variable constant_">POST</span></span><br><span class="line">r2 = requests.<span class="title function_">post</span>(<span class="string">&#x27;http://httpbin.org/post&#x27;</span>, data = &#123;<span class="string">&#x27;key&#x27;</span>:<span class="string">&#x27;value&#x27;</span>&#125;)</span><br><span class="line">print (r2.<span class="property">status_code</span>)</span><br><span class="line">payload = &#123;<span class="string">&#x27;key1&#x27;</span>: <span class="string">&#x27;value1&#x27;</span>, <span class="string">&#x27;key2&#x27;</span>: <span class="string">&#x27;value2&#x27;</span>&#125;</span><br><span class="line">r2 =requests.<span class="title function_">post</span>(<span class="string">&quot;http://httpbin.org/post&quot;</span>,data=payload)</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;http://httpbin.org/post&#x27;</span></span><br><span class="line">files = &#123;<span class="string">&#x27;file&#x27;</span>: (<span class="string">&#x27;report.xls&#x27;</span>, <span class="title function_">open</span>(<span class="string">&#x27;report.xls&#x27;</span>, <span class="string">&#x27;rb&#x27;</span>), <span class="string">&#x27;application/vnd.ms-excel&#x27;</span>, &#123;<span class="string">&#x27;Expires&#x27;</span>: <span class="string">&#x27;0&#x27;</span>&#125;)&#125;</span><br><span class="line">r = requests.<span class="title function_">post</span>(url, files=files)</span><br><span class="line">r.<span class="property">text</span></span><br><span class="line"></span><br><span class="line"># <span class="variable constant_">PUT</span>, <span class="variable constant_">DELETE</span>, <span class="variable constant_">HEAD</span> and <span class="variable constant_">OPTIONS</span></span><br><span class="line">r3 = requests.<span class="title function_">put</span>(<span class="string">&#x27;http://httpbin.org/put&#x27;</span>, data = &#123;<span class="string">&#x27;key&#x27;</span>:<span class="string">&#x27;value&#x27;</span>&#125;)</span><br><span class="line">print (r3.<span class="property">status_code</span>)</span><br><span class="line">r4 = requests.<span class="title function_">delete</span>(<span class="string">&#x27;http://httpbin.org/delete&#x27;</span>)</span><br><span class="line">print (r4.<span class="property">status_code</span>)</span><br><span class="line">r5 = requests.<span class="title function_">head</span>(<span class="string">&#x27;http://httpbin.org/get&#x27;</span>)</span><br><span class="line">print (r5.<span class="property">headers</span>)</span><br><span class="line">r6 = requests.<span class="title function_">options</span>(<span class="string">&#x27;http://httpbin.org/get&#x27;</span>)</span><br><span class="line"></span><br><span class="line"># <span class="title class_">Passing</span> <span class="title class_">Parameters</span> <span class="title class_">In</span> <span class="title class_">URLs</span></span><br><span class="line">payload = &#123;<span class="string">&#x27;key1&#x27;</span>: <span class="string">&#x27;value1&#x27;</span>, <span class="string">&#x27;key2&#x27;</span>: <span class="string">&#x27;value2&#x27;</span>&#125;</span><br><span class="line">r7 = requests.<span class="title function_">get</span>(<span class="string">&#x27;http://httpbin.org/get&#x27;</span>, params=payload, timeout=<span class="number">3</span>)</span><br><span class="line"></span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line"># <span class="title class_">Binary</span> <span class="title class_">Response</span> <span class="title class_">Content</span></span><br><span class="line">r8 = requests.<span class="title function_">get</span>(<span class="string">&#x27;http://dynamic-image.yesky.com/640x-//uploadImages/leadimage/2014/266/55/QS4928ATRIR1_W.jpg&#x27;</span>)</span><br><span class="line"><span class="title function_">print</span>(r8.<span class="property">content</span>)</span><br><span class="line"></span><br><span class="line"># <span class="title class_">JSON</span> <span class="title class_">Response</span> <span class="title class_">Content</span></span><br><span class="line">r9 = requests.<span class="title function_">get</span>(<span class="string">&#x27;https://api.github.com/events&#x27;</span>)</span><br><span class="line"><span class="title function_">print</span>(r9.<span class="title function_">json</span>())</span><br><span class="line"></span><br><span class="line"># raw socket response</span><br><span class="line">r10 = requests.<span class="title function_">get</span>(<span class="string">&#x27;https://api.github.com/events&#x27;</span>, stream=<span class="title class_">True</span>)</span><br><span class="line">r10.<span class="property">raw</span></span><br><span class="line">r10.<span class="property">raw</span>.<span class="title function_">read</span>(<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line"># <span class="title class_">Custom</span> <span class="title class_">Headers</span></span><br><span class="line"><span class="string">&#x27;&#x27;</span><span class="string">&#x27;</span></span><br><span class="line"><span class="string">    Authorization headers set with headers= will be overridden if credentials are specified in .netrc, </span></span><br><span class="line"><span class="string">    which in turn will be overridden by the auth= parameter.</span></span><br><span class="line"><span class="string">    Authorization headers will be removed if you get redirected off-host.</span></span><br><span class="line"><span class="string">    Proxy-Authorization headers will be overridden by proxy credentials provided in the URL.</span></span><br><span class="line"><span class="string">    Content-Length headers will be overridden when we can determine the length of the content.</span></span><br><span class="line"><span class="string">&#x27;</span><span class="string">&#x27;&#x27;</span></span><br><span class="line">url = <span class="string">&#x27;https://api.github.com/some/endpoint&#x27;</span></span><br><span class="line">headers = &#123;<span class="string">&#x27;user-agent&#x27;</span>: <span class="string">&#x27;my-app/0.0.1&#x27;</span>&#125;</span><br><span class="line">r11 = requests.<span class="title function_">get</span>(url, headers=headers)</span><br><span class="line"></span><br><span class="line"># <span class="title class_">Cookies</span></span><br><span class="line">url = <span class="string">&#x27;http://example.com/some/cookie/setting/url&#x27;</span></span><br><span class="line">r12 = requests.<span class="title function_">get</span>(url)</span><br><span class="line"><span class="title function_">print</span>(r12.<span class="property">cookies</span>[<span class="string">&#x27;example_cookie_name&#x27;</span>])</span><br><span class="line"></span><br><span class="line">url = <span class="string">&#x27;http://httpbin.org/cookies&#x27;</span></span><br><span class="line">cookies = <span class="title function_">dict</span>(cookies_are=<span class="string">&#x27;working&#x27;</span>)</span><br><span class="line">r13 = requests.<span class="title function_">get</span>(url, cookies=cookies)</span><br><span class="line">r13.<span class="property">text</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;</span><span class="string">&#x27;</span></span><br><span class="line"><span class="string">Cookies are returned in a RequestsCookieJar, which acts like a dict but also offers a more complete interface, </span></span><br><span class="line"><span class="string">suitable for use over multiple domains or paths. Cookie jars can also be passed in to requests</span></span><br><span class="line"><span class="string">&#x27;</span><span class="string">&#x27;&#x27;</span></span><br><span class="line">jar = requests.<span class="property">cookies</span>.<span class="title class_">RequestsCookieJar</span>()</span><br><span class="line">jar.<span class="title function_">set</span>(<span class="string">&#x27;tasty_cookie&#x27;</span>, <span class="string">&#x27;yum&#x27;</span>, domain=<span class="string">&#x27;httpbin.org&#x27;</span>, path=<span class="string">&#x27;/cookies&#x27;</span>)</span><br><span class="line">jar.<span class="title function_">set</span>(<span class="string">&#x27;gross_cookie&#x27;</span>, <span class="string">&#x27;blech&#x27;</span>, domain=<span class="string">&#x27;httpbin.org&#x27;</span>, path=<span class="string">&#x27;/elsewhere&#x27;</span>)</span><br><span class="line">url = <span class="string">&#x27;http://httpbin.org/cookies&#x27;</span></span><br><span class="line">r14 = requests.<span class="title function_">get</span>(url, cookies=jar)</span><br><span class="line">r14.<span class="property">text</span></span><br><span class="line"></span><br><span class="line"># <span class="title class_">Redirection</span> and <span class="title class_">History</span></span><br><span class="line"><span class="string">&#x27;&#x27;</span><span class="string">&#x27;</span></span><br><span class="line"><span class="string">By default Requests will perform location redirection for all verbs except HEAD.</span></span><br><span class="line"><span class="string">We can use the history property of the Response object to track redirection.</span></span><br><span class="line"><span class="string">&#x27;</span><span class="string">&#x27;&#x27;</span></span><br><span class="line">r15= requests.<span class="title function_">get</span>(<span class="string">&#x27;http://github.com&#x27;</span>)</span><br><span class="line">r15.<span class="property">status_code</span></span><br><span class="line">r15.<span class="property">history</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1027,135 +1113,6 @@
 <p>函数怎么运行的：<br>为输入的股票（当然是自己的持仓的）建立一个长度为N的队列（FIFO，先进先出），比如，建仓股票A了，则新建队列{A:队列}的数据格式，然后每日调用将盈亏比例记录到队列当中，当队列长度达到N，就开始取队列中的最小值和新来的（就是第N+1天来的）盈亏比进行比较，新来的大，就把第一天的盈利数据删除，再把新来的记录进去。反之就触发卖出。如此，只要不触发卖出就继续持股，判断的始终是距离函数调用日期前N日的盈利，从而实现动态保护利润。</p>
 <p>当然，该函数还可以改成你想的形式（自己实现咯）：<br>比如：N日内平均利润被突破后触发卖出<br>比如：N日内最高利润回调多少后触发卖出<br>比如：最高利润达到一定范围回调触发卖出，最高利润10%回调3%就卖，20%回调6%就卖，30%回调10%就买等。</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">#全局参数</span><br><span class="line"> #存储持股的字典&#123;<span class="attr">security</span>:qu.<span class="title class_">Queue</span>(maxsize = g.<span class="property">queue_longth</span> )&#125;</span><br><span class="line"> g.<span class="property">security_win_queue</span> = &#123;&#125;</span><br><span class="line"> #N日长度定义</span><br><span class="line"> g.<span class="property">queue_longth</span> = <span class="number">12</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def <span class="title function_">security_win_queue</span>(context,security):</span><br><span class="line">    current_price = <span class="title function_">history</span>(<span class="number">1</span>, <span class="string">&#x27;1m&#x27;</span>, <span class="string">&#x27;close&#x27;</span>, security).<span class="property">iloc</span>[<span class="number">0</span>].<span class="property">iloc</span>[<span class="number">0</span>]</span><br><span class="line">    # 获取买入平均价格</span><br><span class="line">    avg_cost = context.<span class="property">portfolio</span>.<span class="property">positions</span>[security].<span class="property">avg_cost</span></span><br><span class="line">    #盈利推入队列dd[<span class="string">&#x27;bar&#x27;</span>].<span class="title function_">append</span>(<span class="string">&#x27;quux&#x27;</span>)</span><br><span class="line">    win_percentage = (current_price - avg_cost)/avg_cost * <span class="number">100</span></span><br><span class="line">    #若是新增，则例行初始化&#123;<span class="attr">security</span>:queue&#125;</span><br><span class="line">    <span class="keyword">if</span> not g.<span class="property">security_win_queue</span>.<span class="title function_">has_key</span>(security):</span><br><span class="line">        g.<span class="property">security_win_queue</span>[security] = qu.<span class="title class_">Queue</span>(maxsize=g.<span class="property">queue_longth</span>)</span><br><span class="line"></span><br><span class="line">    #没有记满，就继续记</span><br><span class="line">    <span class="keyword">if</span> not g.<span class="property">security_win_queue</span>[security].<span class="title function_">full</span>():</span><br><span class="line">        #亏损的比例在持股初期不录入保证未突破止损线之前不卖出</span><br><span class="line">         <span class="keyword">if</span> win_percentage &gt; <span class="number">0</span>:</span><br><span class="line">            g.<span class="property">security_win_queue</span>[security].<span class="title function_">put</span>(win_percentage)</span><br><span class="line">            <span class="title function_">print</span>(security,win_percentage,<span class="string">&#x27;qsize:&#x27;</span>,g.<span class="property">security_win_queue</span>[security].<span class="title function_">qsize</span>())</span><br><span class="line">    #满了则进行盈利比较</span><br><span class="line">    <span class="attr">else</span>:</span><br><span class="line">        #取N日最小值盈利</span><br><span class="line">        tmp_win_list = []</span><br><span class="line">&lt;!-- more --&gt;</span><br><span class="line">        queue_size = g.<span class="property">security_win_queue</span>[security].<span class="title function_">qsize</span>()</span><br><span class="line">        <span class="keyword">for</span> w <span class="keyword">in</span> <span class="title function_">range</span>(queue_size):</span><br><span class="line">            tmp_win_list.<span class="title function_">append</span>(g.<span class="property">security_win_queue</span>[security].<span class="title function_">get</span>())</span><br><span class="line"></span><br><span class="line">        #排序盈利并取最小</span><br><span class="line">        sorted_tmp_win_list = <span class="title function_">sorted</span>(tmp_win_list)</span><br><span class="line">        #排除最小值后把队列恢复。</span><br><span class="line">        minimum = sorted_tmp_win_list[<span class="number">0</span>]</span><br><span class="line">        #排除最小值[<span class="number">0</span>]</span><br><span class="line">        <span class="keyword">for</span> w <span class="keyword">in</span> <span class="title function_">range</span>(<span class="number">1</span>,queue_size):</span><br><span class="line">            g.<span class="property">security_win_queue</span>[security].<span class="title function_">put</span>(sorted_tmp_win_list[w])</span><br><span class="line">        <span class="keyword">if</span> win_percentage &lt; <span class="attr">minimum</span>:</span><br><span class="line">            #返回<span class="literal">true</span>则需要卖出否则返回<span class="literal">false</span>继续持有</span><br><span class="line">            <span class="keyword">return</span> <span class="title class_">True</span></span><br><span class="line">        <span class="attr">else</span>:</span><br><span class="line">        #将新的盈利推入队列    </span><br><span class="line">            g.<span class="property">security_win_queue</span>[security].<span class="title function_">put</span>(win_percentage)</span><br><span class="line">            <span class="keyword">return</span> <span class="title class_">False</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://windanchaos.github.io/2017/10/20/%EF%BC%BBJavaWeb%E5%9F%BA%E7%A1%80%EF%BC%BDjsp/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="windanchaos">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Hexo">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2017/10/20/%EF%BC%BBJavaWeb%E5%9F%BA%E7%A1%80%EF%BC%BDjsp/" class="post-title-link" itemprop="url">［JavaWeb基础］jsp</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2017-10-20 00:16:01" itemprop="dateCreated datePublished" datetime="2017-10-20T00:16:01+08:00">2017-10-20</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2021-06-08 18:39:48" itemprop="dateModified" datetime="2021-06-08T18:39:48+08:00">2021-06-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Java%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">Java编程语言</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>以下内容整理编辑参考：<br><a target="_blank" rel="noopener" href="http://www.runoob.com/">http://www.runoob.com</a></p>
-<h1 id="什么是jsp"><a href="#什么是jsp" class="headerlink" title="什么是jsp"></a>什么是jsp</h1><p>JSP全称Java Server Pages，是一种动态网页开发技术。它使用JSP标签在HTML网页中插入Java代码。而识别它的方式，是以&lt;%开头以%&gt;结束的标签。</p>
-<p>JSP通过网页表单获取用户输入数据、访问数据库及其他数据源，动态地创建网页。</p>
-<p>JSP标签有多种功能，比如访问数据库、记录用户选择信息、访问JavaBeans组件等，还可以在不同的网页中传递控制信息和共享信息。</p>
-<h1 id="jsp的处理流程和生命周期"><a href="#jsp的处理流程和生命周期" class="headerlink" title="jsp的处理流程和生命周期"></a>jsp的处理流程和生命周期</h1><p><img data-src="/images/om-wp-content-uploads-2014-01-jsp-processing.jpg.png" alt="处理流程"></p>
-<p>就像其他普通的网页一样，您的浏览器发送一个 HTTP 请求给服务器。<br>Web 服务器识别出这是一个对 JSP 网页的请求，并且将该请求传递给 JSP 引擎。通过使用 URL或者 .jsp 文件来完成。<br>JSP 引擎从磁盘中载入 JSP 文件，然后将它们转化为 Servlet。这种转化只是简单地将所有模板文本改用 println() 语句，并且将所有的 JSP 元素转化成 Java 代码。<br>JSP 引擎将 Servlet 编译成可执行类，并且将原始请求传递给 Servlet 引擎。<br>Web 服务器的某组件将会调用 Servlet 引擎，然后载入并执行 Servlet 类。在执行过程中，Servlet 产生 HTML 格式的输出并将其内嵌于 HTTP response 中上交给 Web 服务器。<br>Web 服务器以静态 HTML 网页的形式将 HTTP response 返回到您的浏览器中。<br>最终，Web 浏览器处理 HTTP response 中动态产生的HTML网页，就好像在处理静态网页一样。</p>
-<p><img data-src="/images/om-wp-content-uploads-2014-01-jsp_life_cycle.jpg.png" alt="生命周期"></p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">编译阶段：</span><br><span class="line"></span><br><span class="line">servlet容器编译servlet源文件，生成servlet类</span><br><span class="line">初始化阶段：</span><br><span class="line"></span><br><span class="line">加载与<span class="variable constant_">JSP</span>对应的servlet类，创建其实例，并调用它的初始化方法</span><br><span class="line">执行阶段：</span><br><span class="line"></span><br><span class="line">调用与<span class="variable constant_">JSP</span>对应的servlet实例的服务方法</span><br><span class="line">销毁阶段：</span><br><span class="line"></span><br><span class="line">调用与<span class="variable constant_">JSP</span>对应的servlet实例的销毁方法，然后销毁servlet实例</span><br><span class="line">&lt;!-- more --&gt;</span><br></pre></td></tr></table></figure>
-
-<h1 id="JSP作用和Servlet分工"><a href="#JSP作用和Servlet分工" class="headerlink" title="JSP作用和Servlet分工"></a>JSP作用和Servlet分工</h1><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">* <span class="title class_">Servlet</span>：</span><br><span class="line">&gt; 缺点：不适合设置html响应体，需要大量的response.<span class="title function_">getWriter</span>().<span class="title function_">print</span>(<span class="string">&quot;&lt;html&gt;&quot;</span>)</span><br><span class="line">&gt; 优点：动态资源，可以编程。</span><br><span class="line">* html：</span><br><span class="line">&gt; 缺点：html是静态页面，不能包含动态信息</span><br><span class="line">&gt; 优点：不用为输出html标签而发愁</span><br><span class="line">* <span class="title function_">jsp</span>(java server pages)：</span><br><span class="line">&gt; 优点：在原有html的基础上添加java脚本，构成jsp页面。</span><br><span class="line"></span><br><span class="line">* <span class="variable constant_">JSP</span>：</span><br><span class="line">&gt; 作为请求发起页面，例如显示表单、超链接。</span><br><span class="line">&gt; 作为请求结束页面，例如显示数据。</span><br><span class="line">* <span class="title class_">Servlet</span>：</span><br><span class="line">&gt; 作为请求中处理数据的环节。</span><br></pre></td></tr></table></figure>
-
-<p><img data-src="/images/dn.net-20160817155819901-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQv-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-Center.png" alt="这里写图片描述"><br>参考：<a target="_blank" rel="noopener" href="http://blog.csdn.net/qq_25827845/article/details/52231724">http://blog.csdn.net/qq_25827845&#x2F;article&#x2F;details&#x2F;52231724</a></p>
-<h1 id="JSP-语法"><a href="#JSP-语法" class="headerlink" title="JSP 语法"></a>JSP 语法</h1><h2 id="脚本程序"><a href="#脚本程序" class="headerlink" title="脚本程序"></a>脚本程序</h2><p>脚本程序可以包含任意量的Java语句、变量、方法或表达式，只要它们在脚本语言中是有效的。</p>
-<p>脚本程序的语法格式：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;% 代码片段 %&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="JSP声明"><a href="#JSP声明" class="headerlink" title="JSP声明"></a>JSP声明</h2><p>一个声明语句可以声明一个或多个变量、方法，供后面的Java代码使用。在JSP文件中，您必须先声明这些变量和方法然后才能使用它们。</p>
-<p>JSP声明的语法格式：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%! declaration; [ declaration; ]+ ... %&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="JSP表达式"><a href="#JSP表达式" class="headerlink" title="JSP表达式"></a>JSP表达式</h2><p>一个JSP表达式中包含的脚本语言表达式，先被转化成String，然后插入到表达式出现的地方。</p>
-<p>由于表达式的值会被转化成String，所以您可以在一个文本行中使用表达式而不用去管它是否是HTML标签。</p>
-<p>表达式元素中可以包含任何符合Java语言规范的表达式，但是不能使用分号来结束表达式。</p>
-<p>JSP表达式的语法格式：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%= 表达式 %&gt;</span><br></pre></td></tr></table></figure>
-
-<h2 id="JSP注释"><a href="#JSP注释" class="headerlink" title="JSP注释"></a>JSP注释</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%-- 该部分注释在网页中不会被显示--%&gt;</span><br></pre></td></tr></table></figure>
-<p> <strong>语法</strong> 描述 &lt;%– 注释 –%&gt; JSP注释，注释内容不会被发送至浏览器甚至不会被编译 &lt;!– 注释 –&gt; HTML注释，通过浏览器查看网页源代码时可以看见注释内容 &lt;% 代表静态 &lt;%常量 %&gt; 代表静态 %&gt; 常量 \’ 在属性中使用的单引号 \” 在属性中使用的双引号</p>
-<h2 id="JSP指令"><a href="#JSP指令" class="headerlink" title="JSP指令"></a>JSP指令</h2><p>JSP指令用来设置与整个JSP页面相关的属性。</p>
-<p>JSP指令语法格式：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ directive attribute=<span class="string">&quot;value&quot;</span> %&gt;</span><br></pre></td></tr></table></figure>
-<p> <strong>指令</strong> <strong>描述</strong> &lt;%@ page … %&gt; 定义页面的依赖属性，比如脚本语言、error页面、缓存需求等等 &lt;%@ include … %&gt; 包含其他文件 &lt;%@ taglib … %&gt; 引入标签库的定义，可以是自定义标签</p>
-<h2 id="JSP行为"><a href="#JSP行为" class="headerlink" title="JSP行为"></a>JSP行为</h2><p>JSP行为标签使用XML语法结构来控制servlet引擎。它能够动态插入一个文件，重用JavaBean组件，引导用户去另一个页面，为Java插件产生相关的HTML等等。</p>
-<p>行为标签只有一种语法格式，它严格遵守XML标准：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="attr">jsp</span>:action_name attribute=<span class="string">&quot;value&quot;</span> /&gt;</span><br></pre></td></tr></table></figure>
-
-<p>行为标签基本上是一些预先就定义好的函数，下表罗列出了一些可用的JSP行为标签：</p>
-<p><strong>语法</strong> <strong>描述</strong> jsp:include 用于在当前页面中包含静态或动态资源 jsp:useBean 寻找和初始化一个JavaBean组件 jsp:setProperty 设置 JavaBean组件的值 jsp:getProperty 将 JavaBean组件的值插入到 output中 jsp:forward 从一个JSP文件向另一个文件传递一个包含用户请求的request对象 jsp:plugin 用于在生成的HTML页面中包含Applet和JavaBean对象 jsp:element 动态创建一个XML元素 jsp:attribute 定义动态创建的XML元素的属性 jsp:body 定义动态创建的XML元素的主体 jsp:text 用于封装模板数据</p>
-<h2 id="JSP内置对象"><a href="#JSP内置对象" class="headerlink" title="JSP内置对象"></a>JSP内置对象</h2><p><strong>对象</strong> <strong>描述</strong> request <strong>HttpServletRequest</strong>类的实例 response <strong>HttpServletResponse</strong>类的实例 out <strong>PrintWriter</strong>类的实例，用于把结果输出至网页上 session <strong>HttpSession</strong>类的实例 application <strong>ServletContext</strong>类的实例，与应用上下文有关 config <strong>ServletConfig</strong>类的实例 pageContext <strong>PageContext</strong>类的实例，提供对JSP页面所有对象以及命名空间的访问 page 类似于Java类中的this关键字 Exception <strong>Exception</strong>类的对象，代表发生错误的JSP页面中对应的异常对象</p>
-<h1 id="JSP-标准标签库（JSTL）"><a href="#JSP-标准标签库（JSTL）" class="headerlink" title="JSP 标准标签库（JSTL）"></a>JSP 标准标签库（JSTL）</h1><p>JSP标准标签库（JSTL）是一个JSP标签集合，它封装了JSP应用的通用核心功能。</p>
-<p>JSTL支持通用的、结构化的任务，比如迭代，条件判断，XML文档操作，国际化标签，SQL标签。 除了这些，它还提供了一个框架来使用集成JSTL的自定义标签。</p>
-<p>核心标签是最常用的JSTL标签。引用核心标签库的语法如下：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;%@ taglib prefix=<span class="string">&quot;c&quot;</span> </span><br><span class="line">           uri=<span class="string">&quot;http://java.sun.com/jsp/jstl/core&quot;</span> %&gt;</span><br></pre></td></tr></table></figure>
-<p> 标签 描述 用于在JSP中显示数据，就像&lt;%&#x3D; … &gt; 用于保存数据 用于删除数据 用来处理产生错误的异常状况，并且将错误信息储存起来 与我们在一般程序中用的if一样 本身只当做&lt;c:when&gt;和&lt;c:otherwise&gt;的父标签 &lt;c:choose&gt;的子标签，用来判断条件是否成立 &lt;c:choose&gt;的子标签，接在&lt;c:when&gt;标签后，当&lt;c:when&gt;标签判断为false时被执行 检索一个绝对或相对 URL，然后将其内容暴露给页面 基础迭代标签，接受多种集合类型 根据指定的分隔符来分隔内容并迭代输出 用来给包含或重定向的页面传递参数 重定向至一个新的URL. 使用可选的查询参数来创造一个URL</p>
-<p>其他若干标签，参考<a target="_blank" rel="noopener" href="http://www.runoob.com/jsp/jsp-jstl.html">http://www.runoob.com/jsp/jsp-jstl.html</a></p>
 
       
     </div>

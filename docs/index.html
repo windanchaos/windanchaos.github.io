@@ -127,7 +127,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">111</span>
+          <span class="site-state-item-count">112</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -187,6 +187,109 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://windanchaos.github.io/2022/10/11/JDK%E4%B8%ADJUC%E5%8C%85%E7%94%B1%E6%B5%85%E5%85%A5%E6%B7%B1%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94atomic%E5%8C%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="windanchaos">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Hexo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2022/10/11/JDK%E4%B8%ADJUC%E5%8C%85%E7%94%B1%E6%B5%85%E5%85%A5%E6%B7%B1%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94atomic%E5%8C%85/" class="post-title-link" itemprop="url">JDK中JUC包由浅入深原理——atomic包</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2022-10-11 08:54:26 / Modified: 15:32:33" itemprop="dateCreated datePublished" datetime="2022-10-11T08:54:26+08:00">2022-10-11</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">Java编程语言</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="intel-CPU原子操作"><a href="#intel-CPU原子操作" class="headerlink" title="intel CPU原子操作"></a>intel CPU原子操作</h1><p>需有一个基本逻辑，CPU不支持的，上层不可能自己YY出来。沿着操作系统内核往应用层，通常都是利用底层的能力，构筑上层的大厦。</p>
+<p>在intel中，指令lock+指令，可构成一个原子指令（即要么都执行，要么不执行）。上层代码，可基于此构建自己的原子操作。</p>
+<p>依据可查阅intel开发手册Volume3 - 8.1到3。</p>
+<p><img data-src="/Users/boy/Code/windanchaos.github.io/source/images/image-20221011093328936.png" alt="image-20221011093328936"></p>
+<p>从上可知，通常套路原子指令大概就有：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">LOCK; ADDL $0,0(%%esp) //栈底加0，什么也不做</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CMPXCHG;  //自带LOCK</span><br></pre></td></tr></table></figure>
+
+<h1 id="JDK和hotspot源码"><a href="#JDK和hotspot源码" class="headerlink" title="JDK和hotspot源码"></a>JDK和hotspot源码</h1><p>以java.util.concurrent.atomic.AtomicInteger为例</p>
+<p><img data-src="/Users/boy/Code/windanchaos.github.io/source/images/image-20221011142419420.png" alt="image-20221011142419420"></p>
+<p>上图展示了从jdk到jdk源码，到hotspot源码，类AtomicInteger中的getAndIncrement方法的调用链路。到hotsopt层面就一句核心:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#define LOCK_IF_MP(mp) &quot;cmp $0, &quot; #mp &quot;; je 1f; lock; 1: &quot;  //定义宏，如果mp与0相等，则跳过lock指令，否则执行lock</span><br><span class="line">inline jint _Atomic_cmpxchg(jint exchange_value, volatile jint* dest, jint compare_value, int mp) &#123;</span><br><span class="line">  __asm__ volatile (LOCK_IF_MP(%4) &quot;cmpxchgl %1,(%3)&quot; //比较并交换指令</span><br><span class="line">                  : &quot;=a&quot; (exchange_value)</span><br><span class="line">                  : &quot;r&quot; (exchange_value), &quot;a&quot; (compare_value), &quot;r&quot; (dest), &quot;r&quot; (mp)</span><br><span class="line">                  : &quot;cc&quot;, &quot;memory&quot;);</span><br><span class="line">  return exchange_value;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>以上内联代码转义为正常汇编代码，大概如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cmp $0, &quot; #mp &quot;; //mp = multi processor 多核</span><br><span class="line">je 1f; //跳到1:所在行，就是什么也不做</span><br><span class="line">lock; </span><br><span class="line">cmpxchgl exchange_value,dest  //dest和exchange_value相比较，如果相等ZF寄存器置1并把dest放入EAX寄存器（即栈返回值）。如果不相等，ZF寄存器的值置0，并将exchange_value的值存入EAX寄存器（即栈返回值）。</span><br><span class="line">1:</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>intel手册该指令解释如下：</p>
+<p><img data-src="/Users/boy/Code/windanchaos.github.io/source/images/image-20221011144908523.png" alt="image-20221011144908523"></p>
+<p>所以，lock;cmpxchg提供了atuomic包下面的底层支持。</p>
+<h1 id="ABA问题"><a href="#ABA问题" class="headerlink" title="ABA问题"></a>ABA问题</h1><p>并发条件下通过cmpxchg方式操作，存在aba问题，即cpu对同一个值改动2次，从A改到B又改回A，其他cpu并不知道值变过，解决办法就是加版本号(Stamped)。在juc包中对应的类为：AtomicStampedReference。它的原理类似上面。</p>
+<h1 id="LOCK指令"><a href="#LOCK指令" class="headerlink" title="LOCK指令"></a>LOCK指令</h1><p>lock指令为什么能保证指令的原子性呢？</p>
+<p>核心：在CPU内部中有个store buffer，可提高CPU执行效率。同时带来了多核情况下，同一个内存中的值，在不同CPU当中的可能是不同的（写回内存前，没有刷出store buffer）。lock指令锁住了数据总线的同时，主动刷出了store buffer，通过cache的连通性（ Store Forwarding），其他CPU会获知自己拿的值过期，可更新到最新值。</p>
+<p><img data-src="/Users/boy/Code/windanchaos.github.io/source/images/image-20221011151713702.png" alt="image-20221011151713702"></p>
+<p>图参考<a target="_blank" rel="noopener" href="http://www.puppetmastertrading.com/images/hwViewForSwHackers.pdf">hwViewForSwHackers</a></p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1273,113 +1376,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2020/03/16/java%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://windanchaos.github.io/2020/03/14/%E6%95%B0%E7%90%86%E9%80%BB%E8%BE%91%E3%80%81%E5%9B%BE%E7%81%B5%E6%9C%BA%E3%80%81%E5%86%AF%E6%B4%9B%E4%BC%8A%E6%9B%BC/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="windanchaos">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Hexo">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2020/03/14/%E6%95%B0%E7%90%86%E9%80%BB%E8%BE%91%E3%80%81%E5%9B%BE%E7%81%B5%E6%9C%BA%E3%80%81%E5%86%AF%E6%B4%9B%E4%BC%8A%E6%9B%BC/" class="post-title-link" itemprop="url">数理逻辑、图灵机、冯洛伊曼</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2020-03-14 11:03:33" itemprop="dateCreated datePublished" datetime="2020-03-14T11:03:33+08:00">2020-03-14</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2021-06-08 18:39:48" itemprop="dateModified" datetime="2021-06-08T18:39:48+08:00">2021-06-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">计算机科学基础</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>我喜欢追本溯源，渴望真理，而不至被表象迷惑。</p>
-<p>这篇文章未写完。可能计划读一下《计算机的数学基础》这本书再写。</p>
-<h1 id="计算机的数学基础"><a href="#计算机的数学基础" class="headerlink" title="计算机的数学基础"></a>计算机的数学基础</h1><p> 形式语言与自动机理论、可计算理论、逻辑学和程序设计理论，都是研究计算模型的。它们之间也是相互关联的，共同构成了现代计算机科学技术的理论基础。这些理论都是属于数学学科的。</p>
-<p>形式语言与自动机理论、可计算理论和逻辑学的研究都始于20世纪初叶，特别是20世纪30年代的数学家Church（邱奇）、GMel（哥德尔）、Kleene（克林）、Post（波斯特）以及Turing（<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%9B%BE%E7%81%B5/121208">图灵</a>）等人的杰出工作催生了现代电子数字计算机的硬件和软件的诞生。</p>
-<p><a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%90%86%E8%AE%BA/2317906">程序设计理论</a>的研究相比则要迟一些，是20世纪后半叶现代电子数字计算机以及程序设计语言和软件诞生之后的事情了。它是专门研究程序设计语言和程序设计方法的数学理论。这些工作对于计算机科学的实践和理论的发展有着深远的影响。比如，图灵机模型就被证明是现代电子数字计算机的理论模型。这些先驱者的工作在今天看来似乎是很平常的，它们的思想渊源甚至并不为今天众多的计算机的使用者所知道。但是这些先驱者的工作确实是应该被那些从事计算机科学技术的工作者们所熟悉、所掌握的。 </p>
-<h1 id="语言和逻辑"><a href="#语言和逻辑" class="headerlink" title="语言和逻辑"></a>语言和逻辑</h1><p>人类由猿进化成人，成为灵长类的智慧生物，是进化的奇迹。语言在数百万年的进化进程中，在人类这台大自然打造的“生物机器”中，也不断的进化，相互促进，形成目前人类拥有的——自然语言。</p>
-<p>语言，我认为它的本质是承载信息的载体。它可以装载情感、请求、命令、陈述等。</p>
-<p>自然语言是丰富而复杂的，同一句话，不同的语境、时间、预期所要传递的信息是多样的。这里面很多段子就不一一罗列了。根本原因是自然语言属于人类，它适应人类文明。自然语言的信息传递，依赖于外界环境。语言和它所传递的信息之间，没有一对一的关系，就像算命先生算命，用些模棱两可的话说给你听，还有些星座算命也是一样的，听、读的人接受信息的背景差异，导致相同语言传递的信息千差万别。</p>
-<p>语言的诞生，促进了文明发展，萌生了逻辑、推理。先哲用语言讲理，随着理讲得越多，人们发现要讲好道理，首先要做好陈述。没有可靠的陈述作为前提，再完美的论证过程也只是空中楼阁。因此逻辑学逐渐放大研究视野，将语法和词汇承载的信息也纳入到研究范畴中。他们（我不知具体是哪些人）得出：人类使用的陈述句、疑问句、感叹句、祈使句，在着重考虑陈述和论证，就只需要陈述句了。小学学过的，各种句型互转就明白。比如：“你是谁？”，陈述句为：“我希望知道你是谁”。感叹句：“好美的女子！”，陈述句：“女子的美丽让我感叹”。</p>
-<p>逻辑、推理进步，让自然语言作为信息传递载体做了一次丢弃，仅留下陈述句。本身语言其实就是一种和承载信息间的“指代”和“映射”。接下来对陈述句的组成部分进行拆解，仅仅做简单拆解。</p>
-<p>代词。所谓代词就是用于代替对象的词汇，替代具体的对象出现在语句中并表示被代替的对象。比如，“月球绕地球公转，它的自转周期和地球自转周期相同”。“月球”指代我们想指代的那个对象，“它”指代月球，代词可以是指代的指代，代词的作用和语境有关。</p>
-<p>名词。词典中约定词汇含义的方法是用一个固定句式的语句来描述它。比较简单的做法是用“某词是什么意思”的句式把词汇的含义表达出来。</p>
-<p>谓词。一类可以将语句中其他成员建立起联系的词。“我喜欢你“，“我在写”，“我写文章”。（个人理解，可能不当）。</p>
-<p>接下来讨论语言中的逻辑。单纯的判断你一句话是否是真或假，是没有固定结论的，因为结论依赖于说话的场景。所以，在纯逻辑层面，我们去讨论真假，就只关注语言内部的自恰性了。所以，论述的起点，它必然是整个推理的基石。在没有任何已知前提的情况下，逻辑不能给我们任何新的知识。因此必须在已经有一些已知信息的情况下，我们才能运用逻辑。题外话，基石在很多科幻电影，比如“西部世界”中很多接待员的底层都一个他们行为的基石概念。</p>
-<p>先哲们逐步定义了一门叫数理逻辑的学科。 其研究对象是对证明和计算这两个直观概念进行符号化以后的形式系统。</p>
-<p> <a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E7%9A%84%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/866204?fr=aladdin">https://baike.baidu.com/item/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E7%9A%84%E6%95%B0%E5%AD%A6%E5%9F%BA%E7%A1%80/866204?fr=aladdin</a> </p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2020/03/14/%E6%95%B0%E7%90%86%E9%80%BB%E8%BE%91%E3%80%81%E5%9B%BE%E7%81%B5%E6%9C%BA%E3%80%81%E5%86%AF%E6%B4%9B%E4%BC%8A%E6%9B%BC/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>

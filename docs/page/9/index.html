@@ -127,7 +127,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">111</span>
+          <span class="site-state-item-count">112</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -187,6 +187,95 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://windanchaos.github.io/2017/02/23/web%E6%B5%8B%E8%AF%95%E4%B8%AD%E7%9A%84%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="windanchaos">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Hexo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2017/02/23/web%E6%B5%8B%E8%AF%95%E4%B8%AD%E7%9A%84%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6/" class="post-title-link" itemprop="url">web测试中的特殊字符</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2017-02-23 21:09:28" itemprop="dateCreated datePublished" datetime="2017-02-23T21:09:28+08:00">2017-02-23</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2021-06-08 18:39:48" itemprop="dateModified" datetime="2021-06-08T18:39:48+08:00">2021-06-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">自动化测试</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="JavaScript-特殊字符"><a href="#JavaScript-特殊字符" class="headerlink" title="JavaScript 特殊字符"></a>JavaScript 特殊字符</h1><p>需要被转义才能显示正确，转义是斜线。<br>\’ 单引号<br>\” 双引号<br>&amp; 和号<br>\ 反斜杠<br>\n 换行符<br>\r 回车符<br>\t 制表符<br>\b 退格符<br>\f 换页符</p>
+<h1 id="HTML需要转义的字符"><a href="#HTML需要转义的字符" class="headerlink" title="HTML需要转义的字符"></a>HTML需要转义的字符</h1><p><a target="_blank" rel="noopener" href="http://www.jb51.net/onlineread/htmlchar.htm">转义对照表</a></p>
+<h1 id="数据库特殊字符："><a href="#数据库特殊字符：" class="headerlink" title="数据库特殊字符："></a>数据库特殊字符：</h1><p>_ (下划线) : Oracle中代表占位符<br>表示查找含_的字符串。<br>%（百分号）表示查找含%的字符串。<br>‘(单引号)：表示查找含’的字符串<br>&#x2F;#井号表示查找含&#x2F;#的字符串<br>通配符，和需求相关。如果&#x2F;*和?当作通配符处理，则不需要数据库开发人员特殊处理。如果当作其本身这个字符，则需要处理。所以需要测试是否已经做了正确的处理。<br>&#x2F;*（星号）：代表通配任意多个字符或数字进行查询<br>?（问号）：代表通配1个字符或数字进行查询</p>
+<p>下面是我python一个提供特殊字符的方法：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">def <span class="title function_">random_special_charactor</span>():</span><br><span class="line">    sep_charactor =[<span class="string">&#x27;\&#x27;&#x27;</span>,<span class="string">&#x27;\&quot;&#x27;</span>,<span class="string">&#x27;&amp;&#x27;</span>,<span class="string">&#x27;\\&#x27;</span>,<span class="string">&#x27;\n&#x27;</span>,<span class="string">&#x27;\r&#x27;</span>,<span class="string">&#x27;\t&#x27;</span>,<span class="string">&#x27;\b&#x27;</span>,<span class="string">&#x27;\f&#x27;</span>,<span class="string">&#x27;\&lt;&#x27;</span>,<span class="string">&#x27;\&gt;&#x27;</span>,</span><br><span class="line">                    <span class="string">&#x27;&lt;br/&gt;&#x27;</span>,<span class="string">&#x27;`&#x27;</span>,<span class="string">&#x27;@&#x27;</span>,<span class="string">&#x27;$&#x27;</span>,<span class="string">&#x27;*&#x27;</span>,<span class="string">&#x27;^&#x27;</span>,<span class="string">&#x27;#&#x27;</span>,<span class="string">&#x27;?&#x27;</span>,<span class="string">&#x27;_&#x27;</span>,<span class="string">&#x27;&amp;&amp;&#x27;</span>]</span><br><span class="line"> #<span class="number">16</span>进制</span><br><span class="line">    sep_charactor_0x = <span class="title function_">str</span>(<span class="title function_">bytes</span>([<span class="number">0x60</span>,<span class="number">0x21</span>,<span class="number">0x22</span>,<span class="number">0x23</span>,<span class="number">0x24</span>,<span class="number">0x25</span>,<span class="number">0x26</span>,<span class="number">0x27</span>,<span class="number">0x28</span>,<span class="number">0x29</span>,<span class="number">0x2a</span>,<span class="number">0x2b</span>,<span class="number">0x2c</span>,<span class="number">0x2d</span>,</span><br><span class="line">                        <span class="number">0x2e</span>,<span class="number">0x2f</span>,<span class="number">0x3c</span>,<span class="number">0x3e</span>,<span class="number">0x3f</span>,<span class="number">0x40</span>,<span class="number">0x5b</span>,<span class="number">0x5c</span>,<span class="number">0x5d</span>,<span class="number">0x5e</span>,<span class="number">0x5f</span>,<span class="number">0x7b</span>,<span class="number">0x7c</span>,<span class="number">0x7d</span>,<span class="number">0x7e</span>,<span class="number">0x60</span>]))</span><br><span class="line">    <span class="keyword">return</span> <span class="string">&#x27;&#x27;</span>.<span class="title function_">join</span>(random.<span class="title function_">sample</span>(sep_charactor_0x,<span class="number">5</span>))</span><br><span class="line">&lt;!-- more --&gt;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1125,101 +1214,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2017/01/22/Splinter%20%E6%9F%A5%E6%89%BE%E5%85%83%E7%B4%A0/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://windanchaos.github.io/2017/01/22/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E7%9A%84%E5%88%A9%E5%BC%8A/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="windanchaos">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Hexo">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2017/01/22/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E7%9A%84%E5%88%A9%E5%BC%8A/" class="post-title-link" itemprop="url">自动化测试的利弊</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2017-01-22 10:46:20" itemprop="dateCreated datePublished" datetime="2017-01-22T10:46:20+08:00">2017-01-22</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2021-06-08 18:39:48" itemprop="dateModified" datetime="2021-06-08T18:39:48+08:00">2021-06-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/" itemprop="url" rel="index"><span itemprop="name">自动化测试</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>已经开始实践过一些selinum的自动测试，发现要维护好一个简单的case消耗的精力远远大于获得的回报。但是这个值得（技术能力）深入学，工具无好坏优劣之分，只有适合不适合。在网上看了很多关于自动化测试的文章，现摘录一二：</p>
-<p>以下内容引自：<a target="_blank" rel="noopener" href="http://www.blogjava.net/qileilove/archive/2014/01/16/409014.html?utm_source=tuicool&utm_medium=referral">2014年自动化的个人感想</a><br><strong>自动化技术的应用场所</strong><br>1、功能回归测试、冒烟测试。<br>2、数据精度要求高的测试，数据计算、比较、统计测试。<br>3、简单重复的大批量测试，测试组合众多，需要测试覆盖。<br>4、疲劳测试。<br>5、接口、底层、代码测试。<br>6、其他不便于进行手工的测试。<br>PPT解读： 自动化测试 是个较大的范畴，所有不用手工进行操作通过程序驱动的测试都可以理解为自动化测试。从技术层面来讲，但凡被技术实现的东西都可以被技术模拟和测试。在人们实践的过程中，自动化技术应用的领域会越来越广，测试也是一样，自动化本身不会去约束方式和行为，自动化能够做什么会超出我们的想象。<br><strong>为什么需要测试框架</strong><br>1、降低实现门槛。<br>2、统一技术风格。<br>3、量化测试成果。<br>4、底层前端分离。<br>PPT解读： 没有测试框架也可以实现自动化。每个测试人员技术背景不尽相同，擅长的语言、脚本、实施的技术水平参差不齐，没有框架约束技术实现和风格，他人的维护难度会很大，不利于大家朝同一个技术方向进行分享和交流。 框架本身已经封装了很多实际需要的接口和工具，测试人员不需要花费大量的精力再度开发，集中精力快速实现测试需求本身。统一的结构不仅多人可以同时维护一个项目，也便于测试结果的分析和汇总，众多项目的批量运行。框架和项目的分离，使双方各自影响的范围得到有效控制，便于项目单点维护和迁移。开发需要框架，同样测试开发作为一种开发活动也需要框架。<br><strong>自动化效果体现</strong><br>1、测试前置效果体现<br>2、测试范围效果体现<br>3、Daily Test 和批量执行效果体现<br>4、其他指标<br>PPT解读： 1、接口和单测可以通过BUG数量进行衡量。这个阶段所发现的BUG含金量更高，修复的成本更低，更有价值。此外代码行数、用例数量、代码覆盖率也可以很好的统计测试实际的效果。<br>2、自动化可以解决以往手工不能进行的测试，比如大数据量、中间件、随机数据等测试，可以列举由于引进自动化而增加的各种测试类型。<br>3、100个用例执行一次体现不了什么，但是100个用例在后续的两个月里执行了100次，所替代的人工就是很可观的。自动化项目坚持每日BUILD，一方面可以及时发现问题，维护更新用例。另一个方面每日测试的汇总数据也是自动化测试效果的展示。可以通过邮件、报告进行测试项目和用例的数据汇总，如果达到一定的量级还是很震撼的。<br>4、自动化还有代码行数，编译次数等指标。放在部署有平均部署时间，放在数据有平均一次生成数据量等。前端自动化不宜用BUG数量来衡量，因为主要选取的相对比较稳定的业务线和模块。</p>
-<p>以下内容引自：<a target="_blank" rel="noopener" href="https://qaseven.github.io/2016/12/13/qa-heart/">QA请勿忘初心</a><br>大部分QA或者tester，仍然以UI自动化为重心。之所以反对盲目的UI自动化测试，因为变化频繁的UI设计，极低投入产生比，都应该让我们重新思考下UI自动化的价值。<br><strong>我们需要一个实施UI自动化正确的方式</strong>：<br>能不用UI自动化测试就不用，梳理业务主线，只保留用户操作最频繁，交互最多的场景。<br>根据面向对象设计的原则，构建适合项目的UI自动化框架，无论自己编写框架，还是采用开源框架。<br>尽量采用独立测试数据，确保运行测试不受影响。例如采用mock数据库或者每次运行时还原测试数据库。</p>
-<p>作为一个QA，我们不仅要检测项目中存在问题，也要改进团队的实践活动，更重要的是预防问题的发生。<br>每次bugbash或相应迭代完成后，要分析统计，找出产生缺陷的环节，并采取措施防止问题再现。例如每次release或者bug bash之后,我可以按照功能模块与bug类型进行统计划分，分析统计bug的成因，例如某次迭代我们bug数量激增，经调查，发现我们对某些模块的前端代码进行了重构，但缺乏相应的单元测试与集成测试，造成了我们没有及时发现bug。之后我们就对应的采取措施防止问题再现。<br>总结分析报告，及时反馈这些信息给团队。总结分析是一个长期的任务，每次bug数量的变动，都会直接体现整个团队上次迭代的开发质量，例如bug数量减少了，可以鼓励成员再接再厉。或者某几次迭代某些模块bug成上升趋势，那么就需要组织团队一起讨论问题根源，采取措施防止问题重现。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2017/01/22/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95%E7%9A%84%E5%88%A9%E5%BC%8A/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>

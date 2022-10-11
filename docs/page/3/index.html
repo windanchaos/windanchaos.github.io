@@ -127,7 +127,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">111</span>
+          <span class="site-state-item-count">112</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -187,6 +187,94 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://windanchaos.github.io/2019/07/21/%E7%BC%96%E7%A8%8B%E6%B1%82%EF%BC%9A%E2%88%911+%E2%88%912+%E2%80%A6%E2%80%A6+%E2%88%91100/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="windanchaos">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Hexo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2019/07/21/%E7%BC%96%E7%A8%8B%E6%B1%82%EF%BC%9A%E2%88%911+%E2%88%912+%E2%80%A6%E2%80%A6+%E2%88%91100/" class="post-title-link" itemprop="url">编程求：∑1+∑2+……+∑100</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2019-07-21 22:04:20" itemprop="dateCreated datePublished" datetime="2019-07-21T22:04:20+08:00">2019-07-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2021-06-08 18:39:48" itemprop="dateModified" datetime="2021-06-08T18:39:48+08:00">2021-06-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Java%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/" itemprop="url" rel="index"><span itemprop="name">Java编程语言</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>最近在践行代码，先把尚学堂的习题做完，遇到有点代表的就发个日志。<br>以下算法时间复杂度为N，还可以。这个好像是用了某种算法，具体叫动态规划法。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">    103.	【上机】编程求：∑1+∑2+……+∑100</span></span><br><span class="line"><span class="comment">    这里输入最大数100作为参数</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    public <span class="keyword">void</span> <span class="title function_">sigma</span>(<span class="params">int num</span>)&#123;</span><br><span class="line">        <span class="comment">//利用数组记录∑n的值,数组的index=n，特征：∑n=∑(n-1)+n</span></span><br><span class="line">        <span class="comment">//数组下标等于数字，数组index为0的丢弃</span></span><br><span class="line">        int[] array_tmp=<span class="keyword">new</span> int[num+<span class="number">1</span>];</span><br><span class="line">        int sum=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(int i=<span class="number">1</span>;i&lt;num+<span class="number">1</span>;i++)&#123;</span><br><span class="line">        	<span class="comment">//数组index为0时，默认值0，可直接迭代</span></span><br><span class="line">            array_tmp[i]=array_tmp[i-<span class="number">1</span>]+i;</span><br><span class="line">            sum=sum+array_tmp[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="title class_">System</span>.<span class="property">out</span>.<span class="title function_">println</span>(<span class="string">&quot;∑1+∑2+……+∑&quot;</span>+num+<span class="string">&quot;的和为：&quot;</span>+sum);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>∑1+∑2+……+∑100的和为：171700</p>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1055,108 +1143,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2018/09/18/Tomcat%E6%95%B4%E4%BD%93%E6%9E%B6%E6%9E%84%E6%B5%85%E6%9E%90/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://windanchaos.github.io/2018/09/10/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80%E3%80%91%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%8E%E6%95%B0%E3%80%81%E5%AD%97/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="windanchaos">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Hexo">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2018/09/10/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80%E3%80%91%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%8E%E6%95%B0%E3%80%81%E5%AD%97/" class="post-title-link" itemprop="url">【计算机理论基础】二进制与数、字</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2018-09-10 13:36:12" itemprop="dateCreated datePublished" datetime="2018-09-10T13:36:12+08:00">2018-09-10</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2021-06-08 18:39:48" itemprop="dateModified" datetime="2021-06-08T18:39:48+08:00">2021-06-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">计算机科学基础</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>计算机底层说到底是一堆电路，一个电路只有2种状态：通和不通。N个电路就可以有2^N次个状态的组合，它们排列组合成一个序列。<br>这个序列被人设的，按照规则进行了解释。<br>一堆无序的排列组合需要赋予人类世界的意义，所以确立了二进制到符号（字符、数字）的规则。<br>符号是被认为携带意义的感知。<br>意义就是一个符号可以被另外的符号解释的潜力。符号之间解释的链，即可达到信息交换的目的。</p>
-<p>我们学习就是要理解这种既定的规则。</p>
-<p>人类世界沟通和交流用的是语言和符号，不同母语的国家交流需要翻译。计算机与人类传递信息，需要翻译。</p>
-<p>主要（目前我的理解深度而言）两大类：</p>
-<p>尽管在计算机内部，数字的表象被包含在字符内，也就是字符集中有可以表示数字的字符，但从作用上来说，表象和实质还是有差异。从代码上来看差异：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int a=<span class="number">124</span>;</span><br><span class="line">string b=<span class="string">&quot;124&quot;</span>;</span><br><span class="line">char c=<span class="string">&#x27;124&#x27;</span>;</span><br><span class="line"><span class="comment">//没写过程序的人看到124，认为他们是一个东西。但是在计算内部，却是3种信息。</span></span><br><span class="line"><span class="comment">//代码写的是人，但是传递给计算机处理的时候，负责解释这些字符的是编译器。</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="理解byte"><a href="#理解byte" class="headerlink" title="理解byte"></a>理解byte</h1><p>计算机中一个电子元件的状态是1bit（通或不通），而人设的规定存储信息的<strong>最小单元</strong>是一个字节即 8 个 bit，即1byte。<br>这里byte的意义有两种：</p>
-<p>它组合是：<br>00000000-11111111<br>被解释为10进制的0-256（2^8次方）种变化的信息量。</p>
-<h1 id="数的规则"><a href="#数的规则" class="headerlink" title="数的规则"></a>数的规则</h1><p>主要围绕着二进制如何被解释为数，或者反向的数如何用二进制来表达。</p>
-<h2 id="数分配的存储资源大小"><a href="#数分配的存储资源大小" class="headerlink" title="数分配的存储资源大小"></a>数分配的存储资源大小</h2><p>Java中八种基本数据类型：short、int、long、float、double、boolean、byte、char。每种类型都按传统规定了存储在计算机当中占据空间的大小，好比限定了装载这些数的盒子。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2018/09/10/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80%E3%80%91%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%8E%E6%95%B0%E3%80%81%E5%AD%97/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>

@@ -127,7 +127,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">111</span>
+          <span class="site-state-item-count">112</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -187,6 +187,108 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://windanchaos.github.io/2018/09/10/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80%E3%80%91%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%8E%E6%95%B0%E3%80%81%E5%AD%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpeg">
+      <meta itemprop="name" content="windanchaos">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Hexo">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2018/09/10/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80%E3%80%91%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%8E%E6%95%B0%E3%80%81%E5%AD%97/" class="post-title-link" itemprop="url">【计算机理论基础】二进制与数、字</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2018-09-10 13:36:12" itemprop="dateCreated datePublished" datetime="2018-09-10T13:36:12+08:00">2018-09-10</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2021-06-08 18:39:48" itemprop="dateModified" datetime="2021-06-08T18:39:48+08:00">2021-06-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E5%9F%BA%E7%A1%80/" itemprop="url" rel="index"><span itemprop="name">计算机科学基础</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>计算机底层说到底是一堆电路，一个电路只有2种状态：通和不通。N个电路就可以有2^N次个状态的组合，它们排列组合成一个序列。<br>这个序列被人设的，按照规则进行了解释。<br>一堆无序的排列组合需要赋予人类世界的意义，所以确立了二进制到符号（字符、数字）的规则。<br>符号是被认为携带意义的感知。<br>意义就是一个符号可以被另外的符号解释的潜力。符号之间解释的链，即可达到信息交换的目的。</p>
+<p>我们学习就是要理解这种既定的规则。</p>
+<p>人类世界沟通和交流用的是语言和符号，不同母语的国家交流需要翻译。计算机与人类传递信息，需要翻译。</p>
+<p>主要（目前我的理解深度而言）两大类：</p>
+<p>尽管在计算机内部，数字的表象被包含在字符内，也就是字符集中有可以表示数字的字符，但从作用上来说，表象和实质还是有差异。从代码上来看差异：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int a=<span class="number">124</span>;</span><br><span class="line">string b=<span class="string">&quot;124&quot;</span>;</span><br><span class="line">char c=<span class="string">&#x27;124&#x27;</span>;</span><br><span class="line"><span class="comment">//没写过程序的人看到124，认为他们是一个东西。但是在计算内部，却是3种信息。</span></span><br><span class="line"><span class="comment">//代码写的是人，但是传递给计算机处理的时候，负责解释这些字符的是编译器。</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="理解byte"><a href="#理解byte" class="headerlink" title="理解byte"></a>理解byte</h1><p>计算机中一个电子元件的状态是1bit（通或不通），而人设的规定存储信息的<strong>最小单元</strong>是一个字节即 8 个 bit，即1byte。<br>这里byte的意义有两种：</p>
+<p>它组合是：<br>00000000-11111111<br>被解释为10进制的0-256（2^8次方）种变化的信息量。</p>
+<h1 id="数的规则"><a href="#数的规则" class="headerlink" title="数的规则"></a>数的规则</h1><p>主要围绕着二进制如何被解释为数，或者反向的数如何用二进制来表达。</p>
+<h2 id="数分配的存储资源大小"><a href="#数分配的存储资源大小" class="headerlink" title="数分配的存储资源大小"></a>数分配的存储资源大小</h2><p>Java中八种基本数据类型：short、int、long、float、double、boolean、byte、char。每种类型都按传统规定了存储在计算机当中占据空间的大小，好比限定了装载这些数的盒子。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2018/09/10/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80%E3%80%91%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%B8%8E%E6%95%B0%E3%80%81%E5%AD%97/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1116,113 +1218,6 @@
 
 <p>我这个，几乎是全网回答最直接的了。毕竟是我亲测！</p>
 
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://windanchaos.github.io/2018/01/23/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%EF%BC%88SLB%EF%BC%89%E4%BD%BF%E7%94%A8%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%E2%80%94%E2%80%94%E4%B8%80%E7%AF%87%E9%9B%86%E5%90%88%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E4%B8%BB%E8%A6%81%E5%86%85%E5%AE%B9%E7%9A%84%E6%96%87%E7%AB%A0/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="windanchaos">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Hexo">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2018/01/23/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%EF%BC%88SLB%EF%BC%89%E4%BD%BF%E7%94%A8%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%E2%80%94%E2%80%94%E4%B8%80%E7%AF%87%E9%9B%86%E5%90%88%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E4%B8%BB%E8%A6%81%E5%86%85%E5%AE%B9%E7%9A%84%E6%96%87%E7%AB%A0/" class="post-title-link" itemprop="url">负载均衡（SLB）使用最佳实践——一篇集合负载均衡主要内容的文章</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2018-01-23 17:31:01" itemprop="dateCreated datePublished" datetime="2018-01-23T17:31:01+08:00">2018-01-23</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2021-06-08 18:39:48" itemprop="dateModified" datetime="2021-06-08T18:39:48+08:00">2021-06-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/Linux%E7%AE%A1%E7%90%86%E7%BB%B4%E6%8A%A4/" itemprop="url" rel="index"><span itemprop="name">Linux管理维护</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>本文转自：<a target="_blank" rel="noopener" href="https://yq.aliyun.com/articles/80055">https://yq.aliyun.com/articles/80055</a></p>
-<p>可以加深目前生产环境和测试环境中nginx使用的理解。</p>
-<h1 id="负载均衡（SLB）使用最佳实践"><a href="#负载均衡（SLB）使用最佳实践" class="headerlink" title="负载均衡（SLB）使用最佳实践"></a>负载均衡（SLB）使用最佳实践</h1><p><em>摘要：</em> 负载均衡（Server Load Balancer，下文简称 SLB）的引入，可以降低单台云服务器 ECS（下文简称 ECS）出现异常时对业务的冲击，提升业务的可用性。同时，结合弹性伸缩服务，通过动态调整后端服务器，可以快速对业务进行弹性调整（扩容或缩容），以快速应对业务的发展。<br>负载均衡（Server Load Balancer，下文简称 SLB）的引入，可以降低单台云服务器 ECS（下文简称 ECS）出现异常时对业务的冲击，提升业务的可用性。同时，结合弹性伸缩服务，通过动态调整后端服务器，可以快速对业务进行弹性调整（扩容或缩容），以快速应对业务的发展。</p>
-<p>本文，会先对 SLB 的使用限制和常见误区进行说明，然后介绍 SLB 的使用最佳实践。</p>
-<h1 id="SLB-基础原理"><a href="#SLB-基础原理" class="headerlink" title="SLB 基础原理"></a>SLB 基础原理</h1><p>在开始使用 SLB 之前，建议您务必阅读如下文章，了解 SLB 的相关基础原理：</p>
-<ul>
-<li><a target="_blank" rel="noopener" href="https://help.aliyun.com/knowledge_detail/39444.html">负载均衡技术原理浅析</a></li>
-<li><a target="_blank" rel="noopener" href="https://help.aliyun.com/knowledge_detail/39455.html">负载均衡健康检查原理浅析</a></li>
-<li><a target="_blank" rel="noopener" href="https://help.aliyun.com/knowledge_detail/39440.html">负载均衡网络流量路径说明</a></li>
-<li><a target="_blank" rel="noopener" href="https://help.aliyun.com/knowledge_detail/39449.html">负载均衡高可用概要说明</a></li>
-</ul>
-<h1 id="SLB-使用限制"><a href="#SLB-使用限制" class="headerlink" title="SLB 使用限制"></a>SLB 使用限制</h1><p>在使用 SLB 进行业务部署之前，请您务必了解 SLB 的相关使用限制，以免对后续使用造成困扰或对业务造成影响。</p>
-<h2 id="产品与业务规格限制"><a href="#产品与业务规格限制" class="headerlink" title="产品与业务规格限制"></a>产品与业务规格限制</h2><p>SLB 的相关资源或功能存在限制，部分可以通过提交工单申请调整。部分则没有例外，无法调整。详细说明，可以参阅 <a target="_blank" rel="noopener" href="https://help.aliyun.com/document_detail/32459.html"><em>SLB 使用限制</em>。</a></p>
-<p>另外，后续阿里云会推出性能保障型实例，对实例性能提供保障，用户可配置和查询其具体的性能指标，并可查看其实时运行数据。相关说明可以参阅 <a target="_blank" rel="noopener" href="https://help.aliyun.com/document_detail/27657.html"><em>产品文档</em>。</a></p>
-<h2 id="技术限制"><a href="#技术限制" class="headerlink" title="技术限制"></a>技术限制</h2><p>SLB 在技术层面还在逐步增强和完善，截止本文发稿，还存在如下技术限制：</p>
-<h1 id="SLB-常见误区"><a href="#SLB-常见误区" class="headerlink" title="SLB 常见误区"></a>SLB 常见误区</h1><p>从历史案例看，用户在 SLB 的规划和使用过程中有很多常见误区。接下来逐一说明。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2018/01/23/%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%EF%BC%88SLB%EF%BC%89%E4%BD%BF%E7%94%A8%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%E2%80%94%E2%80%94%E4%B8%80%E7%AF%87%E9%9B%86%E5%90%88%E8%B4%9F%E8%BD%BD%E5%9D%87%E8%A1%A1%E4%B8%BB%E8%A6%81%E5%86%85%E5%AE%B9%E7%9A%84%E6%96%87%E7%AB%A0/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
       
     </div>
 
