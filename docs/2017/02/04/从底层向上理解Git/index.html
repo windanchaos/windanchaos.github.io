@@ -1,271 +1,13 @@
-<!DOCTYPE html>
-<html lang="zh">
-<head>
-  <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width">
-<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 6.3.0">
+<!DOCTYPE html><html lang="zh"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><title>从底层向上理解Git | Hexo</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=1.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/latest/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/latest/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/latest/grids-responsive-min.min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/latest/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><script type="text/javascript" src="//lib.baomitu.com/clipboard.js/latest/clipboard.min.js"></script><script type="text/javascript" src="//lib.baomitu.com/toastr.js/latest/toastr.min.js"></script><link rel="stylesheet" href="//lib.baomitu.com/toastr.js/latest/toastr.min.css"><div class="darkmode-toggle">🌓</div><script>var prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
+var toggle = document.querySelector('.darkmode-toggle');
+var html = document.querySelector('html');
 
+html.dataset.dark = localStorage.dark || prefersDarkMode.matches;
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
-  <link rel="mask-icon" href="/images/logo.svg" color="#222">
-
-<link rel="stylesheet" href="/css/main.css">
-
-
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha256-AbA177XfpSnFEvgpYu1jMygiLabzPCJCRIBtR5jGc0k=" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
-
-<script class="next-config" data-name="main" type="application/json">{"hostname":"windanchaos.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.13.1","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":{"enable":false,"style":null},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":true,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
-
-    <meta name="description" content="首先我在自己的github上新建里一个干净的git项目，命名为gitobject我将项目克隆到我的本地： 1234567$ git clone https:&#x2F;&#x2F;github.com&#x2F;windanchaos&#x2F;gitobject.gitCloning into &amp;#x27;gitobject&amp;#x27;...remote: Counting objects: 6, done.remote: Compr">
-<meta property="og:type" content="article">
-<meta property="og:title" content="从底层向上理解Git">
-<meta property="og:url" content="https://windanchaos.github.io/2017/02/04/%E4%BB%8E%E5%BA%95%E5%B1%82%E5%90%91%E4%B8%8A%E7%90%86%E8%A7%A3Git/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="首先我在自己的github上新建里一个干净的git项目，命名为gitobject我将项目克隆到我的本地： 1234567$ git clone https:&#x2F;&#x2F;github.com&#x2F;windanchaos&#x2F;gitobject.gitCloning into &amp;#x27;gitobject&amp;#x27;...remote: Counting objects: 6, done.remote: Compr">
-<meta property="og:locale">
-<meta property="og:image" content="https://windanchaos.github.io/images/-book-en-v2-images-data-model-1-.png">
-<meta property="og:image" content="https://windanchaos.github.io/images/-book-en-v2-images-data-model-2-.png">
-<meta property="og:image" content="https://windanchaos.github.io/images/-book-en-v2-images-data-model-3-.png">
-<meta property="og:image" content="https://windanchaos.github.io/images/-book-en-v2-images-data-model-4-.png">
-<meta property="article:published_time" content="2017-02-04T14:11:23.000Z">
-<meta property="article:modified_time" content="2021-06-08T10:39:48.789Z">
-<meta property="article:author" content="windanchaos">
-<meta property="article:tag" content="FromCSDN">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://windanchaos.github.io/images/-book-en-v2-images-data-model-1-.png">
-
-
-<link rel="canonical" href="https://windanchaos.github.io/2017/02/04/%E4%BB%8E%E5%BA%95%E5%B1%82%E5%90%91%E4%B8%8A%E7%90%86%E8%A7%A3Git/">
-
-
-
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"https://windanchaos.github.io/2017/02/04/%E4%BB%8E%E5%BA%95%E5%B1%82%E5%90%91%E4%B8%8A%E7%90%86%E8%A7%A3Git/","path":"2017/02/04/从底层向上理解Git/","title":"从底层向上理解Git"}</script>
-
-<script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>从底层向上理解Git | Hexo</title>
-  
-
-
-
-
-
-
-  <noscript>
-    <link rel="stylesheet" href="/css/noscript.css">
-  </noscript>
-</head>
-
-<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
-  <div class="headband"></div>
-
-  <main class="main">
-    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-container">
-  <div class="site-nav-toggle">
-    <div class="toggle" aria-label="Toggle navigation bar" role="button">
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-        <span class="toggle-line"></span>
-    </div>
-  </div>
-
-  <div class="site-meta">
-
-    <a href="/" class="brand" rel="start">
-      <i class="logo-line"></i>
-      <p class="site-title">Hexo</p>
-      <i class="logo-line"></i>
-    </a>
-  </div>
-
-  <div class="site-nav-right">
-    <div class="toggle popup-trigger">
-    </div>
-  </div>
-</div>
-
-
-
-<nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-首页"><a href="/" rel="section"><i class="home fa-fw"></i>首页</a></li><li class="menu-item menu-item-分类"><a href="/categories/" rel="section"><i class="th fa-fw"></i>分类</a></li><li class="menu-item menu-item-归档"><a href="/archives/" rel="section"><i class="archive fa-fw"></i>归档</a></li><li class="menu-item menu-item-标签"><a href="/tags/" rel="section"><i class="tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-关于"><a href="/about/me.html" rel="section"><i class="user fa-fw"></i>关于</a></li>
-  </ul>
-</nav>
-
-
-
-
-</div>
-        
-  
-  <div class="toggle sidebar-toggle" role="button">
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-    <span class="toggle-line"></span>
-  </div>
-
-  <aside class="sidebar">
-
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
-      <ul class="sidebar-nav">
-        <li class="sidebar-nav-toc">
-          Table of Contents
-        </li>
-        <li class="sidebar-nav-overview">
-          Overview
-        </li>
-      </ul>
-
-      <div class="sidebar-panel-container">
-        <!--noindex-->
-        <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Git%E7%9A%84%E5%87%A0%E7%B1%BB%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.</span> <span class="nav-text">Git的几类对象</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Git-%E7%9A%84%E6%95%B0%E6%8D%AE%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.1.</span> <span class="nav-text">Git 的数据对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Git%E7%9A%84%E6%A0%91%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.2.</span> <span class="nav-text">Git的树对象</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%8F%90%E4%BA%A4%E5%AF%B9%E8%B1%A1"><span class="nav-number">1.3.</span> <span class="nav-text">提交对象</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Git-%E5%BC%95%E7%94%A8"><span class="nav-number">2.</span> <span class="nav-text">Git 引用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HEAD-%E5%BC%95%E7%94%A8"><span class="nav-number">2.1.</span> <span class="nav-text">HEAD 引用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A0%87%E7%AD%BE%E5%BC%95%E7%94%A8"><span class="nav-number">2.2.</span> <span class="nav-text">标签引用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%BF%9C%E7%A8%8B%E5%BC%95%E7%94%A8"><span class="nav-number">2.3.</span> <span class="nav-text">远程引用</span></a></li></ol></li></ol></div>
-        </div>
-        <!--/noindex-->
-
-        <div class="site-overview-wrap sidebar-panel">
-          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="windanchaos"
-      src="/images/avatar.jpeg">
-  <p class="site-author-name" itemprop="name">windanchaos</p>
-  <div class="site-description" itemprop="description"></div>
-</div>
-<div class="site-state-wrap site-overview-item animated">
-  <nav class="site-state">
-      <div class="site-state-item site-state-posts">
-        <a href="/archives/">
-          <span class="site-state-item-count">112</span>
-          <span class="site-state-item-name">posts</span>
-        </a>
-      </div>
-      <div class="site-state-item site-state-categories">
-          <a href="/categories/">
-        <span class="site-state-item-count">16</span>
-        <span class="site-state-item-name">categories</span></a>
-      </div>
-      <div class="site-state-item site-state-tags">
-          <a href="/tags/">
-        <span class="site-state-item-count">1</span>
-        <span class="site-state-item-name">tags</span></a>
-      </div>
-  </nav>
-</div>
-  <div class="links-of-author site-overview-item animated">
-      <span class="links-of-author-item">
-        <a href="https://github.com/windanchaos" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="github fa-fw"></i>GitHub</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="https://gitee.com/windanchaos" title="Gitee → https:&#x2F;&#x2F;gitee.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="gitee fa-fw"></i>Gitee</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="mailto:454722630@qq.com" title="E-Mail → mailto:454722630@qq.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i>E-Mail</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="https://weibo.com/windanchaos" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;windanchaos" rel="noopener" target="_blank"><i class="weibo fa-fw"></i>Weibo</a>
-      </span>
-      <span class="links-of-author-item">
-        <a href="https://blog.csdn.net/windanchaos" title="CSDN → https:&#x2F;&#x2F;blog.csdn.net&#x2F;windanchaos" rel="noopener" target="_blank"><i class="CSDN fa-fw"></i>CSDN</a>
-      </span>
-  </div>
-  <div class="cc-license site-overview-item animated" itemprop="license">
-    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
-  </div>
-
-
-
-        </div>
-      </div>
-    </div>
-  </aside>
-  <div class="sidebar-dimmer"></div>
-
-
-    </header>
-
-    
-  <div class="back-to-top" role="button" aria-label="Back to top">
-    <i class="fa fa-arrow-up"></i>
-    <span>0%</span>
-  </div>
-
-<noscript>
-  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
-</noscript>
-
-
-    <div class="main-inner post posts-expand">
-
-
-  
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
-    <link itemprop="mainEntityOfPage" href="https://windanchaos.github.io/2017/02/04/%E4%BB%8E%E5%BA%95%E5%B1%82%E5%90%91%E4%B8%8A%E7%90%86%E8%A7%A3Git/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.jpeg">
-      <meta itemprop="name" content="windanchaos">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="从底层向上理解Git | Hexo">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          从底层向上理解Git
-        </h1>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2017-02-04 22:11:23" itemprop="dateCreated datePublished" datetime="2017-02-04T22:11:23+08:00">2017-02-04</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2021-06-08 18:39:48" itemprop="dateModified" datetime="2021-06-08T18:39:48+08:00">2021-06-08</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/" itemprop="url" rel="index"><span itemprop="name">持续集成</span></a>
-        </span>
-    </span>
-
-  
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-        <p>首先我在自己的github上新建里一个干净的git项目，命名为gitobject我将项目克隆到我的本地：</p>
+toggle.addEventListener('click', () => {
+localStorage.dark = !(html.dataset.dark == 'true');
+html.dataset.dark = localStorage.dark;
+});</script><meta name="generator" content="Hexo 6.3.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">从底层向上理解Git</h1><a id="logo" href="/.">Hexo</a><p class="description"></p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> Start</i></a><a href="/archives/"><i class="fa fa-archive"> Archiv</i></a><a href="/about/me.html"><i class="fa fa-user"> Über</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">从底层向上理解Git</h1><div class="post-meta">2017-02-04<span> | </span><span class="category"><a href="/categories/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/">持续集成</a></span><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> Hits</span></span></div><a class="disqus-comment-count" href="/2017/02/04/%E4%BB%8E%E5%BA%95%E5%B1%82%E5%90%91%E4%B8%8A%E7%90%86%E8%A7%A3Git/#vcomment"><span class="valine-comment-count" data-xid="/2017/02/04/%E4%BB%8E%E5%BA%95%E5%B1%82%E5%90%91%E4%B8%8A%E7%90%86%E8%A7%A3Git/"></span><span> Comment</span></a><div class="post-content"><p>首先我在自己的github上新建里一个干净的git项目，命名为gitobject我将项目克隆到我的本地：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ git clone <span class="attr">https</span>:<span class="comment">//github.com/windanchaos/gitobject.git</span></span><br><span class="line"><span class="title class_">Cloning</span> into <span class="string">&#x27;gitobject&#x27;</span>...</span><br><span class="line"><span class="attr">remote</span>: <span class="title class_">Counting</span> <span class="attr">objects</span>: <span class="number">6</span>, done.</span><br><span class="line"><span class="attr">remote</span>: <span class="title class_">Compressing</span> <span class="attr">objects</span>: <span class="number">100</span>% (<span class="number">2</span>/<span class="number">2</span>), done.</span><br><span class="line"><span class="attr">remote</span>: <span class="title class_">Total</span> <span class="number">6</span> (delta <span class="number">0</span>), reused <span class="number">0</span> (delta <span class="number">0</span>), pack-reused <span class="number">0</span></span><br><span class="line"><span class="title class_">Unpacking</span> <span class="attr">objects</span>: <span class="number">100</span>% (<span class="number">6</span>/<span class="number">6</span>), done.</span><br><span class="line"><span class="title class_">Checking</span> connectivity... done.</span><br></pre></td></tr></table></figure>
 
 <p>当在一个新目录或已有目录执行 git init 时，Git 会创建一个 .git 目录。 这个目录包含了几乎所有 Git 存储和操作的对象。 如若想备份或复制一个版本库，只需把这个目录拷贝至另一处即可。该目录的结构如下所示：</p>
@@ -302,7 +44,7 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git cat-file -p e74f263e7c2c38273b72e29a95f10bb7e0340f3f</span><br><span class="line"><span class="number">100644</span> blob fcd8df65cbc4d6014863d5fac3206803543b116a    simplegit.<span class="property">rb</span></span><br><span class="line">$ git cat-file -p fcd8df65cbc4d6014863d5fac3206803543b116a</span><br><span class="line">lib text</span><br></pre></td></tr></table></figure>
 
 <p>从概念上讲，Git 内部存储的数据有点像这样：</p>
-<p><img data-src="/images/-book-en-v2-images-data-model-1-.png" alt="这里写图片描述"></p>
+<p><img src="/images/-book-en-v2-images-data-model-1-.png" alt="这里写图片描述"></p>
 <p>你可以轻松创建自己的树对象。 通常，Git 根据某一时刻暂存区（即 index 区域，下同）所表示的状态创建并记录一个对应的树对象，如此重复便可依次记录（某个时间段内）一系列的树对象。 因此，为创建一个树对象，首先需要通过暂存一些文件来创建一个暂存区。 可以通过底层命令 update-index 为一个单独文件——我们的 readme.md 文件的首个版本——创建一个暂存区。 利用该命令，可以把 readme.md 文件的首个版本人为地加入一个新的暂存区。 必须为上述命令指定 –add 选项，因为此前该文件并不在暂存区中；同样必需的还有 –cacheinfo 选项，因为将要添加的文件位于 Git 数据库中，而不是位于当前目录下。 同时，需要指定文件模式、SHA-1 与文件名：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git update-index --add --cacheinfo <span class="number">100644</span> \</span><br><span class="line">  83baae61804e65cc73a7201a7252750c76066a30 readme.<span class="property">txt</span></span><br></pre></td></tr></table></figure>
 
@@ -322,7 +64,7 @@
 <p>我们注意到，新的树对象包含两条文件记录，同时 test.txt 的 SHA-1 值（1f7a7a）是先前值的“第二版”。 只是为了好玩：你可以将第一个树对象加入第二个树对象，使其成为新的树对象的一个子目录。 通过调用 read-tree 命令，可以把树对象读入暂存区。 本例中，可以通过对 read-tree 指定 –prefix 选项，将一个已有的树对象作为子树读入暂存区：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ git read-tree --prefix=bak d8329fc1cc938780ffdd9f94e0d364e0ea74f579</span><br><span class="line">$ git write-tree</span><br><span class="line">3c4e9cd789d88d8d89c1073707c3585e41b0e614</span><br><span class="line">$ git cat-file -p 3c4e9cd789d88d8d89c1073707c3585e41b0e614</span><br><span class="line"><span class="number">040000</span> tree d8329fc1cc938780ffdd9f94e0d364e0ea74f579      bak</span><br><span class="line"><span class="number">100644</span> blob fa49b077972391ad58037050f2a75f74e3671e92      <span class="keyword">new</span>.<span class="property">txt</span></span><br><span class="line"><span class="number">100644</span> blob 1f7a7a472abf3dd9643fd615f6da379c4acb3e3a      test.<span class="property">txt</span></span><br></pre></td></tr></table></figure>
 
-<p>如果基于这个新的树对象创建一个工作目录，你会发现工作目录的根目录包含两个文件以及一个名为 bak 的子目录，该子目录包含 test.txt 文件的第一个版本。 可以认为 Git 内部存储着的用于表示上述结构的数据是这样的：<br><img data-src="/images/-book-en-v2-images-data-model-2-.png" alt="这里写图片描述"></p>
+<p>如果基于这个新的树对象创建一个工作目录，你会发现工作目录的根目录包含两个文件以及一个名为 bak 的子目录，该子目录包含 test.txt 文件的第一个版本。 可以认为 Git 内部存储着的用于表示上述结构的数据是这样的：<br><img src="/images/-book-en-v2-images-data-model-2-.png" alt="这里写图片描述"></p>
 <h2 id="提交对象"><a href="#提交对象" class="headerlink" title="提交对象"></a>提交对象</h2><p>现在有三个树对象，分别代表了我们想要跟踪的不同项目快照。然而问题依旧：若想重用这些快照，你必须记住所有三个 SHA-1 哈希值。 并且，你也完全不知道是谁保存了这些快照，在什么时刻保存的，以及为什么保存这些快照。 而以上这些，正是提交对象（commit object）能为你保存的基本信息。</p>
 <p>可以通过调用 commit-tree 命令创建一个提交对象，为此需要指定一个树对象的 SHA-1 值，以及该提交的父提交对象（如果有的话）。 我们从之前创建的第一个树对象开始：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ echo <span class="string">&#x27;first commit&#x27;</span> | git commit-tree d8329f</span><br><span class="line">fdf4fc3344e67ab068f836878b6c4951e3b15f3d</span><br></pre></td></tr></table></figure>
@@ -340,7 +82,7 @@
 <p>太神奇了： 就在刚才，你没有借助任何上层命令，仅凭几个底层操作便完成了一个 Git 提交历史的创建。 这就是每次我们运行 git add 和 git commit 命令时， Git 所做的实质工作——将被改写的文件保存为数据对象，更新暂存区，记录树对象，最后创建一个指明了顶层树对象和父提交的提交对象。 这三种主要的 Git 对象——数据对象、树对象、提交对象——最初均以单独文件的形式保存在 .git&#x2F;objects 目录下。 下面列出了目前示例目录内的所有对象，辅以各自所保存内容的注释：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$ find .<span class="property">git</span>/objects -type f</span><br><span class="line">.<span class="property">git</span>/objects/<span class="number">01</span>/55eb4229851634a0f03eb265b69f5a2d56f341 # tree <span class="number">2</span></span><br><span class="line">.<span class="property">git</span>/objects/1a/410efbd13591db07496601ebc7a059dd55cfe9 # commit <span class="number">3</span></span><br><span class="line">.<span class="property">git</span>/objects/1f/7a7a472abf3dd9643fd615f6da379c4acb3e3a # test.<span class="property">txt</span> v2</span><br><span class="line">.<span class="property">git</span>/objects/3c/4e9cd789d88d8d89c1073707c3585e41b0e614 # tree <span class="number">3</span></span><br><span class="line">.<span class="property">git</span>/objects/<span class="number">83</span>/baae61804e65cc73a7201a7252750c76066a30 # test.<span class="property">txt</span> v1</span><br><span class="line">.<span class="property">git</span>/objects/ca/c0cab538b970a37ea1e769cbbde608743bc96d # commit <span class="number">2</span></span><br><span class="line">.<span class="property">git</span>/objects/d6/70460b4b4aece5915caf5c68d12f560a9fe3e4 # <span class="string">&#x27;test content&#x27;</span></span><br><span class="line">.<span class="property">git</span>/objects/d8/329fc1cc938780ffdd9f94e0d364e0ea74f579 # tree <span class="number">1</span></span><br><span class="line">.<span class="property">git</span>/objects/fa/49b077972391ad58037050f2a75f74e3671e92 # <span class="keyword">new</span>.<span class="property">txt</span></span><br><span class="line">.<span class="property">git</span>/objects/fd/f4fc3344e67ab068f836878b6c4951e3b15f3d # commit <span class="number">1</span></span><br></pre></td></tr></table></figure>
 
-<p>如果跟踪所有的内部指针，将得到一个类似下面的对象关系图：<br><img data-src="/images/-book-en-v2-images-data-model-3-.png" alt="这里写图片描述"></p>
+<p>如果跟踪所有的内部指针，将得到一个类似下面的对象关系图：<br><img src="/images/-book-en-v2-images-data-model-3-.png" alt="这里写图片描述"></p>
 <h1 id="Git-引用"><a href="#Git-引用" class="headerlink" title="Git 引用"></a>Git 引用</h1><p>我们可以借助类似于 git log 1a410e 这样的命令来浏览完整的提交历史，但为了能遍历那段历史从而找到所有相关对象，你仍须记住 1a410e 是最后一个提交。 我们需要一个文件来保存 SHA-1 值，并给文件起一个简单的名字，然后用这个名字指针来替代原始的 SHA-1 值。</p>
 <p>在 Git 里，这样的文件被称为“引用（references，或缩写为 refs）”；你可以在 .git&#x2F;refs 目录下找到这类含有 SHA-1 值的文件。 在目前的项目中，这个目录没有包含任何文件，但它包含了一个简单的目录结构：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ find .<span class="property">git</span>/refs/</span><br><span class="line">.<span class="property">git</span>/refs/</span><br><span class="line">.<span class="property">git</span>/refs/tags</span><br><span class="line">.<span class="property">git</span>/refs/heads</span><br><span class="line">.<span class="property">git</span>/refs/heads/master</span><br><span class="line">.<span class="property">git</span>/refs/remotes</span><br><span class="line">.<span class="property">git</span>/refs/remotes/origin</span><br><span class="line">.<span class="property">git</span>/refs/remotes/origin/<span class="variable constant_">HEAD</span></span><br></pre></td></tr></table></figure>
@@ -353,7 +95,7 @@
 <p>这个分支将只包含从第二个提交开始往前追溯的记录：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git log --pretty=oneline test</span><br><span class="line">9b8d924eb8a9beaa43e8090c9d4e0a225aa4ce3a <span class="title class_">Initial</span> commit</span><br></pre></td></tr></table></figure>
 
-<p>至此，我们的 Git 数据库从概念上看起来像这样：<br><img data-src="/images/-book-en-v2-images-data-model-4-.png" alt="这里写图片描述"><br>包含分支引用的 Git 目录对象。<br>Figure 152. 包含分支引用的 Git 目录对象。</p>
+<p>至此，我们的 Git 数据库从概念上看起来像这样：<br><img src="/images/-book-en-v2-images-data-model-4-.png" alt="这里写图片描述"><br>包含分支引用的 Git 目录对象。<br>Figure 152. 包含分支引用的 Git 目录对象。</p>
 <p>当运行类似于 git branch (branchname) 这样的命令时，Git 实际上会运行 update-ref 命令，取得当前所在分支最新提交对应的 SHA-1 值，并将其加入你想要创建的任何新引用中。</p>
 <h2 id="HEAD-引用"><a href="#HEAD-引用" class="headerlink" title="HEAD 引用"></a>HEAD 引用</h2><p>现在的问题是，当你执行 git branch (branchname) 时，Git 如何知道最新提交的 SHA-1 值呢？ 答案是 HEAD 文件。</p>
 <p>HEAD 文件是一个符号引用（symbolic reference），指向目前所在的分支。 所谓符号引用，意味着它并不像普通引用那样包含一个 SHA-1 值——它是一个指向其他引用的指针。 如果查看 HEAD 文件的内容，一般而言我们看到的类似这样：</p>
@@ -373,89 +115,27 @@
 <p>$ git symbolic-ref HEAD test<br>fatal: Refusing to point HEAD outside of refs&#x2F;</p>
 <h2 id="标签引用"><a href="#标签引用" class="headerlink" title="标签引用"></a>标签引用</h2><p>前文我们刚讨论过 Git 的三种主要对象类型，事实上还有第四种。 标签对象（tag object）非常类似于一个提交对象——它包含一个标签创建者信息、一个日期、一段注释信息，以及一个指针。 主要的区别在于，标签对象通常指向一个提交对象，而不是一个树对象。 它像是一个永不移动的分支引用——永远指向同一个提交对象，只不过给这个提交对象加上一个更友好的名字罢了。这里就不深究了。</p>
 <h2 id="远程引用"><a href="#远程引用" class="headerlink" title="远程引用"></a>远程引用</h2><p>我们将看到的第三种引用类型是远程引用（remote reference）。 如果你添加了一个远程版本库并对其执行过推送操作，Git 会记录下最近一次推送操作时每一个分支所对应的值，并保存在 refs&#x2F;remotes 目录下。 例如，你可以添加一个叫做 origin 的远程版本库，然后把 master 分支推送上去：</p>
-<p><a href="mailto:&#x67;&#105;&#116;&#x72;&#101;&#x6d;&#x6f;&#x74;&#x65;&#97;&#100;&#100;&#111;&#x72;&#105;&#x67;&#x69;&#110;&#x67;&#105;&#116;&#64;&#x67;&#105;&#x74;&#104;&#x75;&#x62;&#46;&#x63;&#x6f;&#109;">&#x67;&#105;&#116;&#x72;&#101;&#x6d;&#x6f;&#x74;&#x65;&#97;&#100;&#100;&#111;&#x72;&#105;&#x67;&#x69;&#110;&#x67;&#105;&#116;&#64;&#x67;&#105;&#x74;&#104;&#x75;&#x62;&#46;&#x63;&#x6f;&#109;</a>:schacon&#x2F;simplegit−progit.git git push origin master<br>Counting objects: 11, done.<br>Compressing objects: 100% (5&#x2F;5), done.<br>Writing objects: 100% (7&#x2F;7), 716 bytes, done.<br>Total 7 (delta 2), reused 4 (delta 1)<br>To <a href="mailto:&#x67;&#x69;&#x74;&#64;&#x67;&#105;&#x74;&#x68;&#117;&#98;&#x2e;&#99;&#111;&#x6d;">&#x67;&#x69;&#x74;&#64;&#x67;&#105;&#x74;&#x68;&#117;&#98;&#x2e;&#99;&#111;&#x6d;</a>:schacon&#x2F;simplegit-progit.git<br>a11bef0..ca82a6d master -&gt; master</p>
+<p><a href="mailto:&#x67;&#105;&#x74;&#x72;&#101;&#x6d;&#111;&#116;&#101;&#97;&#100;&#100;&#x6f;&#114;&#105;&#x67;&#105;&#110;&#103;&#x69;&#116;&#x40;&#x67;&#105;&#116;&#104;&#x75;&#x62;&#x2e;&#x63;&#x6f;&#x6d;">&#x67;&#105;&#x74;&#x72;&#101;&#x6d;&#111;&#116;&#101;&#97;&#100;&#100;&#x6f;&#114;&#105;&#x67;&#105;&#110;&#103;&#x69;&#116;&#x40;&#x67;&#105;&#116;&#104;&#x75;&#x62;&#x2e;&#x63;&#x6f;&#x6d;</a>:schacon&#x2F;simplegit−progit.git git push origin master<br>Counting objects: 11, done.<br>Compressing objects: 100% (5&#x2F;5), done.<br>Writing objects: 100% (7&#x2F;7), 716 bytes, done.<br>Total 7 (delta 2), reused 4 (delta 1)<br>To <a href="mailto:&#103;&#x69;&#x74;&#x40;&#x67;&#105;&#116;&#104;&#x75;&#98;&#46;&#99;&#111;&#109;">&#103;&#x69;&#x74;&#x40;&#x67;&#105;&#116;&#104;&#x75;&#98;&#46;&#99;&#111;&#109;</a>:schacon&#x2F;simplegit-progit.git<br>a11bef0..ca82a6d master -&gt; master</p>
 <p>此时，如果查看 refs&#x2F;remotes&#x2F;origin&#x2F;master 文件，可以发现 origin 远程版本库的 master 分支所对应的 SHA-1 值，就是最近一次与服务器通信时本地 master 分支所对应的 SHA-1 值：</p>
 <p>$ cat .git&#x2F;refs&#x2F;remotes&#x2F;origin&#x2F;master<br>ca82a6dff817ec66f44342007202690a93763949</p>
 <p>远程引用和分支（位于 refs&#x2F;heads 目录下的引用）之间最主要的区别在于，远程引用是只读的。 虽然可以 git checkout 到某个远程引用，但是 Git 并不会将 HEAD 引用指向该远程引用。因此，你永远不能通过 commit 命令来更新远程引用。 Git 将这些远程引用作为记录远程服务器上各分支最后已知位置状态的书签来管理。</p>
 <p>本文内容及截图节选自：<a target="_blank" rel="noopener" href="https://git-scm.com/book/zh/v2">https://git-scm.com/book/zh/v2</a></p>
-
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/FromCSDN/" rel="tag"># FromCSDN</a>
-          </div>
-
-        
-
-          <div class="post-nav">
-            <div class="post-nav-item">
-                <a href="/2017/02/03/infer%E8%BF%90%E7%94%A8%E5%AE%9E%E8%B7%B5/" rel="prev" title="infer运用实践">
-                  <i class="fa fa-chevron-left"></i> infer运用实践
-                </a>
-            </div>
-            <div class="post-nav-item">
-                <a href="/2017/02/06/Splinter%E5%B8%B8%E7%94%A8api/" rel="next" title="Splinter常用api">
-                  Splinter常用api <i class="fa fa-chevron-right"></i>
-                </a>
-            </div>
-          </div>
-    </footer>
-  </article>
-</div>
-
-
-
-
-
-
-</div>
-  </main>
-
-  <footer class="footer">
-    <div class="footer-inner">
-
-  <div class="beian"><a href="https://beian.miit.gov.cn/" rel="noopener" target="_blank">蜀ICP备19036728号 </a>
-      <img src="/images/%E5%A4%87%E6%A1%88%E5%9B%BE%E6%A0%87.png" alt=""><a href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=51012202000611" rel="noopener" target="_blank">川公网安备 51012202000611号 </a>
-  </div>
-
-<div class="copyright">
-  &copy; 
-  <span itemprop="copyrightYear">2022</span>
-  <span class="with-love">
-    <i class="fa fa-dragon"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">windanchaos</span>
-</div>
-
-    </div>
-  </footer>
-
-  
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.5.0/pjax.min.js" integrity="sha256-3NkoLDrmHLTYj7csHIZSr0MHAFTXth7Ua/DDt4MRUAg=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script><script src="/js/pjax.js"></script>
-
-  
-
-
-
-
-
-  
-
-
-
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
-  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":"enable","archive":"enable","delay":true,"timeout":3000,"priority":true,"url":"https://windanchaos.github.io/2017/02/04/%E4%BB%8E%E5%BA%95%E5%B1%82%E5%90%91%E4%B8%8A%E7%90%86%E8%A7%A3Git/"}</script>
-  <script src="/js/third-party/quicklink.js"></script>
-
-</body>
-</html>
+</div><div class="tags"><a href="/tags/FromCSDN"><i class="fa fa-tag">FromCSDN</i></a></div><div class="post-nav"><a class="pre" href="/2017/02/06/Splinter%E5%B8%B8%E7%94%A8api/">Splinter常用api</a><a class="next" href="/2017/02/03/infer%E8%BF%90%E7%94%A8%E5%AE%9E%E8%B7%B5/">infer运用实践</a></div><div id="vcomment"></div><script src="//cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'false' == 'true' ? true : false;
+var verify = 'false' == 'true' ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'0indNw0niJU8jN2a1E43bDW7-gzGzoHsz',
+  appKey:'toErPcjDI3431WvXQVKoy0rC',
+  placeholder:'Just so so',
+  avatar:'mm',
+  guest_info:guest_info,
+  pageSize:'10'
+})
+</script></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" target="_blank"><input type="search" name="word" maxlength="20" placeholder="Search"/><input type="hidden" name="si" value="https://windanchaos.github.io"/><input name="tn" type="hidden" value="bds"/><input name="cl" type="hidden" value="3"/><input name="ct" type="hidden" value="2097152"/><input name="s" type="hidden" value="on"/></form></div><div class="widget"><div class="author-info"><a class="info-avatar" href="/about/" title="Über"><img src="/images/avatar.jpeg"/></a><p>物有本末，事有终始。知所先后，则近道矣！</p><a class="info-icon" href="https://blog.csdn.net/windanchaos" title="CSDN" target="_blank" style="margin-inline:5px"> <i class="fa fa-CSDN-square" style="margin-inline:5px"></i></a><a class="info-icon" href="mailto:454522630@qq.com" title="Email" target="_blank" style="margin-inline:5px"> <i class="fa fa-envelope-square" style="margin-inline:5px"></i></a><a class="info-icon" href="https://github.com/windanchaos" title="Github" target="_blank" style="margin-inline:5px"> <i class="fa fa-github-square" style="margin-inline:5px"></i></a><a class="info-icon" href="https://gitee.com/windanchaos" title="Gitee" target="_blank" style="margin-inline:5px"> <i class="fa fa-gitee-square" style="margin-inline:5px"></i></a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> Kategorien</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">Java编程语言</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux%E7%AE%A1%E7%90%86%E7%BB%B4%E6%8A%A4/">Linux管理维护</a><span class="category-list-count">21</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93/">MySQL数据库</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">python编程语言</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6%E5%92%8C%E6%8A%80%E6%9C%AF/">前端框架和技术</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6%E5%92%8C%E6%8A%80%E6%9C%AF/">后端框架和技术</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/">性能测试</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/">持续集成</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%96%B9%E6%B3%95%E4%B8%8E%E7%AE%A1%E7%90%86/">方法与管理</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E6%96%87/">杂文</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8B%E8%AF%95%E7%9A%84%E6%A1%86%E6%9E%B6%E5%92%8C%E6%8A%80%E6%9C%AF/">测试的框架和技术</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB%E5%A4%A7%E6%9D%82%E7%83%A9/">生活大杂烩</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%82%A1%E7%A5%A8%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93/">股票量化交易</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/">自动化测试</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E5%9F%BA%E7%A1%80/">计算机科学基础</a><span class="category-list-count">10</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> Tags</i></div><div class="tagcloud"><a href="/tags/FromCSDN/" style="font-size: 15px;">FromCSDN</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> Letzte</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2022/10/11/JDK%E4%B8%ADJUC%E5%8C%85%E7%94%B1%E6%B5%85%E5%85%A5%E6%B7%B1%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94atomic%E5%8C%85/">JDK中JUC包由浅入深原理——atomic包</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/06/22/ELF%E5%AD%A6%E4%B9%A0%E4%B8%80/">ELF学习一</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/06/07/SpringBoot%E4%B9%8B%E5%8D%9A%E5%AE%A2%E5%AE%9E%E6%88%98/">SpringBoot之博客实战</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/17/shell%E4%B8%89%E5%89%91%E5%AE%A2%E5%AE%9E%E6%88%98/">shell三剑客实战</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/16/mybatis%E5%85%A5%E4%B8%AA%E9%97%A8/">mybatis入个门</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/23/SpringBoot%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97%E4%B8%80/">SpringBoot入门系列一</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/23/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E4%BA%8C/">Java多线程编程核心技术读书笔记二</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/20/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E4%B8%80/">Java多线程编程核心技术读书笔记一</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/19/Spring%E6%A1%86%E6%9E%B6%E5%85%A5%E4%B8%AA%E9%97%A8/">Spring框架入个门</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/16/java%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/">java动态代理</a></li></ul></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2022 <a href="/." rel="nofollow">Hexo.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=1.0.0" async></script><script type="text/javascript" src="//lib.baomitu.com/fancybox/latest/jquery.fancybox.min.js"></script><script type="text/javascript" src="/js/fancybox.js?v=1.0.0"></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/latest/jquery.fancybox.min.css"><script type="text/javascript" src="/js/copycode.js?v=1.0.0" successtext="Copy Successed!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css?v=1.0.0"><script type="text/javascript" src="/js/codeblock-resizer.js?v=1.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=1.0.0"></script></div></body></html>
