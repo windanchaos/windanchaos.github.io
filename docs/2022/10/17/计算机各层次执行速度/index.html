@@ -1,0 +1,353 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta http-equiv="content-type" content="text/html; charset=utf-8"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="description" content=""><title>计算机各层次执行速度 | windanchaos</title><link rel="stylesheet" type="text/css" href="/css/style.css?v=1.0.0"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/normalize/latest/normalize.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/latest/pure-min.min.css"><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/pure/latest/grids-responsive-min.min.css"><link rel="stylesheet" href="//lib.baomitu.com/font-awesome/4.7.0/css/font-awesome.min.css"><script type="text/javascript" src="//lib.baomitu.com/jquery/latest/jquery.min.js"></script><link rel="icon" mask="" sizes="any" href="/favicon.ico"><link rel="Shortcut Icon" type="image/x-icon" href="/favicon.ico"><link rel="apple-touch-icon" href="/apple-touch-icon.png"><link rel="apple-touch-icon-precomposed" href="/apple-touch-icon.png"><script type="text/javascript" src="//lib.baomitu.com/clipboard.js/latest/clipboard.min.js"></script><script type="text/javascript" src="//lib.baomitu.com/toastr.js/latest/toastr.min.js"></script><link rel="stylesheet" href="//lib.baomitu.com/toastr.js/latest/toastr.min.css"><div class="darkmode-toggle">🌓</div><script>var prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)');
+var toggle = document.querySelector('.darkmode-toggle');
+var html = document.querySelector('html');
+
+html.dataset.dark = localStorage.dark || prefersDarkMode.matches;
+
+toggle.addEventListener('click', () => {
+localStorage.dark = !(html.dataset.dark == 'true');
+html.dataset.dark = localStorage.dark;
+});</script><meta name="generator" content="Hexo 6.3.0"></head><body><div class="body_container"><div id="header"><div class="site-name"><h1 class="hidden">计算机各层次执行速度</h1><a id="logo" href="/.">windanchaos</a><p class="description">知行合一</p></div><div id="nav-menu"><a class="current" href="/."><i class="fa fa-home"> 首页</i></a><a href="/archives/"><i class="fa fa-archive"> 归档</i></a><a href="/about/me.html"><i class="fa fa-user"> 关于</i></a></div></div><div class="pure-g" id="layout"><div class="pure-u-1 pure-u-md-3-4"><div class="content_container"><div class="post"><h1 class="post-title">计算机各层次执行速度</h1><div class="post-meta">2022-10-17<span> | </span><span class="category"><a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E5%9F%BA%E7%A1%80/">计算机科学基础</a></span><script src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" async></script><span id="busuanzi_container_page_pv"> | <span id="busuanzi_value_page_pv"></span><span> 阅读</span></span></div><a class="disqus-comment-count" href="/2022/10/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%90%84%E5%B1%82%E6%AC%A1%E6%89%A7%E8%A1%8C%E9%80%9F%E5%BA%A6/#vcomment"><span class="valine-comment-count" data-xid="/2022/10/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%90%84%E5%B1%82%E6%AC%A1%E6%89%A7%E8%A1%8C%E9%80%9F%E5%BA%A6/"></span><span> 条评论</span></a><div class="post-content"><p>计算机系统的内部设计、各类应用架构无不是受此影响。</p>
+<p>比如：为了平衡CPU速度不断提升，但是内存频率没有同步提升带来的协同问题，CPU从没有片内缓存到L1、L2、L3相继出现。又比如，网络多IO请求磁盘速度无法满足要求，催生了redis缓存。</p>
+<h1 id="计算机存储体系"><a href="#计算机存储体系" class="headerlink" title="计算机存储体系"></a>计算机存储体系</h1><p><img src="/Users/boy/Code/windanchaos.github.io/source/images/fcf9514b-c8da-4d68-960a-61430476f7e0.png" alt="fcf9514b-c8da-4d68-960a-61430476f7e0"><br>图：《深入理解计算机系统》<br>时间和空间局部性原理 决定了上一层级做下一层级的缓存；</p>
+<h1 id="计算机各层次速度表"><a href="#计算机各层次速度表" class="headerlink" title="计算机各层次速度表"></a>计算机各层次速度表</h1><table>
+<thead>
+<tr>
+<th>序号</th>
+<th>存储英文名称</th>
+<th>存储中文名称</th>
+<th>容量</th>
+<th>时间（纳秒）</th>
+<th>微秒</th>
+<th>毫秒</th>
+<th>CPU时钟周期数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>CPU寄存器</td>
+<td></td>
+<td>几十~几百KB</td>
+<td>0.5</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>
+<tr>
+<td>2</td>
+<td>L1 cache reference</td>
+<td>读取CPU一级缓存</td>
+<td>几十~几百KB</td>
+<td>0.5</td>
+<td></td>
+<td></td>
+<td>1</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Branch mispredict</td>
+<td>(转移、分支预测) 比如:if</td>
+<td></td>
+<td>5</td>
+<td></td>
+<td></td>
+<td>10</td>
+</tr>
+<tr>
+<td>4</td>
+<td>L2 cache reference</td>
+<td>读取CPU的二级缓存</td>
+<td>几百KB~几MB</td>
+<td>7</td>
+<td></td>
+<td></td>
+<td>14</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Mutex lock&#x2F;unlock</td>
+<td>互斥锁\解锁</td>
+<td></td>
+<td>25</td>
+<td></td>
+<td></td>
+<td>50</td>
+</tr>
+<tr>
+<td>6</td>
+<td>Main memory reference</td>
+<td>内存引用（找到内存地址）</td>
+<td>几百MB~几GB</td>
+<td>100</td>
+<td>0.1</td>
+<td></td>
+<td>200</td>
+</tr>
+<tr>
+<td>7</td>
+<td>Compress 1K bytes with Zippy</td>
+<td>使用Zippy压缩1K字节数据</td>
+<td></td>
+<td>3000</td>
+<td>3</td>
+<td></td>
+<td>6000</td>
+</tr>
+<tr>
+<td>8</td>
+<td>Send 1K bytes over 1 Gbps network</td>
+<td>在1Gbps的网络上发送1k字节</td>
+<td></td>
+<td>10,000</td>
+<td>10</td>
+<td>0.01</td>
+<td>40000</td>
+</tr>
+<tr>
+<td>9</td>
+<td>Read 4K randomly from SSD</td>
+<td>SSD磁盘随机读4k</td>
+<td></td>
+<td>150,000</td>
+<td>150</td>
+<td>0.15</td>
+<td>300,000</td>
+</tr>
+<tr>
+<td>10</td>
+<td>Read 1 MB sequentially from memory</td>
+<td>从内存顺序读取1MB</td>
+<td></td>
+<td>250,000</td>
+<td>250</td>
+<td>0.25</td>
+<td>500000</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Round trip within same datacenter</td>
+<td>从一个数据中心往返一次，ping一下</td>
+<td></td>
+<td>500,000</td>
+<td>500</td>
+<td>0.5</td>
+<td>1000,000</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Disk seek</td>
+<td>磁盘搜索</td>
+<td>几百GB~几TB</td>
+<td>10,000,000</td>
+<td>10,000</td>
+<td>1</td>
+<td>20,000,000</td>
+</tr>
+<tr>
+<td>13</td>
+<td>Read 1 MB sequentially from network</td>
+<td>从网络上顺序读取1兆的数据</td>
+<td></td>
+<td>10,000,000</td>
+<td>10,000</td>
+<td>1</td>
+<td>20,000,000</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Read 1 MB sequentially from SSD</td>
+<td>从SSD磁盘顺序读出1MB</td>
+<td></td>
+<td>30,000,000</td>
+<td>30,000</td>
+<td>3</td>
+<td>60,000,000</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Send packet CA-&gt;Netherlands-&gt;CA</td>
+<td>一个包的一次远程访问</td>
+<td></td>
+<td>150,000,000</td>
+<td>150,000</td>
+<td>15</td>
+<td>300,000,000</td>
+</tr>
+</tbody></table>
+<p>表引自（有修改）：<a target="_blank" rel="noopener" href="https://gist.github.com/jboner/2841832">https://gist.github.com/jboner/2841832</a><br>寄存器速度等于CPU时钟周期，表假设CPU的1次晶振频率0.5纳秒，对应CPU2.0GHz。</p>
+<p>原表格：</p>
+<table>
+<thead>
+<tr>
+<th><strong>Name</strong></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>L1 cache reference</td>
+<td>0.5</td>
+<td>ns</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Branch mispredict</td>
+<td>5</td>
+<td>ns</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>L2 cachereference</td>
+<td>7</td>
+<td>ns</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>14x L1 cache</td>
+</tr>
+<tr>
+<td>Mutex lock&#x2F;unlock</td>
+<td>25</td>
+<td>ns</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Main memory reference</td>
+<td>100</td>
+<td>ns</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>20x L2 cache, 200x L1 cache</td>
+</tr>
+<tr>
+<td>Compress 1K bytes with Zippy</td>
+<td>3,000</td>
+<td>ns</td>
+<td>3</td>
+<td>us</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Send 1K bytes over 1 Gb ps network</td>
+<td>10,000</td>
+<td>ns</td>
+<td>10</td>
+<td>us</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Read 4K randomly from SSD</td>
+<td>150,000</td>
+<td>ns</td>
+<td>150</td>
+<td>us</td>
+<td></td>
+<td></td>
+<td>~1GB&#x2F;sec SSD</td>
+</tr>
+<tr>
+<td>Read 1 MB sequentially from memory</td>
+<td>250,000</td>
+<td>ns</td>
+<td>250</td>
+<td>us</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Round trip within same datacenter</td>
+<td>500,000</td>
+<td>ns</td>
+<td>500</td>
+<td>us</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Read 1 MB sequentially from SSD</td>
+<td>1,000,000</td>
+<td>ns</td>
+<td>1,000</td>
+<td>us</td>
+<td>1</td>
+<td>ms</td>
+<td>~1GB&#x2F;sec SSD, 4X memory</td>
+</tr>
+<tr>
+<td>Disk seek</td>
+<td>10,000,000</td>
+<td>ns</td>
+<td>10,000</td>
+<td>us</td>
+<td>10</td>
+<td>ms</td>
+<td>20x datacenter roundtrip</td>
+</tr>
+<tr>
+<td>Read 1 MB sequentially</td>
+<td>20,000,000</td>
+<td>ns</td>
+<td>20,000</td>
+<td>us</td>
+<td>20</td>
+<td>ms</td>
+<td>80x memory, 20X SSD</td>
+</tr>
+<tr>
+<td>Send pack et CA-&gt;Netherlands-&gt;CA</td>
+<td>150,000,000</td>
+<td>ns</td>
+<td>150,000</td>
+<td>us</td>
+<td>150</td>
+<td>ms</td>
+<td></td>
+</tr>
+</tbody></table>
+<p>注：本文首次发表在testerhome，搬移过来。</p>
+<p>地址：<a target="_blank" rel="noopener" href="https://testerhome.com/topics/34071">https://testerhome.com/topics/34071</a></p>
+</div><div class="tags"><a href="/tags/计算机基础"><i class="fa fa-tag">计算机基础</i></a><a href="/tags/testerhome"><i class="fa fa-tag">testerhome</i></a></div><div class="post-nav"><a class="next" href="/2022/10/11/JDK%E4%B8%ADJUC%E5%8C%85%E7%94%B1%E6%B5%85%E5%85%A5%E6%B7%B1%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94atomic%E5%8C%85/">JDK中JUC包由浅入深原理——atomic包</a></div><div id="vcomment"></div><script src="//cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'false' == 'true' ? true : false;
+var verify = 'false' == 'true' ? true : false;
+var GUEST_INFO = ['nick','mail','link'];
+var guest_info = 'nick,mail,link'.split(',').filter(function(item){
+  return GUEST_INFO.indexOf(item) > -1
+});
+guest_info = guest_info.length == 0 ? GUEST_INFO :guest_info;
+window.valine = new Valine({
+  el:'#vcomment',
+  notify:notify,
+  verify:verify,
+  appId:'0indNw0niJU8jN2a1E43bDW7-gzGzoHsz',
+  appKey:'toErPcjDI3431WvXQVKoy0rC',
+  placeholder:'Just so so',
+  avatar:'mm',
+  guest_info:guest_info,
+  pageSize:'10'
+})
+</script></div></div></div><div class="pure-u-1-4 hidden_mid_and_down"><div id="sidebar"><div class="widget"><form class="search-form" action="//www.baidu.com/baidu" method="get" accept-charset="utf-8" target="_blank"><input type="search" name="word" maxlength="20" placeholder="Search"/><input type="hidden" name="si" value="https://windanchaos.github.io"/><input name="tn" type="hidden" value="bds"/><input name="cl" type="hidden" value="3"/><input name="ct" type="hidden" value="2097152"/><input name="s" type="hidden" value="on"/></form></div><div class="widget"><div class="author-info"><a class="info-avatar" href="/about/" title="关于"><img src="/images/avatar.jpeg"/></a><p>物有本末，事有终始。知所先后，则近道矣！</p><a class="info-icon" href="https://blog.csdn.net/windanchaos" title="CSDN" target="_blank" style="margin-inline:5px"> <i class="fa fa-CSDN-square" style="margin-inline:5px"></i></a><a class="info-icon" href="mailto:454522630@qq.com" title="Email" target="_blank" style="margin-inline:5px"> <i class="fa fa-envelope-square" style="margin-inline:5px"></i></a><a class="info-icon" href="https://github.com/windanchaos" title="Github" target="_blank" style="margin-inline:5px"> <i class="fa fa-github-square" style="margin-inline:5px"></i></a><a class="info-icon" href="https://gitee.com/windanchaos" title="Gitee" target="_blank" style="margin-inline:5px"> <i class="fa fa-gitee-square" style="margin-inline:5px"></i></a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-folder-o"> 分类</i></div><ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Java%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">Java编程语言</a><span class="category-list-count">15</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux%E7%AE%A1%E7%90%86%E7%BB%B4%E6%8A%A4/">Linux管理维护</a><span class="category-list-count">21</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL%E6%95%B0%E6%8D%AE%E5%BA%93/">MySQL数据库</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/">python编程语言</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6%E5%92%8C%E6%8A%80%E6%9C%AF/">前端框架和技术</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%90%8E%E7%AB%AF%E6%A1%86%E6%9E%B6%E5%92%8C%E6%8A%80%E6%9C%AF/">后端框架和技术</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%80%A7%E8%83%BD%E6%B5%8B%E8%AF%95/">性能测试</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%8C%81%E7%BB%AD%E9%9B%86%E6%88%90/">持续集成</a><span class="category-list-count">11</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/">数据结构与算法</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%96%B9%E6%B3%95%E4%B8%8E%E7%AE%A1%E7%90%86/">方法与管理</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%9D%82%E6%96%87/">杂文</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E6%B5%8B%E8%AF%95%E7%9A%84%E6%A1%86%E6%9E%B6%E5%92%8C%E6%8A%80%E6%9C%AF/">测试的框架和技术</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%94%9F%E6%B4%BB%E5%A4%A7%E6%9D%82%E7%83%A9/">生活大杂烩</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%82%A1%E7%A5%A8%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93/">股票量化交易</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%87%AA%E5%8A%A8%E5%8C%96%E6%B5%8B%E8%AF%95/">自动化测试</a><span class="category-list-count">19</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%E5%9F%BA%E7%A1%80/">计算机科学基础</a><span class="category-list-count">11</span></li></ul></div><div class="widget"><div class="widget-title"><i class="fa fa-star-o"> 标签</i></div><div class="tagcloud"><a href="/tags/FromCSDN/" style="font-size: 15px;">FromCSDN</a> <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80/" style="font-size: 15px;">计算机基础</a> <a href="/tags/testerhome/" style="font-size: 15px;">testerhome</a></div></div><div class="widget"><div class="widget-title"><i class="fa fa-file-o"> 最近文章</i></div><ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2022/10/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%90%84%E5%B1%82%E6%AC%A1%E6%89%A7%E8%A1%8C%E9%80%9F%E5%BA%A6/">计算机各层次执行速度</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/10/11/JDK%E4%B8%ADJUC%E5%8C%85%E7%94%B1%E6%B5%85%E5%85%A5%E6%B7%B1%E5%8E%9F%E7%90%86%E2%80%94%E2%80%94atomic%E5%8C%85/">JDK中JUC包由浅入深原理——atomic包</a></li><li class="post-list-item"><a class="post-list-link" href="/2022/06/22/ELF%E5%AD%A6%E4%B9%A0%E4%B8%80/">ELF学习一</a></li><li class="post-list-item"><a class="post-list-link" href="/2021/06/07/SpringBoot%E4%B9%8B%E5%8D%9A%E5%AE%A2%E5%AE%9E%E6%88%98/">SpringBoot之博客实战</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/05/17/shell%E4%B8%89%E5%89%91%E5%AE%A2%E5%AE%9E%E6%88%98/">shell三剑客实战</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/04/16/mybatis%E5%85%A5%E4%B8%AA%E9%97%A8/">mybatis入个门</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/23/SpringBoot%E5%85%A5%E9%97%A8%E7%B3%BB%E5%88%97%E4%B8%80/">SpringBoot入门系列一</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/23/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E4%BA%8C/">Java多线程编程核心技术读书笔记二</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/20/Java%E5%A4%9A%E7%BA%BF%E7%A8%8B%E7%BC%96%E7%A8%8B%E6%A0%B8%E5%BF%83%E6%8A%80%E6%9C%AF%E8%AF%BB%E4%B9%A6%E7%AC%94%E8%AE%B0%E4%B8%80/">Java多线程编程核心技术读书笔记一</a></li><li class="post-list-item"><a class="post-list-link" href="/2020/03/19/Spring%E6%A1%86%E6%9E%B6%E5%85%A5%E4%B8%AA%E9%97%A8/">Spring框架入个门</a></li></ul></div></div></div><div class="pure-u-1 pure-u-md-3-4"><div id="footer">Copyright © 2022 <a href="/." rel="nofollow">windanchaos.</a> Powered by<a rel="nofollow" target="_blank" href="https://hexo.io"> Hexo.</a><a rel="nofollow" target="_blank" href="https://github.com/tufu9441/maupassant-hexo"> Theme</a> by<a rel="nofollow" target="_blank" href="https://github.com/pagecho"> Cho.</a></div></div></div><a class="show" id="rocket" href="#top"></a><script type="text/javascript" src="/js/totop.js?v=1.0.0" async></script><script type="text/javascript" src="//lib.baomitu.com/fancybox/latest/jquery.fancybox.min.js"></script><script type="text/javascript" src="/js/fancybox.js?v=1.0.0"></script><link rel="stylesheet" type="text/css" href="//lib.baomitu.com/fancybox/latest/jquery.fancybox.min.css"><script type="text/javascript" src="/js/copycode.js?v=1.0.0" successtext="复制成功!"></script><link rel="stylesheet" type="text/css" href="/css/copycode.css?v=1.0.0"><script type="text/javascript" src="/js/codeblock-resizer.js?v=1.0.0"></script><script type="text/javascript" src="/js/smartresize.js?v=1.0.0"></script></div></body></html>
