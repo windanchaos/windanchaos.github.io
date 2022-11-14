@@ -47,29 +47,29 @@ category:
 
 - 锁存器，一种带有记忆功能的电路，只要复位不开启，那么上次的输入将持续输出。
 
-  ![Screen Shot 2022-11-12 at 19.42.35](../images/Screen Shot 2022-11-12 at 19.42.35.png)
+  ![Screen Shot 2022-11-12 at 19.42.35](/images/Screen Shot 2022-11-12 at 19.42.35.png)
 
 - 门锁（GATED LATCH)，是对锁存器的一种改进（姑且这么想），可记忆1个字节的数据
 
-  ![Screen Shot 2022-11-12 at 19.49.12](../images/Screen Shot 2022-11-12 at 19.49.12.png)
+  ![Screen Shot 2022-11-12 at 19.49.12](/images/Screen Shot 2022-11-12 at 19.49.12.png)
 
 - 门锁，矩阵排列（多路复用）组合成基本的存储单元（下图可存储256位）。
 
   矩阵基本单元电路：
 
-  ![Screen Shot 2022-11-12 at 20.04.04](../images/Screen Shot 2022-11-12 at 20.04.04.png)
+  ![Screen Shot 2022-11-12 at 20.04.04](/images/Screen Shot 2022-11-12 at 20.04.04.png)
 
   8位矩阵（4位定位行、4位定位列）：
 
-  ![Screen Shot 2022-11-12 at 20.01.47](../images/Screen Shot 2022-11-12 at 20.01.47.png)
+  ![Screen Shot 2022-11-12 at 20.01.47](/images/Screen Shot 2022-11-12 at 20.01.47.png)
 
 -  将上面的256 Bit的存储单元通过连线，可组合成byte，相同坐标的数值并起来为1byte。下图存储了256byte。
 
-  ![Screen Shot 2022-11-12 at 20.18.04](../images/Screen Shot 2022-11-12 at 20.18.04.png)
+  ![Screen Shot 2022-11-12 at 20.18.04](/images/Screen Shot 2022-11-12 at 20.18.04.png)
 
 - 再组合就成了内存基本寻址单元的RAM
 
-  ![Screen Shot 2022-11-12 at 20.20.57](../images/Screen Shot 2022-11-12 at 20.20.57.png)
+  ![Screen Shot 2022-11-12 at 20.20.57](/images/Screen Shot 2022-11-12 at 20.20.57.png)
 
 到这里，我们可以看到，计算机是一层一层网上排列组合，逐步抽象下一层的基本功单元来构建上一层的功能单元，和易经中的阴阳生万物是一个道理。
 
