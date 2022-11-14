@@ -1,0 +1,139 @@
+---
+title: 微信鉴权环境的内网部署方案
+author: windanchaos
+tags: 
+       - FromCSDN
+
+category: 
+       - Linux管理维护
+
+date: 2018-07-21 11:52:54
+---
+本文适用范围：
+一、微信开发相关业务，涉及到微信第三方开发者鉴权、公众号鉴权业务；
+二、没有固定IP的内网部署环境，尤其是测试环境。IP经常变动，导致鉴权失效。
+三、本文写作时尚未解决主动定时拉取token的问题（跳板机的正向代理）
+
+# 开放平台主动推送ticket到内网的解决办法
+
+解决方案核心思路：
+使用带有固定IP的外网服务器，此处称：跳板服务器，作为内网服务器的端口转发服务器。和鉴权有关的域名解析到该服务器。
+使用到的工具为nginx，具体的操作自己百度。
+脚本实现：
+1、内网一个服务器定时，30分钟获取一次外部IP地址，推送到跳板服务器的文本当中；
+```js 
+#!/bin/bash
+#设置环境变量
+source /etc/profile
+curl http:\/\/www.baidu.com\/s?wd\=ip|grep "本机IP"|awk -F "</span>" '{print $1}'|awk -F ";" '{print $2}' > ip.txt
+ip_local=`cat ip.txt`
+sshpass -p ${PASSWORD} ssh -p ${PORT}-tt root@IP "echo ${ip_local} > ip.txt"
+```
+
+获取本地IP的方法不止一种，我提供的是最复杂的。
+2、跳板服务器定时任务，30分钟获取一次文本中IP地址情况，同nginx中的配置进行比较，不相等则批量替换IP地址后reload配置。
+
+```js 
+#!/bin/bash
+#设置环境变量
+source /etc/profile
+newIP=`sed -n 1p /home/user/ip.txt`
+echo ${newIP}
+temp_old_IP=`grep proxy_pass /etc/nginx/conf.d/mk.conf |tail -n 1|awk -F ':' '{print $2}'`
+#echo $temp_old_IP
+old_IP=${temp_old_IP:2:${#temp_old_IP}}
+#echo ${old_IP}
+if [[ ${newIP} != ${old_IP} ]] && [[ -n ${newIP} ]]
+then
+        sed -i "s/${old_IP}/${newIP}/g" /etc/nginx/conf.d/mk-internal-T*conf
+<!-- more -->
+        cd /usr/sbin/
+        ./nginx -s reload
+        echo `date` 'New IP: ' ${newIP} >> /home/user/ip_logs.log
+else
+        echo `date` 'IP No Change: ' ${old_IP} >> /home/user/ip_logs.log
+fi
+```
+
+需要注意的是：
+1、内网路由器需支持虚拟服务器的配置，将路由器的外网端口映射给内网服务器。
+2、使用nginx的跳板服务器，需要**定时**获取到公司外部的IP地址变化，如发生变化则reload nginx的服务。我写了一个shell脚本，在内部测试服务器上运行，30分钟侦测一次外网IP，并将IP输入到跳板服务器上。跳板服务器，也定时去取这个IP并和nginx内的IP对比，不等就替换reload。
+3、内网服务器也可以部署nginx再转一次，做到内网一个端口多次使用，前提是跳板服务器过去的请求带上域名。
+4、如果链接带https，这个方案也是可行的。这里有一个坑，一般tomcat部署https，会把tomcat服务器端口在配置中redirect给443端口。这时候，就需要把这个redirect从tomcat配置中移走，让firewall去转发，否则从跳板过来的请求，会陷入死循环的redirect。（跳版443端口接收到请求，redirect给内网的外网IP—->映射给内网的tomcat端口—->redirect给tomcat的端口，如果tomcat再redirect给443，则会回到链路请求的开始，直到达到请求的限制次数）。
+
+# 内网主动拉取token设置IP白名单的问题
+
+最合理的解决方案自然是最底层的，服务器请求[https://open.weixin.qq.com/](https://open.weixin.qq.com/)的数据包走代理服务器（拥有固定IP），但是这种办法只是理论上，我们技术团队目前并没有找到具体如何操作（限于透出产出比较低）。
+我基于能力范围，找到IP变动导致的微信开放平台手动添加白名单的替代方法。
+思路：webdriver驱动浏览器，自动录入ip白名单。
+实现代码：
+```js 
+# -*- coding: utf-8 -*-
+# chromedriver同级目录下
+from splinter import Browser
+import datetime, time
+from urllib2 import urlopen
+import schedule
+
+def changIP(ip):
+    browser = Browser('chrome', )
+    browser.driver.set_window_size(1600, 1000)
+    browser.visit("https://open.weixin.qq.com/")
+    browser.find_by_id("loginBarBt").click()
+    browser.find_by_name("account").fill(u"${account}")
+    browser.find_by_name("passwd").fill(u"${password}")
+    browser.find_by_text("登录")[2].click()
+
+    # MK内网T6
+    browser.find_by_xpath("//*[@data-param='appid=wxfb1fb56deb2664a8']").click()
+    time.sleep(2)
+    browser.windows.current = browser.windows[1]
+    n = 200
+    while True:
+        browser.evaluate_script('window.scrollTo(0,%d)' % n)
+        if browser.is_element_present_by_id('js_fastmodify_ip'):
+            break
+
+    browser.find_by_id('js_fastmodify_ip').first.click()
+    time.sleep(1)
+    browser.find_by_xpath("/html/body/div[6]/div/div[2]/textarea").fill(u"%s" % ip)
+    browser.find_by_text('确定').click()
+    time.sleep(2)
+    # 关闭当前标签页
+    browser.driver.close()
+    browser.windows.current = browser.windows[0]
+
+    # 退出浏览器
+    browser.quit()
+#定时任务
+def job():
+    new_ip = urlopen('http://ip.42.pl/raw').read()
+    f = open('local_IP.txt', 'r')
+    old_ip_line = f.readlines()
+    f.close()
+    # 日志
+    log = open('local_IP_log.txt', 'a')
+    logtime = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+    for ip in old_ip_line:
+        old_ip = ip
+
+    if new_ip != old_ip:
+        logs=logtime+"=== IP change to " + new_ip + '\n'
+        log.write(logs)
+        log.close()
+        f = open('local_IP.txt', 'w')
+        f.write(new_ip)
+        f.close()
+        changIP(new_ip)
+    else:
+        logs=logtime+"=== IP do not change " + '\n'
+        log.write(logs)
+        log.close()
+if __name__ == '__main__':
+    schedule.every(15).minutes.do(job)
+    while True:
+        schedule.run_pending()
+        time.sleep(300)
+```
+
+代码示意，实际上我们内网维护了大概有4个公共平台，改四次，还是蛮划算的。

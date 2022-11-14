@@ -368,7 +368,7 @@ html.dataset.dark = localStorage.dark;
 <td>进程当前打开的文件</td>
 </tr>
 </tbody></table>
-<h2 id="进程状态模型"><a href="#进程状态模型" class="headerlink" title="进程状态模型"></a>进程状态模型</h2><p>这个网上说的很多，<br>直接盗图了,基于task_struct<br><img src="/images/linux_process_truct_state.png" alt="iamge"><br>基于开发者视角的盗图<br><img src="/images/linux_process_state.jpg" alt="iamge"></p>
+<h2 id="进程状态模型"><a href="#进程状态模型" class="headerlink" title="进程状态模型"></a>进程状态模型</h2><p>这个网上说的很多，<br>直接盗图了,基于task_struct<br><img src="http://image.windanchaos.tech/blog/linux_process_truct_state.png" alt="iamge"><br>基于开发者视角的盗图<br><img src="http://image.windanchaos.tech/blog/linux_process_state.jpg" alt="iamge"></p>
 <h2 id="进程的内存模型"><a href="#进程的内存模型" class="headerlink" title="进程的内存模型"></a>进程的内存模型</h2><p><img src="http://www.choudan.net/assets/img/linux_process_address_space_02.png" alt="image"><br>进程地址空间分为内核空间和用户空间　　</p>
 <p>因为每个进程可以通过系统调用进入内核，因此，Linux内核由系统内的所有进程共享。于是，从具体进程的角度来看，每个进程可以拥有4G字节的虚拟空间。</p>
 <ul>

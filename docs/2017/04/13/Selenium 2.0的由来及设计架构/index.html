@@ -15,7 +15,7 @@ html.dataset.dark = localStorage.dark;
 <p>·一些模拟用户输入的办法</p>
 <p>本节重点介绍第一部分：提供与DOM交互的机制。浏览器的办法是通过Javascript，所以看起来与DOM交互的理想语言也是它。虽然这种选择似乎显而易见，但是在考虑Javascript时需要平衡一些有趣的挑战和需求。</p>
 <p>像多数大型项目一样，Selenium使用了分层的库结构。底层是Google的Closure库，提供原语和模块化机制来协助源文件保持精简。在此之上，有一个实用工具库，提供的函数包括简单的任务，如获取某个属性值、判断某个元素是否对用户可见，还包括更加复杂的操作，如通过合成事件模拟用户点击。在项目中，这些被视为提供最小单元的浏览器自动化，因此称之为浏览器自动化原子（Browser Automation Atom）。最后，还有适配层来组合这些原子单元以满足WebDriver和Core的API协议。</p>
-<p><img src="/images/dn.net-20130817205048703-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvenp6bW1ta2tr-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png"></p>
+<p><img src="http://image.windanchaos.tech/blog/dn.net-20130817205048703-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvenp6bW1ta2tr-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png"></p>
 <p>图 3：Selenium Javascript库的层次结构</p>
 <p>选择Closure库基于几种原因。主要理由是Closure编译器理解库使用的模块化技术。Closure编译器的目标是输出Javascript。“编译”可以简单到按照依赖顺序查找输入文件、串联并漂亮的打印出来，也可能复杂到进行精细的改动和删除死代码。另一种不可否认的优势是团队中采用Javascript编程的几位成员对Closure库非常熟悉。</p>
 <p>当需要与DOM交互时，“原子”库的代码会被用于项目中的各个角落。对于RC和那些大部分由Javascript编写而成的driver来说，这些库被直接使用，通常编译为单个巨大的脚本。对于采用<a target="_blank" rel="noopener" href="http://lib.csdn.net/base/javase" title="Java SE知识库">Java</a>编写的driver，来自WebDriver适配层的各个函数在编译的时候会启用完整优化，生成的Javascript在JAR中作为资源包含进来。对于采用C语言编写的driver，如iPhone IE驱动，不仅各个函数被通过完整优化来编译，而且生成的输出文件被转换成定义在头文件中的常量，通过driver的正常Javascript执行机制来执行。虽然这看起来有些奇怪，但是这种做法使Javascript放在底层驱动中，无须在各处暴露原始的代码。</p>
@@ -63,7 +63,7 @@ html.dataset.dark = localStorage.dark;
 <p><a target="_blank" rel="noopener" href="http://localhost:7055/hub/session/XXX/element/some_opaque_id/attribute/row">http://localhost:7055/hub/session/XXX/element/some_opaque_id/attribute/row</a></p>
 <p>顺便说一句，webdriver的远程线协议最初是在与URL模板草案提出时同时开发的，我们以明确URL及URL模板的方案允许在一个URL里进行变量扩展（派生）。遗憾的是，虽然URL模板同时提出，我们只意识到他们相对晚了一天，因此他们不会被用作设计线协议。</p>
 <p>因为我们正执行的方法是idempotent4，正确的HTTP方法是使用get，我们委托一个能处理HTTP（Apache的HTTP客户端）来调用服务器的Java库。</p>
-<p><img src="/images/dn.net-20130817205030234-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvenp6bW1ta2tr-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png"></p>
+<p><img src="http://image.windanchaos.tech/blog/dn.net-20130817205030234-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvenp6bW1ta2tr-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png"></p>
 <p>Firefox driver被实现成一个Firefox扩展，它的基本设计如上图所示。有些不同寻常的是，它有一个嵌入式HTTP服务器，虽然最初我们使用我们自己创建的，在XPCOM上写的HTTP服务器并不是我们的核心竞争力之一，所以机会出现时，我们使用基本的由Mozilla自己写的HTTPD取代了它，HTTPD收到请求马上传递给调度对象。</p>
 <p>调度器接收请求并遍历一个已知支持的URL列表，尝试找到相匹配的请求，这种匹配完成了在客户端上的变量插值，一旦精确匹配到，包括使用的动作，JSON对象，就意味着在构造要执行的命令。我们的案例中看起来像：</p>
 <p>{</p>
@@ -119,7 +119,7 @@ html.dataset.dark = localStorage.dark;
 <p>所以，尽管C&#x2F;#是一种很有吸引力的编程语言，但不能选它。至少在与IE通信时，我们需要使用一些原生的东西。很自然的下一个选择就是C++,这也是我们最后选择的语言。使用C++有一个优势就是我们不需要使用PIA，但是它意味着我们需要重新发布Visual Studio C++ 运行的 DLL，除非我们静态链接他们。因为为了能使用那个DLL我们需要运行一个安装程序，链接类库与IE进行通信。</p>
 <p>如果不使用安装程序确实需要支付非常高的成本，但是，回想以前复杂的方案，为了让我们的用户更容易的使用是很值得投资的。结论就是我们对当前的工作重新评估，因为为了给用户带来好处，需要付出的是能给一个高级C++开源项目做贡献的人数看起来似乎比那些贡献于同样的C&#x2F;#项目的人要少。</p>
 <p>IE driver原始设计如下图：</p>
-<p><img src="/images/dn.net-20130825221212171-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvenp6bW1ta2tr-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png"></p>
+<p><img src="http://image.windanchaos.tech/blog/dn.net-20130825221212171-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvenp6bW1ta2tr-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png"></p>
 <p>从堆栈底你可以看到我们使用IE的COM自动化接口，为了在概念层面上更容易的应付，我们包装了这些原始的接口使用了一组C++类，深刻反映了主要的WebDriver API。为了获得与C++通信的的JAVA类，我们使用了JNI，通过COM接口的C++ 抽象的JNI方法实现。</p>
 <p>这种方法当JAVA是唯一的客户端语言时很适用，但是如果每种语言都需要改变底层类库的话,它就很痛苦且过于复杂。所以虽然JNI能起效，但是它不提供正确的抽象层。</p>
 <p>什么是正确的抽象层呢？每种语言，我们想支持的每种语言都有一种直接调用C代码的机制，在C&#x2F;#里，需要PInvoke的形式。在Ruby里是FFI，<a target="_blank" rel="noopener" href="http://lib.csdn.net/base/python" title="Python知识库">Python</a>是ctypes，而在JAVA里，有一个很棒的库JNI（JAVA Native Architecture）。我们需要使用最常用标准来开发API，通过我们的对象模型，扁平化，使用一个简单的两三个字母前缀表示主接口方法，WD代表WebDriver，wde代表WebDriver Element。因此WebDriver.get变成了wdGet，WebElement.getText成了wdeGetText。每个方法返回一个整数的状态码，out参数用于表示允许函数返回值，我们不再使用像这样的方法签名：</p>
@@ -134,10 +134,10 @@ html.dataset.dark = localStorage.dark;
 <p>return wrapper.getValue() &#x3D;&#x3D; null ? null : new StringWrapper(lib, wrapper).toString();</p>
 <p>}</p>
 <p>设计图如下：</p>
-<p><img src="/images/dn.net-20130825221246921-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvenp6bW1ta2tr-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png"></p>
+<p><img src="http://image.windanchaos.tech/blog/dn.net-20130825221246921-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvenp6bW1ta2tr-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png"></p>
 <p>所有的测试都在本地机上运行，这样子不错，但是一旦我们在远程WebDriver上使用IE driver时，就会随机锁定，我们跟踪过这个问题是因为IE 对COM自动化接口的限制。它们这么设计是用在单线程单元模式，本质上讲，归结到一个要求就是，我们每次在同一线程中调用这个接口。在本地运行时，默认情况就是这样。然而，Java 应用程序服务器，使用多个线程处理预期负载，结果呢？我们没有办法确保所有情况下是在同一线程里访问IE driver。</p>
 <p>对于这个问题的解决方案是将IE driver在单线程执行器里运行，在应用程序服务器里通过Futures序列化所有访问，一段时间内我们是这样设计的。但是，似乎在调用代码中如此复杂并不公平，很容易想象这样的情形，人们一不小心从多个线程中使用IE driver，我们决定降低driver本身的复杂性。在一个单独的线程中使用IE实例使用PostThreadMessage Win32 API 跨线程边界通信，因此，在写此文时，IE driver的设计看起来像下图：</p>
-<p><img src="/images/dn.net-20130825221313500-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvenp6bW1ta2tr-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png"></p>
+<p><img src="http://image.windanchaos.tech/blog/dn.net-20130825221313500-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvenp6bW1ta2tr-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png"></p>
 <p>这不是我们会自愿选择的那种设计，但是它具有可工作性和避免麻烦的优点，我们用户可能会选择它。</p>
 <p>这种设计的缺点是，它很难决定IE实例是否锁定它本身。当我们与DOM交互时如果一个对话框打开了，或者在线程边界的那一边发生了灾难性的失败，可能就出现了。因此我们发送每一个线程消息都会有一个timeout超时，我们设置为相对宽松的2分钟。从用户邮件反馈来看，这个假设大致如此，但并不正确，在IE driver更高版本里把超时时间做成了可配置的。</p>
 <p>另一个缺点是内部调试可以深入问题，但需要快递完成（毕竟，你只有两分钟时间尽可能的跟踪代码），随后跨线程使用断点以及了解期望的代码路径。不用讲，在一个开源项目里，有很多有趣的问题需要解决，很少有食欲。这显著的降低了系统的“巴士因素”，作为项目的维护者，这让我很担心。</p>
