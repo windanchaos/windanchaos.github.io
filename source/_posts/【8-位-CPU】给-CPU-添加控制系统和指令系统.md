@@ -5,6 +5,9 @@ category:
        - 计算机科学基础
 ---
 
+
+
+CPU计划完结散花:tada: :tada: :tada: 。
 # 核心
 给每个逻辑元件添加控制单元以达到，不同输入组合对应不同的输出。由于我们已实现了寄存器（一种能够记住1byte的单元），那么遍可以控制其允许输入/输出。
 不同的原件，同一时刻的允许输入输出状态就定义了当时单元和单元之间的关系，如A寄存器输出，B是输入，其他不设置，那么此刻完成了A寄存器向B寄存器传输数据的目的。如此类推。
@@ -154,6 +157,11 @@ OP_XOR = 6 << _OP_SHIFT
 OP_NOT = 7 << _OP_SHIFT
 ALU_OUT = 1 << 20
 ALU_PSW = 1 << 21
+ALU_INT_W = 1 << 22
+ALU_INT = 1 << 23
+
+ALU_STI = ALU_INT_W
+ALU_CLI = ALU_INT_W | ALU_INT
 
 # cyc标识当前指令执行完了，需要重置微程序的pc数
 CYC = 1 << 30
@@ -171,42 +179,94 @@ AM_REG = 1  # 寄存器
 AM_DIR = 2  # 内存直接寻址
 AM_RAM = 3  # 寄存器间接寻址
 
+
 ```
-## 控制器代码 pin
+## 控制器代码controller.py
 ```python
 # 控制器
 
 import os
 import assembly as ASM
 import pin
-dirname = os.path.dirname(__file__)
-filename =  os.path.join(dirname,'micro.bin')
-micro = [pin.HLT for _ in range(0x10000)]
 
-def compile_addr2(addr,ir,psw,index):
+dirname = os.path.dirname(__file__)
+filename = os.path.join(dirname, 'micro.bin')
+micro = [pin.HLT for _ in range(0x10000)]
+# 跳转转移指令
+CJMPS = {ASM.JO, ASM.JNO, ASM.JZ, ASM.JNZ, ASM.JP, ASM.JNP}
+
+
+def compile_addr2(addr, ir, psw, index):
     global micro
     # 操作
     op = ir & 0xf0
-    amd = (ir >> 2) & 3 # 3 = 011
+    amd = (ir >> 2) & 3  # 3 = 011
     ams = ir & 3
-    INST =  ASM.INSTRUCTIONS[2]
+    INST = ASM.INSTRUCTIONS[2]
     if op not in INST:
         micro[addr] = pin.CYC
         return
-    am =  (amd,ams)
+    am = (amd, ams)
     if am not in INST[op]:
         micro[addr] = pin.CYC
         return
     EXEC = INST[op][am]
     if index < len(EXEC):
-        micro[addr]= EXEC[index]
+        micro[addr] = EXEC[index]
     else:
         micro[addr] = pin.CYC
 
-def compile_addr1(addr,ir,psw,index):
-    pass
 
-def compile_addr0(addr,ir,psw,index):
+def get_condition_jump(exec, op, psw):
+    overflow = psw & 1
+    zero = psw & 2
+    parity = psw & 4
+    if op == ASM.JO and overflow:
+        return exec
+    if op == ASM.JNO and not overflow:
+        return exec
+    if op == ASM.JZ and zero:
+        return exec
+    if op == ASM.JNZ and not zero:
+        return exec
+    if op == ASM.JP and parity:
+        return exec
+    if op == ASM.JNP and not parity:
+        return exec
+    return [pin.CYC]
+
+
+def get_interrupt(exec, op, psw):
+    interrupt = psw & 8
+    if interrupt:
+        return exec
+    return [pin.CYC]
+
+
+def compile_addr1(addr, ir, psw, index):
+    global micro
+    global CJMPS
+    op = ir & 0xfc
+    amd = ir & 3
+    INST = ASM.INSTRUCTIONS[1]
+    if op not in INST:
+        micro[addr] = pin.CYC
+        return
+    if amd not in INST[op]:
+        micro[addr] = pin.CYC
+        return
+    EXEC = INST[op][amd]
+    if op in CJMPS:
+        EXEC = get_condition_jump(EXEC, op, psw)
+    if op == ASM.INT:
+        EXEC = get_interrupt(EXEC, op, psw)
+    if index < len(EXEC):
+        micro[addr] = EXEC[index]
+    else:
+        micro[addr] = pin.CYC
+
+
+def compile_addr0(addr, ir, psw, index):
     global micro
     # 操作
     op = ir
@@ -220,6 +280,7 @@ def compile_addr0(addr,ir,psw,index):
     else:
         micro[addr] = pin.CYC
 
+
 # 2^16次方是16进制的10000
 # for循环对下标就行遍历赋值，ROM列有16个，一行一条指令。
 # 16位组成:ir[8]+psw[4]+cyc[4],与运算高位和低位双截断
@@ -231,24 +292,24 @@ for addr in range(0x10000):
     if cyc < len(ASM.FETCH):
         micro[addr] = ASM.FETCH[cyc]
         continue
-    addr2 = ir & (1<<7)
-    addr1 = ir & (1<<6)
+    addr2 = ir & (1 << 7)
+    addr1 = ir & (1 << 6)
     # 取指令之后的index
     index = cyc - len(ASM.FETCH)
     if addr2:
-        compile_addr2(addr,ir,psw,index)
+        compile_addr2(addr, ir, psw, index)
     elif addr1:
-        compile_addr1(addr,ir,psw,index)
+        compile_addr1(addr, ir, psw, index)
     else:
-        compile_addr0(addr,ir,psw,index)
-with open(filename,'wb') as file:
+        compile_addr0(addr, ir, psw, index)
+with open(filename, 'wb') as file:
     for var in micro:
-        value =  var.to_bytes(4,byteorder='little')
-        print(str(value))
+        value = var.to_bytes(4, byteorder='little')
         file.write(value)
 print('micro instruction compile finished! ')
+
 ```
-## 程序代码
+## 程序代码 compiler.py
 主要完成汇编转机器码的工作
 ```python
 import os
@@ -264,16 +325,40 @@ outputFileName = os.path.join(dirname, 'program.bin')
 annotation = re.compile(r"(.*?);.*")
 # 代码
 codes = []
+# 标记，对应的代码
+marks = {}
 OP2 = {
     'MOV': ASM.MOV,
     'ADD': ASM.ADD,
+    'CMP': ASM.CMP,
+    'SUB': ASM.SUB,
+    'AND': ASM.AND,
+    'OR': ASM.OR,
+    'XOR': ASM.XOR,
 }
 OP1 = {
-
+    'INC': ASM.INC,
+    'DEC': ASM.DEC,
+    'NOT': ASM.NOT,
+    'JMP': ASM.JMP,
+    'JO': ASM.JO,
+    'JNO': ASM.JNO,
+    'JZ': ASM.JZ,
+    'JNZ': ASM.JNZ,
+    'JP': ASM.JP,
+    'JNP': ASM.JNP,
+    'PUSH': ASM.PUSH,
+    'POP': ASM.POP,
+    'CALL': ASM.CALL,
+    'INT': ASM.INT,
 }
 OP0 = {
     'NOP': ASM.NOP,
     'HLT': ASM.HLT,
+    'RET': ASM.RET,
+    'STI': ASM.STI,
+    'CLI': ASM.CLI,
+    'IRET': ASM.IRET,
 }
 
 OP2SET = set(OP2.values())
@@ -286,16 +371,27 @@ REGISTERS = {
     'B': pin.B,
     'C': pin.C,
     'D': pin.D,
+    'SS': pin.SS,
+    'CS': pin.CS,
+    'SP': pin.SP,
 }
 
 
 class Code(object):
-    def __init__(self, number, source: str):
+    # 代码
+    CODE = 1
+    # 标记
+    LABEL = 2
+
+    def __init__(self, number, source: str, code_type=CODE):
         self.number = number
         self.source = source.upper()
         self.op = None
         self.dst = None
         self.src = None
+        self.code_type = code_type
+        # 代码行
+        self.index = 0
         self.prepare_source()
 
     def get_op(self):
@@ -309,8 +405,12 @@ class Code(object):
 
     # 获取操作数类型和其操作值
     def get_am(self, addr):
+        global marks
         if not addr:
-            return 0, 0
+            return None, None
+        if addr in marks:
+            # 一行代码占3个字节
+            return pin.AM_INS, marks[addr].index * 3
         if addr in REGISTERS:
             return pin.AM_REG, REGISTERS[addr]
         if re.match(r'^[0-9]+$', addr):
@@ -329,11 +429,14 @@ class Code(object):
         match = re.match(r'^\[(.+)\]$', addr)
         if match and match.group(1) in REGISTERS:
             return pin.AM_RAM, REGISTERS[match.group(1)]
-        # 内存单元直接寻址，立即数写入内存单元
         raise SyntaxError(self)
 
     # 文本预处理，获取到指令-源操作数-目的操作数
     def prepare_source(self):
+        if self.source.endswith(":"):
+            self.type = self.LABEL
+            self.name = self.source.strip(':')
+            return
         # 逗号分割，如果大于2就是错误
         tup = self.source.split(',')
         if len(tup) > 2:
@@ -353,12 +456,16 @@ class Code(object):
         op = self.get_op()
         amd, dst = self.get_am(self.dst)
         ams, src = self.get_am(self.src)
-        if src and (amd, ams) not in ASM.INSTRUCTIONS[2][op]:
+        if src is not None and (amd, ams) not in ASM.INSTRUCTIONS[2][op]:
             raise SyntaxError(self)
-        if not src and dst and amd not in ASM.INSTRUCTIONS[1][op]:
+        if src is None and dst and amd not in ASM.INSTRUCTIONS[1][op]:
             raise SyntaxError(self)
-        if not src and not dst and op not in ASM.INSTRUCTIONS[0]:
+        if src is None and dst is None and op not in ASM.INSTRUCTIONS[0]:
             raise SyntaxError(self)
+        amd = amd or 0
+        ams = ams or 0
+        dst = dst or 0
+        src = src or 0
         if op in OP2SET:
             ir = op | (amd << 2) | ams
         elif op in OP1SET:
@@ -378,26 +485,50 @@ class SyntaxError(Exception):
 
 
 def compile_program():
+    global codes
+    global marks
     with open(inputFileName, encoding='utf8') as file:
         lines = file.readlines()
-
+    # 遍历行
     for index, line in enumerate(lines):
         # 去掉空格符
         source = line.strip()
-        # 去掉分号及后的备注
+        # 去掉分号及后的备注，分号就是标识代码用的（简版）,冒号是标识LAB的
         if ';' in source:
             match = annotation.match(source)
             source = match.group(1)
+            code = Code(index + 1, source)
+            codes.append(code)
+            continue
+        if source.endswith(":"):
+            codes.append(Code(index + 2, source, Code.LABEL))
+            continue
         if not source:
             continue
-        code = Code(index + 1, source)
-        codes.append(code)
+    result = []
+    current = None
+    # 从后往前遍历代码行
+    for var in range(len(codes) - 1, -1, -1):
+        code = codes[var]
+        if code.code_type == Code.CODE:
+            current = code
+            result.insert(0, code)
+            continue
+        if code.type == Code.LABEL:
+            # 这里指向的是code的引用，后边的遍历改index不影响
+            marks[code.name] = current
+            continue
+        raise SyntaxError(code)
+    # 更新索引index
+    for index, var in enumerate(result):
+        var.index = index
     with open(outputFileName, 'wb') as file:
-        for code in codes:
+        for code in result:
             values = code.compile_code()
             for value in values:
-                result = value.to_bytes(1, byteorder='little')
-                file.write(result)
+                if value is not None:
+                    result = value.to_bytes(1, byteorder='little')
+                    file.write(result)
 
 
 def main():
@@ -411,8 +542,9 @@ def main():
 if __name__ == '__main__':
     main()
 
+
 ```
-## 汇编解析代码
+## 汇编定义代码assembly.py
 主要定义，不同指令的电路组合状态。电路组合状态从管脚中定义的基本电路控制单元，或运算得到。
 ```python
 import pin
@@ -434,15 +566,43 @@ FETCH = [
 MOV = 0 | pin.ADDR2
 ADD = (1 << pin.ADDR2_SHIFT) | pin.ADDR2
 SUB = (2 << pin.ADDR2_SHIFT) | pin.ADDR2
+CMP = (3 << pin.ADDR2_SHIFT) | pin.ADDR2
+AND = (4 << pin.ADDR2_SHIFT) | pin.ADDR2
+OR = (5 << pin.ADDR2_SHIFT) | pin.ADDR2
+XOR = (6 << pin.ADDR2_SHIFT) | pin.ADDR2
 
 INC = (0 << pin.ADDR1_SHIFT) | pin.ADDR1
 DEC = (1 << pin.ADDR1_SHIFT) | pin.ADDR1
+NOT = (2 << pin.ADDR1_SHIFT) | pin.ADDR1
+JMP = (3 << pin.ADDR1_SHIFT) | pin.ADDR1
+# 条件转移
+# 溢出和非溢出
+JO = (4 << pin.ADDR1_SHIFT) | pin.ADDR1
+JNO = (5 << pin.ADDR1_SHIFT) | pin.ADDR1
+# 零和非0
+JZ = (6 << pin.ADDR1_SHIFT) | pin.ADDR1
+JNZ = (7 << pin.ADDR1_SHIFT) | pin.ADDR1
+# 奇数和非奇数
+JP = (8 << pin.ADDR1_SHIFT) | pin.ADDR1
+JNP = (9 << pin.ADDR1_SHIFT) | pin.ADDR1
+PUSH = (10 << pin.ADDR1_SHIFT) | pin.ADDR1
+POP = (11 << pin.ADDR1_SHIFT) | pin.ADDR1
+CALL = (12 << pin.ADDR1_SHIFT) | pin.ADDR1
+INT = (13 << pin.ADDR1_SHIFT) | pin.ADDR1
 
 # SUB = (2 << pin.ADDR2_SHIFT) | pin.ADDR2
 # SUB = (2 << pin.ADDR2_SHIFT) | pin.ADDR2
 # SUB = (2 << pin.ADDR2_SHIFT) | pin.ADDR2
+# 0操作数指令
 # 啥也不干
 NOP = 0
+RET = 1
+# 中断返回
+IRET = 2
+# 开中断
+STI = 3
+# 关中断
+CLI = 4
 # 停止
 HLT = 0x3f  # 111111
 
@@ -512,16 +672,294 @@ INSTRUCTIONS = {
                 pin.SRC_R | pin.B_IN,
                 pin.OP_ADD | pin.ALU_OUT | pin.DST_W | pin.ALU_PSW,
             ],
-        }
+        },
+        CMP: {
+            (pin.AM_REG, pin.AM_INS): [
+                pin.DST_R | pin.A_IN,
+                pin.SRC_OUT | pin.B_IN,
+                pin.OP_SUB | pin.ALU_PSW,
+            ],
+            (pin.AM_REG, pin.AM_REG): [
+                pin.DST_R | pin.A_IN,
+                pin.SRC_R | pin.B_IN,
+                pin.OP_SUB | pin.ALU_PSW,
+
+            ],
+        },
+        SUB: {
+            (pin.AM_REG, pin.AM_INS): [
+                pin.DST_R | pin.A_IN,
+                pin.SRC_OUT | pin.B_IN,
+                pin.OP_SUB | pin.ALU_OUT | pin.DST_W | pin.ALU_PSW
+            ],
+            (pin.AM_REG, pin.AM_REG): [
+                pin.DST_R | pin.A_IN,
+                pin.SRC_R | pin.B_IN,
+                pin.OP_SUB | pin.ALU_OUT | pin.DST_W | pin.ALU_PSW
+            ],
+        },
+        AND: {
+            (pin.AM_REG, pin.AM_INS): [
+                pin.DST_R | pin.A_IN,
+                pin.SRC_OUT | pin.B_IN,
+                pin.OP_AND | pin.ALU_OUT | pin.DST_W | pin.ALU_PSW
+            ],
+            (pin.AM_REG, pin.AM_REG): [
+                pin.DST_R | pin.A_IN,
+                pin.SRC_R | pin.B_IN,
+                pin.OP_AND | pin.ALU_OUT | pin.DST_W | pin.ALU_PSW
+            ],
+        },
+        OR: {
+            (pin.AM_REG, pin.AM_INS): [
+                pin.DST_R | pin.A_IN,
+                pin.SRC_OUT | pin.B_IN,
+                pin.OP_OR | pin.ALU_OUT | pin.DST_W | pin.ALU_PSW
+            ],
+            (pin.AM_REG, pin.AM_REG): [
+                pin.DST_R | pin.A_IN,
+                pin.SRC_R | pin.B_IN,
+                pin.OP_OR | pin.ALU_OUT | pin.DST_W | pin.ALU_PSW
+            ],
+        },
+        XOR: {
+            (pin.AM_REG, pin.AM_INS): [
+                pin.DST_R | pin.A_IN,
+                pin.SRC_OUT | pin.B_IN,
+                pin.OP_XOR | pin.ALU_OUT | pin.DST_W | pin.ALU_PSW
+            ],
+            (pin.AM_REG, pin.AM_REG): [
+                pin.DST_R | pin.A_IN,
+                pin.SRC_R | pin.B_IN,
+                pin.OP_XOR | pin.ALU_OUT | pin.DST_W | pin.ALU_PSW
+            ],
+        },
     },
-    1: {},
+    1: {
+        INC: {
+            pin.AM_REG: [
+                pin.DST_R | pin.A_IN,
+                pin.OP_INC | pin.ALU_OUT | pin.DST_W | pin.ALU_PSW
+            ],
+        },
+        DEC: {
+            pin.AM_REG: [
+                pin.DST_R | pin.A_IN,
+                pin.OP_DEC | pin.ALU_OUT | pin.DST_W | pin.ALU_PSW,
+            ],
+        },
+        NOT: {
+            pin.AM_REG: [
+                pin.DST_R | pin.A_IN,
+                pin.OP_NOT | pin.ALU_OUT | pin.DST_W | pin.ALU_PSW,
+            ],
+        },
+        JMP: {
+            # 立即数写入到PC
+            pin.AM_INS: [
+                pin.DST_OUT | pin.PC_IN
+            ],
+        },
+        JO: {
+            pin.AM_INS: [
+                pin.DST_OUT | pin.PC_IN
+            ],
+        },
+        JNO: {
+            pin.AM_INS: [
+                pin.DST_OUT | pin.PC_IN
+            ],
+        },
+        JZ: {
+            pin.AM_INS: [
+                pin.DST_OUT | pin.PC_IN
+            ],
+        },
+        JNZ: {
+            pin.AM_INS: [
+                pin.DST_OUT | pin.PC_IN
+            ],
+        },
+        JP: {
+            pin.AM_INS: [
+                pin.DST_OUT | pin.PC_IN
+            ],
+        },
+        JNP: {
+            pin.AM_INS: [
+                pin.DST_OUT | pin.PC_IN
+            ],
+        },
+        PUSH: {
+            pin.AM_INS: [
+                # 栈顶指针减一获取栈地址
+                pin.SP_OUT | pin.A_IN,
+                pin.SP_IN | pin.ALU_OUT | pin.OP_DEC,
+                pin.SP_OUT | pin.MAR_IN,
+                # 栈段地址送到MSR寄存器
+                pin.SS_OUT | pin.MSR_IN,
+                # 读取目的寄存器的值到RAM，地址由MSR+MAR
+                pin.DST_OUT | pin.RAM_IN,
+                # 恢复MSR到代码段
+                pin.CS_OUT | pin.MSR_IN,
+            ],
+            pin.AM_REG: [
+                # 栈顶指针减一获取栈地址
+                pin.SP_OUT | pin.A_IN,
+                pin.SP_IN | pin.ALU_OUT | pin.OP_DEC,
+                pin.SP_OUT | pin.MAR_IN,
+                # 栈段地址送到MSR寄存器
+                pin.SS_OUT | pin.MSR_IN,
+                # 读取目的寄存器的值到RAM，地址由MSR+MAR
+                pin.DST_R | pin.RAM_IN,
+                # 恢复MSR到代码段
+                pin.CS_OUT | pin.MSR_IN,
+            ],
+        },
+        POP: {
+            pin.AM_REG: [
+                # 栈段地址送到MSR寄存器
+                pin.SS_OUT | pin.MSR_IN,
+                pin.SP_OUT | pin.MAR_IN,
+                # RAM读取值到目的寄存器，地址由MSR+MAR
+                pin.DST_W | pin.RAM_OUT,
+                pin.SP_OUT | pin.A_IN,
+                pin.SP_IN | pin.ALU_OUT | pin.OP_INC,
+                # 恢复MSR到代码段
+                pin.CS_OUT | pin.MSR_IN,
+            ],
+        },
+        CALL: {
+            pin.AM_INS: [
+                # 栈顶指针减一获取栈地址
+                pin.SP_OUT | pin.A_IN,
+                pin.SP_IN | pin.ALU_OUT | pin.OP_DEC,
+                pin.SP_OUT | pin.MAR_IN,
+                # 栈段地址送到MSR寄存器
+                pin.SS_OUT | pin.MSR_IN,
+                # 保存当前pc到RAM
+                pin.PC_OUT | pin.RAM_IN,
+                # 读取目的寄存器的值PC
+                pin.DST_OUT | pin.PC_IN,
+                # 恢复MSR到代码段
+                pin.CS_OUT | pin.MSR_IN,
+            ],
+            pin.AM_REG: [
+                # 栈顶指针减一获取栈地址
+                pin.SP_OUT | pin.A_IN,
+                pin.SP_IN | pin.ALU_OUT | pin.OP_DEC,
+                pin.SP_OUT | pin.MAR_IN,
+                # 栈段地址送到MSR寄存器
+                pin.SS_OUT | pin.MSR_IN,
+                # 保存当前pc到RAM
+                pin.PC_OUT | pin.RAM_IN,
+                # 读取目的寄存器的值PC
+                pin.DST_R | pin.PC_IN,
+                # 恢复MSR到代码段
+                pin.CS_OUT | pin.MSR_IN,
+            ],
+        },
+        INT: {
+            pin.AM_INS: [
+                # 栈顶指针减一获取栈地址
+                pin.SP_OUT | pin.A_IN,
+                pin.SP_IN | pin.ALU_OUT | pin.OP_DEC,
+                pin.SP_OUT | pin.MAR_IN,
+                # 栈段地址送到MSR寄存器
+                pin.SS_OUT | pin.MSR_IN,
+                # 保存当前pc到RAM
+                pin.PC_OUT | pin.RAM_IN,
+                # 读取目的寄存器的值PC
+                pin.DST_OUT | pin.PC_IN,
+                # 恢复MSR到代码段
+                pin.CS_OUT | pin.MSR_IN | pin.ALU_PSW | pin.ALU_CLI,
+            ],
+            pin.AM_REG: [
+                # 栈顶指针减一获取栈地址
+                pin.SP_OUT | pin.A_IN,
+                pin.SP_IN | pin.ALU_OUT | pin.OP_DEC,
+                pin.SP_OUT | pin.MAR_IN,
+                # 栈段地址送到MSR寄存器
+                pin.SS_OUT | pin.MSR_IN,
+                # 保存当前pc到RAM
+                pin.PC_OUT | pin.RAM_IN,
+                # 读取目的寄存器的值PC
+                pin.DST_R | pin.PC_IN,
+                # 恢复MSR到代码段
+                pin.CS_OUT | pin.MSR_IN | pin.ALU_PSW | pin.ALU_CLI,
+            ],
+        },
+
+    },
     0: {
         NOP: [pin.CYC],
         HLT: [pin.HLT],
+        RET: [
+            # 栈段地址送到MSR寄存器
+            pin.SS_OUT | pin.MSR_IN,
+            pin.SP_OUT | pin.MAR_IN,
+            # RAM读取值写回PC计数器
+            pin.PC_IN | pin.RAM_OUT,
+            pin.SP_OUT | pin.A_IN,
+            pin.SP_IN | pin.ALU_OUT | pin.OP_INC,
+            # 恢复MSR到代码段
+            pin.CS_OUT | pin.MSR_IN,
+        ],
+        IRET: [
+            # 栈段地址送到MSR寄存器
+            pin.SS_OUT | pin.MSR_IN,
+            pin.SP_OUT | pin.MAR_IN,
+            # RAM读取值写回PC计数器
+            pin.PC_IN | pin.RAM_OUT,
+            pin.SP_OUT | pin.A_IN,
+            pin.SP_IN | pin.ALU_OUT | pin.OP_INC,
+            # 恢复MSR到代码段
+            pin.CS_OUT | pin.MSR_IN | pin.ALU_PSW | pin.ALU_STI,
+        ],
+        STI: [
+            pin.ALU_PSW | pin.ALU_STI,
+        ],
+        CLI: [
+            pin.ALU_PSW | pin.ALU_CLI,
+        ],
     }
 }
 
 ```
+## 实现的指令
+### 二地址指令
+- MOV
+- ADD
+- CMP
+- SUB
+- AND
+- OR
+- XOR
+
+### 一地址指令
+- INC
+- DEC
+- NOT
+- JMP 跳转
+- JO 溢出跳转
+- JNO 非溢出跳转
+- JZ 零转
+- JNZ
+- JP 奇偶
+- JNP 
+- PUSH
+- POP
+- CALL
+- INT中断（内部的）
+
+### 零地址指令
+- NOP
+- HLT
+- RET call对应恢复
+- IRET 中断恢复
+- STI start中断
+- CLI close中断
+
 ## 演示
 下面演示汇编代码的执行。
 ```
