@@ -13,7 +13,7 @@ Appium的架构
 
 
 下载appium的源码，并安装依赖：
-12git clone https://github.com/appium/appium...</div><p class="readmore"><a href="/2018/07/21/Appium%E7%9A%84%E5%AE%9E%E7%8E%B0%E7%90%86%E8%A7%A3/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/07/21/spotbugs%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3%E7%9A%84bug%E6%8F%8F%E8%BF%B0%E6%A6%82%E8%BF%B0/">spotbugs官方文档的bug描述概述</a></h1><div class="post-meta">2018-07-21</div><div class="post-content"><p>spotbugs已经取代和继承了曾今的findbugs，已经按个人理解对bug的类别进行排序，重要的在前，不重要的在后。bug描述里的废话被我删了。<br>文档参考：<a target="_blank" rel="noopener" href="http://spotbugs.readthedocs.io/en/latest/bugDescriptions.html###">http://spotbugs.readthedocs.io/en/latest/bugDescriptions.html/#/#/#</a><br><img src="http://image.windanchaos.tech/blog/dn.net-20180205154612867-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2luZGFuY2hhb3M=-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png" alt="这里写图片描述"></p>
+12git clone https://github.com/appium/appium...</div><p class="readmore"><a href="/2018/07/21/Appium%E7%9A%84%E5%AE%9E%E7%8E%B0%E7%90%86%E8%A7%A3/">阅读全文</a></p></div><div class="post"><h1 class="post-title"><a href="/2018/07/21/spotbugs%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3%E7%9A%84bug%E6%8F%8F%E8%BF%B0%E6%A6%82%E8%BF%B0/">spotbugs官方文档的bug描述概述</a></h1><div class="post-meta">2018-07-21</div><div class="post-content"><p>spotbugs已经取代和继承了曾今的findbugs，已经按个人理解对bug的类别进行排序，重要的在前，不重要的在后。bug描述里的废话被我删了。<br>文档参考：<a target="_blank" rel="noopener" href="http://spotbugs.readthedocs.io/en/latest/bugDescriptions.html###">http://spotbugs.readthedocs.io/en/latest/bugDescriptions.html/#/#/#</a><br><img src="https://windanchaos.github.io/images/dn.net-20180205154612867-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2luZGFuY2hhb3M=-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png" alt="这里写图片描述"></p>
 <p>code that is vulnerable to attacks from untrusted code<br>代码有漏洞，可能被攻击。<br>必须要重要。</p>
 <p>code flaws having to do with threads, locks, and volatiles<br>可能导致线程、死锁及不稳定的<br>必须很重要。</p>
 <p>code that is not necessarily incorrect but may be inefficient<br>可能代码正确但是性能会有问题的地方<br>必须很重要。</p>
@@ -50,10 +50,10 @@ shell 除了有通配符之外，由sh...</div><p class="readmore"><a href="/201
 <p>讲师 | 王潇俊<br>编辑 | 黄晓轩</p>
 <h2 id="讲师简介"><a href="#讲师简介" class="headerlink" title="讲师简介"></a>讲师简介</h2><p><strong>王潇俊</strong><br>携程 系统研发部总监<br>多年致力于云平台及持续交付的实践，15年加入携程，参与携程部署架构的全面改造，主导设计和打造新一代的适用于微服务的发布系统。同时负责基于携程私有云的，兼容虚机与容器的持续交付平台。ROR狂热粉丝，敏捷文化的忠实拥趸。</p>
 <p><strong>阻碍是什么</strong></p>
-<p><img src="http://image.windanchaos.tech/blog/n-mmbiz_png-d5TCS9b3zE2KK9Qg3xrGf1RBXFBACib9UBnIgjdxzqnGryyURaZCLsXkJgtu7lMiagxIVWQ1V3ueY8PE2EUjt3jg-640-wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1.png"></p>
+<p><img src="https://windanchaos.github.io/images/n-mmbiz_png-d5TCS9b3zE2KK9Qg3xrGf1RBXFBACib9UBnIgjdxzqnGryyURaZCLsXkJgtu7lMiagxIVWQ1V3ueY8PE2EUjt3jg-640-wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1.png"></p>
 <p>持续交付其实是解决阻碍问题。解决阻碍首先要知道阻碍是什么，其实我们阻就碍是一堵堵的混乱之墙。如果你读过DevOps宣言的话，可能很容易理解，DevOps说的混乱之墙是指开发和OPS之间，从开发产物如何变成线上跑的产物之间的一堵墙。</p>
 <p>在整个研发过程中处处出现这样的墙，这些墙出现在不同研发的角色上，简单来说就是这样的一幅图。</p>
-<p><img src="http://image.windanchaos.tech/blog/n-mmbiz_png-d5TCS9b3zE2KK9Qg3xrGf1RBXFBACib9UyBgicicI22zZkecCCdPmPZ6Pxf6Yh8xbjaadHPKuF3opRVialmOb6OdlQ-640-wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1.png"><br>这个图出自《持续交付》。这中间有三堵比较重要的墙，项目经理和开发工程师，测试工程师，Ops工程师。</p>
+<p><img src="https://windanchaos.github.io/images/n-mmbiz_png-d5TCS9b3zE2KK9Qg3xrGf1RBXFBACib9UyBgicicI22zZkecCCdPmPZ6Pxf6Yh8xbjaadHPKuF3opRVialmOb6OdlQ-640-wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1.png"><br>这个图出自《持续交付》。这中间有三堵比较重要的墙，项目经理和开发工程师，测试工程师，Ops工程师。</p>
 <p>每个工程师之间都有一堵墙，都有一些方法论和学术上的东西，或者说最佳实践来解决这些墙所在的问题。分别是敏捷开发（通常说的Agile和Scrum），解决了产品经理到开发到测试之间存在对需求不理解的墙。</p>
 <p>有持续集成，继续集成是提出最早的概念，解决的就是开发工程师和测试之间的墙。有DevOps，最近比较火，十几年前就提出，最近开始火起来了，主要是因为Docker的原因。他解决的就是开发工程师、测试工程师和OPS工程师之间这堵墙问题。统统加在一起的概念叫做持续交付。</p>
 <p>有的同学在聊持续集成、持续交付，其中需求、发布、交付都没有提到。超出这个图之外，其实还有持续交付的过程。</p>

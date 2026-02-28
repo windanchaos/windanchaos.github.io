@@ -11,7 +11,7 @@ html.dataset.dark = localStorage.dark;
 <h1 id="1-explain用法"><a href="#1-explain用法" class="headerlink" title="1 explain用法"></a>1 <strong>explain用法</strong></h1><p>explain可以帮助我们分析select语句，<strong>找出select语句的瓶颈</strong>，从而可以针对性地去做优化，让MySQL查询优化器更好地工作。</p>
 <p>MySQL查询优化器有几个目标，其中<strong>最主要的目标是尽可能地使用索引，并且使用最严格的索引来消除尽可能多的数据行</strong>。</p>
 <p>使用explain+select语句，会返回以下的一个表，截图使用的navicat的工具截图：</p>
-<p><img src="http://image.windanchaos.tech/blog/dn.net-20171214200235222-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2luZGFuY2hhb3M=-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png"></p>
+<p><img src="https://windanchaos.github.io/images/dn.net-20171214200235222-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2luZGFuY2hhb3M=-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png"></p>
 <p>下面对上述表的每一列进行说明：</p>
 <h2 id="1-1-id列"><a href="#1-1-id列" class="headerlink" title="1.1 id列"></a>1.1 <strong>id列</strong></h2><p>说明：MySQL Query Optimizer 选定的执行计划中查 询的序列号。表示查询中执行 <strong>select 子句或 操作表的顺序，id 值越大优先级越高，越先 被执行。id 相同，执行顺序由上至下。</strong></p>
 <h2 id="1-2-select-type列"><a href="#1-2-select-type列" class="headerlink" title="1.2 select_type列"></a>1.2 <strong>select_type列</strong></h2><p>select_type查询类型</p>
@@ -52,7 +52,7 @@ html.dataset.dark = localStorage.dark;
 <p>表示MySQL会对结果使用一个外部索引排序，而不是从表里按索引次序读到相关内容。 Using Temporary</p>
 <p>表示MySQL在对查询结果排序时使用临时表，常见于排序order by和分组查询group by.</p>
 <p>至于如何去获取到业务流程中的sql语句，这就需要结合自己公司的实际情况了。<br>我们公司的日志是使用log4j，开启debug模式，每一个操作都会把日志打印出来，包括mysql。对核心可能存在并发的地方。逐一去排查还是有点作用的。</p>
-<p>实操一个：<br>下图是我在某业务日志中捕获的（所谓捕获，就是不断的check）<br><img src="http://image.windanchaos.tech/blog/dn.net-20171215113203697-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2luZGFuY2hhb3M=-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png" alt="这里写图片描述"></p>
+<p>实操一个：<br>下图是我在某业务日志中捕获的（所谓捕获，就是不断的check）<br><img src="https://windanchaos.github.io/images/dn.net-20171215113203697-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2luZGFuY2hhb3M=-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png" alt="这里写图片描述"></p>
 <p>在当前数据规模下查0.053s。但是如果数据规模一大，这个效率肯定是不行的。<br>我去看了下的索引，order_id没有索引。所以，让研发加了一个order_id 索引。解决问题。</p>
 </div><div class="tags"><a href="/tags/FromCSDN"><i class="fa fa-tag">FromCSDN</i></a></div><div class="post-nav"><a class="pre" href="/2018/01/03/YAML%E5%85%A5%E4%B8%AA%E9%97%A8/">YAML入个门</a><a class="next" href="/2017/11/26/%E5%BC%80%E5%A7%8B%E6%92%B8%E4%B9%A6/">开始撸书</a></div><div id="vcomment"></div><script src="//cdn.jsdelivr.net/npm/leancloud-storage/dist/av-min.js"></script><script src="//unpkg.com/valine@latest/dist/Valine.min.js"></script><script>var notify = 'false' == 'true' ? true : false;
 var verify = 'false' == 'true' ? true : false;

@@ -34,9 +34,9 @@ html.dataset.dark = localStorage.dark;
 <p>jdk1.5增加的锁，也能实现线程之间的同步和互斥，而且具备了嗅探锁定、多路分支通知等特性。</p>
 <h2 id="ReentrantLock"><a href="#ReentrantLock" class="headerlink" title="ReentrantLock"></a>ReentrantLock</h2><p>Lock是接口，ReentrantLock实现了这个接口、围绕ReentrantLock讲故事，故事的内容纷繁，我就截个图说明了。</p>
 <p>lock的方法：</p>
-<p><img src="http://image.windanchaos.tech/blog/image-20200323153650930.png" alt="image-20200323153650930"></p>
+<p><img src="https://windanchaos.github.io/images/image-20200323153650930.png" alt="image-20200323153650930"></p>
 <p>condition的方法：</p>
-<p><img src="http://image.windanchaos.tech/blog/image-20200323171203293.png" alt="image-20200323171203293"></p>
+<p><img src="https://windanchaos.github.io/images/image-20200323171203293.png" alt="image-20200323171203293"></p>
 <ul>
 <li><p>最简单的情节，加锁，办事，解锁。</p>
 </li>
@@ -44,7 +44,7 @@ html.dataset.dark = localStorage.dark;
 </li>
 <li><p>然后教程展示了使用这套机制实现生产者\消费者模式</p>
 <p>ReenTrantLock的方法</p>
-<p><img src="http://image.windanchaos.tech/blog/image-20200323165314439.png" alt="image-20200323165314439"></p>
+<p><img src="https://windanchaos.github.io/images/image-20200323165314439.png" alt="image-20200323165314439"></p>
 </li>
 </ul>
 <h2 id="公平锁和非公平锁"><a href="#公平锁和非公平锁" class="headerlink" title="公平锁和非公平锁"></a>公平锁和非公平锁</h2><p>公平锁，表示线程获取锁的顺序是按照线程加锁的顺序来分配，FIFO形式。反之就是非公平，非公平是随机的。</p>
@@ -54,7 +54,7 @@ html.dataset.dark = localStorage.dark;
 
 <p>使用起来大同小易。</p>
 <h1 id="第5章-Timer"><a href="#第5章-Timer" class="headerlink" title="第5章 Timer"></a>第5章 Timer</h1><p>这个章节主要介绍了定时&#x2F;计划功能，它在移动端开发使用较多，其内部是使用多线程方式来处理的。细节也不纠结，比较简单。</p>
-<p><img src="http://image.windanchaos.tech/blog/image-20200323173831646.png" alt="image-20200323173831646"></p>
+<p><img src="https://windanchaos.github.io/images/image-20200323173831646.png" alt="image-20200323173831646"></p>
 <h1 id="第6章-单例模式和多线程"><a href="#第6章-单例模式和多线程" class="headerlink" title="第6章 单例模式和多线程"></a>第6章 单例模式和多线程</h1><p>本章开篇，提及一个观点，多线程模式下，很多不良设计会给商业应用带来灾难。这是一个值得警醒的问题。</p>
 <p>单例模式有饿汉和懒汉模式。</p>
 <p>本质区别是单例对象的生成是在类加载时还是在单例方法被调用时。</p>
