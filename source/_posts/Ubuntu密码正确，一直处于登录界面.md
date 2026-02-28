@@ -1,4 +1,4 @@
----
+﻿---
 title: Ubuntu密码正确，一直处于登录界面
 author: windanchaos
 tags: 

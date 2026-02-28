@@ -1,4 +1,4 @@
----
+﻿---
 title: 图灵机的逻辑等价形式——lambda演算简介
 author: windanchaos
 tags: 
@@ -52,7 +52,7 @@ E 1E 2E 3 . . . E n  可以被下面连续表达式所表示：  (...((E 1E 2)E 
 函数可以被用在表达式中，下面是这种方式的一个应用（ application）：
 (λx.x)y  上边的应用是身份函数使用在了标识符（译者注：没有type一说，不存在变量一说，原文用的 variable）y上。括号的使用避免了混淆。函数应用是以替换函数体内参数x的值(在这个例子里是y正在被处理)的方式被求值，图例1（Figure 1）红线部分展示了函数如何使变量“y”被抽象化（原文“absorbed”），绿色部分则展示了y如何替代了x。它的结果是表达式缩减的，用→箭头指示了，终值为y。
 
-![在这里插入图片描述](http://image.windanchaos.tech/blog/dn.net-20181006220940506-watermark-2-text-aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dpbmRhbmNoYW9z-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70.png)
+![在这里插入图片描述](https://windanchaos.github.io/images/dn.net-20181006220940506-watermark-2-text-aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dpbmRhbmNoYW9z-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70.png)
 
 由于我们也不能总是借助如图例1一样的图片，我们使用[y/x]的符号来表示在函数体内，所有x被y替换。例如，可以书写为：
 (λx.x)y → [y/x]x → y
@@ -67,7 +67,7 @@ E 1E 2E 3 . . . E n  可以被下面连续表达式所表示：  (...((E 1E 2)E 
 在λ演算中，所有的名字都是本地定义的（和大多数编程语言一样）。在函数"λx.x"中，我们说x自它出现在函数体中就被前置的λx约束了。与之对应的，一个没有被约束的变量叫做自由变量（“free variable”，编者注：没有定性的，既可以是函数、也可以是应用、也可以是表达式），在表达式:
 (λx.x)(λy.yx)  左侧第一个表达式中的x被约束于第一个λ。第二个表达式中，y则被第二个λ约束，它里面的x则是自由的。需要特别注意的是第二个表达式中的x是独立的，和第一个表达式中的x没有任何关系。图例2中，可以很容易看出函数应用的管道图
 
-![在这里插入图片描述](http://image.windanchaos.tech/blog/dn.net-20181006230526624-watermark-2-text-aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dpbmRhbmNoYW9z-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70.png)
+![在这里插入图片描述](https://windanchaos.github.io/images/dn.net-20181006230526624-watermark-2-text-aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dpbmRhbmNoYW9z-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70.png)
 图例2中，我们看到第一行中的符号表达式如何被演绎成一种循环，即表达式中的约束变量如何被移动到新的函数体中。第一个函数“消费”了第二个函数。第二个函数的符号x和余下的表达式没有关联，它是在函数定义中自由变量。
 形式上的，我们说变量在表达式中是自由变量，通常满足以下条件之一即可：
 
@@ -102,7 +102,7 @@ II ≡ (λx.x)(λx.x)
 
 II ≡ (λx.x)(λz.z)  身份函数作用于自己的值域，也就是再次成为I：  [(λz.z)/x]x → λz.z ≡ I,
 
-![在这里插入图片描述](http://image.windanchaos.tech/blog/dn.net-20181007174924596-watermark-2-text-aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dpbmRhbmNoYW9z-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70.png)
+![在这里插入图片描述](https://windanchaos.github.io/images/dn.net-20181007174924596-watermark-2-text-aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dpbmRhbmNoYW9z-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70.png)
 我们执行替换时，要注意避免将自由变量混淆成为约束变量。表达式中包含一个约束变量y，但在函数体外还有一个自由变量y，不应该混淆它们。简要处理将一个y，替换（Alpha转换）为下面形式：
 
 (λx.(λt.xt))y  得到表达式：  (λt.yt)  虽然形式上完全不同却是一个正确的结果。 因此，如果函数 λy. < exp >被运用到E，我们就用E替换掉< exp >中的所有的参数y。如果替换x可能导致E中的自由变量x被转换成约束变量，就在替换前重命名函数中的约束变量y。例如表达式：  (λx.(λy.(x(λx.xy)))) y  我们让第一个x和y关联：  (λy.(x(λx.xy)))  只有第一个x是自由变量，可以被替换。替换前，我们必须重命名变量y以避免和约束变量混淆，于是为：  [y/x] (λt.(x(λx.xt))) → (λt(y(λx.xt)))  （译者注：[y/x]已经定义为：表示x将被y替换）
@@ -151,7 +151,7 @@ lambda x . x + x + 2
 一个很好的理解办法是将“z”作为是对于零值的命名，而“s”作为后继函数的名称。因此，0是一个仅返回“0”值的函数；1是将后继函数运用到0上一次的函数；2则是将后继函数应用到零的后继上的函数，以此类推。[1]
 
 译者加：
-![来自wiki的图片](http://image.windanchaos.tech/blog/rg-api-rest_v1-media-math-render-svg-4234d6babd69a13a183ee913a1efd0c3264da618.png)
+![来自wiki的图片](https://windanchaos.github.io/images/rg-api-rest_v1-media-math-render-svg-4234d6babd69a13a183ee913a1efd0c3264da618.png)
 
 以这种方式定义数字的一个好处是，我们能够任意次数的应用一个函数f到一个参数。例如，我们想要应用函数一个带参a的函数f3次，它的值为：
 3f a → (λsz.s(s(sz)))f a → f(f(f a)).

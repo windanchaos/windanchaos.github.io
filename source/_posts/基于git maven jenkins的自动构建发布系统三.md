@@ -1,4 +1,4 @@
----
+﻿---
 title: 基于git maven jenkins的自动构建发布系统三
 author: windanchaos
 tags: 
@@ -15,7 +15,7 @@ date: 2017-05-06 18:22:56
 参考jenkins的构建流程，shell脚本分为：
 
 使用jenkins新建了如下job:
-![这里写图片描述](http://image.windanchaos.tech/blog/dn.net-20170506175834112-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2luZGFuY2hhb3M=-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png)
+![这里写图片描述](https://windanchaos.github.io/images/dn.net-20170506175834112-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2luZGFuY2hhb3M=-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png)
 
 其中，pull code的job每一个小时拉取代码一次，自动引发自动编译job（build auto），但不发布。也就是代码是自动拉取并编译的。
 
@@ -202,4 +202,4 @@ done
 
 最后写了个手动发布的job，该job用来手动发版，工作和deployauto干的一样，但是可以提供给其他开发使用。
 最后贴一张手动发布的效果图出来：
-![这里写图片描述](http://image.windanchaos.tech/blog/dn.net-20170506183004352-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2luZGFuY2hhb3M=-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png)
+![这里写图片描述](https://windanchaos.github.io/images/dn.net-20170506183004352-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2luZGFuY2hhb3M=-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png)

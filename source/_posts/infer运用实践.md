@@ -1,4 +1,4 @@
----
+﻿---
 title: infer运用实践
 author: windanchaos
 tags: 
@@ -19,7 +19,7 @@ date: 2017-02-03 17:30:18
 
 Infer 是一个静态分析工具。Infer 可以分析 Objective-C， Java 或者 C 代码，报告潜在的问题。
 任何人都可以使用 Infer 检测应用，这可以将那些严重的 bug 扼杀在发布之前，同时防止应用崩溃和性能低下。
-![这里写图片描述](http://image.windanchaos.tech/blog/uqiu.net-static-images-Infer-landing-.png)
+![这里写图片描述](https://windanchaos.github.io/images/uqiu.net-static-images-Infer-landing-.png)
 
 # Infer特性
 
@@ -93,7 +93,7 @@ git clone [https://github.com/facebook/infer.git](https://github.com/facebook/in
 
 [facebook/infer](https://github.com/facebook/infer%20) demo
 目前infer支持的编译器有如下几种：
-![这里写图片描述](http://image.windanchaos.tech/blog/s.jianshu.io-upload_images-1673979-f9716e18248c7933.jpg-imageMogr2-auto-orient-strip.png)
+![这里写图片描述](https://windanchaos.github.io/images/s.jianshu.io-upload_images-1673979-f9716e18248c7933.jpg-imageMogr2-auto-orient-strip.png)
 infer能分析的文件类型
 在github上下载demo，demo下examples目录里，你会发现有android项目、C语言文件、java类、oc类、iOS项目，没错啦，infer完全支持以上几种类型的BUG分析。这里我们用ios_hello项目来做栗子：
 首先用cd命令进入ios_hello目录，然后运行以下命令进行编译
@@ -107,14 +107,14 @@ iphonesimulator
 # 编译结果
 
 1: 在项目所在目录下多出build和infer-out文件夹
-![这里写图片描述](http://image.windanchaos.tech/blog/s.jianshu.io-upload_images-1673979-90e8889c74a7ed1c.jpg-imageMogr2-auto-orient-strip.png)
+![这里写图片描述](https://windanchaos.github.io/images/s.jianshu.io-upload_images-1673979-90e8889c74a7ed1c.jpg-imageMogr2-auto-orient-strip.png)
 
 编译 后
 build文件夹：捕获阶段: Infer 捕获编译命令(上面介绍的编译器命令)，将文件翻译成 Infer 内部的中间语言。运行环境和设备信息也有所体现。
 infer-out文件夹：分析阶段产生的文件，Infer将分析bugs结果输出到不同格式文件中，如csv、txt、json 方便对分析结果进行加工分析。
 2: 运行后在终端会看到大量日志信息(同infer-out文件，可以以多种形式查看log信息)
-![这里写图片描述](http://image.windanchaos.tech/blog/s.jianshu.io-upload_images-1673979-4ce4efc6e7e9980b.jpg-imageMogr2-auto-orient-strip%7CimageView2-2-w-1240.png)
-![这里写图片描述](http://image.windanchaos.tech/blog/s.jianshu.io-upload_images-1673979-8e23f650dda9195c.jpg-imageMogr2-auto-orient-strip%7CimageView2-2-w-1240.png)
+![这里写图片描述](https://windanchaos.github.io/images/s.jianshu.io-upload_images-1673979-4ce4efc6e7e9980b.jpg-imageMogr2-auto-orient-strip%7CimageView2-2-w-1240.png)
+![这里写图片描述](https://windanchaos.github.io/images/s.jianshu.io-upload_images-1673979-8e23f650dda9195c.jpg-imageMogr2-auto-orient-strip%7CimageView2-2-w-1240.png)
 代码分析
 cc
 
@@ -137,10 +137,10 @@ cc
 1:简单粗暴的做法是删除文件夹，即增量－>非增量
 2:科学的做法是这样的：xcodebuild -target HelloWorldApp -configuration Debug -sdk iphonesimulator clean，以保证增量－>非增量状态
 but…项目中我们更常用到的方式是修改单个文件，然后检测。 比如我检测出了这样的问题：
-![这里写图片描述](http://image.windanchaos.tech/blog/s.jianshu.io-upload_images-1673979-2862699ff2c6ef3c.jpg-imageMogr2-auto-orient-strip%7CimageView2-2-w-1240.png)
+![这里写图片描述](https://windanchaos.github.io/images/s.jianshu.io-upload_images-1673979-2862699ff2c6ef3c.jpg-imageMogr2-auto-orient-strip%7CimageView2-2-w-1240.png)
 查到bug
 然后我去代码修正了这个问题：
-![这里写图片描述](http://image.windanchaos.tech/blog/s.jianshu.io-upload_images-1673979-b5e95982029f61e6.jpg-imageMogr2-auto-orient-strip%7CimageView2-2-w-1240.png)
+![这里写图片描述](https://windanchaos.github.io/images/s.jianshu.io-upload_images-1673979-b5e95982029f61e6.jpg-imageMogr2-auto-orient-strip%7CimageView2-2-w-1240.png)
 修改代码
 执行：
 
@@ -150,7 +150,7 @@ xcodebuild -target HelloWorldApp -configuration Debug -sdk iphonesimulator clean
 
 然后看终端，问题就修复了。
 2:如果编译过程出现‘AttributeError: ‘NoneType’ object has no attribute ‘encode’’
-![这里写图片描述](http://image.windanchaos.tech/blog/s.jianshu.io-upload_images-1673979-41992bd81a373283--imageMogr2-auto-orient-strip%7CimageView2-2-w-1240.png)
+![这里写图片描述](https://windanchaos.github.io/images/s.jianshu.io-upload_images-1673979-41992bd81a373283--imageMogr2-auto-orient-strip%7CimageView2-2-w-1240.png)
 encode错误
 解决办法：1，pwd查看你当前目录，应该在工程所在目录下，而不是图上用户目录。
 2，猴塞雷，请关注你的额代码，可能有错误。

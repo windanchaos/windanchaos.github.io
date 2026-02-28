@@ -1,4 +1,4 @@
----
+﻿---
 title: 从底层向上理解Git
 author: windanchaos
 tags: 
@@ -158,7 +158,7 @@ lib text
 
 从概念上讲，Git 内部存储的数据有点像这样：
 
-![这里写图片描述](http://image.windanchaos.tech/blog/-book-en-v2-images-data-model-1-.png)
+![这里写图片描述](https://windanchaos.github.io/images/-book-en-v2-images-data-model-1-.png)
 
 你可以轻松创建自己的树对象。 通常，Git 根据某一时刻暂存区（即 index 区域，下同）所表示的状态创建并记录一个对应的树对象，如此重复便可依次记录（某个时间段内）一系列的树对象。 因此，为创建一个树对象，首先需要通过暂存一些文件来创建一个暂存区。 可以通过底层命令 update-index 为一个单独文件——我们的 readme.md 文件的首个版本——创建一个暂存区。 利用该命令，可以把 readme.md 文件的首个版本人为地加入一个新的暂存区。 必须为上述命令指定 –add 选项，因为此前该文件并不在暂存区中；同样必需的还有 –cacheinfo 选项，因为将要添加的文件位于 Git 数据库中，而不是位于当前目录下。 同时，需要指定文件模式、SHA-1 与文件名：
 ```js 
@@ -214,7 +214,7 @@ $ git cat-file -p 3c4e9cd789d88d8d89c1073707c3585e41b0e614
 ```
 
 如果基于这个新的树对象创建一个工作目录，你会发现工作目录的根目录包含两个文件以及一个名为 bak 的子目录，该子目录包含 test.txt 文件的第一个版本。 可以认为 Git 内部存储着的用于表示上述结构的数据是这样的：
-![这里写图片描述](http://image.windanchaos.tech/blog/-book-en-v2-images-data-model-2-.png)
+![这里写图片描述](https://windanchaos.github.io/images/-book-en-v2-images-data-model-2-.png)
 
 ## 提交对象
 
@@ -297,7 +297,7 @@ $ find .git/objects -type f
 ```
 
 如果跟踪所有的内部指针，将得到一个类似下面的对象关系图：
-![这里写图片描述](http://image.windanchaos.tech/blog/-book-en-v2-images-data-model-3-.png)
+![这里写图片描述](https://windanchaos.github.io/images/-book-en-v2-images-data-model-3-.png)
 
 # Git 引用
 
@@ -336,7 +336,7 @@ $ git log --pretty=oneline test
 ```
 
 至此，我们的 Git 数据库从概念上看起来像这样：
-![这里写图片描述](http://image.windanchaos.tech/blog/-book-en-v2-images-data-model-4-.png)
+![这里写图片描述](https://windanchaos.github.io/images/-book-en-v2-images-data-model-4-.png)
 包含分支引用的 Git 目录对象。
 Figure 152. 包含分支引用的 Git 目录对象。
 

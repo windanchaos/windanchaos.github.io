@@ -1,4 +1,4 @@
----
+﻿---
 title: 关于DevOps的摘录
 author: windanchaos
 tags: 
@@ -18,7 +18,7 @@ DevOps（英文Development和Operations的组合）是一组过程、方法与�
 
 随着软件发布迭代的频率越来越高，传统的「瀑布型」（开发—测试—发布）模式已经不能满足快速交付的需求。2009 年左右 DevOps 应运而生，简单地来说，就是更好的优化开发(DEV)、测试(QA)、运维(OPS)的流程，开发运维一体化，通过高度自动化工具与流程来使得软件构建、测试、发布更加快捷、频繁和可靠。
 
-![flow.ci](http://image.windanchaos.tech/blog/s.jianshu.io-upload_images-310906-735d15ceea69b44d.jpg-imageMogr2-auto-orient-strip%7CimageView2-2-w-1240.png)
+![flow.ci](https://windanchaos.github.io/images/s.jianshu.io-upload_images-310906-735d15ceea69b44d.jpg-imageMogr2-auto-orient-strip%7CimageView2-2-w-1240.png)
 
 关于 DevOps 是什么，DevOps 的合著者 John Willis 写了一个非常好的帖子，在[这里](http://itrevolution.com/the-convergence-of-devops/).
 
@@ -42,14 +42,14 @@ DevOps 是一个完整的面向IT运维的工作流，以 IT 自动化以及持�
 
 我们做了一款 Hosted 持续集成产品—— [flow.ci](http://flow.ci/?utm_source=ituring&utm_medium=passage&utm_content=devops_guide) ，它融入了 workflow 机制的持续集成（CI）服务，也可以理解为自动化流程平台，除了集成代码、编译、测试之外，还可以集成常用的工具、灵活自定义流程，帮助你们塑造一个更优秀智能的 DevOps 环境。
 
-![flow.ci](http://image.windanchaos.tech/blog/s.jianshu.io-upload_images-310906-98ac44a2bdf136de--imageMogr2-auto-orient-strip%7CimageView2-2-w-1240.png)
+![flow.ci](https://windanchaos.github.io/images/s.jianshu.io-upload_images-310906-98ac44a2bdf136de--imageMogr2-auto-orient-strip%7CimageView2-2-w-1240.png)
 
 ## DevOps 的技术栈与工具链
 
 <!-- more -->
 Everything is Code，DevOps 也同样要通过技术工具链完成持续集成、持续交付、用户反馈和系统优化的整合。[Elasticbox](https://elasticbox.com/) 整理了 [60+ 开源工具与分类](https://elasticbox.com/blog/devops-open-source-tools/)，其中包括版本控制&协作开发工具、自动化构建和测试工具、持续集成&交付工具、部署工具、维护工具、监控，警告&分析工具等等， 补充了一些国内的服务，可以让你更好的执行实施 DevOps 工作流。
 
-![flow.ci](http://image.windanchaos.tech/blog/s.jianshu.io-upload_images-310906-d7baf300841107a2.jpg-imageMogr2-auto-orient-strip%7CimageView2-2-w-1240.png)
+![flow.ci](https://windanchaos.github.io/images/s.jianshu.io-upload_images-310906-d7baf300841107a2.jpg-imageMogr2-auto-orient-strip%7CimageView2-2-w-1240.png)
 
 顺便再分享一个 [DevOps BookMarks](http://www.devopsbookmarks.com/)，涉及了DevOps方方面面的工具和内容，有兴趣的同学可以去学习下。
 

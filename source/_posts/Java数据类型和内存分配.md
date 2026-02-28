@@ -1,4 +1,4 @@
----
+﻿---
 title: Java数据类型和内存分配
 author: windanchaos
 tags: 

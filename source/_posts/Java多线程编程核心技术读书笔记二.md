@@ -1,4 +1,4 @@
----
+﻿---
 title: Java多线程编程核心技术读书笔记二
 date: 2020-03-23 10:46:46
 category:
@@ -113,11 +113,11 @@ Lock是接口，ReentrantLock实现了这个接口、围绕ReentrantLock讲故�
 
 lock的方法：
 
-![image-20200323153650930](http://image.windanchaos.tech/blog/image-20200323153650930.png)
+![image-20200323153650930](https://windanchaos.github.io/images/image-20200323153650930.png)
 
 condition的方法：
 
-![image-20200323171203293](http://image.windanchaos.tech/blog/image-20200323171203293.png)
+![image-20200323171203293](https://windanchaos.github.io/images/image-20200323171203293.png)
 
 - 最简单的情节，加锁，办事，解锁。
 
@@ -127,7 +127,7 @@ condition的方法：
 
   ReenTrantLock的方法
 
-  ![image-20200323165314439](http://image.windanchaos.tech/blog/image-20200323165314439.png)
+  ![image-20200323165314439](https://windanchaos.github.io/images/image-20200323165314439.png)
 
 ## 公平锁和非公平锁
 
@@ -151,7 +151,7 @@ condition的方法：
 
 这个章节主要介绍了定时/计划功能，它在移动端开发使用较多，其内部是使用多线程方式来处理的。细节也不纠结，比较简单。
 
-![image-20200323173831646](http://image.windanchaos.tech/blog/image-20200323173831646.png)
+![image-20200323173831646](https://windanchaos.github.io/images/image-20200323173831646.png)
 
 # 第6章 单例模式和多线程
 

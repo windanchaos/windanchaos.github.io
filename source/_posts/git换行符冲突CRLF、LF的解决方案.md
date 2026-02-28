@@ -1,4 +1,4 @@
----
+﻿---
 title: git换行符冲突CRLF、LF的解决方案
 author: windanchaos
 tags: 
@@ -22,7 +22,7 @@ git config --global core.safecrlf true
 ```
 
 以上措施如果都不管用，尤其是莫名其妙的，git刚刚clone的代码库就存在图片换行符的问题，比如我的。
-![刚clone的代码库就存在换行符导致的问题](http://image.windanchaos.tech/blog/20190809144730689.jpg-x-oss-process=image-watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dpbmRhbmNoYW9z,size_16,color_FFFFFF,t_70.png)
+![刚clone的代码库就存在换行符导致的问题](https://windanchaos.github.io/images/20190809144730689.jpg-x-oss-process=image-watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dpbmRhbmNoYW9z,size_16,color_FFFFFF,t_70.png)
 那么你可以试试——————————————————————————升级你的git，是的，所有设置方案都试过后，这一招彻底解决。
 
 这里下载：[https://github.com/git/git/releases?after=v2.21.0-rc1](https://github.com/git/git/releases?after=v2.21.0-rc1)

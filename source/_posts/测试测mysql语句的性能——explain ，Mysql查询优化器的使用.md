@@ -1,4 +1,4 @@
----
+﻿---
 title: 测试测mysql语句的性能——explain ，Mysql查询优化器的使用
 author: windanchaos
 tags: 
@@ -20,7 +20,7 @@ MySQL查询优化器有几个目标，其中**最主要的目标是尽可能地�
 
 使用explain+select语句，会返回以下的一个表，截图使用的navicat的工具截图：
 
-![](http://image.windanchaos.tech/blog/dn.net-20171214200235222-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2luZGFuY2hhb3M=-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png)
+![](https://windanchaos.github.io/images/dn.net-20171214200235222-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2luZGFuY2hhb3M=-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png)
 
 下面对上述表的每一列进行说明：
 
@@ -123,7 +123,7 @@ Using filesort
 
 实操一个：
 下图是我在某业务日志中捕获的（所谓捕获，就是不断的check）
-![这里写图片描述](http://image.windanchaos.tech/blog/dn.net-20171215113203697-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2luZGFuY2hhb3M=-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png)
+![这里写图片描述](https://windanchaos.github.io/images/dn.net-20171215113203697-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2luZGFuY2hhb3M=-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png)
 
 在当前数据规模下查0.053s。但是如果数据规模一大，这个效率肯定是不行的。
 我去看了下的索引，order_id没有索引。所以，让研发加了一个order_id 索引。解决问题。

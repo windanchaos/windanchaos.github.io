@@ -1,4 +1,4 @@
----
+﻿---
 title: ［JavaWeb基础］jsp
 author: windanchaos
 tags: 
@@ -22,7 +22,7 @@ JSP标签有多种功能，比如访问数据库、记录用户选择信息、�
 
 # jsp的处理流程和生命周期
 
-![处理流程](http://image.windanchaos.tech/blog/om-wp-content-uploads-2014-01-jsp-processing.jpg.png)
+![处理流程](https://windanchaos.github.io/images/om-wp-content-uploads-2014-01-jsp-processing.jpg.png)
 
 就像其他普通的网页一样，您的浏览器发送一个 HTTP 请求给服务器。
 Web 服务器识别出这是一个对 JSP 网页的请求，并且将该请求传递给 JSP 引擎。通过使用 URL或者 .jsp 文件来完成。
@@ -32,7 +32,7 @@ Web 服务器的某组件将会调用 Servlet 引擎，然后载入并执行 Ser
 Web 服务器以静态 HTML 网页的形式将 HTTP response 返回到您的浏览器中。
 最终，Web 浏览器处理 HTTP response 中动态产生的HTML网页，就好像在处理静态网页一样。
 
-![生命周期](http://image.windanchaos.tech/blog/om-wp-content-uploads-2014-01-jsp_life_cycle.jpg.png)
+![生命周期](https://windanchaos.github.io/images/om-wp-content-uploads-2014-01-jsp_life_cycle.jpg.png)
 ```js 
 编译阶段：
 
@@ -68,7 +68,7 @@ servlet容器编译servlet源文件，生成servlet类
 > 作为请求中处理数据的环节。
 ```
 
-![这里写图片描述](http://image.windanchaos.tech/blog/dn.net-20160817155819901-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQv-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-Center.png)
+![这里写图片描述](https://windanchaos.github.io/images/dn.net-20160817155819901-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQv-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-Center.png)
 参考：[http://blog.csdn.net/qq_25827845/article/details/52231724](http://blog.csdn.net/qq_25827845/article/details/52231724)
 
 # JSP 语法

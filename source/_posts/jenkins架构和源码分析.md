@@ -1,4 +1,4 @@
----
+﻿---
 title: jenkins架构和源码分析
 date: 2020-03-09 17:00:42
 category:
@@ -12,7 +12,7 @@ category:
 )获取脉络，结合自己的研究完成，较原文有所拓展和深入。
 
 ## jenkins框架
-![architecture_jenkins](http://image.windanchaos.tech/blog/architecture_jenkins.png)
+![architecture_jenkins](https://windanchaos.github.io/images/architecture_jenkins.png)
 
 
 
@@ -97,7 +97,7 @@ master/slave的执行架构这个网上说的就比较多了。这里就不废�
 - Queueing 队列，job的调度逻辑
 - Job Type 定义job的类型和执行类型
 - Load Balance 负责调度job到正确的组件
-- Project 定义构建项目![execution_jenkins](http://image.windanchaos.tech/blog/execution_jenkins.png)
+- Project 定义构建项目![execution_jenkins](https://windanchaos.github.io/images/execution_jenkins.png)
 
 ### job提交
 触发job的方式：
@@ -129,12 +129,12 @@ job被提交后，在执行引擎取出队列前，还会经过以步骤，就�
 
 - 可进入sleep状态并等待唤醒的信号；
 
-  ![excution_All_jenkins](http://image.windanchaos.tech/blog/excution_All_jenkins.png)
+  ![excution_All_jenkins](https://windanchaos.github.io/images/excution_All_jenkins.png)
 
 ### 构建步骤
 看图不说话
 
-![Selection_006](http://image.windanchaos.tech/blog/Selection_006.png)
+![Selection_006](https://windanchaos.github.io/images/Selection_006.png)
 
 
 ## jelly

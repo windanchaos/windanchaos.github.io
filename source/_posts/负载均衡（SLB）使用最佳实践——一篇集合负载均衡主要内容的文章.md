@@ -1,4 +1,4 @@
----
+﻿---
 title: 负载均衡（SLB）使用最佳实践——一篇集合负载均衡主要内容的文章
 author: windanchaos
 tags: 
@@ -126,7 +126,7 @@ SLB 在创建监听时可以指定带宽峰值。但用户通过单一客户端�
 
 ## 设计业务架构
 
-![SLB 简单业务架构设计示意图](http://image.windanchaos.tech/blog/dn.com-ea357ac3e08ef5f9bf4bca2f144e57df3f3a9d71-.png "SLB 简单业务架构设计示意图")
+![SLB 简单业务架构设计示意图](https://windanchaos.github.io/images/dn.com-ea357ac3e08ef5f9bf4bca2f144e57df3f3a9d71-.png "SLB 简单业务架构设计示意图")
 
 注：内网环境下，不支持多可用区，只看图例的单边即可。
 
@@ -134,7 +134,7 @@ SLB 在公网环境下的典型业务架构如上图所示。基于多可用区�
 
 ## 配置监听
 
-![SLB 架构示意图](http://image.windanchaos.tech/blog/dn.com-5e8b9024d9f151448b849b19972bf342c4ebb656-.png "SLB 架构示意图")
+![SLB 架构示意图](https://windanchaos.github.io/images/dn.com-5e8b9024d9f151448b849b19972bf342c4ebb656-.png "SLB 架构示意图")
 
 如上图所示，SLB 支持创建多种协议监听，然后按转发策略，将前端业务请求转发到后端多种逻辑服务器集。在 SLB 服务配置的各主要步骤中，请关注如下要点。
 

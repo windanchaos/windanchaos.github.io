@@ -1,4 +1,4 @@
----
+﻿---
 title: Selenium 2.0的由来及设计架构
 author: windanchaos
 tags: 
@@ -25,7 +25,7 @@ date: 2017-04-13 22:24:44
 
 像多数大型项目一样，Selenium使用了分层的库结构。底层是Google的Closure库，提供原语和模块化机制来协助源文件保持精简。在此之上，有一个实用工具库，提供的函数包括简单的任务，如获取某个属性值、判断某个元素是否对用户可见，还包括更加复杂的操作，如通过合成事件模拟用户点击。在项目中，这些被视为提供最小单元的浏览器自动化，因此称之为浏览器自动化原子（Browser Automation Atom）。最后，还有适配层来组合这些原子单元以满足WebDriver和Core的API协议。
 
-![](http://image.windanchaos.tech/blog/dn.net-20130817205048703-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvenp6bW1ta2tr-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png)
+![](https://windanchaos.github.io/images/dn.net-20130817205048703-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvenp6bW1ta2tr-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png)
 
 图 3：Selenium Javascript库的层次结构
 
@@ -116,7 +116,7 @@ http://localhost:7055/hub/session/XXX/element/some_opaque_id/attribute/row
 
 因为我们正执行的方法是idempotent4，正确的HTTP方法是使用get，我们委托一个能处理HTTP（Apache的HTTP客户端）来调用服务器的Java库。
 
-![](http://image.windanchaos.tech/blog/dn.net-20130817205030234-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvenp6bW1ta2tr-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png)
+![](https://windanchaos.github.io/images/dn.net-20130817205030234-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvenp6bW1ta2tr-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png)
 
 Firefox driver被实现成一个Firefox扩展，它的基本设计如上图所示。有些不同寻常的是，它有一个嵌入式HTTP服务器，虽然最初我们使用我们自己创建的，在XPCOM上写的HTTP服务器并不是我们的核心竞争力之一，所以机会出现时，我们使用基本的由Mozilla自己写的HTTPD取代了它，HTTPD收到请求马上传递给调度对象。
 
@@ -228,7 +228,7 @@ IEDriver随着时间推移体系结构也跟着演变，一个非常迫切的需
 
 IE driver原始设计如下图：
 
-![](http://image.windanchaos.tech/blog/dn.net-20130825221212171-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvenp6bW1ta2tr-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png)
+![](https://windanchaos.github.io/images/dn.net-20130825221212171-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvenp6bW1ta2tr-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png)
 
 从堆栈底你可以看到我们使用IE的COM自动化接口，为了在概念层面上更容易的应付，我们包装了这些原始的接口使用了一组C++类，深刻反映了主要的WebDriver API。为了获得与C++通信的的JAVA类，我们使用了JNI，通过COM接口的C++ 抽象的JNI方法实现。
 
@@ -258,13 +258,13 @@ return wrapper.getValue() == null ? null : new StringWrapper(lib, wrapper).toStr
 
 设计图如下：
 
-![](http://image.windanchaos.tech/blog/dn.net-20130825221246921-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvenp6bW1ta2tr-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png)
+![](https://windanchaos.github.io/images/dn.net-20130825221246921-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvenp6bW1ta2tr-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png)
 
 所有的测试都在本地机上运行，这样子不错，但是一旦我们在远程WebDriver上使用IE driver时，就会随机锁定，我们跟踪过这个问题是因为IE 对COM自动化接口的限制。它们这么设计是用在单线程单元模式，本质上讲，归结到一个要求就是，我们每次在同一线程中调用这个接口。在本地运行时，默认情况就是这样。然而，Java 应用程序服务器，使用多个线程处理预期负载，结果呢？我们没有办法确保所有情况下是在同一线程里访问IE driver。
 
 对于这个问题的解决方案是将IE driver在单线程执行器里运行，在应用程序服务器里通过Futures序列化所有访问，一段时间内我们是这样设计的。但是，似乎在调用代码中如此复杂并不公平，很容易想象这样的情形，人们一不小心从多个线程中使用IE driver，我们决定降低driver本身的复杂性。在一个单独的线程中使用IE实例使用PostThreadMessage Win32 API 跨线程边界通信，因此，在写此文时，IE driver的设计看起来像下图：
 
-![](http://image.windanchaos.tech/blog/dn.net-20130825221313500-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvenp6bW1ta2tr-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png)
+![](https://windanchaos.github.io/images/dn.net-20130825221313500-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvenp6bW1ta2tr-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png)
 
 这不是我们会自愿选择的那种设计，但是它具有可工作性和避免麻烦的优点，我们用户可能会选择它。
 

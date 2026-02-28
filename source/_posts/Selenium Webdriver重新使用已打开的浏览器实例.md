@@ -1,4 +1,4 @@
----
+﻿---
 title: Selenium Webdriver重新使用已打开的浏览器实例
 author: windanchaos
 tags: 
@@ -29,7 +29,7 @@ Firefox是以插件的形式，直接在selenium-server-standalone-XXX.jar里了
 webdriver.xpi （selenium-server-standalone-2.48.2.jar中/org/openqa/selenium/firefox/目录下）
 
 new FirefoxDriver()时，启动Firefox浏览器时，带此插件一起启动，然后插件会默认监听7055端口，7055被占用就使用下一个端口。如下图所示。
-![这里写图片描述](http://image.windanchaos.tech/blog/dn.net-20160424100800878.png)
+![这里写图片描述](https://windanchaos.github.io/images/dn.net-20160424100800878.png)
 同一台机器上可以同时启动多个FirefoxDriver实例，每个实例占用不同的端口号。
 ```js 
 The WebDriver Wire Protocol 协议的具体内容请看：https://code.google.com/p/selenium/wiki/JsonWireProtocol#Introduction。  这个协议现在正在被W3C标准化，W3C Webdriver，两者基本一样。  
@@ -41,13 +41,13 @@ W3C Webdriver标准协议内容：http://www.w3.org/TR/webdriver/
 
 为了更清晰直观地看到这个是如何运转的，我们来在使用OWASP ZAP做代理，截获Http Request和Response来看一下。
 首先安装OWASP ZAP或其他有代理功能的工具，设置SoapUI Proxy，如ZAP默认使用8080端口，则SoapUI配置如下：
-![这里写图片描述](http://image.windanchaos.tech/blog/dn.net-20160424100954806.png)
+![这里写图片描述](https://windanchaos.github.io/images/dn.net-20160424100954806.png)
 配置完SoapUI端口后，好像需要重启SoapUI，然后在SoapUI 的自动化测试代码中，代理才能正常工作。
 
 重新跑前一节FirefoxDriver的代码，查看截获的请求和响应。如下图所示：
-![这里写图片描述](http://image.windanchaos.tech/blog/dn.net-20160424101223635.png)
+![这里写图片描述](https://windanchaos.github.io/images/dn.net-20160424101223635.png)
 <!-- more -->
-![这里写图片描述](http://image.windanchaos.tech/blog/dn.net-20160424101313041.png)
+![这里写图片描述](https://windanchaos.github.io/images/dn.net-20160424101313041.png)
 可以清楚地看到代码与DriverServer之间是如何根据WebDriver协议连通的。
 WebDriver协议是RESTful风格的。
 
@@ -159,7 +159,7 @@ log.info "Exception encountered : " + e.message
 }
 ```
 
-![这里写图片描述](http://image.windanchaos.tech/blog/dn.net-20160424110409828.png)
+![这里写图片描述](https://windanchaos.github.io/images/dn.net-20160424110409828.png)
 注意代码中的文字注释下方部分，1中要将WebdriverServer的地址和SessionID 保存起来，
 2中使用1中保存的参数，用实现的自己的myFirefoxDriver来初始化driver。
 （此处感谢[https://learnsoapui.wordpress.com/](https://learnsoapui.wordpress.com/) ， 我最初研究在SoapUI中使用Selenium

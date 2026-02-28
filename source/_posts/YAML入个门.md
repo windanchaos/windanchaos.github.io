@@ -1,4 +1,4 @@
----
+﻿---
 title: YAML入个门
 author: windanchaos
 tags: 
@@ -15,7 +15,7 @@ YAML 是专门用来写配置文件的语言，非常简洁和强大，远比 JS
 
 本文介绍 YAML 的语法，以 [JS-YAML](https://github.com/nodeca/js-yaml) 的实现为例。你可以去[在线 Demo](http://nodeca.github.io/js-yaml/) 验证下面的例子。
 
-![](http://image.windanchaos.tech/blog/ng.com-blogimg-asset-2016-bg2016070403-.png)
+![](https://windanchaos.github.io/images/ng.com-blogimg-asset-2016-bg2016070403-.png)
 
 ## 一、简介
 

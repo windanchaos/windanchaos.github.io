@@ -1,4 +1,4 @@
----
+﻿---
 title: 一种VPN自动设置的解决方案
 date: 2020-03-06 19:11:20
 category:
@@ -34,7 +34,7 @@ category:
 - ppter_dns.py dns解析相关
 ## 工作原理
 使用独立于办公区内部环境的阿里云（或其他共有云），部署redis作为ip交换媒介。
-![clip_image001](http://image.windanchaos.tech/blog/clip_image001.png)
+![clip_image001](https://windanchaos.github.io/images/clip_image001.png)
 
 # 前置动作
 - 修改正确的config.ini

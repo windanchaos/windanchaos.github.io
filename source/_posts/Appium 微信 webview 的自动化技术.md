@@ -1,4 +1,4 @@
----
+﻿---
 title: Appium 微信 webview 的自动化技术
 author: windanchaos
 tags: 
@@ -22,7 +22,7 @@ date: 2017-04-17 14:06:33
 用微信打开debugx5.qq.com, 这是个微信的x5内核调试页面. 你可以在任何聊天窗口内输入这个网址. 并打开它.
 勾选”是否打开TBS内核Inspector调试功能”
 [](https://testerhome.com/uploads/photo/2016/63f8f2bbae83af9e4894c308ddc01a45.png)
-![](http://image.windanchaos.tech/blog/com-uploads-photo-2016-63f8f2bbae83af9e4894c308ddc01a45-.png)
+![](https://windanchaos.github.io/images/com-uploads-photo-2016-63f8f2bbae83af9e4894c308ddc01a45-.png)
 
 ## 使用ChromeDriver编写测试用例
 
@@ -105,7 +105,7 @@ capability.setCapability(ChromeOptions.CAPABILITY, options)
 之前测试加上ChromeOptions配置的时候没有成功, 我以为是appium不支持ChromeOptions, 就给appium-android-driver提交了一个PR
 后来jlipps提醒了我一下
 [](https://testerhome.com/uploads/photo/2017/01a3284a711aa6e67bfafe26ab3934c0.png)
-![](http://image.windanchaos.tech/blog/com--uploads-photo-2017-01a3284a711aa6e67bfafe26ab3934c0-.png)
+![](https://windanchaos.github.io/images/com--uploads-photo-2017-01a3284a711aa6e67bfafe26ab3934c0-.png)
 
 我就又追查了几遍, 最后发现是我本地安装appium时候加上的http_proxy环境变量干扰了ChromeDriver的执行.
 Appium其实是支持ChromeOptions的

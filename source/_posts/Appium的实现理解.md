@@ -1,4 +1,4 @@
----
+﻿---
 title: Appium的实现理解
 author: windanchaos
 tags: 
@@ -17,13 +17,13 @@ date: 2018-07-21 11:54:10
 ## Appium的架构
 
 [](https://myersguo.github.io/public/appium-packages.png)
-![appium](http://image.windanchaos.tech/blog/thub.io-public-appium-packages-.png)
-[](https://myersguo.github.io/publichttp://image.windanchaos.tech/blog/appium_ios.png)
+![appium](https://windanchaos.github.io/images/thub.io-public-appium-packages-.png)
+[](https://myersguo.github.io/publichttps://windanchaos.github.io/images/appium_ios.png)
 
-![appium](http://image.windanchaos.tech/blog/thub.io-public-images-appium_ios-.png)
-[](https://myersguo.github.io/publichttp://image.windanchaos.tech/blog/apium_android.png)
+![appium](https://windanchaos.github.io/images/thub.io-public-images-appium_ios-.png)
+[](https://myersguo.github.io/publichttps://windanchaos.github.io/images/apium_android.png)
 
-![appium](http://image.windanchaos.tech/blog/thub.io-public-images-apium_android-.png)
+![appium](https://windanchaos.github.io/images/thub.io-public-images-apium_android-.png)
 
 下载appium的源码，并安装依赖：
 ```js 
@@ -56,8 +56,8 @@ node build\main.js
 /build/main.js是由/lib/main.js经babel翻译后的结果，所以，我们来看下/lib/main.js来理解appium的流程。
 (备注：由于appium源码执行都是执行的编译后的方法，即build目录下，因此如果你想要调试进行测试，需要在各个模块build目录下更改调试,如果更改源码，需要gulp transpile进行编译)
 
-[](https://myersguo.github.io/publichttp://image.windanchaos.tech/blog/appium_uml.png)
-![appium uml](http://image.windanchaos.tech/blog/thub.io-public-images-appium_uml-.png)
+[](https://myersguo.github.io/publichttps://windanchaos.github.io/images/appium_uml.png)
+![appium uml](https://windanchaos.github.io/images/thub.io-public-images-appium_uml-.png)
 
 appium server端实现了HTTP REST API接口，将client端发来的API请求，解析，发送给执行端。apium server,以及其他的driver（android,ios）都实现了basedriver类。basedriver定义了session的创建，命令的执行方式(cmd执行)。
 

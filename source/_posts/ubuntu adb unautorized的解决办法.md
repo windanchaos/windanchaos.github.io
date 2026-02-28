@@ -1,4 +1,4 @@
----
+﻿---
 title: ubuntu adb unautorized的解决办法
 author: windanchaos
 tags: 

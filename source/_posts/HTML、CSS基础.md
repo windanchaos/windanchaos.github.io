@@ -1,4 +1,4 @@
----
+﻿---
 title: HTML、CSS基础
 author: windanchaos
 tags: 
@@ -136,7 +136,7 @@ h1 {color:red; font-size:14px;}
 
 下面的示意图为您展示了上面这段代码的结构：
 
-![这里写图片描述](http://image.windanchaos.tech/blog/.com.cn-i-ct_css_selector.gif.png)
+![这里写图片描述](https://windanchaos.github.io/images/.com.cn-i-ct_css_selector.gif.png)
 
 ## CSS样式四剑客
 

@@ -1,4 +1,4 @@
----
+﻿---
 title: spotbugs官方文档的bug描述概述
 author: windanchaos
 tags: 
@@ -11,7 +11,7 @@ date: 2018-07-21 11:53:11
 ---
 spotbugs已经取代和继承了曾今的findbugs，已经按个人理解对bug的类别进行排序，重要的在前，不重要的在后。bug描述里的废话被我删了。
 文档参考：[http://spotbugs.readthedocs.io/en/latest/bugDescriptions.html/#/#/#](http://spotbugs.readthedocs.io/en/latest/bugDescriptions.html###)
-![这里写图片描述](http://image.windanchaos.tech/blog/dn.net-20180205154612867-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2luZGFuY2hhb3M=-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png)
+![这里写图片描述](https://windanchaos.github.io/images/dn.net-20180205154612867-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2luZGFuY2hhb3M=-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png)
 
 code that is vulnerable to attacks from untrusted code
 代码有漏洞，可能被攻击。

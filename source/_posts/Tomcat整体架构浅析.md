@@ -1,4 +1,4 @@
----
+﻿---
 title: Tomcat整体架构浅析
 author: windanchaos
 tags: 
@@ -17,7 +17,7 @@ comment：本文基于Tomcat7.0.68
 # 1.整体结构
 
 架构图：
-![这里写图片描述](http://image.windanchaos.tech/blog/.net-uploads-201206-05-1338887929_7279.JPG.png)
+![这里写图片描述](https://windanchaos.github.io/images/.net-uploads-201206-05-1338887929_7279.JPG.png)
 
 ## 1.1各组件解释：
 
@@ -32,9 +32,9 @@ comment：本文基于Tomcat7.0.68
 **Tomcat将Engine，Host，Context，Wrapper统一抽象成Container。**
 Connector接受到请求后，会将请求交给Container，Container处理完了之后将结果返回给Connector
 下面看Container的结构：
-![这里写图片描述](http://image.windanchaos.tech/blog/nblogs.com-blog-665375-201601-665375-20160119184849437-2014392220-.png)
+![这里写图片描述](https://windanchaos.github.io/images/nblogs.com-blog-665375-201601-665375-20160119184849437-2014392220-.png)
 
-![这里写图片描述](http://image.windanchaos.tech/blog/-upload-picture-pic-124649-3f5d0ac0-1c40-3c78-9bed-e990f41e3b84.jpg.png)
+![这里写图片描述](https://windanchaos.github.io/images/-upload-picture-pic-124649-3f5d0ac0-1c40-3c78-9bed-e990f41e3b84.jpg.png)
 Standard/*XXXX/*是组件接口的默认实现类。
 
 Tomcat 还有其它组件，如安全组件 security、logger、session、naming 等其它组件。这些组件共同为 Connector 和 Container 提供必要的服务。
@@ -43,9 +43,9 @@ Tomcat 还有其它组件，如安全组件 security、logger、session、naming
 
 Tomcat中很多组件具有生命周期,如初始化、启动、关闭，这些组件的生命周期具有共性，因此Tomcat中将其抽象为接口Lifecycle，来控制组件的生命周期，它通过 **事件机制** 实现各个容器间的内部通讯。
 Lifecycle接口的方法：
-![这里写图片描述](http://image.windanchaos.tech/blog/dn.net-20161006125439657.png)
+![这里写图片描述](https://windanchaos.github.io/images/dn.net-20161006125439657.png)
 继承关系图：
-![这里写图片描述](http://image.windanchaos.tech/blog/dn.net-20161006124601442.png)
+![这里写图片描述](https://windanchaos.github.io/images/dn.net-20161006124601442.png)
 <!-- more -->
 StandardServer，StandardService，Connector和上面4个容器等很多组件都实现了Lifecycle，组件实现这个接口就可以统一被拥有它的组件控制了，这样一层一层的直到一个 **最高级的组件** 就可以控制 Tomcat 中所有组件的生命周期，这个最高的组件就是 **
 ```js 
@@ -59,7 +59,7 @@ Server
 Bootstrap/#main方法的启动流程：
 参考[http://blog.csdn.net/Zerohuan/article/details/50752635/#t6](http://blog.csdn.net/Zerohuan/article/details/50752635#t6)
 附上别人总结的一张启动时序图：
-![这里写图片描述](http://image.windanchaos.tech/blog/dn.net-20150327153152547-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYzkyOTgzMzYyM2x2Y2hh-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-Center.png)
+![这里写图片描述](https://windanchaos.github.io/images/dn.net-20150327153152547-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvYzkyOTgzMzYyM2x2Y2hh-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-Center.png)
 补充如下：
 
 * 关于Connector初始化和启动的更多细节，可参考本人另一篇blog [http://blog.csdn.net/cx520forever/article/details/52198050](http://blog.csdn.net/cx520forever/article/details/52198050)
@@ -72,7 +72,7 @@ Bootstrap/#main方法的启动流程：
 
 四个基本容器对象里面都有一个pipeline及valve模块，是容器类必须具有的模块，对象生成时set该属性。Pipeline就像是每个容器的逻辑总线。在pipeline上按照配置的顺序，加载各个valve。通过pipeline完成各个valve之间的调用，各个valve实现具体的应用逻辑。
 tomcat组件图：
-![tomcat组件图](http://image.windanchaos.tech/blog/dn.net-20161006212818345.png)
+![tomcat组件图](https://windanchaos.github.io/images/dn.net-20161006212818345.png)
 从上图中看到，在Connector接收到一次连接并转化成HttpServletRequest请求对象后，**请求传递如下**：
 Connector–>Engine的Pipeline的ValveA中–>Engine Valve–>Host Pipeline的Error Report Valve和Host Value–>Context Valve–>Wrapper Valve中，在这里会经过一个过滤器链（Filter Chain）–>Servlet中。
 Servlet处理完成后一步步返回，最后Connector拿到response。
@@ -80,7 +80,7 @@ Servlet处理完成后一步步返回，最后Connector拿到response。
 ## 3.3接口及默认实现
 
 接口中定义的方法:
-![接口中定义的方法](http://image.windanchaos.tech/blog/dn.net-20161007001421097.png)
+![接口中定义的方法](https://windanchaos.github.io/images/dn.net-20161007001421097.png)
 一个pipeline包含多个Valve，这些阀共分为两类，一类叫基础阀（通过getBasic、setBasic方法调用），一类是普通阀（通过addValve、removeValve调用）。管道都是包含在容器中，所以有getContainer和setContainer方法。一个管道一般有一个基础阀（通过setBasic添加），可以有0到多个普通阀（通过addValve添加）。
 isAsyncSupported：当管道中的所有阀门都支持异步时返回ture，否则返回false
 该接口的标准实现是：**
@@ -91,12 +91,12 @@ org.apache.catalina.core.StandardPipeline
 Engine、Host、Context及Wrapper的pipeline属性都继承自父类ContainerBase。
 
 接口方法:
-![这里写图片描述](http://image.windanchaos.tech/blog/dn.net-20161007002724932.png)
+![这里写图片描述](https://windanchaos.github.io/images/dn.net-20161007002724932.png)
 重点关注setNext、getNext、invoke这三个方法，通过setNext设置该阀的下一阀，通过getNext返回该阀的下一个阀的引用，invoke方法则执行该阀内部自定义的请求处理代码。
 ValveBase：是Valve接口的基本实现
 四大容器类r都有各自缺省的标准valve实现。它们分别是
 
-![这里写图片描述](http://image.windanchaos.tech/blog/dn.net-20161007003208809.png)
+![这里写图片描述](https://windanchaos.github.io/images/dn.net-20161007003208809.png)
 
 Valve实现了具体业务逻辑单元。可以定制化valve（实现特定接口），然后配置在server.xml里。每层容器都可以配置相应的valve，当只在其作用域内有效。例如engine容器里的valve只对其包含的所有host里的应用有效。
 配置举例：
@@ -157,7 +157,7 @@ valve按照容器作用域的配置顺序来组织valve，每个valve都设置�
 Pipeline内部维护first和basic两个阀，其它相关阀通过getNext来获取。
 
 **标准valve的调用逻辑图：**
-![这里写图片描述](http://image.windanchaos.tech/blog/dn.net-20161007004829253.png)
+![这里写图片描述](https://windanchaos.github.io/images/dn.net-20161007004829253.png)
 从StandardEngineValve开始， **所有的基础阀的实现最后都会调用其下一级容器，所有的普通阀都会执行
 
 ```js 
@@ -167,7 +167,7 @@ getNext().invoke(request, response);
 上述机制保证了请求传递到servlet去处理。
 
 当采用tomcat默认初始配置时，Valve链如下：
-![这里写图片描述](http://image.windanchaos.tech/blog/dn.net-20161007005430411.png)
+![这里写图片描述](https://windanchaos.github.io/images/dn.net-20161007005430411.png)
 这些阀门Valve通过invoke方法彼此串联起来，最终构成的执行顺序十分类似于一个管道。
 
 # 4.Tomcat中的设计模式

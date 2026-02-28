@@ -1,4 +1,4 @@
----
+﻿---
 title: http协议详解及操作
 author: windanchaos
 tags: 
@@ -25,7 +25,7 @@ HTTP是基于客户端/服务端（C/S）的架构模型，通过一个可靠的
 HTTP使用统一资源标识符（Uniform Resource Identifiers, URI）来传输数据和建立连接。
 HTTP是一个基于TCP/IP通信协议来传递数据（HTML 文件, 图片文件, 查询结果等）。
 以下图表展示了HTTP协议通信流程：
-![这里写图片描述](http://image.windanchaos.tech/blog/om-wp-content-uploads-2013-11-cgiarch.gif.png)
+![这里写图片描述](https://windanchaos.github.io/images/om-wp-content-uploads-2013-11-cgiarch.gif.png)
 
 因此，该协议就是客户端和服务器交换数据的一揽子标准。
 
@@ -33,7 +33,7 @@ HTTP是一个基于TCP/IP通信协议来传递数据（HTML 文件, 图片文件
 序号 方法 描述 1 GET 请求指定的页面信息，并返回实体主体。 2 HEAD 类似于get请求，只不过返回的响应中没有具体的内容，用于获取报文 3 POST 向指定资源提交数据进行处理请求（例如提交表单或者上传文件）。数据被包含在请求体中。POST请求可能会导致新的资源的建立和/或已有资源的修改。 4 PUT 从客户端向服务器传送的数据取代指定的文档的内容。 5 DELETE 请求服务器删除指定的页面。 6 CONNECT HTTP/1.1协议中预留给能够将连接改为管道方式的代理服务器。 7 OPTIONS 允许客户端查看服务器的性能。 8 TRACE 回显服务器收到的请求，主要用于测试或诊断。 客户端发送一个HTTP请求到服务器的请求消息包括以下格式：请求行（request line）、请求头部（header）、空行和请求数据四个部分组成，见下文http报文。
 
 HTTP响应也由四个部分组成，分别是：状态行、消息报文、空行和响应正文。
-![这里写图片描述](http://image.windanchaos.tech/blog/om-wp-content-uploads-2013-11-httpmessage.jpg.png)
+![这里写图片描述](https://windanchaos.github.io/images/om-wp-content-uploads-2013-11-httpmessage.jpg.png)
 
 ## １.2协议特点
 
@@ -52,13 +52,13 @@ HTTP消息由客户端到服务器的请求和服务器到客户端的响应组�
 
 请求消息和响应消息都是由以下内容**组成**:
 
-![这里写图片描述](http://image.windanchaos.tech/blog/blog.com-upload-8-69-86959da15dff4b43.jpg.png)
+![这里写图片描述](https://windanchaos.github.io/images/blog.com-upload-8-69-86959da15dff4b43.jpg.png)
 如图，一个请求报文的示意：
-![这里写图片描述](http://image.windanchaos.tech/blog/om-wp-content-uploads-2013-11-2012072810301161-.png)
+![这里写图片描述](https://windanchaos.github.io/images/om-wp-content-uploads-2013-11-2012072810301161-.png)
 每一个报文域都是由名字+“：”+空格+值 组成，消息报文域的名字是大小写无关的。
 如图：一个访问百度的请求报文和响应报文(header)
 
-![这里写图片描述](http://image.windanchaos.tech/blog/dn.net-20171105210421826-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2luZGFuY2hhb3M=-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png)
+![这里写图片描述](https://windanchaos.github.io/images/dn.net-20171105210421826-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvd2luZGFuY2hhb3M=-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png)
 
 **HTTP消息报文包括普通报文、请求报文、响应报文、实体报文。**
 

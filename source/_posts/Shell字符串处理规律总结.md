@@ -1,4 +1,4 @@
----
+﻿---
 title: Shell字符串处理规律总结
 author: windanchaos
 tags: 

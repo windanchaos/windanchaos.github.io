@@ -1,4 +1,4 @@
----
+﻿---
 title: Java Web基础
 author: windanchaos
 tags: 
@@ -103,7 +103,7 @@ Spring，省去了在类里面new对象的过程，把这个调用与被调用�
 
 程序框架搭建好，并且把各种jar包导入后，就开始进行业务逻辑分析——假设一个最基本的注册功能：页面有两个文本框，一个用户名(username)和一个密码(password)。以QQ注册网页说明，这里以昵称和密码为代表进行举例。
 
-![这里写图片描述](http://image.windanchaos.tech/blog/dn.net-20141111230225984.png)
+![这里写图片描述](https://windanchaos.github.io/images/dn.net-20141111230225984.png)
 
 首先是action层：它是负责在页面和程序之间传输数据的，还有作用是做页面跳转。页面由用户填写表单数据，点击提交按钮，页面的表单数据由Hibernate自动封装到该
 页面表单所对应的ActionFrom（ActionFrom跟实体类不是一个东西，ActionFrom是页面有什么值，类里就写什么属性，是用来封装表单数据用的；而实体类是完全按照数据库的

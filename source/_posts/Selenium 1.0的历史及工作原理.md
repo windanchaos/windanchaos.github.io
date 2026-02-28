@@ -1,4 +1,4 @@
----
+﻿---
 title: Selenium 1.0的历史及工作原理
 author: windanchaos
 tags: 
@@ -31,7 +31,7 @@ type name=q Selenium
 
 上面介绍中其实也提到了1.0的概况，下图就是它的流程。
 
-![](http://image.windanchaos.tech/blog/dn.net-20140227220501421-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvenp6bW1ta2tr-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png)
+![](https://windanchaos.github.io/images/dn.net-20140227220501421-watermark-2-text-aHR0cDovL2Jsb2cuY3Nkbi5uZXQvenp6bW1ta2tr-font-5a6L5L2T-fontsize-400-fill-I0JBQkFCMA==-dissolve-70-gravity-SouthEast.png)
 
 1. 测试用例通过Http请求建立与 selenium-RC server 的连接
 
